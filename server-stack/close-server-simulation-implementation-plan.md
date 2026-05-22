@@ -559,23 +559,34 @@ Her feature için aşağıdaki artefact zorunludur:
 
 - kaynak log örneği
 - parser veya adapter
-- normalized event örneği
+- normalized event örneği (detection_type etiketi dahil)
 - positive test
 - negative test
 - alert expectation
 
-Minimum Phase 1 gate:
+**Faz 1 gate — hard_rule tespitler (badge/NAC bağımsız, öğrenme fazında da aktif):**
 
-- `F-001`
-- `F-006`
-- `F-007`
-- `F-008`
-- `F-009`
-- `F-010`
-- `F-014`
-- `F-020`
-- `F-021`
-- `F-028` veya eşdeğer network-access feature
+| Feature | detection_type | Kaynak | Faz 1'de ateşlenir mi? |
+|---------|---------------|--------|----------------------|
+| `F-009` — Servis hesabı interaktif login | `hard_rule` | Wazuh (Logon Type 2/10) | Evet |
+| `F-010` — Privileged grup değişikliği | `hard_rule` | Wazuh (4728/4729) | Evet |
+| `F-024` — ACL Everyone izin değişikliği | `hard_rule` | Wazuh (4670) | Evet |
+| `F-006` — Login patlaması sonrası başarı | `hard_rule` | Wazuh (4625→4624 zinciri) | Evet |
+
+**Faz 1 gate — baseline_anomaly tespitler (Faz 2'den itibaren ateşlenir, Faz 1'de veri biriktirir):**
+
+| Feature | detection_type | Kaynak |
+|---------|---------------|--------|
+| `F-001` — SMB veri çekim profili | `baseline_anomaly` | Zeek conn.log + Samba audit |
+| `F-007` — Kerberos/NTLM auth hacmi | `baseline_anomaly` | Wazuh (4624, 4776) |
+| `F-020` — Departman dışı dosya erişimi | `baseline_anomaly` | Wazuh (4663) + AD grup |
+| `F-021` — Dosya sunucu toplu okuma | `baseline_anomaly` | Wazuh (4663) + Samba audit |
+| `F-014` — RDP/PSRemoting hop pattern | `baseline_anomaly` | Wazuh (1149) + Sysmon 3 |
+| `F-028` — İç API çağrı deseni sapması | `baseline_anomaly` | Nginx access log |
+
+> [!NOTE]
+> `F-008` (fiziksel-dijital çakışma) **Faz 1 gate'den çıkarıldı.** Badge API Faz 3 aracıdır; F-008 `cross_signal` tipinde olup Faz 3 gate'e aittir.
+> `F-035` (promiscuous mod) Windows/Linux syslog yoluyla Wazuh'ta Faz 1'de izlenebilir; Zeek gerektirmez.
 
 ---
 
