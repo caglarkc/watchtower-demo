@@ -2109,3 +2109,327 @@ Bu doküman 100+ adet, iç ağ odaklı, rol tabanlı ve çapraz departman etkile
 
 
 
+Aşağıda iç ağ odaklı, teknik olarak ölçülebilir ve UEBA açısından anlamlı 25 izleme fikri var.
+
+---
+
+İZLEME ADI: Kullanıcı Başına SMB Veri Çekiş Hacmi
+KATEGORİ: ağ trafiği
+VERİ KAYNAĞI: NetFlow, Zeek, Windows File Server logları, Sysmon
+NE İZLENİYOR: Her kullanıcının dosya sunucularından günlük/haftalık çektiği veri miktarı
+NEDEN DEĞERLI: Veri sızdırma, iç tehdit, yanlış toplu kopyalama ve görev dışı erişimi erken gösterir
+ANOMALİ SİNYALİ: Kullanıcının baseline’ına göre ani 5x–10x veri çekiş artışı; kısa sürede çok sayıda büyük dosya okunması
+UYGULAMA ZORLUĞU: Orta — kullanıcı kimliği ile ağ akışını eşlemek gerekir
+ÖRNEK METRIK: Normalde günde 800 MB okuyan kullanıcının bir günde 14 GB SMB read yapması
+
+---
+
+İZLEME ADI: Departman Dışı Dosya Paylaşım Erişimi
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: Windows Event Log, File Server audit log, AD grup üyelikleri
+NE İZLENİYOR: Kullanıcının kendi departmanı dışındaki paylaşımlı klasörlere erişim sayısı
+NEDEN DEĞERLI: Yetkisiz erişim, merak amaçlı gezinme ve yanlış yetki kalıntılarını ortaya çıkarır
+ANOMALİ SİNYALİ: İlk kez erişilen hassas klasörler; kısa sürede birden çok departman klasöründe gezinme
+UYGULAMA ZORLUĞU: Orta — erişim olaylarını departman/rol bilgisiyle eşlemek gerekir
+ÖRNEK METRIK: Satış çalışanısının aynı gün hukuk, İK ve muhasebe paylaşımlarında 37 dosya açması
+
+---
+
+İZLEME ADI: Dosya Açma-Yazma-Oran Sapması
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: Windows File Server audit, Sysmon, EDR agent
+NE İZLENİYOR: Kullanıcının dosya okuma sayısı ile yazma/değiştirme sayısı arasındaki oran
+NEDEN DEĞERLI: Sadece okuma ağırlıklı büyük taramalar, keşif veya sessiz veri toplama davranışını gösterebilir
+ANOMALİ SİNYALİ: Normalde 2:1 olan read/write oranının 40:1 seviyesine çıkması
+UYGULAMA ZORLUĞU: Kolay — dosya erişim loglarından çıkarılabilir
+ÖRNEK METRIK: 600 read, 8 write, 0 normal iş çıktısı
+
+---
+
+İZLEME ADI: Çoklu Dosya İsim Listeleme Yoğunluğu
+KATEGORİ: davranışsal
+VERİ KAYNAĞI: File Server audit, Sysmon, PowerShell logs
+NE İZLENİYOR: Kullanıcının içerik açmadan yalnızca dizin ve dosya adı listeleme davranışı
+NEDEN DEĞERLI: İç tehdit veya keşif aşamasında kullanıcı önce neyin nerede olduğunu anlamaya çalışır
+ANOMALİ SİNYALİ: İçerik erişimi az ama kısa sürede yüzlerce list/comparison işlemi yapılması
+UYGULAMA ZORLUĞU: Orta — olay tiplerinin ayrıştırılması gerekir
+ÖRNEK METRIK: 20 dakikada 900 file list, sadece 3 dosya open
+
+---
+
+İZLEME ADI: Dahili Mail Kutu Dışı Erişim
+KATEGORİ: mail
+VERİ KAYNAĞI: Exchange audit log, Microsoft 365 audit, mail server logs
+NE İZLENİYOR: Kullanıcının kendi kutusu dışındaki shared mailbox, delegated mailbox veya arşiv kutularına erişimi
+NEDEN DEĞERLI: İç yazışma keşfi, yetkisiz delegate kullanımı ve yönetici kutusu takibi açısından önemlidir
+ANOMALİ SİNYALİ: İlk kez erişilen mailbox’lar; kısa süreli ama yoğun içerik okuma
+UYGULAMA ZORLUĞU: Orta — delegate ve shared access olaylarını normalize etmek gerekir
+ÖRNEK METRIK: Bir kullanıcının 15 dakikada 120 yönetim maili açması
+
+---
+
+İZLEME ADI: Dahili Mail Ek Çıkarma Hacmi
+KATEGORİ: mail
+VERİ KAYNAĞI: Exchange transport log, mailbox audit, DLP logs
+NE İZLENİYOR: İç mail sisteminden indirilen/çıkarılan attachment toplam boyutu ve dosya türleri
+NEDEN DEĞERLI: İç ağda sessiz veri toplama, müşteri sözleşmesi veya personel dosyası biriktirme davranışını gösterir
+ANOMALİ SİNYALİ: Attachment export hacminin normalin çok üstüne çıkması; hassas dosya tiplerinde kümelenme
+UYGULAMA ZORLUĞU: Orta — ek indirme ve görüntüleme olaylarını ayırmak gerekir
+ÖRNEK METRIK: Normalde günde 50 MB ek açan kullanıcının 3.2 GB PDF/XLSX çıkarması
+
+---
+
+İZLEME ADI: İç Mail Kuralı Oluşturma ve Değişiklikleri
+KATEGORİ: mail
+VERİ KAYNAĞI: Exchange audit log, mailbox rule events
+NE İZLENİYOR: Inbox rule, auto-move, hidden folder rule, archive rule oluşturma/değiştirme
+NEDEN DEĞERLI: Sessiz veri toplama, iz gizleme veya kritik mailleri özel klasöre çekme için kullanılır
+ANOMALİ SİNYALİ: Yeni anahtar kelime kuralları; çok kısa sürede çoklu rule eklenmesi
+UYGULAMA ZORLUĞU: Kolay — audit olayları üzerinden alınabilir
+ÖRNEK METRIK: Bir hesapta aynı gün 4 yeni “salary”, “contract”, “termination” filtresi
+
+---
+
+İZLEME ADI: Eşzamanlı İç Lokasyon Oturumu
+KATEGORİ: kimlik
+VERİ KAYNAĞI: AD logon events, VPN yoksa NAC, switch port mapping, badge/kartlı geçiş sistemi
+NE İZLENİYOR: Aynı kullanıcının fiziksel olarak uyumsuz iç lokasyonlardan eşzamanlı oturum açması
+NEDEN DEĞERLI: Hesap paylaşımı, açık bırakılmış oturum veya ele geçirilmiş oturum göstergesidir
+ANOMALİ SİNYALİ: 10–20 dakika içinde iki farklı kat/segment/cihazda aktif çalışma
+UYGULAMA ZORLUĞU: Zor — fiziksel ve dijital sinyalleri birleştirmek gerekir
+ÖRNEK METRIK: CEO hesabının hem yönetici katı PC’de hem toplantı odası terminalinde aktif olması
+
+---
+
+İZLEME ADI: Başarısız Login Patlaması Sonrası Başarılı Erişim
+KATEGORİ: kimlik
+VERİ KAYNAĞI: Windows Security Log, AD DC logs, LDAP auth logs
+NE İZLENİYOR: Çok sayıda failed login sonrası bir veya birkaç başarılı login
+NEDEN DEĞERLI: Yanlış parola denemesi, lateral movement veya kullanıcı kaynaklı deneme-yanılmayı gösterir
+ANOMALİ SİNYALİ: 10+ failed ardından success; özellikle rol dışı hedef sistemlerde
+UYGULAMA ZORLUĞU: Kolay — kimlik loglarından doğrudan üretilebilir
+ÖRNEK METRIK: 18 failed SMB auth ardından hukuk sunucusuna 1 successful access
+
+---
+
+İZLEME ADI: Paylaşımlı / Servis Credential’ının İnsan Gibi Kullanılması
+KATEGORİ: kimlik
+VERİ KAYNAĞI: AD, LDAP, API gateway logs, SIEM correlation
+NE İZLENİYOR: Servis hesabının interaktif workstation’dan veya GUI davranışıyla kullanılması
+NEDEN DEĞERLI: Credential paylaşımı, yanlış kullanım ve gölge otomasyonu yakalar
+ANOMALİ SİNYALİ: Servis hesabının ilk kez masaüstü cihazdan login olması; insan tempo ve saatlerinde kullanılması
+UYGULAMA ZORLUĞU: Orta — servis hesaplarını düzgün sınıflamak gerekir
+ÖRNEK METRIK: Yalnızca entegrasyon sunucusundan kullanılan hesabın bu kez analist laptopundan 300 çağrı yapması
+
+---
+
+İZLEME ADI: Uygulama Bazlı Çalışma Süresi Sapması
+KATEGORİ: uygulama
+VERİ KAYNAĞI: EDR/MDM agent, Windows process telemetry, Sysmon
+NE İZLENİYOR: Kullanıcının hangi uygulamada ne kadar süre aktif olduğu
+NEDEN DEĞERLI: Rol dışı yazılım kullanımı, aşırı süreli erişim, iç araçların beklenmedik kullanımı görülür
+ANOMALİ SİNYALİ: Muhasebe çalışanısının IDE’de 4 saat geçirmesi veya stajyerin admin tool kullanması
+UYGULAMA ZORLUĞU: Orta — foreground activity ve process mapping gerekir
+ÖRNEK METRIK: Destek personelinin PowerShell ISE’de günlük 2 dk yerine 95 dk geçirmesi
+
+---
+
+İZLEME ADI: Kritik Yönetim Aracı Kullanımı
+KATEGORİ: uygulama
+VERİ KAYNAĞI: Sysmon, Windows Event Log, EDR
+NE İZLENİYOR: PowerShell, PsExec, MMC snap-in, registry editor, remote admin tool açılışları
+NEDEN DEĞERLI: Yanal hareket, yetki genişletme ve iz temizleme girişimleri için çok kıymetlidir
+ANOMALİ SİNYALİ: Rol dışı kullanıcıda bu araçların ilk kez görünmesi; saat dışı yoğun kullanım
+UYGULAMA ZORLUĞU: Kolay — process create ve command-line logları yeterlidir
+ÖRNEK METRIK: Satış kullanıcısında ilk kez psexec.exe ve powershell.exe -EncodedCommand çalışması
+
+---
+
+İZLEME ADI: Clipboard Hacmi ve Hassas İçerik Kopyalama
+KATEGORİ: diğer
+VERİ KAYNAĞI: EDR/DLP agent, endpoint clipboard telemetry
+NE İZLENİYOR: Clipboard’a kopyalanan veri boyutu, kaynak uygulama, hassas içerik sınıfı
+NEDEN DEĞERLI: Dosya kopyalamadan önce veri seçme, manuel taşıma veya iç araçlar arası veri sıçramasını gösterir
+ANOMALİ SİNYALİ: Büyük tablo/metin bloklarının finans-İK uygulamalarından kopyalanması
+UYGULAMA ZORLUĞU: Zor — endpoint agent ve privacy kontrollü toplama gerekir
+ÖRNEK METRIK: Bordro uygulamasından 48.000 karakterlik tablo kopyalama
+
+---
+
+İZLEME ADI: Ekran Görüntüsü Alma Frekansı
+KATEGORİ: diğer
+VERİ KAYNAĞI: EDR, DLP endpoint agent, OS hook telemetry
+NE İZLENİYOR: Print Screen, screen capture API, yakalanan pencere türleri, zamanlama
+NEDEN DEĞERLI: Dosya dışına çıkmadan hassas içerik toplama yöntemlerinden biridir
+ANOMALİ SİNYALİ: Hassas uygulamalar açıkken kısa sürede çok sayıda screenshot alınması
+UYGULAMA ZORLUĞU: Zor — agent yetkinliği ve false positive azaltımı gerekir
+ÖRNEK METRIK: CFO ekranında 6 dakikada 17 screenshot olayı
+
+---
+
+İZLEME ADI: USB Takma-Yazma Korelasyonu
+KATEGORİ: donanım
+VERİ KAYNAĞI: Windows Event Log, Device Control logs, EDR, Wazuh
+NE İZLENİYOR: USB bağlanma olayı ile aynı pencerede gerçekleşen büyük dosya kopyaları
+NEDEN DEĞERLI: İç ağ içindeki en klasik veri çıkarma yollarından biridir
+ANOMALİ SİNYALİ: USB insertion sonrası 5+ GB yazım; hassas dosya türlerinin taşınması
+UYGULAMA ZORLUĞU: Kolay — device ve file telemetry birleştirilebilir
+ÖRNEK METRIK: USB takıldıktan 3 dakika sonra 8.7 GB PDF/XLSX kopyalanması
+
+---
+
+İZLEME ADI: Yazıcıya Gönderilen Hassas İş Hacmi
+KATEGORİ: donanım
+VERİ KAYNAĞI: Print server logs, MFP syslog, Windows PrintService logs
+NE İZLENİYOR: Kullanıcı bazında print job sayısı, sayfa adedi, hedef yazıcı, belge tipi
+NEDEN DEĞERLI: Kağıt üstünden veri çıkarma veya yanlış yazıcı kullanımı operasyonel ve güvenlik riskidir
+ANOMALİ SİNYALİ: Normalde hiç yazdırmayan kullanıcının bir anda yüzlerce sayfa basması; ortak alandaki yazıcıya hassas belge yönlendirmesi
+UYGULAMA ZORLUĞU: Kolay — print server verisi yeterli olur
+ÖRNEK METRIK: İK çalışanısının 1 saatte 340 sayfa personel dosyası yazdırması
+
+---
+
+İZLEME ADI: Yazıcı Tarama Klasörü Kalıcılığı
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: MFP scan logs, file share logs, Sysmon
+NE İZLENİYOR: Taranan belgelerin ortak scan klasöründe ne kadar süre kaldığı ve kimlerce görüldüğü
+NEDEN DEĞERLI: Hassas belgelerin geçici cihaz storage’ında unutulması sık gözden kaçar
+ANOMALİ SİNYALİ: Finans/İK belgelerinin scan klasöründe saatlerce kalması; beklenmedik kullanıcı erişimi
+UYGULAMA ZORLUĞU: Orta — MFP ve file access olaylarını ilişkilendirmek gerekir
+ÖRNEK METRIK: Tarama sonrası 14 saat boyunca ortak klasörde kalan 22 bordro PDF’i
+
+---
+
+İZLEME ADI: Badge Geçişi ile Sistem Login Uyuşmazlığı
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: Fiziksel erişim sistemi, AD logon events, NAC
+NE İZLENİYOR: Kullanıcının binaya giriş/çıkış durumu ile dijital erişimlerinin tutarlılığı
+NEDEN DEĞERLI: Hesap paylaşımı, açık oturum kullanımı, iç dolandırıcılık ve deprovisioning sorunlarını yakalar
+ANOMALİ SİNYALİ: Binaya hiç girmemiş kullanıcının dahili segmentten aktif görünmesi
+UYGULAMA ZORLUĞU: Zor — saat senkronu ve veri eşleme gerekir
+ÖRNEK METRIK: Badge kaydı yokken 09:12’de workstation logon ve dosya erişimi
+
+---
+
+İZLEME ADI: Rol Bazlı Sunucu Temas Haritası
+KATEGORİ: davranışsal
+VERİ KAYNAĞI: NetFlow, Sysmon network connections, Windows logs
+NE İZLENİYOR: Her rolün tipik olarak temas ettiği sunucu seti ve bu setten sapmalar
+NEDEN DEĞERLI: Yetkisiz erişim, lateral movement ve yanlış yapılandırma tespiti için çok değerlidir
+ANOMALİ SİNYALİ: İlk kez görülen kritik sunucular; kısa sürede çok geniş sunucu temas dağılımı
+UYGULAMA ZORLUĞU: Orta — role-aware baseline gerekir
+ÖRNEK METRIK: Bir stajyer hesabının 1 günde 11 ayrı iç sunucuya bağlanması
+
+---
+
+İZLEME ADI: İç API Çağrı Deseni Sapması
+KATEGORİ: uygulama
+VERİ KAYNAĞI: API gateway logs, reverse proxy logs, app audit logs
+NE İZLENİYOR: Kullanıcı veya servis bazında endpoint, çağrı sıklığı, response size, method tipi
+NEDEN DEĞERLI: Toplu veri çekme, yetki dışı endpoint denemesi ve eski token kullanımı buradan görünür
+ANOMALİ SİNYALİ: İlk kez erişilen endpoint ailesi; response size ve çağrı sayısında sıçrama
+UYGULAMA ZORLUĞU: Orta — kullanıcı kimliği ile app loglarını düzgün bağlamak gerekir
+ÖRNEK METRIK: Normalde günde 20 çağrı yapan hesabın 1 saatte 1100 GET/export isteği yapması
+
+---
+
+İZLEME ADI: Credential Reset ve Unlock Yoğunluğu
+KATEGORİ: kimlik
+VERİ KAYNAĞI: AD, IAM logs, helpdesk/ticket system
+NE İZLENİYOR: Kim tarafından kaç hesap reset/unlock edildiği ve ticket karşılığı olup olmadığı
+NEDEN DEĞERLI: İçeriden tehdit, yetki kötüye kullanımı ve sosyal mühendislik etkisini gösterir
+ANOMALİ SİNYALİ: Destek kaydı olmadan çoklu reset; aynı admin’in kısa sürede çok hesap unlock etmesi
+UYGULAMA ZORLUĞU: Orta — ticket entegrasyonu gerekebilir
+ÖRNEK METRIK: 1 vardiyada 13 password reset, sadece 2 açık ticket
+
+---
+
+İZLEME ADI: Oturum Süresi ve Boşta Kalma Sapması
+KATEGORİ: zamanlama
+VERİ KAYNAĞI: Windows logon/logoff, EDR idle telemetry, session broker logs
+NE İZLENİYOR: Oturumların ne kadar sürdüğü, ne kadar süre idle kaldığı ve sonrasında ne yapıldığı
+NEDEN DEĞERLI: Açık bırakılmış oturum, başka biri tarafından devralınmış kullanım veya unutulmuş yönetici oturumu görülebilir
+ANOMALİ SİNYALİ: Çok uzun idle sonrası hassas erişim; 18+ saatlik aktif oturumlar
+UYGULAMA ZORLUĞU: Kolay — temel session ve idle logları yeterlidir
+ÖRNEK METRIK: 7 saat idle kalan oturumdan sonra 10 dakika içinde hukuk klasörü erişimi
+
+---
+
+İZLEME ADI: Yerel Diskte Hassas Veri Birikimi
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: DLP agent, EDR file inventory, Windows file auditing
+NE İZLENİYOR: Endpoint üzerinde lokal klasörlere düşen hassas belge hacmi ve türü
+NEDEN DEĞERLI: Network share yerine lokal cache veya staging alanı oluşturulması veri sızıntısına hazırlık olabilir
+ANOMALİ SİNYALİ: Kısa sürede Documents/Desktop/Temp altında çok sayıda hassas dosya oluşması
+UYGULAMA ZORLUĞU: Orta — içerik sınıflandırma ve endpoint toplama gerekir
+ÖRNEK METRIK: Kullanıcı cihazında 2 saat içinde 6 GB sözleşme ve maaş dosyası birikmesi
+
+---
+
+İZLEME ADI: Kopyala-Yapıştır ile Uygulamalar Arası Veri Sıçraması
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: EDR/DLP endpoint agent, app activity logs
+NE İZLENİYOR: Hassas kaynaktan alınan verinin hangi hedef uygulamaya taşındığı
+NEDEN DEĞERLI: Dosya üretmeden veri kaçırma veya uygunsuz taşıma davranışlarını yakalar
+ANOMALİ SİNYALİ: Finans uygulamasından alınan içeriğin not uygulamasına, chat penceresine veya script editörüne taşınması
+UYGULAMA ZORLUĞU: Zor — endpoint görünürlüğü gerekir
+ÖRNEK METRIK: Bordro ekranından clipboard’a alınan verinin 30 sn içinde text editor’e yapıştırılması
+
+---
+
+İZLEME ADI: Uç Nokta Donanım Değişim Frekansı
+KATEGORİ: donanım
+VERİ KAYNAĞI: Windows PnP logs, EDR, Syslog, Wazuh
+NE İZLENİYOR: Yeni USB, kamera, telefon, harici disk, sanal NIC gibi aygıtların görülme sıklığı
+NEDEN DEĞERLI: Yetkisiz cihaz kullanımı, veri taşıma kanalları ve gölge ekipman tespiti sağlar
+ANOMALİ SİNYALİ: Kısa sürede çoklu yeni cihaz; daha önce hiç görülmemiş depolama aygıtları
+UYGULAMA ZORLUĞU: Kolay — endpoint telemetry ile alınır
+ÖRNEK METRIK: 1 hafta stabil kalan cihazda aynı gün 4 yeni removable device görünmesi
+
+---
+
+İZLEME ADI: Bölüm Bazlı Yazılım Envanteri Sapması
+KATEGORİ: uygulama
+VERİ KAYNAĞI: EDR inventory, SCCM/Intune, Sysmon
+NE İZLENİYOR: Kullanıcının cihazında kurulu/çalışan yazılımların rol baseline’ına göre uyumu
+NEDEN DEĞERLI: Yetkisiz araçlar, veri toplama araçları, arşivleyiciler ve admin araçları operasyonel risk yaratır
+ANOMALİ SİNYALİ: İK cihazında packet analyzer, archiver, DB client veya scripting tool görünmesi
+UYGULAMA ZORLUĞU: Kolay — envanter karşılaştırması yapılabilir
+ÖRNEK METRIK: Muhasebe laptopunda ilk kez Wireshark + 7-Zip portable + DBeaver görülmesi
+
+---
+
+İZLEME ADI: İç Log Arama Anahtar Kelimesi Riski
+KATEGORİ: davranışsal
+VERİ KAYNAĞI: SIEM search audit, log platform query logs, Wazuh/Kibana audit
+NE İZLENİYOR: Kullanıcıların log/arama platformunda kullandığı sorgu terimleri
+NEDEN DEĞERLI: Secret avı, maaş araması, işten çıkarma bilgisi veya hedefli keşif davranışını ortaya çıkarır
+ANOMALİ SİNYALİ: “password”, “salary”, “termination”, “token”, “discipline” gibi hassas kelimelerin rol dışı kullanıcılarca aranması
+UYGULAMA ZORLUĞU: Orta — query audit ve bağlamsal eşleme gerekir
+ÖRNEK METRIK: Destek personelinin 1 gün içinde 9 kez “salary” ve “bonus” sorgusu yapması
+
+---
+
+İZLEME ADI: Gölge Veri Deposu Oluşumu
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: Endpoint inventory, process telemetry, file system scans, local DB discovery
+NE İZLENİYOR: Kullanıcı cihazı veya dahili sunucularda kurumca tanımlı olmayan SQLite, CSV havuzu, mini DB, local archive oluşumu
+NEDEN DEĞERLI: Gölge analitik depoları ve izinsiz veri konsolidasyonu hem güvenlik hem yönetişim riski taşır
+ANOMALİ SİNYALİ: Bir kullanıcı cihazında kısa sürede çok büyük .csv/.sqlite/.parquet oluşması; birden çok departman verisinin aynı depoda bulunması
+UYGULAMA ZORLUĞU: Zor — içerik sınıflandırma ve envanter taraması gerekir
+ÖRNEK METRIK: Analist laptopunda 9 GB’lık local SQLite içinde satış+İK+finans tabloları bulunması
+
+---
+
+İZLEME ADI: Çapraz Kaynak Risk Skoru
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: SIEM, AD, NetFlow, Exchange, EDR, badge sistemi
+NE İZLENİYOR: Tek kullanıcının kısa zaman penceresinde birden fazla riskli sinyal üretmesi
+NEDEN DEĞERLI: Tek tek düşük önem taşıyan olaylar birleşince gerçek ihlali işaret eder
+ANOMALİ SİNYALİ: Mesai dışı login + USB takılması + büyük SMB okuma + hassas mail eki çıkarımı gibi zincirler
+UYGULAMA ZORLUĞU: Zor — korelasyon, ağırlıklandırma ve iyi baseline gerekir
+ÖRNEK METRIK: 45 dakikada 4 yüksek riskli sinyal üreten kullanıcı için composite risk score 92/100
+
+---
+
+İstersen bunu bir sonraki adımda üç farklı biçimde düzenleyebilirim: “CSV tablo”, “önceliklendirilmiş MVP listesi”, ya da “hangi log kaynağıyla nasıl toplanır” mimari planı.
