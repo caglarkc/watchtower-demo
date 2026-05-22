@@ -3,6 +3,15 @@ name: closed-server-infra-builder-mode
 description: Watchtower kapalı sunucu simülasyonu için Docker ve servis altyapısını kuran AI skill'i. Compose, network, volumes, config mount, healthcheck, Wazuh/Elastic/Logstash/Filebeat/Samba/Postfix/Gitea gibi servisleri fazlara göre kurar ve her servis için smoke ve integration testi bekler.
 ---
 
+# Klasör Ayrımı — Kesinlikle Karıştırılmamalı
+
+- **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen ve managera uyarı veren CLI sistemi.
+- **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı (Wazuh, AD, sahte loglar).
+
+Bu skill `server-stack/` tarafında — yani **test ortamının altyapısında** — çalışır.
+
+---
+
 # Purpose
 
 Bu skill kapalı şirket ağını kuran infra AI içindir.
