@@ -46,6 +46,96 @@ Bir implementasyon ancak aşağıdaki koşullar sağlanırsa tamamlanmış sayı
 - En az 10 temel feature ve 10 kritik scenario deterministik test ile doğrulanır.
 - Faz 1 smoke suite 15 dakika altında tamamlanır.
 - Test sonucu aynı seed ile tekrarlandığında aynı ana alert çıktıları oluşur.
+- Hiçbir faz, o fazın kendi testleri yeşil olmadan tamamlanmış sayılmaz.
+
+---
+
+## 3.1 Faz Kapanış Kuralı
+
+Bu belgeye göre implementor AI için temel kural şudur:
+
+- Her fazda yapılan **her parça** test edilmelidir.
+- "Kod yazıldı" durumu faz tamamlandı anlamına gelmez.
+- Bir servis eklendiyse healthcheck + ingest + integration testi zorunludur.
+- Bir parser eklendiyse contract test + snapshot test zorunludur.
+- Bir senaryo eklendiyse positive + negative replay testi zorunludur.
+- Bir CLI komutu eklendiyse command smoke testi zorunludur.
+
+Faz tamamlandı kararı ancak şu sırayla verilir:
+
+1. kod yazıldı
+2. ilgili testler yazıldı
+3. testler local/demo ortamında çalıştı
+4. rapor üretildi
+5. manager AI review etti
+
+---
+
+## 3.2 Manager AI Kullanım Şekli
+
+Bu dosya doğrudan kod yazacak AI için değil, öncelikle bir **yönetici AI** için yazılmıştır.
+
+Yönetici AI'nın görevi:
+
+1. Bu belgeyi okuyup fazı seçmek
+2. Fazı küçük görevlere bölmek
+3. Her görev için alt AI'a net prompt üretmek
+4. Doğru referans markdownları prompt'a eklemek
+5. Alt AI çıktısını test zorunluluğuna göre review etmek
+6. Testsiz işi kabul etmemek
+
+Yönetici AI şu belgeleri görev prompt'larında gerektiği kadar referans göstermelidir:
+
+- [close-server-simulation-implementation-plan.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/close-server-simulation-implementation-plan.md)
+- [watchtower-tool-stack.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-tool-stack.md)
+- [watchtower-master-plan.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-master-plan.md)
+- [watchtower-features-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-features-final.md)
+- [watchtower-scenarios-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-scenarios-final.md)
+
+---
+
+## 3.3 Prompt Orchestration Kuralı
+
+Yönetici AI altındaki kod yazan AI'a görev verirken her prompt içinde şunları zorunlu taşımalıdır:
+
+```text
+GÖREV:
+FAZ:
+ALT HEDEF:
+REFERANS DOSYALAR:
+ETKİLENECEK DOSYALAR:
+YAPILACAKLAR:
+TESTLER:
+TESLİM KRİTERLERİ:
+```
+
+`TESTLER` alanı boş bırakılamaz.
+
+Alt AI'dan istenecek minimum teslim:
+
+- yapılan iş özeti
+- değişen dosyalar
+- çalışan davranış
+- yazdığı testler
+- çalıştırdığı testler
+- başarısız kalan nokta varsa açık not
+
+---
+
+## 3.4 Alt AI Rol Ayrımı
+
+Bu plan en az dört farklı uzman AI rolünü destekleyecek şekilde düşünülmelidir:
+
+1. **Manager AI**: fazı böler, prompt üretir, review yapar
+2. **Infra Builder AI**: Docker, network, config, volumes, healthcheck
+3. **Core Coder AI**: watchtower Python kodu, adapters, graph, storage
+4. **Test/QA AI**: smoke, integration, scenario, soak testleri
+
+Gerekirse ek roller:
+
+- **Scenario AI**
+- **Normalizer AI**
+- **Observability Pipeline AI**
 
 ---
 
@@ -199,6 +289,10 @@ watchtower-demo/
 - Scenario replay test
 - Alert assertion test
 
+Her aşamanın sonunda manager AI şu soruyu kapatmadan fazı ilerletmez:
+
+- "Bu aşamada eklenen her şey için çalışan test kanıtı var mı?"
+
 ---
 
 ## 7. WatchtowerEvent Sözleşmesi
@@ -301,6 +395,11 @@ Zorunlu `.env` alanları:
 5. `smoke`
 6. `soak`
 
+Temel kural:
+
+- Her implementasyon görevi en az bir test katmanına bağlanmalıdır.
+- Teste bağlanmayan iş kabul edilmez.
+
 ### 10.1 Unit test
 
 Kapsam:
@@ -362,6 +461,16 @@ Kapsam:
 
 ## 11. Faz Bazlı Test Planı
 
+Her faz için manager AI görev bölmeden önce şu matrisi doldurmuş kabul etmelidir:
+
+- hangi servis ekleniyor
+- hangi parser/adapter ekleniyor
+- hangi CLI veya daemon davranışı ekleniyor
+- bunun unit testi ne
+- bunun integration testi ne
+- bunun smoke testi ne
+- varsa scenario testi ne
+
 ### Faz 1 testleri
 
 - AD login success/failure
@@ -393,6 +502,32 @@ Kapsam:
 - 83 scenario replay coverage
 - feature-to-scenario matrix coverage
 - composite risk score stability
+
+---
+
+## 11.1 Faz Bazlı AI Çalışma Protokolü
+
+Her faz aşağıdaki rollerle ilerler:
+
+### Faz başlangıcı
+
+- Manager AI faz hedefini seçer
+- Bu belgeden ilgili bölüm numaralarını referans alır
+- Alt görevleri 1-4 küçük prompt'a böler
+
+### Faz implementasyonu
+
+- Infra ile ilgili işler Infra Builder AI'a gider
+- Python core ile ilgili işler Core Coder AI'a gider
+- Test harness işleri Test/QA AI'a gider
+- Senaryo replay işleri Scenario AI'a gider
+
+### Faz review
+
+- Manager AI teslimleri toplar
+- Test kanıtı olmayan işi geri çevirir
+- Gerekirse revize prompt üretir
+- Ancak tüm kapılar yeşilse bir sonraki faza geçer
 
 ---
 
