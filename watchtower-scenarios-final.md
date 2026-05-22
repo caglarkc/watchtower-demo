@@ -79,7 +79,7 @@
 
 **KATEGORİ:** veri sızdırma  
 **KULLANICI ROLÜ:** Yazılım Geliştirici  
-**OLAY:** Bir yazılımcı, normalde sadece üzerinde çalıştığı tek bir projeye erişmesi gerekirken GitLab üzerindeki tüm şirkete ait 40 farklı kod deposunu ardışık olarak bilgisayarına klonluyor.  
+**OLAY:** Bir yazılımcı, normalde sadece üzerinde çalıştığı tek bir projeye erişmesi gerekirken şirketin self-hosted Git sunucusundaki tüm 40 farklı kod deposunu ardışık olarak bilgisayarına klonluyor.  
 **NEDEN ŞÜPHELİ:** Rolün normal proje odağını aşan kitlesel kod indirme davranışı; ayrılış niyetiyle örtüşen pattern.  
 **NORMAL BASELINE'DAN SAPMA:** Haftalık ortalama 1 depo indirmeden tek günde 40 depo; 150 MB → 4.7 GB.  
 **BEKLENEN SEVERITY:** CRITICAL
