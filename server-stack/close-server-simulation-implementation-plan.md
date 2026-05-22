@@ -347,6 +347,44 @@ Bu sözleşme değişirse aynı commit içinde şunlar güncellenmek zorundadır
 
 ---
 
+## 7a. Alert Store Şeması (alert_case lifecycle)
+
+```sql
+-- alerts.db içinde
+CREATE TABLE alert (
+    alert_id    TEXT PRIMARY KEY,
+    timestamp   TEXT NOT NULL,
+    user        TEXT NOT NULL,
+    event_type  TEXT NOT NULL,
+    detection_type TEXT NOT NULL,  -- hard_rule | baseline_anomaly | cross_signal
+    severity    TEXT NOT NULL,     -- log | warning | alert | critical
+    raw_events  TEXT,              -- JSON array of related event_ids
+    llm_summary TEXT,              -- LLM'in ürettiği açıklama
+    created_at  TEXT NOT NULL
+);
+
+CREATE TABLE alert_case (
+    case_id     TEXT PRIMARY KEY,
+    alert_id    TEXT NOT NULL REFERENCES alert(alert_id),
+    status      TEXT NOT NULL DEFAULT 'open',
+    -- open | investigating | true_positive | false_positive | suppressed | ticket_linked
+    operator    TEXT,              -- işlemi yapan operatör
+    ticket_ref  TEXT,             -- dış ticketing sistem referansı
+    suppress_until TEXT,          -- suppressed durumlarda bitiş zamanı
+    outcome_note TEXT,
+    updated_at  TEXT NOT NULL
+);
+```
+
+**Durum geçiş kuralları:**
+- `open` → herhangi bir duruma geçebilir
+- `investigating` → `true_positive`, `false_positive`, `suppressed`
+- `true_positive` → `ticket_linked`
+- `false_positive` → sistem bu pattern'i öğrenir (baseline negatif sample olarak işaretlenir)
+- `suppressed` → `suppress_until` geçince otomatik `open`'a döner
+
+---
+
 ## 8. Docker Compose Tasarım Kuralları
 
 Her servis için aşağıdakiler zorunludur:
