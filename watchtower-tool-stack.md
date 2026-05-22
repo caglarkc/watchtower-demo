@@ -1082,3 +1082,107 @@ watchtower-api-*          user, endpoint, method, status_code, response_size
 ---
 
 *Bu stack ile 40 izleme kapasitesinin tamamı ve 83 senaryonun %95'i karşılanmaktadır. Kalan %5 (clipboard, screenshot) için uç nokta DLP agent gerektirir ve gerçek OS hook yeteneği Docker'da simüle edilemez — bu kısım mock event injection ile test edilebilir.*
+
+---
+
+## 15. HİBRİT OS NORMALİZASYON TASARIMI
+
+> Bu bölüm "Kurumsal Gerçeklik" bulgusundan (bkz. başlık) türeyen teknik tasarım kararlarını içerir.
+
+### 15.1 İki Log Yolu
+
+Gerçek kurumsal ağda log'lar iki farklı OS'tan gelir. LangGraph `EventNormalizer` node'u her ikisini de ortak schema'ya dönüştürmek zorundadır:
+
+```
+Windows Server DC          Linux App Servers (RHEL/Ubuntu)
+      │                              │
+      │  Windows Event XML           │  auditd / syslog / JSON
+      ▼                              ▼
+┌─────────────┐              ┌──────────────┐
+│  EventID    │              │  type/msg    │
+│  based      │              │  based parse │
+│  parse      │              └──────┬───────┘
+└──────┬──────┘                     │
+       │                            │
+       └──────────┬─────────────────┘
+                  ▼
+         WatchtowerEvent (ortak schema)
+         {user, event_type, timestamp,
+          source_ip, source_os, raw}
+```
+
+### 15.2 Windows Event ID → WatchtowerEvent Eşlemesi
+
+| Windows Event ID | WatchtowerEvent.event_type | İlgili Feature |
+|-----------------|---------------------------|----------------|
+| 4624 | `login_success` | F-007, F-008 |
+| 4625 | `login_failed` | F-006, F-007 |
+| 4663 | `file_access` | F-020, F-021 |
+| 4728/4729 | `group_change` | F-010, S-030 |
+| 4670 | `acl_change` | F-024 |
+| 6416 | `usb_connect` | F-033 |
+| 7045 | `nic_promiscuous` | F-035 |
+| 307 (Print) | `print_job` | F-034 |
+| Sysmon 1 | `process_create` | F-027 |
+| Sysmon 3 | `network_connect` | F-002 |
+| Sysmon 24 | `clipboard_copy` | F-037 |
+
+### 15.3 Linux auditd → WatchtowerEvent Eşlemesi
+
+| auditd type | WatchtowerEvent.event_type | İlgili Feature |
+|-------------|---------------------------|----------------|
+| `USER_AUTH` | `login_success` | F-007, F-008 |
+| `USER_LOGIN` / `FAILED_LOGIN` | `login_failed` | F-006 |
+| `SYSCALL` (open/read) | `file_access` | F-020, F-021 |
+| `ADD_GROUP` | `group_change` | F-010 |
+| `PATH` + write | `file_write` | F-022 |
+| `USER_CMD` (psexec/powershell equiv.) | `process_create` | F-027 |
+
+### 15.4 Wazuh Agent Dağıtım Matrisi
+
+| Sunucu Tipi | OS | Wazuh Konfigürasyonu |
+|------------|----|--------------------|
+| Domain Controller | Windows Server | WinAgent → Security event channel + Sysmon |
+| File Server | Linux (Samba) | LinuxAgent → auditd + samba full_audit syslog |
+| Mail Server | Linux (Postfix) | LinuxAgent → /var/log/mail.log filebeat |
+| DB Server | Linux (PostgreSQL) | LinuxAgent → pg_audit CSV log |
+| Git Server | Linux (Gitea) | LinuxAgent → gitea audit log |
+| API Gateway | Linux (Nginx) | LinuxAgent → access.log JSON |
+| Kullanıcı PC (Win) | Windows | WinAgent → Security + Sysmon + PrintService |
+| Kullanıcı PC (Linux) | Ubuntu/RHEL | LinuxAgent → auditd + journald |
+| Kullanıcı PC (Mac) | macOS | WazuhAgent → syslog (sınırlı) |
+
+### 15.5 Simülasyonda Windows Event Bridge
+
+Simülasyon ortamında tüm container'lar Linux tabanlıdır. Windows Event formatını üretmek için `windows-event-bridge` servisi Samba4 loglarını Event ID XML formatına çevirir:
+
+```python
+# simulation/windows_event_bridge.py
+def samba_login_to_win_event(samba_log: dict) -> dict:
+    """Samba4 login → Windows Event ID 4624 formatı"""
+    return {
+        "EventID": 4624,
+        "TimeCreated": samba_log["timestamp"],
+        "SubjectUserName": samba_log["user"],
+        "IpAddress": samba_log["client_ip"],
+        "LogonType": 3,           # Network logon
+        "WorkstationName": samba_log.get("workstation", "UNKNOWN"),
+        "AuthenticationPackageName": "Kerberos",
+        "source_os": "windows"    # normalizatör için işaret
+    }
+
+def samba_file_to_win_event(audit_line: dict) -> dict:
+    """Samba file audit → Windows Event ID 4663 formatı"""
+    return {
+        "EventID": 4663,
+        "TimeCreated": audit_line["timestamp"],
+        "SubjectUserName": audit_line["user"],
+        "ObjectName": f"\\\\fileserver\\{audit_line['share']}\\{audit_line['filename']}",
+        "AccessMask": "0x1" if audit_line["operation"] == "read" else "0x2",
+        "source_os": "windows"
+    }
+```
+
+---
+
+*Son güncelleme: 22 Mayıs 2026 — Hibrit OS mimarisi kurumsal araştırma bulgusuna göre eklendi.*
