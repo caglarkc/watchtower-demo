@@ -6,6 +6,39 @@
 
 ---
 
+## Kurumsal Gerçeklik: Hibrit OS Mimarisi
+
+> **Araştırma Bulgusu (22 Mayıs 2026):** THY, bankalar, telekom gibi kurumsal ölçekteki şirketlerin neredeyse tamamı hibrit OS yapısı kullanıyor. Bu mimari Watchtower'ın log toplama tasarımını doğrudan etkiliyor.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  GERÇEK KURUMSAL AĞ OS DAĞILIMI                             │
+├──────────────────────┬──────────────────────────────────────┤
+│  Windows Server      │  Active Directory Domain Controller   │
+│  (Kimlik katmanı)    │  Neredeyse tüm kurumsal ortam         │
+│                      │  → Event ID 4624/4625/4663/4728/6416  │
+│                      │  → Kerberos TGT/TGS logları           │
+├──────────────────────┼──────────────────────────────────────┤
+│  Linux (RHEL/Ubuntu) │  Uygulama ve servis sunucuları        │
+│  (Servis katmanı)    │  Endüstri standardı (RHEL, Ubuntu)    │
+│                      │  → PostgreSQL, Nginx, Git, Mail, API  │
+│                      │  → auditd, syslog, journald           │
+├──────────────────────┼──────────────────────────────────────┤
+│  Kullanıcı           │  Windows laptop/masaüstü → çoğunluk  │
+│  Workstation'ları    │  Mac → geliştirici/tasarım ekipleri   │
+│                      │  Linux → DevOps/sysadmin              │
+└──────────────────────┴──────────────────────────────────────┘
+```
+
+**Watchtower için kritik çıkarım:** Log toplama katmanında **iki ayrı normalizasyon yolu** zorunludur:
+
+- **Windows path:** DC'den gelen Windows Event XML → Event ID bazlı parse
+- **Linux path:** App server'lardan gelen auditd/syslog/JSON → key bazlı parse
+
+Bu iki yol LangGraph `EventNormalizer` node'unda birleşir ve ortak `WatchtowerEvent` schema'sına dönüştürülür. Detaylar → Bölüm 9 (UEBA Core) ve Bölüm 15 (Normalizasyon Tasarımı).
+
+---
+
 ## Özet Tablo
 
 | Katman | Araç/Sistem | Öncelik | Docker Sim. | Ücretsiz? |
