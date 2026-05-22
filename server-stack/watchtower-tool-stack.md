@@ -1058,24 +1058,33 @@ Her senaryo kategorisi için hangi tool'un devrede olduğu:
 ## 13. LOG KAYNAĞI → ELASTICSEARCH INDEX ŞEMASI
 
 ```
-watchtower-samba-*        smb_user, smb_share, smb_op, bytes, filename
-watchtower-ad-*           event_id, user, source_ip, logon_type, target
-watchtower-mail-*         from, to, bcc, subject_hash, attachment_size, rule_changes
-watchtower-dns-*          client_ip, query, qtype, response, entropy_score
-watchtower-zeek-conn-*    src_ip, dst_ip, dst_port, proto, bytes, duration
+# Event Log İndeksleri
+watchtower-samba-*         smb_user, smb_share, smb_op, bytes, filename, detection_type
+watchtower-ad-*            event_id, user, source_ip, logon_type, target, detection_type
+watchtower-mail-*          from, to, bcc, subject_hash, attachment_size, rule_changes
+watchtower-dns-*           client_ip, query, qtype, response, entropy_score
+watchtower-zeek-conn-*     src_ip, dst_ip, dst_port, proto, bytes, duration
 watchtower-zeek-kerberos-* user, src_ip, service, success
-watchtower-process-*      user, image, cmdline, parent_image, event_id
-watchtower-db-*           user, db, table, operation, rows_returned, bytes
-watchtower-git-*          user, repo, operation (clone/push/pull), bytes
-watchtower-usb-*          user, device_id, vendor, bytes_written
-watchtower-print-*        user, printer, document, pages, queue_type
-watchtower-badge-*        user, door, timestamp, direction
-watchtower-vault-*        user, path, operation, timestamp
-watchtower-api-*          user, endpoint, method, status_code, response_size
+watchtower-process-*       user, image, cmdline, parent_image, event_id
+watchtower-db-*            user, db, table, operation, rows_returned, bytes
+watchtower-git-*           user, repo, operation (clone/push/pull), bytes
+watchtower-usb-*           user, device_id, vendor, bytes_written
+watchtower-print-*         user, printer, document, pages, queue_type
+watchtower-badge-*         user, door, timestamp, direction
+watchtower-vault-*         user, path, operation, timestamp
+watchtower-api-*           user, endpoint, method, status_code, response_size
+
+# Korelasyon Referans İndeksleri (event değil, lookup tabloları)
+watchtower-asset-*         asset_id, hostname, ip, role, segment, criticality, os
+watchtower-ticket-*        ticket_id, type (change|helpdesk), requester, target_user,
+                           target_host, opened_at, closed_at, status
+watchtower-session-map-*   session_id, user, source_ip, source_host, start_time,
+                           end_time, is_active
 ```
 
-**Korelasyon için zorunlu ortak alan:** `user`, `timestamp`, `source_ip`  
-**IP→user mapping için:** DHCP lease tablosu + AD logon korelasyonu
+**Tüm event index'lerde zorunlu ortak alanlar:** `user`, `timestamp`, `source_ip`, `detection_type`
+**Korelasyon için:** `session_id` (event→session eşlemesi), `asset_id` (event→asset eşlemesi)
+**IP→user mapping için:** DHCP lease tablosu + AD logon korelasyonu → `watchtower-session-map-*`
 
 ---
 
