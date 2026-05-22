@@ -537,9 +537,14 @@ Bu belgeye göre başlangıç konfigürasyonu artık nettir:
 2. **İlk SIEM:** `Wazuh-only`
 3. **İlk bildirim kanalı:** `CLI + Telegram`
 4. **Model stratejisi:** OpenAI-compatible abstraction, fakat kapalı ağ senaryosu için `local model path` zorunlu
-5. **Faz 1 kapsamı:** `login + file + network + AD`
+5. **Faz 1 kapsamı:** `login + file + network + AD` — sadece `hard-rule` sınıfı detection'lar aktif
 6. **Mail izleme:** Faz 2'de devreye alınır
 7. **Auto-remediation:** Yok; sadece öneri ve alert üretimi
+8. **Detection taxonomy:** Her feature `hard-rule` / `baseline-anomaly` / `cross-signal` sınıfından biriyle etiketlenmeli; bu etiket Faz 1'de ateşlenip ateşlenmeyeceğini belirler
+9. **LLM rolü:** Schema detection deterministik-first (Wazuh Faz 1'de LLM çağrısı yok). Context enrichment boyutları deterministik hesaplanır; LLM yalnızca açıklama ve öneri metni yazar. LLM erişilemezse sistem fail-open çalışır
+10. **Alert lifecycle:** `open → investigating → true_positive / false_positive / suppressed / ticket_linked`
+11. **Storage geçiş eşiği:** Günlük > 500k normalized event veya DB > 10 GB → Postgres migration. Bu eşiği aşmadan migration planlanmaz
+12. **Korelasyon entity'leri:** `asset`, `session_map`, `identity_alias`, `change_ticket`, `badge_event`, `hr_event` veri modeline eklendi; Faz 1'de boş kalabilirler ama şema şimdiden kilitlendi
 
 ---
 
