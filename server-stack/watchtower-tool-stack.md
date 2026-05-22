@@ -1019,8 +1019,11 @@ services:
       ELASTICSEARCH_URL: http://10.0.4.11:9200
       WAZUH_API_URL: https://10.0.4.10:55000
       POSTGRES_URL: postgresql://10.0.3.10/watchtower
-      LLM_FAST_MODEL: gemini-flash
-      LLM_POWER_MODEL: claude-sonnet
+      # LLM — local model path zorunlu (kapalı ağ senaryosu)
+      # Cloud model kullanılacaksa aynı değişkenler dış URL ile override edilir
+      WATCHTOWER_LOCAL_MODEL_URL: http://10.0.5.30:11434  # Ollama / vLLM endpoint
+      WATCHTOWER_FAST_MODEL: ${WATCHTOWER_FAST_MODEL:-llama3.1:8b}   # schema fallback
+      WATCHTOWER_POWER_MODEL: ${WATCHTOWER_POWER_MODEL:-llama3.1:70b} # açıklama/öneri
     
   badge-api:
     build: ./simulation/badge_api
