@@ -431,11 +431,14 @@ wt alerts suppress <alert_id> --duration 7d
 
 ---
 
-### Faz 4 — Anomali Tespiti & Alert
+### Faz 4 — Anomali Tespiti & Alert Lifecycle
 
-- [ ] Context Enrichment node (zaman, rol, hedef, hız, geçmiş)
+- [ ] Context Enrichment node — tüm boyutlar deterministik hesaplanır (z-score, takvim, AD lookup)
 - [ ] Severity decision logic (dinamik eşikler, rolling window)
-- [ ] Alert üretimi + deduplication + suppression
+- [ ] Alert üretimi + deduplication + suppression window
+- [ ] `alert_case` tablosu: `open → investigating → true_positive / false_positive / suppressed / ticket_linked`
+- [ ] `wt alerts ack/close/suppress` CLI komutları
+- [ ] false_positive geri bildiriminin baseline öğrenmesine yansıtılması
 - [ ] caglarkc-agent'ın approval pattern'i ile manager onay akışı
 
 ---
