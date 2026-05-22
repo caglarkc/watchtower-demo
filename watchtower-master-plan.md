@@ -3,7 +3,7 @@
 > **Ürün:** LLM-Destekli İç Ağ İzleme CLI'ı (UEBA)
 > **Bağımsızlık:** Anthropic dahil herhangi bir sağlayıcıya bağlı değil
 > **Tarih:** 22 Mayıs 2026
-> **Kaynak Konuşma:** `sentinel-yeni-urun-konusma.md`
+> **Kaynak:** Ön araştırma konuşmaları ve entegrasyon notları temel alınarak tekil master plan halinde birleştirildi
 
 ---
 
@@ -445,4 +445,4 @@ Bunlar koda başlamadan önce senden net cevap bekliyor:
 ---
 
 *Plan oluşturulma tarihi: 22 Mayıs 2026*
-*Kaynak: sentinel-yeni-urun-konusma.md + sentinel-ueba-integration-prep.md + integration_planning.md sentezi*
+*Kaynak: Ön araştırma konuşmaları ve entegrasyon notlarının konsolide özeti*
