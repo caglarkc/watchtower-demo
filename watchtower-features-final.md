@@ -3,6 +3,8 @@
 **Toplam:** 40 izleme fikri | Kaynak: ChatGPT + Gemini + Composer çıktıları birleştirildi, tekrar edenler tekilleştirildi.  
 **Amaç:** Bu liste senaryo değil; sistemin ölçmesi gereken davranışsal sinyal ve metrik önerilerini içerir.
 
+**Kaynak notu:** `VERİ KAYNAĞI` satırlarında mümkün olduğunda önce **gerçek kurumsal kaynak**, sonra Watchtower demo ortamındaki **simülasyon karşılığı** düşünülmüştür. Faz 1 başlangıç kapsamı `Wazuh + AD + file/network login telemetry` ile sınırlıdır; mail ve bazı uygulama kaynakları Faz 2 kapsamındadır.
+
 **Kategoriler:**
 - [Ağ Trafiği](#ağ-trafiği) (6)
 - [Kimlik ve Erişim](#kimlik-ve-erişim) (8)
@@ -201,11 +203,11 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-015: Dahili Mail Gönderim Hacmi ve Ek Boyutu
 
 **KATEGORİ:** mail ve iletişim  
-**VERİ KAYNAĞI:** Exchange Message Tracking, EWS audit, on-prem SMTP log  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange Message Tracking, EWS audit | Demo: Postfix/Dovecot SMTP-IMAP log  
 **NE İZLENİYOR:** Günlük sent/received, ek boyutu, dağıtım listesi hedefi (DL/all-staff oranı), hassas keyword içeriği  
 **NEDEN DEĞERLI:** Kazara sızıntı ve insider iletişim kanalı tespiti  
 **ANOMALİ SİNYALİ:** All-staff mail + >5 MB ek; günlük gönderim 8x artış; normalde 4 alıcılı mailin 35 kişiye gitmesi  
-**UYGULAMA ZORLUĞU:** Kolay — Exchange log olgun  
+**UYGULAMA ZORLUĞU:** Kolay — Exchange tarafında olgun, demo tarafta Postfix parser ile karşılanır  
 **ÖRNEK METRIK:** Satış: 20 mail/gün → 1 mail tüm şirket + 8 MB fiyat listesi
 
 ---
@@ -213,7 +215,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-016: Mail Forward/Delegate Kural Değişimi
 
 **KATEGORİ:** mail ve iletişim  
-**VERİ KAYNAĞI:** Exchange Management audit, EWS  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange Management audit, EWS | Demo: Postfix/Roundcube rule-action logları + custom parser  
 **NE İZLENİYOR:** Yeni inbox rule, auto-forward, delegate ekleme/silme; anahtar kelime filtreli kurallar  
 **NEDEN DEĞERLI:** Gizli exfil ve hesap ele geçirme sonrası kalıcılık; sessiz veri toplama  
 **ANOMALİ SİNYALİ:** İlk kez oluşturulan kural; gece oluşturulan filtré; "salary"/"contract"/"termination" keyword filtresi  
@@ -225,7 +227,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-017: Dahili Mail Kutu Dışı Erişim
 
 **KATEGORİ:** mail ve iletişim  
-**VERİ KAYNAĞI:** Exchange audit log, mailbox audit, on-prem SMTP log  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange audit log, mailbox audit | Demo: Dovecot/Roundcube access log + SMTP log  
 **NE İZLENİYOR:** Kullanıcının kendi kutusu dışındaki shared mailbox, delegated mailbox veya arşiv kutularına erişimi  
 **NEDEN DEĞERLI:** İç yazışma keşfi, yetkisiz delegate kullanımı ve yönetici kutusu takibi  
 **ANOMALİ SİNYALİ:** İlk kez erişilen mailbox'lar; kısa süreli ama yoğun içerik okuma; 15 dakikada 120 yönetim maili  
@@ -237,7 +239,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-018: Mail Ek Entropi ve Dosya Tipi Uyuşmazlığı
 
 **KATEGORİ:** mail ve iletişim  
-**VERİ KAYNAĞI:** Exchange Transport Agent, Mail Gateway logs  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange Transport Agent, Mail Gateway logs | Demo: Postfix transport log + attachment metadata parser  
 **NE İZLENİYOR:** İç ağda gönderilen e-posta eklerinde gerçek dosya türü (Magic Number) ile uzantı tutarlılığı ve şifreleme/sıkıştırma entropisi  
 **NEDEN DEĞERLI:** DLP filtrelerini atlatmak için uzantı camouflage veya şifreli arşiv kullanımını yakalar  
 **ANOMALİ SİNYALİ:** .txt görünen ek aslında şifreli .rar; manzara.png yüksek entropili Encrypted ZIP  
@@ -249,7 +251,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-019: Gizli Alıcı (BCC) ve Toplu Dağıtım Sapması
 
 **KATEGORİ:** mail ve iletişim  
-**VERİ KAYNAĞI:** Exchange API, Postfix Message Tracking Logs  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange API | Demo: Postfix message tracking logs  
 **NE İZLENİYOR:** Maillere eklenen BCC alıcı sayısı; alakasız departman çalışanlarının toplu mail zincirine dahil edilmesi  
 **NEDEN DEĞERLI:** Hassas bilgiyi yöneticilerden gizli şekilde işbirlikçilere veya sahte iç hesaplara iletme taktiği  
 **ANOMALİ SİNYALİ:** İki kişi arasında kalması gereken hassas mailin görünmez alıcılarla genişletilmesi; ilk kez 4 stajyerin BCC'de olması  
@@ -389,7 +391,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-030: Git/Artifact Erişim ve Clone Hacmi
 
 **KATEGORİ:** uygulama ve süreç  
-**VERİ KAYNAĞI:** GitLab/Gitea audit log, reverse proxy, git-mirror NetFlow  
+**VERİ KAYNAĞI:** Gerçek ortam: self-hosted Git audit log | Demo: Gitea audit log, reverse proxy, git-mirror NetFlow  
 **NE İZLENİYOR:** Clone/pull GB; erişilen repo sayısı; yetkili dışı repo erişimi; push denemesi  
 **NEDEN DEĞERLI:** Kaynak kod ve secret sızıntısı; ayrılış öncesi IP biriktirme  
 **ANOMALİ SİNYALİ:** 1 proje yetkisi → 47 repo / 4.7 GB hafta sonu; gece saatlerinde yoğun clone aktivitesi  
@@ -545,7 +547,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 ### F-041: Çapraz Kaynak Risk Skoru (Composite Risk Score)
 
 **KATEGORİ:** çapraz veri ve korelasyon  
-**VERİ KAYNAĞI:** SIEM, AD, NetFlow, Exchange, EDR, badge sistemi  
+**VERİ KAYNAĞI:** SIEM, AD, NetFlow, mail audit, EDR, badge sistemi  
 **NE İZLENİYOR:** Tek kullanıcının kısa zaman penceresinde birden fazla riskli sinyal üretmesi; sinyal ağırlıklı bileşik skor  
 **NEDEN DEĞERLI:** Tek tek düşük önem taşıyan olaylar birleşince gerçek ihlali işaret eder; gerçek ihlallerin büyük çoğunluğu bu zincir şeklinde gelişir  
 **ANOMALİ SİNYALİ:** Mesai dışı login + USB takılması + büyük SMB okuma + hassas mail eki çıkarımı zinciri; 45 dk içinde 4 yüksek riskli sinyal  
