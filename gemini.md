@@ -1023,3 +1023,18 @@ NEDEN ŞÜPHELİ: Bir kullanıcının hesabına ait şifrenin olağan dışı ş
 NORMAL BASELINE'DAN SAPMA: Eş zamanlı hesap değişim ve lokasyon sapma anomalisi.
 BEKLENEN SEVERITY: CRITICAL
 GERÇEKÇİLİK NOTU: Şirket içi politikalarda veya yönetim kavgalarında departmanlar arası gizli ittifaklar kurularak hedef kişilerin dijital izleri ve delilleri yok edilmeye çalışılır.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
