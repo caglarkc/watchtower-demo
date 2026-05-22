@@ -2093,3 +2093,19 @@ GERÇEKÇİLİK NOTU: Gerçek şirket ihlalleri çoğu zaman tek bir büyük ola
 ---
 
 Bu doküman 100+ adet, iç ağ odaklı, rol tabanlı ve çapraz departman etkileşimli UEBA test senaryosu içerir. İstenirse bir sonraki adımda bu senaryolar severity dağılımına, MITRE ATT&CK benzeri fazlara, veri kaynaklarına veya sentetik log formatına dönüştürülebilir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
