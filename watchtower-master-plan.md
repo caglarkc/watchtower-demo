@@ -383,12 +383,15 @@ wt alerts suppress <alert_id> --duration 7d
 | Karar | Önerilen |
 |-------|----------|
 | Repo konumu | Yeni root klasör: `watchtower/` (`sentinel-coming` dışında) |
-| Storage (Faz 1) | SQLite (aiosqlite), Postgres opsiyonel sonra |
+| Storage (Faz 1) | SQLite (aiosqlite) |
+| Storage geçiş eşiği | Günlük normalized event hacmi > 500k satır **veya** DB boyutu > 10 GB olduğunda Postgres'e geçilir; bu eşiği aşmadan migration planlanmaz |
 | İlk SIEM hedefi | Wazuh (ücretsiz, en geniş deployment) |
 | İlk alert kanalı | CLI + Telegram (önce), Email / webhook sonra |
 | LLM provider stratejisi | OpenAI-compatible abstraction — local model path zorunlu |
+| LLM erişilemez olduğunda | **fail-open:** Sistem çalışmaya devam eder; `hard-rule` tespitler ateşlenir, anomali açıklaması ve scoring askıya alınır; alert'e "LLM unavailable — manual review" notu düşülür |
 | Gateway / analyzer ilişkisi | Ayrı servis boundary: `security-gateway` ayrı, `analysis-daemon` ayrı |
 | Faz 1 kapsamı | Login + file + network + AD davranışı; mail kaynakları Faz 2'de |
+| Faz 1 detection kapsamı | Sadece `hard-rule` sınıfı aktif; `baseline-anomaly` ve `cross-signal` Faz 2'den itibaren |
 
 ---
 
