@@ -455,6 +455,13 @@ wt status
 # Son 24 saatteki uyarılar
 wt query "son 24 saatteki uyarılar"
 wt alerts --last 24h --severity warning,alert,critical
+wt alerts --status open
+
+# Alert yaşam döngüsü yönetimi
+wt alerts ack <alert_id> --status investigating
+wt alerts close <alert_id> --outcome true_positive
+wt alerts close <alert_id> --outcome false_positive
+wt alerts suppress <alert_id> --duration 7d
 
 # Kullanıcı baseline görüntüle
 wt baseline user ali.koc@sirket.com
