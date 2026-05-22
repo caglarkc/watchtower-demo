@@ -1123,7 +1123,22 @@ watchtower-session-map-*   session_id, user, source_ip, source_host, start_time,
 
 ---
 
-*Bu stack ile 40 izleme kapasitesinin tamamı ve 83 senaryonun %95'i karşılanmaktadır. Kalan %5 (clipboard, screenshot) için uç nokta DLP agent gerektirir ve gerçek OS hook yeteneği Docker'da simüle edilemez — bu kısım mock event injection ile test edilebilir.*
+*Bu stack ile 40 izleme kapasitesinin tamamı ve 83 senaryonun %95'i karşılanmaktadır.*
+
+---
+
+## 16. SIMÜLASYON SINIRI — DLP BAĞIMLI FEATURE'LAR
+
+Aşağıdaki feature'lar gerçek endpoint DLP agent veya OS hook telemetrisi gerektirir. Docker tabanlı simülasyon ortamında **gerçek OS hook çalıştırılamaz**; bu feature'lar test ortamında **mock event injection** ile karşılanır.
+
+| Feature | Gerçek Kaynak | Simülasyon Karşılığı |
+|---------|--------------|---------------------|
+| `F-036` — DLP agent bypass | DLP heartbeat API | Badge API'ye benzer mock DLP heartbeat endpoint; `agent_offline` event inject |
+| `F-037` — Clipboard büyük veri | Sysmon Event ID 24 / ETW | `event_generator` ile sabit formatta `clipboard_copy` event inject |
+| `F-038` — Screenshot frekansı | EDR OS hook telemetry | `event_generator` ile `screenshot_capture` event inject |
+| `F-025` — Yerel disk hassas veri | EDR file inventory | `event_generator` ile local path file create event inject |
+
+**Kural:** Bu feature'ların `positive_test` ve `negative_test`'leri mock event üzerinden yazılır. Normalizer ve severity engine gerçek DLP agent yokmuş gibi aynı `WatchtowerEvent` şemasını bekler — bu sayede gerçek DLP entegrasyonu geldiğinde sadece kaynak değişir, kod değişmez.
 
 ---
 
