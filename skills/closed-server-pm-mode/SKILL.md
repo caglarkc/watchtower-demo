@@ -3,6 +3,15 @@ name: closed-server-pm-mode
 description: Watchtower kapalı sunucu simülasyonu için yönetici AI skill'i. Fazları okur, işi alt görevlere böler, ilgili markdown referanslarını seçer, implementor AI'lara prompt üretir, test kanıtı olmadan işi kabul etmez. Kapalı sunucu simülasyonu, Wazuh, Docker, hibrit OS normalizasyonu, senaryo replay ve test geçiş kapıları olan işlerde kullanılır.
 ---
 
+# Klasör Ayrımı — Kesinlikle Karıştırılmamalı
+
+- **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen ve managera uyarı veren CLI sistemi.
+- **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı (Wazuh, AD, sahte loglar).
+
+Bu skill her iki tarafı koordine eden PM AI içindir; görev üretirken hangi tarafın etkilendiğini her zaman netleştir.
+
+---
+
 # Purpose
 
 Bu skill yönetici AI'ı Watchtower kapalı sunucu simülasyonu için proje yöneticisi gibi çalıştırır.
