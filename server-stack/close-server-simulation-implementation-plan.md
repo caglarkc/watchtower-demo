@@ -317,21 +317,33 @@ Her aşamanın sonunda manager AI şu soruyu kapatmadan fazı ilerletmez:
   "source_ip": "10.0.2.15",
   "source_host": "WS-ALIKOC-01",
   "source_os": "windows|linux",
-  "event_type": "login_success|login_failed|file_access|group_change|process_create|network_connect",
+  "source_os_layer": "identity|application|endpoint",
+  "event_type": "login_success|login_failed|file_access|group_change|process_create|network_connect|usb_connect|print_job|nic_promiscuous|acl_change|clipboard_copy",
+  "detection_type": "hard_rule|baseline_anomaly|cross_signal|unknown",
   "target": "HR-DB-01",
   "severity_hint": "low|medium|high",
+  "session_id": "optional — session_map korelasyonu için",
   "raw_ref": "index/id",
   "attributes": {}
 }
 ```
 
-Bu sözleşme değişirse:
+**`detection_type` alanı kararı:**
+- `hard_rule` → Baseline Check atlanır, doğrudan Hard-Rule Check node’a yönlendirilir, Faz 1’de de ateşlenir
+- `baseline_anomaly` → Baseline Check aktif, Faz 2’den itibaren ateşlenir
+- `cross_signal` → Korelasyon engine aktif, Faz 2’den itibaren ateşlenir
+- `unknown` → Henüz sınıflandırılmamış; LLM fallback devreye girer
 
-- normalizer testleri,
-- correlation testleri,
+**`source_os_layer` alanı kararı:**
+- `identity` → Samba AD / Windows DC kaynaklı (Event ID bazlı parse)
+- `application` → Linux app server kaynaklı (auditd/syslog/JSON)
+- `endpoint` → Kullanıcı iş istasyonu kaynaklı (Sysmon/WazuhAgent)
+
+Bu sözleşme değişirse aynı commit içinde şunlar güncellenmek zorundadır:
+- normalizer testleri
+- correlation testleri
 - scenario assertion fixture’ları
-
-aynı commit içinde güncellenmek zorundadır.
+- Elasticsearch index mapping’leri
 
 ---
 
