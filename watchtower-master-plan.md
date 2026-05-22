@@ -158,10 +158,12 @@ graph TD
 - Ham log batch'lerini çeker, `raw_event` entity'sine yazar
 - Rate limit ve retry logic içerir
 
-### Node 2: Schema Detection (LLM #1)
-- **Model:** Hızlı/ucuz — Gemini Flash, Haiku, veya local quantized model
-- **Görev:** "Bu Wazuh mu, Splunk mu, bilinmeyen bir şey mi?" — sınıflandırma odaklı
-- **Çıktı:** `known_schema` veya `unknown_schema` + güven skoru
+### Node 2: Schema Detection
+- **Birincil yol (deterministik):** Rule Store'daki `stable` format imzalarıyla eşleştir. Eşleşme bulunursa LLM çağrısı yapılmaz.
+- **İkincil yol (LLM fallback):** Eşleşme bulunamazsa hızlı/ucuz model devreye girer — Gemini Flash, Haiku veya local quantized model.
+- **Görev:** "Bu Wazuh mu, Splunk mu, bilinmeyen bir şey mi?" — sınıflandırma odaklı.
+- **Çıktı:** `known_schema` veya `unknown_schema` + güven skoru.
+- **Kural:** Faz 1'de kaynak Wazuh-only olduğu için Wazuh format imzası her zaman `stable`'da tanımlı olacak; LLM bu fazda schema detection için çağrılmaz.
 
 ### Node 3a: Known Adapter
 - Rule Store'daki kayıtlı `stable` kuralları yükler
