@@ -70,6 +70,8 @@ Bu iki yol LangGraph `EventNormalizer` node'unda birleşir ve ortak `WatchtowerE
 
 ### 1.1 Samba4 Active Directory Domain Controller
 
+> **Gerçek ortam karşılığı:** Windows Server + Active Directory Domain Services — kurumsal ağlarda kimlik katmanı her zaman Windows Server'dır. Samba4 bunu Docker'da simüle eder; log formatı ve Event ID'ler aynıdır.
+
 **Ne için:**
 - Windows AD simülasyonu; kullanıcı hesapları, grup üyelikleri, OU yapısı
 - Kerberos TGT logları (S-016, F-007)
