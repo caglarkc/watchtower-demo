@@ -8,7 +8,29 @@
 
 ## Kurumsal Gerçeklik: Hibrit OS Mimarisi
 
-> **Araştırma Bulgusu (22 Mayıs 2026):** THY, bankalar, telekom gibi kurumsal ölçekteki şirketlerin neredeyse tamamı hibrit OS yapısı kullanıyor. Bu mimari Watchtower'ın log toplama tasarımını doğrudan etkiliyor.
+Kurumsal ölçekte pratik gerçeklik tek işletim sistemi değil, **ikili yapı**dır. THY, banka, telekom ve benzeri yapılarda:
+
+- **Kimlik ve kullanıcı yönetimi katmanı** çoğunlukla `Windows Server + Active Directory`
+- **Uygulama, servis ve veri katmanı** çoğunlukla `Linux` (`RHEL`, `Ubuntu`, bazen `Rocky/CentOS`)
+
+Bu ayrım Watchtower için teorik değil, doğrudan ürün tasarımı kararıdır. Çünkü aynı kurum içinde hem `Windows Event ID` tabanlı kimlik olayları hem de `auditd/syslog/JSON` tabanlı Linux servis olayları birlikte akar.
+
+### Katman Bazlı OS Dağılımı
+
+| Katman | Baskın OS | Watchtower açısından anlamı |
+|--------|-----------|-----------------------------|
+| Kimlik / Domain | Windows Server | AD logon, grup üyeliği, Kerberos, GPO ve ayrıcalıklı değişiklik olayları |
+| Uygulama / Backend | Linux (RHEL/Ubuntu) | PostgreSQL, Nginx, Git, mail, API, container ve servis logları |
+| Kullanıcı Uç Noktaları | Çoğunlukla Windows | Çalışan davranışı, USB, process, print, interactive login sinyalleri |
+| Özel Roller | Mac / Linux | Geliştirici ve DevOps istasyonları için ek audit/journald/syslog yolları |
+
+### Neden Kritik?
+
+Watchtower tek tip log bekleyemez. Aynı kurum içinde:
+
+- Domain Controller `4624`, `4625`, `4728`, `6416` gibi **Windows Event ID** üretir
+- Linux servisleri `auditd`, `journald`, `syslog`, `JSON access log` üretir
+- Kullanıcı davranışı korelasyonu bu iki veri ailesini aynı olay modelinde birleştirmeyi gerektirir
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -70,7 +92,7 @@ Bu iki yol LangGraph `EventNormalizer` node'unda birleşir ve ortak `WatchtowerE
 
 ### 1.1 Samba4 Active Directory Domain Controller
 
-> **Gerçek ortam karşılığı:** Windows Server + Active Directory Domain Services — kurumsal ağlarda kimlik katmanı her zaman Windows Server'dır. Samba4 bunu Docker'da simüle eder; log formatı ve Event ID'ler aynıdır.
+> **Gerçek ortam karşılığı:** Windows Server + Active Directory Domain Services. Kurumsal ağlarda kimlik katmanı pratikte çoğunlukla bu yapıdadır. Samba4 bunu Docker'da simüle eder; log formatı ve Event ID mantığı korunur.
 
 **Ne için:**
 - Windows AD simülasyonu; kullanıcı hesapları, grup üyelikleri, OU yapısı
