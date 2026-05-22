@@ -7,6 +7,16 @@
 
 ---
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen, kullanıcı davranışını analiz eden ve managera uyarı veren CLI sistemi. "Demo" kelimesi ürünün ilk/MVP sürümü olduğunu belirtir.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı: Wazuh, AD, sahte kullanıcılar, üretilmiş loglar. `watchtower-demo` bu ortamı izler.
+>
+> `server-stack` ← `watchtower-demo` izler
+
+---
+
 ## 1. Ürün Kimliği
 
 | Alan | Karar |

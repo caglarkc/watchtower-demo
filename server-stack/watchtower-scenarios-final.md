@@ -1,5 +1,13 @@
 # Watchtower UEBA — Final Senaryo Kütüphanesi
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+>
+> Bu dosya `server-stack` ortamında oynatılacak senaryoları tanımlar; `watchtower-demo` bu senaryolardaki anomalileri tespit etmeli.
+
 **Toplam:** 83 senaryo | İç ağ (private LAN) only | 35+ kullanıcı profili  
 **Kaynak:** ChatGPT + Gemini + Composer çıktılarından derlendi; en iyi kalite ve en yüksek özgünlük seçildi.
 

@@ -1,8 +1,16 @@
 # Close Server Simulation — Implementation Plan
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+>
+> Bu dosya `server-stack` ortamını adım adım nasıl kuracağımızı açıklar.
+
 **Amaç:** Watchtower için tüm kapalı kurumsal ağı Docker tabanlı olarak sıfırdan kurmak, log akışını entegre etmek, uçtan uca test etmek ve senaryo üretimini doğrulamak için uygulanabilir mühendislik planı.  
-**Ana referans:** [watchtower-tool-stack.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-tool-stack.md)  
-**Destekleyici bağlam:** [watchtower-master-plan.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-master-plan.md), [watchtower-features-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-features-final.md), [watchtower-scenarios-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-scenarios-final.md)
+**Ana referans:** [watchtower-tool-stack.md](watchtower-tool-stack.md)  
+**Destekleyici bağlam:** [watchtower-master-plan.md](../watchtower-master-plan.md), [watchtower-features-final.md](watchtower-features-final.md), [watchtower-scenarios-final.md](watchtower-scenarios-final.md)
 
 ---
 
@@ -86,11 +94,11 @@ Yönetici AI'nın görevi:
 
 Yönetici AI şu belgeleri görev prompt'larında gerektiği kadar referans göstermelidir:
 
-- [close-server-simulation-implementation-plan.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/close-server-simulation-implementation-plan.md)
-- [watchtower-tool-stack.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-tool-stack.md)
-- [watchtower-master-plan.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-master-plan.md)
-- [watchtower-features-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-features-final.md)
-- [watchtower-scenarios-final.md](/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/watchtower-scenarios-final.md)
+- [close-server-simulation-implementation-plan.md](close-server-simulation-implementation-plan.md)
+- [watchtower-tool-stack.md](watchtower-tool-stack.md)
+- [watchtower-master-plan.md](../watchtower-master-plan.md)
+- [watchtower-features-final.md](watchtower-features-final.md)
+- [watchtower-scenarios-final.md](watchtower-scenarios-final.md)
 
 ---
 
@@ -142,6 +150,8 @@ Gerekirse ek roller:
 ## 4. Hedef Mimari Bileşenleri
 
 `watchtower-tool-stack.md` içindeki Faz 1-4 sırası korunarak implementasyon yapılacaktır.
+
+Not: Bu belgede geçen `Aşama 0-7` yürütme sırasını anlatır; `watchtower-master-plan.md` içindeki `Faz 0-5` ise ürün/mimari olgunluk katmanlarını anlatır. Manager AI görev üretirken bu iki ekseni birbirine eşitlemeye çalışmamalı, her task'ta her iki etiketi de açıkça yazmalıdır.
 
 ### Faz 1 çekirdeği
 

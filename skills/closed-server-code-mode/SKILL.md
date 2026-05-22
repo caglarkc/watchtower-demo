@@ -3,6 +3,15 @@ name: closed-server-code-mode
 description: Watchtower kapalı sunucu simülasyonu için core kod yazan AI skill'i. Manager AI'dan gelen görev prompt'unu uygular; Wazuh adapter, LangGraph pipeline, normalizer, gateway, storage ve CLI parçalarını mimariye uygun yazar. Her görevde test veya manuel doğrulama kanıtı üretir.
 ---
 
+# Klasör Ayrımı — Kesinlikle Karıştırılmamalı
+
+- **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen ve managera uyarı veren CLI sistemi.
+- **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı (Wazuh, AD, sahte loglar).
+
+Bu skill `watchtower-demo/` tarafında — yani **ürün kodunda** — çalışır.
+
+---
+
 # Purpose
 
 Bu skill Watchtower tarafında kod yazan uygulayıcı AI içindir.

@@ -1,16 +1,24 @@
 # Close Server Simulation — Mac-First Implementation Plan
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+>
+> Bu dosya `server-stack` ortamını Mac üzerinde geliştirme önceliğiyle nasıl kuracağımızı açıklar.
+
 **Amaç:** Mevcut implementasyon planını koruyarak, geliştirme işinin öncelikle macOS üzerinde yapılacağı; fakat ürün doğrulamasının Ubuntu ve Windows davranışlarını kapsayacak şekilde tasarlanacağı ikinci bir yürütme planı oluşturmak.
 
 **Bu belge neyi değiştirir:** Kodlama ve günlük geliştirme akışını `Mac-first` kabul eder.
 **Bu belge neyi değiştirmez:** Ana ürün kapsamı, faz yapısı, acceptance kriterleri ve hibrit OS gereklilikleri aynen korunur.
 
 **Ana referanslar:**
-- [close-server-simulation-implementation-plan.md](/Users/caglarkc/Desktop/GitHub/watchtower-demo/close-server-simulation-implementation-plan.md)
-- [watchtower-master-plan.md](/Users/caglarkc/Desktop/GitHub/watchtower-demo/watchtower-master-plan.md)
-- [watchtower-tool-stack.md](/Users/caglarkc/Desktop/GitHub/watchtower-demo/watchtower-tool-stack.md)
-- [watchtower-features-final.md](/Users/caglarkc/Desktop/GitHub/watchtower-demo/watchtower-features-final.md)
-- [watchtower-scenarios-final.md](/Users/caglarkc/Desktop/GitHub/watchtower-demo/watchtower-scenarios-final.md)
+- [close-server-simulation-implementation-plan.md](close-server-simulation-implementation-plan.md)
+- [watchtower-master-plan.md](../watchtower-master-plan.md)
+- [watchtower-tool-stack.md](watchtower-tool-stack.md)
+- [watchtower-features-final.md](watchtower-features-final.md)
+- [watchtower-scenarios-final.md](watchtower-scenarios-final.md)
 
 ---
 
@@ -28,6 +36,8 @@ Kural:
 - Ürün kararı için ana plan esas alınır
 - Günlük geliştirme akışı için bu belge esas alınır
 - İki belge çelişirse ürün kapsamı tarafında ana plan kazanır
+
+Adlandırma notu: Bu belgede geçen `Faz 0-7`, uygulama akışındaki yürütme adımları içindir. `watchtower-master-plan.md` içindeki `Faz 0-5` ise ürün yetenek seviyelerini anlatır. Görev çıkarırken iki etiket birlikte yazılmalıdır.
 
 ---
 

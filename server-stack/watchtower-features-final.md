@@ -1,5 +1,13 @@
 # Watchtower UEBA — Final İzleme Kapasitesi Kataloğu
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+>
+> Bu dosya `server-stack` ortamında hangi davranışların izleneceğini tanımlar; `watchtower-demo` bu sinyalleri analiz eder.
+
 **Toplam:** 40 izleme fikri | Kaynak: ChatGPT + Gemini + Composer çıktıları birleştirildi, tekrar edenler tekilleştirildi.  
 **Amaç:** Bu liste senaryo değil; sistemin ölçmesi gereken davranışsal sinyal ve metrik önerilerini içerir.
 

@@ -1,5 +1,13 @@
 # Watchtower UEBA — Tool Stack ve Altyapı Gereksinimleri
 
+> [!IMPORTANT]
+> **Klasör Ayrımı — Karıştırılmamalı**
+>
+> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
+> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+>
+> Bu dosya `server-stack` ortamını ayağa kaldırmak için gereken araç ve servisleri listeler.
+
 **Amaç:** 83 senaryo ve 40 izleme kapasitesini karşılamak için gereken TÜM araç ve hizmetlerin sistematik listesi.  
 **Ortam:** Kapalı iç ağ (Private LAN) — internet bağlantısı zorunlu değil.  
 **İki boyut:** Her araç için (1) **Gerçek Dağıtım** ve (2) **Simülasyon (Docker)** seçeneği verilmiştir.
