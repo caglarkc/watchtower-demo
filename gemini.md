@@ -1038,3 +1038,252 @@ GERÇEKÇİLİK NOTU: Şirket içi politikalarda veya yönetim kavgalarında dep
 
 
 
+İç ağ (Private LAN) üzerinde çalışan LLM destekli UEBA sisteminiz için kullanılabilecek, güvenlik ve operasyonel değere sahip 22 adet izleme kapasitesi fikri aşağıda listelenmiştir.
+
+---
+
+### **Uç Nokta ve Kullanıcı Davranışı İzleme Noktaları**
+
+**1.**
+İZLEME ADI: Pano (Clipboard) Kopyalama Hacmi ve Tipi
+KATEGORİ: davranışsal
+VERİ KAYNAĞI: Endpoint Agent / Windows Sysmon (Event ID 24)
+NE İZLENİYOR: Kullanıcının hafızaya (Ctrl+C) aldığı metinlerin karakter uzunluğu, veri tipi (şifre, kredi kartı formatı, kod bloğu) ve sıklığı.
+NEDEN DEĞERLI: Hassas verilerin veya kaynak kodların parça parça kopyalanarak yerel dosyalara veya izinsiz alanlara taşınmasını (data staging) yakalar.
+ANOMALİ SİNYALİ: Günlük ortalama kopyalanan karakter sayısının aniden 20 katına çıkması veya panoya peş peşe 15 haneli sayı bloklarının (kredi kartı/hesap no) düşmesi.
+UYGULAMA ZORLUĞU: Zor. Her uç noktada özel ajan veya gelişmiş Sysmon konfigürasyonu gerektirir; bellek tüketimi yaratabilir.
+ÖRNEK METRIK: Kullanıcının son 30 günlük pano ortalaması 120 karakter/saat iken, aniden 45.000 karakterlik yapılandırılmış metin kopyalanması.
+
+**2.**
+İZLEME ADI: Ekran Görüntüsü (Screenshot) Alma Sıklığı
+KATEGORİ: davranışsal
+VERİ KAYNAĞI: Endpoint Agent / EDR Telemetrisi
+NE İZLENİYOR: Kullanıcının işletim sistemi kısayolları (PrintScreen, Win+Shift+S) veya üçüncü parti araçlarla aldığı ekran görüntüsü sayısı ve hangi uygulama açıkken aldığı.
+NEDEN DEĞERLI: DLP sistemlerini atlatmak amacıyla hassas verilerin (İK listeleri, finansal tablolar) fotoğraflanarak sızdırılmasını engeller.
+ANOMALİ SİNYALİ: CRM veya ERP uygulaması etkileşim halindeyken ardışık ve hızlı ekran görüntüsü tetiklenmesi.
+UYGULAMA ZORLUĞU: Orta. OS seviyesindeki grafik API çağrılarının kancalanması (hooking) veya event takibi gerekir.
+ÖRNEK METRIK: Haftalık ortalama 2 ekran görüntüsü alan muhasebe çalışanının, maaş excel'i açıkken 10 dakika içinde 15 kez ekran görüntüsü alması.
+
+**3.**
+İZLEME ADI: Yerel Yazıcı (Printer) İş Hacmi ve Sayfa Sayısı
+KATEGORİ: diğer
+VERİ KAYNAĞI: Windows Print Service Logs (Event ID 307 / 801)
+NE İZLENİYOR: İç ağdaki yazıcılara gönderilen dokümanların sayfa sayısı, dosya isimleri ve çıktı alma sıklığı.
+NEDEN DEĞERLI: Fiziksel veri sızdırmanın en klasik yollarından biri olan hassas belgelerin kağıt çıktı olarak şirket dışına çıkarılmasını tespit eder.
+ANOMALİ SİNYALİ: Rol bazlı yazıcı kullanım baseline'ının dışına çıkılması ve dosya adında "gizli", "mizan", "kod" gibi anahtar kelimelerin geçmesi.
+UYGULAMA ZORLUĞU: Kolay. Windows Event Log üzerinde print sunucusu veya lokal spooler logları aktif edilerek kolayca toplanır.
+ÖRNEK METRIK: Satış temsilcisinin ayda ortalama 15 sayfa çıktı alırken tek seferde 350 sayfalık dökümanı yazıcıya göndermesi.
+
+**4.**
+İZLEME ADI: USB Okuma/Yazma Oranı (Read-Write Ratio) Sapması
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: Windows Security Log (Event ID 4663) / Wazuh Uç Nokta Logları
+NE İZLENİYOR: Bağlanan harici depolama birimine yazılan veri miktarının, o birimden okunan veri miktarına oranı ve taşınan dosya uzantıları.
+NEDEN DEĞERLI: USB kullanımına izin verilen durumlarda, veri transferinin yönünü (içeri alma/dışarı çıkarma) ve sızdırma riskini ölçer.
+ANOMALİ SİNYALİ: USB'ye yazılan (Write) veri hacminin, okuma (Read) hacmine göre radikal şekilde baskın hale gelmesi.
+UYGULAMA ZORLUĞU: Orta. Nesne erişim denetiminin (Object Access Auditing) harici sürücüler için doğru yapılandırılmasını gerektirir.
+ÖRNEK METRIK: Kullanıcının USB transfer geçmişinde %90 okuma (içeri veri alma) ağırlığı varken, bir günde 12 GB'lık yazma (dışarı veri çıkarma) işlemi yapılması.
+
+**5.**
+İZLEME ADI: Standart Dışı Süreç Ağacı (Process Tree) Oluşumu
+KATEGORİ: uygulama
+VERİ KAYNAĞI: Windows Sysmon (Event ID 1) / Linux Auditd Logs
+NE İZLENİYOR: Ofis veya tarayıcı uygulamalarının alt süreç (child process) olarak komut satırı (cmd.exe, powershell.exe, bash) tetikleyip tetiklemediği.
+NEDEN DEĞERLI: İç ağda çalışanların bilgisayarlarına sızan zararlı yazılımların veya kötü niyetli makroların tespiti için kritiktir.
+ANOMALİ SİNYALİ: Excel.exe veya Acrobat.exe sürecinin altında bir komut çalıştırma arayüzünün (shell) ayağa kalkması.
+UYGULAMA ZORLUĞU: Orta. Sysmon ile veri toplamak kolaydır ancak her uygulamanın meşru alt süreç davranışlarını modellemek LLM için ince ayar gerektirir.
+ÖRNEK METRIK: İK uzmanının bilgisayarında Winword.exe sürecinin powershell.exe -ExecutionPolicy Bypass sürecini tetiklemesi.
+
+---
+
+### **Ağ ve Protokol İzleme Noktaları**
+
+**6.**
+İZLEME ADI: İç Ağda SMB/NTLM Sürüm Düşürme (Downgrade) Denemeleri
+KATEGORİ: ağ trafiği
+VERİ KAYNAĞI: Zeek / Wireshark / Core Switch Port Mirroring (PCAP)
+NE İZLENİYOR: Ağ içi dosya paylaşım protokollerinde eski ve zafiyetli sürümlerin (SMBv1, NTLMv1) kullanım zorlamaları.
+NEDEN DEĞERLI: Saldırganların iç ağdaki parolaları ele geçirmek için başvurduğu ortadaki adam (MitM) ve relay saldırılarını doğrudan yakalar.
+ANOMALİ SİNYALİ: Normalde sadece SMBv2/v3 kullanan bir iş istasyonunun aniden dosya sunucusuyla SMBv1 üzerinden konuşmak istemesi.
+UYGULAMA ZORLUĞU: Zor. Ağ trafiğinin derinlemesine paket analizi (DPI) ile izlenmesini ve sensör konumlandırılmasını gerektirir.
+ÖRNEK METRIK: Bilgisayarın dosya sunucusuna yönelik saatte 0 olan SMBv1 bağlantı talebinin 5 dakika içinde 50'ye çıkması.
+
+**7.**
+İZLEME ADI: Yerel DNS Sorgu Çeşitliliği (Entropy Score)
+KATEGORİ: ağ trafiği
+VERİ KAYNAĞI: İç DNS Sunucu Logları (BIND/Windows DNS) / Syslog
+NE İZLENİYOR: Bir kullanıcının iç ağdaki sistem isimlerini (hostname) çözerken oluşturduğu sorguların benzersizlik ve rastgelelik oranı.
+NEDEN DEĞERLI: İç ağda aktif haritalama yapan otomatik ağ tarama araçlarını veya DNS tünelleme girişimlerini tespit eder.
+ANOMALİ SİNYALİ: Kısa sürede var olmayan veya ardışık anlamsız iç alan adlarına (örn: pc1.lan, pc2.lan... pc999.lan) yönelik binlerce DNS sorgusu yapılması.
+UYGULAMA ZORLUĞU: Kolay. DNS sunucu logları merkezi bir Syslog mimarisiyle rahatlıkla UEBA'ya beslenebilir.
+ÖRNEK METRIK: Kullanıcının saatlik benzersiz iç DNS sorgu sayısı 15 iken, aniden 3 dakika içinde 4.000 benzersiz hostname sorgulaması.
+
+**8.**
+İZLEME ADI: İstasyonlar Arası Yatay Paket Transferi (Lateral East-West Traffic)
+KATEGORİ: ağ trafiği
+VERİ KAYNAĞI: NetFlow / sFlow / Switch IPFIX Kayıtları
+NE İZLENİYOR: İki son kullanıcı bilgisayarının (workstation) sunucuları araya katmadan doğrudan birbirleriyle yüksek hacimli veri alışverişi yapması.
+NEDEN DEĞERLI: İç ağda solucan (worm) yayılımını, ransomware bulaşmış makinelerin diğer bilgisayarları şifreleme girişimini veya eşler arası (P2P) korsan dosya paylaşımını yakalar.
+ANOMALİ SİNYALİ: İki istemci IP'si arasında normal baseline'da olmayan TCP/445 (SMB) veya TCP/22 (SSH) trafiğinin patlaması.
+UYGULAMA ZORLUĞU: Orta. Ağ cihazlarının Flow verisi üretebilmesi ve UEBA sistemine yönlendirilmesi gerekir.
+ÖRNEK METRIK: Yazılım departmanındaki iki PC arasında haftalık 5 MB olan doğrudan trafik hacminin, aniden tek bir saatte 8 GB'a ulaşması.
+
+---
+
+### **Kimlik ve Erişim İzleme Noktaları**
+
+**9.**
+İZLEME ADI: Eş Zamanlı Oturum (Session Concurrency) ve Coğrafi Mantıksızlık
+KATEGORİ: kimlik
+VERİ KAYNAĞI: Active Directory (AD) Logları / Windows Event ID 4624
+NE İZLENİYOR: Aynı kullanıcı hesabının, iç ağın fiziksel olarak uzak veya mantıksal olarak farklı iki segmentinde (Subnet) aynı anda oturum açması.
+NEDEN DEĞERLI: Şifre paylaşımını veya bir kullanıcının kimlik bilgileri çalınarak iç ağda başka bir uç noktada illegal kullanıldığını gösterir.
+ANOMALİ SİNYALİ: Aynı saniye veya dakikada Muhasebe subnetindeki bir PC'den ve Ar-Ge subnetindeki bir test cihazından aynı kullanıcı adı ile başarılı logon üretilmesi.
+UYGULAMA ZORLUĞU: Kolay. AD etki alanı denetleyicisi (Domain Controller) güvenlik loglarından bu veri net şekilde okunur.
+ÖRNEK METRIK: Kullanıcı X'in IP: 10.1.1.5 üzerinden aktif oturumu varken, 10.20.1.40 IP'sinden de 2 dakika sonra yeni bir interaktif oturum açması.
+
+**10.**
+İZLEME ADI: Hizmet Hesaplarının (Service Account) İnteraktif Kullanımı
+KATEGORİ: kimlik
+VERİ KAYNAĞI: Active Directory / Windows Event Log (Logon Type 2 veya 10)
+NE İZLENİYOR: Sadece uygulamalar, servisler veya yedekleme ajanları için ayrılmış hesapların insan tarafından (klavye/ekran ile) oturum açma amacıyla kullanılması.
+NEDEN DEĞERLI: Saldırganların veya izlenmek istemeyen adminlerin, şifre politikalarından muaf olan yüksek yetkili servis hesaplarını suistimal etmesini engeller.
+ANOMALİ SİNYALİ: svc_backup veya sql_service isimli bir hesabın RDP (Uzak Masaüstü) protokolü üzerinden sisteme interaktif login olması.
+UYGULAMA ZORLUĞU: Kolay. Logon Type 2 (Yerel interaktif) ve Logon Type 10 (RDP) filtrelemesiyle doğrudan tespit edilir.
+ÖRNEK METRIK: svc_db_sync hesabının son 6 ayda 0 olan interaktif oturum açma sayısının 1'e yükselmesi.
+
+**11.**
+İZLEME ADI: Başarısız Oturum Açma Sonrası Yatay Hesap Değişimi
+KATEGORİ: kimlik
+VERİ KAYNAĞI: Active Directory / Windows Event ID 4625 ve 4624
+NE İZLENİYOR: Tek bir bilgisayardan ardışık olarak farklı kullanıcı adlarıyla başarısız denemeler yapılması ve ardından bir hesapla başarıya ulaşılması.
+NEDEN DEĞERLI: İç ağdaki brute-force (kaba kuvvet) veya password spraying (ortak şifre deneme) saldırılarını net biçimde ortaya koyar.
+ANOMALİ SİNYALİ: Kısa bir zaman diliminde 5 farklı personel ismi denenerek başarısız olunması, ardından 6. hesapta sisteme girilmesi.
+UYGULAMA ZORLUĞU: Kolay. Kimlik doğrulama hatalarının kaynak IP adresine göre korele edilmesiyle çözülür.
+ÖRNEK METRIK: Bir uç noktadan 10 dakika içinde admin, test, user1 kullanıcı adlarıyla 4625 (başarısız) logu oluştuktan sonra ahmet.yilmaz ile 4624 (başarılı) logu düşmesi.
+
+---
+
+### **Dosya Sistemi ve Uygulama Katmanı İzleme Noktaları**
+
+**12.**
+İZLEME ADI: Kitlesel Dosya Uzantısı Değişimi ve Yeniden Adlandırma (Rename) Hızı
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: Dosya Sunucusu Denetim Logları (File Server Auditing / Syslog)
+NE İZLENİYOR: Ortak ağ sürücülerinde (NAS/SAN) saniyede değiştirilen, silinen veya uzantısı manipüle edilen dosya sayısı.
+NEDEN DEĞERLI: İç ağa sızan fidye yazılımlarının (Ransomware) ağ paylaşımlarındaki dosyaları şifrelemeye başladığı o ilk kritik saniyeleri yakalar.
+ANOMALİ SİNYALİ: Bir kullanıcının hak sahibi olduğu klasörde saniyede 50'den fazla dosyanın uzantısının .locked, .crypto gibi formatlara dönüştürülmesi.
+UYGULAMA ZORLUĞU: Orta. Büyük dosya sunucularında yüksek log hacmi üretir, bu nedenle UEBA sisteminde performans optimizasyonu gerektirir.
+ÖRNEK METRIK: Normal dosya işlem hızı dakikada 4 olan kullanıcının, 10 saniye içinde 500 pdf dosyasını yeniden adlandırması.
+
+**13.**
+İZLEME ADI: Hassas Dizinlerdeki "Dolaşma" (Directory Traversal) Davranışı
+KATEGORİ: dosya sistemi
+VERİ KAYNAĞI: Windows Object Access Auditing / Linux Auditd
+NE İZLENİYOR: Kullanıcının yetkisi dahilinde olsa bile, daha önce hiç açmadığı alt kırılımdaki yüzlerce klasöre ardışık olarak girip çıkması ve dosya listelemesi (metadata discovery).
+NEDEN DEĞERLI: Veri hırsızlığı öncesi içeride değerli bilgi (fatura, kaynak kod, ihale belgesi) arayan keşifçi personeli saptar.
+ANOMALİ SİNYALİ: Kullanıcının tarihsel okuma haritasının dışındaki klasör ağaçlarında derinlemesine arama (search/enumerate) yapması.
+UYGULAMA ZORLUĞU: Orta. LLM'in kullanıcının eriştiği dosya yollarının semantik benzerliğini anlamasını gerektirir.
+ÖRNEK METRIK: Proje yöneticisinin son 1 yılda sadece 3 klasörle çalışmışken, 1 saat içinde 120 farklı proje klasörünün içeriğini listelemesi.
+
+**14.**
+İZLEME ADI: Veri Tabanı Sorgu Çıktı Boyutu (Query Payload Response)
+KATEGORİ: uygulama
+VERİ KAYNAĞI: Database Audit Logs (SQL Server, PostgreSQL Audit Extension)
+NE İZLENİYOR: İç ağdaki ERP veya çekirdek sistem veri tabanlarına atılan sorguların (SELECT) döndürdüğü satır sayısı ve megabayt hacmi.
+NEDEN DEĞERLI: Uygulama arayüzünden tek tek müşteri görmek yerine arka planda script koşturup tüm veri tabanını dump eden insider tehditlerini yakalar.
+ANOMALİ SİNYALİ: Kullanıcının standart uygulama kullanımında dönen veri paket boyutunun aniden GB seviyelerine fırlaması.
+UYGULAMA ZORLUĞU: Zor. Veri tabanı performansını etkilemeden derinlemesine sorgu ve yanıt analizi loglaması yapmak uzmanlık ister.
+ÖRNEK METRIK: Veri analistinin günlük ortalama sorgu yanıtı 5.000 satır veri getirirken, tek bir sorguyla 2.000.000 satırlık müşteri tablosunu çağırması.
+
+**15.**
+İZLEME ADI: API Çağrılarında HTTP Durum Kodu (4xx) Yoğunlaşması
+KATEGORİ: uygulama
+VERİ KAYNAĞI: İç Web Sunucu / API Gateway Logları (Nginx, IIS, WAF)
+NE İZLENİYOR: Bir kullanıcının veya uygulamanın iç API uç noktalarına istek atarken aldığı 401 (Unauthorized) ve 403 (Forbidden) hatalarının oranı.
+NEDEN DEĞERLI: İç ağdaki zafiyetleri istismar etmek için nesne yetki seviyelerini (IDOR/BOLA) kurcalayan teknik personeli veya sızdırılmış araçları gösterir.
+ANOMALİ SİNYALİ: Toplam istekler içinde hata kodu alma oranının %1'den bir anda %80'e çıkması.
+UYGULAMA ZORLUĞU: Kolay. Web sunucu loglarındaki HTTP durum kodları kolayca parse edilip oranlanabilir.
+ÖRNEK METRIK: Yazılımcı bilgisayarından iç İK API'sine atılan isteklerde 5 dakika içinde 300 adet HTTP 403 hatası alınması.
+
+---
+
+### **E-Posta ve İletişim İzleme Noktaları**
+
+**16.**
+İZLEME ADI: İç Maillerde "Gizli Alıcı" (BCC) ve Toplu Dağıtım Sapması
+KATEGORİ: mail
+VERİ KAYNAĞI: Exchange API / Postfix Message Tracking Logs
+NE İZLENİYOR: Şirket içi yazışmalarda maillere eklenen BCC alıcı sayısı ve alakasız departman çalışanlarının toplu mail zincirlerine dahil edilmesi.
+NEDEN DEĞERLI: Bilgi sızdırırken dikkat çekmemek için yöneticilerden gizli şekilde maillerin bir kopyasını işbirlikçilere veya sahte iç hesaplara paslama taktiğini engeller.
+ANOMALİ SİNYALİ: İki kişi arasında kalması gereken hassas konulu bir mailin, görünmez alıcılarla (BCC) genişletilmesi.
+UYGULAMA ZORLUĞU: Kolay. Mail sunucusunun transport veya tracking loglarından alıcı tipleri net olarak ayrıştırılır.
+ÖRNEK METRIK: Hukuk müşavirinin attığı bir iç mailde son 1 yılda ilk kez 4 farklı stajyer hesabını gizli alıcı (BCC) olarak eklemesi.
+
+**17.**
+İZLEME ADI: Mail Eki (Attachment) Entropi ve Dosya Tipi Uyuşmazlığı
+KATEGORİ: mail
+VERİ KAYNAĞI: Exchange Transport Agent / Mail Gateway logs
+NE İZLENİYOR: İç ağda gönderilen e-postaların ekindeki dosyaların gerçek dosya türü (Magic Number) ile uzantısının tutarlılığı ve dosyanın rastgelelik (şifreli/sıkıştırılmış olma) derecesi.
+NEDEN DEĞERLI: DLP filtrelerini atlatmak için .zip dosyasının uzantısını .jpg yapmak veya şifreli arşivler kullanarak veri kaçırmak isteyenleri yakalar.
+ANOMALİ SİNYALİ: .txt olarak görünen bir mail ekinin aslında şifreli bir .rar arşivi olması veya yüksek entropiye sahip veri içermesi.
+UYGULAMA ZORLUĞU: Orta. Mail eklerinin sunucu seviyesinde stream analizine tabi tutulmasını veya metadata analizini gerektirir.
+ÖRNEK METRIK: Pazarlama personelinin iç mail ekinde yolladığı manzara.png dosyasının gerçekte yüksek entropili bir Encrypted ZIP belgesi olması.
+
+---
+
+### **Donanım ve Operasyonel Performans İzleme Noktaları**
+
+**18.**
+İZLEME ADI: Ağ Kartı (NIC) Promiscuous Mod Değişimi
+KATEGORİ: donanım
+VERİ KAYNAĞI: Windows Security Log (Event ID 7045) / Linux Syslog
+NE İZLENİYOR: Bir kullanıcının bilgisayarındaki ağ kartının, sadece kendisine gelen paketleri değil, ağdaki tüm trafiği dinleyecek moda (Promiscuous Mode) geçirilmesi.
+NEDEN DEĞERLI: İç ağda habersizce çalıştırılan Wireshark, Cain & Abel veya Ettercap gibi paket koklama (sniffing) ve network dinleme aktivitelerini doğrudan yakalar.
+ANOMALİ SİNYALİ: İş istasyonundaki ağ sürücüsünün (driver) çalışma modunun ağ izleme moduna evrilmesi.
+UYGULAMA ZORLUĞU: Zor. İşletim sistemi çekirdek (kernel) olaylarını yakından izleyen ajan yapılandırması gerektirir.
+ÖRNEK METRIK: Destek personelinin bilgisayarındaki ethernet kartının promiscuous mod durumunun 0 (Kapalı) konumundan 1 (Açık) konumuna geçmesi.
+
+**19.**
+İZLEME ADI: Lokal Disk IOPS ve Sıra Dışı Isınma (Write Spike)
+KATEGORİ: donanım
+VERİ KAYNAĞI: Windows Performance Counters / SNMP / OS WMI Logları
+NE İZLENİYOR: Kullanıcı bilgisayarının disk yazma/okuma operasyon hızı (IOPS) ve disk doluluk oranındaki ani dalgalanmalar.
+NEDEN DEĞERLI: Arka planda kullanıcının ruhu duymadan tüm diski şifreleyen fidye yazılımlarını veya kitlesel yedek indiren lokal betikleri donanım seviyesinde yakalar.
+ANOMALİ SİNYALİ: İşlemci kullanımı normal seyrederken disk okuma/yazma hızının donanım limitlerini zorlayacak şekilde tavan yapması.
+UYGULAMA ZORLUĞU: Kolay. Performans sayaçları WMI veya yerel ajanlar vasıtasıyla hafif (lightweight) modda toplanabilir.
+ÖRNEK METRIK: Standart günlük disk IOPS ortalaması 300 olan sekreter bilgisayarında aniden 45 dakika boyunca 15.000 IOPS disk aktivitesi ölçülmesi.
+
+---
+
+### **Çapraz Veri ve Zamanlama Noktaları**
+
+**20.**
+İZLEME ADI: Fiziksel Turnike (PDKS) Girişi ile AD Logon Zaman Tutarsızlığı
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: Şirket Geçiş Kontrol Sistemi SQL Logu + Active Directory Logu
+NE İZLENİYOR: Çalışanın bilgisayarında Active Directory oturumu açıldığı an ile binaya fiziksel giriş yaptığı an arasındaki zaman farkı ve mantıksal ilişki.
+NEDEN DEĞERLI: Bilgisayarını açık bırakıp ofisten çıkan, kartını başkasına bastıran veya fiziksel olarak içeride değilken içeriden hesabı kullanılan durumları saptar.
+ANOMALİ SİNYALİ: Fiziksel turnike verilerine göre binaya giriş yapmamış bir personelin masasındaki bilgisayardan kilit açma (Unlock) ve başarılı logon aktivitesi gelmesi.
+UYGULAMA ZORLUĞU: Orta. İki tamamen farklı sistemi (fiziksel güvenlik ve IT) UEBA üzerinde ortak zaman damgasıyla korele etmek gerekir.
+ÖRNEK METRIK: Turnike giriş kaydı olmayan veya saat 09:00'da giriş yapan personelin bilgisayarında saat 07:45'te interaktif oturum açılması.
+
+**21.**
+İZLEME ADI: İK Çıkış Süreci Tetiklenmesi vs. Altyapı Erişim Yoğunluğu
+KATEGORİ: çapraz veri
+VERİ KAYNAĞI: İK Yönetim Sistemi (ERP/İzin logları) + Git/Dosya Sunucusu Logları
+NE İZLENİYOR: Bir çalışanın resmi olarak istifa ihbarnamesi verdiği veya işten çıkarılma sürecinin başladığı tarihi takip eden günlerdeki dijital aktivite yoğunluğu.
+NEDEN DEĞERLI: "Ayrılan Çalışan Tehdidi" (Departing Employee Risk) durumunu en erken safhada yakalamak için en kritik çapraz doğrulamadır.
+ANOMALİ SİNYALİ: İstifası onaylanan mühendisin, son 6 aylık günlük ortalama kod indirme veya döküman okuma hacmini bir günde %400 artırması.
+UYGULAMA ZORLUĞU: Orta. İK veri tabanındaki durum değişikliklerinin UEBA risk skorlama motoruna dinamik girdi olarak beslenmesi gerekir.
+ÖRNEK METRIK: İstifa dilekçesi İK sistemine girildikten sonraki 48 saat içinde, çalışanın indirdiği toplam dosya boyutunun önceki 30 günün toplamına eşit olması.
+
+**22.**
+İZLEME ADI: Rol Bazlı "Aktif Çalışma Penceresi" Zaman Sapması
+KATEGORİ: zamanlama
+VERİ KAYNAĞI: Windows Etkinlik Günlükleri / Uygulama Erişim Logları
+NE İZLENİYOR: Bir çalışanın gün içinde aktif olarak klavye/fare oynattığı, mail attığı ve sistemleri kullandığı saatlerin standart dağılımı (Gaussian Distribution).
+NEDEN DEĞERLI: Belirli bir departmanın çalışma kültürüne tamamen zıt zaman dilimlerinde gerçekleşen olağan dışı, şüpheli insan veya bot aktivitelerini yakalar.
+ANOMALİ SİNYALİ: 3 yıl boyunca sadece 09:00 - 18:00 arası çalışan bir İK veya Satış personelinin, salı gecesi saat 03:15'te iç sistemlerde 2 saat boyunca kesintisiz işlem yapması.
+UYGULAMA ZORLUĞU: Kolay. Zaman damgaları (timestamps) üzerinden LLM veya istatistiksel modellerle zaman baseline'ı çıkarmak oldukça zahmetsizdir.
+ÖRNEK METRIK: Haftalık gece aktivite skoru %0 olan kullanıcının, gece yarısı 02:00 ile 05:00 arasında 180 adet ardışık sistem erişim isteği üretmesi.
