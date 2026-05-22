@@ -284,20 +284,70 @@ sunucuya erişim riski artırıyor. Departman normunun 105 katı.
 
 ## 6. Veri Modeli (Domain Entities)
 
+### 6.1 Çekirdek Event ve Analiz
+
+| Entity | Açıklama | Faz |
+|--------|----------|-----|
+| `source` | SIEM bağlantısı (Wazuh, Splunk vb.) | Faz 1 |
+| `raw_event` | Ham log, parse edilmemiş | Faz 1 |
+| `normalized_event` | Unified schema'ya çevrilmiş event | Faz 1 |
+| `anomaly_assessment` | Enriched skoru, detection sınıfı ve bağlam bilgisi | Faz 1 |
+| `rule_candidate` | Fallback LLM'in ürettiği pending kural | Faz 1 |
+| `rule_version` | Onaylı / güncellenmiş kural versiyonu | Faz 1 |
+| `learning_window` | Faz 1 progress takibi | Faz 1 |
+
+### 6.2 Kimlik ve Davranış Profili
+
+| Entity | Açıklama | Faz |
+|--------|----------|-----|
+| `user_profile` | Bireysel baseline profili (usual_servers, çekim ortalamaları, saatsel dağılım) | Faz 1 |
+| `department_profile` | Departman bazlı normlar ve sezonsal değişimler | Faz 1 |
+| `baseline_snapshot` | Aylık öğrenme özeti | Faz 1 |
+| `identity_alias` | Aynı kişinin farklı sistemlerdeki hesap eşlemeleri (AD user ↔ svc account ↔ API key) | Faz 2 |
+| `session_map` | Kullanıcının aktif oturumları: hangi cihaz, hangi IP, ne zaman başladı | Faz 2 |
+
+### 6.3 Bağlamsal Korelasyon Entity'leri
+
+| Entity | Açıklama | Gerektiği Feature'lar |
+|--------|----------|----------------------|
+| `asset` | Şirketteki her sunucu/cihaz kaydı: rol, segment, kritiklik seviyesi | F-001, F-002, F-014 |
+| `change_ticket` | IT change management kayıtları: kim ne zaman ne değiştirecek | F-005, F-013, F-021 |
+| `badge_event` | Fiziksel giriş/çıkış kayıtları: kullanıcı, kapı, zaman | F-008 |
+| `hr_event` | İşe giriş, işten çıkış, rol değişikliği bildirimleri (HRIS entegrasyonu) | F-042 |
+
+> [!NOTE]
+> `badge_event` ve `hr_event` Faz 1'de zorunlu değil, ama veri modeline şimdiden eklenmelidir çünkü korelasyon feature'ları bu entity'lerin var olduğunu varsayar. Faz 2'ye geçişte şema değişikliği yaşanmaması için alan adları şimdiden kilitlenmeli.
+
+### 6.4 Alert ve Operatör Workflow
+
 | Entity | Açıklama |
 |--------|----------|
-| `source` | SIEM bağlantısı (Wazuh, Splunk vb.) |
-| `raw_event` | Ham log, parse edilmemiş |
-| `normalized_event` | Unified schema'ya çevrilmiş event |
-| `user_profile` | Bireysel baseline profili |
-| `department_profile` | Departman bazlı normlar |
-| `baseline_snapshot` | Aylık öğrenme özeti |
-| `anomaly_assessment` | Enriched skoru ve bağlam bilgisi |
-| `rule_candidate` | Fallback LLM'in ürettiği pending kural |
-| `rule_version` | Onaylı / güncellenmiş kural versiyonu |
-| `alert` | Üretilen uyarı kaydı |
-| `alert_ack` | Manager onayı / reddi |
-| `learning_window` | Faz 1 progress takibi |
+| `alert` | Üretilen uyarı kaydı (detection sınıfı, severity, ilgili event'ler) |
+| `alert_case` | Alert'in operatör tarafından yönetilen yaşam döngüsü kaydı |
+
+**`alert_case` yaşam döngüsü:**
+
+```
+open → investigating → true_positive → (ticket_linked)
+                    ↘ false_positive
+                    ↘ suppressed
+```
+
+| Durum | Açıklama |
+|-------|----------|
+| `open` | Alert üretildi, henüz bakılmadı |
+| `investigating` | Operatör incelemeye aldı |
+| `true_positive` | Gerçek tehdit olarak onaylandı |
+| `false_positive` | Yanlış alarm; sistem bu pattern'i öğrenecek |
+| `suppressed` | Bilinen durum, geçici olarak susturuldu (süre veya koşul ile) |
+| `ticket_linked` | Dış ticketing sistemine bağlandı (Jira, ServiceNow vb.) |
+
+**CLI komutları (Bölüm 9'da da güncellendi):**
+```bash
+wt alerts ack <alert_id> --status investigating
+wt alerts close <alert_id> --outcome true_positive
+wt alerts suppress <alert_id> --duration 7d
+```
 
 ---
 
