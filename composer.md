@@ -2273,3 +2273,384 @@ dış saldırı desteği, kazara ihlal, politika ihlali, diğer
 
 
 
+25 izleme fikri — senaryo değil, ölçülebilir kapasite önerileri:
+
+---
+
+**İZLEME ADI:** USB Bağlantı ve Yazma Hacmi  
+**KATEGORİ:** donanım  
+**VERİ KAYNAĞI:** Windows Event Log (Event ID 6416, 4663), EDR/DLP agent  
+**NE İZLENİYOR:** USB takılma/çıkarma, cihaz VID/PID, hedef sunucuya yazılan toplam MB  
+**NEDEN DEĞERLI:** Fiziksel veri sızdırma ve kötü amaçlı yazılım taşıma için doğrudan sinyal  
+**ANOMALİ SİNYALİ:** Rol baseline’ının 5x üstü tek sefer yazma veya yasaklı cihaz sınıfı  
+**UYGULAMA ZORLUĞU:** orta — EDR/DLP gerekir, ham Event Log tek başına yetersiz  
+**ÖRNEK METRIK:** Satış rolü: ayda 0 USB yazma → 2.1 GB / 14 dk
+
+---
+
+**İZLEME ADI:** Yazıcı Kuyruğu Hassasiyet Korelasyonu  
+**KATEGORİ:** donanım  
+**VERİ KAYNAĞI:** Windows Print Service Log, yazıcı SNMP/syslog  
+**NE İZLENİYOR:** Kullanıcı başına sayfa sayısı, “confidential/legal” kuyruk seçimi  
+**NEDEN DEĞERLI:** Kağıt üzerinden PII/sır sızıntısı; operasyonel maliyet takibi  
+**ANOMALİ SİNYALİ:** Gece vardiyasında confidential kuyruğa 200+ sayfa  
+**UYGULAMA ZORLUĞU:** orta — Kuyruk adlandırma standardı gerekir  
+**ÖRNEK METRIK:** Stajyer: günlük 5 sayfa → 200 sayfa / confidential queue
+
+---
+
+**İZLEME ADI:** Clipboard Büyük Veri Kopyalama  
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** DLP endpoint agent, Windows ETW (Clipboard API)  
+**NE İZLENİYOR:** Panoya kopyalanan veri boyutu, kaynak uygulama (CRM, Excel, DB client)  
+**NEDEN DEĞERLI:** Mail/USB olmadan veri taşıma; sık gözden kaçar  
+**ANOMALİ SİNYALİ:** Tek oturumda 50+ MB clipboard veya hassas uygulama → chat/RDP  
+**UYGULAMA ZORLUĞU:** zor — OS/agent desteği ve gizlilik politikası  
+**ÖRNEK METRIK:** 10 dk içinde 3× 20 MB CRM→Teams yapıştırma
+
+---
+
+**İZLEME ADI:** Ekran Görüntüsü / Screen Capture Sıklığı  
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** EDR, Windows Graphics Capture API telemetry  
+**NE İZLENİYOR:** Saatlik capture event sayısı, hedef process (Snipping Tool, 3rd party)  
+**NEDEN DEĞERLI:** Görsel veri exfil; destek/sosyal mühendislik kayıtları  
+**ANOMALİ SİNYALİ:** Finans uygulaması açıkken saatte 30+ capture  
+**UYGULAMA ZORLUĞU:** zor — Agent ve false positive yönetimi  
+**ÖRNEK METRIK:** Muhasebe ERP ekranı: 0/gün → 45 capture / 2 saat
+
+---
+
+**İZLEME ADI:** Sunucu Başına Veri Çekim Profili  
+**KATEGORİ:** ağ trafiği  
+**VERİ KAYNAĞI:** NetFlow/sFlow, firewall east-west log, SMB/NFS proxy log  
+**NE İZLENİYOR:** Kullanıcı (veya IP→user map) × hedef sunucu × günlük GB in/out  
+**NEDEN DEĞERLI:** UEBA’nın çekirdek sinyali; rol bazlı erişim matrisi  
+**ANOMALİ SİNYALİ:** İlk kez erişilen sunucu veya günlük GB’nin 10x üstü  
+**UYGULAMA ZORLUĞU:** orta — IP-user eşlemesi (AD session) şart  
+**ÖRNEK METRIK:** Dev: git-mirror 150 MB/hafta → 4.7 GB / hafta sonu
+
+---
+
+**İZLEME ADI:** East-West Lateral Protokol Pateni  
+**KATEGORİ:** ağ trafiği  
+**VERİ KAYNAĞI:** NetFlow, Zeek, firewall deny/allow log  
+**NE İZLENİYOR:** SMB445, RDP3389, WinRM5985, LDAP389 bağlantı sayısı ve hedef çeşitliliği  
+**NEDEN DEĞERLI:** APT yayılması; segmentasyon ihlali  
+**ANOMALİ SİNYALİ:** 15 dk’da 40+ farklı internal host’a SMB  
+**UYGULAMA ZORLUĞU:** orta — Flow retention ve asset envanteri  
+**ÖRNEK METRIK:** Destek PC: 2 SMB host/gün → 40 host / 15 dk
+
+---
+
+**İZLEME ADI:** İç DNS Sorgu Entropisi  
+**KATEGORİ:** ağ trafiği  
+**VERİ KAYNAĞI:** Windows DNS Server Analytical log, BIND query log  
+**NE İZLENİYOR:** Kullanıcı/host başına QPS, TXT/NULL oran, NXDOMAIN oranı  
+**NEDEN DEĞERLI:** DNS tunneling ve C2 iç ağda sık kullanılır  
+**ANOMALİ SİNYALİ:** TXT sorgu hacmi baseline’ın 100x; yüksek subdomain entropi  
+**UYGULAMA ZORLUĞU:** orta — Client→user korelasyonu zor  
+**ÖRNEK METRIK:** Dev workstation: 10 TXT/saat → 5000 TXT/saat
+
+---
+
+**İZLEME ADI:** İç Mail Gönderim/Alım Hacmi (Yön Ayrımlı)  
+**KATEGORİ:** mail  
+**VERİ KAYNAĞI:** Exchange Message Tracking, EWS audit, on-prem SMTP log  
+**NE İZLENİYOR:** Günlük sent/received, ek boyutu, DL/all-staff oranı, hassas keyword  
+**NEDEN DEĞERLI:** Kazara sızıntı ve insider iletişim kanalı  
+**ANOMALİ SİNYALİ:** All-staff mail + >5 MB ek veya günlük gönderim 8x  
+**UYGULAMA ZORLUĞU:** kolay — Exchange log olgun  
+**ÖRNEK METRIK:** Satış: 20 mail/gün → 1 mail tüm şirket + 8 MB fiyat listesi
+
+---
+
+**İZLEME ADI:** Mail Forward/Delegate Kural Değişimi  
+**KATEGORİ:** mail  
+**VERİ KAYNAĞI:** Exchange Management audit, EWS  
+**NE İZLENİYOR:** Yeni inbox rule, auto-forward, delegate ekleme/silme  
+**NEDEN DEĞERLI:** Gizli exfil ve hesap ele geçirme sonrası kalıcılık  
+**ANOMALİ SİNYALİ:** İlk kez dış mailbox’a forward veya gece oluşturulan kural  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** İK: forward rule sayısı 0 → 1 (kişisel iç mailbox)
+
+---
+
+**İZLEME ADI:** Kerberos / NTLM Auth Hacmi ve Hedef Çeşitliliği  
+**KATEGORİ:** kimlik  
+**VERİ KAYNAĞI:** Windows Security Log (4624, 4776), DC syslog  
+**NE İZLENİYOR:** Saatlik başarılı/başarısız logon, kaynak IP çeşitliliği, TGT istekleri  
+**NEDEN DEĞERLI:** Credential abuse, brute force, PtH  
+**ANOMALİ SİNYALİ:** Başarısız logon 50+/dk veya 1 kullanıcı → 8 host gece TGT  
+**UYGULAMA ZORLUĞU:** orta — DC log hacmi yüksek, SIEM filtre gerekir  
+**ÖRNEK METRIK:** Admin: gece 02:00’de 0 TGT → 8 farklı sunucu TGT
+
+---
+
+**İZLEME ADI:** Eşzamanlı Oturum ve Oturum Lokasyonu  
+**KATEGORİ:** kimlik  
+**VERİ KAYNAĞI:** AD, VPN concentrator log, 802.1X NAC  
+**NE İZLENİYOR:** Aynı anda aktif workstation sayısı, VPN + ofis fiziksel giriş korelasyonu  
+**NEDEN DEĞERLI:** Hesap paylaşımı ve çalıntı credential  
+**ANOMALİ SİNYALİ:** 2+ farklı host aynı anda veya VPN+ofis çakışması  
+**UYGULAMA ZORLUĞU:** orta — Fiziksel badge entegrasyonu opsiyonel  
+**ÖRNEK METRIK:** Stajyer: 1 oturum → 2 workstation eşzamanlı
+
+---
+
+**İZLEME ADI:** AD Grup Üyeliği ve Privileged Değişiklik  
+**KATEGORİ:** kimlik  
+**VERİ KAYNAĞI:** Windows Security 4728/4729/4732, AD replication audit  
+**NE İZLENİYOR:** Domain Admins, Enterprise Admins, hassas grup add/remove  
+**NEDEN DEĞERLI:** Privilege escalation ve shadow admin  
+**ANOMALİ SİNYALİ:** Muhasebe hesabının DA grubuna ekleme denemesi  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** DA üye değişikliği: 0/ay → 1 başarısız deneme
+
+---
+
+**İZLEME ADI:** Servis Hesabı ve API Key Kullanım Haritası  
+**KATEGORİ:** kimlik  
+**VERİ KAYNAĞI:** API gateway log, Vault audit, uygulama access log  
+**NE İZLENİYOR:** Key başına çağrı sayısı, kaynak IP, endpoint, saat  
+**NEDEN DEĞERLI:** Paylaşılan secret ve sızıntı sonrası abuse  
+**ANOMALİ SİNYALİ:** Tek key → 3 IP veya rotate sonrası eski key aktif  
+**UYGULAMA ZORLUĞU:** orta — Her uygulama farklı log formatı  
+**ÖRNEK METRIK:** svc-deploy key: 1 IP → 3 workstation / gece 40k call
+
+---
+
+**İZLEME ADI:** Uygulama Süresi ve Process Ağacı  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** Sysmon (1/3), Wazuh syscheck, EDR process telemetry  
+**NE İZLENİYOR:** SAP, Jira, Excel, VS Code, Steam vb. günlük aktif süre ve parent-child  
+**NEDEN DEĞERLI:** Politika ihlali ve shadow IT (yetkisiz araç)  
+**ANOMALİ SİNYALİ:** Steam 4 saat mesai içi veya bilinmeyen .exe 30+ dk  
+**UYGULAMA ZORLUĞU:** orta — Process allowlist bakımı  
+**ÖRNEK METRIK:** Geliştirici: VS Code 6h normal → Steam 4h aynı gün
+
+---
+
+**İZLEME ADI:** Veritabanı Sorgu Hacmi ve Tablo Kapsamı  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** SQL Server audit, PostgreSQL pg_audit, proxy query log  
+**NE İZLENİYOR:** Kullanıcı×DB×günlük satır/MB, SELECT * oranı, tablo adı çeşitliliği  
+**NEDEN DEĞERLI:** Payroll/CRM dump; prod erişim ihlali  
+**ANOMALİ SİNYALİ:** Tek sorguda *employees* veya 890 MB result set  
+**UYGULAMA ZORLUĞU:** orta — DB audit performans etkisi  
+**ÖRNEK METRIK:** İK payroll: 2–5 MB/sorgu → 890 MB export
+
+---
+
+**İZLEME ADI:** Git/Artifact Erişim ve Clone Hacmi  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** GitLab/Gitea audit log, reverse proxy, git-mirror NetFlow  
+**NE İZLENİYOR:** Clone/pull GB, erişilen repo sayısı, push denemesi  
+**NEDEN DEĞERLI:** Kaynak kod ve secret sızıntısı  
+**ANOMALİ SİNYALİ:** 1 proje yetkisi → 47 repo / 4.7 GB hafta sonu  
+**UYGULAMA ZORLUĞU:** kolay — Git audit olgun  
+**ÖRNEK METRIK:** Dev: 1 repo/150 MB hafta → 47 repo / 4.7 GB
+
+---
+
+**İZLEME ADI:** Dosya Sunucusu Toplu Okuma/Yazma  
+**KATEGORİ:** dosya sistemi  
+**VERİ KAYNAĞI:** Windows Security 4663, NAS syslog, SMB audit  
+**NE İZLENİYOR:** Share×kullanıcı×dosya sayısı×MB, DELETE/WRITE oranı  
+**NEDEN DEĞERLI:** Toplu exfil ve ransomware hazırlığı  
+**ANOMALİ SİNYALİ:** 1 saatte 120 dosya READ veya 200 GB DELETE  
+**UYGULAMA ZORLUĞU:** orta — Log hacmi; share bazlı filtre  
+**ÖRNEK METRIK:** Hukuk arşiv: 5–10 dosya/gün → 120 PDF / 3.2 GB
+
+---
+
+**İZLEME ADI:** ACL ve “Everyone” İzin Değişikliği  
+**KATEGORİ:** dosya sistemi  
+**VERİ KAYNAĞI:** Windows Security 4670, 4911, file server audit  
+**NE İZLENİYOR:** Yeni ACE, inheritance kırılması, Everyone Read/Write  
+**NEDEN DEĞERLI:** Kazara over-permission ve kalıcı açık kapı  
+**ANOMALİ SİNYALİ:** Everyone Read on confidential share  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** PM share: özel ACL → Everyone Read (tek event)
+
+---
+
+**İZLEME ADI:** Mesai Dışı İnteraktif Oturum  
+**KATEGORİ:** zamanlama  
+**VERİ KAYNAĞI:** AD logon, VPN, RDP gateway, fiziksel badge (opsiyonel)  
+**NE İZLENİYOR:** İlk/son aktivite saati, hafta sonu oturum süresi, gece 00–06 login  
+**NEDEN DEĞERLI:** Insider ve compromise için güçlü bağlam sinyali  
+**ANOMALİ SİNYALİ:** Rol median çıkış 18:00 → 02:30 RDP 3+ saat  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** Muhasebe: hiç gece login → Cuma 23:47 ERP erişim
+
+---
+
+**İZLEME ADI:** Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum)  
+**KATEGORİ:** zamanlama  
+**VERİ KAYNAĞI:** EDR, Windows session telemetry  
+**NE İZLENİYOR:** Unlock süresi ile input event oranı; uzun idle + ağ aktivitesi  
+**NEDEN DEĞERLI:** Unattended session abuse (temizlik, paylaşılan PC)  
+**ANOMALİ SİNYALİ:** 4 saat idle oturum + sürekli SMB okuma  
+**UYGULAMA ZORLUĞU:** zor — Input telemetry gizlilik  
+**ÖRNEK METRIK:** Paylaşılan PC: unlock 8h, input 0.1h, SMB 2 GB
+
+---
+
+**İZLEME ADI:** Vardiya Dışı Fiziksel Erişim + Mantıksal Erişim  
+**KATEGORİ:** çapraz veri  
+**VERİ KAYNAĞI:** Badge/access control, AD, VPN  
+**NE İZLENİYOR:** Bina giriş saati × aynı kullanıcı VPN/RDP zamanı  
+**NEDEN DEĞERLI:** Çalıntı kart veya uzaktan compromise ayrımı  
+**ANOMALİ SİNYALİ:** Gece 02:00 badge + aynı anda strateji sunucu 2 GB  
+**UYGULAMA ZORLUĞU:** zor — Fiziksel sistem entegrasyonu  
+**ÖRNEK METRIK:** CEO: badge 02:00 + file-srv 2 GB (board hazırlık vs anomali)
+
+---
+
+**İZLEME ADI:** Aynı Dosya/ Kayıt Çoklu Kullanıcı Erişim Zinciri  
+**KATEGORİ:** çapraz veri  
+**VERİ KAYNAĞI:** SMB audit + CRM/ERP uygulama log  
+**NE İZLENİYOR:** Dosya hash veya kayıt ID × 10 dk içinde farklı departman erişimi  
+**NEDEN DEĞERLI:** Collusion ve zincirleme sızıntı  
+**ANOMALİ SİNYALİ:** Satış indirir → 10 dk sonra Hukuk aynı path  
+**UYGULAMA ZORLUĞU:** orta — Ortak kimlik anahtarı (path/record ID)  
+**ÖRNEK METRIK:** 2 kullanıcı / 1 dosya / 10 dk arayla
+
+---
+
+**İZLEME ADI:** DLP Agent Sağlık ve Bypass Denemesi  
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** DLP management server, endpoint heartbeat  
+**NE İZLENİYOR:** Agent stop/disable süresi, policy tamper, uninstall denemesi  
+**NEDEN DEĞERLI:** Bilinçli önlem alma; stajyer/yeni çalışan profili  
+**ANOMALİ SİNYALİ:** DLP 2+ saat offline mesai içi  
+**UYGULAMA ZORLUĞU:** kolay — Vendor API  
+**ÖRNEK METRIK:** Stajyer: agent uptime %99 → %60 / 2 saat gap
+
+---
+
+**İZLEME ADI:** Yerel Disk’e Prod Veri Restore  
+**KATEGORİ:** çapraz veri  
+**VERİ KAYNAĞI:** Backup software log, VSS, disk I/O telemetry  
+**NE İZLENİYOR:** Workstation’a gelen büyük DB/VM image, prod hostname içeren path  
+**NEDEN DEĞERLI:** Debug bahanesiyle prod veriyi endpoint’e taşıma  
+**ANOMALİ SİNYALİ:** Laptop’a 15 GB prod-db restore  
+**UYGULAMA ZORLUĞU:** orta — Backup tool log parse  
+**ÖRNEK METRIK:** Dev disk: +15 GB prod-HR backup local
+
+---
+
+**İZLEME ADI:** Hypervisor ve Yönetim Konsolu Erişimi  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** vCenter/Proxmox audit, jump host session log  
+**NE İZLENİYOR:** Kişisel AD hesabı vs ayrı admin hesabı, console session süresi  
+**NEDEN DEĞERLI:** SoD ihlali ve altyapı compromise  
+**ANOMALİ SİNYALİ:** Policy: sadece svc-hyperv-admin → kişisel hesap console  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** IT Admin: personal account HV console 45 dk
+
+---
+
+**İZLEME ADI:** İç Yazdırma/OCR Pipeline (Scan-to-Share)  
+**KATEGORİ:** donanım  
+**VERİ KAYNAĞI:** MFP audit log, SMB hedef path  
+**NE İZLENİYOR:** Tarama hacmi, hedef share, kullanıcı PIN  
+**NEDEN DEĞERLI:** Kağıt→dijital bypass kanalı  
+**ANOMALİ SİNYALİ:** Günlük 500+ sayfa scan → legal-archive share  
+**UYGULAMA ZORLUĞU:** orta — MFP merkezi log  
+**ÖRNEK METRIK:** 20 sayfa/gün → 500 sayfa / legal share
+
+---
+
+**İZLEME ADI:** DHCP/ARP Anomali (Rogue DHCP)  
+**KATEGORİ:** ağ trafiği  
+**VERİ KAYNAĞI:** Windows DHCP audit, switch SNMP trap, Zeek  
+**NE İZLENİYOR:** Yeni scope, MAC spoof, aynı IP çift lease  
+**NEDEN DEĞERLI:** MITM ve segment bypass hazırlığı  
+**ANOMALİ SİNYALİ:** Onaysız office VLAN DHCP scope  
+**UYGULAMA ZORLUĞU:** orta  
+**ÖRNEK METRIK:** 1 DHCP scope değişikliği / change ticket yok
+
+---
+
+**İZLEME ADI:** Secret Store Okuma Burst  
+**KATEGORİ:** kimlik  
+**VERİ KAYNAĞI:** HashiCorp Vault audit, CyberArk session log  
+**NE İZLENİYOR:** Kullanıcı×secret path×read count, bakım penceresi dışı  
+**NEDEN DEĞERLI:** Credential enumeration ve exfil  
+**ANOMALİ SİNYALİ:** 5 read/gün → 200 read / 1 saat  
+**UYGULAMA ZORLUĞU:** kolay — Vault audit zengin  
+**ÖRNEK METRIK:** IT Admin Vault: 5 → 200 secret read
+
+---
+
+**İZLEME ADI:** RDP/PSRemoting Jump Pattern  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** Windows 1149, Sysmon 3, jump server session broker  
+**NE İZLENİYOR:** Hop sayısı (A→B→C), süre, hedef rol (DC, finans, backup)  
+**NEDEN DEĞERLI:** Lateral movement ve destek prosedür ihlali  
+**ANOMALİ SİNYALİ:** Destek → DC RDP veya 1 host → 6 sunucu PSRemoting  
+**UYGULAMA ZORLUĞU:** orta  
+**ÖRNEK METRIK:** Destek: 0 DC RDP/ay → 1 DC session 20 dk
+
+---
+
+**İZLEME ADI:** SIEM/Log Suppress Kural Değişimi  
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** Splunk/Elastic/Wazuh manager audit  
+**NE İZLENİYOR:** Yeni suppress/whitelist, bulk alert close, rule disable  
+**NEDEN DEĞERLI:** Anti-forensics ve alert fatigue suistimali  
+**ANOMALİ SİNYALİ:** Kullanıcı kendi host IP için suppress rule  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** SOC: 200 alert bulk close / investigation yok
+
+---
+
+**İZLEME ADI:** İç Ticket Sisteminde Hassas Alan Görüntüleme  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** ServiceNow/Jira audit, CRM field-level log  
+**NE İZLENİYOR:** PCI alanı (kart), şifre, TCKN view event  
+**NEDEN DEĞERLI:** Gereksiz PII maruziyeti ve PCI scope  
+**ANOMALİ SİNYALİ:** Destek rolü CRM’de CC alanı view (ticket dışı)  
+**UYGULAMA ZORLUĞU:** orta — Field-level audit her üründe yok  
+**ÖRNEK METRIK:** 0 CC view/hafta → 12 view / 1 gün
+
+---
+
+**İZLEME ADI:** Yazılım Kurulum ve Lisans İhlali  
+**KATEGORİ:** uygulama  
+**VERİ KAYNAĞI:** SCCM/Intune inventory, Sysmon 1, software asset log  
+**NE İZLENİYOR:** Yeni installer hash, EOL ürün, crack/tool imzası  
+**NEDEN DEĞERLI:** Shadow IT ve malware girişi  
+**ANOMALİ SİNYALİ:** Bilinmeyen .exe veya crack installer çalıştı  
+**UYGULAMA ZORLUĞU:** kolay  
+**ÖRNEK METRIK:** Analist: lisanslı Matlab → crack setup.exe çalıştı
+
+---
+
+**İZLEME ADI:** Printer/Scan → USB Korelasyonu  
+**KATEGORİ:** çapraz veri  
+**VERİ KAYNAĞI:** MFP log + USB Event + DLP  
+**NE İZLENİYOR:** 10 dk içinde büyük scan ardından USB yazma  
+**NEDEN DEĞERLI:** “Kağıt yok” exfil zinciri  
+**ANOMALİ SİNYALİ:** 300 sayfa scan + 280 MB USB 8 dk sonra  
+**UYGULAMA ZORLUĞU:** zor — Zaman penceresi korelasyon motoru  
+**ÖRNEK METRIK:** Scan 300 sayfa → USB 280 MB / Δt=8 dk
+
+---
+
+**İZLEME ADI:** Offboarding SLA (Ayrılan Hesap Aktivitesi)  
+**KATEGORİ:** zamanlama  
+**VERİ KAYNAĞI:** İK HRIS feed + AD disable timestamp + VPN  
+**NE İZLENİYOR:** Disable sonrası auth, disable öncesi veri ramp-up  
+**NEDEN DEĞERLI:** Klasik insider ve süreç hatası  
+**ANOMALİ SİNYALİ:** Disable +48h hâlâ VPN veya ayrılış öncesi 5 gün veri 15x  
+**UYGULAMA ZORLUĞU:** orta — HRIS entegrasyonu  
+**ÖRNEK METRIK:** İstifa−5 gün: 200 MB/gün → 3 GB/gün
+
+---
+
+Toplam **25 fikir**. Veri kaynağı dağılımı: ağ, kimlik, mail, FS, uygulama, endpoint (USB/yazıcı/clipboard/ekran), çapraz korelasyon ve zamanlama.
+
+İstersen bir sonraki adımda bunları **adapter öncelik matrisi** (MVP / Faz-2) olarak da sıralayabilirim.
