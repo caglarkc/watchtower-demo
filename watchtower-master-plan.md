@@ -126,18 +126,20 @@ graph TD
 
     subgraph Pipeline["3 — LangGraph Analysis Pipeline"]
         SG --> IN[Ingest Node]
-        IN --> SD[Schema Detection Node\nLLM-1: Hızlı / Ucuz\nGemini Flash · Haiku · Local]
+        IN --> SD[Schema Detection Node\nDeterministik-first\nLLM fallback yalnızca bilinmeyen format]
 
-        SD -- "Bilinen format" --> KA[Known Adapter Node]
-        SD -- "Bilinmeyen format" --> FB[Fallback Node\nLLM-2: Güçlü\nOpus · Gemini Pro · Local]
+        SD -- "Bilinen format\nRule Store'da eşleşti" --> KA[Known Adapter Node]
+        SD -- "Bilinmeyen format\nEşleşme yok" --> FB[Fallback Node\nLLM-2: Güçlü\nOpus · Gemini Pro · Local]
 
         FB -- "Kural üret" --> RS[(Rule Store\nSQLite\npending/stable/deleted)]
         RS -. "Kayıtlı kuralı yükle" .-> KA
 
-        KA --> NR[Normalize Node\nUnified Event Schema]
-        NR --> BL[Baseline Check Node]
-        BS[(Baseline Store\nSQLite/JSON\nuser + dept profiles)] <--> BL
-        BL --> CE[Context Enrichment Node\nzaman · rol · hedef · geçmiş]
+        KA --> NR[Normalize Node\nUnified Event Schema\n+ detection_type etiketi]
+        NR --> HR[Hard-Rule Check\nBaseline beklemez\nFaz 1+2 aktif]
+        HR -- "hard-rule eşleşti" --> SV
+        HR -- "Devam" --> BL[Baseline Check Node\nFaz 2'den itibaren aktif]
+        BS[(Baseline Store\nSQLite\nuser + dept profiles)] <--> BL
+        BL --> CE[Context Enrichment Node\nDeterministik boyutlar\nLLM yalnızca açıklama yazar]
         CE --> SV[Severity Decision Node]
     end
 
