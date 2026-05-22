@@ -100,6 +100,8 @@
 
 ## 3. Sistem Mimarisi
 
+> Bu diyagram **hedef mimariyi** gösterir. İlk implementasyon kapsamı bunun daraltılmış alt kümesidir: `Wazuh-only`, `CLI + Telegram`, `local-model zorunlu`, mail kaynakları ise Faz 2'de devreye alınır.
+
 ```mermaid
 graph TD
     subgraph Sources["1 — Veri Kaynakları (İç Ağ)"]
@@ -293,7 +295,7 @@ sunucuya erişim riski artırıyor. Departman normunun 105 katı.
 
 ## 8. Uygulama Fazları
 
-### Faz 0 — Mimari Kararlar (Başlamadan önce fix edilecek)
+### Faz 0 — Sabit Mimari Kararlar
 
 | Karar | Önerilen |
 |-------|----------|
@@ -303,6 +305,7 @@ sunucuya erişim riski artırıyor. Departman normunun 105 katı.
 | İlk alert kanalı | CLI + Telegram (önce), Email / webhook sonra |
 | LLM provider stratejisi | OpenAI-compatible abstraction — local model path zorunlu |
 | Gateway / analyzer ilişkisi | Ayrı servis boundary: `security-gateway` ayrı, `analysis-daemon` ayrı |
+| Faz 1 kapsamı | Login + file + network + AD davranışı; mail kaynakları Faz 2'de |
 
 ---
 
@@ -313,6 +316,7 @@ sunucuya erişim riski artırıyor. Departman normunun 105 katı.
 - [ ] SQLite şemaları: Rule Store, Baseline Store, Log Store
 - [ ] `security-gateway` servis iskeletini kur (sentinel-coming gateway'den pattern al)
 - [ ] Config katmanlama sistemi (sentinel-coming'den pattern al)
+- [ ] Wazuh-only ingest path ile ilk demo akışını ayağa kaldır
 
 ---
 
@@ -432,15 +436,17 @@ Monorepo'da birden fazla overlapping agent runtime var. `caglarkc-agent`, `argus
 
 ---
 
-## 12. Açık Kalan Kararlar
+## 12. Final Karar Özeti
 
-Bunlar koda başlamadan önce senden net cevap bekliyor:
+Bu belgeye göre başlangıç konfigürasyonu artık nettir:
 
-1. **İlk SIEM:** Wazuh-only mi, yoksa Wazuh + Splunk birlikte mi başlıyoruz?
-2. **İlk alert kanalı:** Telegram, email, webhook — hangisi önce?
-3. **Local model zorunluluğu:** Kapalı ağ için local model Faz 1'den itibaren hard requirement mı, yoksa opsiyonel fallback mı?
-4. **Repo konumu:** `watchtower/` root'ta mı, `sentinel-coming/watchtower/` içinde mi?
-5. **Mail izleme:** Faz 1'de Exchange/mail kaynağı dahil mi, yoksa login/file/network ile mi başlıyoruz?
+1. **Ürün konumu:** `watchtower/` root altında, Sentinel'den ayrı ama aynı workspace ailesinde
+2. **İlk SIEM:** `Wazuh-only`
+3. **İlk bildirim kanalı:** `CLI + Telegram`
+4. **Model stratejisi:** OpenAI-compatible abstraction, fakat kapalı ağ senaryosu için `local model path` zorunlu
+5. **Faz 1 kapsamı:** `login + file + network + AD`
+6. **Mail izleme:** Faz 2'de devreye alınır
+7. **Auto-remediation:** Yok; sadece öneri ve alert üretimi
 
 ---
 
