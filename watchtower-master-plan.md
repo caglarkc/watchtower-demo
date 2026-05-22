@@ -408,14 +408,16 @@ wt alerts suppress <alert_id> --duration 7d
 
 ---
 
-### Faz 2 — Ingestion & LLM Katmanları
+### Faz 2 — Ingestion & Normalizasyon Katmanı
 
 - [ ] Wazuh REST API adaptörü (JWT auth, alert polling)
 - [ ] LangGraph workflow iskeletini kur (caglarkc-agent'tan pattern al)
-- [ ] LLM #1 prompt: schema classification (Wazuh / Splunk / Elastic / Unknown)
-- [ ] LLM #2 prompt: fallback rule generation + field mapping
-- [ ] Known Adapter: Wazuh → normalized_event
+- [ ] Deterministik schema detection: Rule Store format imza eşleştirme
+- [ ] Known Adapter: Wazuh → normalized_event (deterministik, LLM yok)
+- [ ] Hard-Rule Check node: detection_type=hard_rule olayları doğrudan Severity'e yönlendir
 - [ ] Rule Store CRUD + pending/stable/deleted lifecycle
+- [ ] LLM fallback node (yalnızca bilinmeyen format için): field mapping yaz → pending kural üret
+- [ ] LLM açıklama node (yalnızca alert metni için): deterministik skor geldiğinde çalışır
 
 ---
 
