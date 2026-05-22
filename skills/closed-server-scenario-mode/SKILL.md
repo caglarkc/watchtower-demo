@@ -3,6 +3,15 @@ name: closed-server-scenario-mode
 description: Watchtower kapalı sunucu simülasyonu için senaryo üretim AI skill'i. 83 senaryo kütüphanesindeki olayları deterministic replay scriptlerine çevirir, user seed ve davranış akışlarını tasarlar, feature coverage ile senaryo coverage arasında eşleme yapar. Kapalı iç ağ senaryoları ve davranış simülasyonu işlerinde kullanılır.
 ---
 
+# Klasör Ayrımı — Kesinlikle Karıştırılmamalı
+
+- **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen ve managera uyarı veren CLI sistemi.
+- **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı (Wazuh, AD, sahte loglar).
+
+Bu skill `server-stack/` ortamında oynatılacak senaryolar üretir; bu senaryolar `watchtower-demo` tarafından tespit edilmeli.
+
+---
+
 # Purpose
 
 Bu skill senaryo ve davranış simülasyonu yazan AI içindir.
