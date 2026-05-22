@@ -178,18 +178,36 @@ graph TD
 - **Yönetici:** İsterse `stable` onayla / sil / düzenle
 
 ### Node 4: Baseline Check
-- `user_profile` ve `department_profile` ile karşılaştırır
-- **Faz 1 (Learning):** Sadece veri biriktirir, alert üretmez
-- **Faz 2 (Active):** Sapma skoru hesaplar
+- `user_profile` ve `department_profile` ile karşılaştırır.
+- **Faz 1 (Learning):** Sadece veri biriktirir, baseline anomaly üretmez. **Ancak:** `hard-rule` sınıfındaki tespitler (bkz. Bölüm 4a) her fazda ateşlenir — bunlar baseline beklemez.
+- **Faz 2 (Active):** Sapma skoru hesaplar, `baseline anomaly` ve `cross-signal correlation` aktif hale gelir.
+
+### Node 4a: Detection Taxonomy (Kalıcı Karar)
+
+Her detection üç sınıftan birine aittir ve bu sınıf Faz 1'de bile ateşlenip ateşlenmeyeceğini belirler:
+
+| Sınıf | Açıklama | Faz 1'de ateşlenir mi? | Örnekler |
+|-------|----------|----------------------|----------|
+| `hard-rule` | Policy ihlali; baseline verileri olmadan da anlam taşır | **Evet, her zaman** | Servis hesabı interaktif login (F-009), privileged grup değişikliği (F-010), promiscuous mod (F-035) |
+| `baseline-anomaly` | Kullanıcının kendi normalinden sapma | Hayır, Faz 2'den itibaren | Veri çekim patlaması (F-001), mesai dışı login (F-007) |
+| `cross-signal` | İki veya daha fazla kaynaktan gelen verinin korelasyonu | Hayır, Faz 2'den itibaren | Fiziksel-dijital çakışma (F-008), ticket olmadan reset (F-013) |
+
+`hard-rule` listesi açık olmalı; her yeni feature eklenirken sınıfı belirtilmeli.
 
 ### Node 5: Context Enrichment
-LLM bağlamı okur, sapma puanını etkiler:
-1. **Miktar** — baseline'dan ne kadar sapma?
-2. **Zaman** — mesai saati mi, gece mi, hafta sonu mu?
-3. **Rol** — IT mi, muhasebe mi, HR mi?
-4. **Hedef** — hangi sunucuya erişiyor?
-5. **Hız** — ani mi (5 dk'da 100 GB) yoksa kademeli mi?
-6. **Geçmiş** — bu kişi daha önce böyle yaptı mı?
+Sapma puanını etkileyen boyutlar; **deterministik olanlar önce hesaplanır, LLM yalnızca açıklama ve composite reasoning için çağrılır:**
+
+| Boyut | Hesaplama | LLM gerekir mi? |
+|-------|-----------|----------------|
+| **Miktar** — baseline'dan sapma | Deterministik (z-score veya percentile) | Hayır |
+| **Zaman** — mesai / gece / hafta sonu | Deterministik (takvim kuralı) | Hayır |
+| **Rol** — IT / muhasebe / HR | Deterministik (AD grup lookup) | Hayır |
+| **Hedef** — hangi sunucuya erişiyor | Deterministik (user_profile.usual_servers) | Hayır |
+| **Hız** — ani mi kademeli mi | Deterministik (bytes/dk hesabı) | Hayır |
+| **Geçmiş** — daha önce böyle yaptı mı | Deterministik (baseline_snapshot sorgusu) | Hayır |
+| **Açıklama ve öneri üretimi** | LLM | **Evet** — sadece bu adım |
+
+LLM, alert metnini ve operatöre yönelik öneriyi yazar. Anomali kararı vermez.
 
 ### Node 6: Severity Decision
 ```
