@@ -227,7 +227,10 @@ Eşikler **statik değil** — her kullanıcı/departman için ayrı, learning f
 
 ### Faz 1 — Learning (Varsayılan: 1-2 ay)
 
-**Amaç:** Sessiz izleme, hiç alert üretme, baseline oluştur.
+**Amaç:** Sessiz izleme, baseline oluştur.
+
+> [!NOTE]
+> "Hiç alert üretme" kuralının istisnası: `hard-rule` sınıfındaki tespitler Faz 1'de de ateşlenir. Bunlar policy violation'dır; baseline öğrenmesine ihtiyaç duymaz. Sadece `baseline-anomaly` ve `cross-signal` sınıfı tespitler Faz 1'de susturulur.
 
 **Her gün:** Günlük özet hesapla → günlük ortalamalara ekle.
 **Her hafta:** Haftalık pattern güncelle, sezonsal drift not et.
