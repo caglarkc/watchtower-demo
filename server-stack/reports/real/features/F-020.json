@@ -2,7 +2,7 @@
   "id": "F-020",
   "feature_id": "F-020",
   "title": "Gizli Alıcı (BCC) ve Toplu Dağıtım Sapması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "BCC/distribution-list anomaly",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:18.937857+00:00",
+  "generated_at": "2026-05-23T02:56:31.761154+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

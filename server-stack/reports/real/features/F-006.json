@@ -2,7 +2,7 @@
   "id": "F-006",
   "feature_id": "F-006",
   "title": "Başarısız Login Patlaması Sonrası Başarılı Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-ad",
@@ -10,8 +10,7 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 11,
-        "pattern": "4625_burst_then_4624"
+        "events": 1
       }
     }
   ],
@@ -42,10 +41,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "4625 burst then 4624 success",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:18.692779+00:00",
+  "generated_at": "2026-05-23T02:56:32.136446+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

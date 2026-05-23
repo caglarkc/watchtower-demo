@@ -2,7 +2,7 @@
   "id": "F-077",
   "feature_id": "F-077",
   "title": "Resmi İzin Kaydı Varken Sistem Aktivitesi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,7 +10,7 @@
     {
       "service": "hris",
       "response": {
-        "keyboard_events": 900
+        "keyboard_events": 0
       }
     }
   ],
@@ -27,10 +27,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "activity while officially on leave",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:59.097790+00:00",
+  "generated_at": "2026-05-23T02:56:32.974711+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
