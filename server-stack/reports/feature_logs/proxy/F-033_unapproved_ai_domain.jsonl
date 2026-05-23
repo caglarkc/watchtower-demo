@@ -34,3 +34,4 @@
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "ai-approved.corp.local", "allowed": true, "feature_id": "F-033", "timestamp": "2026-05-23T02:44:06.203877+00:00"}
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "feature_id": "F-033", "timestamp": "2026-05-23T02:51:19.871793+00:00"}
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "ai-approved.corp.local", "allowed": true, "feature_id": "F-033", "timestamp": "2026-05-23T02:51:27.196802+00:00"}
+{"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "feature_id": "F-033", "timestamp": "2026-05-23T02:51:40.567422+00:00"}
