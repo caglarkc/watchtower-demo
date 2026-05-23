@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-069",
   "title": "DNS Sunucu Yönlendirme Manipülasyonu",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "IT Admin",
   "deterministic_seed": 7069,
@@ -24,11 +24,35 @@
           "service": "bind-dns",
           "dig": [
             {
-              "query": "www.corp.local",
+              "query": "entropy-61222.corp.local",
               "returncode": 0
             },
             {
-              "query": "dc1.corp.local",
+              "query": "entropy-80499.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-13000.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-81260.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-94537.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-30460.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-25793.corp.local",
+              "returncode": 0
+            },
+            {
+              "query": "entropy-43051.corp.local",
               "returncode": 0
             }
           ]
@@ -55,7 +79,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-003",
-            "count": 1742,
+            "count": 2062,
             "result": "PASS"
           },
           "result": "PASS",
@@ -85,13 +109,15 @@
       "actions_executed": [
         {
           "service": "dhcp-logger",
-          "note": "negative: no rogue event emitted"
+          "response": {
+            "events": 4
+          }
         }
       ],
       "raw_logs_asserted": [
         {
-          "result": "PASS",
-          "note": "negative"
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dhcp/dhcpd.log",
+          "result": "PASS"
         }
       ],
       "ingest_assertions": [
@@ -109,15 +135,20 @@
           },
           "index_query": {
             "index": "corp-logs-f-005",
-            "count": 516,
+            "count": 585,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
-            "shipped": false,
-            "indexed": 0,
-            "note": "no log paths"
+            "shipped": true,
+            "indexed": 73,
+            "index": "corp-logs-f-005",
+            "pipeline": {
+              "feature_id": "F-005",
+              "index": "corp-logs-f-005",
+              "indexed": 73
+            }
           }
         }
       ],
@@ -161,19 +192,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-004",
-            "count": 294,
+            "count": 372,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 25,
+            "indexed": 28,
             "index": "corp-logs-f-004",
             "pipeline": {
               "feature_id": "F-004",
               "index": "corp-logs-f-004",
-              "indexed": 25
+              "indexed": 28
             }
           }
         }
@@ -243,18 +274,44 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "www.corp.local",
+          "query": "entropy-61222.corp.local",
           "returncode": 0
         },
         {
-          "query": "dc1.corp.local",
+          "query": "entropy-80499.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-13000.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-81260.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-94537.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-30460.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-25793.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-43051.corp.local",
           "returncode": 0
         }
       ]
     },
     {
       "service": "dhcp-logger",
-      "note": "negative: no rogue event emitted"
+      "response": {
+        "events": 4
+      }
     },
     {
       "service": "endpoint",
@@ -276,8 +333,8 @@
       "result": "PASS"
     },
     {
-      "result": "PASS",
-      "note": "negative"
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dhcp/dhcpd.log",
+      "result": "PASS"
     },
     {
       "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/smb_downgrade.jsonl",
@@ -303,7 +360,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 1742,
+        "count": 2062,
         "result": "PASS"
       },
       "result": "PASS",
@@ -333,15 +390,20 @@
       },
       "index_query": {
         "index": "corp-logs-f-005",
-        "count": 516,
+        "count": 585,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
-        "shipped": false,
-        "indexed": 0,
-        "note": "no log paths"
+        "shipped": true,
+        "indexed": 73,
+        "index": "corp-logs-f-005",
+        "pipeline": {
+          "feature_id": "F-005",
+          "index": "corp-logs-f-005",
+          "indexed": 73
+        }
       }
     },
     {
@@ -358,19 +420,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-004",
-        "count": 294,
+        "count": 372,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 25,
+        "indexed": 28,
         "index": "corp-logs-f-004",
         "pipeline": {
           "feature_id": "F-004",
           "index": "corp-logs-f-004",
-          "indexed": 25
+          "indexed": 28
         }
       }
     },
@@ -410,12 +472,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:11.364017+00:00",
+  "generated_at": "2026-05-23T05:12:05.687725+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-069:7069:negative:real"
+  "replay_key": "S-069:7069:positive:real"
 }

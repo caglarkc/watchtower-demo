@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-060",
   "title": "Hukuk Klasörünü Yedekleyen PM",
-  "mode": "negative",
+  "mode": "positive",
   "category": "politika ihlali",
   "user_role": "Proje Yöneticisi",
   "deterministic_seed": 6060,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 7280,
+            "count": 8080,
             "result": "PASS"
           },
           "result": "PASS",
@@ -77,7 +77,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "read_bytes": 100000,
+            "read_bytes": 18400000000,
             "write_bytes": 0
           }
         }
@@ -103,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 7840,
+            "count": 8720,
             "result": "PASS"
           },
           "result": "PASS",
@@ -137,7 +137,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 100000,
+        "read_bytes": 18400000000,
         "write_bytes": 0
       }
     }
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 7280,
+        "count": 8080,
         "result": "PASS"
       },
       "result": "PASS",
@@ -197,7 +197,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 7840,
+        "count": 8720,
         "result": "PASS"
       },
       "result": "PASS",
@@ -219,12 +219,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:08.976879+00:00",
+  "generated_at": "2026-05-23T05:12:03.036499+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-060:6060:negative:real"
+  "replay_key": "S-060:6060:positive:real"
 }

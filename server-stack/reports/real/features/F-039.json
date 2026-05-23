@@ -60,7 +60,7 @@
   "anomaly_detected": true,
   "evidence_expected": "mass rename rate event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:47.194610+00:00",
+  "generated_at": "2026-05-23T05:12:04.637294+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
