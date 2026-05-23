@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, model_validator
 
 DetectionClass = Literal[
     "policy-rule",
@@ -58,16 +58,15 @@ class FeatureTaxonomyEntry(BaseModel):
     required_context: list[str] = Field(min_length=1)
     server_stack_replay_refs: list[str] = Field(min_length=1)
 
-    @field_validator("secondary_detection_classes")
-    @classmethod
-    def secondary_must_differ_from_primary(
-        cls, value: list[str], info: object
-    ) -> list[str]:
-        primary = getattr(info, "data", {}).get("primary_detection_class")
-        if primary and primary in value:
-            msg = f"secondary_detection_classes cannot repeat primary: {primary}"
+    @model_validator(mode="after")
+    def secondary_must_differ_from_primary(self) -> FeatureTaxonomyEntry:
+        if self.primary_detection_class in self.secondary_detection_classes:
+            msg = (
+                "secondary_detection_classes cannot repeat primary: "
+                f"{self.primary_detection_class}"
+            )
             raise ValueError(msg)
-        return value
+        return self
 
     def has_baseline_context(self) -> bool:
         return any(
