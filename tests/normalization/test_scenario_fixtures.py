@@ -25,7 +25,8 @@ def test_scenario_fixture_normalizes(scenario_id: str, normalizer):
         )
         assert outcome.normalized is not None, outcome.unknown
         assert outcome.unknown is None
-        assert outcome.normalized.scenario_id in (scenario_id, payload.get("scenario_id"))
+        if payload.get("scenario_id"):
+            assert outcome.normalized.scenario_id == payload["scenario_id"]
 
         source_feature = payload.get("source_feature")
         if source_feature:
