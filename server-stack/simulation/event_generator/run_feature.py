@@ -20,9 +20,11 @@ REPORTS_ROOT = ROOT / "reports" / "features"
 
 sys.path.insert(0, str(ROOT / "simulation" / "event_generator"))
 from replay_templates import PHASE1_TEMPLATES  # noqa: E402
-from replay_templates_phase2 import LOG_CHANNEL_DIRS, PHASE2_TEMPLATES  # noqa: E402
+from replay_templates_phase2 import LOG_CHANNEL_DIRS as LOG_CHANNEL_DIRS_P2, PHASE2_TEMPLATES  # noqa: E402
+from replay_templates_phase3 import PHASE3_CHANNEL_DIRS, PHASE3_TEMPLATES  # noqa: E402
 
-ALL_TEMPLATES = {**PHASE1_TEMPLATES, **PHASE2_TEMPLATES}
+LOG_CHANNEL_DIRS = {**LOG_CHANNEL_DIRS_P2, **PHASE3_CHANNEL_DIRS}
+ALL_TEMPLATES = {**PHASE1_TEMPLATES, **PHASE2_TEMPLATES, **PHASE3_TEMPLATES}
 
 
 def load_feature(feature_id: str) -> dict:

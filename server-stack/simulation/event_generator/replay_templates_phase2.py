@@ -101,7 +101,7 @@ PHASE2_TEMPLATES: dict[str, tuple[list[dict], list[dict]]] = {
     ),
 }
 
-LOG_CHANNEL_DIRS: dict[str, str] = {
+LOG_CHANNEL_DIRS: dict[str, str] = {  # noqa: RUF012 — merged in run_feature
     "postfix": "postfix",
     "dovecot": "dovecot",
     "roundcube": "roundcube",
