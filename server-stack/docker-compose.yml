@@ -282,7 +282,7 @@ services:
       - ./logs/postfix:/var/log/corp/postfix
       - ./configs/postfix:/etc/postfix/external:ro
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
@@ -319,7 +319,55 @@ services:
     volumes:
       - ./logs/roundcube:/var/log/corp/roundcube
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # RI-2: PostgreSQL real actions + pg_audit log
+  postgres-actions:
+    profiles: ["real-apps"]
+    build:
+      context: ./docker/postgres-actions
+    container_name: corp-postgres-actions
+    hostname: pg-actions
+    networks:
+      corp-lan:
+        ipv4_address: ${POSTGRES_ACTIONS_IP:-172.28.0.44}
+    environment:
+      PGHOST: corp-postgres
+      PGUSER: corp
+      PGPASSWORD: ${POSTGRES_PASSWORD:-Watchtower1!}
+      PGDATABASE: corpdb
+    volumes:
+      - ./logs/postgres:/var/log/corp/postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # RI-2: Gitea clone/fetch actions
+  gitea-actions:
+    profiles: ["real-apps"]
+    build:
+      context: ./docker/gitea-actions
+    container_name: corp-gitea-actions
+    hostname: git-actions
+    networks:
+      corp-lan:
+        ipv4_address: ${GITEA_ACTIONS_IP:-172.28.0.45}
+    environment:
+      GITEA_URL: http://corp-gitea:3000
+    volumes:
+      - ./logs/gitea:/var/log/corp/gitea
+      - ./seeds/real/git:/seeds:ro
+    depends_on:
+      gitea:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
