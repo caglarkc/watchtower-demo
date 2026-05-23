@@ -11,7 +11,6 @@ from watchtower.daemon.service import DaemonService
 def test_daemon_run_mode_produces_alert_case(app, tenant_id, tmp_path):
     jsonl = replay_events_to_jsonl("F-001", tmp_path / "f001_case.jsonl")
     register_f001_jsonl_source(app, tenant_id, jsonl)
-    from tests.alerts.helpers import produce_real_alert_via_graph as _  # noqa: F401
 
     from tests.e2e.conftest import seed_baseline_for_candidate
     from watchtower.candidates.extractor import CandidateExtractor
@@ -24,7 +23,7 @@ def test_daemon_run_mode_produces_alert_case(app, tenant_id, tmp_path):
     candidate = first_candidate_from_feature(
         normalizer, extractor, tenant_id=tenant_id, feature_id="F-001"
     )
-    assert candidate
+    assert candidate is not None
     candidate.attributes["volume"] = 500.0
     seed_baseline_for_candidate(app, tenant_id, candidate)
 
