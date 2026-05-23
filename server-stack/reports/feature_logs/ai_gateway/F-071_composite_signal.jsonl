@@ -8,3 +8,4 @@
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:09:59.132643+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:10:13.777932+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:19:30.525879+00:00"}
+{"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:19:49.705003+00:00"}

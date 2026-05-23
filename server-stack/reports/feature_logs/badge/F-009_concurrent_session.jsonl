@@ -19,3 +19,4 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T02:19:24.924427+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T02:19:32.268513+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T02:19:47.254159+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T02:19:50.433023+00:00"}

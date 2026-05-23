@@ -8,3 +8,4 @@
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "feature_id": "F-071", "timestamp": "2026-05-23T02:09:59.132799+00:00"}
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "feature_id": "F-071", "timestamp": "2026-05-23T02:10:13.778096+00:00"}
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "feature_id": "F-071", "timestamp": "2026-05-23T02:19:30.526001+00:00"}
+{"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "feature_id": "F-071", "timestamp": "2026-05-23T02:19:49.705130+00:00"}
