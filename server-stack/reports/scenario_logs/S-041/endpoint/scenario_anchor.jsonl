@@ -6,3 +6,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": false, "timestamp": "2026-05-23T01:27:15.724824+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": true, "timestamp": "2026-05-23T02:09:24.856251+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": false, "timestamp": "2026-05-23T02:09:28.108829+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": true, "timestamp": "2026-05-23T02:10:18.568131+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": false, "timestamp": "2026-05-23T02:10:21.667355+00:00"}

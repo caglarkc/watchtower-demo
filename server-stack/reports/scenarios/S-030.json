@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-030",
   "title": "Yetki Yükseltme (Privilege Escalation)",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3030,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Yetki Yükseltme (Privilege Escalation)",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -23,12 +23,12 @@
       "user_role": "IT Admin",
       "category": "yetkisiz erişim",
       "seed": 3030,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "ad_group_change",
       "event_id": 4728,
-      "group": "Domain Admins",
+      "group": "Helpdesk",
       "source_feature": "F-011",
       "scenario_id": "S-030"
     }
@@ -37,9 +37,12 @@
     "reports/scenario_logs/S-030/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-030/scenarios/ad_group_change.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:10:18.181580+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:10:21.252048+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-030:3030:positive"
+  "replay_key": "S-030:3030:negative"
 }

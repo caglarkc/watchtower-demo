@@ -9,3 +9,4 @@
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 180, "sensitive_labels": 45, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T02:09:23.114724+00:00"}
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 4, "sensitive_labels": 0, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T02:09:26.713943+00:00"}
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 180, "sensitive_labels": 45, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T02:10:17.200988+00:00"}
+{"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 4, "sensitive_labels": 0, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T02:10:20.108055+00:00"}

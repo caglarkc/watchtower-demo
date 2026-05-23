@@ -6,3 +6,4 @@
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "source_feature": "F-046", "scenario_id": "S-074", "timestamp": "2026-05-23T01:27:16.847088+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "source_feature": "F-046", "scenario_id": "S-074", "timestamp": "2026-05-23T02:09:26.337659+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "source_feature": "F-046", "scenario_id": "S-074", "timestamp": "2026-05-23T02:09:29.309005+00:00"}
+{"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "source_feature": "F-046", "scenario_id": "S-074", "timestamp": "2026-05-23T02:10:19.740223+00:00"}

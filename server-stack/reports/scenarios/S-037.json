@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-037",
   "title": "Satıştan Muhasebeye Kesişen Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "Satış",
   "deterministic_seed": 3037,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Satıştan Muhasebeye Kesişen Erişim",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -23,13 +23,13 @@
       "user_role": "Satış",
       "category": "yetkisiz erişim",
       "seed": 3037,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "smb_access",
-      "share": "legal",
+      "share": "dev",
       "user_dept": "dev",
-      "files": 41,
+      "files": 3,
       "source_feature": "F-037",
       "scenario_id": "S-037"
     }
@@ -38,9 +38,12 @@
     "reports/scenario_logs/S-037/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-037/scenarios/smb_access.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:10:18.430058+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:10:21.533947+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-037:3037:positive"
+  "replay_key": "S-037:3037:negative"
 }

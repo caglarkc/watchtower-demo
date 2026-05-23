@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-017",
   "title": "Token Vault Dump",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2017,
@@ -14,7 +14,7 @@
     "vault-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Token Vault Dump",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,12 +24,12 @@
       "user_role": "IT Admin",
       "category": "credential ihlali",
       "seed": 2017,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "vault_read_burst",
       "log_channel": "vault",
-      "reads": 200,
+      "reads": 5,
       "window_minutes": 60,
       "source_feature": "F-013",
       "scenario_id": "S-017"
@@ -39,9 +39,12 @@
     "reports/scenario_logs/S-017/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-017/vault/vault_read_burst.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:10:17.742725+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:10:20.762446+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-017:2017:positive"
+  "replay_key": "S-017:2017:negative"
 }

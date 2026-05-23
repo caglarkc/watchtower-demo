@@ -6,3 +6,5 @@
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "source_feature": "F-050", "scenario_id": "S-042", "timestamp": "2026-05-23T01:27:15.759010+00:00"}
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "source_feature": "F-050", "scenario_id": "S-042", "timestamp": "2026-05-23T02:09:24.896134+00:00"}
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "source_feature": "F-050", "scenario_id": "S-042", "timestamp": "2026-05-23T02:09:28.143744+00:00"}
+{"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "source_feature": "F-050", "scenario_id": "S-042", "timestamp": "2026-05-23T02:10:18.604773+00:00"}
+{"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "source_feature": "F-050", "scenario_id": "S-042", "timestamp": "2026-05-23T02:10:21.698812+00:00"}

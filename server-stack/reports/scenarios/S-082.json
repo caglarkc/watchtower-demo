@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-082",
   "title": "İK ve Bilgi İşlem Çapraz Hesap Manipülasyonu",
-  "mode": "negative",
+  "mode": "positive",
   "category": "çapraz/multi-user",
   "user_role": "İK",
   "deterministic_seed": 9082,
@@ -18,7 +18,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for İK ve Bilgi İşlem Çapraz Hesap Manipülasyonu",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "events": [
     {
@@ -28,29 +28,29 @@
       "user_role": "İK",
       "category": "çapraz/multi-user",
       "seed": 9082,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "credential_reset_burst",
       "log_channel": "hris",
-      "resets": 1,
-      "unlocks": 0,
+      "resets": 12,
+      "unlocks": 8,
       "source_feature": "F-014",
       "scenario_id": "S-082"
     },
     {
       "event_type": "offboarding_activity",
       "log_channel": "hris",
-      "status": "active",
-      "logins_after": 0,
+      "status": "terminated",
+      "logins_after": 6,
       "source_feature": "F-072",
       "scenario_id": "S-082"
     },
     {
       "event_type": "imap_archive_bulk_read",
       "log_channel": "dovecot",
-      "messages_read": 40,
-      "years_span": 1,
+      "messages_read": 14000,
+      "years_span": 14,
       "source_feature": "F-024",
       "scenario_id": "S-082"
     },
@@ -58,7 +58,7 @@
       "event_type": "old_entitlement_use",
       "log_channel": "hris",
       "role_changed": true,
-      "old_group_used": false,
+      "old_group_used": true,
       "source_feature": "F-076",
       "scenario_id": "S-082"
     }
@@ -70,12 +70,9 @@
     "reports/scenario_logs/S-082/dovecot/imap_archive_bulk_read.jsonl",
     "reports/scenario_logs/S-082/hris/old_entitlement_use.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:09:29.594588+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:10:20.025906+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-082:9082:negative"
+  "replay_key": "S-082:9082:positive"
 }

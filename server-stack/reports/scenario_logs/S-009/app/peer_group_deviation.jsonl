@@ -7,3 +7,4 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-009", "timestamp": "2026-05-23T02:09:23.524410+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-009", "timestamp": "2026-05-23T02:09:26.994422+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-009", "timestamp": "2026-05-23T02:10:17.464800+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-009", "timestamp": "2026-05-23T02:10:20.471137+00:00"}

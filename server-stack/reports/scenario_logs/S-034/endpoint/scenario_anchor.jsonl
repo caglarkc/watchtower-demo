@@ -7,3 +7,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-034", "user_role": "Muhasebe", "category": "yetkisiz erişim", "seed": 3034, "anomaly": true, "timestamp": "2026-05-23T02:09:24.590873+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-034", "user_role": "Muhasebe", "category": "yetkisiz erişim", "seed": 3034, "anomaly": false, "timestamp": "2026-05-23T02:09:27.860285+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-034", "user_role": "Muhasebe", "category": "yetkisiz erişim", "seed": 3034, "anomaly": true, "timestamp": "2026-05-23T02:10:18.319775+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-034", "user_role": "Muhasebe", "category": "yetkisiz erişim", "seed": 3034, "anomaly": false, "timestamp": "2026-05-23T02:10:21.429112+00:00"}

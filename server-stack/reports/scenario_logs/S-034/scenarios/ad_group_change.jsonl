@@ -7,3 +7,4 @@
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "source_feature": "F-011", "scenario_id": "S-034", "timestamp": "2026-05-23T02:09:24.591009+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "source_feature": "F-011", "scenario_id": "S-034", "timestamp": "2026-05-23T02:09:27.860443+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "source_feature": "F-011", "scenario_id": "S-034", "timestamp": "2026-05-23T02:10:18.319908+00:00"}
+{"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "source_feature": "F-011", "scenario_id": "S-034", "timestamp": "2026-05-23T02:10:21.429292+00:00"}

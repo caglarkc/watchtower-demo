@@ -6,3 +6,4 @@
 {"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "corp.local", "has_attachment": false, "source_feature": "F-021", "scenario_id": "S-052", "timestamp": "2026-05-23T01:27:16.103980+00:00"}
 {"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "gmail.com", "has_attachment": true, "source_feature": "F-021", "scenario_id": "S-052", "timestamp": "2026-05-23T02:09:25.379425+00:00"}
 {"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "corp.local", "has_attachment": false, "source_feature": "F-021", "scenario_id": "S-052", "timestamp": "2026-05-23T02:09:28.486100+00:00"}
+{"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "gmail.com", "has_attachment": true, "source_feature": "F-021", "scenario_id": "S-052", "timestamp": "2026-05-23T02:10:18.975159+00:00"}

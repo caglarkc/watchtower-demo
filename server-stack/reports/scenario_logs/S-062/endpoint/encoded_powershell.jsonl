@@ -6,3 +6,4 @@
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T01:27:16.440612+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T02:09:25.805882+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T02:09:28.845053+00:00"}
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T02:10:19.315913+00:00"}
