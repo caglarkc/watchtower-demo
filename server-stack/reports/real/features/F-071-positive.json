@@ -80,7 +80,7 @@
   "anomaly_detected": true,
   "evidence_expected": "composite risk score input set",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:41.702222+00:00",
+  "generated_at": "2026-05-23T05:12:09.362974+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
