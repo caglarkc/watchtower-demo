@@ -7,7 +7,7 @@ import json
 import uuid
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from pydantic import BaseModel
 
@@ -24,7 +24,7 @@ from watchtower.llm.schemas import (
 from watchtower.llm.validation import parse_and_validate
 from watchtower.storage.repositories.llm_audit import LLMCallAuditRepository
 
-if False:  # TYPE_CHECKING
+if TYPE_CHECKING:
     from watchtower.observability.service import MetricsService
 
 FAIL_OPEN_NOTE = "LLM unavailable - manual review required"
