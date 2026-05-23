@@ -2,7 +2,7 @@
   "id": "F-013",
   "feature_id": "F-013",
   "title": "Secret Store Okuma Burst",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "vault",
@@ -10,7 +10,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 25
       }
     }
   ],
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "secret read burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:37.869991+00:00",
+  "generated_at": "2026-05-23T05:11:51.261698+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

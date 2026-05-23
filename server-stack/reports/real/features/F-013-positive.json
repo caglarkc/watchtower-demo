@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "secret read burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:34.560234+00:00",
+  "generated_at": "2026-05-23T05:11:51.261698+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
