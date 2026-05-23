@@ -2,8 +2,8 @@
   "id": "F-016",
   "feature_id": "F-016",
   "title": "Dahili Mail Gönderim Hacmi ve Ek Boyutu",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
   "actions_executed": [
@@ -22,7 +22,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-016",
+      "assertion": "L3:elasticsearch:corp-logs-f-016",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -30,10 +30,26 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-016",
+        "count": 13,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-016",
+        "pipeline": {
+          "feature_id": "F-016",
+          "index": "corp-logs-f-016",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -42,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "mail volume and attachment-size event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:41.931477+00:00",
+  "generated_at": "2026-05-23T03:05:09.477010+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
