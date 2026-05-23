@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 2670,
+        "count": 2745,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 75,
+        "indexed": 76,
         "index": "corp-logs-f-055",
         "pipeline": {
           "feature_id": "F-055",
           "index": "corp-logs-f-055",
-          "indexed": 75
+          "indexed": 76
         }
       }
     }
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "USB attach/write correlation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:56.363085+00:00",
+  "generated_at": "2026-05-23T05:10:58.256573+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

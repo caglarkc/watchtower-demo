@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 1575,
+        "count": 1875,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 58,
+        "indexed": 64,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 58
+          "indexed": 64
         }
       }
     }
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "unknown hardware login attempt",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:10.288061+00:00",
+  "generated_at": "2026-05-23T05:11:00.759978+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
