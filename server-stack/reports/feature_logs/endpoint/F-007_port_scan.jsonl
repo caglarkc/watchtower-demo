@@ -1,0 +1,2 @@
+{"event_type": "port_scan", "targets": 200, "ports": 25, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T01:02:33.316050+00:00"}
+{"event_type": "port_scan", "targets": 5, "ports": 3, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T01:02:34.839797+00:00"}
