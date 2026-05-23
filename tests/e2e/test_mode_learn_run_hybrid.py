@@ -31,7 +31,7 @@ def test_learn_mode_zero_alert_silent_and_learning_queue(
 ):
     del server_stack_preflight
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
-    _seed_for_candidate(app, tenant_id, candidate)
+    seed_baseline_for_candidate(app, tenant_id, candidate)
     set_tenant_mode(app, tenant_id, "learn")
 
     result = run_graph_to_completion(app, candidate)
@@ -49,7 +49,7 @@ def test_learn_mode_zero_alert_silent_and_learning_queue(
 
 def test_run_mode_expected_alert_no_learning(app, tenant_id, normalizer, extractor):
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
-    _seed_for_candidate(app, tenant_id, candidate)
+    seed_baseline_for_candidate(app, tenant_id, candidate)
     set_tenant_mode(app, tenant_id, "run")
     candidate.attributes["volume"] = 500.0
 
@@ -76,7 +76,7 @@ def test_hybrid_mode_alert_and_controlled_learning(
     app, tenant_id, normalizer, extractor
 ):
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
-    _seed_for_candidate(app, tenant_id, candidate)
+    seed_baseline_for_candidate(app, tenant_id, candidate)
     set_tenant_mode(app, tenant_id, "hybrid")
     candidate.attributes["volume"] = 500.0
 

@@ -57,8 +57,7 @@ def test_graph_llm_unavailable_fail_open_passes(app, tenant_id, normalizer, extr
     from watchtower.llm.gateway import LLMGateway
     from watchtower.llm.providers.mock import mock_openai
 
-    from tests.e2e.conftest import attach_mock_llm
-    from tests.e2e.test_mode_learn_run_hybrid import _seed_for_candidate
+    from tests.e2e.conftest import attach_mock_llm, seed_baseline_for_candidate
 
     unavailable_gw = LLMGateway(
         [mock_openai([], unavailable=True)],
