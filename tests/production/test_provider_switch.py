@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from watchtower.llm.providers.mock import mock_openai
 from watchtower.llm.providers.onboarding import (
     resolve_provider_chain,
     set_provider_chain,

@@ -4,3 +4,7 @@
 __pycache__/
 *.egg-info/
 data/
+backups/
+.env
+!.env.example
+soak.log
