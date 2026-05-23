@@ -26,3 +26,4 @@
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T05:09:32.480872+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T05:09:51.918146+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T05:35:37.498318+00:00"}
+{"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T05:35:56.836439+00:00"}
