@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
@@ -23,11 +23,7 @@ class SourceBackoffTracker:
     ) -> None:
         self._base = base_seconds
         self._max = max_seconds
-        self._states: dict[str, _BackoffState] = field(default_factory=dict)
-
-    def __post_init__(self) -> None:
-        if not hasattr(self, "_states"):
-            self._states = {}
+        self._states: dict[str, _BackoffState] = {}
 
     def is_blocked(self, source_id: str) -> bool:
         state = self._states.get(source_id)
