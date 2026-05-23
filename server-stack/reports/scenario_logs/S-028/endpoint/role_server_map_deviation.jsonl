@@ -9,3 +9,4 @@
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "source_feature": "F-061", "scenario_id": "S-028", "timestamp": "2026-05-23T02:10:18.108767+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "source_feature": "F-061", "scenario_id": "S-028", "timestamp": "2026-05-23T02:10:21.169576+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "source_feature": "F-061", "scenario_id": "S-028", "timestamp": "2026-05-23T02:19:54.834665+00:00"}
+{"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "source_feature": "F-061", "scenario_id": "S-028", "timestamp": "2026-05-23T02:19:57.625542+00:00"}
