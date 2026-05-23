@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-061",
   "title": "PM'den Gereksiz Credential İstemi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Proje Yöneticisi",
   "deterministic_seed": 6061,
@@ -20,14 +20,14 @@
         {
           "service": "hris",
           "response": {
-            "resets": 12,
-            "unlocks": 8
+            "resets": 1,
+            "unlocks": 0
           }
         },
         {
           "service": "samba-ad",
           "response": {
-            "events": 12
+            "events": 1
           }
         }
       ],
@@ -81,14 +81,14 @@
     {
       "service": "hris",
       "response": {
-        "resets": 12,
-        "unlocks": 8
+        "resets": 1,
+        "unlocks": 0
       }
     },
     {
       "service": "samba-ad",
       "response": {
-        "events": 12
+        "events": 1
       }
     }
   ],
@@ -136,12 +136,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:45.546234+00:00",
+  "generated_at": "2026-05-23T05:11:09.130800+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-061:6061:positive:real"
+  "replay_key": "S-061:6061:negative:real"
 }

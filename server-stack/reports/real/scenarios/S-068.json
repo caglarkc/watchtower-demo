@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-068",
   "title": "Admin Bilgisayarından Agresif Port Taraması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "IT Admin",
   "deterministic_seed": 7068,
@@ -20,7 +20,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 100,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         }
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-007",
-            "count": 3200,
+            "count": 3440,
             "result": "PASS"
           },
           "result": "PASS",
@@ -75,7 +75,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 100,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     }
@@ -102,7 +102,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-007",
-        "count": 3200,
+        "count": 3440,
         "result": "PASS"
       },
       "result": "PASS",
@@ -124,12 +124,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:47.367388+00:00",
+  "generated_at": "2026-05-23T05:11:10.929547+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-068:7068:positive:real"
+  "replay_key": "S-068:7068:negative:real"
 }
