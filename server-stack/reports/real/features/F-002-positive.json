@@ -37,7 +37,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-002",
-        "count": 3520,
+        "count": 3680,
         "result": "PASS"
       },
       "result": "PASS",
@@ -62,7 +62,7 @@
   "anomaly_detected": true,
   "evidence_expected": "host/port fan-out event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:40:50.945562+00:00",
+  "generated_at": "2026-05-23T08:41:35.202023+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
