@@ -50,7 +50,8 @@ class BaselineEngine:
     ) -> LearningWindow:
         window = window_days or self.learning_window_days
         end = as_of or datetime.now(UTC)
-        start = end - timedelta(days=window)
+        # Inclusive calendar window: N days => [end-(N-1)d, end]
+        start = end - timedelta(days=max(window - 1, 0))
 
         observations = self._repo.list_observations(tenant_id, start, end)
         users = self._group_by(observations, "user_id")
