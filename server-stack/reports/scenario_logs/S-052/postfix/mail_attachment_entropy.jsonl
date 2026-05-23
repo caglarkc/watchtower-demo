@@ -23,3 +23,4 @@
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "source_feature": "F-019", "scenario_id": "S-052", "timestamp": "2026-05-23T03:08:39.920551+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "source_feature": "F-019", "scenario_id": "S-052", "timestamp": "2026-05-23T03:08:42.750048+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "source_feature": "F-019", "scenario_id": "S-052", "timestamp": "2026-05-23T03:17:58.474736+00:00"}
+{"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "source_feature": "F-019", "scenario_id": "S-052", "timestamp": "2026-05-23T03:18:01.372043+00:00"}
