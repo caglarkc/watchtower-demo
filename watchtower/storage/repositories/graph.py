@@ -24,16 +24,67 @@ class GraphRepository:
         tenant_id: str,
         candidate_id: str | None,
         mode: str,
+        thread_id: str | None = None,
     ) -> None:
         now = datetime.now(UTC).isoformat()
         self._conn.execute(
             """
             INSERT INTO graph_runs (
-                id, tenant_id, candidate_id, mode, status, started_at
-            ) VALUES (?, ?, ?, ?, 'running', ?)
+                id, tenant_id, candidate_id, mode, status, started_at,
+                thread_id, interrupted
+            ) VALUES (?, ?, ?, ?, 'running', ?, ?, 0)
             """,
-            (run_id, tenant_id, candidate_id, mode, now),
+            (run_id, tenant_id, candidate_id, mode, now, thread_id),
         )
+
+    def set_checkpoint_meta(
+        self,
+        run_id: str,
+        *,
+        thread_id: str,
+        checkpoint_id: str | None,
+        interrupted: bool,
+    ) -> None:
+        self._conn.execute(
+            """
+            UPDATE graph_runs SET
+                thread_id = ?,
+                last_checkpoint_id = ?,
+                interrupted = ?
+            WHERE id = ?
+            """,
+            (thread_id, checkpoint_id, int(interrupted), run_id),
+        )
+
+    def get_run_by_thread(self, thread_id: str) -> dict[str, Any] | None:
+        row = self._conn.execute(
+            "SELECT * FROM graph_runs WHERE thread_id = ? ORDER BY started_at DESC LIMIT 1",
+            (thread_id,),
+        ).fetchone()
+        if not row:
+            return None
+        return dict(row)
+
+    def list_interrupted_runs(
+        self,
+        tenant_id: str,
+        *,
+        limit: int = 50,
+    ) -> list[dict[str, Any]]:
+        rows = self._conn.execute(
+            """
+            SELECT id, tenant_id, candidate_id, mode, status, thread_id,
+                   last_checkpoint_id, started_at
+            FROM graph_runs
+            WHERE tenant_id = ?
+              AND interrupted = 1
+              AND status = 'running'
+            ORDER BY started_at DESC
+            LIMIT ?
+            """,
+            (tenant_id, limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
 
     def finish_run(
         self,
