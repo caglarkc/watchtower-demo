@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-012",
   "title": "Stajyer CRM Export",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Stajyer",
   "deterministic_seed": 1012,
@@ -16,7 +16,7 @@
     {
       "feature_id": "F-047",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "internal-app",
@@ -31,7 +31,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-047",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-047",
+            "count": 320,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-047",
+            "pipeline": {
+              "feature_id": "F-047",
+              "index": "corp-logs-f-047",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -47,7 +78,7 @@
         {
           "service": "hris",
           "response": {
-            "systems_accessed": 6
+            "systems_accessed": 28
           }
         }
       ],
@@ -57,7 +88,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-075",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 74,
+            "index": "corp-logs-f-075",
+            "pipeline": {
+              "feature_id": "F-075",
+              "index": "corp-logs-f-075",
+              "indexed": 74
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -76,7 +134,7 @@
     {
       "service": "hris",
       "response": {
-        "systems_accessed": 6
+        "systems_accessed": 28
       }
     }
   ],
@@ -90,7 +148,64 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-047",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-047",
+        "count": 320,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-047",
+        "pipeline": {
+          "feature_id": "F-047",
+          "index": "corp-logs-f-047",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-075",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 74,
+        "index": "corp-logs-f-075",
+        "pipeline": {
+          "feature_id": "F-075",
+          "index": "corp-logs-f-075",
+          "indexed": 74
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
@@ -101,12 +216,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:24.473714+00:00",
+  "generated_at": "2026-05-23T03:11:30.549079+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-012:1012:negative:real"
+  "replay_key": "S-012:1012:positive:real"
 }
