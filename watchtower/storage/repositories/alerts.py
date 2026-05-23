@@ -12,6 +12,7 @@ from watchtower.domain.alerts import (
     Alert,
     AlertCase,
     AlertLifecycleEvent,
+    CaseTimelineEntry,
     SuppressionWindow,
 )
 
