@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-062",
   "title": "Sabit Şifre Koda Gömme",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 6062,
@@ -23,7 +23,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 8
+            "clones": 1
           }
         },
         {
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 9543,
+            "count": 10023,
             "result": "PASS"
           },
           "result": "PASS",
@@ -116,7 +116,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 4042,
+            "count": 4442,
             "result": "PASS"
           },
           "result": "PASS",
@@ -149,7 +149,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 42
+            "tokens": 13
           }
         }
       ],
@@ -227,7 +227,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-027",
-            "count": 3200,
+            "count": 3360,
             "result": "PASS"
           },
           "result": "PASS",
@@ -256,7 +256,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 8
+        "clones": 1
       }
     },
     {
@@ -276,7 +276,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     },
     {
@@ -323,7 +323,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 9543,
+        "count": 10023,
         "result": "PASS"
       },
       "result": "PASS",
@@ -353,7 +353,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 4042,
+        "count": 4442,
         "result": "PASS"
       },
       "result": "PASS",
@@ -409,7 +409,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-027",
-        "count": 3200,
+        "count": 3360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -436,12 +436,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:36:54.349641+00:00",
+  "generated_at": "2026-05-23T05:37:18.029237+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-062:6062:positive:real"
+  "replay_key": "S-062:6062:negative:real"
 }
