@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "forward/delegate rule change",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:14.836262+00:00",
+  "generated_at": "2026-05-23T02:55:50.423099+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,0 +1,138 @@
+{
+  "scenario_id": "S-020",
+  "title": "Çoklu Lokasyon Çakışması",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "CEO",
+  "deterministic_seed": 2020,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-009",
+    "F-070"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-009",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "badge",
+          "response": {
+            "locations": [
+              "floor-3",
+              "floor-b1"
+            ]
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/badge/badge.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    },
+    {
+      "feature_id": "F-070",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "badge",
+          "response": {
+            "mismatch": true
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/badge/badge.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "badge",
+      "response": {
+        "locations": [
+          "floor-3",
+          "floor-b1"
+        ]
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    },
+    {
+      "service": "badge",
+      "response": {
+        "mismatch": true
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/badge/badge.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/badge/badge.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 4,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:49.127701+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-020:2020:positive:real"
+}

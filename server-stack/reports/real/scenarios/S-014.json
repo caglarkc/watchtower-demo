@@ -1,0 +1,204 @@
+{
+  "scenario_id": "S-014",
+  "title": "Admin Prod-HR VM Snapshot",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "IT Admin",
+  "deterministic_seed": 1014,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-051",
+    "F-001",
+    "F-055"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-051",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hypervisor",
+          "response": {
+            "role": "hypervisor"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hypervisor/audit.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-001",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "events": 5,
+            "smb_attempted": true
+          }
+        },
+        {
+          "service": "zeek",
+          "response": {
+            "written": 1,
+            "log": "/var/log/corp/zeek/conn.log"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        },
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+          "records": 20,
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-001",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    },
+    {
+      "feature_id": "F-055",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/usb_write.jsonl",
+            "event_type": "usb_write"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/usb_write.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "hypervisor",
+      "response": {
+        "role": "hypervisor"
+      }
+    },
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "events": 5,
+        "smb_attempted": true
+      }
+    },
+    {
+      "service": "zeek",
+      "response": {
+        "written": 1,
+        "log": "/var/log/corp/zeek/conn.log"
+      }
+    },
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/usb_write.jsonl",
+        "event_type": "usb_write"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hypervisor/audit.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+      "records": 20,
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/usb_write.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-001",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml",
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 4,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:48.023992+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-014:1014:positive:real"
+}

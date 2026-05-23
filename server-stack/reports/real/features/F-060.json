@@ -2,7 +2,7 @@
   "id": "F-060",
   "feature_id": "F-060",
   "title": "Ekran Görüntüsü Alma Frekansı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -28,10 +28,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "screenshot frequency spike",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:28.311234+00:00",
+  "generated_at": "2026-05-23T02:55:47.728021+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

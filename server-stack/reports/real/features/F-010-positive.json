@@ -45,7 +45,7 @@
   "anomaly_detected": true,
   "evidence_expected": "service account interactive logon",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:53.720630+00:00",
+  "generated_at": "2026-05-23T02:55:49.449424+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,0 +1,71 @@
+{
+  "scenario_id": "S-027",
+  "title": "İç Ağda Gizli Posta Kuralı Oluşturma",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "Satış",
+  "deterministic_seed": 2027,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-017"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-017",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "dovecot",
+          "response": {
+            "written": "/var/log/corp/dovecot/dovecot.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "dovecot",
+      "response": {
+        "written": "/var/log/corp/dovecot/dovecot.jsonl"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 1,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:50.423341+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-027:2027:positive:real"
+}

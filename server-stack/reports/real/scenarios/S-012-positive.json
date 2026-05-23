@@ -1,0 +1,112 @@
+{
+  "scenario_id": "S-012",
+  "title": "Stajyer CRM Export",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "Stajyer",
+  "deterministic_seed": 1012,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-047",
+    "F-075"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-047",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "internal-app",
+          "response": {
+            "role": "internal-app"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/app/audit.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-075",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "systems_accessed": 28
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "internal-app",
+      "response": {
+        "role": "internal-app"
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "systems_accessed": 28
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/app/audit.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml",
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:47.450283+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-012:1012:positive:real"
+}

@@ -1,0 +1,101 @@
+{
+  "scenario_id": "S-019",
+  "title": "Hizmet Hesabının Kötüye Kullanımı",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 2019,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-010"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-010",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1,
+            "anomaly": "service_account_interactive"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-010",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1,
+        "anomaly": "service_account_interactive"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-010",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 1,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:48.915074+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-019:2019:positive:real"
+}
