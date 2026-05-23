@@ -2,8 +2,8 @@
   "id": "F-003",
   "feature_id": "F-003",
   "title": "İç DNS Sorgu Entropisi",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "bind9",
   "actions_executed": [
@@ -11,11 +11,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "www.corp.local",
+          "query": "entropy-26534.corp.local",
           "returncode": 9
         },
         {
-          "query": "dc1.corp.local",
+          "query": "entropy-83069.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-71030.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-17101.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-59873.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-72252.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-51859.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-41824.corp.local",
           "returncode": 9
         }
       ]
@@ -27,16 +51,47 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-003",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-003",
+        "count": 54,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 54,
+        "index": "corp-logs-f-003",
+        "pipeline": {
+          "feature_id": "F-003",
+          "index": "corp-logs-f-003",
+          "indexed": 54
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:39.661564+00:00",
+  "generated_at": "2026-05-23T03:03:25.041952+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
