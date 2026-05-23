@@ -31,3 +31,4 @@
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "feature_id": "F-017", "timestamp": "2026-05-23T02:36:44.485643+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "feature_id": "F-017", "timestamp": "2026-05-23T02:36:46.698959+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "feature_id": "F-017", "timestamp": "2026-05-23T02:43:40.432645+00:00"}
+{"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "feature_id": "F-017", "timestamp": "2026-05-23T02:43:47.780712+00:00"}
