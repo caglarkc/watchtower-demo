@@ -28,6 +28,14 @@ P3_FEATURES = {
 
 # F-004 and others not in P0-P3 lists fall through to default L0.
 RI0_CURRENT_LEVEL = "L0"
+RI1_FEATURES = frozenset(
+    {
+        "F-001", "F-002", "F-003", "F-005", "F-006", "F-007", "F-008",
+        "F-010", "F-011", "F-015", "F-037", "F-038", "F-039", "F-040", "F-041",
+        "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
+    }
+)
+RI1_CURRENT_LEVEL = "L2"
 
 TARGET_LEVEL_BY_PRIORITY = {
     "P0": "L2",
@@ -131,8 +139,9 @@ def real_metadata_for(feature_id: str, simulation_source: str, evidence_expected
     priority = _priority(feature_id)
     tool = _infer_real_tool(simulation_source)
     target = TARGET_LEVEL_BY_PRIORITY.get(priority, "L2")
+    current = RI1_CURRENT_LEVEL if fid in RI1_FEATURES else RI0_CURRENT_LEVEL
     return {
-        "real_parity_level": RI0_CURRENT_LEVEL,
+        "real_parity_level": current,
         "real_parity_target": target,
         "real_priority": priority,
         "real_tool": tool,
