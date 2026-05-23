@@ -4,3 +4,4 @@
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "feature_id": "F-008", "timestamp": "2026-05-23T01:09:46.672773+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "feature_id": "F-008", "timestamp": "2026-05-23T01:16:22.198196+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "feature_id": "F-008", "timestamp": "2026-05-23T01:16:23.737721+00:00"}
+{"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "feature_id": "F-008", "timestamp": "2026-05-23T01:25:44.795943+00:00"}

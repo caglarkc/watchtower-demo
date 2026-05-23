@@ -1,2 +1,3 @@
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T01:16:16.923348+00:00"}
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 5, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T01:16:19.324090+00:00"}
+{"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T01:25:45.131416+00:00"}

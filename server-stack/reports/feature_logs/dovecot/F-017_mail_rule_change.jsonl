@@ -2,3 +2,4 @@
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "feature_id": "F-017", "timestamp": "2026-05-23T01:09:42.990808+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "feature_id": "F-017", "timestamp": "2026-05-23T01:16:25.038148+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "feature_id": "F-017", "timestamp": "2026-05-23T01:16:26.681852+00:00"}
+{"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "feature_id": "F-017", "timestamp": "2026-05-23T01:25:45.421813+00:00"}
