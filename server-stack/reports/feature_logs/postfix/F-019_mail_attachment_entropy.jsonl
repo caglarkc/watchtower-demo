@@ -33,3 +33,4 @@
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "feature_id": "F-019", "timestamp": "2026-05-23T02:43:40.623914+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "feature_id": "F-019", "timestamp": "2026-05-23T02:43:47.962220+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "feature_id": "F-019", "timestamp": "2026-05-23T02:43:58.128077+00:00"}
+{"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "feature_id": "F-019", "timestamp": "2026-05-23T02:44:00.337562+00:00"}
