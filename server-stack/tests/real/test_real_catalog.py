@@ -45,13 +45,23 @@ def test_all_features_have_real_field(features_doc: dict, field: str) -> None:
         assert feat.get(field), f"{fid}: missing {field}"
 
 
+RI1 = {
+    "F-001", "F-002", "F-003", "F-005", "F-006", "F-007", "F-008",
+    "F-010", "F-011", "F-015", "F-037", "F-038", "F-039", "F-040", "F-041",
+    "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
+}
+
+
 @pytest.mark.real
 def test_real_parity_levels_are_valid(features_doc: dict) -> None:
     for feat in features_doc["features"]:
+        fid = feat["feature_id"]
         level = feat["real_parity_level"]
         target = feat.get("real_parity_target", "L2")
-        assert level in VALID_LEVELS, feat["feature_id"]
-        assert target in VALID_LEVELS, feat["feature_id"]
+        assert level in VALID_LEVELS, fid
+        assert target in VALID_LEVELS, fid
+        if fid in RI1:
+            assert level == "L2", fid
 
 
 @pytest.mark.real
