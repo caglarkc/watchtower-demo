@@ -2,37 +2,62 @@
   "id": "F-001",
   "feature_id": "F-001",
   "title": "Kullanıcı Başına SMB/Dosya Sunucu Veri Çekim Profili",
-  "mode": "negative",
-  "parity_level": "L0",
+  "mode": "positive",
+  "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-files",
   "actions_executed": [
     {
-      "command": "make real-feature-negative FEATURE=F-001",
-      "status": "stub:RI-0",
-      "note": "Synthetic stack remains authoritative; real action deferred to RI-1+"
+      "service": "samba-files-actions",
+      "response": {
+        "events": 5,
+        "smb_attempted": true
+      }
+    },
+    {
+      "service": "zeek",
+      "response": {
+        "written": 1,
+        "log": "/var/log/corp/zeek/conn.log"
+      }
     }
   ],
   "raw_logs_asserted": [
     {
-      "assertion": "samba-files:/var/log/samba/audit.log:SMB read volume event",
-      "mode": "negative",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+      "records": 20,
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "pending:L3:elasticsearch:wazuh-alerts-*",
-      "result": "SKIP:L0"
+      "assertion": "elasticsearch:corp-logs:F-001",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
     }
   ],
   "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "SMB read volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:19:23.883977+00:00",
+  "generated_at": "2026-05-23T02:28:17.860459+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
