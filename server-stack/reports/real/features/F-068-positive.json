@@ -1,28 +1,28 @@
 {
-  "id": "F-013",
-  "feature_id": "F-013",
-  "title": "Secret Store Okuma Burst",
-  "mode": "negative",
+  "id": "F-068",
+  "feature_id": "F-068",
+  "title": "İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "vault",
+  "real_tool": "squid-proxy",
   "actions_executed": [
     {
-      "service": "vault",
+      "service": "proxy",
       "response": {
-        "reads": 1
+        "logged": true
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/vault/audit.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/proxy/proxy_sink.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-013",
+      "assertion": "L3:elasticsearch:corp-logs:F-068",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,10 +43,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
-  "evidence_expected": "secret read burst event",
+  "anomaly_detected": true,
+  "evidence_expected": "first external high-volume transfer",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:26.732682+00:00",
+  "generated_at": "2026-05-23T02:43:26.361416+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

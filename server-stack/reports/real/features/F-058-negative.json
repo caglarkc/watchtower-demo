@@ -1,23 +1,22 @@
 {
-  "id": "F-035",
-  "feature_id": "F-035",
-  "title": "AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi",
+  "id": "F-058",
+  "feature_id": "F-058",
+  "title": "DLP Agent Sağlık ve Bypass Denemesi",
   "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "ai-gateway",
+  "real_tool": "dlp-agent",
   "actions_executed": [
     {
-      "service": "ai-gateway",
+      "service": "dlp",
       "response": {
-        "accepted": true,
-        "tokens": 10
+        "status": "logged"
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dlp/health.jsonl",
       "result": "PASS"
     }
   ],
@@ -29,9 +28,9 @@
     "seeds/real/ai/uploads/sample.bin"
   ],
   "anomaly_detected": false,
-  "evidence_expected": "security-procedure discovery prompt",
+  "evidence_expected": "DLP disable/bypass event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:27.464314+00:00",
+  "generated_at": "2026-05-23T02:43:28.067766+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

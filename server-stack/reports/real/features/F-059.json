@@ -1,23 +1,23 @@
 {
-  "id": "F-035",
-  "feature_id": "F-035",
-  "title": "AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi",
+  "id": "F-059",
+  "feature_id": "F-059",
+  "title": "Clipboard Büyük Veri Kopyalama",
   "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "ai-gateway",
+  "real_tool": "endpoint-synthetic",
   "actions_executed": [
     {
-      "service": "ai-gateway",
+      "service": "endpoint",
       "response": {
-        "accepted": true,
-        "tokens": 10
+        "written": "/var/log/corp/endpoint/clipboard_large_copy.jsonl",
+        "event_type": "clipboard_large_copy"
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/clipboard_large_copy.jsonl",
       "result": "PASS"
     }
   ],
@@ -29,9 +29,9 @@
     "seeds/real/ai/uploads/sample.bin"
   ],
   "anomaly_detected": false,
-  "evidence_expected": "security-procedure discovery prompt",
+  "evidence_expected": "large clipboard copy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:27.464314+00:00",
+  "generated_at": "2026-05-23T02:43:28.188068+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

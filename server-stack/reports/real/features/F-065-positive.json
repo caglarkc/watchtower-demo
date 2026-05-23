@@ -1,0 +1,38 @@
+{
+  "id": "F-065",
+  "feature_id": "F-065",
+  "title": "Uzun Süre Kullanılmayan Sistemlere Ani Erişim",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "endpoint-synthetic",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/dormant_system_access.jsonl",
+        "event_type": "dormant_system_access"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/dormant_system_access.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "dormant system sudden access",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:43:25.946840+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

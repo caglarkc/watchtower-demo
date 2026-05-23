@@ -1,0 +1,38 @@
+{
+  "id": "F-060",
+  "feature_id": "F-060",
+  "title": "Ekran Görüntüsü Alma Frekansı",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "endpoint-synthetic",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/screenshot_spike.jsonl",
+        "event_type": "screenshot_spike"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/screenshot_spike.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "screenshot frequency spike",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:43:25.459732+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

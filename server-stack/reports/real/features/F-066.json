@@ -1,22 +1,22 @@
 {
-  "id": "F-044",
-  "feature_id": "F-044",
-  "title": "Bilgi Bankası/Wiki/Intranet Toplu İndirme",
-  "mode": "negative",
+  "id": "F-066",
+  "feature_id": "F-066",
+  "title": "Akran Grup Davranışından İstatistiksel Sapma",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "wiki-app",
+  "real_tool": "endpoint-synthetic",
   "actions_executed": [
     {
-      "service": "wiki",
+      "service": "activity",
       "response": {
-        "pages": 2
+        "logged": true
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/wiki/access.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/activity/input.jsonl",
       "result": "PASS"
     }
   ],
@@ -27,10 +27,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
-  "evidence_expected": "bulk intranet/wiki download",
+  "anomaly_detected": true,
+  "evidence_expected": "peer group statistical deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:27.947165+00:00",
+  "generated_at": "2026-05-23T02:43:26.065581+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

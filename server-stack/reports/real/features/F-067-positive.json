@@ -1,28 +1,38 @@
 {
-  "id": "F-013",
-  "feature_id": "F-013",
-  "title": "Secret Store Okuma Burst",
-  "mode": "negative",
+  "id": "F-067",
+  "feature_id": "F-067",
+  "title": "Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "vault",
+  "real_tool": "squid-proxy",
   "actions_executed": [
     {
-      "service": "vault",
+      "service": "cloud",
       "response": {
-        "reads": 1
+        "stored": true
+      }
+    },
+    {
+      "service": "proxy",
+      "response": {
+        "stored": true
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/vault/audit.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/cloud/upload.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/proxy/proxy_sink.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-013",
+      "assertion": "L3:elasticsearch:corp-logs:F-067",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,10 +53,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
-  "evidence_expected": "secret read burst event",
+  "anomaly_detected": true,
+  "evidence_expected": "personal cloud large upload",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:26.732682+00:00",
+  "generated_at": "2026-05-23T02:43:26.195030+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
