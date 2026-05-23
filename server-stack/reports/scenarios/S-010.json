@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-010",
   "title": "İK'dan Toplu CV Arşivi Kopyası",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "İK",
   "deterministic_seed": 1010,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for İK'dan Toplu CV Arşivi Kopyası",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,20 +24,20 @@
       "user_role": "İK",
       "category": "veri sızdırma",
       "seed": 1010,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "smb_bulk_io",
-      "read_bytes": 320000000,
+      "read_bytes": 18400000000,
       "write_bytes": 0,
       "source_feature": "F-038",
       "scenario_id": "S-010"
     },
     {
       "event_type": "smb_access",
-      "share": "dev",
+      "share": "legal",
       "user_dept": "dev",
-      "files": 3,
+      "files": 41,
       "source_feature": "F-037",
       "scenario_id": "S-010"
     }
@@ -47,12 +47,9 @@
     "reports/scenario_logs/S-010/scenarios/smb_bulk_io.jsonl",
     "reports/scenario_logs/S-010/scenarios/smb_access.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:19:57.035068+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:29:17.661612+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-010:1010:negative"
+  "replay_key": "S-010:1010:positive"
 }
