@@ -314,7 +314,10 @@ def create_alert_case(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
             graph_run_id=state["run_id"],
             run_id=state["run_id"],
             candidate_id=cand.id,
-            payload={"assessment": assessment},
+            payload={
+                "assessment": assessment,
+                "llm_explanation": state.get("llm_explanation"),
+            },
         )
         out = {"alert_case_id": case.id, "alert_id": alert.id}
     else:
