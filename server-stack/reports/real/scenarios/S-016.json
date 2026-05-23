@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-016",
   "title": "Gece Admin Kerberos TGT Zinciri",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2016,
@@ -22,7 +22,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 1
+            "events": 5
           }
         }
       ],
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-008",
-            "count": 1600,
+            "count": 1920,
             "result": "PASS"
           },
           "result": "PASS",
@@ -78,7 +78,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -116,19 +116,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 4660,
+            "count": 5784,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 137,
+            "indexed": 145,
             "index": "corp-logs-f-015",
             "pipeline": {
               "feature_id": "F-015",
               "index": "corp-logs-f-015",
-              "indexed": 137
+              "indexed": 145
             }
           }
         }
@@ -183,19 +183,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 5734,
+            "count": 7084,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 146,
+            "indexed": 155,
             "index": "corp-logs-f-079",
             "pipeline": {
               "feature_id": "F-079",
               "index": "corp-logs-f-079",
-              "indexed": 146
+              "indexed": 155
             }
           }
         }
@@ -211,13 +211,13 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 1
+        "events": 5
       }
     },
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -280,7 +280,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-008",
-        "count": 1600,
+        "count": 1920,
         "result": "PASS"
       },
       "result": "PASS",
@@ -310,19 +310,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 4660,
+        "count": 5784,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 137,
+        "indexed": 145,
         "index": "corp-logs-f-015",
         "pipeline": {
           "feature_id": "F-015",
           "index": "corp-logs-f-015",
-          "indexed": 137
+          "indexed": 145
         }
       }
     },
@@ -340,19 +340,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 5734,
+        "count": 7084,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 146,
+        "indexed": 155,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 146
+          "indexed": 155
         }
       }
     }
@@ -362,12 +362,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:21.341198+00:00",
+  "generated_at": "2026-05-23T03:19:13.910221+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-016:2016:negative:real"
+  "replay_key": "S-016:2016:positive:real"
 }
