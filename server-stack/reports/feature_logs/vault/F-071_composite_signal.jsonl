@@ -1,0 +1,1 @@
+{"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "feature_id": "F-071", "timestamp": "2026-05-23T01:16:18.649159+00:00"}

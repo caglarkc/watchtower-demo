@@ -1,0 +1,2 @@
+{"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T01:16:18.854086+00:00"}
+{"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T01:16:21.235509+00:00"}
