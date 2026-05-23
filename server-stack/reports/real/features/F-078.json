@@ -2,7 +2,7 @@
   "id": "F-078",
   "feature_id": "F-078",
   "title": "Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -11,7 +11,8 @@
       "service": "hris",
       "response": {
         "systems": [
-          "dev-git"
+          "payroll-db",
+          "dc-admin"
         ]
       }
     }
@@ -56,10 +57,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "contractor out-of-scope system use",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:49.915992+00:00",
+  "generated_at": "2026-05-23T05:10:26.447208+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -57,7 +57,7 @@
   "anomaly_detected": false,
   "evidence_expected": "compressed activity burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:45.343236+00:00",
+  "generated_at": "2026-05-23T05:10:23.886179+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
