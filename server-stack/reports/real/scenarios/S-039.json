@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-039",
   "title": "PM SIEM Konsol Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "Proje Yöneticisi",
   "deterministic_seed": 3039,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-051",
-            "count": 2800,
+            "count": 2960,
             "result": "PASS"
           },
           "result": "PASS",
@@ -103,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-050",
-            "count": 3520,
+            "count": 3840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-051",
-        "count": 2800,
+        "count": 2960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -197,7 +197,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-050",
-        "count": 3520,
+        "count": 3840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -220,12 +220,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:56.865722+00:00",
+  "generated_at": "2026-05-23T05:12:22.101514+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-039:3039:positive:real"
+  "replay_key": "S-039:3039:negative:real"
 }
