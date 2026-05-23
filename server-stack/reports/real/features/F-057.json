@@ -36,7 +36,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-057",
-        "count": 3364,
+        "count": 3444,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "promiscuous mode change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:42.496992+00:00",
+  "generated_at": "2026-05-23T10:27:44.673777+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

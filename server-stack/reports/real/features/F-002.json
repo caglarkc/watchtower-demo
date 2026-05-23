@@ -2,7 +2,7 @@
   "id": "F-002",
   "feature_id": "F-002",
   "title": "East-West Lateral Trafik Patterni",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "zeek",
@@ -10,7 +10,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 20,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     }
@@ -37,7 +37,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-002",
-        "count": 4800,
+        "count": 4960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -59,10 +59,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "host/port fan-out event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:21.201829+00:00",
+  "generated_at": "2026-05-23T10:27:44.590543+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
