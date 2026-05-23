@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-058",
   "title": "Hukuk Bilgisayarına Bilinmeyen USB Takılması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "Hukuk",
   "deterministic_seed": 5058,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-055",
-            "count": 6335,
+            "count": 6735,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 4762,
+            "count": 5082,
             "result": "PASS"
           },
           "result": "PASS",
@@ -169,7 +169,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 6335,
+        "count": 6735,
         "result": "PASS"
       },
       "result": "PASS",
@@ -199,7 +199,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 4762,
+        "count": 5082,
         "result": "PASS"
       },
       "result": "PASS",
@@ -221,12 +221,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:31.199313+00:00",
+  "generated_at": "2026-05-23T08:41:54.690224+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-058:5058:positive:real"
+  "replay_key": "S-058:5058:negative:real"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-059",
   "title": "Stajyerin Kaynak Kod Aynası",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 6059,
@@ -23,7 +23,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 8
+            "clones": 1
           }
         },
         {
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 12103,
+            "count": 12583,
             "result": "PASS"
           },
           "result": "PASS",
@@ -170,7 +170,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 5882,
+            "count": 6282,
             "result": "PASS"
           },
           "result": "PASS",
@@ -203,7 +203,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 42
+            "tokens": 13
           }
         }
       ],
@@ -253,7 +253,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 8
+        "clones": 1
       }
     },
     {
@@ -280,7 +280,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     }
   ],
@@ -321,7 +321,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 12103,
+        "count": 12583,
         "result": "PASS"
       },
       "result": "PASS",
@@ -377,7 +377,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 5882,
+        "count": 6282,
         "result": "PASS"
       },
       "result": "PASS",
@@ -430,12 +430,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:31.640698+00:00",
+  "generated_at": "2026-05-23T08:41:55.065986+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-059:6059:positive:real"
+  "replay_key": "S-059:6059:negative:real"
 }
