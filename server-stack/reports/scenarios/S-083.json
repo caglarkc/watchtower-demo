@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-083",
   "title": "Aynı Dosyaya Zincirleme Çapraz Departman Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "Satış",
   "deterministic_seed": 9083,
@@ -16,7 +16,7 @@
     "wiki-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Aynı Dosyaya Zincirleme Çapraz Departman Erişimi",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -26,28 +26,28 @@
       "user_role": "Satış",
       "category": "çapraz/multi-user",
       "seed": 9083,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "multi_user_file_chain",
       "log_channel": "wiki",
       "file_id": "contract-991",
-      "users": 3,
+      "users": 1,
       "window_minutes": 30,
       "source_feature": "F-073",
       "scenario_id": "S-083"
     },
     {
       "event_type": "smb_rename_storm",
-      "renames_per_minute": 120,
+      "renames_per_minute": 2,
       "source_feature": "F-039",
       "scenario_id": "S-083"
     },
     {
       "event_type": "smb_access",
-      "share": "legal",
+      "share": "dev",
       "user_dept": "dev",
-      "files": 41,
+      "files": 3,
       "source_feature": "F-037",
       "scenario_id": "S-083"
     }
@@ -58,9 +58,12 @@
     "reports/scenario_logs/S-083/scenarios/smb_rename_storm.jsonl",
     "reports/scenario_logs/S-083/scenarios/smb_access.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T03:08:40.995086+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T03:08:43.822814+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-083:9083:positive"
+  "replay_key": "S-083:9083:negative"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-078",
   "title": "Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "Destek Personeli",
   "deterministic_seed": 8078,
@@ -17,7 +17,7 @@
     "roundcube"
   ],
   "expected_evidence": "Multi-signal workflow for Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "events": [
     {
@@ -27,12 +27,12 @@
       "user_role": "Destek Personeli",
       "category": "sosyal mühendislik",
       "seed": 8078,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 5200,
+      "status_4xx": 12,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-078"
@@ -40,7 +40,7 @@
     {
       "event_type": "ad_auth",
       "event_id": 4625,
-      "count": 18,
+      "count": 1,
       "source_feature": "F-006",
       "scenario_id": "S-078"
     },
@@ -54,7 +54,7 @@
     {
       "event_type": "webmail_login_attempt",
       "log_channel": "roundcube",
-      "account": "personal@gmail.com",
+      "account": "user@corp.local",
       "source_feature": "F-029",
       "scenario_id": "S-078"
     }
@@ -66,9 +66,12 @@
     "reports/scenario_logs/S-078/scenarios/ad_auth.jsonl",
     "reports/scenario_logs/S-078/roundcube/webmail_login_attempt.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T03:08:40.822397+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T03:08:43.641655+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-078:8078:positive"
+  "replay_key": "S-078:8078:negative"
 }

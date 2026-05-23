@@ -21,3 +21,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-048", "user_role": "Proje Yöneticisi", "category": "insider threat", "seed": 4048, "anomaly": true, "timestamp": "2026-05-23T02:57:28.152810+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-048", "user_role": "Proje Yöneticisi", "category": "insider threat", "seed": 4048, "anomaly": false, "timestamp": "2026-05-23T02:57:31.015909+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-048", "user_role": "Proje Yöneticisi", "category": "insider threat", "seed": 4048, "anomaly": true, "timestamp": "2026-05-23T03:08:39.773738+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-048", "user_role": "Proje Yöneticisi", "category": "insider threat", "seed": 4048, "anomaly": false, "timestamp": "2026-05-23T03:08:42.604198+00:00"}

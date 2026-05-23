@@ -21,3 +21,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-080", "user_role": "IT Admin", "category": "çapraz/multi-user", "seed": 9080, "anomaly": true, "timestamp": "2026-05-23T02:57:29.196812+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-080", "user_role": "IT Admin", "category": "çapraz/multi-user", "seed": 9080, "anomaly": false, "timestamp": "2026-05-23T02:57:32.079443+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-080", "user_role": "IT Admin", "category": "çapraz/multi-user", "seed": 9080, "anomaly": true, "timestamp": "2026-05-23T03:08:40.889564+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-080", "user_role": "IT Admin", "category": "çapraz/multi-user", "seed": 9080, "anomaly": false, "timestamp": "2026-05-23T03:08:43.716296+00:00"}

@@ -21,3 +21,4 @@
 {"event_type": "mail_bcc_anomaly", "log_channel": "postfix", "bcc_count": 11, "distribution_list": true, "source_feature": "F-020", "scenario_id": "S-079", "timestamp": "2026-05-23T02:57:29.151799+00:00"}
 {"event_type": "mail_bcc_anomaly", "log_channel": "postfix", "bcc_count": 0, "distribution_list": false, "source_feature": "F-020", "scenario_id": "S-079", "timestamp": "2026-05-23T02:57:32.047821+00:00"}
 {"event_type": "mail_bcc_anomaly", "log_channel": "postfix", "bcc_count": 11, "distribution_list": true, "source_feature": "F-020", "scenario_id": "S-079", "timestamp": "2026-05-23T03:08:40.855769+00:00"}
+{"event_type": "mail_bcc_anomaly", "log_channel": "postfix", "bcc_count": 0, "distribution_list": false, "source_feature": "F-020", "scenario_id": "S-079", "timestamp": "2026-05-23T03:08:43.677447+00:00"}
