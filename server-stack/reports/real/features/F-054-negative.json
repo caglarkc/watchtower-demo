@@ -3,7 +3,7 @@
   "feature_id": "F-054",
   "title": "Kodlanmış veya Politika Atlatan Betik Komutları",
   "mode": "negative",
-  "parity_level": "L2",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
   "actions_executed": [
@@ -21,7 +21,38 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-054",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-054",
+        "count": 13,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 14,
+        "index": "corp-logs-f-054",
+        "pipeline": {
+          "feature_id": "F-054",
+          "index": "corp-logs-f-054",
+          "indexed": 14
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
@@ -31,7 +62,7 @@
   "anomaly_detected": false,
   "evidence_expected": "encoded/policy-bypass script event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:39.982996+00:00",
+  "generated_at": "2026-05-23T03:05:57.603704+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
