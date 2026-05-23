@@ -246,11 +246,13 @@ def ingest_once(
         try:
             tenant_id = require_bootstrap(session)
             result = session.ingest.ingest_once(tenant_id, source_id, limit=batch_limit)
+            session.metrics.record_ingest(tenant_id, result)
             session.audit.log(
                 "cli.ingest.once",
                 tenant_id=tenant_id,
                 details=result.model_dump(),
             )
+            session.conn.commit()
         except BootstrapRequiredError as exc:
             typer.echo(str(exc), err=True)
             raise typer.Exit(code=1) from exc
