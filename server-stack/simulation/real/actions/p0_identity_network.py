@@ -105,16 +105,23 @@ def run_action(feature_id: str, mode: str) -> dict[str, Any]:
 
         queries = _dig_queries(positive)
         results = []
-        query_log = Path(__file__).resolve().parents[3] / "logs" / "dns" / "query.log"
-        query_log.parent.mkdir(parents=True, exist_ok=True)
+        root = Path(__file__).resolve().parents[3]
+        query_log = root / "logs" / "dns" / "query.log"
+        fallback = root / "reports" / "real" / "logs" / "dns" / "query.log"
+        for path in (query_log, fallback):
+            path.parent.mkdir(parents=True, exist_ok=True)
         for q in queries:
             qtype = "TXT" if positive else "A"
             cmd = ["dig", f"@{BIND_DNS_IP}", q, qtype, "+time=2", "+tries=1"]
             proc = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
             results.append({"query": q, "returncode": proc.returncode})
-            query_log.open("a", encoding="utf-8").write(
-                f"{time.time()} client 172.28.0.100#12345 ({qtype}): {q}\n"
-            )
+            line = f"{time.time()} client 172.28.0.100#12345 ({qtype}): {q}\n"
+            for path in (query_log, fallback):
+                try:
+                    path.open("a", encoding="utf-8").write(line)
+                    break
+                except OSError:
+                    continue
         actions.append({"service": "bind-dns", "dig": results})
 
     elif feature_id == "F-005":
