@@ -16,6 +16,17 @@ BIND_DNS_IP = os.environ.get("BIND_DNS_IP", "172.28.0.12")
 ELASTICSEARCH_URL = os.environ.get("ELASTICSEARCH_URL", "http://172.28.0.17:9200")
 LOG_PIPELINE_URL = os.environ.get("LOG_PIPELINE_URL", "http://172.28.0.16:9201")
 
+POSTFIX_URL = os.environ.get("POSTFIX_URL", "http://172.28.0.20:8080")
+DOVECOT_URL = os.environ.get("DOVECOT_URL", "http://172.28.0.21:8080")
+ROUNDCUBE_URL = os.environ.get("ROUNDCUBE_URL", "http://172.28.0.22:8080")
+POSTGRES_ACTIONS_URL = os.environ.get("POSTGRES_ACTIONS_URL", "http://172.28.0.44:8080")
+GITEA_ACTIONS_URL = os.environ.get("GITEA_ACTIONS_URL", "http://172.28.0.45:8080")
+NGINX_URL = os.environ.get("NGINX_URL", "http://172.28.0.25")
+INTERNAL_APP_URL = os.environ.get("INTERNAL_APP_URL", "http://172.28.0.26:8080")
+ARTIFACT_URL = os.environ.get("ARTIFACT_URL", "http://172.28.0.27:8080")
+SIEM_URL = os.environ.get("SIEM_URL", "http://172.28.0.28:8080")
+HYPERVISOR_URL = os.environ.get("HYPERVISOR_URL", "http://172.28.0.29:8080")
+
 LOG_PATHS = {
     "samba-ad": ROOT / "logs" / "identity" / "ad_events.jsonl",
     "samba-audit": ROOT / "logs" / "samba" / "audit.log",
@@ -23,7 +34,22 @@ LOG_PATHS = {
     "bind-query": ROOT / "logs" / "dns" / "query.log",
     "dhcp": ROOT / "logs" / "dhcp" / "dhcpd.log",
     "endpoint": ROOT / "logs" / "endpoint",
+    "postfix": ROOT / "logs" / "postfix" / "postfix.jsonl",
+    "dovecot": ROOT / "logs" / "dovecot" / "dovecot.jsonl",
+    "roundcube": ROOT / "logs" / "roundcube" / "roundcube.jsonl",
+    "postgres-audit": ROOT / "logs" / "postgres" / "pg_audit.log",
+    "gitea-access": ROOT / "logs" / "gitea" / "gitea-access.jsonl",
+    "nginx-access": ROOT / "logs" / "nginx" / "access.log",
+    "app-audit": ROOT / "logs" / "app" / "audit.jsonl",
+    "siem-audit": ROOT / "logs" / "siem" / "audit.jsonl",
+    "hypervisor-audit": ROOT / "logs" / "hypervisor" / "audit.jsonl",
+    "artifact-audit": ROOT / "logs" / "artifact" / "audit.jsonl",
 }
+
+RI2_FEATURES = frozenset(
+    {f"F-{i:03d}" for i in range(16, 30)}
+    | {f"F-{i:03d}" for i in range(45, 55)}
+)
 
 RI1_FEATURES = frozenset(
     {
