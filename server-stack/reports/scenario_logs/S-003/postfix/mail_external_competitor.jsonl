@@ -8,3 +8,4 @@
 {"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "partner-approved.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T02:09:26.786168+00:00"}
 {"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "rival-corp.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T02:10:17.268444+00:00"}
 {"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "partner-approved.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T02:10:20.195749+00:00"}
+{"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "rival-corp.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T02:19:53.974269+00:00"}
