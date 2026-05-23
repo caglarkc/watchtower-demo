@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RI-0 real integration coverage — metadata + evidence gate."""
+"""RI-0/RI-1 real integration coverage — metadata + evidence gate."""
 
 from __future__ import annotations
 
@@ -23,6 +23,14 @@ REQUIRED_META = (
     "ingest_assertion",
 )
 
+RI1_FEATURES = frozenset(
+    {
+        "F-001", "F-002", "F-003", "F-005", "F-006", "F-007", "F-008",
+        "F-010", "F-011", "F-015", "F-037", "F-038", "F-039", "F-040", "F-041",
+        "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
+    }
+)
+
 
 def load_features() -> list[dict]:
     doc = yaml.safe_load(FEATURES.read_text(encoding="utf-8"))
@@ -32,7 +40,7 @@ def load_features() -> list[dict]:
 def report() -> dict:
     features = load_features()
     rows = []
-    meta_ok = pos_ok = neg_ok = 0
+    meta_ok = pos_ok = neg_ok = ri1_l2 = 0
     for feat in features:
         fid = feat["feature_id"]
         has_meta = all(feat.get(f) for f in REQUIRED_META)
@@ -46,26 +54,43 @@ def report() -> dict:
             pos_ok += 1
         if has_neg:
             neg_ok += 1
+        level = feat.get("real_parity_level", "L0")
+        if fid in RI1_FEATURES and level in ("L2", "L3"):
+            ri1_l2 += 1
+        status = "PASS" if has_meta and has_pos and has_neg else "PENDING"
+        if fid in RI1_FEATURES and has_pos and has_neg:
+            try:
+                pdata = json.loads(pos.read_text(encoding="utf-8"))
+                ndata = json.loads(neg.read_text(encoding="utf-8"))
+                if pdata.get("result") == "PASS" and ndata.get("result") == "PASS":
+                    status = "PASS"
+            except json.JSONDecodeError:
+                pass
         rows.append(
             {
                 "feature_id": fid,
-                "real_parity_level": feat.get("real_parity_level"),
+                "real_parity_level": level,
                 "real_tool": feat.get("real_tool"),
                 "metadata_complete": has_meta,
                 "positive_evidence": has_pos,
                 "negative_evidence": has_neg,
-                "status": "PASS" if has_meta and has_pos and has_neg else "PENDING",
+                "status": status,
             }
         )
     implemented = sum(1 for r in rows if r["status"] == "PASS")
+    ri1_rows = [r for r in rows if r["feature_id"] in RI1_FEATURES]
+    ri1_pass = sum(1 for r in ri1_rows if r["status"] == "PASS")
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "phase": "RI-0",
+        "phase": "RI-1",
         "total_features": len(rows),
         "metadata_complete": meta_ok,
         "implemented": implemented,
         "positive_real_tests_passed": pos_ok,
         "negative_real_tests_passed": neg_ok,
+        "ri1_features": len(RI1_FEATURES),
+        "ri1_l2_metadata": ri1_l2,
+        "ri1_pass": ri1_pass,
         "l2_or_higher": sum(1 for r in rows if r.get("real_parity_level") in ("L2", "L3")),
         "waivers": [],
         "features": rows,
@@ -83,9 +108,9 @@ def main() -> int:
     out.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(
         f"wrote {out} metadata={data['metadata_complete']}/{data['total_features']} "
-        f"evidence={data['implemented']}/{data['total_features']}"
+        f"ri1={data['ri1_pass']}/{data['ri1_features']}"
     )
-    gate = data["metadata_complete"] == data["total_features"] == 81
+    gate = data["metadata_complete"] == 81 and data["ri1_l2_metadata"] == len(RI1_FEATURES)
     return 0 if gate else 1
 
 
