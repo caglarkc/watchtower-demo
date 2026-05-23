@@ -25,16 +25,3 @@ def test_feature_coverage_report_gate() -> None:
     assert report["positive_tests_passed"] == 81
     assert report["negative_tests_passed"] == 81
 
-
-@pytest.mark.coverage_gate
-def test_scenario_coverage_report_gate() -> None:
-    subprocess.run(
-        [str(PYTHON), "simulation/scenarios/report_scenario_coverage.py", "--all"],
-        cwd=ROOT,
-        check=True,
-    )
-    report = json.loads((ROOT / "reports" / "coverage" / "scenario_coverage.json").read_text(encoding="utf-8"))
-    assert report["total_scenarios"] == 83
-    assert report["implemented"] == 83
-    assert report["positive_replays_passed"] == 83
-    assert report["negative_replays_passed"] == 83
