@@ -88,6 +88,105 @@ class AlertRepository:
             (status, now, tenant_id, alert_id),
         )
 
+    def list_cases(
+        self,
+        tenant_id: str,
+        *,
+        status: str | None = None,
+        assigned_to: str | None = None,
+        limit: int = 100,
+    ) -> list[AlertCase]:
+        clauses = ["tenant_id = ?"]
+        params: list[Any] = [tenant_id]
+        if status:
+            clauses.append("status = ?")
+            params.append(status)
+        if assigned_to:
+            clauses.append("assigned_to = ?")
+            params.append(assigned_to)
+        sql = (
+            f"SELECT * FROM alert_cases WHERE {' AND '.join(clauses)} "
+            f"ORDER BY created_at DESC LIMIT ?"
+        )
+        params.append(limit)
+        rows = self._conn.execute(sql, params).fetchall()
+        return [self._case_from_row(r) for r in rows]
+
+    def get_graph_run_assessment(self, run_id: str) -> dict[str, Any] | None:
+        row = self._conn.execute(
+            "SELECT assessment_json, route_json FROM graph_runs WHERE id = ?",
+            (run_id,),
+        ).fetchone()
+        if row is None:
+            return None
+        assessment = json.loads(row["assessment_json"] or "{}")
+        if not assessment:
+            return None
+        return assessment
+
+    def get_graph_run_audit_summary(self, run_id: str) -> list[dict[str, Any]]:
+        rows = self._conn.execute(
+            """
+            SELECT node_name, output_json, created_at
+            FROM graph_run_audit WHERE run_id = ? ORDER BY created_at
+            """,
+            (run_id,),
+        ).fetchall()
+        return [
+            {
+                "node_name": r["node_name"],
+                "output": json.loads(r["output_json"] or "{}"),
+                "created_at": r["created_at"],
+            }
+            for r in rows
+        ]
+
+    def insert_timeline_entry(self, entry: CaseTimelineEntry) -> str:
+        self._conn.execute(
+            """
+            INSERT INTO case_timeline (
+                id, tenant_id, alert_id, case_id, event_type,
+                actor, comment, metadata_json, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                entry.id,
+                entry.tenant_id,
+                entry.alert_id,
+                entry.case_id,
+                entry.event_type,
+                entry.actor,
+                entry.comment,
+                json.dumps(entry.metadata, ensure_ascii=False, default=str),
+                entry.created_at.isoformat(),
+            ),
+        )
+        return entry.id
+
+    def list_timeline(
+        self,
+        tenant_id: str,
+        *,
+        alert_id: str | None = None,
+        case_id: str | None = None,
+        limit: int = 200,
+    ) -> list[CaseTimelineEntry]:
+        clauses = ["tenant_id = ?"]
+        params: list[Any] = [tenant_id]
+        if alert_id:
+            clauses.append("alert_id = ?")
+            params.append(alert_id)
+        if case_id:
+            clauses.append("case_id = ?")
+            params.append(case_id)
+        sql = (
+            f"SELECT * FROM case_timeline WHERE {' AND '.join(clauses)} "
+            f"ORDER BY created_at ASC LIMIT ?"
+        )
+        params.append(limit)
+        rows = self._conn.execute(sql, params).fetchall()
+        return [self._timeline_from_row(r) for r in rows]
+
     def list_alerts(
         self,
         tenant_id: str,
