@@ -168,6 +168,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main() -> None:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
+    _audit("system", "startup", "/share", note="samba-files-actions ready")
     HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 
 

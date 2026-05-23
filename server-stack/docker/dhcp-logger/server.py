@@ -58,6 +58,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
+    _write({"event": "DHCPBOOT", "note": "logger ready"})
     HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 
 
