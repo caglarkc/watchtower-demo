@@ -59,3 +59,4 @@
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["password", "token", "suppress"], "feature_id": "F-062", "timestamp": "2026-05-23T08:40:57.100900+00:00"}
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["dashboard"], "feature_id": "F-062", "timestamp": "2026-05-23T08:41:04.785204+00:00"}
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["password", "token", "suppress"], "feature_id": "F-062", "timestamp": "2026-05-23T08:41:17.231494+00:00"}
+{"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["dashboard"], "feature_id": "F-062", "timestamp": "2026-05-23T08:41:20.542062+00:00"}

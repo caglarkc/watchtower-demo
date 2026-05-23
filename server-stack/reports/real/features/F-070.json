@@ -2,7 +2,7 @@
   "id": "F-070",
   "feature_id": "F-070",
   "title": "Fiziksel Badge Geçişi ile Sistem Login Uyuşmazlığı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "badge-api",
@@ -10,7 +10,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": false
+        "mismatch": true
       }
     },
     {
@@ -60,10 +60,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "physical badge/login mismatch",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:13.713030+00:00",
+  "generated_at": "2026-05-23T08:41:22.377841+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

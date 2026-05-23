@@ -59,3 +59,4 @@
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "feature_id": "F-061", "timestamp": "2026-05-23T08:40:57.008352+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "feature_id": "F-061", "timestamp": "2026-05-23T08:41:04.686703+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "feature_id": "F-061", "timestamp": "2026-05-23T08:41:17.139664+00:00"}
+{"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "feature_id": "F-061", "timestamp": "2026-05-23T08:41:20.444574+00:00"}
