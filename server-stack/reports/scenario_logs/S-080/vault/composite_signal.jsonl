@@ -1,1 +1,2 @@
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:24.226276+00:00"}
+{"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:41.049613+00:00"}

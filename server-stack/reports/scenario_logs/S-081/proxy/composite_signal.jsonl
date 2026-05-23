@@ -1,1 +1,2 @@
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:24.259996+00:00"}
+{"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:41.088466+00:00"}

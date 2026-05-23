@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-046",
   "title": "İK Sisteminde Hayalet Çalışan Oluşturma",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "İK",
   "deterministic_seed": 4046,
@@ -14,7 +14,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for İK Sisteminde Hayalet Çalışan Oluşturma",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,13 +24,13 @@
       "user_role": "İK",
       "category": "insider threat",
       "seed": 4046,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "new_hire_excess_access",
       "log_channel": "hris",
       "day": 1,
-      "systems_accessed": 28,
+      "systems_accessed": 6,
       "source_feature": "F-075",
       "scenario_id": "S-046"
     }
@@ -39,9 +39,12 @@
     "reports/scenario_logs/S-046/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-046/hris/new_hire_excess_access.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T01:26:39.846655+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:26:42.783486+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-046:4046:positive"
+  "replay_key": "S-046:4046:negative"
 }

@@ -1,2 +1,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-066", "user_role": "Hukuk", "category": "politika ihlali", "seed": 6066, "anomaly": true, "timestamp": "2026-05-23T01:26:23.729881+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-066", "user_role": "Hukuk", "category": "politika ihlali", "seed": 6066, "anomaly": false, "timestamp": "2026-05-23T01:26:26.643039+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-066", "user_role": "Hukuk", "category": "politika ihlali", "seed": 6066, "anomaly": true, "timestamp": "2026-05-23T01:26:40.553133+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-066", "user_role": "Hukuk", "category": "politika ihlali", "seed": 6066, "anomaly": false, "timestamp": "2026-05-23T01:26:43.466996+00:00"}

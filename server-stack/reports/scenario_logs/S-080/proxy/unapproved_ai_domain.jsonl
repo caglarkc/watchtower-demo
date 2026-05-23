@@ -1,2 +1,4 @@
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "source_feature": "F-033", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:24.226779+00:00"}
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "ai-approved.corp.local", "allowed": true, "source_feature": "F-033", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:27.126224+00:00"}
+{"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "source_feature": "F-033", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:41.050038+00:00"}
+{"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "ai-approved.corp.local", "allowed": true, "source_feature": "F-033", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:43.972234+00:00"}

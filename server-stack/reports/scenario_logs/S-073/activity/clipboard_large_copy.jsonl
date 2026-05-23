@@ -1,2 +1,4 @@
 {"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 48000000, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T01:26:23.976933+00:00"}
 {"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 1200, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T01:26:26.880804+00:00"}
+{"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 48000000, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T01:26:40.800566+00:00"}
+{"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 1200, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T01:26:43.708047+00:00"}

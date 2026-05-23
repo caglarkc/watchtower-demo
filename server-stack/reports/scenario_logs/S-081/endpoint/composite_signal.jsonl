@@ -1,1 +1,2 @@
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:27.160704+00:00"}
+{"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:44.005302+00:00"}
