@@ -2,7 +2,7 @@
   "id": "F-031",
   "feature_id": "F-031",
   "title": "Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     }
   ],
@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 53,
+        "indexed": 59,
         "index": "corp-logs-f-031",
         "pipeline": {
           "feature_id": "F-031",
           "index": "corp-logs-f-031",
-          "indexed": 53
+          "indexed": 59
         }
       }
     }
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "source-code/architecture paste event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:16.334047+00:00",
+  "generated_at": "2026-05-23T03:11:19.594939+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

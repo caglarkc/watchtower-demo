@@ -2,7 +2,7 @@
   "id": "F-065",
   "feature_id": "F-065",
   "title": "Uzun Süre Kullanılmayan Sistemlere Ani Erişim",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 8,
+        "indexed": 9,
         "index": "corp-logs-f-065",
         "pipeline": {
           "feature_id": "F-065",
           "index": "corp-logs-f-065",
-          "indexed": 8
+          "indexed": 9
         }
       }
     }
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "dormant system sudden access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:07:04.078703+00:00",
+  "generated_at": "2026-05-23T03:11:18.467507+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
