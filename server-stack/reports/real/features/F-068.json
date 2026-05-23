@@ -2,7 +2,7 @@
   "id": "F-068",
   "feature_id": "F-068",
   "title": "İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "squid-proxy",
@@ -38,12 +38,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 36,
+        "indexed": 40,
         "index": "corp-logs-f-068",
         "pipeline": {
           "feature_id": "F-068",
           "index": "corp-logs-f-068",
-          "indexed": 36
+          "indexed": 40
         }
       }
     }
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "first external high-volume transfer",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:06:57.937236+00:00",
+  "generated_at": "2026-05-23T03:07:04.500823+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
