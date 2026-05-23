@@ -2,3 +2,4 @@
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "feature_id": "F-067", "timestamp": "2026-05-23T01:16:20.733889+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "feature_id": "F-067", "timestamp": "2026-05-23T01:25:48.833084+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "feature_id": "F-067", "timestamp": "2026-05-23T01:25:54.372367+00:00"}
+{"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "feature_id": "F-067", "timestamp": "2026-05-23T01:26:03.450174+00:00"}
