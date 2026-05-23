@@ -55,15 +55,14 @@ class GraphCheckpointStore:
         return self._saver
 
     def thread_has_checkpoint(self, thread_id: str) -> bool:
-        if self.kind != "sqlite" or self._conn is None:
-            if self.kind == "memory" and self._memory is not None:
-                config = {"configurable": {"thread_id": thread_id}}
-                return self._memory.get_tuple(config) is not None
+        if self.kind == "memory":
             self.get_checkpointer()
-            if self.kind == "memory" and self._memory is not None:
-                config = {"configurable": {"thread_id": thread_id}}
-                return self._memory.get_tuple(config) is not None
-            return False
+            if self._memory is None:
+                return False
+            config = {"configurable": {"thread_id": thread_id}}
+            return self._memory.get_tuple(config) is not None
+        self.get_checkpointer()
+        assert self._conn is not None
         row = self._conn.execute(
             "SELECT 1 FROM checkpoints WHERE thread_id = ? LIMIT 1",
             (thread_id,),
