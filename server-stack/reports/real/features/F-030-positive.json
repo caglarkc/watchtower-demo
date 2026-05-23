@@ -1,28 +1,29 @@
 {
-  "id": "F-013",
-  "feature_id": "F-013",
-  "title": "Secret Store Okuma Burst",
+  "id": "F-030",
+  "feature_id": "F-030",
+  "title": "Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "vault",
+  "real_tool": "ai-gateway",
   "actions_executed": [
     {
-      "service": "vault",
+      "service": "ai-gateway",
       "response": {
-        "reads": 25
+        "accepted": true,
+        "tokens": 25
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/vault/audit.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-013",
+      "assertion": "L3:elasticsearch:corp-logs:F-030",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -44,9 +45,9 @@
     "seeds/real/ai/uploads/sample.bin"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "secret read burst event",
+  "evidence_expected": "confidential prompt/upload event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:19.131393+00:00",
+  "generated_at": "2026-05-23T02:43:19.379849+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
