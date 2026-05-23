@@ -1,2 +1,3 @@
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "source_feature": "F-068", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:21.572645+00:00"}
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "partner.corp.local", "mb": 50, "first_seen": false, "source_feature": "F-068", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:24.434294+00:00"}
+{"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "source_feature": "F-068", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:38.344130+00:00"}

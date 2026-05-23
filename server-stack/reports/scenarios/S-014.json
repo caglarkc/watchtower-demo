@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-014",
   "title": "Admin Prod-HR VM Snapshot",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "IT Admin",
   "deterministic_seed": 1014,
@@ -16,7 +16,7 @@
     "hypervisor-console"
   ],
   "expected_evidence": "Multi-signal workflow for Admin Prod-HR VM Snapshot",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -26,12 +26,12 @@
       "user_role": "IT Admin",
       "category": "veri sızdırma",
       "seed": 1014,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "hypervisor_console_access",
       "log_channel": "hypervisor",
-      "user": "it-admin",
+      "user": "pm",
       "console": "proxmox",
       "source_feature": "F-051",
       "scenario_id": "S-014"
@@ -39,15 +39,15 @@
     {
       "event_type": "smb_read_volume",
       "user": "cfo",
-      "bytes_read": 800000000,
-      "anomaly": false,
+      "bytes_read": 14000000000,
+      "anomaly": true,
       "source_feature": "F-001",
       "scenario_id": "S-014"
     },
     {
       "event_type": "usb_write",
-      "device_id": null,
-      "bytes_written": 0,
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
       "source_feature": "F-055",
       "scenario_id": "S-014"
     }
@@ -58,12 +58,9 @@
     "reports/scenario_logs/S-014/scenarios/smb_read_volume.jsonl",
     "reports/scenario_logs/S-014/scenarios/usb_write.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:26:24.820800+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:38.729901+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-014:1014:negative"
+  "replay_key": "S-014:1014:positive"
 }

@@ -39,7 +39,7 @@
     "reports/scenario_logs/S-027/dovecot/mail_rule_change.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:26:22.377737+00:00",
+  "generated_at": "2026-05-23T01:26:39.213708+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-027:2027:positive"

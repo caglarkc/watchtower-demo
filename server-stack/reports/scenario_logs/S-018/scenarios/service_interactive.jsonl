@@ -1,2 +1,3 @@
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "source_feature": "F-010", "scenario_id": "S-018", "timestamp": "2026-05-23T01:26:22.076300+00:00"}
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 5, "source_feature": "F-010", "scenario_id": "S-018", "timestamp": "2026-05-23T01:26:24.958192+00:00"}
+{"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "source_feature": "F-010", "scenario_id": "S-018", "timestamp": "2026-05-23T01:26:38.859274+00:00"}

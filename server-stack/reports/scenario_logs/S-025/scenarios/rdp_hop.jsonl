@@ -1,2 +1,3 @@
 {"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "source_feature": "F-015", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:22.313776+00:00"}
 {"event_type": "rdp_hop", "hops": ["ws1", "files1"], "source_feature": "F-015", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:25.203388+00:00"}
+{"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "source_feature": "F-015", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:39.145105+00:00"}

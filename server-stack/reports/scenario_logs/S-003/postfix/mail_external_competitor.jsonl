@@ -1,2 +1,3 @@
 {"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "rival-corp.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:21.572574+00:00"}
 {"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "partner-approved.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:24.434229+00:00"}
+{"event_type": "mail_external_competitor", "log_channel": "postfix", "recipient_domain": "rival-corp.com", "source_feature": "F-022", "scenario_id": "S-003", "timestamp": "2026-05-23T01:26:38.344060+00:00"}

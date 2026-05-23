@@ -1,2 +1,3 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-035", "user_role": "Stajyer", "category": "yetkisiz erişim", "seed": 3035, "anomaly": true, "timestamp": "2026-05-23T01:26:22.650382+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-035", "user_role": "Stajyer", "category": "yetkisiz erişim", "seed": 3035, "anomaly": false, "timestamp": "2026-05-23T01:26:25.552221+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-035", "user_role": "Stajyer", "category": "yetkisiz erişim", "seed": 3035, "anomaly": true, "timestamp": "2026-05-23T01:26:39.492828+00:00"}

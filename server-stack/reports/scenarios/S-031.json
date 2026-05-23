@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-031",
   "title": "CTO Bilgisayarından SSH Anahtarı Hasadı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "CTO",
   "deterministic_seed": 3031,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for CTO Bilgisayarından SSH Anahtarı Hasadı",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,21 +24,21 @@
       "user_role": "CTO",
       "category": "yetkisiz erişim",
       "seed": 3031,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "local_sensitive_accumulation",
       "log_channel": "endpoint",
-      "labeled_files": 5,
-      "gb": 0.4,
+      "labeled_files": 420,
+      "gb": 18,
       "source_feature": "F-042",
       "scenario_id": "S-031"
     },
     {
       "event_type": "encoded_powershell",
       "log_channel": "endpoint",
-      "encoded_command": false,
-      "bypass_policy": false,
+      "encoded_command": true,
+      "bypass_policy": true,
       "source_feature": "F-054",
       "scenario_id": "S-031"
     }
@@ -48,12 +48,9 @@
     "reports/scenario_logs/S-031/endpoint/local_sensitive_accumulation.jsonl",
     "reports/scenario_logs/S-031/endpoint/encoded_powershell.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:26:25.407708+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:39.347618+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-031:3031:negative"
+  "replay_key": "S-031:3031:positive"
 }

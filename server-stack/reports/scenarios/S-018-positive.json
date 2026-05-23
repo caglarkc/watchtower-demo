@@ -60,7 +60,7 @@
     "reports/scenario_logs/S-018/scenarios/rdp_hop.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:26:22.077495+00:00",
+  "generated_at": "2026-05-23T01:26:38.860422+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-018:2018:positive"

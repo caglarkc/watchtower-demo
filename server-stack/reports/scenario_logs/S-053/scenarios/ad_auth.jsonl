@@ -2,3 +2,5 @@
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-053", "timestamp": "2026-05-23T01:26:23.263860+00:00"}
 {"event_type": "ad_auth", "event_id": 4625, "count": 1, "source_feature": "F-006", "scenario_id": "S-053", "timestamp": "2026-05-23T01:26:26.175262+00:00"}
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-053", "timestamp": "2026-05-23T01:26:26.175360+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 18, "source_feature": "F-006", "scenario_id": "S-053", "timestamp": "2026-05-23T01:26:40.101025+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-053", "timestamp": "2026-05-23T01:26:40.101117+00:00"}

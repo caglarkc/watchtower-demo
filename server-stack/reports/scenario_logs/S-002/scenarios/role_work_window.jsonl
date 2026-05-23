@@ -1,2 +1,3 @@
 {"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T01:26:21.541152+00:00"}
 {"event_type": "role_work_window", "role": "support", "active_hours": [9, 10, 11, 14], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T01:26:24.401156+00:00"}
+{"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T01:26:38.305977+00:00"}

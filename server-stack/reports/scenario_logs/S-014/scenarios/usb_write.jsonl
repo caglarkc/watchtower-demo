@@ -1,2 +1,3 @@
 {"event_type": "usb_write", "device_id": "USB-9F2A", "bytes_written": 2400000000, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T01:26:21.944103+00:00"}
 {"event_type": "usb_write", "device_id": null, "bytes_written": 0, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T01:26:24.819591+00:00"}
+{"event_type": "usb_write", "device_id": "USB-9F2A", "bytes_written": 2400000000, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T01:26:38.728730+00:00"}

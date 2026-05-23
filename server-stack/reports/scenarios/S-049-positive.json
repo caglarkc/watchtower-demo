@@ -43,7 +43,7 @@
     "reports/scenario_logs/S-049/siem/risky_log_search.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:26:23.133465+00:00",
+  "generated_at": "2026-05-23T01:26:39.947341+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-049:4049:positive"

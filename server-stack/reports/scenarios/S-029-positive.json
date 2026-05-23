@@ -47,7 +47,7 @@
     "reports/scenario_logs/S-029/scenarios/directory_traversal.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:26:22.446819+00:00",
+  "generated_at": "2026-05-23T01:26:39.278641+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-029:3029:positive"

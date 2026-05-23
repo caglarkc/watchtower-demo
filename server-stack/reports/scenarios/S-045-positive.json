@@ -49,7 +49,7 @@
     "reports/scenario_logs/S-045/dovecot/imap_mailbox_access.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:26:22.991964+00:00",
+  "generated_at": "2026-05-23T01:26:39.815439+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-045:4045:positive"

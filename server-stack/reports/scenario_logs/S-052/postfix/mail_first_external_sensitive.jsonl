@@ -1,2 +1,3 @@
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T01:26:23.230757+00:00"}
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": false, "subject_sensitive": false, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T01:26:26.134580+00:00"}
+{"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T01:26:40.064554+00:00"}

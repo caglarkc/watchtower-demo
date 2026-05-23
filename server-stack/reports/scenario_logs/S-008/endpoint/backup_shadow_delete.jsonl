@@ -1,2 +1,3 @@
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "source_feature": "F-053", "scenario_id": "S-008", "timestamp": "2026-05-23T01:26:21.747753+00:00"}
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 0, "source_feature": "F-053", "scenario_id": "S-008", "timestamp": "2026-05-23T01:26:24.602738+00:00"}
+{"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "source_feature": "F-053", "scenario_id": "S-008", "timestamp": "2026-05-23T01:26:38.521811+00:00"}

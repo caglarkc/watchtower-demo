@@ -1,2 +1,3 @@
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-020", "timestamp": "2026-05-23T01:26:22.143415+00:00"}
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-020", "timestamp": "2026-05-23T01:26:25.022392+00:00"}
+{"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-020", "timestamp": "2026-05-23T01:26:38.926340+00:00"}
