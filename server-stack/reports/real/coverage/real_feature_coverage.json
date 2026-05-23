@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-05-23T02:51:15.750549+00:00",
+  "generated_at": "2026-05-23T02:57:36.121002+00:00",
   "phase": "RI-4",
   "total_features": 81,
   "metadata_complete": 81,
-  "implemented": 80,
-  "positive_real_tests_passed": 80,
-  "negative_real_tests_passed": 80,
-  "ri1_features": 21,
-  "ri1_l2_metadata": 21,
-  "ri1_pass": 21,
+  "implemented": 81,
+  "positive_real_tests_passed": 81,
+  "negative_real_tests_passed": 81,
+  "ri1_features": 22,
+  "ri1_l2_metadata": 22,
+  "ri1_pass": 22,
   "ri2_features": 24,
   "ri2_l2_metadata": 24,
   "ri2_pass": 24,
@@ -18,7 +18,7 @@
   "ri4_features": 12,
   "ri4_l2_metadata": 12,
   "ri4_pass": 12,
-  "l2_or_higher": 80,
+  "l2_or_higher": 81,
   "waivers": [],
   "features": [
     {
@@ -47,11 +47,11 @@
     },
     {
       "feature_id": "F-004",
-      "real_parity_level": "L0",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "N/A"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-005",
