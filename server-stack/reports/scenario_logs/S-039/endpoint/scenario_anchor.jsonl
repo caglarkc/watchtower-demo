@@ -10,3 +10,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": false, "timestamp": "2026-05-23T02:10:21.598061+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": true, "timestamp": "2026-05-23T02:19:55.200681+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": false, "timestamp": "2026-05-23T02:19:57.974339+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": true, "timestamp": "2026-05-23T02:29:18.621322+00:00"}

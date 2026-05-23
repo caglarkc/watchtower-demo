@@ -37,7 +37,7 @@
     "reports/scenario_logs/S-064/scenarios/nic_promiscuous.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:19:56.027346+00:00",
+  "generated_at": "2026-05-23T02:29:19.442388+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-064:6064:positive"

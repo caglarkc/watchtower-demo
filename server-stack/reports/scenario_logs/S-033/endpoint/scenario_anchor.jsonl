@@ -10,3 +10,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-033", "user_role": "Destek Personeli", "category": "yetkisiz erişim", "seed": 3033, "anomaly": false, "timestamp": "2026-05-23T02:10:21.384579+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-033", "user_role": "Destek Personeli", "category": "yetkisiz erişim", "seed": 3033, "anomaly": true, "timestamp": "2026-05-23T02:19:54.995382+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-033", "user_role": "Destek Personeli", "category": "yetkisiz erişim", "seed": 3033, "anomaly": false, "timestamp": "2026-05-23T02:19:57.786117+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-033", "user_role": "Destek Personeli", "category": "yetkisiz erişim", "seed": 3033, "anomaly": true, "timestamp": "2026-05-23T02:29:18.414568+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-033", "user_role": "Destek Personeli", "category": "yetkisiz erişim", "seed": 3033, "anomaly": false, "timestamp": "2026-05-23T02:29:21.267325+00:00"}

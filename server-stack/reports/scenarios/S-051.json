@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-051",
   "title": "Yanlış Paylaşılan Bordro Klasörü",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Muhasebe",
   "deterministic_seed": 5051,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Yanlış Paylaşılan Bordro Klasörü",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -23,11 +23,11 @@
       "user_role": "Muhasebe",
       "category": "kazara ihlal",
       "seed": 5051,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "acl_change",
-      "permission": "Finance-RW",
+      "permission": "Everyone:FullControl",
       "source_feature": "F-041",
       "scenario_id": "S-051"
     }
@@ -36,12 +36,9 @@
     "reports/scenario_logs/S-051/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-051/scenarios/acl_change.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:19:58.376658+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:29:18.995815+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-051:5051:negative"
+  "replay_key": "S-051:5051:positive"
 }

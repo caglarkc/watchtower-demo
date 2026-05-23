@@ -10,3 +10,5 @@
 {"event_type": "directory_traversal", "sensitive_paths": 0, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:10:21.205231+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 15, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:19:54.867914+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 0, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:19:57.656508+00:00"}
+{"event_type": "directory_traversal", "sensitive_paths": 15, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:29:18.283083+00:00"}
+{"event_type": "directory_traversal", "sensitive_paths": 0, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:29:21.135215+00:00"}

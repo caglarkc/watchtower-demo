@@ -49,7 +49,7 @@
     "reports/scenario_logs/S-031/endpoint/encoded_powershell.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:19:54.931159+00:00",
+  "generated_at": "2026-05-23T02:29:18.355822+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-031:3031:positive"

@@ -14,3 +14,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-001", "user_role": "CFO", "category": "veri sızdırma", "seed": 1001, "anomaly": true, "timestamp": "2026-05-23T02:19:53.913050+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-001", "user_role": "CFO", "category": "veri sızdırma", "seed": 1001, "anomaly": false, "timestamp": "2026-05-23T02:19:56.704907+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-001", "user_role": "CFO", "category": "veri sızdırma", "seed": 1001, "anomaly": true, "timestamp": "2026-05-23T02:29:17.340205+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-001", "user_role": "CFO", "category": "veri sızdırma", "seed": 1001, "anomaly": false, "timestamp": "2026-05-23T02:29:20.102584+00:00"}

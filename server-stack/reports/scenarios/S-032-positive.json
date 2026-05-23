@@ -50,7 +50,7 @@
     "reports/scenario_logs/S-032/endpoint/dormant_system_access.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:19:54.962097+00:00",
+  "generated_at": "2026-05-23T02:29:18.385373+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-032:3032:positive"

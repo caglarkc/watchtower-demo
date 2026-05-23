@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-068",
   "title": "Admin Bilgisayarından Agresif Port Taraması",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "IT Admin",
   "deterministic_seed": 7068,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Admin Bilgisayarından Agresif Port Taraması",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -23,12 +23,12 @@
       "user_role": "IT Admin",
       "category": "dış saldırı desteği",
       "seed": 7068,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "port_scan",
-      "targets": 5,
-      "ports": 3,
+      "targets": 200,
+      "ports": 25,
       "window_minutes": 12,
       "source_feature": "F-007",
       "scenario_id": "S-068"
@@ -38,12 +38,9 @@
     "reports/scenario_logs/S-068/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-068/scenarios/port_scan.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:19:58.946469+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:29:19.577810+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-068:7068:negative"
+  "replay_key": "S-068:7068:positive"
 }

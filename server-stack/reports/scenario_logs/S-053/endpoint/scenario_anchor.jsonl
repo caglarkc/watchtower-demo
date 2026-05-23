@@ -10,3 +10,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-053", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5053, "anomaly": false, "timestamp": "2026-05-23T02:10:22.092343+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-053", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5053, "anomaly": true, "timestamp": "2026-05-23T02:19:55.669691+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-053", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5053, "anomaly": false, "timestamp": "2026-05-23T02:19:58.440414+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-053", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5053, "anomaly": true, "timestamp": "2026-05-23T02:29:19.065355+00:00"}

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-059",
   "title": "Stajyerin Kaynak Kod Aynası",
-  "mode": "negative",
+  "mode": "positive",
   "category": "politika ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 6059,
@@ -18,7 +18,7 @@
     "gitea"
   ],
   "expected_evidence": "Multi-signal workflow for Stajyerin Kaynak Kod Aynası",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "events": [
     {
@@ -28,36 +28,36 @@
       "user_role": "Stajyer",
       "category": "politika ihlali",
       "seed": 6059,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "git_clone_volume",
       "log_channel": "gitea",
-      "repos_cloned": 1,
-      "bytes": 150000000,
+      "repos_cloned": 40,
+      "bytes": 4700000000,
       "source_feature": "F-049",
       "scenario_id": "S-059"
     },
     {
       "event_type": "local_sensitive_accumulation",
       "log_channel": "endpoint",
-      "labeled_files": 5,
-      "gb": 0.4,
+      "labeled_files": 420,
+      "gb": 18,
       "source_feature": "F-042",
       "scenario_id": "S-059"
     },
     {
       "event_type": "encoded_powershell",
       "log_channel": "endpoint",
-      "encoded_command": false,
-      "bypass_policy": false,
+      "encoded_command": true,
+      "bypass_policy": true,
       "source_feature": "F-054",
       "scenario_id": "S-059"
     },
     {
       "event_type": "ai_source_code_paste",
       "log_channel": "ai_gateway",
-      "lines": 40,
+      "lines": 2400,
       "language": "python",
       "source_feature": "F-031",
       "scenario_id": "S-059"
@@ -70,12 +70,9 @@
     "reports/scenario_logs/S-059/endpoint/encoded_powershell.jsonl",
     "reports/scenario_logs/S-059/ai_gateway/ai_source_code_paste.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:19:58.642735+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:29:19.281360+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-059:6059:negative"
+  "replay_key": "S-059:6059:positive"
 }

@@ -40,7 +40,7 @@
     "reports/scenario_logs/S-017/vault/vault_read_burst.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:19:54.449670+00:00",
+  "generated_at": "2026-05-23T02:29:17.887639+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-017:2017:positive"

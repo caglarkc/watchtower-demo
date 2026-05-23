@@ -10,3 +10,4 @@
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "source_feature": "F-037", "scenario_id": "S-037", "timestamp": "2026-05-23T02:10:21.533001+00:00"}
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "source_feature": "F-037", "scenario_id": "S-037", "timestamp": "2026-05-23T02:19:55.127590+00:00"}
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "source_feature": "F-037", "scenario_id": "S-037", "timestamp": "2026-05-23T02:19:57.913530+00:00"}
+{"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "source_feature": "F-037", "scenario_id": "S-037", "timestamp": "2026-05-23T02:29:18.557728+00:00"}

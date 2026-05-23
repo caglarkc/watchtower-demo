@@ -58,7 +58,7 @@
     "reports/scenario_logs/S-013/activity/screenshot_spike.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:19:54.318998+00:00",
+  "generated_at": "2026-05-23T02:29:17.762628+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-013:1013:positive"
