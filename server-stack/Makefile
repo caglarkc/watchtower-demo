@@ -90,3 +90,32 @@ coverage-scenarios:
 coverage-all: coverage coverage-scenarios
 
 test-all: seed-baseline test-smoke test-features test-scenarios coverage-all
+
+# --- RI-0 Real parity foundation (does not replace synthetic test-all) ---
+
+real-up:
+	$(COMPOSE) up -d
+	$(COMPOSE) --profile real-ad up -d 2>/dev/null || true
+	@mkdir -p reports/real/{features,scenarios,coverage,logs} seeds/real
+
+real-down:
+	$(COMPOSE) down
+
+seed-real-all:
+	$(PYTHON) simulation/real/seed_real_all.py
+
+real-feature:
+	@test -n "$(FEATURE)" || (echo "Usage: make real-feature FEATURE=F-001" && exit 1)
+	$(PYTHON) simulation/real/run_real_feature.py --feature $(FEATURE) --mode positive
+
+real-feature-negative:
+	@test -n "$(FEATURE)" || (echo "Usage: make real-feature-negative FEATURE=F-001" && exit 1)
+	$(PYTHON) simulation/real/run_real_feature.py --feature $(FEATURE) --mode negative
+
+test-real:
+	$(PYTEST) tests/real -v
+
+test-real-all: seed-real-all test-real real-coverage
+
+real-coverage:
+	$(PYTHON) simulation/real/report_real_coverage.py --all
