@@ -1,0 +1,76 @@
+{
+  "scenario_id": "S-056",
+  "title": "Destek Personelinin Aşırı Geniş Oturum Süresi",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Destek Personeli",
+  "deterministic_seed": 5056,
+  "expected_severity": "WARNING",
+  "feature_ids": [
+    "F-080",
+    "F-037",
+    "F-060",
+    "F-077"
+  ],
+  "services": [
+    "activity-generator",
+    "endpoint-synthetic",
+    "hris-mock"
+  ],
+  "expected_evidence": "Multi-signal workflow for Destek Personelinin Aşırı Geniş Oturum Süresi",
+  "anomaly_detected": true,
+  "event_count": 5,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-056",
+      "user_role": "Destek Personeli",
+      "category": "kazara ihlal",
+      "seed": 5056,
+      "anomaly": true
+    },
+    {
+      "event_type": "idle_session_abuse",
+      "session_hours": 8,
+      "keyboard_events": 3,
+      "source_feature": "F-080",
+      "scenario_id": "S-056"
+    },
+    {
+      "event_type": "smb_access",
+      "share": "legal",
+      "user_dept": "dev",
+      "files": 41,
+      "source_feature": "F-037",
+      "scenario_id": "S-056"
+    },
+    {
+      "event_type": "screenshot_spike",
+      "log_channel": "activity",
+      "count_per_hour": 85,
+      "source_feature": "F-060",
+      "scenario_id": "S-056"
+    },
+    {
+      "event_type": "leave_activity",
+      "log_channel": "hris",
+      "on_leave": true,
+      "keyboard_events": 900,
+      "source_feature": "F-077",
+      "scenario_id": "S-056"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-056/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-056/scenarios/idle_session_abuse.jsonl",
+    "reports/scenario_logs/S-056/scenarios/smb_access.jsonl",
+    "reports/scenario_logs/S-056/activity/screenshot_spike.jsonl",
+    "reports/scenario_logs/S-056/hris/leave_activity.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.375925+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-056:5056:positive"
+}

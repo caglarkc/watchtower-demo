@@ -1,0 +1,45 @@
+{
+  "scenario_id": "S-034",
+  "title": "Muhasebe Domain Admin Grubu Denemesi",
+  "mode": "positive",
+  "category": "yetkisiz erişim",
+  "user_role": "Muhasebe",
+  "deterministic_seed": 3034,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-011"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Muhasebe Domain Admin Grubu Denemesi",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-034",
+      "user_role": "Muhasebe",
+      "category": "yetkisiz erişim",
+      "seed": 3034,
+      "anomaly": true
+    },
+    {
+      "event_type": "ad_group_change",
+      "event_id": 4728,
+      "group": "Domain Admins",
+      "source_feature": "F-011",
+      "scenario_id": "S-034"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-034/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-034/scenarios/ad_group_change.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.619284+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-034:3034:positive"
+}

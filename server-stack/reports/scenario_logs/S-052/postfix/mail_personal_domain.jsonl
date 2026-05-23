@@ -1,0 +1,1 @@
+{"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "gmail.com", "has_attachment": true, "source_feature": "F-021", "scenario_id": "S-052", "timestamp": "2026-05-23T01:26:23.230686+00:00"}

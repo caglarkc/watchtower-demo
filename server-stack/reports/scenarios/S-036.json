@@ -1,0 +1,59 @@
+{
+  "scenario_id": "S-036",
+  "title": "Veri Analistinin Tüm Posta Kutusu Taraması",
+  "mode": "negative",
+  "category": "yetkisiz erişim",
+  "user_role": "Veri Analisti",
+  "deterministic_seed": 3036,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-018",
+    "F-024"
+  ],
+  "services": [
+    "dovecot",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Veri Analistinin Tüm Posta Kutusu Taraması",
+  "anomaly_detected": false,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-036",
+      "user_role": "Veri Analisti",
+      "category": "yetkisiz erişim",
+      "seed": 3036,
+      "anomaly": false
+    },
+    {
+      "event_type": "imap_mailbox_access",
+      "log_channel": "dovecot",
+      "foreign_mailbox": "self",
+      "source_feature": "F-018",
+      "scenario_id": "S-036"
+    },
+    {
+      "event_type": "imap_archive_bulk_read",
+      "log_channel": "dovecot",
+      "messages_read": 40,
+      "years_span": 1,
+      "source_feature": "F-024",
+      "scenario_id": "S-036"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-036/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-036/dovecot/imap_mailbox_access.jsonl",
+    "reports/scenario_logs/S-036/dovecot/imap_archive_bulk_read.jsonl"
+  ],
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:26:25.586576+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-036:3036:negative"
+}

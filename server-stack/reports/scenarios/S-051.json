@@ -1,0 +1,44 @@
+{
+  "scenario_id": "S-051",
+  "title": "Yanlış Paylaşılan Bordro Klasörü",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Muhasebe",
+  "deterministic_seed": 5051,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-041"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Yanlış Paylaşılan Bordro Klasörü",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-051",
+      "user_role": "Muhasebe",
+      "category": "kazara ihlal",
+      "seed": 5051,
+      "anomaly": true
+    },
+    {
+      "event_type": "acl_change",
+      "permission": "Everyone:FullControl",
+      "source_feature": "F-041",
+      "scenario_id": "S-051"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-051/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-051/scenarios/acl_change.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.198468+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-051:5051:positive"
+}

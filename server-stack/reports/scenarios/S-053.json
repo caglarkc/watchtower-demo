@@ -1,0 +1,64 @@
+{
+  "scenario_id": "S-053",
+  "title": "Yeni Yazılımcının Hatalı Script Döngüsü",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 5053,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-006",
+    "F-048"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "nginx"
+  ],
+  "expected_evidence": "Multi-signal workflow for Yeni Yazılımcının Hatalı Script Döngüsü",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-053",
+      "user_role": "Yazılım Geliştirici",
+      "category": "kazara ihlal",
+      "seed": 5053,
+      "anomaly": true
+    },
+    {
+      "event_type": "ad_auth",
+      "event_id": 4625,
+      "count": 18,
+      "source_feature": "F-006",
+      "scenario_id": "S-053"
+    },
+    {
+      "event_type": "ad_auth",
+      "event_id": 4624,
+      "count": 1,
+      "source_feature": "F-006",
+      "scenario_id": "S-053"
+    },
+    {
+      "event_type": "http_4xx_spike",
+      "log_channel": "nginx",
+      "status_4xx": 5200,
+      "window_minutes": 5,
+      "source_feature": "F-048",
+      "scenario_id": "S-053"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-053/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-053/scenarios/ad_auth.jsonl",
+    "reports/scenario_logs/S-053/scenarios/ad_auth.jsonl",
+    "reports/scenario_logs/S-053/nginx/http_4xx_spike.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.265077+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-053:5053:positive"
+}

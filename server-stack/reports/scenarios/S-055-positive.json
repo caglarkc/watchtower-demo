@@ -1,0 +1,55 @@
+{
+  "scenario_id": "S-055",
+  "title": "USB ile İçeri Veri Taşıyan Stajyer",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Stajyer",
+  "deterministic_seed": 5055,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-055",
+    "F-043"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for USB ile İçeri Veri Taşıyan Stajyer",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-055",
+      "user_role": "Stajyer",
+      "category": "kazara ihlal",
+      "seed": 5055,
+      "anomaly": true
+    },
+    {
+      "event_type": "usb_write",
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
+      "source_feature": "F-055",
+      "scenario_id": "S-055"
+    },
+    {
+      "event_type": "sensitive_file_move",
+      "log_channel": "endpoint",
+      "from_zone": "restricted",
+      "to_zone": "public",
+      "source_feature": "F-043",
+      "scenario_id": "S-055"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-055/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-055/scenarios/usb_write.jsonl",
+    "reports/scenario_logs/S-055/endpoint/sensitive_file_move.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.342192+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-055:5055:positive"
+}

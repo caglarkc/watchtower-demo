@@ -1,0 +1,46 @@
+{
+  "scenario_id": "S-027",
+  "title": "İç Ağda Gizli Posta Kuralı Oluşturma",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "Satış",
+  "deterministic_seed": 2027,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-017"
+  ],
+  "services": [
+    "dovecot",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for İç Ağda Gizli Posta Kuralı Oluşturma",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-027",
+      "user_role": "Satış",
+      "category": "credential ihlali",
+      "seed": 2027,
+      "anomaly": true
+    },
+    {
+      "event_type": "mail_rule_change",
+      "log_channel": "dovecot",
+      "forward_rules_added": 3,
+      "source_feature": "F-017",
+      "scenario_id": "S-027"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-027/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-027/dovecot/mail_rule_change.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.377737+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-027:2027:positive"
+}

@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-015", "user_role": "İK", "category": "veri sızdırma", "seed": 1015, "anomaly": true, "timestamp": "2026-05-23T01:26:21.975332+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-015", "user_role": "İK", "category": "veri sızdırma", "seed": 1015, "anomaly": false, "timestamp": "2026-05-23T01:26:24.851655+00:00"}

@@ -1,0 +1,57 @@
+{
+  "scenario_id": "S-029",
+  "title": "Hukuk Belgelerine Meraklı Geliştirici",
+  "mode": "negative",
+  "category": "yetkisiz erişim",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 3029,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-037",
+    "F-040"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Hukuk Belgelerine Meraklı Geliştirici",
+  "anomaly_detected": false,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-029",
+      "user_role": "Yazılım Geliştirici",
+      "category": "yetkisiz erişim",
+      "seed": 3029,
+      "anomaly": false
+    },
+    {
+      "event_type": "smb_access",
+      "share": "dev",
+      "user_dept": "dev",
+      "files": 3,
+      "source_feature": "F-037",
+      "scenario_id": "S-029"
+    },
+    {
+      "event_type": "directory_traversal",
+      "sensitive_paths": 0,
+      "source_feature": "F-040",
+      "scenario_id": "S-029"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-029/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-029/scenarios/smb_access.jsonl",
+    "reports/scenario_logs/S-029/scenarios/directory_traversal.jsonl"
+  ],
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:26:25.338193+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-029:3029:negative"
+}

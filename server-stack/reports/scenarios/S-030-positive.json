@@ -1,0 +1,45 @@
+{
+  "scenario_id": "S-030",
+  "title": "Yetki Yükseltme (Privilege Escalation)",
+  "mode": "positive",
+  "category": "yetkisiz erişim",
+  "user_role": "IT Admin",
+  "deterministic_seed": 3030,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-011"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Yetki Yükseltme (Privilege Escalation)",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-030",
+      "user_role": "IT Admin",
+      "category": "yetkisiz erişim",
+      "seed": 3030,
+      "anomaly": true
+    },
+    {
+      "event_type": "ad_group_change",
+      "event_id": 4728,
+      "group": "Domain Admins",
+      "source_feature": "F-011",
+      "scenario_id": "S-030"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-030/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-030/scenarios/ad_group_change.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.480923+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-030:3030:positive"
+}

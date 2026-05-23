@@ -1,0 +1,68 @@
+{
+  "scenario_id": "S-050",
+  "title": "Satış Müşteri Segmentasyon Modeline Erişim",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "Satış",
+  "deterministic_seed": 4050,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-066",
+    "F-072",
+    "F-076"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "hris-mock",
+    "internal-app"
+  ],
+  "expected_evidence": "Multi-signal workflow for Satış Müşteri Segmentasyon Modeline Erişim",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-050",
+      "user_role": "Satış",
+      "category": "insider threat",
+      "seed": 4050,
+      "anomaly": true
+    },
+    {
+      "event_type": "peer_group_deviation",
+      "log_channel": "app",
+      "z_score": 4.2,
+      "metric": "file_reads",
+      "source_feature": "F-066",
+      "scenario_id": "S-050"
+    },
+    {
+      "event_type": "offboarding_activity",
+      "log_channel": "hris",
+      "status": "terminated",
+      "logins_after": 6,
+      "source_feature": "F-072",
+      "scenario_id": "S-050"
+    },
+    {
+      "event_type": "old_entitlement_use",
+      "log_channel": "hris",
+      "role_changed": true,
+      "old_group_used": true,
+      "source_feature": "F-076",
+      "scenario_id": "S-050"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-050/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-050/app/peer_group_deviation.jsonl",
+    "reports/scenario_logs/S-050/hris/offboarding_activity.jsonl",
+    "reports/scenario_logs/S-050/hris/old_entitlement_use.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.166477+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-050:4050:positive"
+}

@@ -1,0 +1,2 @@
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "source_feature": "F-018", "scenario_id": "S-036", "timestamp": "2026-05-23T01:26:22.687979+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-036", "timestamp": "2026-05-23T01:26:25.585418+00:00"}

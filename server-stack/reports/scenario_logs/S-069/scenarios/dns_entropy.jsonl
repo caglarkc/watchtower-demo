@@ -1,0 +1,1 @@
+{"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "source_feature": "F-003", "scenario_id": "S-069", "timestamp": "2026-05-23T01:26:23.838209+00:00"}

@@ -1,0 +1,59 @@
+{
+  "scenario_id": "S-025",
+  "title": "Admin Hesaplarının Çapraz Kullanımı",
+  "mode": "negative",
+  "category": "credential ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 2025,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-015",
+    "F-063"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Admin Hesaplarının Çapraz Kullanımı",
+  "anomaly_detected": false,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-025",
+      "user_role": "IT Admin",
+      "category": "credential ihlali",
+      "seed": 2025,
+      "anomaly": false
+    },
+    {
+      "event_type": "rdp_hop",
+      "hops": [
+        "ws1",
+        "files1"
+      ],
+      "source_feature": "F-015",
+      "scenario_id": "S-025"
+    },
+    {
+      "event_type": "unknown_hardware",
+      "device_id": "KNOWN-MAC-001",
+      "success": true,
+      "source_feature": "F-063",
+      "scenario_id": "S-025"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-025/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-025/scenarios/rdp_hop.jsonl",
+    "reports/scenario_logs/S-025/scenarios/unknown_hardware.jsonl"
+  ],
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:26:25.204532+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-025:2025:negative"
+}

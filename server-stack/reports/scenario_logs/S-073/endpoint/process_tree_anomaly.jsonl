@@ -1,0 +1,1 @@
+{"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "source_feature": "F-046", "scenario_id": "S-073", "timestamp": "2026-05-23T01:26:23.976833+00:00"}

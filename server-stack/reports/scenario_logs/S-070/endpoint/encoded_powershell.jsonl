@@ -1,0 +1,1 @@
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-070", "timestamp": "2026-05-23T01:26:23.873383+00:00"}

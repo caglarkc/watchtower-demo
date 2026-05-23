@@ -1,0 +1,57 @@
+{
+  "scenario_id": "S-042",
+  "title": "SOC Log Suppress Kuralı",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "Güvenlik Görevlisi",
+  "deterministic_seed": 4042,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-050",
+    "F-058"
+  ],
+  "services": [
+    "dlp-mock",
+    "endpoint-synthetic",
+    "siem-admin"
+  ],
+  "expected_evidence": "Multi-signal workflow for SOC Log Suppress Kuralı",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-042",
+      "user_role": "Güvenlik Görevlisi",
+      "category": "insider threat",
+      "seed": 4042,
+      "anomaly": true
+    },
+    {
+      "event_type": "siem_suppress_rule",
+      "log_channel": "siem",
+      "self_ip_suppress": true,
+      "source_feature": "F-050",
+      "scenario_id": "S-042"
+    },
+    {
+      "event_type": "dlp_bypass",
+      "log_channel": "dlp",
+      "agent_healthy": false,
+      "bypass_attempt": true,
+      "source_feature": "F-058",
+      "scenario_id": "S-042"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-042/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-042/siem/siem_suppress_rule.jsonl",
+    "reports/scenario_logs/S-042/dlp/dlp_bypass.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.892726+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-042:4042:positive"
+}

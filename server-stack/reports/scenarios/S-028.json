@@ -1,0 +1,68 @@
+{
+  "scenario_id": "S-028",
+  "title": "IT Admin Yetki Zinciri",
+  "mode": "negative",
+  "category": "yetkisiz erişim",
+  "user_role": "IT Admin",
+  "deterministic_seed": 3028,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-015",
+    "F-061",
+    "F-079"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for IT Admin Yetki Zinciri",
+  "anomaly_detected": false,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-028",
+      "user_role": "IT Admin",
+      "category": "yetkisiz erişim",
+      "seed": 3028,
+      "anomaly": false
+    },
+    {
+      "event_type": "rdp_hop",
+      "hops": [
+        "ws1",
+        "files1"
+      ],
+      "source_feature": "F-015",
+      "scenario_id": "S-028"
+    },
+    {
+      "event_type": "role_server_map_deviation",
+      "log_channel": "endpoint",
+      "unexpected_hosts": 1,
+      "source_feature": "F-061",
+      "scenario_id": "S-028"
+    },
+    {
+      "event_type": "after_hours_session",
+      "hour": 14,
+      "interactive": true,
+      "source_feature": "F-079",
+      "scenario_id": "S-028"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-028/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-028/scenarios/rdp_hop.jsonl",
+    "reports/scenario_logs/S-028/endpoint/role_server_map_deviation.jsonl",
+    "reports/scenario_logs/S-028/scenarios/after_hours_session.jsonl"
+  ],
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:26:25.307114+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-028:3028:negative"
+}

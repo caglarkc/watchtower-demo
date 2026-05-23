@@ -1,0 +1,71 @@
+{
+  "scenario_id": "S-044",
+  "title": "Yönetici Yetkisiyle Kitlesel Log Silme",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "IT Admin",
+  "deterministic_seed": 4044,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-062",
+    "F-054",
+    "F-058"
+  ],
+  "services": [
+    "dlp-mock",
+    "endpoint-synthetic",
+    "siem-admin"
+  ],
+  "expected_evidence": "Multi-signal workflow for Yönetici Yetkisiyle Kitlesel Log Silme",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-044",
+      "user_role": "IT Admin",
+      "category": "insider threat",
+      "seed": 4044,
+      "anomaly": true
+    },
+    {
+      "event_type": "risky_log_search",
+      "log_channel": "siem",
+      "keywords": [
+        "password",
+        "token",
+        "suppress"
+      ],
+      "source_feature": "F-062",
+      "scenario_id": "S-044"
+    },
+    {
+      "event_type": "encoded_powershell",
+      "log_channel": "endpoint",
+      "encoded_command": true,
+      "bypass_policy": true,
+      "source_feature": "F-054",
+      "scenario_id": "S-044"
+    },
+    {
+      "event_type": "dlp_bypass",
+      "log_channel": "dlp",
+      "agent_healthy": false,
+      "bypass_attempt": true,
+      "source_feature": "F-058",
+      "scenario_id": "S-044"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-044/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-044/siem/risky_log_search.jsonl",
+    "reports/scenario_logs/S-044/endpoint/encoded_powershell.jsonl",
+    "reports/scenario_logs/S-044/dlp/dlp_bypass.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.958577+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-044:4044:positive"
+}

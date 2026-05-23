@@ -1,1 +1,2 @@
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T01:26:21.506832+00:00"}
+{"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T01:26:24.368124+00:00"}

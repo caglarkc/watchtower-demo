@@ -1,0 +1,56 @@
+{
+  "scenario_id": "S-070",
+  "title": "Domain Controller Üzerinde Credential Dumping Script",
+  "mode": "positive",
+  "category": "dış saldırı desteği",
+  "user_role": "IT Admin",
+  "deterministic_seed": 7070,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-054",
+    "F-008"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Domain Controller Üzerinde Credential Dumping Script",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-070",
+      "user_role": "IT Admin",
+      "category": "dış saldırı desteği",
+      "seed": 7070,
+      "anomaly": true
+    },
+    {
+      "event_type": "encoded_powershell",
+      "log_channel": "endpoint",
+      "encoded_command": true,
+      "bypass_policy": true,
+      "source_feature": "F-054",
+      "scenario_id": "S-070"
+    },
+    {
+      "event_type": "kerberos_tgt",
+      "user": "admin",
+      "targets": 8,
+      "hour": 2,
+      "source_feature": "F-008",
+      "scenario_id": "S-070"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-070/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-070/endpoint/encoded_powershell.jsonl",
+    "reports/scenario_logs/S-070/scenarios/kerberos_tgt.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.874530+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-070:7070:positive"
+}

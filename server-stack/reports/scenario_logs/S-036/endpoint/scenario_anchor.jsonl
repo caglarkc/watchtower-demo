@@ -1,0 +1,2 @@
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": true, "timestamp": "2026-05-23T01:26:22.687837+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T01:26:25.585294+00:00"}

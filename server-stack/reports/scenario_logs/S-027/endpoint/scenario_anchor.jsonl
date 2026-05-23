@@ -1,0 +1,2 @@
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-027", "user_role": "Satış", "category": "credential ihlali", "seed": 2027, "anomaly": true, "timestamp": "2026-05-23T01:26:22.376738+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-027", "user_role": "Satış", "category": "credential ihlali", "seed": 2027, "anomaly": false, "timestamp": "2026-05-23T01:26:25.267785+00:00"}

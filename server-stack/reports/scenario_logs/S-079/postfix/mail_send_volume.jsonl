@@ -1,0 +1,1 @@
+{"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "source_feature": "F-016", "scenario_id": "S-079", "timestamp": "2026-05-23T01:26:24.193562+00:00"}

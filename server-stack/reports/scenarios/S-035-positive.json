@@ -1,0 +1,46 @@
+{
+  "scenario_id": "S-035",
+  "title": "Stajyer Ağ Keşfi",
+  "mode": "positive",
+  "category": "yetkisiz erişim",
+  "user_role": "Stajyer",
+  "deterministic_seed": 3035,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-007"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Stajyer Ağ Keşfi",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-035",
+      "user_role": "Stajyer",
+      "category": "yetkisiz erişim",
+      "seed": 3035,
+      "anomaly": true
+    },
+    {
+      "event_type": "port_scan",
+      "targets": 200,
+      "ports": 25,
+      "window_minutes": 12,
+      "source_feature": "F-007",
+      "scenario_id": "S-035"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-035/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-035/scenarios/port_scan.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.651375+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-035:3035:positive"
+}

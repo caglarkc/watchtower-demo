@@ -1,0 +1,68 @@
+{
+  "scenario_id": "S-054",
+  "title": "Canlı Ortam Yerine Test Aracı Yanlışlığı",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 5054,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-045",
+    "F-048",
+    "F-007"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "nginx",
+    "postgres"
+  ],
+  "expected_evidence": "Multi-signal workflow for Canlı Ortam Yerine Test Aracı Yanlışlığı",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-054",
+      "user_role": "Yazılım Geliştirici",
+      "category": "kazara ihlal",
+      "seed": 5054,
+      "anomaly": true
+    },
+    {
+      "event_type": "postgres_bulk_select",
+      "log_channel": "postgres",
+      "tables": 12,
+      "rows_scanned": 4500000,
+      "source_feature": "F-045",
+      "scenario_id": "S-054"
+    },
+    {
+      "event_type": "http_4xx_spike",
+      "log_channel": "nginx",
+      "status_4xx": 5200,
+      "window_minutes": 5,
+      "source_feature": "F-048",
+      "scenario_id": "S-054"
+    },
+    {
+      "event_type": "port_scan",
+      "targets": 200,
+      "ports": 25,
+      "window_minutes": 12,
+      "source_feature": "F-007",
+      "scenario_id": "S-054"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-054/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-054/postgres/postgres_bulk_select.jsonl",
+    "reports/scenario_logs/S-054/nginx/http_4xx_spike.jsonl",
+    "reports/scenario_logs/S-054/scenarios/port_scan.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.308221+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-054:5054:positive"
+}

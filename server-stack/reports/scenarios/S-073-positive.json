@@ -1,0 +1,56 @@
+{
+  "scenario_id": "S-073",
+  "title": "İK Bilgisayarında Keylogger Çalışması",
+  "mode": "positive",
+  "category": "dış saldırı desteği",
+  "user_role": "İK",
+  "deterministic_seed": 7073,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-046",
+    "F-059"
+  ],
+  "services": [
+    "activity-generator",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for İK Bilgisayarında Keylogger Çalışması",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-073",
+      "user_role": "İK",
+      "category": "dış saldırı desteği",
+      "seed": 7073,
+      "anomaly": true
+    },
+    {
+      "event_type": "process_tree_anomaly",
+      "log_channel": "endpoint",
+      "duration_hours": 18,
+      "child_processes": 42,
+      "source_feature": "F-046",
+      "scenario_id": "S-073"
+    },
+    {
+      "event_type": "clipboard_large_copy",
+      "log_channel": "activity",
+      "bytes": 48000000,
+      "source_feature": "F-059",
+      "scenario_id": "S-073"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-073/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-073/endpoint/process_tree_anomaly.jsonl",
+    "reports/scenario_logs/S-073/activity/clipboard_large_copy.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.977899+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-073:7073:positive"
+}

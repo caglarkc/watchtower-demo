@@ -1,0 +1,55 @@
+{
+  "scenario_id": "S-060",
+  "title": "Hukuk Klasörünü Yedekleyen PM",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "Proje Yöneticisi",
+  "deterministic_seed": 6060,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-037",
+    "F-038"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Hukuk Klasörünü Yedekleyen PM",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-060",
+      "user_role": "Proje Yöneticisi",
+      "category": "politika ihlali",
+      "seed": 6060,
+      "anomaly": true
+    },
+    {
+      "event_type": "smb_access",
+      "share": "legal",
+      "user_dept": "dev",
+      "files": 41,
+      "source_feature": "F-037",
+      "scenario_id": "S-060"
+    },
+    {
+      "event_type": "smb_bulk_io",
+      "read_bytes": 18400000000,
+      "write_bytes": 0,
+      "source_feature": "F-038",
+      "scenario_id": "S-060"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-060/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-060/scenarios/smb_access.jsonl",
+    "reports/scenario_logs/S-060/scenarios/smb_bulk_io.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.509504+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-060:6060:positive"
+}

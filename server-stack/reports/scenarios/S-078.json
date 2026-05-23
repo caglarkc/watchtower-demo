@@ -1,0 +1,74 @@
+{
+  "scenario_id": "S-078",
+  "title": "Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan",
+  "mode": "positive",
+  "category": "sosyal mühendislik",
+  "user_role": "Destek Personeli",
+  "deterministic_seed": 8078,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-048",
+    "F-006",
+    "F-029"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "nginx",
+    "roundcube"
+  ],
+  "expected_evidence": "Multi-signal workflow for Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan",
+  "anomaly_detected": true,
+  "event_count": 5,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-078",
+      "user_role": "Destek Personeli",
+      "category": "sosyal mühendislik",
+      "seed": 8078,
+      "anomaly": true
+    },
+    {
+      "event_type": "http_4xx_spike",
+      "log_channel": "nginx",
+      "status_4xx": 5200,
+      "window_minutes": 5,
+      "source_feature": "F-048",
+      "scenario_id": "S-078"
+    },
+    {
+      "event_type": "ad_auth",
+      "event_id": 4625,
+      "count": 18,
+      "source_feature": "F-006",
+      "scenario_id": "S-078"
+    },
+    {
+      "event_type": "ad_auth",
+      "event_id": 4624,
+      "count": 1,
+      "source_feature": "F-006",
+      "scenario_id": "S-078"
+    },
+    {
+      "event_type": "webmail_login_attempt",
+      "log_channel": "roundcube",
+      "account": "personal@gmail.com",
+      "source_feature": "F-029",
+      "scenario_id": "S-078"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-078/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-078/nginx/http_4xx_spike.jsonl",
+    "reports/scenario_logs/S-078/scenarios/ad_auth.jsonl",
+    "reports/scenario_logs/S-078/scenarios/ad_auth.jsonl",
+    "reports/scenario_logs/S-078/roundcube/webmail_login_attempt.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:24.156682+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-078:8078:positive"
+}

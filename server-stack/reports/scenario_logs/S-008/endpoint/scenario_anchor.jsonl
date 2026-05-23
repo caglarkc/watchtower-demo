@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": true, "timestamp": "2026-05-23T01:26:21.747442+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": false, "timestamp": "2026-05-23T01:26:24.602461+00:00"}

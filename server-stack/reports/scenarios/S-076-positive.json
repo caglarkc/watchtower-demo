@@ -1,0 +1,56 @@
+{
+  "scenario_id": "S-076",
+  "title": "CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
+  "mode": "positive",
+  "category": "sosyal mühendislik",
+  "user_role": "IT Admin",
+  "deterministic_seed": 8076,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-011",
+    "F-014"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "hris-mock"
+  ],
+  "expected_evidence": "Multi-signal workflow for CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-076",
+      "user_role": "IT Admin",
+      "category": "sosyal mühendislik",
+      "seed": 8076,
+      "anomaly": true
+    },
+    {
+      "event_type": "ad_group_change",
+      "event_id": 4728,
+      "group": "Domain Admins",
+      "source_feature": "F-011",
+      "scenario_id": "S-076"
+    },
+    {
+      "event_type": "credential_reset_burst",
+      "log_channel": "hris",
+      "resets": 12,
+      "unlocks": 8,
+      "source_feature": "F-014",
+      "scenario_id": "S-076"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-076/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-076/scenarios/ad_group_change.jsonl",
+    "reports/scenario_logs/S-076/hris/credential_reset_burst.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:24.080306+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-076:8076:positive"
+}

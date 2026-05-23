@@ -1,0 +1,44 @@
+{
+  "scenario_id": "S-064",
+  "title": "Stajyerin Wi-Fi Ağı Sniffing Denemesi",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "Stajyer",
+  "deterministic_seed": 6064,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-057"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Stajyerin Wi-Fi Ağı Sniffing Denemesi",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-064",
+      "user_role": "Stajyer",
+      "category": "politika ihlali",
+      "seed": 6064,
+      "anomaly": true
+    },
+    {
+      "event_type": "nic_promiscuous",
+      "enabled": true,
+      "source_feature": "F-057",
+      "scenario_id": "S-064"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-064/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-064/scenarios/nic_promiscuous.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.657167+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-064:6064:positive"
+}

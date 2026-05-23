@@ -1,0 +1,52 @@
+{
+  "scenario_id": "S-066",
+  "title": "Hukuk Toplu PDF OCR Geçici Klasörü",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "Hukuk",
+  "deterministic_seed": 6066,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-041",
+    "F-039"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Hukuk Toplu PDF OCR Geçici Klasörü",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-066",
+      "user_role": "Hukuk",
+      "category": "politika ihlali",
+      "seed": 6066,
+      "anomaly": true
+    },
+    {
+      "event_type": "acl_change",
+      "permission": "Everyone:FullControl",
+      "source_feature": "F-041",
+      "scenario_id": "S-066"
+    },
+    {
+      "event_type": "smb_rename_storm",
+      "renames_per_minute": 120,
+      "source_feature": "F-039",
+      "scenario_id": "S-066"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-066/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-066/scenarios/acl_change.jsonl",
+    "reports/scenario_logs/S-066/scenarios/smb_rename_storm.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.731036+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-066:6066:positive"
+}

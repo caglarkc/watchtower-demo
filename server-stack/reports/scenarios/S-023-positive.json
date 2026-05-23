@@ -1,0 +1,65 @@
+{
+  "scenario_id": "S-023",
+  "title": "Muhasebe Terminalinden Gece Loginleri",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "Muhasebe",
+  "deterministic_seed": 2023,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-079",
+    "F-063",
+    "F-070"
+  ],
+  "services": [
+    "badge-api",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Muhasebe Terminalinden Gece Loginleri",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-023",
+      "user_role": "Muhasebe",
+      "category": "credential ihlali",
+      "seed": 2023,
+      "anomaly": true
+    },
+    {
+      "event_type": "after_hours_session",
+      "hour": 2,
+      "interactive": true,
+      "source_feature": "F-079",
+      "scenario_id": "S-023"
+    },
+    {
+      "event_type": "unknown_hardware",
+      "device_id": "NEW-MAC-9912",
+      "success": true,
+      "source_feature": "F-063",
+      "scenario_id": "S-023"
+    },
+    {
+      "event_type": "badge_login_mismatch",
+      "log_channel": "badge",
+      "badge_present": false,
+      "login_success": true,
+      "source_feature": "F-070",
+      "scenario_id": "S-023"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-023/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-023/scenarios/after_hours_session.jsonl",
+    "reports/scenario_logs/S-023/scenarios/unknown_hardware.jsonl",
+    "reports/scenario_logs/S-023/badge/badge_login_mismatch.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.246594+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-023:2023:positive"
+}

@@ -1,0 +1,78 @@
+{
+  "scenario_id": "S-062",
+  "title": "Sabit Şifre Koda Gömme",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 6062,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-049",
+    "F-054",
+    "F-031",
+    "F-027"
+  ],
+  "services": [
+    "ai-gateway-mock",
+    "endpoint-synthetic",
+    "gitea",
+    "postfix"
+  ],
+  "expected_evidence": "Multi-signal workflow for Sabit Şifre Koda Gömme",
+  "anomaly_detected": true,
+  "event_count": 5,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-062",
+      "user_role": "Yazılım Geliştirici",
+      "category": "politika ihlali",
+      "seed": 6062,
+      "anomaly": true
+    },
+    {
+      "event_type": "git_clone_volume",
+      "log_channel": "gitea",
+      "repos_cloned": 40,
+      "bytes": 4700000000,
+      "source_feature": "F-049",
+      "scenario_id": "S-062"
+    },
+    {
+      "event_type": "encoded_powershell",
+      "log_channel": "endpoint",
+      "encoded_command": true,
+      "bypass_policy": true,
+      "source_feature": "F-054",
+      "scenario_id": "S-062"
+    },
+    {
+      "event_type": "ai_source_code_paste",
+      "log_channel": "ai_gateway",
+      "lines": 2400,
+      "language": "python",
+      "source_feature": "F-031",
+      "scenario_id": "S-062"
+    },
+    {
+      "event_type": "mail_banned_phrase",
+      "log_channel": "postfix",
+      "phrase": "gizli iç bilgi",
+      "source_feature": "F-027",
+      "scenario_id": "S-062"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-062/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-062/gitea/git_clone_volume.jsonl",
+    "reports/scenario_logs/S-062/endpoint/encoded_powershell.jsonl",
+    "reports/scenario_logs/S-062/ai_gateway/ai_source_code_paste.jsonl",
+    "reports/scenario_logs/S-062/postfix/mail_banned_phrase.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:23.581723+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-062:6062:positive"
+}
