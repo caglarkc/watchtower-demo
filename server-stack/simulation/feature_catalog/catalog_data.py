@@ -210,9 +210,9 @@ FEATURE_CATEGORIES: dict[str, str] = {
 
 # scenario_id -> feature_ids (primary detection signals per scenario)
 SCENARIO_FEATURE_MAP: dict[str, list[str]] = {
-    "S-001": ["F-001", "F-079", "F-038"],
-    "S-002": ["F-001", "F-079", "F-038"],
-    "S-003": ["F-038", "F-039", "F-072"],
+    "S-001": ["F-001", "F-079", "F-038", "F-056", "F-081"],
+    "S-002": ["F-001", "F-079", "F-038", "F-081"],
+    "S-003": ["F-038", "F-039", "F-072", "F-022", "F-068"],
     "S-004": ["F-055", "F-001", "F-042"],
     "S-005": ["F-037", "F-039", "F-062"],
     "S-006": ["F-049", "F-042"],
