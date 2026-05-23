@@ -2,7 +2,7 @@
   "id": "F-007",
   "feature_id": "F-007",
   "title": "İç Ağ Port Taraması ve Servis Keşfi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "zeek",
@@ -10,7 +10,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 100,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     }
@@ -37,7 +37,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-007",
-        "count": 7680,
+        "count": 7760,
         "result": "PASS"
       },
       "result": "PASS",
@@ -59,10 +59,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "high cardinality port scan event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:19.781898+00:00",
+  "generated_at": "2026-05-23T10:27:35.568512+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
