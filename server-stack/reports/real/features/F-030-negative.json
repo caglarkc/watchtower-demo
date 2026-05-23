@@ -58,7 +58,7 @@
   "anomaly_detected": false,
   "evidence_expected": "confidential prompt/upload event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:39.487114+00:00",
+  "generated_at": "2026-05-23T03:14:30.375346+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
