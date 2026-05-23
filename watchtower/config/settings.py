@@ -41,6 +41,13 @@ class WatchtowerSettings(BaseSettings):
     ingest_default_limit: int = Field(default=500, ge=1, le=10_000)
     elasticsearch_url: str | None = Field(default=None)
     wazuh_api_url: str | None = Field(default=None)
+    baseline_learning_window_days: int = Field(default=45, ge=1, le=365)
+    baseline_min_user_samples: int = Field(default=5, ge=1)
+    baseline_run_transition_confidence_threshold: float = Field(
+        default=0.65,
+        ge=0.0,
+        le=1.0,
+    )
 
     @property
     def migrations_dir(self) -> Path:
