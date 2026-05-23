@@ -11,35 +11,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-26534.corp.local",
+          "query": "entropy-34865.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-83069.corp.local",
+          "query": "entropy-57982.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-71030.corp.local",
+          "query": "entropy-92369.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-17101.corp.local",
+          "query": "entropy-14426.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-59873.corp.local",
+          "query": "entropy-67920.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-72252.corp.local",
+          "query": "entropy-12725.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-51859.corp.local",
+          "query": "entropy-84373.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-41824.corp.local",
+          "query": "entropy-58578.corp.local",
           "returncode": 9
         }
       ]
@@ -66,19 +66,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 54,
+        "count": 110,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 54,
+        "indexed": 64,
         "index": "corp-logs-f-003",
         "pipeline": {
           "feature_id": "F-003",
           "index": "corp-logs-f-003",
-          "indexed": 54
+          "indexed": 64
         }
       }
     }
@@ -91,7 +91,7 @@
   "anomaly_detected": true,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:03:25.041952+00:00",
+  "generated_at": "2026-05-23T03:04:58.053089+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

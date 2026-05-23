@@ -2,7 +2,7 @@
   "id": "F-041",
   "feature_id": "F-041",
   "title": "ACL ve Everyone İzin Değişikliği",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-041",
-        "count": 80,
+        "count": 160,
         "result": "PASS"
       },
       "result": "PASS",
@@ -57,10 +57,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "Everyone permission change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:04:23.644475+00:00",
+  "generated_at": "2026-05-23T03:04:59.892805+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
