@@ -18,7 +18,7 @@
     {
       "feature_id": "F-016",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "postfix",
@@ -35,7 +35,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-016",
+          "assertion": "L3:elasticsearch:corp-logs-f-016",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -43,10 +43,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-016",
+            "count": 400,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-016",
+            "pipeline": {
+              "feature_id": "F-016",
+              "index": "corp-logs-f-016",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -59,33 +75,7 @@
     {
       "feature_id": "F-020",
       "result": "PASS",
-      "parity_level": "L2",
-      "actions_executed": [
-        {
-          "service": "postfix",
-          "response": {
-            "written": "/var/log/corp/postfix/postfix.jsonl"
-          }
-        }
-      ],
-      "raw_logs_asserted": [
-        {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
-          "result": "PASS"
-        }
-      ],
-      "ingest_assertions": [],
-      "seed_refs": [
-        "seeds/real/mail/mailboxes.yml",
-        "seeds/real/postgres/schema.sql",
-        "seeds/real/git/repos.yml",
-        "seeds/real/web/endpoints.yml"
-      ]
-    },
-    {
-      "feature_id": "F-023",
-      "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "postfix",
@@ -102,7 +92,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-023",
+          "assertion": "L3:elasticsearch:corp-logs-f-020",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -110,10 +100,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-020",
+            "count": 560,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-020",
+            "pipeline": {
+              "feature_id": "F-020",
+              "index": "corp-logs-f-020",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -124,9 +130,9 @@
       ]
     },
     {
-      "feature_id": "F-027",
+      "feature_id": "F-023",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "postfix",
@@ -141,7 +147,95 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-023",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-023",
+            "count": 720,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-023",
+            "pipeline": {
+              "feature_id": "F-023",
+              "index": "corp-logs-f-023",
+              "indexed": 80
+            }
+          }
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-027",
+      "result": "PASS",
+      "parity_level": "L3",
+      "actions_executed": [
+        {
+          "service": "postfix",
+          "response": {
+            "written": "/var/log/corp/postfix/postfix.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-027",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-027",
+            "count": 560,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-027",
+            "pipeline": {
+              "feature_id": "F-027",
+              "index": "corp-logs-f-027",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -196,7 +290,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-016",
+      "assertion": "L3:elasticsearch:corp-logs-f-016",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -204,13 +298,29 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-016",
+        "count": 400,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-016",
+        "pipeline": {
+          "feature_id": "F-016",
+          "index": "corp-logs-f-016",
+          "indexed": 80
+        }
+      }
     },
     {
-      "assertion": "elasticsearch:corp-logs:F-023",
+      "assertion": "L3:elasticsearch:corp-logs-f-020",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -218,10 +328,86 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-020",
+        "count": 560,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-020",
+        "pipeline": {
+          "feature_id": "F-020",
+          "index": "corp-logs-f-020",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-023",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-023",
+        "count": 720,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-023",
+        "pipeline": {
+          "feature_id": "F-023",
+          "index": "corp-logs-f-023",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-027",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-027",
+        "count": 560,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-027",
+        "pipeline": {
+          "feature_id": "F-027",
+          "index": "corp-logs-f-027",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -233,7 +419,7 @@
   "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.107375+00:00",
+  "generated_at": "2026-05-23T03:12:28.146732+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

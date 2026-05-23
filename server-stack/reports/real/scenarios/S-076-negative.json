@@ -16,7 +16,7 @@
     {
       "feature_id": "F-011",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "samba-ad",
@@ -33,7 +33,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-011",
+          "assertion": "L3:elasticsearch:corp-logs-f-011",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -41,10 +41,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-011",
+            "count": 1040,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-011",
+            "pipeline": {
+              "feature_id": "F-011",
+              "index": "corp-logs-f-011",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -82,7 +98,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-014",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 160,
+            "index": "corp-logs-f-014",
+            "pipeline": {
+              "feature_id": "F-014",
+              "index": "corp-logs-f-014",
+              "indexed": 160
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -128,7 +171,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-011",
+      "assertion": "L3:elasticsearch:corp-logs-f-011",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -136,10 +179,52 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-011",
+        "count": 1040,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-011",
+        "pipeline": {
+          "feature_id": "F-011",
+          "index": "corp-logs-f-011",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-014",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 160,
+        "index": "corp-logs-f-014",
+        "pipeline": {
+          "feature_id": "F-014",
+          "index": "corp-logs-f-014",
+          "indexed": 160
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -154,7 +239,7 @@
   "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:41.374836+00:00",
+  "generated_at": "2026-05-23T03:12:27.259428+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
