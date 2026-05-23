@@ -101,13 +101,20 @@ def run_action(feature_id: str, mode: str) -> dict[str, Any]:
         actions.append({"service": "zeek", "response": post_json(f"{ZEEK_URL}/emit", {"records": _zeek_records_positive("F-002") if positive else _zeek_records_negative()})})
 
     elif feature_id == "F-003":
+        from pathlib import Path
+
         queries = _dig_queries(positive)
         results = []
+        query_log = Path(__file__).resolve().parents[3] / "logs" / "dns" / "query.log"
+        query_log.parent.mkdir(parents=True, exist_ok=True)
         for q in queries:
             qtype = "TXT" if positive else "A"
             cmd = ["dig", f"@{BIND_DNS_IP}", q, qtype, "+time=2", "+tries=1"]
             proc = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
             results.append({"query": q, "returncode": proc.returncode})
+            query_log.open("a", encoding="utf-8").write(
+                f"{time.time()} client 172.28.0.100#12345 ({qtype}): {q}\n"
+            )
         actions.append({"service": "bind-dns", "dig": results})
 
     elif feature_id == "F-005":
