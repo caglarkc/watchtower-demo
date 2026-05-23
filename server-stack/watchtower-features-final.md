@@ -667,6 +667,42 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+### F-999: Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması
+
+**KATEGORİ:** uygulama ve süreç  
+**VERİ KAYNAĞI:** Windows Security/System logs, Sysmon Event ID 1/12/13, Wazuh/Sysmon telemetry  
+**NE İZLENİYOR:** Kullanıcı makinesinde veya sunucuda yeni scheduled task, Windows service, cron job veya launch agent oluşturulması; tetikleyici ve çalıştırılan komut  
+**NEDEN DEĞERLI:** Kalıcılık mekanizması, otomatik veri toplama ve zararlı yazılım sürekliliği için kullanılan temel tekniktir  
+**ANOMALİ SİNYALİ:** Normal kullanıcı hesabıyla SYSTEM yetkili servis oluşturma; geçici klasörden çalışan task; mesai dışı yeni görev  
+**UYGULAMA ZORLUĞU:** Kolay — event log ve Sysmon ile doğrudan izlenebilir  
+**ÖRNEK METRIK:** Muhasebe PC'si: 0 task oluşturma/6 ay → "Updater" adlı task her 5 dakikada PowerShell çalıştırıyor
+
+---
+
+### F-999: Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması
+
+**KATEGORİ:** uygulama ve süreç  
+**VERİ KAYNAĞI:** Windows Event Log, Sysmon process command line, backup platform audit  
+**NE İZLENİYOR:** Volume Shadow Copy silme, backup job durdurma, snapshot retention azaltma, `vssadmin`, `wbadmin`, `bcdedit` ve benzeri komutların kullanımı  
+**NEDEN DEĞERLI:** Fidye yazılımı saldırılarında şifreleme öncesi en erken ve en kritik hazırlık adımlarından biridir  
+**ANOMALİ SİNYALİ:** Kullanıcı endpoint'inde veya file server'da shadow copy delete komutu; backup servisi policy dışı durdurma  
+**UYGULAMA ZORLUĞU:** Kolay — komut satırı ve servis olayları yüksek sinyal taşır  
+**ÖRNEK METRIK:** File server: `vssadmin delete shadows /all` + 2 dakika sonra kitlesel rename başlangıcı
+
+---
+
+### F-999: Kodlanmış veya Politika Atlatan Betik Komutları
+
+**KATEGORİ:** uygulama ve süreç  
+**VERİ KAYNAĞI:** Sysmon Event ID 1, PowerShell Script Block Logging, Wazuh command telemetry  
+**NE İZLENİYOR:** `-EncodedCommand`, `-ExecutionPolicy Bypass`, obfuscation, base64 payload, LOLBin kullanımı ve şüpheli parent process ilişkileri  
+**NEDEN DEĞERLI:** Zararlı betik çalıştırma, credential dumping hazırlığı ve makro kaynaklı istismarların ortak göstergesidir  
+**ANOMALİ SİNYALİ:** Office uygulaması altından encoded PowerShell; normal kullanıcı cihazında policy bypass komutu  
+**UYGULAMA ZORLUĞU:** Orta — komut normalizasyonu ve allowlist gerekir  
+**ÖRNEK METRIK:** Winword.exe → powershell.exe `-ExecutionPolicy Bypass -EncodedCommand` / ilk kez görülen hash
+
+---
+
 ## Donanım ve Uç Nokta
 
 ---
