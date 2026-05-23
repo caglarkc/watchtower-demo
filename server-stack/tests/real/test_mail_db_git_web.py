@@ -22,10 +22,10 @@ def features_doc() -> dict:
 
 
 @pytest.mark.real
-def test_ri2_features_have_l2_metadata(features_doc: dict) -> None:
+def test_ri2_features_have_l2_or_higher_metadata(features_doc: dict) -> None:
     by_id = {f["feature_id"]: f for f in features_doc["features"]}
     for fid in RI2:
-        assert by_id[fid]["real_parity_level"] == "L2", fid
+        assert by_id[fid]["real_parity_level"] in ("L2", "L3"), fid
 
 
 @pytest.mark.real
