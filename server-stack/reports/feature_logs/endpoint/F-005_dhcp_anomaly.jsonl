@@ -52,3 +52,4 @@
 {"event_type": "dhcp_anomaly", "rogue_scope": false, "duplicate_lease": false, "feature_id": "F-005", "timestamp": "2026-05-23T03:17:33.917272+00:00"}
 {"event_type": "dhcp_anomaly", "rogue_scope": true, "duplicate_lease": true, "feature_id": "F-005", "timestamp": "2026-05-23T03:17:41.498788+00:00"}
 {"event_type": "dhcp_anomaly", "rogue_scope": false, "duplicate_lease": false, "feature_id": "F-005", "timestamp": "2026-05-23T03:17:43.614840+00:00"}
+{"event_type": "dhcp_anomaly", "rogue_scope": true, "duplicate_lease": true, "feature_id": "F-005", "timestamp": "2026-05-23T05:09:26.559218+00:00"}
