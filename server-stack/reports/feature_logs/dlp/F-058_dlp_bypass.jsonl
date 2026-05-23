@@ -8,3 +8,4 @@
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": true, "bypass_attempt": false, "feature_id": "F-058", "timestamp": "2026-05-23T01:26:58.208348+00:00"}
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": false, "bypass_attempt": true, "feature_id": "F-058", "timestamp": "2026-05-23T01:27:07.323008+00:00"}
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": true, "bypass_attempt": false, "feature_id": "F-058", "timestamp": "2026-05-23T01:27:09.774043+00:00"}
+{"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": false, "bypass_attempt": true, "feature_id": "F-058", "timestamp": "2026-05-23T02:09:28.066344+00:00"}

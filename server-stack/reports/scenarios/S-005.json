@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-005",
   "title": "CTO'nun Gizli Yedek Klasörü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "CTO",
   "deterministic_seed": 1005,
@@ -19,7 +19,7 @@
     "siem-admin"
   ],
   "expected_evidence": "Multi-signal workflow for CTO'nun Gizli Yedek Klasörü",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 6,
   "events": [
     {
@@ -29,19 +29,19 @@
       "user_role": "CTO",
       "category": "veri sızdırma",
       "seed": 1005,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "smb_access",
-      "share": "legal",
+      "share": "dev",
       "user_dept": "dev",
-      "files": 41,
+      "files": 3,
       "source_feature": "F-037",
       "scenario_id": "S-005"
     },
     {
       "event_type": "smb_rename_storm",
-      "renames_per_minute": 120,
+      "renames_per_minute": 2,
       "source_feature": "F-039",
       "scenario_id": "S-005"
     },
@@ -49,9 +49,7 @@
       "event_type": "risky_log_search",
       "log_channel": "siem",
       "keywords": [
-        "password",
-        "token",
-        "suppress"
+        "dashboard"
       ],
       "source_feature": "F-062",
       "scenario_id": "S-005"
@@ -59,16 +57,16 @@
     {
       "event_type": "ai_confidential_prompt",
       "log_channel": "ai_gateway",
-      "contains_pii": true,
-      "bytes": 42000,
+      "contains_pii": false,
+      "bytes": 200,
       "source_feature": "F-030",
       "scenario_id": "S-005"
     },
     {
       "event_type": "ai_strategy_content",
       "log_channel": "ai_gateway",
-      "legal_terms": 14,
-      "strategy_terms": 22,
+      "legal_terms": 0,
+      "strategy_terms": 0,
       "source_feature": "F-036",
       "scenario_id": "S-005"
     }
@@ -81,9 +79,12 @@
     "reports/scenario_logs/S-005/ai_gateway/ai_confidential_prompt.jsonl",
     "reports/scenario_logs/S-005/ai_gateway/ai_strategy_content.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:09:23.318891+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:09:26.859762+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-005:1005:positive"
+  "replay_key": "S-005:1005:negative"
 }

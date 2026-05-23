@@ -4,3 +4,4 @@
 {"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "source_feature": "F-003", "scenario_id": "S-069", "timestamp": "2026-05-23T01:26:43.572054+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "source_feature": "F-003", "scenario_id": "S-069", "timestamp": "2026-05-23T01:27:13.831624+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "source_feature": "F-003", "scenario_id": "S-069", "timestamp": "2026-05-23T01:27:16.675844+00:00"}
+{"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "source_feature": "F-003", "scenario_id": "S-069", "timestamp": "2026-05-23T02:09:26.129493+00:00"}

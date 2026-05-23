@@ -1,3 +1,4 @@
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:24.259901+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:26:41.088376+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:27:14.252904+00:00"}
+{"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:09:26.597932+00:00"}

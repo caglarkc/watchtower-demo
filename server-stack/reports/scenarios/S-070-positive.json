@@ -49,7 +49,7 @@
     "reports/scenario_logs/S-070/scenarios/kerberos_tgt.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:27:13.866170+00:00",
+  "generated_at": "2026-05-23T02:09:26.166192+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-070:7070:positive"

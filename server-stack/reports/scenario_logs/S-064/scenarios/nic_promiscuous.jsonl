@@ -4,3 +4,4 @@
 {"event_type": "nic_promiscuous", "enabled": false, "source_feature": "F-057", "scenario_id": "S-064", "timestamp": "2026-05-23T01:26:43.393956+00:00"}
 {"event_type": "nic_promiscuous", "enabled": true, "source_feature": "F-057", "scenario_id": "S-064", "timestamp": "2026-05-23T01:27:13.666304+00:00"}
 {"event_type": "nic_promiscuous", "enabled": false, "source_feature": "F-057", "scenario_id": "S-064", "timestamp": "2026-05-23T01:27:16.505263+00:00"}
+{"event_type": "nic_promiscuous", "enabled": true, "source_feature": "F-057", "scenario_id": "S-064", "timestamp": "2026-05-23T02:09:25.882874+00:00"}

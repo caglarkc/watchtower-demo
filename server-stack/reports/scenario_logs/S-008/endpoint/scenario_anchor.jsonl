@@ -5,3 +5,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": true, "timestamp": "2026-05-23T01:27:11.706079+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": false, "timestamp": "2026-05-23T01:27:14.602099+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": true, "timestamp": "2026-05-23T02:09:23.481683+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-008", "user_role": "IT Admin", "category": "veri sızdırma", "seed": 1008, "anomaly": false, "timestamp": "2026-05-23T02:09:26.960543+00:00"}

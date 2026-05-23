@@ -4,3 +4,4 @@
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T01:26:42.915647+00:00"}
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T01:27:13.180421+00:00"}
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T01:27:16.031904+00:00"}
+{"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T02:09:25.245082+00:00"}

@@ -4,3 +4,4 @@
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "source_feature": "F-016", "scenario_id": "S-079", "timestamp": "2026-05-23T01:26:43.931536+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "source_feature": "F-016", "scenario_id": "S-079", "timestamp": "2026-05-23T01:27:14.172944+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "source_feature": "F-016", "scenario_id": "S-079", "timestamp": "2026-05-23T01:27:17.025880+00:00"}
+{"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "source_feature": "F-016", "scenario_id": "S-079", "timestamp": "2026-05-23T02:09:26.524986+00:00"}
