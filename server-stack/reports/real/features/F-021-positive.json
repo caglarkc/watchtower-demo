@@ -3,7 +3,7 @@
   "feature_id": "F-021",
   "title": "Kişisel E-posta Adreslerine Ekli Posta Gönderimi",
   "mode": "positive",
-  "parity_level": "L2",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
   "actions_executed": [
@@ -20,7 +20,38 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-021",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-021",
+        "count": 38,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-021",
+        "pipeline": {
+          "feature_id": "F-021",
+          "index": "corp-logs-f-021",
+          "indexed": 80
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
@@ -30,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "personal email attachment event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:55.407485+00:00",
+  "generated_at": "2026-05-23T03:05:18.402850+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
