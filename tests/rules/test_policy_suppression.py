@@ -27,6 +27,7 @@ def test_policy_rule_feedback_requires_explicit_suppression_approval(app, tenant
         assert pending is not None
         assert pending.requires_policy_suppression_approval is True
         assert pending.effect.suppress_alert is False
+        assert pending.effect.suppression_requested is True
 
         stable_plain = session.rules.approve_pending_rule(
             tenant_id,

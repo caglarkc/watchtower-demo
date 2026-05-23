@@ -100,14 +100,14 @@ class FeedbackService:
         requires_policy = bool(
             entry and entry.requires_approval_for_suppression
         )
-        suppress = event.kind in ("false_positive", "temporary_exception")
-        if requires_policy:
-            suppress = False
+        wants_suppress = event.kind in ("false_positive", "temporary_exception")
+        suppress = wants_suppress and not requires_policy
 
         effect = RuleEffect(
             effect_type="suppress" if suppress else "downrank",
             severity_delta=-2 if event.kind != "true_positive" else 0,
             suppress_alert=suppress,
+            suppression_requested=wants_suppress and requires_policy,
             policy_suppression_approved=False,
         )
         expires_at = None

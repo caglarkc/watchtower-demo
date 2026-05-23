@@ -169,7 +169,14 @@ class RuleEngine:
             entry and getattr(entry, "requires_approval_for_suppression", False)
         ) or detection == "policy-rule"
 
-        if suppress and needs_policy_approval and not effect.policy_suppression_approved:
+        if (
+            needs_policy_approval
+            and effect.suppression_requested
+            and not effect.policy_suppression_approved
+        ):
+            suppress = False
+            policy_blocked = True
+        elif suppress and needs_policy_approval and not effect.policy_suppression_approved:
             suppress = False
             policy_blocked = True
 
