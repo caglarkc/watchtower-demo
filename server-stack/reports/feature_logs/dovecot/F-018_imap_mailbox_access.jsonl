@@ -24,3 +24,4 @@
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "feature_id": "F-018", "timestamp": "2026-05-23T02:19:45.250310+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "feature_id": "F-018", "timestamp": "2026-05-23T02:28:49.285204+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "feature_id": "F-018", "timestamp": "2026-05-23T02:28:56.579404+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "feature_id": "F-018", "timestamp": "2026-05-23T02:29:06.634240+00:00"}
