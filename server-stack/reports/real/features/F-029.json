@@ -2,7 +2,7 @@
   "id": "F-029",
   "feature_id": "F-029",
   "title": "Kurumsal Mail Sistemine Kişisel/Bilinmeyen Hesapla Giriş Denemesi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "roundcube",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-029",
-        "count": 2400,
+        "count": 2480,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "personal/unknown account login attempt",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:36.636088+00:00",
+  "generated_at": "2026-05-23T05:37:40.575683+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
