@@ -2,7 +2,7 @@
   "id": "F-063",
   "feature_id": "F-063",
   "title": "Daha Önce Görülmemiş Donanım Kimliğiyle Oturum Denemesi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -43,12 +43,12 @@
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 17,
+        "indexed": 18,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 17
+          "indexed": 18
         }
       }
     }
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "unknown hardware login attempt",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:00.874116+00:00",
+  "generated_at": "2026-05-23T03:11:08.118521+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
