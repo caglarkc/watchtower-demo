@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+import inspect
 
 from watchtower.config.paths import PROJECT_ROOT
 from watchtower.connectors.factory import build_connector
@@ -26,10 +26,6 @@ def test_server_stack_connector_read_only_real_logs():
     assert health.status in {"healthy", "degraded"}
     batch = connector.poll(ConnectorCursor(), limit=3)
     assert isinstance(batch.events, list)
-    poll_src = inspect.getsource(ServerStackConnector.poll) if False else ""
-    del poll_src
-    import inspect
-
     assert "readline" in inspect.getsource(ServerStackConnector._poll_file)
 
 

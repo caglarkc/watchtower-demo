@@ -118,12 +118,11 @@ class FileJsonlConnector(BaseConnector):
                     else:
                         partial = ""
                     break
-                line_bytes = len(line.encode("utf-8"))
+                bytes_read += len(line.encode("utf-8"))
                 buffer += line
                 if not line.endswith("\n"):
                     partial = buffer
                     break
-                bytes_read += line_bytes
                 buffer = ""
                 line_number += 1
                 stripped = line.strip()
