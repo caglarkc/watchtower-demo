@@ -2,8 +2,8 @@
   "id": "F-080",
   "feature_id": "F-080",
   "title": "Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
   "actions_executed": [
@@ -21,16 +21,47 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-080",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-080",
+        "count": 7,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 7,
+        "index": "corp-logs-f-080",
+        "pipeline": {
+          "feature_id": "F-080",
+          "index": "corp-logs-f-080",
+          "indexed": 7
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "idle session abuse event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:32.790461+00:00",
+  "generated_at": "2026-05-23T03:04:14.780460+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
