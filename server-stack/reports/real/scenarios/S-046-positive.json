@@ -48,12 +48,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 75,
+            "indexed": 80,
             "index": "corp-logs-f-075",
             "pipeline": {
               "feature_id": "F-075",
               "index": "corp-logs-f-075",
-              "indexed": 75
+              "indexed": 80
             }
           }
         }
@@ -98,12 +98,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 75,
+        "indexed": 80,
         "index": "corp-logs-f-075",
         "pipeline": {
           "feature_id": "F-075",
           "index": "corp-logs-f-075",
-          "indexed": 75
+          "indexed": 80
         }
       }
     }
@@ -117,7 +117,7 @@
   "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:38.079921+00:00",
+  "generated_at": "2026-05-23T03:13:59.073202+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

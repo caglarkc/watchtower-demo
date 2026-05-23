@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-033",
   "title": "Destek Personeli DC RDP",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Destek Personeli",
   "deterministic_seed": 3033,
@@ -21,7 +21,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -59,19 +59,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 1672,
+            "count": 2604,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 113,
+            "indexed": 121,
             "index": "corp-logs-f-015",
             "pipeline": {
               "feature_id": "F-015",
               "index": "corp-logs-f-015",
-              "indexed": 113
+              "indexed": 121
             }
           }
         }
@@ -90,14 +90,52 @@
         {
           "service": "nginx",
           "http_codes": [
-            "404",
-            "404"
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403"
           ]
         }
       ],
       "raw_logs_asserted": [
         {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
           "result": "PASS"
         }
       ],
@@ -116,7 +154,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-048",
-            "count": 800,
+            "count": 1440,
             "result": "PASS"
           },
           "result": "PASS",
@@ -145,7 +183,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -159,8 +197,46 @@
     {
       "service": "nginx",
       "http_codes": [
-        "404",
-        "404"
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403"
       ]
     }
   ],
@@ -175,7 +251,7 @@
       "result": "PASS"
     },
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
       "result": "PASS"
     }
   ],
@@ -194,19 +270,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 1672,
+        "count": 2604,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 113,
+        "indexed": 121,
         "index": "corp-logs-f-015",
         "pipeline": {
           "feature_id": "F-015",
           "index": "corp-logs-f-015",
-          "indexed": 113
+          "indexed": 121
         }
       }
     },
@@ -224,7 +300,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 800,
+        "count": 1440,
         "result": "PASS"
       },
       "result": "PASS",
@@ -250,12 +326,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:12:15.546561+00:00",
+  "generated_at": "2026-05-23T03:13:56.179525+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-033:3033:negative:real"
+  "replay_key": "S-033:3033:positive:real"
 }

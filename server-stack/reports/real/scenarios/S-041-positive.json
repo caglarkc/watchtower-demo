@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 560,
+            "count": 1600,
             "result": "PASS"
           },
           "result": "PASS",
@@ -99,7 +99,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 560,
+        "count": 1600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -125,7 +125,7 @@
   "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:37.088623+00:00",
+  "generated_at": "2026-05-23T03:13:57.976498+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
