@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
-from config import ALL_REAL_FEATURES, INGEST_FEATURES, INGEST_L3_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES
+from config import ALL_REAL_FEATURES, INGEST_FEATURES, INGEST_L3_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES, RI4_FEATURES
 from ingest_assertions import assert_ingest_for_feature
 from log_assertions import (
     assert_activity,
+    assert_badge,
+    assert_cups,
+    assert_hris,
+    assert_mattermost,
+    assert_suitecrm,
     assert_ad_event,
     assert_ai_gateway,
     assert_app_audit,
