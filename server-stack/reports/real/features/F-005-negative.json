@@ -33,7 +33,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-005",
-        "count": 1375,
+        "count": 1455,
         "result": "PASS"
       },
       "result": "PASS",
@@ -53,7 +53,7 @@
   "anomaly_detected": false,
   "evidence_expected": "duplicate lease/scope change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:20.038144+00:00",
+  "generated_at": "2026-05-23T10:26:26.249477+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

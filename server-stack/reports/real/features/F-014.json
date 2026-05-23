@@ -68,7 +68,7 @@
   "anomaly_detected": false,
   "evidence_expected": "reset/unlock burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:24.707718+00:00",
+  "generated_at": "2026-05-23T10:26:28.263827+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
