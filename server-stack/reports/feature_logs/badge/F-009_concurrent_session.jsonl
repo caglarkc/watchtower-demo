@@ -50,3 +50,4 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T03:17:53.039995+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T05:09:26.909852+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T05:09:34.238620+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T05:09:49.468655+00:00"}
