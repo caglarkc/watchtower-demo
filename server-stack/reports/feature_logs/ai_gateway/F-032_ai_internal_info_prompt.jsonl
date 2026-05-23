@@ -48,3 +48,4 @@
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 0, "users_disclosed": 0, "feature_id": "F-032", "timestamp": "2026-05-23T03:17:36.367699+00:00"}
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 8, "users_disclosed": 5, "feature_id": "F-032", "timestamp": "2026-05-23T03:17:50.361388+00:00"}
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 0, "users_disclosed": 0, "feature_id": "F-032", "timestamp": "2026-05-23T03:17:53.602103+00:00"}
+{"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 8, "users_disclosed": 5, "feature_id": "F-032", "timestamp": "2026-05-23T05:09:28.980713+00:00"}
