@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from typing import Any
-
-from watchtower.domain.alerts import CaseTimelineEntry, Literal
+from typing import Any, Literal
 
 from watchtower.domain.alerts import (
     TERMINAL_STATUSES,
@@ -15,6 +13,7 @@ from watchtower.domain.alerts import (
     AlertDetailView,
     AlertLifecycleEvent,
     AlertStatus,
+    CaseTimelineEntry,
     CaseTimelineEventType,
     SuppressionWindow,
 )
