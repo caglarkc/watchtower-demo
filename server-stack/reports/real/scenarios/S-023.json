@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-023",
   "title": "Muhasebe Terminalinden Gece Loginleri",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Muhasebe",
   "deterministic_seed": 2023,
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 23869,
+            "count": 25469,
             "result": "PASS"
           },
           "result": "PASS",
@@ -115,7 +115,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 5722,
+            "count": 6202,
             "result": "PASS"
           },
           "result": "PASS",
@@ -146,7 +146,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": false
+            "mismatch": true
           }
         },
         {
@@ -222,7 +222,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": false
+        "mismatch": true
       }
     },
     {
@@ -265,7 +265,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 23869,
+        "count": 25469,
         "result": "PASS"
       },
       "result": "PASS",
@@ -295,7 +295,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 5722,
+        "count": 6202,
         "result": "PASS"
       },
       "result": "PASS",
@@ -347,12 +347,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:03.805951+00:00",
+  "generated_at": "2026-05-23T10:25:48.752955+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-023:2023:negative:real"
+  "replay_key": "S-023:2023:positive:real"
 }

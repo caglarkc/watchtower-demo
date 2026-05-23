@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-025",
   "title": "Admin Hesaplarının Çapraz Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2025,
@@ -21,7 +21,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -59,7 +59,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 20384,
+            "count": 21664,
             "result": "PASS"
           },
           "result": "PASS",
@@ -116,7 +116,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 5802,
+            "count": 6202,
             "result": "PASS"
           },
           "result": "PASS",
@@ -144,7 +144,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -193,7 +193,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 20384,
+        "count": 21664,
         "result": "PASS"
       },
       "result": "PASS",
@@ -223,7 +223,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 5802,
+        "count": 6202,
         "result": "PASS"
       },
       "result": "PASS",
@@ -245,12 +245,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:04.272151+00:00",
+  "generated_at": "2026-05-23T10:25:49.217351+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-025:2025:negative:real"
+  "replay_key": "S-025:2025:positive:real"
 }

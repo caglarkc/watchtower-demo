@@ -2,7 +2,7 @@
   "id": "F-011",
   "feature_id": "F-011",
   "title": "AD Grup Üyeliği ve Privileged Değişiklik",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-ad",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-011",
-        "count": 8400,
+        "count": 8480,
         "result": "PASS"
       },
       "result": "PASS",
@@ -57,10 +57,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "privileged group add/remove event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:20.772252+00:00",
+  "generated_at": "2026-05-23T10:25:50.249173+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
