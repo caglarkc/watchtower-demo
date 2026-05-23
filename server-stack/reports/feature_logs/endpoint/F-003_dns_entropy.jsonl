@@ -37,3 +37,4 @@
 {"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "feature_id": "F-003", "timestamp": "2026-05-23T02:43:53.942276+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "feature_id": "F-003", "timestamp": "2026-05-23T02:43:55.951034+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "feature_id": "F-003", "timestamp": "2026-05-23T02:51:17.158058+00:00"}
+{"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "feature_id": "F-003", "timestamp": "2026-05-23T02:51:24.482133+00:00"}

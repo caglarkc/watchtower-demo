@@ -34,3 +34,4 @@
 {"event_type": "hypervisor_console_access", "log_channel": "hypervisor", "user": "it-admin", "console": "proxmox", "feature_id": "F-051", "timestamp": "2026-05-23T02:43:50.944015+00:00"}
 {"event_type": "hypervisor_console_access", "log_channel": "hypervisor", "user": "pm", "console": "proxmox", "feature_id": "F-051", "timestamp": "2026-05-23T02:43:59.688690+00:00"}
 {"event_type": "hypervisor_console_access", "log_channel": "hypervisor", "user": "it-admin", "console": "proxmox", "feature_id": "F-051", "timestamp": "2026-05-23T02:44:01.914991+00:00"}
+{"event_type": "hypervisor_console_access", "log_channel": "hypervisor", "user": "pm", "console": "proxmox", "feature_id": "F-051", "timestamp": "2026-05-23T02:51:21.514390+00:00"}
