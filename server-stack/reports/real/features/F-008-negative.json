@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-008",
-        "count": 720,
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -60,7 +60,7 @@
   "anomaly_detected": false,
   "evidence_expected": "TGT/NTLM target diversity event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:12:25.672536+00:00",
+  "generated_at": "2026-05-23T03:13:26.186728+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

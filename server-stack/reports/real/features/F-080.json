@@ -2,7 +2,7 @@
   "id": "F-080",
   "feature_id": "F-080",
   "title": "Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-080",
-        "count": 84,
+        "count": 99,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 15,
+        "indexed": 16,
         "index": "corp-logs-f-080",
         "pipeline": {
           "feature_id": "F-080",
           "index": "corp-logs-f-080",
-          "indexed": 15
+          "indexed": 16
         }
       }
     }
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "idle session abuse event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:23.058111+00:00",
+  "generated_at": "2026-05-23T03:13:28.103436+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
