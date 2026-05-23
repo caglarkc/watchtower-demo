@@ -413,3 +413,200 @@ services:
       test: ["CMD", "python", "/app/healthcheck.py"]
       <<: *health-http
     restart: unless-stopped
+
+  # --- Phase 3: AI, Proxy, Physical, HR, Collaboration, Peripheral ---
+  ai-gateway-mock:
+    build:
+      context: ./simulation/ai_gateway_mock
+    container_name: corp-ai-gateway
+    hostname: aigw1
+    networks:
+      corp-lan:
+        ipv4_address: ${AI_GATEWAY_IP:-172.28.0.30}
+    volumes:
+      - ./logs/ai_gateway:/var/log/corp/ai_gateway
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  proxy-sink:
+    build:
+      context: ./simulation/proxy_sink
+    container_name: corp-proxy-sink
+    hostname: proxy1
+    networks:
+      corp-lan:
+        ipv4_address: ${PROXY_SINK_IP:-172.28.0.31}
+    volumes:
+      - ./logs/proxy:/var/log/corp/proxy
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  cloud-storage-mock:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-cloud-storage
+    hostname: cloud1
+    networks:
+      corp-lan:
+        ipv4_address: ${CLOUD_STORAGE_IP:-172.28.0.32}
+    environment:
+      ROLE: cloud
+    volumes:
+      - ./logs/cloud:/var/log/corp/cloud
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  vault-mock:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-vault
+    hostname: vault1
+    networks:
+      corp-lan:
+        ipv4_address: ${VAULT_IP:-172.28.0.33}
+    environment:
+      ROLE: vault
+    volumes:
+      - ./logs/vault:/var/log/corp/vault
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  mattermost:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-mattermost
+    hostname: chat1
+    networks:
+      corp-lan:
+        ipv4_address: ${MATTERMOST_IP:-172.28.0.34}
+    environment:
+      ROLE: mattermost
+    volumes:
+      - ./logs/mattermost:/var/log/corp/mattermost
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  cups:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-cups
+    hostname: print1
+    networks:
+      corp-lan:
+        ipv4_address: ${CUPS_IP:-172.28.0.35}
+    environment:
+      ROLE: cups
+    volumes:
+      - ./logs/cups:/var/log/corp/cups
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  badge-api:
+    build:
+      context: ./simulation/badge_api
+    container_name: corp-badge-api
+    hostname: badge1
+    networks:
+      corp-lan:
+        ipv4_address: ${BADGE_API_IP:-172.28.0.36}
+    volumes:
+      - ./logs/badge:/var/log/corp/badge
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  hris-mock:
+    build:
+      context: ./simulation/hris_mock
+    container_name: corp-hris
+    hostname: hris1
+    networks:
+      corp-lan:
+        ipv4_address: ${HRIS_MOCK_IP:-172.28.0.37}
+    volumes:
+      - ./logs/hris:/var/log/corp/hris
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  suitecrm-mock:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-suitecrm
+    hostname: crm1
+    networks:
+      corp-lan:
+        ipv4_address: ${SUITECRM_IP:-172.28.0.38}
+    environment:
+      ROLE: suitecrm
+    volumes:
+      - ./logs/suitecrm:/var/log/corp/suitecrm
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  wiki-mock:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-wiki
+    hostname: wiki1
+    networks:
+      corp-lan:
+        ipv4_address: ${WIKI_MOCK_IP:-172.28.0.39}
+    environment:
+      ROLE: wiki
+    volumes:
+      - ./logs/wiki:/var/log/corp/wiki
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  dlp-mock:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-dlp
+    hostname: dlp1
+    networks:
+      corp-lan:
+        ipv4_address: ${DLP_MOCK_IP:-172.28.0.40}
+    environment:
+      ROLE: dlp
+    volumes:
+      - ./logs/dlp:/var/log/corp/dlp
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  activity-generator:
+    build:
+      context: ./docker/phase3-sim
+    container_name: corp-activity-generator
+    hostname: activity1
+    networks:
+      corp-lan:
+        ipv4_address: ${ACTIVITY_GEN_IP:-172.28.0.41}
+    environment:
+      ROLE: activity
+    volumes:
+      - ./logs/activity:/var/log/corp/activity
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
