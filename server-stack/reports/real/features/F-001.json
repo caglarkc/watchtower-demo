@@ -2,15 +2,15 @@
   "id": "F-001",
   "feature_id": "F-001",
   "title": "Kullanıcı Başına SMB/Dosya Sunucu Veri Çekim Profili",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
   "actions_executed": [
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 1,
+        "events": 5,
         "smb_attempted": true
       }
     },
@@ -35,7 +35,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-001",
+      "assertion": "L3:elasticsearch:corp-logs-f-001",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,10 +43,26 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-001",
+        "count": 1,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 160,
+        "index": "corp-logs-f-001",
+        "pipeline": {
+          "feature_id": "F-001",
+          "index": "corp-logs-f-001",
+          "indexed": 160
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -54,10 +70,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "SMB read volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:30.821746+00:00",
+  "generated_at": "2026-05-23T03:02:59.849790+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
