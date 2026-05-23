@@ -2,7 +2,7 @@
   "id": "F-010",
   "feature_id": "F-010",
   "title": "Hizmet Hesaplarının İnteraktif Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-ad",
@@ -36,7 +36,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-010",
-        "count": 7280,
+        "count": 7360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "service account interactive logon",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:14.692910+00:00",
+  "generated_at": "2026-05-23T10:26:36.175696+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
