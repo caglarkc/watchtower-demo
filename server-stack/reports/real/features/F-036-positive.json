@@ -58,7 +58,7 @@
   "anomaly_detected": true,
   "evidence_expected": "strategy/legal-content conversation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:58.238753+00:00",
+  "generated_at": "2026-05-23T03:19:10.474180+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

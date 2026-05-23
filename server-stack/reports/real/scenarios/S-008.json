@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-008",
   "title": "Yedekleme Sunucusundan Olağan Dışı Veri Çekme",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "IT Admin",
   "deterministic_seed": 1008,
@@ -24,7 +24,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "events": 1,
+            "events": 5,
             "smb_attempted": true
           }
         },
@@ -62,7 +62,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-001",
-            "count": 7520,
+            "count": 8960,
             "result": "PASS"
           },
           "result": "PASS",
@@ -119,19 +119,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-055",
-            "count": 1170,
+            "count": 1548,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 51,
+            "indexed": 58,
             "index": "corp-logs-f-055",
             "pipeline": {
               "feature_id": "F-055",
               "index": "corp-logs-f-055",
-              "indexed": 51
+              "indexed": 58
             }
           }
         }
@@ -176,19 +176,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-053",
-            "count": 279,
+            "count": 385,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 25,
+            "indexed": 29,
             "index": "corp-logs-f-053",
             "pipeline": {
               "feature_id": "F-053",
               "index": "corp-logs-f-053",
-              "indexed": 25
+              "indexed": 29
             }
           }
         }
@@ -316,7 +316,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 1,
+        "events": 5,
         "smb_attempted": true
       }
     },
@@ -406,7 +406,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 7520,
+        "count": 8960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -436,19 +436,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 1170,
+        "count": 1548,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 51,
+        "indexed": 58,
         "index": "corp-logs-f-055",
         "pipeline": {
           "feature_id": "F-055",
           "index": "corp-logs-f-055",
-          "indexed": 51
+          "indexed": 58
         }
       }
     },
@@ -466,19 +466,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-053",
-        "count": 279,
+        "count": 385,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 25,
+        "indexed": 29,
         "index": "corp-logs-f-053",
         "pipeline": {
           "feature_id": "F-053",
           "index": "corp-logs-f-053",
-          "indexed": 25
+          "indexed": 29
         }
       }
     },
@@ -543,12 +543,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 7,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:19.042562+00:00",
+  "generated_at": "2026-05-23T03:19:11.693278+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-008:1008:negative:real"
+  "replay_key": "S-008:1008:positive:real"
 }
