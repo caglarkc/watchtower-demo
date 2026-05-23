@@ -1,0 +1,44 @@
+.PHONY: up down config clean feature feature-negative test-smoke test-features test-phase1 coverage seed-baseline
+
+PYTHON ?= .venv/bin/python
+PYTEST ?= .venv/bin/pytest
+COMPOSE ?= docker compose
+
+up:
+	$(COMPOSE) up -d
+	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint} reports/features reports/coverage
+
+down:
+	$(COMPOSE) down
+
+clean:
+	$(COMPOSE) down -v --remove-orphans
+
+config:
+	$(COMPOSE) config
+
+seed-baseline:
+	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint} reports/features
+	$(PYTHON) simulation/event_generator/generate_phase1_replays.py
+
+feature:
+	@test -n "$(FEATURE)" || (echo "Usage: make feature FEATURE=F-001" && exit 1)
+	$(PYTHON) simulation/event_generator/run_feature.py --feature $(FEATURE) --mode positive
+
+feature-negative:
+	@test -n "$(FEATURE)" || (echo "Usage: make feature-negative FEATURE=F-001" && exit 1)
+	$(PYTHON) simulation/event_generator/run_feature.py --feature $(FEATURE) --mode negative
+
+test-smoke:
+	$(PYTEST) tests/smoke -v
+
+test-features:
+	$(PYTEST) tests/feature -v
+
+test-phase1:
+	$(PYTEST) tests/feature -m phase1 -v
+
+coverage:
+	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 1
+
+test-all: test-smoke test-phase1 coverage
