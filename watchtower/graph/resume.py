@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from watchtower.graph.checkpointing import GraphCheckpointStore
 from watchtower.graph.runner import GraphRunResult, GraphRunner
-from watchtower.services.app import SessionContext
+
+if TYPE_CHECKING:
+    from watchtower.services.app import SessionContext
 
 
 @dataclass
@@ -25,7 +27,7 @@ class GraphResumeService:
 
     def __init__(
         self,
-        session: SessionContext,
+        session: SessionContext,  # type: ignore[name-defined]
         checkpoint_store: GraphCheckpointStore,
     ) -> None:
         self._session = session
