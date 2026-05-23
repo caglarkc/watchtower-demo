@@ -99,17 +99,9 @@ RI1_FEATURES = frozenset(
     }
 )
 
-INGEST_FEATURES = frozenset(
-    {
-        "F-001", "F-002", "F-006", "F-007", "F-010", "F-011",
-        "F-037", "F-038", "F-079",
-        "F-016", "F-023", "F-045", "F-048", "F-049",
-        "F-012", "F-013", "F-030", "F-033", "F-067", "F-068", "F-069",
-    }
-)
+# RI-6: P0+P1 (46) features require L3 index/query assertion; all 81 ship logs + L2 raw.
+INGEST_L3_FEATURES = RI1_FEATURES | RI2_FEATURES
 
-INGEST_L3_FEATURES = frozenset(
-    {"F-012", "F-013", "F-030", "F-033", "F-067", "F-068", "F-069"}
-)
+INGEST_FEATURES = ALL_REAL_FEATURES if "ALL_REAL_FEATURES" in dir() else RI1_FEATURES | RI2_FEATURES | RI3_FEATURES | RI4_FEATURES
 
 ALL_REAL_FEATURES = RI1_FEATURES | RI2_FEATURES | RI3_FEATURES | RI4_FEATURES
