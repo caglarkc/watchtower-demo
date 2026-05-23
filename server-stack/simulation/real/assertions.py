@@ -105,12 +105,60 @@ def _checks_ri2(feature_id: str, positive: bool) -> list:
     return []
 
 
+def _checks_ri3(feature_id: str, positive: bool) -> list:
+    if feature_id in ("F-012", "F-013"):
+        return [lambda s: assert_vault_audit(s)]
+    if feature_id in ("F-030", "F-031", "F-032", "F-035", "F-036"):
+        return [lambda s: assert_ai_gateway(s, "prompt")]
+    if feature_id == "F-033":
+        return [lambda s: assert_proxy_log(s, "external_access")]
+    if feature_id == "F-034":
+        return [lambda s: assert_ai_gateway(s, "upload")]
+    if feature_id in ("F-042", "F-043", "F-059", "F-060", "F-061", "F-065"):
+        et = {
+            "F-042": "local_sensitive_accumulation",
+            "F-043": "labeled_file_move",
+            "F-059": "clipboard_large_copy",
+            "F-060": "screenshot_spike",
+            "F-061": "role_server_map_deviation",
+            "F-065": "dormant_system_access",
+        }[feature_id]
+        return [lambda s: assert_endpoint_event(s, et)]
+    if feature_id == "F-044":
+        return [lambda s: assert_wiki_access(s)]
+    if feature_id == "F-058":
+        return [lambda s: assert_dlp_health(s, disabled=positive)]
+    if feature_id == "F-062":
+        return [lambda s: assert_app_audit("siem", "risky_log_search")]
+    if feature_id == "F-064":
+        return [lambda s: assert_activity(s, "activity_burst")]
+    if feature_id == "F-066":
+        return [lambda s: assert_activity(s, "peer_group_deviation")]
+    if feature_id == "F-067":
+        return [lambda s: assert_cloud_upload(s), lambda s: assert_proxy_log(s, "cloud_upload")]
+    if feature_id == "F-068":
+        return [lambda s: assert_proxy_log(s, "first_seen_transfer")]
+    if feature_id == "F-069":
+        return [lambda s: assert_proxy_log(s, "encrypted_tunnel")]
+    return []
+
+
+def _resolve_checks(feature_id: str, positive: bool) -> list:
+    if feature_id in RI1_FEATURES:
+        return _checks_ri1(feature_id, positive)
+    if feature_id in RI2_FEATURES:
+        return _checks_ri2(feature_id, positive)
+    if feature_id in RI3_FEATURES:
+        return _checks_ri3(feature_id, positive)
+    return []
+
+
 def run_assertions(feature_id: str, mode: str, since: float) -> tuple[list[dict], list[dict], bool]:
     if feature_id not in ALL_REAL_FEATURES:
         return [], [], False
 
     positive = mode == "positive"
-    checks = _checks_ri1(feature_id, positive) if feature_id in RI1_FEATURES else _checks_ri2(feature_id, positive)
+    checks = _resolve_checks(feature_id, positive)
     raw: list[dict] = []
     for check in checks:
         result = check(since)
@@ -120,7 +168,11 @@ def run_assertions(feature_id: str, mode: str, since: float) -> tuple[list[dict]
 
     ingest: list[dict] = []
     if feature_id in INGEST_FEATURES:
-        ingest.append(assert_ingest_for_feature(feature_id))
+        ing = assert_ingest_for_feature(feature_id)
+        if feature_id in INGEST_L3_FEATURES and ing.get("result") == "PASS":
+            ing["assertion"] = f"L3:elasticsearch:corp-logs:{feature_id}"
+            ing["parity_level"] = "L3"
+        ingest.append(ing)
 
     ok = all(r.get("result") == "PASS" for r in raw) and all(
         i.get("result") in ("PASS", "SKIP") for i in ingest
