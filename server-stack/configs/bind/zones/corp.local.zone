@@ -1,0 +1,15 @@
+$TTL 300
+@   IN  SOA dns1.corp.local. admin.corp.local. (
+        2026052301  ; serial
+        3600        ; refresh
+        600         ; retry
+        86400       ; expire
+        300 )       ; minimum
+    IN  NS  dns1.corp.local.
+
+dns1    IN  A   172.28.0.12
+dc1     IN  A   172.28.0.10
+files1  IN  A   172.28.0.11
+dhcp1   IN  A   172.28.0.13
+zeek1   IN  A   172.28.0.14
+es1     IN  A   172.28.0.17

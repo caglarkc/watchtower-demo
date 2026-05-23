@@ -1,0 +1,7 @@
+$TTL 300
+@   IN  SOA dns1.corp.local. admin.corp.local. (2026052301 3600 600 86400 300)
+    IN  NS  dns1.corp.local.
+
+12  IN  PTR dns1.corp.local.
+10  IN  PTR dc1.corp.local.
+11  IN  PTR files1.corp.local.
