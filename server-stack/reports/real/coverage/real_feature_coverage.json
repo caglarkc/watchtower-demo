@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-23T02:57:36.121002+00:00",
-  "phase": "RI-4",
+  "generated_at": "2026-05-23T03:07:59.474219+00:00",
+  "phase": "RI-6",
   "total_features": 81,
   "metadata_complete": 81,
   "implemented": 81,
@@ -19,11 +19,14 @@
   "ri4_l2_metadata": 12,
   "ri4_pass": 12,
   "l2_or_higher": 81,
+  "l3_count": 45,
+  "l3_minimum": 40,
   "waivers": [],
   "features": [
     {
       "feature_id": "F-001",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -31,7 +34,8 @@
     },
     {
       "feature_id": "F-002",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -39,7 +43,8 @@
     },
     {
       "feature_id": "F-003",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -48,6 +53,7 @@
     {
       "feature_id": "F-004",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -55,7 +61,8 @@
     },
     {
       "feature_id": "F-005",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -63,7 +70,8 @@
     },
     {
       "feature_id": "F-006",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -71,7 +79,8 @@
     },
     {
       "feature_id": "F-007",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -79,7 +88,8 @@
     },
     {
       "feature_id": "F-008",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -88,6 +98,7 @@
     {
       "feature_id": "F-009",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -95,7 +106,8 @@
     },
     {
       "feature_id": "F-010",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -103,7 +115,8 @@
     },
     {
       "feature_id": "F-011",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -112,6 +125,7 @@
     {
       "feature_id": "F-012",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -120,6 +134,7 @@
     {
       "feature_id": "F-013",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -128,6 +143,7 @@
     {
       "feature_id": "F-014",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -135,7 +151,8 @@
     },
     {
       "feature_id": "F-015",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -143,7 +160,8 @@
     },
     {
       "feature_id": "F-016",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -151,7 +169,8 @@
     },
     {
       "feature_id": "F-017",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -159,7 +178,8 @@
     },
     {
       "feature_id": "F-018",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -167,7 +187,8 @@
     },
     {
       "feature_id": "F-019",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -175,7 +196,8 @@
     },
     {
       "feature_id": "F-020",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -183,7 +205,8 @@
     },
     {
       "feature_id": "F-021",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -191,7 +214,8 @@
     },
     {
       "feature_id": "F-022",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -199,7 +223,8 @@
     },
     {
       "feature_id": "F-023",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -207,7 +232,8 @@
     },
     {
       "feature_id": "F-024",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -215,7 +241,8 @@
     },
     {
       "feature_id": "F-025",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -223,7 +250,8 @@
     },
     {
       "feature_id": "F-026",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -231,7 +259,8 @@
     },
     {
       "feature_id": "F-027",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -239,7 +268,8 @@
     },
     {
       "feature_id": "F-028",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -247,7 +277,8 @@
     },
     {
       "feature_id": "F-029",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -256,6 +287,7 @@
     {
       "feature_id": "F-030",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -264,6 +296,7 @@
     {
       "feature_id": "F-031",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -272,6 +305,7 @@
     {
       "feature_id": "F-032",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -280,6 +314,7 @@
     {
       "feature_id": "F-033",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -288,6 +323,7 @@
     {
       "feature_id": "F-034",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -296,6 +332,7 @@
     {
       "feature_id": "F-035",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -304,6 +341,7 @@
     {
       "feature_id": "F-036",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -311,7 +349,8 @@
     },
     {
       "feature_id": "F-037",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -319,7 +358,8 @@
     },
     {
       "feature_id": "F-038",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -327,7 +367,8 @@
     },
     {
       "feature_id": "F-039",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -335,7 +376,8 @@
     },
     {
       "feature_id": "F-040",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -343,7 +385,8 @@
     },
     {
       "feature_id": "F-041",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -352,6 +395,7 @@
     {
       "feature_id": "F-042",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -360,6 +404,7 @@
     {
       "feature_id": "F-043",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -368,6 +413,7 @@
     {
       "feature_id": "F-044",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -375,7 +421,8 @@
     },
     {
       "feature_id": "F-045",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -383,7 +430,8 @@
     },
     {
       "feature_id": "F-046",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -391,7 +439,8 @@
     },
     {
       "feature_id": "F-047",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -399,7 +448,8 @@
     },
     {
       "feature_id": "F-048",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -407,7 +457,8 @@
     },
     {
       "feature_id": "F-049",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -415,7 +466,8 @@
     },
     {
       "feature_id": "F-050",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -423,7 +475,8 @@
     },
     {
       "feature_id": "F-051",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -431,7 +484,8 @@
     },
     {
       "feature_id": "F-052",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -439,7 +493,8 @@
     },
     {
       "feature_id": "F-053",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -447,7 +502,8 @@
     },
     {
       "feature_id": "F-054",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -455,7 +511,8 @@
     },
     {
       "feature_id": "F-055",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -464,6 +521,7 @@
     {
       "feature_id": "F-056",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -471,7 +529,8 @@
     },
     {
       "feature_id": "F-057",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -480,6 +539,7 @@
     {
       "feature_id": "F-058",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -488,6 +548,7 @@
     {
       "feature_id": "F-059",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -496,6 +557,7 @@
     {
       "feature_id": "F-060",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -504,6 +566,7 @@
     {
       "feature_id": "F-061",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -512,6 +575,7 @@
     {
       "feature_id": "F-062",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -519,7 +583,8 @@
     },
     {
       "feature_id": "F-063",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -528,6 +593,7 @@
     {
       "feature_id": "F-064",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -536,6 +602,7 @@
     {
       "feature_id": "F-065",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -544,6 +611,7 @@
     {
       "feature_id": "F-066",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -552,6 +620,7 @@
     {
       "feature_id": "F-067",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -560,6 +629,7 @@
     {
       "feature_id": "F-068",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -568,6 +638,7 @@
     {
       "feature_id": "F-069",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -576,6 +647,7 @@
     {
       "feature_id": "F-070",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -584,6 +656,7 @@
     {
       "feature_id": "F-071",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -592,6 +665,7 @@
     {
       "feature_id": "F-072",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -600,6 +674,7 @@
     {
       "feature_id": "F-073",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -608,6 +683,7 @@
     {
       "feature_id": "F-074",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -616,6 +692,7 @@
     {
       "feature_id": "F-075",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -624,6 +701,7 @@
     {
       "feature_id": "F-076",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -632,6 +710,7 @@
     {
       "feature_id": "F-077",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -640,6 +719,7 @@
     {
       "feature_id": "F-078",
       "real_parity_level": "L2",
+      "catalog_parity_level": "L2",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -647,7 +727,8 @@
     },
     {
       "feature_id": "F-079",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -655,7 +736,8 @@
     },
     {
       "feature_id": "F-080",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -663,7 +745,8 @@
     },
     {
       "feature_id": "F-081",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
+      "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
