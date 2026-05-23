@@ -64,4 +64,7 @@ coverage:
 coverage-phase2:
 	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 2
 
-test-all: test-smoke test-phase1 test-phase2 test-integration coverage coverage-phase2
+coverage-phase3:
+	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 3
+
+test-all: test-smoke test-phase1 test-phase2 test-phase3 test-integration test-integration-phase3 coverage coverage-phase2 coverage-phase3

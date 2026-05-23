@@ -70,3 +70,34 @@ make coverage-phase2
 ### Phase 2 feature’lar (24)
 
 F-016..F-029 (mail), F-045..F-054 (uygulama/DB/Git/HTTP/admin/endpoint)
+
+## Phase 3 — AI, Proxy, Physical, HR, Collaboration
+
+```bash
+make seed-phase3
+make up
+make test-integration-phase3
+make test-phase3
+make coverage-phase3
+```
+
+### Phase 3 servisler (172.28.0.30–41)
+
+| Servis | IP |
+|--------|-----|
+| ai-gateway-mock | .30 |
+| proxy-sink | .31 |
+| cloud-storage-mock | .32 |
+| vault-mock | .33 |
+| mattermost | .34 |
+| cups | .35 |
+| badge-api | .36 |
+| hris-mock | .37 |
+| suitecrm-mock | .38 |
+| wiki-mock | .39 |
+| dlp-mock | .40 |
+| activity-generator | .41 |
+
+### Phase 3 feature’lar (35)
+
+F-009, F-012–F-014, F-030–F-036, F-042–F-044, F-056, F-058, F-059–F-062, F-064–F-071, F-072–F-078
