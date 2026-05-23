@@ -13,9 +13,14 @@ def run_graph_to_completion(
     app: AppContext,
     candidate: CandidateEvent,
     *,
+    llm_gateway: Any | None = None,
     resume_payload: dict[str, Any] | None = None,
 ) -> GraphRunResult:
     with app.session() as session:
+        if llm_gateway is not None:
+            from tests.e2e.conftest import attach_mock_llm
+
+            attach_mock_llm(session, llm_gateway)
         result = session.graph_runner.run(candidate)
         if result.interrupted:
             payload = resume_payload or {"decision": "none"}
