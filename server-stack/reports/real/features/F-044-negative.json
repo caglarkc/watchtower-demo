@@ -57,7 +57,7 @@
   "anomaly_detected": false,
   "evidence_expected": "bulk intranet/wiki download",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:36:31.559012+00:00",
+  "generated_at": "2026-05-23T05:37:22.833137+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
