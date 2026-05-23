@@ -2,7 +2,7 @@
   "id": "F-003",
   "feature_id": "F-003",
   "title": "İç DNS Sorgu Entropisi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "bind9",
@@ -11,11 +11,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "www.corp.local",
+          "query": "entropy-84331.corp.local",
           "returncode": 0
         },
         {
-          "query": "dc1.corp.local",
+          "query": "entropy-19101.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-93346.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-47217.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-48730.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-24907.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-42379.corp.local",
+          "returncode": 0
+        },
+        {
+          "query": "entropy-34681.corp.local",
           "returncode": 0
         }
       ]
@@ -42,19 +66,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 1396,
+        "count": 1452,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 56,
+        "indexed": 64,
         "index": "corp-logs-f-003",
         "pipeline": {
           "feature_id": "F-003",
           "index": "corp-logs-f-003",
-          "indexed": 56
+          "indexed": 64
         }
       }
     }
@@ -64,10 +88,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:50.996731+00:00",
+  "generated_at": "2026-05-23T03:23:12.624819+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
