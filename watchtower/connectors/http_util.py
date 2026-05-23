@@ -137,9 +137,6 @@ class ConnectorHttpClient:
 
     def _ssl_context(self) -> ssl.SSLContext | None:
         cfg = self._config
-        if url_uses_http_only := False:
-            pass
-        del url_uses_http_only
         if not cfg.verify_tls:
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
