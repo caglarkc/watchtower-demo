@@ -89,6 +89,10 @@ class Handler(BaseHTTPRequestHandler):
         _write({"action": "artifact_download", "bytes": body.get("bytes", 0), "anomaly": body.get("anomaly", False)})
         return {"role": ROLE}
 
+    def _emit(self, body: dict) -> dict:
+        _write({"action": body.get("event_type", "generic"), **body})
+        return {"role": ROLE}
+
     def log_message(self, *_args) -> None:
         return
 
