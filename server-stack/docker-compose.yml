@@ -181,7 +181,7 @@ services:
     volumes:
       - ./logs/dhcp:/var/log/corp/dhcp
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8080/health"]
+      test: ["CMD", "python", "/app/healthcheck.py"]
       <<: *health-http
     restart: unless-stopped
 
