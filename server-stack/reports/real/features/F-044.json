@@ -2,7 +2,7 @@
   "id": "F-044",
   "feature_id": "F-044",
   "title": "Bilgi Bankası/Wiki/Intranet Toplu İndirme",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wiki-app",
@@ -10,7 +10,7 @@
     {
       "service": "wiki",
       "response": {
-        "pages": 2
+        "pages": 80
       }
     }
   ],
@@ -20,17 +20,44 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-044",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-044",
+        "pipeline": {
+          "feature_id": "F-044",
+          "index": "corp-logs-f-044",
+          "indexed": 80
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/vault/secrets.yml",
     "seeds/real/ai/prompts.yml",
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "bulk intranet/wiki download",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.293971+00:00",
+  "generated_at": "2026-05-23T03:06:33.949977+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
