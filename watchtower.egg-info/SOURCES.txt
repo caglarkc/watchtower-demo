@@ -12,6 +12,7 @@ watchtower/cli/main.py
 watchtower/config/__init__.py
 watchtower/config/feature_taxonomy.yml
 watchtower/config/loader.py
+watchtower/config/paths.py
 watchtower/config/settings.py
 watchtower/domain/__init__.py
 watchtower/domain/audit.py
