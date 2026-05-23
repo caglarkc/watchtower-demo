@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-013",
   "title": "Destek Ticket PII Toplu Arşivi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Destek Personeli",
   "deterministic_seed": 1013,
@@ -22,7 +22,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "read_bytes": 100000,
+            "read_bytes": 18400000000,
             "write_bytes": 0
           }
         }
@@ -48,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 1520,
+            "count": 2320,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-018",
-            "count": 560,
+            "count": 960,
             "result": "PASS"
           },
           "result": "PASS",
@@ -165,12 +165,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 13,
+            "indexed": 17,
             "index": "corp-logs-f-060",
             "pipeline": {
               "feature_id": "F-060",
               "index": "corp-logs-f-060",
-              "indexed": 13
+              "indexed": 17
             }
           }
         }
@@ -187,7 +187,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 100000,
+        "read_bytes": 18400000000,
         "write_bytes": 0
       }
     },
@@ -234,7 +234,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 1520,
+        "count": 2320,
         "result": "PASS"
       },
       "result": "PASS",
@@ -264,7 +264,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-018",
-        "count": 560,
+        "count": 960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -297,12 +297,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 13,
+        "indexed": 17,
         "index": "corp-logs-f-060",
         "pipeline": {
           "feature_id": "F-060",
           "index": "corp-logs-f-060",
-          "indexed": 13
+          "indexed": 17
         }
       }
     }
@@ -320,12 +320,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:12:11.061926+00:00",
+  "generated_at": "2026-05-23T03:13:51.321348+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-013:1013:negative:real"
+  "replay_key": "S-013:1013:positive:real"
 }

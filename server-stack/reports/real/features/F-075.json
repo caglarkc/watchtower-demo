@@ -2,7 +2,7 @@
   "id": "F-075",
   "feature_id": "F-075",
   "title": "Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,7 +10,7 @@
     {
       "service": "hris",
       "response": {
-        "systems_accessed": 6
+        "systems_accessed": 28
       }
     }
   ],
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "new employee excessive access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:45.719729+00:00",
+  "generated_at": "2026-05-23T03:13:50.993304+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
