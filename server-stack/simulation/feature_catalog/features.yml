@@ -24,7 +24,7 @@ features:
   real_action_command: make real-feature FEATURE=F-001
   real_negative_command: make real-feature-negative FEATURE=F-001
   raw_log_assertion: samba-files:/var/log/samba/audit.log:SMB read volume event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-001-positive.json
   real_evidence_negative: reports/real/features/F-001-negative.json
   status: manifest
@@ -49,7 +49,7 @@ features:
   real_action_command: make real-feature FEATURE=F-002
   real_negative_command: make real-feature-negative FEATURE=F-002
   raw_log_assertion: zeek:/opt/zeek/logs/current/conn.log:host/port fan-out event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-002-positive.json
   real_evidence_negative: reports/real/features/F-002-negative.json
   status: manifest
@@ -75,7 +75,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-003
   raw_log_assertion: bind9:/var/log/named/query.log:TXT/NXDOMAIN/high-entropy query
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-003-positive.json
   real_evidence_negative: reports/real/features/F-003-negative.json
   status: manifest
@@ -126,7 +126,7 @@ features:
   real_action_command: make real-feature FEATURE=F-005
   real_negative_command: make real-feature-negative FEATURE=F-005
   raw_log_assertion: dhcp-server:/var/log/dhcpd.log:duplicate lease/scope change event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-005-positive.json
   real_evidence_negative: reports/real/features/F-005-negative.json
   status: manifest
@@ -151,7 +151,7 @@ features:
   real_action_command: make real-feature FEATURE=F-006
   real_negative_command: make real-feature-negative FEATURE=F-006
   raw_log_assertion: samba-ad:/var/log/samba/auth.log:4625 burst then 4624 success
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-006-positive.json
   real_evidence_negative: reports/real/features/F-006-negative.json
   status: manifest
@@ -177,7 +177,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-007
   raw_log_assertion: zeek:/opt/zeek/logs/current/conn.log:high cardinality port scan
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-007-positive.json
   real_evidence_negative: reports/real/features/F-007-negative.json
   status: manifest
@@ -202,7 +202,7 @@ features:
   real_action_command: make real-feature FEATURE=F-008
   real_negative_command: make real-feature-negative FEATURE=F-008
   raw_log_assertion: samba-ad:/var/log/samba/auth.log:TGT/NTLM target diversity event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-008-positive.json
   real_evidence_negative: reports/real/features/F-008-negative.json
   status: manifest
@@ -254,7 +254,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-010
   raw_log_assertion: samba-ad:/var/log/samba/auth.log:service account interactive
     logon
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-010-positive.json
   real_evidence_negative: reports/real/features/F-010-negative.json
   status: manifest
@@ -280,7 +280,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-011
   raw_log_assertion: samba-ad:/var/log/samba/auth.log:privileged group add/remove
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-011-positive.json
   real_evidence_negative: reports/real/features/F-011-negative.json
   status: manifest
@@ -298,14 +298,14 @@ features:
   evidence_path: reports/features/F-012.json
   replay_positive: simulation/feature_replays/F-012_positive.yaml
   replay_negative: simulation/feature_replays/F-012_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: vault
   real_action_command: make real-feature FEATURE=F-012
   real_negative_command: make real-feature-negative FEATURE=F-012
   raw_log_assertion: vault:/vault/logs/audit.log:API key multi-source usage
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-012-positive.json
   real_evidence_negative: reports/real/features/F-012-negative.json
   status: manifest
@@ -323,14 +323,14 @@ features:
   evidence_path: reports/features/F-013.json
   replay_positive: simulation/feature_replays/F-013_positive.yaml
   replay_negative: simulation/feature_replays/F-013_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: vault
   real_action_command: make real-feature FEATURE=F-013
   real_negative_command: make real-feature-negative FEATURE=F-013
   raw_log_assertion: vault:/vault/logs/audit.log:secret read burst event
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-013-positive.json
   real_evidence_negative: reports/real/features/F-013-negative.json
   status: manifest
@@ -380,7 +380,7 @@ features:
   real_action_command: make real-feature FEATURE=F-015
   real_negative_command: make real-feature-negative FEATURE=F-015
   raw_log_assertion: zeek:/opt/zeek/logs/current/conn.log:hop-chain session event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-015-positive.json
   real_evidence_negative: reports/real/features/F-015-negative.json
   status: manifest
@@ -753,7 +753,7 @@ features:
   evidence_path: reports/features/F-030.json
   replay_positive: simulation/feature_replays/F-030_positive.yaml
   replay_negative: simulation/feature_replays/F-030_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -761,7 +761,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-030
   raw_log_assertion: ai-gateway:/var/log/ai-gateway/audit.log:confidential prompt/upload
     event
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-030-positive.json
   real_evidence_negative: reports/real/features/F-030-negative.json
   status: manifest
@@ -779,7 +779,7 @@ features:
   evidence_path: reports/features/F-031.json
   replay_positive: simulation/feature_replays/F-031_positive.yaml
   replay_negative: simulation/feature_replays/F-031_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -805,7 +805,7 @@ features:
   evidence_path: reports/features/F-032.json
   replay_positive: simulation/feature_replays/F-032_positive.yaml
   replay_negative: simulation/feature_replays/F-032_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -831,7 +831,7 @@ features:
   evidence_path: reports/features/F-033.json
   replay_positive: simulation/feature_replays/F-033_positive.yaml
   replay_negative: simulation/feature_replays/F-033_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: squid-proxy
@@ -839,7 +839,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-033
   raw_log_assertion: squid-proxy:/var/log/squid/access.log:unapproved AI tool access
     event
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-033-positive.json
   real_evidence_negative: reports/real/features/F-033-negative.json
   status: manifest
@@ -858,7 +858,7 @@ features:
   evidence_path: reports/features/F-034.json
   replay_positive: simulation/feature_replays/F-034_positive.yaml
   replay_negative: simulation/feature_replays/F-034_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -884,7 +884,7 @@ features:
   evidence_path: reports/features/F-035.json
   replay_positive: simulation/feature_replays/F-035_positive.yaml
   replay_negative: simulation/feature_replays/F-035_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -910,7 +910,7 @@ features:
   evidence_path: reports/features/F-036.json
   replay_positive: simulation/feature_replays/F-036_positive.yaml
   replay_negative: simulation/feature_replays/F-036_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: ai-gateway
@@ -943,7 +943,7 @@ features:
   real_action_command: make real-feature FEATURE=F-037
   real_negative_command: make real-feature-negative FEATURE=F-037
   raw_log_assertion: samba-files:/var/log/samba/audit.log:out-of-department file access
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-037-positive.json
   real_evidence_negative: reports/real/features/F-037-negative.json
   status: manifest
@@ -968,7 +968,7 @@ features:
   real_action_command: make real-feature FEATURE=F-038
   real_negative_command: make real-feature-negative FEATURE=F-038
   raw_log_assertion: samba-files:/var/log/samba/audit.log:bulk read/write ratio event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-038-positive.json
   real_evidence_negative: reports/real/features/F-038-negative.json
   status: manifest
@@ -993,7 +993,7 @@ features:
   real_action_command: make real-feature FEATURE=F-039
   real_negative_command: make real-feature-negative FEATURE=F-039
   raw_log_assertion: samba-files:/var/log/samba/audit.log:mass rename rate event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-039-positive.json
   real_evidence_negative: reports/real/features/F-039-negative.json
   status: manifest
@@ -1019,7 +1019,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-040
   raw_log_assertion: samba-files:/var/log/samba/audit.log:sensitive directory traversal
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-040-positive.json
   real_evidence_negative: reports/real/features/F-040-negative.json
   status: manifest
@@ -1045,7 +1045,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-041
   raw_log_assertion: samba-files:/var/log/samba/audit.log:Everyone permission change
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-041-positive.json
   real_evidence_negative: reports/real/features/F-041-negative.json
   status: manifest
@@ -1063,7 +1063,7 @@ features:
   evidence_path: reports/features/F-042.json
   replay_positive: simulation/feature_replays/F-042_positive.yaml
   replay_negative: simulation/feature_replays/F-042_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: wazuh-agent
@@ -1088,7 +1088,7 @@ features:
   evidence_path: reports/features/F-043.json
   replay_positive: simulation/feature_replays/F-043_positive.yaml
   replay_negative: simulation/feature_replays/F-043_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: samba-files
@@ -1114,7 +1114,7 @@ features:
   evidence_path: reports/features/F-044.json
   replay_positive: simulation/feature_replays/F-044_positive.yaml
   replay_negative: simulation/feature_replays/F-044_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: wiki-app
@@ -1403,7 +1403,7 @@ features:
   real_action_command: make real-feature FEATURE=F-055
   real_negative_command: make real-feature-negative FEATURE=F-055
   raw_log_assertion: wazuh-agent:/var/ossec/logs/ossec.log:USB attach/write correlation
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-055-positive.json
   real_evidence_negative: reports/real/features/F-055-negative.json
   status: manifest
@@ -1454,7 +1454,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-057
   raw_log_assertion: wazuh-agent:/var/ossec/logs/ossec.log:promiscuous mode change
     event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-057-positive.json
   real_evidence_negative: reports/real/features/F-057-negative.json
   status: manifest
@@ -1472,7 +1472,7 @@ features:
   evidence_path: reports/features/F-058.json
   replay_positive: simulation/feature_replays/F-058_positive.yaml
   replay_negative: simulation/feature_replays/F-058_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: dlp-agent
@@ -1497,7 +1497,7 @@ features:
   evidence_path: reports/features/F-059.json
   replay_positive: simulation/feature_replays/F-059_positive.yaml
   replay_negative: simulation/feature_replays/F-059_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1523,7 +1523,7 @@ features:
   evidence_path: reports/features/F-060.json
   replay_positive: simulation/feature_replays/F-060_positive.yaml
   replay_negative: simulation/feature_replays/F-060_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1549,7 +1549,7 @@ features:
   evidence_path: reports/features/F-061.json
   replay_positive: simulation/feature_replays/F-061_positive.yaml
   replay_negative: simulation/feature_replays/F-061_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1575,7 +1575,7 @@ features:
   evidence_path: reports/features/F-062.json
   replay_positive: simulation/feature_replays/F-062_positive.yaml
   replay_negative: simulation/feature_replays/F-062_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: wazuh-siem
@@ -1609,7 +1609,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-063
   raw_log_assertion: endpoint-synthetic:/var/log/endpoint/events.jsonl:unknown hardware
     login attempt
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-063-positive.json
   real_evidence_negative: reports/real/features/F-063-negative.json
   status: manifest
@@ -1627,7 +1627,7 @@ features:
   evidence_path: reports/features/F-064.json
   replay_positive: simulation/feature_replays/F-064_positive.yaml
   replay_negative: simulation/feature_replays/F-064_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1653,7 +1653,7 @@ features:
   evidence_path: reports/features/F-065.json
   replay_positive: simulation/feature_replays/F-065_positive.yaml
   replay_negative: simulation/feature_replays/F-065_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1679,7 +1679,7 @@ features:
   evidence_path: reports/features/F-066.json
   replay_positive: simulation/feature_replays/F-066_positive.yaml
   replay_negative: simulation/feature_replays/F-066_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: endpoint-synthetic
@@ -1705,14 +1705,14 @@ features:
   evidence_path: reports/features/F-067.json
   replay_positive: simulation/feature_replays/F-067_positive.yaml
   replay_negative: simulation/feature_replays/F-067_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: squid-proxy
   real_action_command: make real-feature FEATURE=F-067
   real_negative_command: make real-feature-negative FEATURE=F-067
   raw_log_assertion: squid-proxy:/var/log/squid/access.log:personal cloud large upload
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-067-positive.json
   real_evidence_negative: reports/real/features/F-067-negative.json
   status: manifest
@@ -1730,7 +1730,7 @@ features:
   evidence_path: reports/features/F-068.json
   replay_positive: simulation/feature_replays/F-068_positive.yaml
   replay_negative: simulation/feature_replays/F-068_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: squid-proxy
@@ -1738,7 +1738,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-068
   raw_log_assertion: squid-proxy:/var/log/squid/access.log:first external high-volume
     transfer
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-068-positive.json
   real_evidence_negative: reports/real/features/F-068-negative.json
   status: manifest
@@ -1756,7 +1756,7 @@ features:
   evidence_path: reports/features/F-069.json
   replay_positive: simulation/feature_replays/F-069_positive.yaml
   replay_negative: simulation/feature_replays/F-069_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P2
   real_tool: squid-proxy
@@ -1764,7 +1764,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-069
   raw_log_assertion: squid-proxy:/var/log/squid/access.log:encrypted tunnel/unusual
     protocol
-  ingest_assertion: none:L0:synthetic-authoritative
+  ingest_assertion: L3:elasticsearch:corp-logs:wazuh-alerts-*
   real_evidence_positive: reports/real/features/F-069-positive.json
   real_evidence_negative: reports/real/features/F-069-negative.json
   status: manifest
@@ -2021,7 +2021,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-079
   raw_log_assertion: endpoint-synthetic:/var/log/endpoint/events.jsonl:after-hours
     interactive session
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-079-positive.json
   real_evidence_negative: reports/real/features/F-079-negative.json
   status: manifest
@@ -2047,7 +2047,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-080
   raw_log_assertion: endpoint-synthetic:/var/log/endpoint/events.jsonl:idle session
     abuse event
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-080-positive.json
   real_evidence_negative: reports/real/features/F-080-negative.json
   status: manifest
@@ -2073,7 +2073,7 @@ features:
   real_negative_command: make real-feature-negative FEATURE=F-081
   raw_log_assertion: endpoint-synthetic:/var/log/endpoint/events.jsonl:role-based
     work-window deviation
-  ingest_assertion: pending:L3:elasticsearch:wazuh-alerts-*
+  ingest_assertion: pending:L3:log-pipeline:corp-events-*
   real_evidence_positive: reports/real/features/F-081-positive.json
   real_evidence_negative: reports/real/features/F-081-negative.json
   status: manifest
