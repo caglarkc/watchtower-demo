@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-042",
   "title": "SOC Log Suppress Kuralı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 4042,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-050",
-            "count": 1680,
+            "count": 1920,
             "result": "PASS"
           },
           "result": "PASS",
@@ -163,7 +163,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-050",
-        "count": 1680,
+        "count": 1920,
         "result": "PASS"
       },
       "result": "PASS",
@@ -216,12 +216,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:01.841282+00:00",
+  "generated_at": "2026-05-23T03:18:26.863105+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-042:4042:positive:real"
+  "replay_key": "S-042:4042:negative:real"
 }

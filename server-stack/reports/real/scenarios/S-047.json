@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-047",
   "title": "Ayrılış Öncesi Veri Rampa-Up",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 4047,
@@ -22,7 +22,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "events": 5,
+            "events": 1,
             "smb_attempted": true
           }
         },
@@ -60,7 +60,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-001",
-            "count": 6880,
+            "count": 7840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -91,14 +91,8 @@
         {
           "service": "hris",
           "response": {
-            "status": "terminated",
-            "logins_after": 6
-          }
-        },
-        {
-          "service": "samba-ad",
-          "response": {
-            "events": 1
+            "status": "active",
+            "logins_after": 0
           }
         }
       ],
@@ -201,7 +195,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 5,
+        "events": 1,
         "smb_attempted": true
       }
     },
@@ -215,14 +209,8 @@
     {
       "service": "hris",
       "response": {
-        "status": "terminated",
-        "logins_after": 6
-      }
-    },
-    {
-      "service": "samba-ad",
-      "response": {
-        "events": 1
+        "status": "active",
+        "logins_after": 0
       }
     },
     {
@@ -266,7 +254,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 6880,
+        "count": 7840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -348,12 +336,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
-  "event_count": 5,
+  "anomaly_detected": false,
+  "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:03.033097+00:00",
+  "generated_at": "2026-05-23T03:18:28.063655+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-047:4047:positive:real"
+  "replay_key": "S-047:4047:negative:real"
 }
