@@ -60,7 +60,9 @@ class Handler(BaseHTTPRequestHandler):
         limit = int(body.get("limit", 10 if body.get("anomaly") else 2))
         sql = f"SELECT * FROM customers LIMIT {limit}"
         try:
-            with psycopg2.connect(**PG) as conn:
+            with psycopg2.connect(
+                host=PG["host"], user=PG["user"], password=PG["password"], dbname=PG["dbname"]
+            ) as conn:
                 with conn.cursor() as cur:
                     cur.execute(sql)
                     rows = cur.fetchall()
