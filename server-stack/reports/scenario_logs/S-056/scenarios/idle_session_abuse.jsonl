@@ -20,3 +20,4 @@
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "source_feature": "F-080", "scenario_id": "S-056", "timestamp": "2026-05-23T02:51:51.161958+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "source_feature": "F-080", "scenario_id": "S-056", "timestamp": "2026-05-23T02:57:28.410182+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "source_feature": "F-080", "scenario_id": "S-056", "timestamp": "2026-05-23T02:57:31.276231+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "source_feature": "F-080", "scenario_id": "S-056", "timestamp": "2026-05-23T03:08:40.078556+00:00"}

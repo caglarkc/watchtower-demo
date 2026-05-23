@@ -20,3 +20,4 @@
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": true, "bypass_attempt": false, "source_feature": "F-058", "scenario_id": "S-044", "timestamp": "2026-05-23T02:51:50.740403+00:00"}
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": false, "bypass_attempt": true, "source_feature": "F-058", "scenario_id": "S-044", "timestamp": "2026-05-23T02:57:28.020397+00:00"}
 {"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": true, "bypass_attempt": false, "source_feature": "F-058", "scenario_id": "S-044", "timestamp": "2026-05-23T02:57:30.878928+00:00"}
+{"event_type": "dlp_bypass", "log_channel": "dlp", "agent_healthy": false, "bypass_attempt": true, "source_feature": "F-058", "scenario_id": "S-044", "timestamp": "2026-05-23T03:08:39.640127+00:00"}

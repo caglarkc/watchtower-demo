@@ -20,3 +20,5 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:51:49.650284+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:57:26.916714+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:57:29.747740+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T03:08:38.486819+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T03:08:41.369155+00:00"}

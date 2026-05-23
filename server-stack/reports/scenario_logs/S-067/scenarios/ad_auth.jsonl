@@ -42,3 +42,5 @@
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-067", "timestamp": "2026-05-23T02:57:28.758567+00:00"}
 {"event_type": "ad_auth", "event_id": 4625, "count": 1, "source_feature": "F-006", "scenario_id": "S-067", "timestamp": "2026-05-23T02:57:31.646312+00:00"}
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-067", "timestamp": "2026-05-23T02:57:31.646394+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 18, "source_feature": "F-006", "scenario_id": "S-067", "timestamp": "2026-05-23T03:08:40.451885+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-067", "timestamp": "2026-05-23T03:08:40.451969+00:00"}

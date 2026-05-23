@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-044",
   "title": "Yönetici Yetkisiyle Kitlesel Log Silme",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4044,
@@ -17,7 +17,7 @@
     "siem-admin"
   ],
   "expected_evidence": "Multi-signal workflow for Yönetici Yetkisiyle Kitlesel Log Silme",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -27,13 +27,15 @@
       "user_role": "IT Admin",
       "category": "insider threat",
       "seed": 4044,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "risky_log_search",
       "log_channel": "siem",
       "keywords": [
-        "dashboard"
+        "password",
+        "token",
+        "suppress"
       ],
       "source_feature": "F-062",
       "scenario_id": "S-044"
@@ -41,16 +43,16 @@
     {
       "event_type": "encoded_powershell",
       "log_channel": "endpoint",
-      "encoded_command": false,
-      "bypass_policy": false,
+      "encoded_command": true,
+      "bypass_policy": true,
       "source_feature": "F-054",
       "scenario_id": "S-044"
     },
     {
       "event_type": "dlp_bypass",
       "log_channel": "dlp",
-      "agent_healthy": true,
-      "bypass_attempt": false,
+      "agent_healthy": false,
+      "bypass_attempt": true,
       "source_feature": "F-058",
       "scenario_id": "S-044"
     }
@@ -61,12 +63,9 @@
     "reports/scenario_logs/S-044/endpoint/encoded_powershell.jsonl",
     "reports/scenario_logs/S-044/dlp/dlp_bypass.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:57:30.880170+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T03:08:39.641362+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-044:4044:negative"
+  "replay_key": "S-044:4044:positive"
 }

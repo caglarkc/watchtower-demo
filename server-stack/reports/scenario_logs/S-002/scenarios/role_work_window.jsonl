@@ -21,3 +21,4 @@
 {"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T02:57:26.617484+00:00"}
 {"event_type": "role_work_window", "role": "support", "active_hours": [9, 10, 11, 14], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T02:57:29.366985+00:00"}
 {"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T03:08:38.133281+00:00"}
+{"event_type": "role_work_window", "role": "support", "active_hours": [9, 10, 11, 14], "source_feature": "F-081", "scenario_id": "S-002", "timestamp": "2026-05-23T03:08:41.066074+00:00"}

@@ -20,3 +20,4 @@
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-081", "timestamp": "2026-05-23T02:51:52.023087+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-081", "timestamp": "2026-05-23T02:57:29.230446+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-081", "timestamp": "2026-05-23T02:57:32.112631+00:00"}
+{"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-081", "timestamp": "2026-05-23T03:08:40.925034+00:00"}
