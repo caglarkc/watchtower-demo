@@ -57,7 +57,7 @@
   "anomaly_detected": false,
   "evidence_expected": "sensitive print-volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:24.596206+00:00",
+  "generated_at": "2026-05-23T03:12:06.647741+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

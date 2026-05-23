@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-007",
   "title": "Geçici Toplantı Dosyasında Gizlenen Veritabanı Dökümü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 1007,
@@ -24,7 +24,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 500"
+            "sql": "SELECT * FROM customers LIMIT 2"
           }
         }
       ],
@@ -49,19 +49,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 66,
+            "count": 171,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 19,
+            "indexed": 24,
             "index": "corp-logs-f-045",
             "pipeline": {
               "feature_id": "F-045",
               "index": "corp-logs-f-045",
-              "indexed": 19
+              "indexed": 24
             }
           }
         }
@@ -110,12 +110,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 13,
+            "indexed": 16,
             "index": "corp-logs-f-043",
             "pipeline": {
               "feature_id": "F-043",
               "index": "corp-logs-f-043",
-              "indexed": 13
+              "indexed": 16
             }
           }
         }
@@ -136,7 +136,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 42
+            "tokens": 13
           }
         }
       ],
@@ -164,12 +164,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 67,
+            "indexed": 78,
             "index": "corp-logs-f-031",
             "pipeline": {
               "feature_id": "F-031",
               "index": "corp-logs-f-031",
-              "indexed": 67
+              "indexed": 78
             }
           }
         }
@@ -190,7 +190,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "bytes": 80000000
+            "bytes": 1000
           }
         }
       ],
@@ -218,12 +218,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 68,
+            "indexed": 79,
             "index": "corp-logs-f-034",
             "pipeline": {
               "feature_id": "F-034",
               "index": "corp-logs-f-034",
-              "indexed": 68
+              "indexed": 79
             }
           }
         }
@@ -241,7 +241,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 500"
+        "sql": "SELECT * FROM customers LIMIT 2"
       }
     },
     {
@@ -255,14 +255,14 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     },
     {
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "bytes": 80000000
+        "bytes": 1000
       }
     }
   ],
@@ -299,19 +299,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 66,
+        "count": 171,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 19,
+        "indexed": 24,
         "index": "corp-logs-f-045",
         "pipeline": {
           "feature_id": "F-045",
           "index": "corp-logs-f-045",
-          "indexed": 19
+          "indexed": 24
         }
       }
     },
@@ -332,12 +332,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 13,
+        "indexed": 16,
         "index": "corp-logs-f-043",
         "pipeline": {
           "feature_id": "F-043",
           "index": "corp-logs-f-043",
-          "indexed": 13
+          "indexed": 16
         }
       }
     },
@@ -358,12 +358,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 67,
+        "indexed": 78,
         "index": "corp-logs-f-031",
         "pipeline": {
           "feature_id": "F-031",
           "index": "corp-logs-f-031",
-          "indexed": 67
+          "indexed": 78
         }
       }
     },
@@ -384,12 +384,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 68,
+        "indexed": 79,
         "index": "corp-logs-f-034",
         "pipeline": {
           "feature_id": "F-034",
           "index": "corp-logs-f-034",
-          "indexed": 68
+          "indexed": 79
         }
       }
     }
@@ -404,12 +404,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:29.037888+00:00",
+  "generated_at": "2026-05-23T03:12:09.216144+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-007:1007:positive:real"
+  "replay_key": "S-007:1007:negative:real"
 }

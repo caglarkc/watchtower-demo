@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-083",
   "title": "Aynı Dosyaya Zincirleme Çapraz Departman Erişimi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "çapraz/multi-user",
   "user_role": "Satış",
   "deterministic_seed": 9083,
@@ -22,14 +22,14 @@
         {
           "service": "suitecrm",
           "response": {
-            "users": 1,
+            "users": 3,
             "record_id": "contract-991"
           }
         },
         {
           "service": "wiki",
           "response": {
-            "pages": 1
+            "pages": 3
           }
         }
       ],
@@ -39,7 +39,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-073",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-073",
+            "pipeline": {
+              "feature_id": "F-073",
+              "index": "corp-logs-f-073",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -50,12 +77,12 @@
     {
       "feature_id": "F-039",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "samba-files-actions",
           "response": {
-            "renames": 1
+            "renames": 15
           }
         }
       ],
@@ -65,7 +92,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-039",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-039",
+            "count": 720,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-039",
+            "pipeline": {
+              "feature_id": "F-039",
+              "index": "corp-logs-f-039",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -75,7 +133,7 @@
     {
       "feature_id": "F-037",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "samba-files-actions",
@@ -92,7 +150,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-037",
+          "assertion": "L3:elasticsearch:corp-logs-f-037",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -100,10 +158,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-037",
+            "count": 1040,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-037",
+            "pipeline": {
+              "feature_id": "F-037",
+              "index": "corp-logs-f-037",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -117,20 +191,20 @@
     {
       "service": "suitecrm",
       "response": {
-        "users": 1,
+        "users": 3,
         "record_id": "contract-991"
       }
     },
     {
       "service": "wiki",
       "response": {
-        "pages": 1
+        "pages": 3
       }
     },
     {
       "service": "samba-files-actions",
       "response": {
-        "renames": 1
+        "renames": 15
       }
     },
     {
@@ -156,7 +230,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-037",
+      "assertion": "L2:log-pipeline:corp-events:F-073",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -164,10 +238,82 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-073",
+        "pipeline": {
+          "feature_id": "F-073",
+          "index": "corp-logs-f-073",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-039",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-039",
+        "count": 720,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-039",
+        "pipeline": {
+          "feature_id": "F-039",
+          "index": "corp-logs-f-039",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-037",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-037",
+        "count": 1040,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-037",
+        "pipeline": {
+          "feature_id": "F-037",
+          "index": "corp-logs-f-037",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -179,12 +325,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:43.732851+00:00",
+  "generated_at": "2026-05-23T03:12:06.193625+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-083:9083:negative:real"
+  "replay_key": "S-083:9083:positive:real"
 }
