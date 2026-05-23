@@ -160,10 +160,16 @@ test-real-p3:
 test-real-scenarios:
 	$(PYTEST) tests/real/scenario -v
 
-test-real-all: seed-real-all test-real test-real-p0 test-real-p1 test-real-p2 test-real-p3 test-real-scenarios real-coverage real-scenario-coverage
+test-real-ingest:
+	$(PYTEST) tests/real/test_real_ingest.py tests/real/test_z_real_final_gate.py -v
+
+test-real-all: seed-real-all test-real test-real-p0 test-real-p1 test-real-p2 test-real-p3 test-real-scenarios test-real-ingest real-coverage real-scenario-coverage real-final-gate
 
 real-coverage:
 	$(PYTHON) simulation/real/report_real_coverage.py --all
 
 real-scenario-coverage:
 	$(PYTHON) simulation/real/report_real_scenario_coverage.py --all
+
+real-final-gate:
+	$(PYTHON) simulation/real/report_real_final_gate.py --all
