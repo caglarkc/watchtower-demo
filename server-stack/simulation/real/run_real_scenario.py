@@ -20,7 +20,16 @@ sys.path.insert(0, str(SCENARIO_DIR))
 
 from config import ALL_REAL_FEATURES  # noqa: E402
 from run_real_feature import run_evidence  # noqa: E402
-from scenario_lib import feature_ids_for, load_scenario_meta, load_replay_yaml  # noqa: E402
+from scenario_lib import feature_ids_for, load_scenario_meta  # noqa: E402
+
+
+def load_replay_yaml(scenario_id: str, mode: str) -> dict | None:
+    path = SCENARIO_DIR / f"{scenario_id}_{mode}.yaml"
+    if path.exists():
+        import yaml
+
+        return yaml.safe_load(path.read_text(encoding="utf-8"))
+    return None
 
 
 def run(scenario_id: str, mode: str) -> Path:
