@@ -6,7 +6,7 @@ from pathlib import Path
 
 from typer.testing import CliRunner
 
-from watchtower.cli.main import app
+from watchtower.cli.main import app as cli_app
 from tests.alerts.helpers import produce_real_alert_via_graph
 
 
