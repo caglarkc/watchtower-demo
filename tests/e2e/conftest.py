@@ -66,3 +66,8 @@ def seed_baseline_for_candidate(app: AppContext, tenant_id: str, candidate) -> N
         department_id=str(dept) if dept else "unknown",
         metric_name=str(candidate.attributes.get("metric_name", "event_volume")),
     )
+
+
+def seed_baseline_for_candidate_from_soak(app: AppContext, tenant_id: str, candidate) -> None:
+    """Backward-compatible alias used by graph tests."""
+    seed_baseline_for_candidate(app, tenant_id, candidate)
