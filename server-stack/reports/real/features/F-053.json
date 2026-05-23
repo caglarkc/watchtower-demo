@@ -2,7 +2,7 @@
   "id": "F-053",
   "feature_id": "F-053",
   "title": "Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-053",
-        "count": 1014,
+        "count": 1060,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 46,
+        "indexed": 47,
         "index": "corp-logs-f-053",
         "pipeline": {
           "feature_id": "F-053",
           "index": "corp-logs-f-053",
-          "indexed": 46
+          "indexed": 47
         }
       }
     }
@@ -59,10 +59,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "backup disable/delete event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:36:26.602349+00:00",
+  "generated_at": "2026-05-23T05:36:40.265146+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
