@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run RI-1+ real feature actions with log and ingest assertions."""
+"""Run RI-1/RI-2 real feature actions with log and ingest assertions."""
 
 from __future__ import annotations
 
@@ -20,9 +20,20 @@ sys.path.insert(0, str(REAL_DIR))
 FEATURES = ROOT / "simulation" / "feature_catalog" / "features.yml"
 REPORTS = ROOT / "reports" / "real" / "features"
 
-from config import RI1_FEATURES  # noqa: E402
-from actions.p0_identity_network import run_action  # noqa: E402
+from config import ALL_REAL_FEATURES, RI1_FEATURES, RI2_FEATURES  # noqa: E402
 from assertions import run_assertions  # noqa: E402
+
+
+def _run_action(feature_id: str, mode: str) -> dict:
+    if feature_id in RI1_FEATURES:
+        from actions.p0_identity_network import run_action
+
+        return run_action(feature_id, mode)
+    if feature_id in RI2_FEATURES:
+        from actions.p1_mail_apps import run_action
+
+        return run_action(feature_id, mode)
+    return {"skipped": True}
 
 
 def load_feature(feature_id: str) -> dict:
@@ -46,12 +57,28 @@ def run(feature_id: str, mode: str) -> Path:
             raise ValueError(f"{feature_id}: missing real metadata field {field}")
 
     since = time.time()
-    action_result: dict = {"skipped": True}
-    if feature_id in RI1_FEATURES:
-        action_result = run_action(feature_id, mode)
+    action_result = _run_action(feature_id, mode) if feature_id in ALL_REAL_FEATURES else {"skipped": True}
     raw_logs, ingest, ok = run_assertions(feature_id, mode, since)
 
-    parity = "L2" if feature_id in RI1_FEATURES else feature.get("real_parity_level", "L0")
+    parity = feature.get("real_parity_level", "L0")
+    if feature_id in ALL_REAL_FEATURES:
+        parity = "L2"
+
+    seed_refs = ["seeds/real/baseline/normal_day.yml"]
+    if feature_id in RI2_FEATURES:
+        seed_refs = [
+            "seeds/real/mail/mailboxes.yml",
+            "seeds/real/postgres/schema.sql",
+            "seeds/real/git/repos.yml",
+            "seeds/real/web/endpoints.yml",
+        ]
+    elif feature_id in RI1_FEATURES:
+        seed_refs = [
+            "seeds/real/identity/users.csv",
+            "seeds/real/files/classification.yml",
+            "seeds/real/baseline/normal_day.yml",
+        ]
+
     evidence = {
         "id": feature_id,
         "feature_id": feature_id,
@@ -63,18 +90,14 @@ def run(feature_id: str, mode: str) -> Path:
         "actions_executed": action_result.get("actions_executed", []),
         "raw_logs_asserted": raw_logs,
         "ingest_assertions": ingest,
-        "seed_refs": [
-            "seeds/real/identity/users.csv",
-            "seeds/real/files/classification.yml",
-            "seeds/real/baseline/normal_day.yml",
-        ],
+        "seed_refs": seed_refs,
         "anomaly_detected": mode == "positive",
         "evidence_expected": feature.get("evidence_expected"),
         "synthetic_preserved": True,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "stack": os.environ.get("COMPOSE_PROJECT_NAME", "watchtower-corp"),
-        "result": "PASS" if ok or feature_id not in RI1_FEATURES else "FAIL",
-        "status": "PASS" if ok or feature_id not in RI1_FEATURES else "FAIL",
+        "result": "PASS" if ok or feature_id not in ALL_REAL_FEATURES else "FAIL",
+        "status": "PASS" if ok or feature_id not in ALL_REAL_FEATURES else "FAIL",
     }
 
     REPORTS.mkdir(parents=True, exist_ok=True)
@@ -83,7 +106,7 @@ def run(feature_id: str, mode: str) -> Path:
     primary = REPORTS / f"{feature_id}.json"
     mode_path.write_text(payload, encoding="utf-8")
     primary.write_text(payload, encoding="utf-8")
-    if feature_id in RI1_FEATURES and not ok:
+    if feature_id in ALL_REAL_FEATURES and not ok:
         raise RuntimeError(f"{feature_id} real assertions failed")
     return primary
 
