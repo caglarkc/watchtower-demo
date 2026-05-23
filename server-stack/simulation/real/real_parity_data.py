@@ -40,6 +40,19 @@ RI2_FEATURES = frozenset(
     {f"F-{i:03d}" for i in range(16, 30)} | {f"F-{i:03d}" for i in range(45, 55)}
 )
 RI2_CURRENT_LEVEL = "L2"
+RI3_FEATURES = frozenset(
+    {"F-012", "F-013"}
+    | {f"F-{i:03d}" for i in range(30, 37)}
+    | {"F-042", "F-043", "F-044"}
+    | {f"F-{i:03d}" for i in range(58, 63)}
+    | {f"F-{i:03d}" for i in range(64, 67)}
+    | {f"F-{i:03d}" for i in range(67, 70)}
+)
+RI3_CURRENT_LEVEL = "L2"
+
+INGEST_L3_FEATURES = frozenset(
+    {"F-012", "F-013", "F-030", "F-033", "F-067", "F-068", "F-069"}
+)
 
 TARGET_LEVEL_BY_PRIORITY = {
     "P0": "L2",
@@ -47,9 +60,6 @@ TARGET_LEVEL_BY_PRIORITY = {
     "P2": "L2",
     "P3": "L2",
 }
-
-INGEST_L3_FEATURES = P0_FEATURES  # planned L3 ingest path for core stack
-
 
 def _priority(feature_id: str) -> str:
     if feature_id in P0_FEATURES:
@@ -143,7 +153,9 @@ def real_metadata_for(feature_id: str, simulation_source: str, evidence_expected
     priority = _priority(feature_id)
     tool = _infer_real_tool(simulation_source)
     target = TARGET_LEVEL_BY_PRIORITY.get(priority, "L2")
-    if feature_id in RI2_FEATURES:
+    if feature_id in RI3_FEATURES:
+        current = RI3_CURRENT_LEVEL
+    elif feature_id in RI2_FEATURES:
         current = RI2_CURRENT_LEVEL
     elif feature_id in RI1_FEATURES:
         current = RI1_CURRENT_LEVEL
