@@ -29,6 +29,11 @@ seed-phase2:
 seed-phase3:
 	$(PYTHON) simulation/event_generator/generate_phase3_replays.py
 
+seed-scenarios:
+	$(PYTHON) simulation/scenarios/generate_scenario_replays.py
+
+seed-baseline: seed-phase1 seed-phase2 seed-phase3 seed-scenarios
+
 feature:
 	@test -n "$(FEATURE)" || (echo "Usage: make feature FEATURE=F-001" && exit 1)
 	$(PYTHON) simulation/event_generator/run_feature.py --feature $(FEATURE) --mode positive
