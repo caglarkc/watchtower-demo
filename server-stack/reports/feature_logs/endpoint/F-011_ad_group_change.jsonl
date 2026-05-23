@@ -23,3 +23,4 @@
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "feature_id": "F-011", "timestamp": "2026-05-23T02:19:25.097790+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "feature_id": "F-011", "timestamp": "2026-05-23T02:19:32.444099+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "feature_id": "F-011", "timestamp": "2026-05-23T02:19:39.710004+00:00"}
+{"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "feature_id": "F-011", "timestamp": "2026-05-23T02:19:41.705244+00:00"}
