@@ -48,7 +48,7 @@
     "reports/scenario_logs/S-055/endpoint/sensitive_file_move.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:24.238334+00:00",
+  "generated_at": "2026-05-23T10:21:10.531439+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-055:5055:positive"

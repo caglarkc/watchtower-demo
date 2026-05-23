@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-053",
   "title": "Yeni Yazılımcının Hatalı Script Döngüsü",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 5053,
@@ -15,7 +15,7 @@
     "nginx"
   ],
   "expected_evidence": "Multi-signal workflow for Yeni Yazılımcının Hatalı Script Döngüsü",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -25,12 +25,12 @@
       "user_role": "Yazılım Geliştirici",
       "category": "kazara ihlal",
       "seed": 5053,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "ad_auth",
       "event_id": 4625,
-      "count": 1,
+      "count": 18,
       "source_feature": "F-006",
       "scenario_id": "S-053"
     },
@@ -44,7 +44,7 @@
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 12,
+      "status_4xx": 5200,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-053"
@@ -56,12 +56,9 @@
     "reports/scenario_logs/S-053/scenarios/ad_auth.jsonl",
     "reports/scenario_logs/S-053/nginx/http_4xx_spike.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T08:41:27.064248+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T10:21:10.470691+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-053:5053:negative"
+  "replay_key": "S-053:5053:positive"
 }

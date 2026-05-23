@@ -84,7 +84,7 @@
     "reports/scenario_logs/S-052/postfix/mail_attachment_entropy.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:24.141894+00:00",
+  "generated_at": "2026-05-23T10:21:10.433627+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-052:5052:positive"

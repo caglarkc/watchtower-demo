@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-034",
   "title": "Muhasebe Domain Admin Grubu Denemesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Muhasebe",
   "deterministic_seed": 3034,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Muhasebe Domain Admin Grubu Denemesi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -23,12 +23,12 @@
       "user_role": "Muhasebe",
       "category": "yetkisiz erişim",
       "seed": 3034,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "ad_group_change",
       "event_id": 4728,
-      "group": "Helpdesk",
+      "group": "Domain Admins",
       "source_feature": "F-011",
       "scenario_id": "S-034"
     }
@@ -37,12 +37,9 @@
     "reports/scenario_logs/S-034/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-034/scenarios/ad_group_change.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T08:41:26.397718+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T10:21:09.837392+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-034:3034:negative"
+  "replay_key": "S-034:3034:positive"
 }

@@ -69,7 +69,7 @@
     "reports/scenario_logs/S-056/hris/leave_activity.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:24.270880+00:00",
+  "generated_at": "2026-05-23T10:21:10.569059+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-056:5056:positive"

@@ -40,7 +40,7 @@
     "reports/scenario_logs/S-015/postgres/postgres_bulk_select.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:22.909798+00:00",
+  "generated_at": "2026-05-23T10:21:09.156901+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-015:1015:positive"

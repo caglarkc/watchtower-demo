@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-056",
   "title": "Destek Personelinin Aşırı Geniş Oturum Süresi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Destek Personeli",
   "deterministic_seed": 5056,
@@ -18,7 +18,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Destek Personelinin Aşırı Geniş Oturum Süresi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "events": [
     {
@@ -28,27 +28,27 @@
       "user_role": "Destek Personeli",
       "category": "kazara ihlal",
       "seed": 5056,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "idle_session_abuse",
-      "session_hours": 2,
-      "keyboard_events": 900,
+      "session_hours": 8,
+      "keyboard_events": 3,
       "source_feature": "F-080",
       "scenario_id": "S-056"
     },
     {
       "event_type": "smb_access",
-      "share": "dev",
+      "share": "legal",
       "user_dept": "dev",
-      "files": 3,
+      "files": 41,
       "source_feature": "F-037",
       "scenario_id": "S-056"
     },
     {
       "event_type": "screenshot_spike",
       "log_channel": "activity",
-      "count_per_hour": 3,
+      "count_per_hour": 85,
       "source_feature": "F-060",
       "scenario_id": "S-056"
     },
@@ -56,7 +56,7 @@
       "event_type": "leave_activity",
       "log_channel": "hris",
       "on_leave": true,
-      "keyboard_events": 0,
+      "keyboard_events": 900,
       "source_feature": "F-077",
       "scenario_id": "S-056"
     }
@@ -68,12 +68,9 @@
     "reports/scenario_logs/S-056/activity/screenshot_spike.jsonl",
     "reports/scenario_logs/S-056/hris/leave_activity.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T08:41:27.166057+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T10:21:10.569059+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-056:5056:negative"
+  "replay_key": "S-056:5056:positive"
 }

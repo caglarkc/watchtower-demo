@@ -30,3 +30,4 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T05:36:05.526206+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T08:41:24.077425+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T08:41:26.957538+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T10:21:10.363797+00:00"}

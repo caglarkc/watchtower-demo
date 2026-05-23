@@ -38,7 +38,7 @@
     "reports/scenario_logs/S-030/scenarios/ad_group_change.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:23.418543+00:00",
+  "generated_at": "2026-05-23T10:21:09.697583+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-030:3030:positive"
