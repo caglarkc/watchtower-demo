@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-054",
   "title": "Canlı Ortam Yerine Test Aracı Yanlışlığı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 5054,
@@ -23,7 +23,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 2"
+            "sql": "SELECT * FROM customers LIMIT 500"
           }
         }
       ],
@@ -48,19 +48,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 2173,
+            "count": 2745,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 68,
+            "indexed": 76,
             "index": "corp-logs-f-045",
             "pipeline": {
               "feature_id": "F-045",
               "index": "corp-logs-f-045",
-              "indexed": 68
+              "indexed": 76
             }
           }
         }
@@ -80,14 +80,52 @@
         {
           "service": "nginx",
           "http_codes": [
-            "404",
-            "404"
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403",
+            "403"
           ]
         }
       ],
       "raw_logs_asserted": [
         {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
           "result": "PASS"
         }
       ],
@@ -106,7 +144,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-048",
-            "count": 4320,
+            "count": 5040,
             "result": "PASS"
           },
           "result": "PASS",
@@ -138,7 +176,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 100,
             "log": "/var/log/corp/zeek/conn.log"
           }
         }
@@ -165,7 +203,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-007",
-            "count": 2720,
+            "count": 3120,
             "result": "PASS"
           },
           "result": "PASS",
@@ -194,20 +232,58 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     },
     {
       "service": "nginx",
       "http_codes": [
-        "404",
-        "404"
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403"
       ]
     },
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 100,
         "log": "/var/log/corp/zeek/conn.log"
       }
     }
@@ -218,7 +294,7 @@
       "result": "PASS"
     },
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
       "result": "PASS"
     },
     {
@@ -242,19 +318,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 2173,
+        "count": 2745,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 68,
+        "indexed": 76,
         "index": "corp-logs-f-045",
         "pipeline": {
           "feature_id": "F-045",
           "index": "corp-logs-f-045",
-          "indexed": 68
+          "indexed": 76
         }
       }
     },
@@ -272,7 +348,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 4320,
+        "count": 5040,
         "result": "PASS"
       },
       "result": "PASS",
@@ -302,7 +378,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-007",
-        "count": 2720,
+        "count": 3120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -328,12 +404,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:47.107839+00:00",
+  "generated_at": "2026-05-23T05:10:43.613418+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-054:5054:negative:real"
+  "replay_key": "S-054:5054:positive:real"
 }

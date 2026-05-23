@@ -2,7 +2,7 @@
   "id": "F-028",
   "feature_id": "F-028",
   "title": "İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-028",
-        "count": 1520,
+        "count": 1600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "first-time external sensitive mail",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:16.490363+00:00",
+  "generated_at": "2026-05-23T05:10:42.299178+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
