@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-017",
   "title": "Token Vault Dump",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2017,
@@ -20,7 +20,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 1
+            "reads": 25
           }
         }
       ],
@@ -32,7 +32,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "L3:elasticsearch:corp-logs:F-013",
+          "assertion": "L2:log-pipeline:corp-events:F-013",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -40,11 +40,22 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+",
-          "parity_level": "L3"
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-013",
+            "pipeline": {
+              "feature_id": "F-013",
+              "index": "corp-logs-f-013",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -59,7 +70,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 25
       }
     }
   ],
@@ -71,7 +82,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-013",
+      "assertion": "L2:log-pipeline:corp-events:F-013",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -79,11 +90,22 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-013",
+        "pipeline": {
+          "feature_id": "F-013",
+          "index": "corp-logs-f-013",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -92,12 +114,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:25.555945+00:00",
+  "generated_at": "2026-05-23T03:11:31.822355+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-017:2017:negative:real"
+  "replay_key": "S-017:2017:positive:real"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-021",
   "title": "Eski Credential ile API Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 2021,
@@ -27,7 +27,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 1
+            "reads": 5
           }
         }
       ],
@@ -43,7 +43,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "L3:elasticsearch:corp-logs:F-012",
+          "assertion": "L2:log-pipeline:corp-events:F-012",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -51,11 +51,22 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+",
-          "parity_level": "L3"
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 160,
+            "index": "corp-logs-f-012",
+            "pipeline": {
+              "feature_id": "F-012",
+              "index": "corp-logs-f-012",
+              "indexed": 160
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -68,7 +79,7 @@
     {
       "feature_id": "F-047",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "internal-app",
@@ -83,7 +94,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-047",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-047",
+            "count": 400,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-047",
+            "pipeline": {
+              "feature_id": "F-047",
+              "index": "corp-logs-f-047",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -102,7 +144,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 5
       }
     },
     {
@@ -128,7 +170,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-012",
+      "assertion": "L2:log-pipeline:corp-events:F-012",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -136,11 +178,52 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 160,
+        "index": "corp-logs-f-012",
+        "pipeline": {
+          "feature_id": "F-012",
+          "index": "corp-logs-f-012",
+          "indexed": 160
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-047",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-047",
+        "count": 400,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-047",
+        "pipeline": {
+          "feature_id": "F-047",
+          "index": "corp-logs-f-047",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -153,12 +236,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:26.325595+00:00",
+  "generated_at": "2026-05-23T03:11:32.725031+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-021:2021:negative:real"
+  "replay_key": "S-021:2021:positive:real"
 }

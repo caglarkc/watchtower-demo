@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-025",
   "title": "Admin Hesaplarının Çapraz Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2025,
@@ -16,12 +16,12 @@
     {
       "feature_id": "F-015",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -44,7 +44,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-015",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-015",
+            "count": 804,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 105,
+            "index": "corp-logs-f-015",
+            "pipeline": {
+              "feature_id": "F-015",
+              "index": "corp-logs-f-015",
+              "indexed": 105
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -54,7 +85,7 @@
     {
       "feature_id": "F-063",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -70,7 +101,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-063",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-063",
+            "count": 93,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 20,
+            "index": "corp-logs-f-063",
+            "pipeline": {
+              "feature_id": "F-063",
+              "index": "corp-logs-f-063",
+              "indexed": 20
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -82,7 +144,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -116,18 +178,79 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-015",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-015",
+        "count": 804,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 105,
+        "index": "corp-logs-f-015",
+        "pipeline": {
+          "feature_id": "F-015",
+          "index": "corp-logs-f-015",
+          "indexed": 105
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-063",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-063",
+        "count": 93,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 20,
+        "index": "corp-logs-f-063",
+        "pipeline": {
+          "feature_id": "F-063",
+          "index": "corp-logs-f-063",
+          "indexed": 20
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:27.144285+00:00",
+  "generated_at": "2026-05-23T03:11:33.674093+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-025:2025:negative:real"
+  "replay_key": "S-025:2025:positive:real"
 }
