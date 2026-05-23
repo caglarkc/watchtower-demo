@@ -24,3 +24,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-047", "user_role": "Yazılım Geliştirici", "category": "insider threat", "seed": 4047, "anomaly": false, "timestamp": "2026-05-23T03:08:42.572420+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-047", "user_role": "Yazılım Geliştirici", "category": "insider threat", "seed": 4047, "anomaly": true, "timestamp": "2026-05-23T03:17:58.297682+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-047", "user_role": "Yazılım Geliştirici", "category": "insider threat", "seed": 4047, "anomaly": false, "timestamp": "2026-05-23T03:18:01.181158+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-047", "user_role": "Yazılım Geliştirici", "category": "insider threat", "seed": 4047, "anomaly": true, "timestamp": "2026-05-23T05:09:57.695867+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-047", "user_role": "Yazılım Geliştirici", "category": "insider threat", "seed": 4047, "anomaly": false, "timestamp": "2026-05-23T05:10:00.552706+00:00"}

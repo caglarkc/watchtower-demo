@@ -24,3 +24,5 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T03:08:42.677453+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T03:17:58.391957+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T03:18:01.304174+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T05:09:57.785975+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "source_feature": "F-066", "scenario_id": "S-050", "timestamp": "2026-05-23T05:10:00.666160+00:00"}

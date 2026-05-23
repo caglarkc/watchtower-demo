@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-077",
   "title": "Hukuk Ekibine CFO Adına Gelen Sahte İç Mail",
-  "mode": "negative",
+  "mode": "positive",
   "category": "sosyal mühendislik",
   "user_role": "Hukuk",
   "deterministic_seed": 8077,
@@ -15,7 +15,7 @@
     "postfix"
   ],
   "expected_evidence": "Multi-signal workflow for Hukuk Ekibine CFO Adına Gelen Sahte İç Mail",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -25,19 +25,23 @@
       "user_role": "Hukuk",
       "category": "sosyal mühendislik",
       "seed": 8077,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "mail_sensitive_keyword",
       "log_channel": "postfix",
-      "keywords": [],
+      "keywords": [
+        "bordro",
+        "maaş",
+        "confidential"
+      ],
       "source_feature": "F-023",
       "scenario_id": "S-077"
     },
     {
       "event_type": "mail_style_deviation",
       "log_channel": "postfix",
-      "tone_score": 0.12,
+      "tone_score": 0.92,
       "source_feature": "F-026",
       "scenario_id": "S-077"
     }
@@ -47,12 +51,9 @@
     "reports/scenario_logs/S-077/postfix/mail_sensitive_keyword.jsonl",
     "reports/scenario_logs/S-077/postfix/mail_style_deviation.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T03:18:02.240014+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T05:09:58.704770+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-077:8077:negative"
+  "replay_key": "S-077:8077:positive"
 }

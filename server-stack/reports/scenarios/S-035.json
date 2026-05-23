@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-035",
   "title": "Stajyer Ağ Keşfi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "Stajyer",
   "deterministic_seed": 3035,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Stajyer Ağ Keşfi",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -23,12 +23,12 @@
       "user_role": "Stajyer",
       "category": "yetkisiz erişim",
       "seed": 3035,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "port_scan",
-      "targets": 200,
-      "ports": 25,
+      "targets": 5,
+      "ports": 3,
       "window_minutes": 12,
       "source_feature": "F-007",
       "scenario_id": "S-035"
@@ -38,9 +38,12 @@
     "reports/scenario_logs/S-035/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-035/scenarios/port_scan.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:09:57.291762+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:10:00.152540+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-035:3035:positive"
+  "replay_key": "S-035:3035:negative"
 }

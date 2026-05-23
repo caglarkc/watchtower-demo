@@ -24,3 +24,4 @@
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 0, "users_disclosed": 0, "source_feature": "F-032", "scenario_id": "S-080", "timestamp": "2026-05-23T03:08:43.716862+00:00"}
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 8, "users_disclosed": 5, "source_feature": "F-032", "scenario_id": "S-080", "timestamp": "2026-05-23T03:17:59.442856+00:00"}
 {"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 0, "users_disclosed": 0, "source_feature": "F-032", "scenario_id": "S-080", "timestamp": "2026-05-23T03:18:02.352615+00:00"}
+{"event_type": "ai_internal_info_prompt", "log_channel": "ai_gateway", "hosts_disclosed": 8, "users_disclosed": 5, "source_feature": "F-032", "scenario_id": "S-080", "timestamp": "2026-05-23T05:09:58.808029+00:00"}

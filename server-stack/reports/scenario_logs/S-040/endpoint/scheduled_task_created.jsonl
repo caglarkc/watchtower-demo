@@ -25,3 +25,4 @@
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "source_feature": "F-052", "scenario_id": "S-040", "timestamp": "2026-05-23T03:17:58.046095+00:00"}
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "source_feature": "F-052", "scenario_id": "S-040", "timestamp": "2026-05-23T03:18:00.901798+00:00"}
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "source_feature": "F-052", "scenario_id": "S-040", "timestamp": "2026-05-23T05:09:57.460425+00:00"}
+{"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "source_feature": "F-052", "scenario_id": "S-040", "timestamp": "2026-05-23T05:10:00.324258+00:00"}

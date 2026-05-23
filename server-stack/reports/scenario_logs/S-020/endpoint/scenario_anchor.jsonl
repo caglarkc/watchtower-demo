@@ -25,3 +25,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-020", "user_role": "CEO", "category": "credential ihlali", "seed": 2020, "anomaly": true, "timestamp": "2026-05-23T03:17:57.359450+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-020", "user_role": "CEO", "category": "credential ihlali", "seed": 2020, "anomaly": false, "timestamp": "2026-05-23T03:18:00.241169+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-020", "user_role": "CEO", "category": "credential ihlali", "seed": 2020, "anomaly": true, "timestamp": "2026-05-23T05:09:56.754383+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-020", "user_role": "CEO", "category": "credential ihlali", "seed": 2020, "anomaly": false, "timestamp": "2026-05-23T05:09:59.628582+00:00"}

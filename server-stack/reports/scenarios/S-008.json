@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-008",
   "title": "Yedekleme Sunucusundan Olağan Dışı Veri Çekme",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "IT Admin",
   "deterministic_seed": 1008,
@@ -19,7 +19,7 @@
     "proxy-sink"
   ],
   "expected_evidence": "Multi-signal workflow for Yedekleme Sunucusundan Olağan Dışı Veri Çekme",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 6,
   "events": [
     {
@@ -29,44 +29,44 @@
       "user_role": "IT Admin",
       "category": "veri sızdırma",
       "seed": 1008,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "smb_read_volume",
       "user": "cfo",
-      "bytes_read": 14000000000,
-      "anomaly": true,
+      "bytes_read": 800000000,
+      "anomaly": false,
       "source_feature": "F-001",
       "scenario_id": "S-008"
     },
     {
       "event_type": "usb_write",
-      "device_id": "USB-9F2A",
-      "bytes_written": 2400000000,
+      "device_id": null,
+      "bytes_written": 0,
       "source_feature": "F-055",
       "scenario_id": "S-008"
     },
     {
       "event_type": "backup_shadow_delete",
       "log_channel": "endpoint",
-      "shadow_copies_deleted": 48,
+      "shadow_copies_deleted": 0,
       "source_feature": "F-053",
       "scenario_id": "S-008"
     },
     {
       "event_type": "personal_cloud_upload",
       "log_channel": "cloud",
-      "provider": "dropbox-personal",
-      "mb": 2100,
+      "provider": "corp-onedrive",
+      "mb": 12,
       "source_feature": "F-067",
       "scenario_id": "S-008"
     },
     {
       "event_type": "first_external_transfer",
       "log_channel": "proxy",
-      "destination": "203.0.113.50",
-      "mb": 3200,
-      "first_seen": true,
+      "destination": "partner.corp.local",
+      "mb": 50,
+      "first_seen": false,
       "source_feature": "F-068",
       "scenario_id": "S-008"
     }
@@ -79,9 +79,12 @@
     "reports/scenario_logs/S-008/cloud/personal_cloud_upload.jsonl",
     "reports/scenario_logs/S-008/proxy/first_external_transfer.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:09:56.351757+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:09:59.199933+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-008:1008:positive"
+  "replay_key": "S-008:1008:negative"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-074",
   "title": "Docker Container Escape Denemesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 7074,
@@ -16,7 +16,7 @@
     "proxy-sink"
   ],
   "expected_evidence": "Multi-signal workflow for Docker Container Escape Denemesi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -26,29 +26,29 @@
       "user_role": "Yazılım Geliştirici",
       "category": "dış saldırı desteği",
       "seed": 7074,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "process_tree_anomaly",
       "log_channel": "endpoint",
-      "duration_hours": 1,
-      "child_processes": 3,
+      "duration_hours": 18,
+      "child_processes": 42,
       "source_feature": "F-046",
       "scenario_id": "S-074"
     },
     {
       "event_type": "dormant_system_access",
       "log_channel": "endpoint",
-      "idle_days": 2,
-      "access_count": 1,
+      "idle_days": 120,
+      "access_count": 15,
       "source_feature": "F-065",
       "scenario_id": "S-074"
     },
     {
       "event_type": "proxy_tunnel",
       "log_channel": "proxy",
-      "protocol": "https",
-      "duration_minutes": 2,
+      "protocol": "unknown-tls-tunnel",
+      "duration_minutes": 45,
       "source_feature": "F-069",
       "scenario_id": "S-074"
     }
@@ -59,12 +59,9 @@
     "reports/scenario_logs/S-074/endpoint/dormant_system_access.jsonl",
     "reports/scenario_logs/S-074/proxy/proxy_tunnel.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T03:18:02.138742+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T05:09:58.606926+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-074:7074:negative"
+  "replay_key": "S-074:7074:positive"
 }

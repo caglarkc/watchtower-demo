@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-033",
   "title": "Destek Personeli DC RDP",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "Destek Personeli",
   "deterministic_seed": 3033,
@@ -15,7 +15,7 @@
     "nginx"
   ],
   "expected_evidence": "Multi-signal workflow for Destek Personeli DC RDP",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,15 +25,13 @@
       "user_role": "Destek Personeli",
       "category": "yetkisiz erişim",
       "seed": 3033,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "rdp_hop",
       "hops": [
         "ws1",
-        "dc1",
-        "files1",
-        "db1"
+        "files1"
       ],
       "source_feature": "F-015",
       "scenario_id": "S-033"
@@ -41,7 +39,7 @@
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 5200,
+      "status_4xx": 12,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-033"
@@ -52,9 +50,12 @@
     "reports/scenario_logs/S-033/scenarios/rdp_hop.jsonl",
     "reports/scenario_logs/S-033/nginx/http_4xx_spike.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:09:57.217388+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:10:00.084630+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-033:3033:positive"
+  "replay_key": "S-033:3033:negative"
 }
