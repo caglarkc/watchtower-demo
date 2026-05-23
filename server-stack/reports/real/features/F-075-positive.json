@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "new employee excessive access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:54.069801+00:00",
+  "generated_at": "2026-05-23T10:26:57.579538+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
