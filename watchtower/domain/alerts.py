@@ -76,6 +76,41 @@ class SuppressionWindow(BaseModel):
     active: bool = True
 
 
+CaseTimelineEventType = Literal[
+    "created",
+    "acknowledged",
+    "assigned",
+    "comment_added",
+    "ticket_linked",
+    "feedback_submitted",
+    "closed",
+]
+
+
+class CaseTimelineEntry(BaseModel):
+    id: str
+    tenant_id: str
+    alert_id: str
+    case_id: str | None = None
+    event_type: CaseTimelineEventType
+    actor: str | None = None
+    comment: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+    created_at: datetime
+
+
+class AlertDetailView(BaseModel):
+    """Operator-facing alert + case + explainability bundle."""
+
+    alert: Alert
+    case: AlertCase | None = None
+    score_breakdown: dict[str, Any] | None = None
+    assessment: dict[str, Any] | None = None
+    source_evidence: dict[str, Any] = Field(default_factory=dict)
+    llm_explanation: dict[str, Any] | None = None
+    timeline: list[CaseTimelineEntry] = Field(default_factory=list)
+
+
 class AlertLifecycleEvent(BaseModel):
     id: str
     tenant_id: str
