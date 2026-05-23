@@ -64,7 +64,7 @@
   "anomaly_detected": true,
   "evidence_expected": "same file/record multi-user chain",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:23.344225+00:00",
+  "generated_at": "2026-05-23T03:12:05.985548+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
