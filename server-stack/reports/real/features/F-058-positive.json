@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "DLP disable/bypass event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:44.076771+00:00",
+  "generated_at": "2026-05-23T05:38:04.879517+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

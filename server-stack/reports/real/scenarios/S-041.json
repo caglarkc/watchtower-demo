@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-041",
   "title": "Sahte Tedarikçi IBAN Değişikliği",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "Muhasebe",
   "deterministic_seed": 4041,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 6720,
+            "count": 7280,
             "result": "PASS"
           },
           "result": "PASS",
@@ -99,7 +99,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 6720,
+        "count": 7280,
         "result": "PASS"
       },
       "result": "PASS",
@@ -122,12 +122,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:12.390489+00:00",
+  "generated_at": "2026-05-23T05:38:04.220877+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-041:4041:negative:real"
+  "replay_key": "S-041:4041:positive:real"
 }
