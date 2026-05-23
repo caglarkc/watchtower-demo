@@ -59,7 +59,7 @@
   "anomaly_detected": false,
   "evidence_expected": "contractor out-of-scope system use",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:13.559868+00:00",
+  "generated_at": "2026-05-23T10:25:40.749930+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

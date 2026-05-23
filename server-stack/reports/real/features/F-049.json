@@ -2,7 +2,7 @@
   "id": "F-049",
   "feature_id": "F-049",
   "title": "Git/Artifact Erişim ve Clone Hacmi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "gitea",
@@ -10,7 +10,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 1
+        "clones": 8
       }
     },
     {
@@ -45,7 +45,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 14503,
+        "count": 14663,
         "result": "PASS"
       },
       "result": "PASS",
@@ -68,10 +68,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "repo clone/artifact download volume",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:29.461331+00:00",
+  "generated_at": "2026-05-23T10:25:43.592124+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
