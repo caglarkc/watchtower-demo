@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-039",
-        "count": 1840,
+        "count": 2000,
         "result": "PASS"
       },
       "result": "PASS",
@@ -60,7 +60,7 @@
   "anomaly_detected": false,
   "evidence_expected": "mass rename rate event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:55.242548+00:00",
+  "generated_at": "2026-05-23T03:17:30.902819+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

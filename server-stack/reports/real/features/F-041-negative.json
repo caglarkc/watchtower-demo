@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-041",
-        "count": 1200,
+        "count": 1360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -60,7 +60,7 @@
   "anomaly_detected": false,
   "evidence_expected": "Everyone permission change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:45.562754+00:00",
+  "generated_at": "2026-05-23T03:17:31.252133+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
