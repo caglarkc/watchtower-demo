@@ -10,7 +10,7 @@ import typer
 from watchtower import __version__
 from watchtower.cli.deps import get_settings, require_bootstrap
 from watchtower.domain.mode import VALID_MODES
-from watchtower.services.app import create_app, init_app
+from watchtower.services.app import create_app
 from watchtower.services.bootstrap import BootstrapRequiredError
 
 app = typer.Typer(
