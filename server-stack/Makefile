@@ -1,4 +1,4 @@
-.PHONY: up down config clean feature feature-negative scenario scenario-negative test-smoke test-features test-scenarios test-phase1 test-phase2 test-phase3 test-integration test-integration-phase3 coverage coverage-phase1 coverage-phase2 coverage-phase3 coverage-scenarios coverage-all seed-baseline seed-phase1 seed-phase2 seed-phase3 seed-scenarios test-all real-up real-down seed-real-all seed-real-identity seed-real-files seed-real-mail seed-real-apps seed-real-security seed-real-endpoint seed-real-physical-hr real-feature real-feature-negative test-real test-real-p0 test-real-p1 test-real-p2 test-real-p3 test-real-all real-coverage
+.PHONY: up down config clean feature feature-negative scenario scenario-negative test-smoke test-features test-scenarios test-phase1 test-phase2 test-phase3 test-integration test-integration-phase3 coverage coverage-phase1 coverage-phase2 coverage-phase3 coverage-scenarios coverage-all seed-baseline seed-phase1 seed-phase2 seed-phase3 seed-scenarios test-all real-up real-down seed-real-all seed-real-identity seed-real-files seed-real-mail seed-real-apps seed-real-security seed-real-endpoint seed-real-physical-hr real-feature real-feature-negative real-scenario real-scenario-negative test-real test-real-p0 test-real-p1 test-real-p2 test-real-p3 test-real-scenarios test-real-all real-coverage real-scenario-coverage
 
 PYTHON ?= .venv/bin/python
 PYTEST ?= .venv/bin/pytest
@@ -133,6 +133,14 @@ real-feature:
 real-feature-negative:
 	@test -n "$(FEATURE)" || (echo "Usage: make real-feature-negative FEATURE=F-001" && exit 1)
 	$(PYTHON) simulation/real/run_real_feature.py --feature $(FEATURE) --mode negative
+
+real-scenario:
+	@test -n "$(SCENARIO)" || (echo "Usage: make real-scenario SCENARIO=S-001" && exit 1)
+	$(PYTHON) simulation/real/run_real_scenario.py --scenario $(SCENARIO) --mode positive
+
+real-scenario-negative:
+	@test -n "$(SCENARIO)" || (echo "Usage: make real-scenario-negative SCENARIO=S-001" && exit 1)
+	$(PYTHON) simulation/real/run_real_scenario.py --scenario $(SCENARIO) --mode negative
 
 test-real:
 	$(PYTEST) tests/real -v
