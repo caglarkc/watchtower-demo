@@ -7,7 +7,7 @@ import json
 import pytest
 
 from watchtower.candidates.extractor import CandidateExtractor
-from watchtower.graph.runner import build_graph_runner
+from watchtower.e2e.runner import _attach_llm_gateway
 from watchtower.llm.gateway import LLMGateway
 from watchtower.normalization.service import NormalizationService
 from watchtower.services.app import AppContext
