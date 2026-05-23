@@ -111,3 +111,9 @@ def seed_f001_baseline(app: AppContext, tenant_id: str) -> None:
 def server_stack_log_available() -> bool:
     logs = PROJECT_ROOT / "server-stack" / "logs"
     return logs.is_dir() and any(logs.glob("**/*.jsonl"))
+
+
+def set_tenant_mode(app: AppContext, tenant_id: str, mode: str) -> None:
+    with app.session() as session:
+        session.mode_controller.set_mode(tenant_id, mode)  # type: ignore[arg-type]
+        session.conn.commit()

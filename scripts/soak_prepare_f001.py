@@ -11,7 +11,7 @@ from watchtower.e2e.soak import (
     replay_events_to_jsonl,
     seed_f001_baseline,
 )
-from tests.graph.conftest import set_tenant_mode
+from watchtower.e2e.soak import set_tenant_mode
 from watchtower.config.settings import WatchtowerSettings
 from watchtower.services.app import create_app
 from watchtower.services.bootstrap import BootstrapRequiredError
