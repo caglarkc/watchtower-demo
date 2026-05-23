@@ -3,66 +3,50 @@
 from __future__ import annotations
 
 from watchtower.connectors.mock import MockConnector
-from watchtower.domain.events import RawEventRecord
-from watchtower.ingest.service import IngestService
 
 
-def test_source_failure_graceful_degradation(app, tenant_id):
+def test_source_poll_failure_does_not_crash_ingest(app, tenant_id):
     with app.session() as session:
         source = session.sources.create(
             tenant_id,
             "mock",
             "failing-mock",
+            {"fail_poll": True},
+        )
+        result = session.ingest.ingest_once(tenant_id, source.id, limit=10)
+        count = session.raw_events.count_for_source(tenant_id, source.id)
+
+    assert result.degraded is True
+    assert result.stored == 0
+    assert result.error is not None
+    assert "poll" in result.error.lower()
+    assert count == 0
+
+
+def test_unhealthy_source_skips_poll(app, tenant_id, monkeypatch):
+    with app.session() as session:
+        source = session.sources.create(
+            tenant_id,
+            "mock",
+            "unhealthy-mock",
             {},
         )
 
-    # factory won't know mock — test ingest service path directly with patched connector
-    events = [RawEventRecord(dedupe_key="x1", payload={"a": 1})]
-    failing = MockConnector(source.id, events=events, fail_poll=True)
+        unhealthy = MockConnector(source.id, fail_health=False)
 
-    with app.session() as session:
-        original_build = __import__(
-            "watchtower.ingest.service", fromlist=["build_connector"]
+        def _health_override() -> object:
+            from watchtower.domain.events import SourceHealth
+
+            return SourceHealth(status="unhealthy", message="down")
+
+        unhealthy.health = _health_override  # type: ignore[method-assign]
+
+        monkeypatch.setattr(
+            "watchtower.ingest.service.build_connector",
+            lambda _src: unhealthy,
         )
+        result = session.ingest.ingest_once(tenant_id, source.id, limit=10)
 
-        def _ingest_with(connector):
-            health = session.ingest._safe_health(connector)
-            cursor = session.source_cursors.get(source.id, tenant_id)
-            try:
-                batch = connector.poll(cursor, 10)
-            except Exception as exc:
-                return type(
-                    "R",
-                    (),
-                    {
-                        "source_id": source.id,
-                        "polled": 0,
-                        "stored": 0,
-                        "duplicates": 0,
-                        "error": str(exc),
-                        "degraded": True,
-                        "health_status": health.status,
-                        "has_more": False,
-                    },
-                )()
-
-            stored = sum(
-                1
-                for e in batch.events
-                if session.raw_events.insert_if_new(tenant_id, source.id, e)
-            )
-            connector.ack(batch.next_cursor)
-            session.source_cursors.save(source.id, tenant_id, batch.next_cursor)
-            from watchtower.domain.events import IngestResult
-
-            return IngestResult(
-                source_id=source.id,
-                polled=len(batch.events),
-                stored=stored,
-                health_status=health.status,
-            )
-
-        result = _ingest_with(failing)
-        assert result.degraded is True
-        assert result.stored == 0
-        assert "poll" in (result.error or "").lower()
+    assert result.degraded is True
+    assert result.stored == 0
+    assert result.health_status == "unhealthy"
