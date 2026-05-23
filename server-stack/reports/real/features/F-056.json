@@ -2,7 +2,7 @@
   "id": "F-056",
   "feature_id": "F-056",
   "title": "Yazıcı İş Hacmi ve Hassas Belge Korelasyonu",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "cups",
@@ -10,7 +10,7 @@
     {
       "service": "cups",
       "response": {
-        "pages": 4
+        "pages": 180
       }
     }
   ],
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "sensitive print-volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:51.156464+00:00",
+  "generated_at": "2026-05-23T05:37:53.199248+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
