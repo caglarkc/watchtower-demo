@@ -46,7 +46,32 @@ class QueryService:
             since=since,
             limit=50,
         )
-        sources.append({"type": "alerts", "count": len(alerts)})
+        sources.append(
+            {
+                "type": "alerts",
+                "count": len(alerts),
+                "citations": [
+                    {"alert_id": a.id, "status": a.status, "feature_id": a.feature_id}
+                    for a in alerts[:10]
+                ],
+            }
+        )
+
+        cases = self._alerts.list_cases(tenant_id, limit=20)
+        case_citations = []
+        for case in cases[:10]:
+            timeline = self._alerts.list_timeline(
+                tenant_id, case_id=case.id, limit=5
+            )
+            case_citations.append(
+                {
+                    "case_id": case.id,
+                    "alert_id": case.alert_id,
+                    "status": case.status,
+                    "timeline_events": [t.event_type for t in timeline],
+                }
+            )
+        sources.append({"type": "cases", "count": len(cases), "citations": case_citations})
 
         silent = self._alerts.list_silent_findings(tenant_id, since=since, limit=50)
         sources.append({"type": "silent_findings", "count": len(silent)})
@@ -55,19 +80,40 @@ class QueryService:
             f"Query: {query_text}",
             f"Window: {'last 24h' if since else 'all time'}",
             f"Alerts matched: {len(alerts)}",
+            f"Cases stored: {len(cases)}",
         ]
         if alerts:
-            lines.append("Top alerts:")
+            lines.append("Top alerts (store-backed):")
             for alert in alerts[:5]:
                 lines.append(
-                    f"  - {alert.id[:8]} {alert.severity} {alert.status} "
+                    f"  - [alert:{alert.id}] {alert.severity} {alert.status} "
                     f"{alert.feature_id} {alert.title}"
                 )
         else:
             lines.append("No alerts matched the query filters.")
 
+        if cases:
+            lines.append("Recent cases (store-backed):")
+            for case in cases[:3]:
+                timeline = self._alerts.list_timeline(
+                    tenant_id, case_id=case.id, limit=3
+                )
+                events = ", ".join(t.event_type for t in timeline) or "no timeline"
+                lines.append(
+                    f"  - [case:{case.id}] alert={case.alert_id} status={case.status} "
+                    f"events={events}"
+                )
+
         if "silent" in lowered or "learn" in lowered or "bulgu" in lowered:
             lines.append(f"Silent findings in window: {len(silent)}")
+
+        if "timeline" in lowered or "case" in lowered:
+            if case_citations:
+                lines.append("Case timeline sample:")
+                for cite in case_citations[:3]:
+                    lines.append(
+                        f"  - case {cite['case_id']}: {', '.join(cite['timeline_events'])}"
+                    )
 
         if "baseline" in lowered or "profil" in lowered:
             users = self._baseline.list_user_profiles(tenant_id)
