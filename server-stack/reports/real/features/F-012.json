@@ -2,7 +2,7 @@
   "id": "F-012",
   "feature_id": "F-012",
   "title": "Servis Hesabı ve API Key Kullanım Haritası",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "vault",
@@ -16,7 +16,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 5
       }
     }
   ],
@@ -32,7 +32,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-012",
+      "assertion": "L2:log-pipeline:corp-events:F-012",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -40,11 +40,22 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 160,
+        "index": "corp-logs-f-012",
+        "pipeline": {
+          "feature_id": "F-012",
+          "index": "corp-logs-f-012",
+          "indexed": 160
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -53,10 +64,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "API key multi-source usage",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.357643+00:00",
+  "generated_at": "2026-05-23T03:06:08.149935+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
