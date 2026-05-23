@@ -2,7 +2,7 @@
   "id": "F-035",
   "feature_id": "F-035",
   "title": "AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 45
+        "tokens": 10
       }
     }
   ],
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "security-procedure discovery prompt",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:35.438929+00:00",
+  "generated_at": "2026-05-23T05:11:38.699291+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
