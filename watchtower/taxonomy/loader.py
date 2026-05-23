@@ -6,7 +6,7 @@ from pathlib import Path
 
 import yaml
 
-from watchtower.config import FEATURE_TAXONOMY_PATH
+from watchtower.config.paths import FEATURE_TAXONOMY_PATH
 from watchtower.taxonomy.models import FeatureTaxonomy
 from watchtower.taxonomy.validator import validate_feature_taxonomy
 

@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from watchtower.config import FEATURE_TAXONOMY_PATH, PREFLIGHT_REFERENCES, PROJECT_ROOT
+from watchtower.config.paths import FEATURE_TAXONOMY_PATH, PREFLIGHT_REFERENCES, PROJECT_ROOT
 from watchtower.taxonomy import (
     check_preflight_references,
     load_feature_taxonomy,

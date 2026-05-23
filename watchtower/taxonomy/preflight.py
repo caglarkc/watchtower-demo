@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from watchtower.config import PREFLIGHT_REFERENCES
+from watchtower.config.paths import PREFLIGHT_REFERENCES
 
 
 def preflight_missing(project_root: Path | None = None) -> list[str]:
     """Return names of missing preflight reference files."""
     root = project_root
     if root is None:
-        from watchtower.config import PROJECT_ROOT
+        from watchtower.config.paths import PROJECT_ROOT
 
         root = PROJECT_ROOT
 

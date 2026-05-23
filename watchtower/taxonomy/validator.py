@@ -6,7 +6,7 @@ from pathlib import Path
 
 import yaml
 
-from watchtower.config import PREFLIGHT_REFERENCES
+from watchtower.config.paths import PREFLIGHT_REFERENCES
 from watchtower.taxonomy.models import (
     BASELINE_CONTEXT_TOKENS,
     VALID_DETECTION_CLASSES,
