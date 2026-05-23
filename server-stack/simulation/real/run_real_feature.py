@@ -20,7 +20,7 @@ sys.path.insert(0, str(REAL_DIR))
 FEATURES = ROOT / "simulation" / "feature_catalog" / "features.yml"
 REPORTS = ROOT / "reports" / "real" / "features"
 
-from config import ALL_REAL_FEATURES, RI1_FEATURES, RI2_FEATURES  # noqa: E402
+from config import ALL_REAL_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES  # noqa: E402
 from assertions import run_assertions  # noqa: E402
 
 
@@ -31,6 +31,10 @@ def _run_action(feature_id: str, mode: str) -> dict:
         return run_action(feature_id, mode)
     if feature_id in RI2_FEATURES:
         from actions.p1_mail_apps import run_action
+
+        return run_action(feature_id, mode)
+    if feature_id in RI3_FEATURES:
+        from actions.p2_security_proxy import run_action
 
         return run_action(feature_id, mode)
     return {"skipped": True}
