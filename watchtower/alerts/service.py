@@ -109,6 +109,15 @@ class AlertService:
             actor="system",
             comment="alert created",
         )
+        self._timeline.record(
+            tenant_id,
+            alert_id,
+            case_id,
+            "created",
+            actor="system",
+            comment="alert and case created",
+            metadata={"graph_run_id": resolved_run_id, "candidate_id": candidate_id},
+        )
         return alert, case
 
     def get_alert(self, tenant_id: str, alert_id: str) -> Alert | None:
@@ -124,9 +133,18 @@ class AlertService:
         *,
         actor: str = "operator",
     ) -> Alert:
-        return self._transition(
+        alert = self._transition(
             tenant_id, alert_id, "investigating", actor=actor, comment=None
         )
+        case = self._repo.get_case_by_alert(tenant_id, alert_id)
+        self._timeline.record(
+            tenant_id,
+            alert_id,
+            case.id if case else None,
+            "acknowledged",
+            actor=actor,
+        )
+        return alert
 
     def close(
         self,
