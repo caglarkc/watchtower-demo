@@ -21,7 +21,34 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-042",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 12,
+        "index": "corp-logs-f-042",
+        "pipeline": {
+          "feature_id": "F-042",
+          "index": "corp-logs-f-042",
+          "indexed": 12
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/vault/secrets.yml",
     "seeds/real/ai/prompts.yml",
@@ -31,7 +58,7 @@
   "anomaly_detected": false,
   "evidence_expected": "local sensitive-data accumulation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:33.576527+00:00",
+  "generated_at": "2026-05-23T03:07:02.850659+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

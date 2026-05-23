@@ -2,7 +2,7 @@
   "id": "F-033",
   "feature_id": "F-033",
   "title": "Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "squid-proxy",
@@ -10,7 +10,7 @@
     {
       "service": "proxy",
       "response": {
-        "allowed": false
+        "allowed": true
       }
     }
   ],
@@ -38,12 +38,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 34,
+        "indexed": 38,
         "index": "corp-logs-f-033",
         "pipeline": {
           "feature_id": "F-033",
           "index": "corp-logs-f-033",
-          "indexed": 34
+          "indexed": 38
         }
       }
     }
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "unapproved AI tool access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:06:20.526876+00:00",
+  "generated_at": "2026-05-23T03:07:02.300329+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
