@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-006",
   "title": "Kaynak Kod Deposunun Kitlesel Klonlanması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 1006,
@@ -21,7 +21,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 8
+            "clones": 1
           }
         },
         {
@@ -56,7 +56,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 10663,
+            "count": 11143,
             "result": "PASS"
           },
           "result": "PASS",
@@ -139,7 +139,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 8
+        "clones": 1
       }
     },
     {
@@ -185,7 +185,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 10663,
+        "count": 11143,
         "result": "PASS"
       },
       "result": "PASS",
@@ -238,12 +238,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:55.534471+00:00",
+  "generated_at": "2026-05-23T05:38:19.922910+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-006:1006:positive:real"
+  "replay_key": "S-006:1006:negative:real"
 }
