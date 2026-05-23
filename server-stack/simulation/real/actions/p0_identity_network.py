@@ -124,6 +124,22 @@ def run_action(feature_id: str, mode: str) -> dict[str, Any]:
                     continue
         actions.append({"service": "bind-dns", "dig": results})
 
+    elif feature_id == "F-004":
+        actions.append(
+            {
+                "service": "endpoint",
+                "response": post_json(
+                    f"{ENDPOINT_URL}/emit",
+                    {
+                        "event_type": "smb_downgrade",
+                        "smb_version": "SMB1" if positive else "SMB3",
+                        "ntlm": "NTLMv1" if positive else "NTLMv2",
+                        "anomaly": positive,
+                    },
+                ),
+            }
+        )
+
     elif feature_id == "F-005":
         body = {"count": 4 if positive else 0}
         if positive:

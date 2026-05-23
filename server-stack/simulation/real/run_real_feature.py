@@ -133,6 +133,12 @@ def run(feature_id: str, mode: str) -> Path:
     return primary
 
 
+def run_evidence(feature_id: str, mode: str) -> dict:
+    """Return evidence dict after running real feature (for scenario orchestration)."""
+    path = run(feature_id, mode)
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run real feature replay")
     parser.add_argument("--feature", required=True)

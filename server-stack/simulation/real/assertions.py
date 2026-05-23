@@ -39,6 +39,8 @@ def _checks_ri1(feature_id: str, positive: bool) -> list:
         return [lambda s: assert_zeek_conn(s, min_records=3 if positive else 1)]
     if feature_id == "F-003":
         return [lambda s: assert_bind_query(s, min_bytes=20 if positive else 1)]
+    if feature_id == "F-004":
+        return [lambda s: assert_endpoint_event(s, "smb_downgrade")]
     if feature_id == "F-005":
         return [lambda s: assert_dhcp_log(s) if positive else {"result": "PASS", "note": "negative"}]
     if feature_id == "F-006":
