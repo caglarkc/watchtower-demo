@@ -121,7 +121,7 @@ seed-real-identity:
 seed-real-files:
 	$(PYTHON) simulation/real/seed_real_files.py
 
-seed-real-all: seed-real-identity seed-real-files seed-real-mail seed-real-apps
+seed-real-all: seed-real-identity seed-real-files seed-real-mail seed-real-apps seed-real-security seed-real-endpoint
 
 real-feature:
 	@test -n "$(FEATURE)" || (echo "Usage: make real-feature FEATURE=F-001" && exit 1)
@@ -140,7 +140,10 @@ test-real-p0:
 test-real-p1:
 	$(PYTEST) tests/real/features -m p1 -v
 
-test-real-all: seed-real-all test-real test-real-p0 test-real-p1 real-coverage
+test-real-p2:
+	$(PYTEST) tests/real/features -m p2 -v
+
+test-real-all: seed-real-all test-real test-real-p0 test-real-p1 test-real-p2 real-coverage
 
 real-coverage:
 	$(PYTHON) simulation/real/report_real_coverage.py --all
