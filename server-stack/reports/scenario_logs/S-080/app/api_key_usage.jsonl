@@ -1,1 +1,2 @@
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 3, "source_feature": "F-012", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:24.226426+00:00"}
+{"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 1, "source_feature": "F-012", "scenario_id": "S-080", "timestamp": "2026-05-23T01:26:27.125878+00:00"}

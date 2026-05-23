@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": true, "timestamp": "2026-05-23T01:26:22.859845+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-041", "user_role": "Muhasebe", "category": "insider threat", "seed": 4041, "anomaly": false, "timestamp": "2026-05-23T01:26:25.760903+00:00"}

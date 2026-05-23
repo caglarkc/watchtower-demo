@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-081", "user_role": "Güvenlik Görevlisi", "category": "çapraz/multi-user", "seed": 9081, "anomaly": true, "timestamp": "2026-05-23T01:26:24.259772+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-081", "user_role": "Güvenlik Görevlisi", "category": "çapraz/multi-user", "seed": 9081, "anomaly": false, "timestamp": "2026-05-23T01:26:27.160558+00:00"}

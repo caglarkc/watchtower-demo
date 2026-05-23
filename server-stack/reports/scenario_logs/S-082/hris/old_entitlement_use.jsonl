@@ -1,1 +1,2 @@
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "source_feature": "F-076", "scenario_id": "S-082", "timestamp": "2026-05-23T01:26:24.295607+00:00"}
+{"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "source_feature": "F-076", "scenario_id": "S-082", "timestamp": "2026-05-23T01:26:27.198704+00:00"}

@@ -1,1 +1,2 @@
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "personal@gmail.com", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T01:26:24.155346+00:00"}
+{"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "user@corp.local", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T01:26:27.061012+00:00"}

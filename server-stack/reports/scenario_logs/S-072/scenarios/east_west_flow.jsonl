@@ -1,1 +1,2 @@
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 42, "bytes": 8000000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T01:26:23.940324+00:00"}
+{"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T01:26:26.841707+00:00"}

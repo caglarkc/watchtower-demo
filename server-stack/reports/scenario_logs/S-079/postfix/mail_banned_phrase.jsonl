@@ -1,1 +1,2 @@
 {"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": "gizli iç bilgi", "source_feature": "F-027", "scenario_id": "S-079", "timestamp": "2026-05-23T01:26:24.193813+00:00"}
+{"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": null, "source_feature": "F-027", "scenario_id": "S-079", "timestamp": "2026-05-23T01:26:27.092935+00:00"}

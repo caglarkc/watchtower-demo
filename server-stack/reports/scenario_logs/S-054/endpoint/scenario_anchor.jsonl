@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-054", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5054, "anomaly": true, "timestamp": "2026-05-23T01:26:23.306514+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-054", "user_role": "Yazılım Geliştirici", "category": "kazara ihlal", "seed": 5054, "anomaly": false, "timestamp": "2026-05-23T01:26:26.214999+00:00"}

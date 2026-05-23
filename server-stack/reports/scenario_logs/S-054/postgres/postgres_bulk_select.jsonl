@@ -1,1 +1,2 @@
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "source_feature": "F-045", "scenario_id": "S-054", "timestamp": "2026-05-23T01:26:23.306681+00:00"}
+{"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-054", "timestamp": "2026-05-23T01:26:26.215162+00:00"}

@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-071", "user_role": "Yazılım Geliştirici", "category": "dış saldırı desteği", "seed": 7071, "anomaly": true, "timestamp": "2026-05-23T01:26:23.906009+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-071", "user_role": "Yazılım Geliştirici", "category": "dış saldırı desteği", "seed": 7071, "anomaly": false, "timestamp": "2026-05-23T01:26:26.809026+00:00"}

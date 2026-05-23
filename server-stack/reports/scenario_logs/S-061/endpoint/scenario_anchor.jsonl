@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": true, "timestamp": "2026-05-23T01:26:23.544312+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": false, "timestamp": "2026-05-23T01:26:26.476993+00:00"}

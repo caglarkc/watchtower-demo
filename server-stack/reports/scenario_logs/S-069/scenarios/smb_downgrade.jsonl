@@ -1,1 +1,2 @@
 {"event_type": "smb_downgrade", "smb_version": "SMB1", "ntlm": "NTLMv1", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T01:26:23.838391+00:00"}
+{"event_type": "smb_downgrade", "smb_version": "SMB3", "ntlm": "NTLMv2", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T01:26:26.744816+00:00"}

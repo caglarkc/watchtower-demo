@@ -1,1 +1,2 @@
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "source_feature": "F-063", "scenario_id": "S-075", "timestamp": "2026-05-23T01:26:24.046323+00:00"}
+{"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-075", "timestamp": "2026-05-23T01:26:26.950393+00:00"}

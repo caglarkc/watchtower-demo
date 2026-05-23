@@ -1,1 +1,2 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": true, "timestamp": "2026-05-23T01:26:23.413013+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": false, "timestamp": "2026-05-23T01:26:26.321453+00:00"}
