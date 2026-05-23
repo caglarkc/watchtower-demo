@@ -57,3 +57,4 @@
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T05:35:56.191388+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T05:35:59.381472+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T08:40:57.285174+00:00"}
+{"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T08:41:04.986838+00:00"}
