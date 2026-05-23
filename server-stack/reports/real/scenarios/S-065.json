@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-065",
   "title": "Geçici Erişim Süresinin Aşılması",
-  "mode": "negative",
+  "mode": "positive",
   "category": "politika ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 6065,
@@ -23,7 +23,8 @@
           "service": "hris",
           "response": {
             "systems": [
-              "dev-git"
+              "payroll-db",
+              "dc-admin"
             ]
           }
         }
@@ -34,7 +35,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-078",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-078",
+            "pipeline": {
+              "feature_id": "F-078",
+              "index": "corp-logs-f-078",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -50,8 +78,14 @@
         {
           "service": "hris",
           "response": {
-            "status": "active",
-            "logins_after": 0
+            "status": "terminated",
+            "logins_after": 6
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
           }
         }
       ],
@@ -61,7 +95,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-072",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-072",
+            "pipeline": {
+              "feature_id": "F-072",
+              "index": "corp-logs-f-072",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -77,7 +138,7 @@
         {
           "service": "hris",
           "response": {
-            "keyboard_events": 0
+            "keyboard_events": 900
           }
         }
       ],
@@ -87,7 +148,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-077",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-077",
+            "pipeline": {
+              "feature_id": "F-077",
+              "index": "corp-logs-f-077",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -101,21 +189,28 @@
       "service": "hris",
       "response": {
         "systems": [
-          "dev-git"
+          "payroll-db",
+          "dc-admin"
         ]
       }
     },
     {
       "service": "hris",
       "response": {
-        "status": "active",
-        "logins_after": 0
+        "status": "terminated",
+        "logins_after": 6
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
       }
     },
     {
       "service": "hris",
       "response": {
-        "keyboard_events": 0
+        "keyboard_events": 900
       }
     }
   ],
@@ -133,19 +228,98 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-078",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-078",
+        "pipeline": {
+          "feature_id": "F-078",
+          "index": "corp-logs-f-078",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-072",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-072",
+        "pipeline": {
+          "feature_id": "F-072",
+          "index": "corp-logs-f-072",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-077",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-077",
+        "pipeline": {
+          "feature_id": "F-077",
+          "index": "corp-logs-f-077",
+          "indexed": 80
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/hris/employees.yml",
     "seeds/real/badge/locations.yml",
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
-  "event_count": 3,
+  "anomaly_detected": true,
+  "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:34.898797+00:00",
+  "generated_at": "2026-05-23T03:11:43.669639+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-065:6065:negative:real"
+  "replay_key": "S-065:6065:positive:real"
 }

@@ -2,7 +2,7 @@
   "id": "F-078",
   "feature_id": "F-078",
   "title": "Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -11,7 +11,8 @@
       "service": "hris",
       "response": {
         "systems": [
-          "dev-git"
+          "payroll-db",
+          "dc-admin"
         ]
       }
     }
@@ -40,12 +41,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 72,
+        "indexed": 80,
         "index": "corp-logs-f-078",
         "pipeline": {
           "feature_id": "F-078",
           "index": "corp-logs-f-078",
-          "indexed": 72
+          "indexed": 80
         }
       }
     }
@@ -56,10 +57,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "contractor out-of-scope system use",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:25.982166+00:00",
+  "generated_at": "2026-05-23T03:11:43.509965+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
