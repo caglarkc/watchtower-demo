@@ -28,3 +28,4 @@
 {"event_type": "port_scan", "targets": 5, "ports": 3, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T02:28:55.594865+00:00"}
 {"event_type": "port_scan", "targets": 200, "ports": 25, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T02:29:02.912163+00:00"}
 {"event_type": "port_scan", "targets": 5, "ports": 3, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T02:29:04.922670+00:00"}
+{"event_type": "port_scan", "targets": 200, "ports": 25, "window_minutes": 12, "feature_id": "F-007", "timestamp": "2026-05-23T02:36:26.192982+00:00"}
