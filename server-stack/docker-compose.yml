@@ -137,7 +137,51 @@ services:
       - corp-logs:/var/log/corp
       - ./logs/zeek:/var/log/corp/zeek
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # RI-1: real Samba file actions + full_audit log path
+  samba-files-actions:
+    profiles: ["real-identity"]
+    build:
+      context: ./docker/samba-files-actions
+    container_name: corp-samba-files-actions
+    hostname: files-actions
+    networks:
+      corp-lan:
+        ipv4_address: ${SAMBA_FILES_ACTIONS_IP:-172.28.0.42}
+    environment:
+      SAMBA_HOST: corp-samba-files
+      SAMBA_USER: cfo
+      SAMBA_PASS: ${ADMIN_PASSWORD:-Watchtower1!}
+      LOG_ROOT: /var/log/corp/samba
+      SEED_ROOT: /seeds
+    volumes:
+      - ./logs/samba:/var/log/corp/samba
+      - ./seeds/real/files:/seeds:ro
+    depends_on:
+      samba-files:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # RI-1: DHCP/Kea-style lease log API (complements ISC dhcp-server)
+  dhcp-logger:
+    profiles: ["real-identity"]
+    build:
+      context: ./docker/dhcp-logger
+    container_name: corp-dhcp-logger
+    hostname: dhcp-logger
+    networks:
+      corp-lan:
+        ipv4_address: ${DHCP_LOGGER_IP:-172.28.0.43}
+    volumes:
+      - ./logs/dhcp:/var/log/corp/dhcp
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
