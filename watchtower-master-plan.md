@@ -1,559 +1,908 @@
-# Watchtower — Master Architecture & Integration Plan
+# Watchtower — Production Architecture & Implementation Plan
 
-> **Ürün:** LLM-Destekli İç Ağ İzleme CLI'ı (UEBA)
-> **Bağımsızlık:** Anthropic dahil herhangi bir sağlayıcıya bağlı değil
-> **Tarih:** 22 Mayıs 2026
-> **Kaynak:** Ön araştırma konuşmaları ve entegrasyon notları temel alınarak tekil master plan halinde birleştirildi
-
----
-
-> [!IMPORTANT]
-> **Klasör Ayrımı — Karıştırılmamalı**
->
-> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli, şirket iç ağını izleyen, kullanıcı davranışını analiz eden ve managera uyarı veren CLI sistemi. "Demo" kelimesi ürünün ilk/MVP sürümü olduğunu belirtir.
-> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı: Wazuh, AD, sahte kullanıcılar, üretilmiş loglar. `watchtower-demo` bu ortamı izler.
->
-> `server-stack` ← `watchtower-demo` izler
+> **Ürün:** LLM destekli, şirket içi kullanıcı davranışı izleme CLI/daemon sistemi  
+> **Kategori:** UEBA — User and Entity Behavior Analytics  
+> **Hedef:** Prototip değil; gerçek şirket kapalı ağlarında kurulabilir, test edilmiş, provider bağımsız ürün  
+> **Test lab:** `server-stack/` içindeki 81 feature ve 83 scenario kapalı sunucu ortamı  
+> **Son revizyon:** 23 Mayıs 2026
 
 ---
 
-## 1. Ürün Kimliği
+## 0. Klasör Ayrımı
 
-| Alan | Karar |
-|------|-------|
-| **Ürün adı** | `watchtower` (alternatif: `vigil`) |
-| **Kategori** | UEBA — User and Entity Behavior Analytics |
-| **Çalışma ortamı** | Şirket iç ağı (Private LAN / on-premise) |
-| **Hedef kitle** | KOBİ + Enterprise, IT Security / CISO |
-| **Sentinel ile ilişki** | Ayrı ürün, aynı monorepo ailesi |
-| **Çalışma modu** | 7/24 daemon + sorgulama CLI'ı |
-| **LLM bağımlılığı** | OpenAI-compatible abstraction (local model desteği dahil) |
+- **`watchtower-demo/`** = Ürünün kendisi. Watchtower CLI, daemon, connector, baseline, decision, alert ve LLM gateway kodu burada inşa edilir.
+- **`watchtower-demo/server-stack/`** = Ürünü test etmek için kurulan kapalı şirket ağı. Watchtower bunu izler; ürün kodu buraya gömülmez.
 
----
+Kural:
 
-## 2. Mevcut Repo'dan Yeniden Kullanım Analizi
-
-### 2.1 `sentinel-coming` — CLI & Gateway Temeli
-
-**Neden önemli:** Zaten çalışan bir Python CLI, config katmanlama, read-only gateway pattern ve session/memory altyapısı var.
-
-**Yeniden kullanılacak:**
-- Read-only gateway boundary tasarımı
-- CLI prompt routing ve config sistemi
-- Provider abstraction yaklaşımı
-- Safe tool execution modeli
-
-**Kaynak dosya alanları:**
-- `sentinel-coming/cli/src/sentinel_cli/config/`
-- `sentinel-coming/cli/src/sentinel_cli/tools/`
-- `sentinel-coming/cli/src/sentinel_cli/session/`
-- `sentinel-coming/observability-gateway/src/observability_gateway/`
-
-**Kullanılmayacak:** Prometheus/Loki/Tempo'ya özgü gateway kontratları.
+```text
+server-stack olay üretir
+watchtower ürünü bu olayları izler, öğrenir, değerlendirir ve uyarı üretir
+```
 
 ---
 
-### 2.2 `caglarkc-agent` — Daemon & State Machine Temeli
+## 1. Ürün İlkeleri
 
-**Neden önemli:** LangGraph tabanlı state machine + SQLite persistence + checkpoint/recovery + daemon orientation — tam olarak Watchtower'ın ihtiyacı.
+### 1.1 Watchtower Ne Yapar?
 
-**Yeniden kullanılacak:**
-- LangGraph graph/state pattern
-- SQLite + checkpoint lifecycle
-- Event bus ve scheduler modeli
-- Long-running daemon/service yapısı
-- Memory consolidation ve approval pattern
+Watchtower, şirket iç ağındaki kullanıcı ve entity davranışlarını izler:
 
-**Kaynak dosya alanları:**
-- `caglarkc-agent/src/core/`
-- `caglarkc-agent/src/graph/`
-- `caglarkc-agent/src/storage/`
-- `caglarkc-agent/src/interfaces/cli/`
-- `caglarkc-agent/src/interfaces/telegram/`
+- dosya erişimi
+- veri çekimi
+- SQL sorguları
+- login/oturum davranışları
+- AD/LDAP grup değişiklikleri
+- mail, git, web, AI, cloud, HR, badge, print, endpoint aktiviteleri
+- cross-signal korelasyonlar
 
-**Kullanılmayacak:** Software-project generation semantics, coding workflow'a özgü worker/reviewer logic.
+Watchtower müdahale etmez, engellemez, sistemleri değiştirmez. Sadece izler, öğrenir, alert/case üretir ve açıklama sağlar.
 
----
+### 1.2 LLM Karar Vermez
 
-### 2.3 `argus` — Permission & Tool Runtime
+LLM hiçbir zaman final anomali/alert kararını vermez.
 
-**Neden önemli:** Temiz modüler runtime — permission levels, hook sistemi, tool registry, multi-provider model erişimi.
+LLM'in izinli görevleri:
 
-**Yeniden kullanılacak:**
-- Permission tier tasarımı (`locked` / `yolo` / `planning`)
-- Hook modeli (pre-run / post-run)
-- Tool registry sınırları
-- Trajectory recording (LLM kararlarının audit trail'i)
+- alert açıklaması yazmak
+- bilinmeyen schema için mapping önerisi üretmek
+- manager/operator feedback'inden `pending_rule` taslağı üretmek
+- öğrenme dönemi özetleri ve baseline raporları hazırlamak
+- CLI doğal dil sorgularına, mevcut store verisine dayanarak cevap üretmek
 
-**Kaynak dosya alanları:**
-- `argus/argus/tools/`
-- `argus/argus/hooks/`
-- `argus/argus/config/`
-- `argus/argus/agents/`
+Final kararları şu deterministic katmanlar verir:
 
----
+- `policy_engine`
+- `baseline_engine`
+- `feedback_engine`
+- `correlation_engine`
+- `severity_engine`
 
-### 2.4 `nookspace` — Desktop UI (Faz 3+)
+### 1.3 Her Eşik Aşımında LLM Çağrılmaz
 
-**Şimdi değil.** CLI + daemon stabil olduktan sonra operator console için referans.
+LLM sadece gerekli olduğunda çağrılır:
 
-**Kullanım zamanı:** Faz 3 veya Faz 4 — rule approval UI, session visibility, connector management.
+- açıklama gerekiyorsa
+- unknown schema varsa
+- pending rule önerisi gerekiyorsa
+- periyodik learning summary gerekiyorsa
+- operator doğal dil sorgusu varsa
 
----
-
-### 2.5 Sadece Pattern Referansı
-
-- `estate-agent`: approval-gated tool pipeline örneği
-- `orioncli`: messaging gateway adaptörleri (Telegram, Slack, Email)
+Tekrarlayan benign pattern, approved scoped feedback-rule ile LLM'e gitmeden downrank/suppress edilir.
 
 ---
 
-## 3. Sistem Mimarisi
+## 2. Çalışma Modları
 
-> Bu diyagram **hedef mimariyi** gösterir. İlk implementasyon kapsamı bunun daraltılmış alt kümesidir: `Wazuh-only`, `CLI + Telegram`, `local-model zorunlu`, mail kaynakları ise Faz 2'de devreye alınır.
+### 2.1 `learn` Modu
+
+Amaç: Şirketi öğrenmek.
+
+Davranış:
+
+- Dış alert yok.
+- Bildirim yok.
+- Hard-rule dahil hiçbir şey kullanıcıya gönderilmez.
+- `silent_candidate_finding` oluşur.
+- Baseline, profile, candidate pattern ve rule suggestion için veri toplanır.
+- 45 gün default learning window kullanılır.
+- Süre configurable olmalıdır.
+
+Kapatma kriterleri:
+
+- minimum gün sayısı tamamlandı
+- kullanıcı başına yeterli aktif gün var
+- departman/rol örneklem sayısı yeterli
+- baseline confidence hesaplandı
+- manager/system_admin onayı alındı
+
+### 2.2 `run` Modu
+
+Amaç: Öğrenme kapalı şekilde operasyonel izleme.
+
+Davranış:
+
+- Proaktif öğrenme yok.
+- Baseline otomatik değişmez.
+- Sadece stable policy, approved baseline ve approved feedback-rule kullanılır.
+- Manager/operator feedback'i doğrudan sistemi değiştirmez.
+- Feedback sonrası LLM veya deterministic builder `pending_rule` üretir.
+- `pending_rule` ancak security_operator veya system_admin onayıyla stable olur.
+
+### 2.3 `hybrid` Modu
+
+Amaç: İzleme ve kontrollü öğrenmeyi birlikte yürütmek.
+
+Davranış:
+
+- Alert üretir.
+- Baseline drift'i takip eder.
+- Feedback ve proje bağlamından scoped pending rule üretebilir.
+- Kritik/policy davranışı otomatik normalleştirmez.
+- Rolling window ve approval gate ile öğrenir.
+
+---
+
+## 3. Detection Taxonomy
+
+Her feature tam olarak bir primary detection sınıfına sahip olmalıdır. Gerekirse secondary sınıflar eklenebilir.
+
+| Sınıf | Tanım | Baseline gerekir mi? | Feedback ile otomatik normalleşir mi? |
+|-------|------|----------------------|---------------------------------------|
+| `policy-rule` | Rol/yetki/iş akışı açısından yasak veya bypass davranışı | Hayır | Hayır, explicit approved exception gerekir |
+| `hard-rule` | Baseline olmadan da riskli teknik veya güvenlik ihlali | Hayır | Hayır, sadece scoped exception |
+| `baseline-anomaly` | Kullanıcının veya departmanın normalinden sapma | Evet | Evet, approval sonrası scoped rule ile |
+| `cross-signal` | Birden fazla kaynaktan gelen sinyallerin birleşimi | Kısmen | Genellikle hayır; korelasyon kapsamına göre approval gerekir |
+
+### 3.1 `policy-rule` Kesin Tanımı
+
+`policy-rule`, davranış daha önce sık görülse bile normal kabul edilmeyen iş/yetki ihlalidir.
+
+Örnekler:
+
+- frontend rolünün backend API yerine direkt SQL DB'ye erişmesi
+- worker rolünün privileged admin action çalıştırması
+- service account ile interactive login
+- ticket olmadan production permission escalation
+- HR dışı rolün HR DB export yapması
+
+Policy-rule davranışı ancak şu durumda düşürülebilir:
+
+- açık scoped exception var
+- exception bir approver tarafından onaylanmış
+- exception süre, kullanıcı/rol, resource ve action kapsamı taşıyor
+- audit trail var
+
+### 3.2 Feature Sınıflandırma Sahipliği
+
+Bu plan özellikle geri bildirimde işaretlenen belirsizliği kapatır:
+
+- 81 feature sınıflandırmasını **Faz 0 görevi olarak kod yazacak AI tamamlayacak**.
+- AI, `watchtower-features-final.md`, `server-stack/simulation/feature_catalog/features.yml` ve `server-stack/reports/real/coverage/real_final_gate.json` dosyalarını okuyacak.
+- Çıktı dosyası ürün tarafında olacak: `watchtower/config/feature_taxonomy.yml`.
+- Her feature için alanlar zorunlu olacak:
+  - `feature_id`
+  - `primary_detection_class`
+  - `secondary_detection_classes`
+  - `default_severity_floor`
+  - `requires_baseline`
+  - `can_be_feedback_learned`
+  - `requires_approval_for_suppression`
+  - `required_context`
+  - `server_stack_replay_refs`
+
+Faz 0 kapanış kapısı:
+
+```text
+81/81 feature taxonomy complete
+0 unknown primary class
+policy-rule list explicit
+all taxonomy entries validated by tests
+```
+
+---
+
+## 4. Karar Mantığı
+
+Watchtower tek event'e bakarak karar vermez. Her candidate event şu bağlamlarla değerlendirilir:
+
+- kullanıcı
+- rol
+- departman
+- manager ilişkisi
+- asset/resource
+- action tipi
+- zaman
+- hacim/hız
+- kişisel baseline
+- departman baseline
+- rol-in-department baseline
+- asset kritiklik seviyesi
+- geçmiş alertler
+- manager/operator feedback'i
+- approved scoped feedback-rule
+- ticket/project/maintenance context
+- cross-signal korelasyonlar
+
+Karar sırası:
+
+```text
+1. policy-rule veya hard-rule var mı?
+2. approved scoped exception var mı?
+3. change ticket / project context var mı?
+4. user baseline sapması var mı?
+5. department ve role baseline sapması var mı?
+6. cross-signal correlation var mı?
+7. feedback-rule severity modifier uyguluyor mu?
+8. severity üret: LOG / WARNING / ALERT / CRITICAL
+9. mode'a göre route et
+10. gerekirse LLM açıklaması veya pending rule üret
+```
+
+### 4.1 Threshold Model
+
+Eşikler tek global sayı değildir.
+
+Katmanlar:
+
+- global default threshold
+- department threshold
+- role-in-department threshold
+- user-specific threshold
+- asset-specific threshold
+- time-window threshold
+- feedback-adjusted scoped threshold
+
+Default değerler sistem kurulumu için sağlanır, fakat öğrenme sonunda profile göre değişir.
+
+Örnek:
+
+```text
+Mehmet normalde 1000-2000 SQL query atıyorsa 1000 query normal olabilir.
+Yiğit normalde 10-20 query atıyorsa 100 query alert olabilir.
+```
+
+---
+
+## 5. Sistem Mimarisi
 
 ```mermaid
 graph TD
-    subgraph Sources["1 — Veri Kaynakları (İç Ağ)"]
-        W[Wazuh] & SP[Splunk] & EL[Elastic] & QR[QRadar]
-        AD[Active Directory / LDAP] & MX[Exchange / Mail]
-        NF[NetFlow / Firewall Logları]
+    subgraph Sources["Company Sources"]
+        WZ[Wazuh]
+        ES[Elasticsearch]
+        SP[Splunk]
+        FL[File Logs]
+        WH[Webhook]
+        AD[AD/LDAP]
+        HR[HRIS]
+        BG[Badge]
     end
 
-    subgraph Gateway["2 — Security Gateway (Read-Only)"]
-        Sources -- "REST API / JWT" --> SG[security-gateway]
+    subgraph Gateway["Read-Only Security Gateway"]
+        CON[Connector Registry]
+        POLL[Polling / Cursor Manager]
+        HEALTH[Source Health]
     end
 
-    subgraph Pipeline["3 — LangGraph Analysis Pipeline"]
-        SG --> IN[Ingest Node]
-        IN --> SD[Schema Detection Node\nDeterministik-first\nLLM fallback yalnızca bilinmeyen format]
-
-        SD -- "Bilinen format\nRule Store'da eşleşti" --> KA[Known Adapter Node]
-        SD -- "Bilinmeyen format\nEşleşme yok" --> FB[Fallback Node\nLLM-2: Güçlü\nOpus · Gemini Pro · Local]
-
-        FB -- "Kural üret" --> RS[(Rule Store\nSQLite\npending/stable/deleted)]
-        RS -. "Kayıtlı kuralı yükle" .-> KA
-
-        KA --> NR[Normalize Node\nUnified Event Schema\n+ detection_type etiketi]
-        NR --> HR[Hard-Rule Check\nBaseline beklemez\nFaz 1+2 aktif]
-        HR -- "hard-rule eşleşti" --> SV
-        HR -- "Devam" --> BL[Baseline Check Node\nFaz 2'den itibaren aktif]
-        BS[(Baseline Store\nSQLite\nuser + dept profiles)] <--> BL
-        BL --> CE[Context Enrichment Node\nDeterministik boyutlar\nLLM yalnızca açıklama yazar]
-        CE --> SV[Severity Decision Node]
+    subgraph Core["Watchtower Core"]
+        RAW[Raw Event Store]
+        NORM[Normalizer]
+        CAND[Candidate Extractor]
+        BASE[Baseline Engine]
+        POL[Policy Engine]
+        FB[Feedback Engine]
+        CORR[Correlation Engine]
+        SCORE[Severity Engine]
     end
 
-    subgraph Output["4 — Çıktı Katmanı"]
-        SV -- "LOG / WARNING" --> LS[(Log Store\nSQLite)]
-        SV -- "ALERT / CRITICAL" --> MG[Messaging Gateway\nOrioncli adaptörü]
-        MG --> TG[Telegram] & SL[Slack / Webhook] & EM[Email]
-        CLI[Watchtower CLI\n`wt query`, `wt status`] <--> LS & RS & BS
+    subgraph Graph["LangGraph Decision Orchestration"]
+        DG[Decision Graph]
+        CKPT[Checkpoint Store]
+        AUD[Graph Run Audit]
+        HITL[Human Approval Interrupt]
     end
+
+    subgraph LLM["LLM Gateway"]
+        ROUTER[Provider Router]
+        OAI[OpenAI]
+        ANT[Anthropic]
+        GEM[Gemini]
+        OLL[Ollama / OpenAI Compatible]
+    end
+
+    subgraph Output["Output"]
+        SF[Silent Findings]
+        AL[Alerts]
+        CASE[Alert Cases]
+        CLI[wt CLI]
+        RULE[Pending / Stable Rules]
+    end
+
+    Sources --> Gateway --> RAW --> NORM --> CAND
+    CAND --> DG
+    BASE --> DG
+    POL --> DG
+    FB --> DG
+    CORR --> DG
+    SCORE --> DG
+    DG --> SF
+    DG --> AL --> CASE
+    DG --> RULE
+    DG --> LLM
+    CLI --> SF
+    CLI --> AL
+    CLI --> CASE
+    CLI --> RULE
 ```
 
 ---
 
-## 4. LangGraph Pipeline — Node Sözleşmeleri
+## 6. LangGraph Rolü
 
-### Node 1: Ingest
-- SIEM REST API'lerini polling veya webhook ile dinler
-- Ham log batch'lerini çeker, `raw_event` entity'sine yazar
-- Rate limit ve retry logic içerir
+LangGraph karar matematiğini yapmaz. LangGraph şunları yapar:
 
-### Node 2: Schema Detection
-- **Birincil yol (deterministik):** Rule Store'daki `stable` format imzalarıyla eşleştir. Eşleşme bulunursa LLM çağrısı yapılmaz.
-- **İkincil yol (LLM fallback):** Eşleşme bulunamazsa hızlı/ucuz model devreye girer — Gemini Flash, Haiku veya local quantized model.
-- **Görev:** "Bu Wazuh mu, Splunk mu, bilinmeyen bir şey mi?" — sınıflandırma odaklı.
-- **Çıktı:** `known_schema` veya `unknown_schema` + güven skoru.
-- **Kural:** Faz 1'de kaynak Wazuh-only olduğu için Wazuh format imzası her zaman `stable`'da tanımlı olacak; LLM bu fazda schema detection için çağrılmaz.
+- node orchestration
+- branch routing
+- checkpoint/recovery
+- state audit
+- human-in-the-loop approval
+- mode-specific flow
+- LLM çağrılarının koşullu çalıştırılması
 
-### Node 3a: Known Adapter
-- Rule Store'daki kayıtlı `stable` kuralları yükler
-- Ham event'i unified schema'ya normalize eder
-- `normalized_event` entity'si üretir
+Karar matematiği bağımsız Python servislerinde kalır:
 
-### Node 3b: Fallback (LLM #2)
-- **Model:** Güçlü reasoning — Opus, Gemini Pro, veya local Llama 3.1 70B+
-- **Görev:** Bilinmeyen formatı analiz et, field mapping yaz, kural üret
-- **Çıktı:** Rule Store'a `pending` statüsünde kural yazar
-- **Otonom:** Bir sonraki aynı formatta otomatik devreye girer
-- **Yönetici:** İsterse `stable` onayla / sil / düzenle
+- `policy_engine`
+- `baseline_engine`
+- `feedback_engine`
+- `correlation_engine`
+- `severity_engine`
 
-### Node 4: Baseline Check
-- `user_profile` ve `department_profile` ile karşılaştırır.
-- **Faz 1 (Learning):** Sadece veri biriktirir, baseline anomaly üretmez. **Ancak:** `hard-rule` sınıfındaki tespitler (bkz. Bölüm 4a) her fazda ateşlenir — bunlar baseline beklemez.
-- **Faz 2 (Active):** Sapma skoru hesaplar, `baseline anomaly` ve `cross-signal correlation` aktif hale gelir.
+### 6.1 Decision Graph Node Sözleşmesi
 
-### Node 4a: Detection Taxonomy (Kalıcı Karar)
+Graph'a raw log değil, `candidate_event` girer.
 
-Her detection üç sınıftan birine aittir ve bu sınıf Faz 1'de bile ateşlenip ateşlenmeyeceğini belirler:
+Node listesi:
 
-| Sınıf | Açıklama | Faz 1'de ateşlenir mi? | Örnekler |
-|-------|----------|----------------------|----------|
-| `hard-rule` | Policy ihlali; baseline verileri olmadan da anlam taşır | **Evet, her zaman** | Servis hesabı interaktif login (F-009), privileged grup değişikliği (F-010), promiscuous mod (F-035) |
-| `baseline-anomaly` | Kullanıcının kendi normalinden sapma | Hayır, Faz 2'den itibaren | Veri çekim patlaması (F-001), mesai dışı login (F-007) |
-| `cross-signal` | İki veya daha fazla kaynaktan gelen verinin korelasyonu | Hayır, Faz 2'den itibaren | Fiziksel-dijital çakışma (F-008), ticket olmadan reset (F-013) |
+1. `load_mode`
+2. `resolve_identity`
+3. `resolve_asset`
+4. `load_feature_taxonomy`
+5. `load_policy_context`
+6. `load_baseline_context`
+7. `load_feedback_context`
+8. `load_change_context`
+9. `score_candidate`
+10. `decide_severity`
+11. `route_by_mode`
+12. `persist_silent_finding`
+13. `create_alert_case`
+14. `maybe_generate_llm_explanation`
+15. `maybe_generate_pending_rule`
+16. `await_rule_approval`
+17. `finalize_decision`
 
-`hard-rule` listesi açık olmalı; her yeni feature eklenirken sınıfı belirtilmeli.
+### 6.2 Mode Routing
 
-### Node 5: Context Enrichment
-Sapma puanını etkileyen boyutlar; **deterministik olanlar önce hesaplanır, LLM yalnızca açıklama ve composite reasoning için çağrılır:**
+```text
+learn:
+  persist_silent_finding
+  enqueue_baseline_update
+  no alert
+  no notification
 
-| Boyut | Hesaplama | LLM gerekir mi? |
-|-------|-----------|----------------|
-| **Miktar** — baseline'dan sapma | Deterministik (z-score veya percentile) | Hayır |
-| **Zaman** — mesai / gece / hafta sonu | Deterministik (takvim kuralı) | Hayır |
-| **Rol** — IT / muhasebe / HR | Deterministik (AD grup lookup) | Hayır |
-| **Hedef** — hangi sunucuya erişiyor | Deterministik (user_profile.usual_servers) | Hayır |
-| **Hız** — ani mi kademeli mi | Deterministik (bytes/dk hesabı) | Hayır |
-| **Geçmiş** — daha önce böyle yaptı mı | Deterministik (baseline_snapshot sorgusu) | Hayır |
-| **Açıklama ve öneri üretimi** | LLM | **Evet** — sadece bu adım |
+run:
+  no baseline update
+  apply only approved rules
+  create alert/case if severity requires
+  feedback creates pending_rule only
 
-LLM, alert metnini ve operatöre yönelik öneriyi yazar. Anomali kararı vermez.
-
-### Node 6: Severity Decision
-```
-Enriched anomaly score → Severity tier
-
-LOG      → sessiz kayıt
-WARNING  → anomali skoru yüksek, izle
-ALERT    → manager bildirimi
-CRITICAL → anlık bildirim + işlem önerisi
-```
-
-Eşikler **statik değil** — her kullanıcı/departman için ayrı, learning fazında öğrenilen baseline'a göre dinamik.
-
----
-
-## 5. İki Fazlı Çalışma Modeli
-
-### Faz 1 — Learning (Varsayılan: 1-2 ay)
-
-**Amaç:** Sessiz izleme, baseline oluştur.
-
-> [!NOTE]
-> "Hiç alert üretme" kuralının istisnası: `hard-rule` sınıfındaki tespitler Faz 1'de de ateşlenir. Bunlar policy violation'dır; baseline öğrenmesine ihtiyaç duymaz. Sadece `baseline-anomaly` ve `cross-signal` sınıfı tespitler Faz 1'de susturulur.
-
-**Her gün:** Günlük özet hesapla → günlük ortalamalara ekle.
-**Her hafta:** Haftalık pattern güncelle, sezonsal drift not et.
-**Ay sonu:** LLM "dreaming" — tüm biriken veriyi analiz et → kullanıcı ve departman profili oluştur.
-
-**Öğrenilen boyutlar:**
-```
-Kullanıcı bazında:
-  - Günlük ortalama veri çekimi (mean + variance)
-  - Saatsel dağılım (09:00-18:00 arası mı hep?)
-  - Hangi sunuculara erişiyor (usual_servers listesi)
-  - Hafta içi / hafta sonu farkı
-  - Rol bağlamı
-
-Departman bazında:
-  - Ekip ortalaması
-  - Sezonsal değişimler (muhasebe ay sonu 2.3x normal gibi)
-  - Rol bazlı beklentiler
-```
-
-**Otomatik faz geçiş kriterleri:**
-- 30+ gün geçti ✓
-- Kullanıcı başına 20+ aktif gün verisi ✓
-- Departman başına 15+ kullanıcı verisi ✓
-- LLM confidence score > 0.75 ✓
-→ Manager onayı ister → Active faza geçer
-
----
-
-### Faz 2 — Active (Süresiz)
-
-**Öğrenme devam eder.** Rolling window: son 90 günün ağırlıklı ortalaması. Rol değişirse, yeni proje başlarsa sistem adapte olur.
-
-**Alert formatı (CRITICAL örneği):**
-```
-CRITICAL ALERT — 22 Mayıs 2026, 03:47
-Kullanıcı: ali.koc@sirket.com | Departman: Muhasebe
-Olay: 847 GB veri çekimi (baseline: 8 GB/gün — 105x sapma)
-Kaynak sunucu: HR-DB-01, FINANCE-DB-02
-Zaman: Gece 03:00-04:00 (mesai dışı)
-Hız: 5 dakikada 200 GB (anormal yüksek hız)
-
-LLM Yorumu: Bu kullanıcının rolü için bu miktarda veri çekimi
-olağandışıdır. Gece saatinde gerçekleşmesi ve iki farklı kritik
-sunucuya erişim riski artırıyor. Departman normunun 105 katı.
-
-Öneri: Oturumu inceleyin, gerekirse IT güvenlik birimini bilgilendirin.
+hybrid:
+  create alert/case if severity requires
+  apply controlled learning update
+  feedback creates pending_rule
+  stable only after approval
 ```
 
 ---
 
-## 6. Veri Modeli (Domain Entities)
+## 7. LLM Gateway
 
-### 6.1 Çekirdek Event ve Analiz
+Providerlar:
 
-| Entity | Açıklama | Faz |
-|--------|----------|-----|
-| `source` | SIEM bağlantısı (Wazuh, Splunk vb.) | Faz 1 |
-| `raw_event` | Ham log, parse edilmemiş | Faz 1 |
-| `normalized_event` | Unified schema'ya çevrilmiş event | Faz 1 |
-| `anomaly_assessment` | Enriched skoru, detection sınıfı ve bağlam bilgisi | Faz 1 |
-| `rule_candidate` | Fallback LLM'in ürettiği pending kural | Faz 1 |
-| `rule_version` | Onaylı / güncellenmiş kural versiyonu | Faz 1 |
-| `learning_window` | Faz 1 progress takibi | Faz 1 |
+- `openai`
+- `anthropic`
+- `gemini`
+- `ollama`
+- `custom_openai_compatible`
 
-### 6.2 Kimlik ve Davranış Profili
+Her provider capability registry ile tanımlanır:
 
-| Entity | Açıklama | Faz |
-|--------|----------|-----|
-| `user_profile` | Bireysel baseline profili (usual_servers, çekim ortalamaları, saatsel dağılım) | Faz 1 |
-| `department_profile` | Departman bazlı normlar ve sezonsal değişimler | Faz 1 |
-| `baseline_snapshot` | Aylık öğrenme özeti | Faz 1 |
-| `identity_alias` | Aynı kişinin farklı sistemlerdeki hesap eşlemeleri (AD user ↔ svc account ↔ API key) | Faz 2 |
-| `session_map` | Kullanıcının aktif oturumları: hangi cihaz, hangi IP, ne zaman başladı | Faz 2 |
+- `structured_output`
+- `tool_calling`
+- `json_schema_strict`
+- `streaming`
+- `local`
+- `max_context_tokens`
+- `supports_responses_api`
+- `supports_chat_completions`
 
-### 6.3 Bağlamsal Korelasyon Entity'leri
+LLM outputları schema validated olmak zorundadır.
 
-| Entity | Açıklama | Gerektiği Feature'lar |
-|--------|----------|----------------------|
-| `asset` | Şirketteki her sunucu/cihaz kaydı: rol, segment, kritiklik seviyesi | F-001, F-002, F-014 |
-| `change_ticket` | IT change management kayıtları: kim ne zaman ne değiştirecek | F-005, F-013, F-021 |
-| `badge_event` | Fiziksel giriş/çıkış kayıtları: kullanıcı, kapı, zaman | F-008 |
-| `hr_event` | İşe giriş, işten çıkış, rol değişikliği bildirimleri (HRIS entegrasyonu) | F-042 |
+LLM görev şemaları:
 
-> [!NOTE]
-> `badge_event` ve `hr_event` Faz 1'de zorunlu değil, ama veri modeline şimdiden eklenmelidir çünkü korelasyon feature'ları bu entity'lerin var olduğunu varsayar. Faz 2'ye geçişte şema değişikliği yaşanmaması için alan adları şimdiden kilitlenmeli.
+- `AlertExplanation`
+- `RuleCandidateDraft`
+- `UnknownSchemaMapping`
+- `BaselineSummary`
+- `MonthlyLearningReport`
+- `OperatorQueryAnswer`
 
-### 6.4 Alert ve Operatör Workflow
+Failure policy:
+
+- LLM yoksa sistem durmaz.
+- Detection devam eder.
+- Alert açıklaması yerine `LLM unavailable - manual review required` notu düşer.
+- LLM failure audit edilir.
+
+---
+
+## 8. Veri Modeli
+
+### 8.1 Core Tables
 
 | Entity | Açıklama |
 |--------|----------|
-| `alert` | Üretilen uyarı kaydı (detection sınıfı, severity, ilgili event'ler) |
-| `alert_case` | Alert'in operatör tarafından yönetilen yaşam döngüsü kaydı |
+| `tenant` | Her şirket kurulumu için izolasyon kaydı |
+| `source` | Wazuh/Elastic/Splunk/file/webhook bağlantısı |
+| `source_cursor` | Polling cursor ve offset |
+| `raw_event` | Ham log |
+| `normalized_event` | Unified schema event |
+| `candidate_event` | Karar graph'ına girecek event |
+| `feature_taxonomy` | 81 feature sınıflandırması |
+| `graph_run_audit` | LangGraph node geçişleri |
 
-**`alert_case` yaşam döngüsü:**
+### 8.2 Baseline Tables
 
+| Entity | Açıklama |
+|--------|----------|
+| `user_profile` | Kişisel davranış profili |
+| `department_profile` | Departman normları |
+| `role_profile` | Rol bazlı normlar |
+| `asset_profile` | Asset erişim normları |
+| `baseline_snapshot` | Günlük/haftalık/aylık snapshot |
+| `learning_window` | 45 günlük learning progress |
+
+### 8.3 Context Tables
+
+| Entity | Açıklama |
+|--------|----------|
+| `identity_alias` | AD user, email, service account, API key eşleşmesi |
+| `session_map` | Aktif oturum/IP/device ilişkisi |
+| `asset` | Server, DB, share, app, endpoint envanteri |
+| `change_ticket` | Bakım/proje/ticket bağlamı |
+| `hr_event` | İşe giriş, çıkış, rol değişimi |
+| `badge_event` | Fiziksel giriş/çıkış |
+
+### 8.4 Feedback & Rule Tables
+
+| Entity | Açıklama |
+|--------|----------|
+| `policy_rule` | Hard/policy rule tanımı |
+| `feedback_event` | Manager/operator feedback kaydı |
+| `pending_rule` | Onay bekleyen scoped rule |
+| `feedback_rule` | Onaylı scoped rule |
+| `rule_approval` | Approve/reject audit trail |
+
+### 8.5 Alert Tables
+
+| Entity | Açıklama |
+|--------|----------|
+| `silent_candidate_finding` | Learn mode ve analiz için sessiz bulgu |
+| `alert` | Üretilen uyarı |
+| `alert_case` | Operatör workflow state'i |
+| `suppression_window` | Süreli bastırma |
+| `llm_call_audit` | Prompt, provider, schema, token/cost audit |
+
+---
+
+## 9. Connector Mimarisi
+
+Ürün en baştan gerçek şirket ortamına taşınabilir connector yapısıyla kurulacaktır.
+
+İlk connectorlar:
+
+- `server_stack_connector`
+- `file_jsonl_connector`
+- `elasticsearch_connector`
+- `wazuh_connector`
+
+Sonraki connectorlar:
+
+- `splunk_connector`
+- `ldap_connector`
+- `hris_connector`
+- `badge_connector`
+- `webhook_connector`
+
+Connector sözleşmesi:
+
+```text
+health() -> SourceHealth
+poll(cursor, limit) -> EventBatch
+ack(cursor) -> None
+schema_hint() -> SourceSchemaHint
 ```
-open → investigating → true_positive → (ticket_linked)
-                    ↘ false_positive
-                    ↘ suppressed
-```
 
-| Durum | Açıklama |
-|-------|----------|
-| `open` | Alert üretildi, henüz bakılmadı |
-| `investigating` | Operatör incelemeye aldı |
-| `true_positive` | Gerçek tehdit olarak onaylandı |
-| `false_positive` | Yanlış alarm; sistem bu pattern'i öğrenecek |
-| `suppressed` | Bilinen durum, geçici olarak susturuldu (süre veya koşul ile) |
-| `ticket_linked` | Dış ticketing sistemine bağlandı (Jira, ServiceNow vb.) |
+Kural:
 
-**CLI komutları (Bölüm 9'da da güncellendi):**
-```bash
-wt alerts ack <alert_id> --status investigating
-wt alerts close <alert_id> --outcome true_positive
-wt alerts suppress <alert_id> --duration 7d
-```
+- Connector read-only olmalıdır.
+- Connector failure tüm sistemi düşürmemelidir.
+- Cursor kaybı duplicate-safe olmalıdır.
+- Her connector mocked ve integration test ister.
 
 ---
 
-## 7. Rule Store Şeması
+## 10. CLI
 
-```json
-{
-  "id": "rule_auto_20260522_001",
-  "source": "fallback_llm",
-  "status": "pending",
-  "format_signature": "vendor_x_firewall_v2",
-  "field_mapping": {
-    "src_addr": "source_ip",
-    "dst_bytes": "data_volume_bytes",
-    "usr_id": "user_id"
-  },
-  "confidence": 0.87,
-  "created_at": "2026-05-22T03:47:00Z",
-  "used_count": 3,
-  "last_used": "2026-05-22T08:12:00Z",
-  "promoted_to_stable_at": null
-}
-```
+İlk MVP'de Telegram yoktur. CLI zorunlu arayüzdür.
 
-`used_count >= 10` → `stable` promote adayı olur, manager'a bildirim gider.
-
----
-
-## 8. Uygulama Fazları
-
-### Faz 0 — Sabit Mimari Kararlar
-
-| Karar | Önerilen |
-|-------|----------|
-| Repo konumu | Yeni root klasör: `watchtower/` (`sentinel-coming` dışında) |
-| Storage (Faz 1) | SQLite (aiosqlite) |
-| Storage geçiş eşiği | Günlük normalized event hacmi > 500k satır **veya** DB boyutu > 10 GB olduğunda Postgres'e geçilir; bu eşiği aşmadan migration planlanmaz |
-| İlk SIEM hedefi | Wazuh (ücretsiz, en geniş deployment) |
-| İlk alert kanalı | CLI + Telegram (önce), Email / webhook sonra |
-| LLM provider stratejisi | OpenAI-compatible abstraction — local model path zorunlu |
-| LLM erişilemez olduğunda | **fail-open:** Sistem çalışmaya devam eder; `hard-rule` tespitler ateşlenir, anomali açıklaması ve scoring askıya alınır; alert'e "LLM unavailable — manual review" notu düşülür |
-| Gateway / analyzer ilişkisi | Ayrı servis boundary: `security-gateway` ayrı, `analysis-daemon` ayrı |
-| Faz 1 kapsamı | Login + file + network + AD davranışı; mail kaynakları Faz 2'de |
-| Faz 1 detection kapsamı | Sadece `hard-rule` sınıfı aktif; `baseline-anomaly` ve `cross-signal` Faz 2'den itibaren |
-
----
-
-### Faz 1 — Temel Altyapı
-
-- [ ] `watchtower/` package oluştur (monorepo root altında)
-- [ ] Python venv + dependencies: `langgraph`, `aiosqlite`, `httpx`, `typer`
-- [ ] SQLite şemaları: Rule Store, Baseline Store, Log Store
-- [ ] `security-gateway` servis iskeletini kur (sentinel-coming gateway'den pattern al)
-- [ ] Config katmanlama sistemi (sentinel-coming'den pattern al)
-- [ ] Wazuh-only ingest path ile ilk demo akışını ayağa kaldır
-
----
-
-### Faz 2 — Ingestion & Normalizasyon Katmanı
-
-- [ ] Wazuh REST API adaptörü (JWT auth, alert polling)
-- [ ] LangGraph workflow iskeletini kur (caglarkc-agent'tan pattern al)
-- [ ] Deterministik schema detection: Rule Store format imza eşleştirme
-- [ ] Known Adapter: Wazuh → normalized_event (deterministik, LLM yok)
-- [ ] Hard-Rule Check node: detection_type=hard_rule olayları doğrudan Severity'e yönlendir
-- [ ] Rule Store CRUD + pending/stable/deleted lifecycle
-- [ ] LLM fallback node (yalnızca bilinmeyen format için): field mapping yaz → pending kural üret
-- [ ] LLM açıklama node (yalnızca alert metni için): deterministik skor geldiğinde çalışır
-
----
-
-### Faz 3 — Baseline & Learning Engine
-
-- [ ] Learning daemon: günlük cron aggregation
-- [ ] Haftalık pattern güncelleme
-- [ ] Ay sonu LLM "dreaming" — toplu baseline üretimi
-- [ ] Faz geçiş kriterleri kontrolü + manager onay akışı
-- [ ] Baseline Store CRUD (user_profile + department_profile)
-
----
-
-### Faz 4 — Anomali Tespiti & Alert Lifecycle
-
-- [ ] Context Enrichment node — tüm boyutlar deterministik hesaplanır (z-score, takvim, AD lookup)
-- [ ] Severity decision logic (dinamik eşikler, rolling window)
-- [ ] Alert üretimi + deduplication + suppression window
-- [ ] `alert_case` tablosu: `open → investigating → true_positive / false_positive / suppressed / ticket_linked`
-- [ ] `wt alerts ack/close/suppress` CLI komutları
-- [ ] false_positive geri bildiriminin baseline öğrenmesine yansıtılması
-- [ ] caglarkc-agent'ın approval pattern'i ile manager onay akışı
-
----
-
-### Faz 5 — CLI & Notification Gateway
-
-- [ ] `wt` CLI: `status`, `query`, `alerts`, `rules`, `baseline`
-- [ ] Telegram adapter (orioncli'dan pattern al)
-- [ ] Email / webhook adapter
-- [ ] Splunk + Elastic adaptörleri (Wazuh'tan sonra)
-- [ ] (Opsiyonel) nookspace tabanlı operator console
-
----
-
-## 9. CLI Sorgu Arayüzü
+Komutlar:
 
 ```bash
-# Sistem durumu
+wt bootstrap
 wt status
-
-# Son 24 saatteki uyarılar
-wt query "son 24 saatteki uyarılar"
-wt alerts --last 24h --severity warning,alert,critical
-wt alerts --status open
-
-# Alert yaşam döngüsü yönetimi
-wt alerts ack <alert_id> --status investigating
-wt alerts close <alert_id> --outcome true_positive
-wt alerts close <alert_id> --outcome false_positive
-wt alerts suppress <alert_id> --duration 7d
-
-# Kullanıcı baseline görüntüle
-wt baseline user ali.koc@sirket.com
-
-# Tanınmayan format eventleri
-wt query "tanınmayan schema eventleri"
-wt rules list --status pending
-
-# Kural yönetimi
+wt modes get
+wt modes set learn|run|hybrid
+wt sources list
+wt sources health
+wt ingest once --source <id>
+wt alerts list
+wt alerts show <id>
+wt alerts ack <id>
+wt alerts close <id> --outcome true_positive|false_positive
+wt alerts suppress <id> --duration 7d
+wt findings silent --last 7d
+wt baseline user <user_id>
+wt baseline department <department>
+wt rules pending
 wt rules approve <rule_id>
-wt rules delete <rule_id>
-
-# Faz durumu
-wt learning status
+wt rules reject <rule_id>
+wt query "son 24 saatte kritik backend anomalileri"
 ```
 
 ---
 
-## 10. Risk Analizi
+## 11. Uygulama Fazları
 
-### Ürün Riskleri
+Her faz test kanıtı olmadan kapanmaz.
 
-| Risk | Etki | Önlem |
-|------|------|-------|
-| KVKK/GDPR uyumu | Yüksek | Read-only, analiz sadece iç ağda, veri dışarı çıkmaz |
-| False positive | Orta | Learning fazı zorunlu, dinamik eşikler |
-| Müşteri bazlı baseline drift | Orta | Rolling window, otomatik adaptasyon |
-| LLM overuse | Düşük | LLM sadece anomali skoru yüksek event'lerde çalışır |
+Teslim formatı:
 
-### Teknik Riskler
+```text
+DEĞİŞEN DOSYALAR:
+YAZILAN TESTLER:
+ÇALIŞTIRILAN TESTLER:
+SONUÇ:
+KALAN RİSKLER:
+```
 
-| Risk | Etki | Önlem |
-|------|------|-------|
-| Schema sprawl (SIEM + custom log) | Yüksek | Fallback LLM + Rule Store öğrenme mekanizması |
-| Kapalı ağda model erişimi | Yüksek | OpenAI-compatible local model zorunlu path |
-| Ham event storage büyümesi | Orta | Raw event TTL, sadece normalized + alert'i sakla |
-| Alert fatigue | Orta | Deduplication, suppression window, tier sistemi |
+### Faz 0 — Taxonomy & Architecture Freeze
 
-### Repo Riski
+Amaç: Kod başlamadan feature classification ve policy-rule belirsizliğini kapatmak.
 
-Monorepo'da birden fazla overlapping agent runtime var. `caglarkc-agent`, `argus`, `sentinel-coming` hepsinden **pattern al, copy-paste yapma.** Watchtower kendi consistent runtime'ını kuracak, tüm projelerin mix'i olmayacak.
+Yapılacaklar:
+
+1. `watchtower/config/feature_taxonomy.yml` oluştur.
+2. 81 feature için detection class belirle.
+3. `policy-rule` listesi açık yazılsın.
+4. `feature_taxonomy` schema validator yaz.
+5. `server-stack` feature/scenario referansları bağlansın.
+
+Testler:
+
+- 81/81 taxonomy entry.
+- Her entry primary class içerir.
+- `policy-rule` entry'lerinde `requires_approval_for_suppression=true`.
+- `baseline-anomaly` entry'lerinde baseline context tanımlıdır.
+- Server-stack feature id'leriyle uyuşur.
+
+Gate:
+
+```bash
+pytest tests/config/test_feature_taxonomy.py -v
+```
+
+### Faz 1 — Product Skeleton
+
+Yapılacaklar:
+
+1. `watchtower/` Python package.
+2. Typer CLI skeleton.
+3. Config loader.
+4. SQLite migration sistemi.
+5. Tenant/bootstrap admin.
+6. Mode controller.
+7. Audit logging.
+
+Testler:
+
+- Fresh DB migration.
+- Tenant isolation.
+- Bootstrap admin required.
+- Mode switch.
+- CLI smoke.
+
+### Faz 2 — Connector & Ingest
+
+Yapılacaklar:
+
+1. Connector protocol.
+2. `server_stack_connector`.
+3. `file_jsonl_connector`.
+4. `elasticsearch_connector`.
+5. `wazuh_connector`.
+6. Cursor/deduplication.
+7. Raw event store.
+
+Testler:
+
+- Mock connector.
+- Server-stack log ingestion.
+- Elasticsearch health/query.
+- Cursor duplicate safety.
+- Source failure graceful degradation.
+
+### Faz 3 — Normalization & Candidate Extraction
+
+Yapılacaklar:
+
+1. Unified event schema.
+2. Known adapters.
+3. Unknown schema queue.
+4. LLM-free deterministic normalization.
+5. Candidate extractor.
+
+Testler:
+
+- 81 feature fixture normalize olur.
+- 83 scenario fixture normalize olur.
+- Unknown schema pending mapping üretir.
+- Raw event graph'a doğrudan girmez.
+
+### Faz 4 — Baseline Engine
+
+Yapılacaklar:
+
+1. User/department/role/asset profile hesapları.
+2. 45 gün default learning window.
+3. Configurable learning duration.
+4. Confidence score.
+5. Daily/weekly/monthly snapshots.
+
+Testler:
+
+- 45 günlük replay baseline üretir.
+- User-specific baseline department ortalamasına ezilmez.
+- Manager/worker ayrımı role profile'a yansır.
+- Baseline confidence düşükse run transition önerilmez.
+
+### Faz 5 — Feedback & Rule Approval
+
+Yapılacaklar:
+
+1. Feedback event modeli.
+2. Pending rule modeli.
+3. Approval workflow.
+4. Scoped feedback-rule.
+5. Expiry ve audit trail.
+
+Testler:
+
+- Manager feedback stable rule yapmaz.
+- Pending rule approve edilmeden uygulanmaz.
+- Approved scoped rule aynı pattern'i downrank eder.
+- Scope dışı event alert üretir.
+- Policy-rule feedback ile otomatik suppress olmaz.
+
+### Faz 6 — Decision Engines
+
+Yapılacaklar:
+
+1. `policy_engine`.
+2. `baseline_engine` query API.
+3. `feedback_engine`.
+4. `correlation_engine`.
+5. `severity_engine`.
+6. Score breakdown modeli.
+
+Testler:
+
+- Frontend direct DB access policy critical.
+- Normalleşmiş high-volume user tekrar alert üretmez.
+- Aynı hacim manager/worker için farklı severity üretebilir.
+- Kişisel baseline sapması manager için de alert üretir.
+- Cross-signal severity yükseltir.
+
+### Faz 7 — LangGraph Decision Orchestration
+
+Yapılacaklar:
+
+1. Decision graph.
+2. Checkpoint store.
+3. Node output schemas.
+4. Mode routing.
+5. Human approval interrupt.
+6. Graph audit.
+
+Testler:
+
+- Learn mode: 0 alert, silent finding var.
+- Run mode: learning update yok.
+- Hybrid mode: alert + controlled learning.
+- Crash recovery checkpoint.
+- Pending rule approval sonrası graph devam eder.
+
+### Faz 8 — LLM Gateway
+
+Yapılacaklar:
+
+1. Provider protocol.
+2. OpenAI adapter.
+3. Anthropic adapter.
+4. Gemini adapter.
+5. Ollama/OpenAI-compatible adapter.
+6. Capability registry.
+7. Structured output validation.
+8. Token/cost audit.
+
+Testler:
+
+- Mock provider matrix.
+- Invalid JSON retry.
+- Provider fallback.
+- LLM unavailable fail-open.
+- LLM decision yapamaz; sadece schema output üretir.
+
+### Faz 9 — Alert Lifecycle & CLI
+
+Yapılacaklar:
+
+1. Alert store.
+2. Alert case lifecycle.
+3. CLI commands.
+4. Suppression window.
+5. Natural language query over store.
+
+Testler:
+
+- `open -> investigating -> true_positive`.
+- `false_positive` feedback pending rule üretir.
+- Suppression expiry.
+- CLI command integration.
+- Query returns auditable store-backed answer.
+
+### Faz 10 — Server-Stack End-to-End Validation
+
+Yapılacaklar:
+
+1. 81 feature replay ingest.
+2. 83 scenario replay ingest.
+3. Learn mode replay.
+4. Run mode replay.
+5. Hybrid mode replay.
+6. Feedback replay.
+7. LLM provider mock replay.
+8. Ollama-compatible local path test.
+
+Gate:
+
+```text
+81/81 features ingested and normalized
+83/83 scenarios ingested and normalized
+learn mode: 0 alert, silent findings present
+run mode: expected alert cases
+hybrid mode: expected alert + baseline update
+feedback suppress/downrank works
+policy-rule cannot be silently normalized
+LLM unavailable path passes
+```
+
+### Faz 11 — Production Readiness
+
+Yapılacaklar:
+
+1. Docker compose / installer.
+2. `.env.example`.
+3. Source onboarding.
+4. Provider onboarding.
+5. Backup/restore.
+6. DB migration upgrade path.
+7. Retention policy.
+8. Health checks.
+9. Soak/load tests.
+10. Security audit.
+
+Gate:
+
+- Fresh install pass.
+- Upgrade migration pass.
+- Backup restore pass.
+- Provider switch pass.
+- Source outage graceful.
+- Multi-tenant leak test pass.
+- 24h daemon soak pass.
 
 ---
 
-## 11. Kesin Sınırlar
+## 12. Test Stratejisi
 
-**Şimdi yapılacak:**
-- Dedicated security gateway
-- Dedicated analysis daemon (LangGraph)
-- Dedicated CLI package
-- Dedicated SQLite storage schema
+Test katmanları:
 
-**Sadece pattern referansı:**
-- sentinel-coming → CLI runtime fikirleri
-- caglarkc-agent → LangGraph orchestration fikirleri
-- argus → permission ve tool fikirleri
-- nookspace → ileride desktop shell
+1. Unit tests
+2. Contract tests
+3. Fixture normalization tests
+4. Decision table tests
+5. LangGraph node tests
+6. LLM mock provider tests
+7. CLI integration tests
+8. Server-stack E2E tests
+9. Soak/load tests
 
-**Faz 1'de yapılmayacak:**
-- Full desktop app
-- Plugin marketplace
-- Aynı anda birden fazla SIEM
-- Auto-remediation (sadece öneri)
-- İnfra observability ile employee behavior'un aynı schema'ya karıştırılması
+Zorunlu test yüzeyleri:
 
----
-
-## 12. Final Karar Özeti
-
-Bu belgeye göre başlangıç konfigürasyonu artık nettir:
-
-1. **Ürün konumu:** `watchtower/` root altında, Sentinel'den ayrı ama aynı workspace ailesinde
-2. **İlk SIEM:** `Wazuh-only`
-3. **İlk bildirim kanalı:** `CLI + Telegram`
-4. **Model stratejisi:** OpenAI-compatible abstraction, fakat kapalı ağ senaryosu için `local model path` zorunlu
-5. **Faz 1 kapsamı:** `login + file + network + AD` — sadece `hard-rule` sınıfı detection'lar aktif
-6. **Mail izleme:** Faz 2'de devreye alınır
-7. **Auto-remediation:** Yok; sadece öneri ve alert üretimi
-8. **Detection taxonomy:** Her feature `hard-rule` / `baseline-anomaly` / `cross-signal` sınıfından biriyle etiketlenmeli; bu etiket Faz 1'de ateşlenip ateşlenmeyeceğini belirler
-9. **LLM rolü:** Schema detection deterministik-first (Wazuh Faz 1'de LLM çağrısı yok). Context enrichment boyutları deterministik hesaplanır; LLM yalnızca açıklama ve öneri metni yazar. LLM erişilemezse sistem fail-open çalışır
-10. **Alert lifecycle:** `open → investigating → true_positive / false_positive / suppressed / ticket_linked`
-11. **Storage geçiş eşiği:** Günlük > 500k normalized event veya DB > 10 GB → Postgres migration. Bu eşiği aşmadan migration planlanmaz
-12. **Korelasyon entity'leri:** `asset`, `session_map`, `identity_alias`, `change_ticket`, `badge_event`, `hr_event` veri modeline eklendi; Faz 1'de boş kalabilirler ama şema şimdiden kilitlendi
+- feature taxonomy
+- policy-rule suppression guard
+- baseline profile math
+- feedback approval flow
+- mode routing
+- connector cursor/deduplication
+- LLM unavailable
+- provider capability fallback
+- graph checkpoint recovery
+- alert lifecycle
 
 ---
 
-*Plan oluşturulma tarihi: 22 Mayıs 2026*
-*Kaynak: Ön araştırma konuşmaları ve entegrasyon notlarının konsolide özeti*
+## 13. Skill Dosyaları
+
+Ürün tarafında AI görevleri için skill'ler `watchtower-demo/skills/` altında tutulur.
+
+Zorunlu skill seti:
+
+- `watchtower-pm-mode`
+- `watchtower-core-code-mode`
+- `watchtower-langgraph-decision-mode`
+- `watchtower-llm-provider-mode`
+- `watchtower-test-mode`
+
+Server-stack skill'leri ayrı kalır:
+
+- `server-stack/skills/closed-server-*`
+
+Kural:
+
+```text
+closed-server-* skill'leri test lab içindir
+watchtower-* skill'leri ürün kodu içindir
+```
+
+---
+
+## 14. Kesin Sınırlar
+
+Yapılacak:
+
+- production-ready product architecture
+- connector abstraction
+- deterministic decision engines
+- LangGraph orchestration
+- provider-independent LLM gateway
+- CLI-first operator workflow
+- server-stack E2E validation
+
+Yapılmayacak:
+
+- auto-remediation
+- LLM ile final alert kararı
+- manager feedback ile direkt stable rule
+- server-stack'e ürün kodu gömmek
+- Telegram MVP zorunluluğu
+- tek müşteriye özel hardcoded connector
+
+---
+
+## 15. Final Kabul Kriteri
+
+Plan tamamlandığında sistem şunları sağlamalıdır:
+
+- gerçek şirket içi kapalı ağda kurulabilir
+- connector bazlı kaynak ekleyebilir
+- 3 modda deterministik davranır
+- 45 gün default learning window ile baseline üretir
+- feedback'i pending approval akışına sokar
+- LLM provider bağımsızdır
+- LLM kapalıyken çalışır
+- 81 feature ve 83 scenario server-stack üzerinde E2E test edilir
+- test kanıtı olmadan hiçbir faz kapanmaz
+
