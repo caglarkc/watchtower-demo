@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-034",
   "title": "Muhasebe Domain Admin Grubu Denemesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Muhasebe",
   "deterministic_seed": 3034,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-011",
-            "count": 4880,
+            "count": 5360,
             "result": "PASS"
           },
           "result": "PASS",
@@ -98,7 +98,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-011",
-        "count": 4880,
+        "count": 5360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -120,12 +120,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:21.172508+00:00",
+  "generated_at": "2026-05-23T05:36:46.773328+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-034:3034:negative:real"
+  "replay_key": "S-034:3034:positive:real"
 }

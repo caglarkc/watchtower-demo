@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-036",
   "title": "Veri Analistinin Tüm Posta Kutusu Taraması",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Veri Analisti",
   "deterministic_seed": 3036,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-018",
-            "count": 3840,
+            "count": 4240,
             "result": "PASS"
           },
           "result": "PASS",
@@ -103,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-024",
-            "count": 4720,
+            "count": 5200,
             "result": "PASS"
           },
           "result": "PASS",
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-018",
-        "count": 3840,
+        "count": 4240,
         "result": "PASS"
       },
       "result": "PASS",
@@ -197,7 +197,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-024",
-        "count": 4720,
+        "count": 5200,
         "result": "PASS"
       },
       "result": "PASS",
@@ -220,12 +220,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:21.545936+00:00",
+  "generated_at": "2026-05-23T05:36:47.145977+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-036:3036:negative:real"
+  "replay_key": "S-036:3036:positive:real"
 }
