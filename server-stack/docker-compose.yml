@@ -1,4 +1,4 @@
-# Watchtower closed server simulation — Phase 1 + Phase 2
+# Watchtower closed server simulation — Phase 1 + 2 + 3
 # All services attach to corp-lan with static IPv4 assignments.
 
 name: watchtower-corp
