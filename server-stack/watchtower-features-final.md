@@ -555,6 +555,30 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+### F-999: Etiketli Hassas Dosyanın Kısıtsız Alana Taşınması
+
+**KATEGORİ:** dosya sistemi  
+**VERİ KAYNAĞI:** DLP label audit, Microsoft Purview/MIP logs, file server audit, EDR file telemetry  
+**NE İZLENİYOR:** Gizli, dahili veya regülasyon kapsamlı etiket taşıyan dosyanın public share, herkesin eriştiği klasör, kişisel desktop veya geçici alana kopyalanması/taşınması  
+**NEDEN DEĞERLI:** Dosya içeriği sızdırılmadan önce erişim sınırı gevşetilir; yanlış paylaşım ve bilinçli staging davranışı için güçlü sinyaldir  
+**ANOMALİ SİNYALİ:** Confidential label'lı dosyanın Everyone Read olan klasöre veya departman dışı ortak alana bırakılması  
+**UYGULAMA ZORLUĞU:** Orta — label metadata ile dosya hareket loglarını eşlemek gerekir  
+**ÖRNEK METRIK:** "Gizli" etiketli 37 bordro dosyası → public-share/temp klasörüne 12 dakikada kopyalandı
+
+---
+
+### F-999: Bilgi Bankası/Wiki/Intranet Toplu İndirme
+
+**KATEGORİ:** dosya sistemi  
+**VERİ KAYNAĞI:** Confluence/SharePoint/wiki audit, intranet web logs, reverse proxy logs  
+**NE İZLENİYOR:** İç bilgi bankası, wiki veya intranet portalından kullanıcı başına sayfa görüntüleme, dosya indirme, export ve arama hacmi  
+**NEDEN DEĞERLI:** Kurumsal süreç, müşteri, mimari ve operasyon bilgisinin toplu toplanması insider veya hesap ele geçirilmesi sinyalidir  
+**ANOMALİ SİNYALİ:** Rolüyle ilgisiz alanlarda kısa sürede yüzlerce sayfa okuma veya attachment download; space export denemesi  
+**UYGULAMA ZORLUĞU:** Orta — uygulama audit loglarının normalize edilmesi gerekir  
+**ÖRNEK METRIK:** Yeni danışman: 1 saatte 420 wiki sayfası + 88 ek dosya download
+
+---
+
 ## Uygulama ve Süreç
 
 ---
