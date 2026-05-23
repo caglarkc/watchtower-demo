@@ -4,6 +4,8 @@ Version: 0.1.0
 Summary: Watchtower UEBA product
 Requires-Python: >=3.11
 Requires-Dist: pydantic>=2.0
+Requires-Dist: pydantic-settings>=2.0
 Requires-Dist: PyYAML>=6.0
+Requires-Dist: typer>=0.12
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0; extra == "dev"
