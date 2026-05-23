@@ -10,7 +10,7 @@ from langgraph.types import interrupt
 from watchtower.domain.assessment import AssessmentInput
 from watchtower.domain.normalized_event import CandidateEvent
 from watchtower.domain.profiles import BehaviorObservation
-from watchtower.domain.rules import RuleScope
+from watchtower.domain.rules import DecisionContext, RuleScope
 from watchtower.graph.deps import GraphDeps
 from watchtower.graph.nodes.schemas import (
     AssessmentOutput,
@@ -146,10 +146,7 @@ def load_baseline_context(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
 def load_feedback_context(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
     cand = _candidate(state)
     identity = state.get("identity", {})
-    ctx = DecisionContext = __import__(
-        "watchtower.domain.rules", fromlist=["DecisionContext"]
-    ).DecisionContext
-    decision_ctx = ctx(
+    decision_ctx = DecisionContext(
         tenant_id=state["tenant_id"],
         feature_id=cand.feature_hint,
         user_id=identity.get("user_id"),
