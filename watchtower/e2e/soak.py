@@ -96,6 +96,36 @@ def register_f001_jsonl_source(
         return source.id
 
 
+def _seed_metric_series(
+    session: Any,
+    *,
+    tenant_id: str,
+    metric_name: str,
+    value: float,
+    days: int,
+    user_id: str,
+    department_id: str,
+) -> None:
+    anchor = datetime.now(UTC)
+    start = anchor - timedelta(days=days)
+    for offset in range(days):
+        observed_at = start + timedelta(days=offset + 1, hours=1)
+        if observed_at > anchor:
+            observed_at = anchor - timedelta(minutes=1)
+        session.baseline.record_observation(
+            BehaviorObservation(
+                tenant_id=tenant_id,
+                metric_name=metric_name,
+                value=value,
+                observed_at=observed_at,
+                user_id=user_id,
+                department_id=department_id,
+                role_id="engineer",
+                seniority="worker",
+            )
+        )
+
+
 def seed_f001_baseline(app: AppContext, tenant_id: str) -> None:
     normalizer = NormalizationService()
     extractor = CandidateExtractor()
@@ -105,9 +135,19 @@ def seed_f001_baseline(app: AppContext, tenant_id: str) -> None:
     if candidate is None:
         msg = "F-001 candidate required for baseline seed"
         raise RuntimeError(msg)
-    from tests.e2e.conftest import seed_baseline_for_candidate
-
-    seed_baseline_for_candidate(app, tenant_id, candidate)
+    dept = candidate.attributes.get("department_id")
+    with app.session() as session:
+        _seed_metric_series(
+            session,
+            tenant_id=tenant_id,
+            metric_name=str(candidate.attributes.get("metric_name", "event_volume")),
+            value=10.0,
+            days=30,
+            user_id=str(candidate.attributes.get("user_id") or candidate.actor),
+            department_id=str(dept) if dept else "unknown",
+        )
+        session.baseline.rebuild_profiles(tenant_id, window_days=45)
+        session.conn.commit()
 
 
 def server_stack_log_available() -> bool:
