@@ -15,7 +15,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "simulation" / "feature_catalog" / "features.yml"
 REPLAY_DIR = ROOT / "simulation" / "feature_replays"
-LOG_ROOT = ROOT / "logs"
+LOG_ROOT = ROOT / "reports" / "feature_logs"
 REPORTS_ROOT = ROOT / "reports" / "features"
 
 sys.path.insert(0, str(ROOT / "simulation" / "event_generator"))
