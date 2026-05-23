@@ -7,6 +7,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from watchtower.domain.profiles import (
+    AssetProfile,
     BaselineEvaluation,
     BaselineSnapshot,
     BehaviorObservation,
@@ -113,8 +114,6 @@ class BaselineEngine:
             if not asset_id:
                 continue
             metrics = self._metrics_from_rows(rows, window_days=window)
-            from watchtower.domain.profiles import AssetProfile
-
             profile = AssetProfile(
                 tenant_id=tenant_id,
                 asset_id=asset_id,
