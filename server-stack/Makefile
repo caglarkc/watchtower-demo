@@ -96,8 +96,11 @@ test-all: seed-baseline test-smoke test-features test-scenarios coverage-all
 real-up:
 	$(COMPOSE) up -d
 	$(COMPOSE) --profile real-identity --profile real-apps up -d
-	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns logs/postfix logs/gitea logs/nginx logs/vault logs/proxy logs/ai_gateway logs/cloud logs/wiki logs/dlp logs/activity seeds/real
-	@chmod -R a+rwX logs/dns logs/samba logs/postfix logs/nginx logs/postgres logs/gitea logs/vault logs/proxy logs/ai_gateway logs/cloud logs/wiki logs/dlp logs/activity 2>/dev/null || true
+	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns logs/postfix logs/gitea logs/nginx logs/vault logs/proxy logs/ai_gateway logs/cloud logs/wiki logs/dlp logs/activity logs/hris logs/badge logs/cups logs/mattermost logs/suitecrm seeds/real
+	@chmod -R a+rwX logs/dns logs/samba logs/postfix logs/nginx logs/postgres logs/gitea logs/vault logs/proxy logs/ai_gateway logs/cloud logs/wiki logs/dlp logs/activity logs/hris logs/badge logs/cups logs/mattermost logs/suitecrm 2>/dev/null || true
+
+seed-real-physical-hr:
+	$(PYTHON) simulation/real/seed_real_physical_hr.py
 
 seed-real-security:
 	$(PYTHON) simulation/real/seed_real_security.py
