@@ -2,7 +2,7 @@
   "id": "F-052",
   "feature_id": "F-052",
   "title": "Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-052",
-        "count": 11,
+        "count": 18,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 7,
+        "indexed": 8,
         "index": "corp-logs-f-052",
         "pipeline": {
           "feature_id": "F-052",
           "index": "corp-logs-f-052",
-          "indexed": 7
+          "indexed": 8
         }
       }
     }
@@ -59,10 +59,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "new scheduled task/service event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:12.054867+00:00",
+  "generated_at": "2026-05-23T03:11:15.450609+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
