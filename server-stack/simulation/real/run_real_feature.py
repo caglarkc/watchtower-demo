@@ -37,6 +37,10 @@ def _run_action(feature_id: str, mode: str) -> dict:
         from actions.p2_security_proxy import run_action
 
         return run_action(feature_id, mode)
+    if feature_id in RI4_FEATURES:
+        from actions.p3_physical_hr import run_action
+
+        return run_action(feature_id, mode)
     return {"skipped": True}
 
 
