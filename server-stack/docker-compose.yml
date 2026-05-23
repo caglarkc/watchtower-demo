@@ -221,3 +221,195 @@ services:
       - corp-logs:/var/log/corp
     working_dir: /workspace
     entrypoint: ["sleep", "infinity"]
+
+  # --- Phase 2: Mail ---
+  postfix:
+    build:
+      context: ./docker/mail-sim
+    container_name: corp-postfix
+    hostname: mail1
+    networks:
+      corp-lan:
+        ipv4_address: ${POSTFIX_IP:-172.28.0.20}
+    environment:
+      ROLE: postfix
+      LOG_ROOT: /var/log/corp/postfix
+    volumes:
+      - ./logs/postfix:/var/log/corp/postfix
+      - ./configs/postfix:/etc/postfix/external:ro
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  dovecot:
+    build:
+      context: ./docker/mail-sim
+    container_name: corp-dovecot
+    hostname: imap1
+    networks:
+      corp-lan:
+        ipv4_address: ${DOVECOT_IP:-172.28.0.21}
+    environment:
+      ROLE: dovecot
+      LOG_ROOT: /var/log/corp/dovecot
+    volumes:
+      - ./logs/dovecot:/var/log/corp/dovecot
+      - ./configs/dovecot:/etc/dovecot/external:ro
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  roundcube:
+    build:
+      context: ./docker/mail-sim
+    container_name: corp-roundcube
+    hostname: webmail1
+    networks:
+      corp-lan:
+        ipv4_address: ${ROUNDCUBE_IP:-172.28.0.22}
+    environment:
+      ROLE: roundcube
+      LOG_ROOT: /var/log/corp/roundcube
+    volumes:
+      - ./logs/roundcube:/var/log/corp/roundcube
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # --- Phase 2: Database ---
+  postgres:
+    image: postgres:16-alpine
+    container_name: corp-postgres
+    hostname: db1
+    networks:
+      corp-lan:
+        ipv4_address: ${POSTGRES_IP:-172.28.0.23}
+    environment:
+      POSTGRES_USER: corp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Watchtower1!}
+      POSTGRES_DB: corpdb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./configs/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./logs/postgres:/var/log/corp/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U corp -d corpdb"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # --- Phase 2: Git ---
+  gitea:
+    image: gitea/gitea:1.21-rootless
+    container_name: corp-gitea
+    hostname: git1
+    networks:
+      corp-lan:
+        ipv4_address: ${GITEA_IP:-172.28.0.24}
+    environment:
+      GITEA__database__DB_TYPE: sqlite3
+      GITEA__server__ROOT_URL: http://git1.corp.local:3000/
+      GITEA__server__HTTP_PORT: 3000
+      GITEA__log__ROOT_PATH: /var/log/corp/gitea
+    volumes:
+      - gitea-data:/var/lib/gitea
+      - ./logs/gitea:/var/log/corp/gitea
+      - ./configs/gitea:/etc/gitea/external:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:3000/api/healthz || exit 1"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # --- Phase 2: Web gateway ---
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: corp-nginx
+    hostname: api-gw1
+    networks:
+      corp-lan:
+        ipv4_address: ${NGINX_IP:-172.28.0.25}
+    volumes:
+      - ./configs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./logs/nginx:/var/log/corp/nginx
+    depends_on:
+      internal-app:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/health || exit 1"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # --- Phase 2: Application mocks ---
+  internal-app:
+    build:
+      context: ./docker/app-mock
+    container_name: corp-internal-app
+    hostname: app1
+    networks:
+      corp-lan:
+        ipv4_address: ${INTERNAL_APP_IP:-172.28.0.26}
+    environment:
+      ROLE: internal-app
+      LOG_ROOT: /var/log/corp/app
+    volumes:
+      - ./logs/app:/var/log/corp/app
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:8080/health"]
+      <<: *health-http
+    restart: unless-stopped
+
+  artifact-registry:
+    build:
+      context: ./docker/app-mock
+    container_name: corp-artifact-registry
+    hostname: artifacts1
+    networks:
+      corp-lan:
+        ipv4_address: ${ARTIFACT_REGISTRY_IP:-172.28.0.27}
+    environment:
+      ROLE: artifact
+      LOG_ROOT: /var/log/corp/artifact
+    volumes:
+      - ./logs/artifact:/var/log/corp/artifact
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  siem-admin:
+    build:
+      context: ./docker/app-mock
+    container_name: corp-siem-admin
+    hostname: siem1
+    networks:
+      corp-lan:
+        ipv4_address: ${SIEM_ADMIN_IP:-172.28.0.28}
+    environment:
+      ROLE: siem
+      LOG_ROOT: /var/log/corp/siem
+    volumes:
+      - ./logs/siem:/var/log/corp/siem
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  hypervisor-console:
+    build:
+      context: ./docker/app-mock
+    container_name: corp-hypervisor-console
+    hostname: hv1
+    networks:
+      corp-lan:
+        ipv4_address: ${HYPERVISOR_IP:-172.28.0.29}
+    environment:
+      ROLE: hypervisor
+      LOG_ROOT: /var/log/corp/hypervisor
+    volumes:
+      - ./logs/hypervisor:/var/log/corp/hypervisor
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
