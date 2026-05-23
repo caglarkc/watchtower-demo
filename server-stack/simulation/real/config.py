@@ -66,7 +66,16 @@ LOG_PATHS = {
     "wiki-access": ROOT / "logs" / "wiki" / "access.jsonl",
     "dlp-health": ROOT / "logs" / "dlp" / "health.jsonl",
     "activity": ROOT / "logs" / "activity" / "input.jsonl",
+    "hris-audit": ROOT / "logs" / "hris" / "hris.jsonl",
+    "badge-audit": ROOT / "logs" / "badge" / "badge.jsonl",
+    "cups-print": ROOT / "logs" / "cups" / "print.jsonl",
+    "mattermost-chat": ROOT / "logs" / "mattermost" / "chat.jsonl",
+    "suitecrm-audit": ROOT / "logs" / "suitecrm" / "crm.jsonl",
 }
+
+RI4_FEATURES = frozenset(
+    {"F-009", "F-014", "F-056", "F-070", "F-071", "F-072", "F-073", "F-074", "F-075", "F-076", "F-077", "F-078"}
+)
 
 RI3_FEATURES = frozenset(
     {"F-012", "F-013"}
