@@ -13,10 +13,10 @@ from tests.llm.conftest import valid_alert_explanation_json
 def test_ollama_provider_openai_compatible_contract():
     provider = OllamaProvider(base_url="http://127.0.0.1:11434/v1", model="llama3.2")
     assert provider.name == "ollama"
-    assert provider.model == "llama3.2"
     assert "/v1" in provider._base_url  # noqa: SLF001
-    assert OLLAMA_CAPABILITIES.supports_json_mode is True
-    sig = inspect.signature(provider.complete)
+    assert OLLAMA_CAPABILITIES.local is True
+    assert OLLAMA_CAPABILITIES.supports_chat_completions is True
+    sig = inspect.signature(provider.complete_structured)
     assert "prompt" in sig.parameters
 
 

@@ -34,3 +34,6 @@ watchtower = ["config/feature_taxonomy.yml", "storage/migrations/versions/*.sql"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = [
+    "e2e: server-stack end-to-end validation (tests/e2e)",
+]
