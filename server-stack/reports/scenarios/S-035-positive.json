@@ -39,7 +39,7 @@
     "reports/scenario_logs/S-035/scenarios/port_scan.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T01:27:12.661418+00:00",
+  "generated_at": "2026-05-23T02:09:24.625187+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-035:3035:positive"

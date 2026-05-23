@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-032",
   "title": "Junior Dev Prod Veritabanı Erişimi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 3032,
@@ -15,7 +15,7 @@
     "postgres"
   ],
   "expected_evidence": "Multi-signal workflow for Junior Dev Prod Veritabanı Erişimi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -25,21 +25,21 @@
       "user_role": "Yazılım Geliştirici",
       "category": "yetkisiz erişim",
       "seed": 3032,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "postgres_bulk_select",
       "log_channel": "postgres",
-      "tables": 1,
-      "rows_scanned": 1200,
+      "tables": 12,
+      "rows_scanned": 4500000,
       "source_feature": "F-045",
       "scenario_id": "S-032"
     },
     {
       "event_type": "dormant_system_access",
       "log_channel": "endpoint",
-      "idle_days": 2,
-      "access_count": 1,
+      "idle_days": 120,
+      "access_count": 15,
       "source_feature": "F-065",
       "scenario_id": "S-032"
     }
@@ -49,12 +49,9 @@
     "reports/scenario_logs/S-032/postgres/postgres_bulk_select.jsonl",
     "reports/scenario_logs/S-032/endpoint/dormant_system_access.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:27:15.420600+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:09:24.521573+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-032:3032:negative"
+  "replay_key": "S-032:3032:positive"
 }
