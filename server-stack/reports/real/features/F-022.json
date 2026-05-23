@@ -2,7 +2,7 @@
   "id": "F-022",
   "feature_id": "F-022",
   "title": "Bilinmeyen veya Rakip Kuruluşa Ekli Posta Gönderimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-022",
-        "count": 3360,
+        "count": 3440,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "unknown competitor-domain attachment",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:23.718343+00:00",
+  "generated_at": "2026-05-23T10:25:27.653324+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

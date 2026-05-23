@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T10:05:51.289387+00:00",
+  "generated_at": "2026-05-23T10:25:30.099059+00:00",
   "version": "0.1.0",
   "health": {
     "status": "healthy",
@@ -24,7 +24,7 @@
         "status": "healthy",
         "message": "62.7% free on data volume",
         "details": {
-          "free_bytes": 207741460480,
+          "free_bytes": 207644909568,
           "total_bytes": 331196526592
         }
       },
@@ -33,7 +33,7 @@
         "status": "healthy",
         "message": "bootstrapped",
         "details": {
-          "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b"
+          "tenant_id": "0f127e4c-cb67-47f5-8ff5-32021f0738c0"
         }
       },
       {
@@ -64,47 +64,47 @@
         "status": "healthy",
         "message": "runtime metrics nominal; last loop 0ms",
         "details": {
-          "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+          "tenant_id": "0f127e4c-cb67-47f5-8ff5-32021f0738c0",
           "counters": {
             "candidates_total": 1.0,
             "events_polled_total": 1.0,
             "graph_runs_total": 1.0,
             "llm_calls_total": 1.0,
             "loop_duration_ms_count": 4.0,
-            "loop_duration_ms_last": 0.4571129975374788,
-            "loop_duration_ms_max": 1834.987986003398,
-            "loop_duration_ms_sum": 1836.4557510067243,
+            "loop_duration_ms_last": 0.4576760038617067,
+            "loop_duration_ms_max": 1679.4143229999463,
+            "loop_duration_ms_sum": 1680.8256760050426,
             "normalized_events_total": 1.0,
             "raw_events_stored_total": 1.0
           },
-          "loop_duration_avg_ms": 459.11,
-          "loop_duration_last_ms": 0.4571129975374788,
-          "loop_duration_max_ms": 1834.987986003398
+          "loop_duration_avg_ms": 420.21,
+          "loop_duration_last_ms": 0.4576760038617067,
+          "loop_duration_max_ms": 1679.4143229999463
         }
       }
     ]
   },
   "metrics": {
-    "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+    "tenant_id": "0f127e4c-cb67-47f5-8ff5-32021f0738c0",
     "counters": {
       "candidates_total": 1.0,
       "events_polled_total": 1.0,
       "graph_runs_total": 1.0,
       "llm_calls_total": 1.0,
       "loop_duration_ms_count": 4.0,
-      "loop_duration_ms_last": 0.4571129975374788,
-      "loop_duration_ms_max": 1834.987986003398,
-      "loop_duration_ms_sum": 1836.4557510067243,
+      "loop_duration_ms_last": 0.4576760038617067,
+      "loop_duration_ms_max": 1679.4143229999463,
+      "loop_duration_ms_sum": 1680.8256760050426,
       "normalized_events_total": 1.0,
       "raw_events_stored_total": 1.0
     },
-    "loop_duration_avg_ms": 459.11,
-    "loop_duration_last_ms": 0.4571129975374788,
-    "loop_duration_max_ms": 1834.987986003398
+    "loop_duration_avg_ms": 420.21,
+    "loop_duration_last_ms": 0.4576760038617067,
+    "loop_duration_max_ms": 1679.4143229999463
   },
   "soak": {
     "label": "short_soak",
-    "finished_at": "2026-05-23T10:05:50.094588+00:00",
+    "finished_at": "2026-05-23T10:25:28.889612+00:00",
     "pipeline_counts": {
       "raw_events": 1,
       "normalized_events": 1,
@@ -115,22 +115,22 @@
       "learning_events": 1
     },
     "metrics": {
-      "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+      "tenant_id": "0f127e4c-cb67-47f5-8ff5-32021f0738c0",
       "counters": {
         "candidates_total": 1.0,
         "events_polled_total": 1.0,
         "graph_runs_total": 1.0,
         "llm_calls_total": 1.0,
         "loop_duration_ms_count": 4.0,
-        "loop_duration_ms_last": 0.4571129975374788,
-        "loop_duration_ms_max": 1834.987986003398,
-        "loop_duration_ms_sum": 1836.4557510067243,
+        "loop_duration_ms_last": 0.4576760038617067,
+        "loop_duration_ms_max": 1679.4143229999463,
+        "loop_duration_ms_sum": 1680.8256760050426,
         "normalized_events_total": 1.0,
         "raw_events_stored_total": 1.0
       },
-      "loop_duration_avg_ms": 459.11,
-      "loop_duration_last_ms": 0.4571129975374788,
-      "loop_duration_max_ms": 1834.987986003398
+      "loop_duration_avg_ms": 420.21,
+      "loop_duration_last_ms": 0.4576760038617067,
+      "loop_duration_max_ms": 1679.4143229999463
     },
     "passed": true
   }
