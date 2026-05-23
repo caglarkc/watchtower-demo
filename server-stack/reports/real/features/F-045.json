@@ -2,7 +2,7 @@
   "id": "F-045",
   "feature_id": "F-045",
   "title": "Veritabanı Sorgu Hacmi ve Tablo Kapsamı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "postgres",
@@ -11,7 +11,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     }
   ],
@@ -43,10 +43,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "bulk table/select scope event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:19.726930+00:00",
+  "generated_at": "2026-05-23T02:55:46.706889+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

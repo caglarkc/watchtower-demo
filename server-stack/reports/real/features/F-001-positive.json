@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "SMB read volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:43.797957+00:00",
+  "generated_at": "2026-05-23T02:55:46.333294+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

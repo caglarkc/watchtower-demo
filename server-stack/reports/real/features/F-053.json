@@ -2,7 +2,7 @@
   "id": "F-053",
   "feature_id": "F-053",
   "title": "Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -28,10 +28,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "backup disable/delete event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:20.738007+00:00",
+  "generated_at": "2026-05-23T02:55:46.452296+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

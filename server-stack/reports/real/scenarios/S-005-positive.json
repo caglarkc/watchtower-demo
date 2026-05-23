@@ -1,0 +1,285 @@
+{
+  "scenario_id": "S-005",
+  "title": "CTO'nun Gizli Yedek Klasörü",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "CTO",
+  "deterministic_seed": 1005,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-037",
+    "F-039",
+    "F-062",
+    "F-030",
+    "F-036"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-037",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "cross_department": true
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-037",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    },
+    {
+      "feature_id": "F-039",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "renames": 15
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    },
+    {
+      "feature_id": "F-062",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "siem",
+          "response": {
+            "role": "siem"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/siem/audit.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    },
+    {
+      "feature_id": "F-030",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "ai-gateway",
+          "response": {
+            "accepted": true,
+            "tokens": 25
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs:F-030",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+",
+          "parity_level": "L3"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    },
+    {
+      "feature_id": "F-036",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "ai-gateway",
+          "response": {
+            "accepted": true,
+            "tokens": 39
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "cross_department": true
+      }
+    },
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "renames": 15
+      }
+    },
+    {
+      "service": "siem",
+      "response": {
+        "role": "siem"
+      }
+    },
+    {
+      "service": "ai-gateway",
+      "response": {
+        "accepted": true,
+        "tokens": 25
+      }
+    },
+    {
+      "service": "ai-gateway",
+      "response": {
+        "accepted": true,
+        "tokens": 39
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/siem/audit.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/ai_gateway/ai_gateway.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-037",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs:F-030",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+",
+      "parity_level": "L3"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml",
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "event_count": 5,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:45.624169+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-005:1005:positive:real"
+}

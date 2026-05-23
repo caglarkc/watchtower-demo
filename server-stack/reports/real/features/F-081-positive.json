@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "role-based work-window deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:57.102371+00:00",
+  "generated_at": "2026-05-23T02:55:44.449966+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

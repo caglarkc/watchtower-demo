@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "unknown competitor-domain attachment",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:15.428668+00:00",
+  "generated_at": "2026-05-23T02:55:44.831751+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

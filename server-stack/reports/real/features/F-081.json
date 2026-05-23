@@ -2,7 +2,7 @@
   "id": "F-081",
   "feature_id": "F-081",
   "title": "Rol Bazlı Aktif Çalışma Penceresi Sapması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -27,10 +27,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "role-based work-window deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:57.227027+00:00",
+  "generated_at": "2026-05-23T02:55:44.449966+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
