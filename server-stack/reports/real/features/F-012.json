@@ -2,7 +2,7 @@
   "id": "F-012",
   "feature_id": "F-012",
   "title": "Servis Hesabı ve API Key Kullanım Haritası",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "vault",
@@ -16,7 +16,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 5
       }
     }
   ],
@@ -64,10 +64,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "API key multi-source usage",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:52.803913+00:00",
+  "generated_at": "2026-05-23T10:27:08.167931+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
