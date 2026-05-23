@@ -1,14 +1,13 @@
-"""Wazuh-compatible REST adapter skeleton (read-only)."""
+"""Wazuh REST adapter (read-only, token auth, time-window cursor)."""
 
 from __future__ import annotations
 
 import json
-import urllib.error
-import urllib.request
-from datetime import datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any, Callable
 
 from watchtower.connectors.base import BaseConnector, ConnectorError
+from watchtower.connectors.http_util import ConnectorHttpClient, HttpClientConfig
 from watchtower.domain.events import (
     ConnectorCursor,
     EventBatch,
@@ -19,8 +18,27 @@ from watchtower.domain.events import (
 from watchtower.ingest.dedupe import dedupe_key_from_parts
 
 
+def _http_config_from_dict(config: dict[str, Any]) -> HttpClientConfig:
+    auth_type = config.get("auth_type")
+    if auth_type is None and config.get("token"):
+        auth_type = "bearer"
+    if auth_type is None and config.get("username"):
+        auth_type = "basic"
+    return HttpClientConfig(
+        timeout_seconds=float(config.get("timeout_seconds", 10.0)),
+        max_retries=int(config.get("max_retries", 2)),
+        backoff_base_seconds=float(config.get("backoff_base_seconds", 0.5)),
+        verify_tls=bool(config.get("verify_tls", True)),
+        ca_cert_path=config.get("ca_cert_path"),
+        auth_type=auth_type,
+        username=config.get("username"),
+        password=config.get("password"),
+        token=config.get("token"),
+    )
+
+
 class WazuhConnector(BaseConnector):
-    """Skeleton adapter for Wazuh API v4 style endpoints."""
+    """Read-only Wazuh API v4 style alerts/events adapter."""
 
     connector_type = "wazuh"
 
@@ -29,47 +47,107 @@ class WazuhConnector(BaseConnector):
         source_id: str,
         *,
         api_url: str,
+        config: dict[str, Any] | None = None,
         username: str | None = None,
         password: str | None = None,
         token: str | None = None,
+        time_window_minutes: int = 60,
         http_get: Callable[..., Any] | None = None,
+        http_post: Callable[..., Any] | None = None,
     ) -> None:
         super().__init__(source_id)
         self.api_url = api_url.rstrip("/")
-        self.username = username
-        self.password = password
-        self._token = token
-        self._http_get = http_get or self._default_get
-
-    def _default_get(self, url: str, headers: dict[str, str] | None = None) -> dict[str, Any]:
-        request = urllib.request.Request(url, method="GET", headers=headers or {})
-        try:
-            with urllib.request.urlopen(request, timeout=10.0) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except urllib.error.URLError as exc:
-            raise ConnectorError(str(exc)) from exc
+        merged = dict(config or {})
+        if username:
+            merged.setdefault("username", username)
+        if password:
+            merged.setdefault("password", password)
+        if token:
+            merged.setdefault("token", token)
+        self._config = merged
+        self._time_window_minutes = int(
+            merged.get("time_window_minutes", time_window_minutes)
+        )
+        self._session_token: str | None = merged.get("token")
+        self._http = ConnectorHttpClient(
+            _http_config_from_dict(merged),
+            http_get=http_get,  # type: ignore[arg-type]
+            http_post=http_post,  # type: ignore[arg-type]
+        )
 
     def _auth_headers(self) -> dict[str, str]:
-        if self._token:
-            return {"Authorization": f"Bearer {self._token}"}
-        return {}
+        token = self._ensure_token()
+        if token:
+            return {"Authorization": f"Bearer {token}"}
+        return self._http.auth_headers()
+
+    def _ensure_token(self) -> str | None:
+        if self._session_token:
+            return self._session_token
+        user = self._config.get("username")
+        password = self._config.get("password")
+        if not user or not password:
+            return None
+        url = f"{self.api_url}/security/user/authenticate"
+        try:
+            import base64
+
+            basic = base64.b64encode(f"{user}:{password}".encode()).decode("ascii")
+            payload = self._http.post(
+                url,
+                {},
+                headers={"Authorization": f"Basic {basic}"},
+            )
+        except ConnectorError:
+            payload = self._http.get(url, headers={"Authorization": f"Basic {basic}"})
+        token = payload.get("data", {}).get("token") or payload.get("token")
+        if isinstance(token, str) and token:
+            self._session_token = token
+            self._http._config.token = token
+            self._http._config.auth_type = "bearer"
+        return self._session_token
 
     def health(self) -> SourceHealth:
         try:
-            payload = self._http_get(f"{self.api_url}/", self._auth_headers())
+            payload = self._http.get(f"{self.api_url}/", headers=self._auth_headers())
         except ConnectorError as exc:
-            return SourceHealth(status="unhealthy", message=str(exc))
+            return SourceHealth(
+                status="unhealthy",
+                message=str(exc),
+                details={
+                    "retries": self._http.stats.retries,
+                    "latency_ms": self._http.stats.last_latency_ms,
+                },
+            )
         return SourceHealth(
             status="healthy",
             message="wazuh api reachable",
-            details={"title": payload.get("title", "wazuh")},
+            details={
+                "title": payload.get("title", "wazuh"),
+                "api_version": payload.get("api_version"),
+                "latency_ms": self._http.stats.last_latency_ms,
+                "retries": self._http.stats.retries,
+                "authenticated": bool(self._ensure_token() or self._config.get("username")),
+            },
         )
 
     def poll(self, cursor: ConnectorCursor, limit: int) -> EventBatch:
-        offset = int(cursor.data.get("offset", 0))
-        url = f"{self.api_url}/events?q=offset={offset};limit={limit}"
+        wazuh = cursor.wazuh_state()
+        offset = int(wazuh.get("offset", 0))
+        time_from = wazuh.get("time_from")
+        if not time_from:
+            time_from = (
+                datetime.now(UTC) - timedelta(minutes=self._time_window_minutes)
+            ).isoformat()
+
+        query_parts = [
+            f"offset={offset}",
+            f"limit={limit}",
+            f"timestamp>{time_from}",
+        ]
+        url = f"{self.api_url}/events?q={';'.join(query_parts)}"
         try:
-            payload = self._http_get(url, self._auth_headers())
+            payload = self._http.get(url, headers=self._auth_headers())
         except ConnectorError:
             raise
 
@@ -80,6 +158,7 @@ class WazuhConnector(BaseConnector):
             items = []
 
         events: list[RawEventRecord] = []
+        last_ts: str | None = time_from
         for item in items[:limit]:
             if not isinstance(item, dict):
                 item = {"_value": item}
@@ -89,6 +168,7 @@ class WazuhConnector(BaseConnector):
             if ts_raw:
                 try:
                     ts = datetime.fromisoformat(str(ts_raw).replace("Z", "+00:00"))
+                    last_ts = ts.isoformat()
                 except ValueError:
                     ts = None
             events.append(
@@ -101,7 +181,12 @@ class WazuhConnector(BaseConnector):
             )
 
         next_offset = offset + len(events)
-        next_cursor = ConnectorCursor(data={**cursor.data, "offset": next_offset})
+        next_cursor = ConnectorCursor(data=dict(cursor.data))
+        next_cursor.set_wazuh_state(
+            offset=next_offset,
+            time_from=time_from,
+            last_timestamp=last_ts,
+        )
         has_more = len(items) >= limit
         return EventBatch(events=events, next_cursor=next_cursor, has_more=has_more)
 
@@ -112,5 +197,13 @@ class WazuhConnector(BaseConnector):
         return SourceSchemaHint(
             format="wazuh_alert",
             fields=["id", "timestamp", "rule", "agent", "data"],
-            notes="Skeleton — map to unified schema in normalization phase",
+            notes="Time-window + offset pagination; token or basic auth",
         )
+
+    @property
+    def http_retries(self) -> int:
+        return self._http.stats.retries
+
+    @property
+    def last_latency_ms(self) -> float | None:
+        return self._http.stats.last_latency_ms
