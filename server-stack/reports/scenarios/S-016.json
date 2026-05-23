@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-016",
   "title": "Gece Admin Kerberos TGT Zinciri",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2016,
@@ -15,7 +15,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Gece Admin Kerberos TGT Zinciri",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -25,12 +25,12 @@
       "user_role": "IT Admin",
       "category": "credential ihlali",
       "seed": 2016,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "kerberos_tgt",
       "user": "admin",
-      "targets": 0,
+      "targets": 8,
       "hour": 2,
       "source_feature": "F-008",
       "scenario_id": "S-016"
@@ -39,14 +39,16 @@
       "event_type": "rdp_hop",
       "hops": [
         "ws1",
-        "files1"
+        "dc1",
+        "files1",
+        "db1"
       ],
       "source_feature": "F-015",
       "scenario_id": "S-016"
     },
     {
       "event_type": "after_hours_session",
-      "hour": 14,
+      "hour": 2,
       "interactive": true,
       "source_feature": "F-079",
       "scenario_id": "S-016"
@@ -58,12 +60,9 @@
     "reports/scenario_logs/S-016/scenarios/rdp_hop.jsonl",
     "reports/scenario_logs/S-016/scenarios/after_hours_session.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T05:09:59.491593+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T05:36:01.546031+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-016:2016:negative"
+  "replay_key": "S-016:2016:positive"
 }
