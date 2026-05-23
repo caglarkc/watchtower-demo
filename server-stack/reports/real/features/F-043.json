@@ -2,7 +2,7 @@
   "id": "F-043",
   "feature_id": "F-043",
   "title": "Etiketli Hassas Dosyanın Kısıtsız Alana Taşınması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 44,
+        "indexed": 45,
         "index": "corp-logs-f-043",
         "pipeline": {
           "feature_id": "F-043",
           "index": "corp-logs-f-043",
-          "indexed": 44
+          "indexed": 45
         }
       }
     }
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "labeled file moved to unrestricted area",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:22.899795+00:00",
+  "generated_at": "2026-05-23T05:10:31.196322+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
