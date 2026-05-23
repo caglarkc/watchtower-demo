@@ -61,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "API call-pattern deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:59.648264+00:00",
+  "generated_at": "2026-05-23T05:37:59.960112+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
