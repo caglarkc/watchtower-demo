@@ -155,6 +155,13 @@ def _build_session(
         feedback=feedback_engine,
     )
     graph_repo = GraphRepository(conn)
+    llm_audit = LLMCallAuditRepository(conn)
+    provider_chain = build_provider_chain(settings)
+    llm_gateway = LLMGateway(
+        provider_chain,
+        audit_repo=llm_audit,
+        max_retries=settings.llm_max_retries,
+    )
     graph_runner = build_graph_runner(
         mode_controller=mode_controller,
         decision=decision,
@@ -163,6 +170,7 @@ def _build_session(
         rules=rules,
         graph_repo=graph_repo,
         conn=conn,
+        llm_gateway=llm_gateway,
     )
     return SessionContext(
         conn=conn,
@@ -190,6 +198,7 @@ def _build_session(
         decision=decision,
         graph=graph_repo,
         graph_runner=graph_runner,
+        llm=llm_gateway,
     )
 
 
