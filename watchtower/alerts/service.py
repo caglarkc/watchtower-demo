@@ -10,13 +10,19 @@ from watchtower.domain.alerts import (
     VALID_TRANSITIONS,
     Alert,
     AlertCase,
+    AlertDetailView,
     AlertLifecycleEvent,
     AlertStatus,
+    CaseTimelineEventType,
     SuppressionWindow,
 )
 from watchtower.domain.rules import RuleScope
 from watchtower.alerts.duration import parse_duration
+from watchtower.alerts.explain import explain_alert
+from watchtower.alerts.export import export_case_json, export_case_markdown
+from watchtower.alerts.timeline import CaseTimelineRecorder
 from watchtower.feedback.service import FeedbackService
+from watchtower.llm.gateway import LLMGateway
 from watchtower.storage.repositories.alerts import AlertRepository
 
 CloseOutcome = Literal["true_positive", "false_positive"]
@@ -31,9 +37,12 @@ class AlertService:
         self,
         repo: AlertRepository,
         feedback: FeedbackService | None = None,
+        llm: LLMGateway | None = None,
     ) -> None:
         self._repo = repo
         self._feedback = feedback
+        self._llm = llm
+        self._timeline = CaseTimelineRecorder(repo)
 
     def create_alert(
         self,

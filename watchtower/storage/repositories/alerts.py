@@ -446,6 +446,19 @@ class AlertRepository:
             updated_at=datetime.fromisoformat(updated),
         )
 
+    def _timeline_from_row(self, row: sqlite3.Row) -> CaseTimelineEntry:
+        return CaseTimelineEntry(
+            id=row["id"],
+            tenant_id=row["tenant_id"],
+            alert_id=row["alert_id"],
+            case_id=row["case_id"],
+            event_type=row["event_type"],
+            actor=row["actor"],
+            comment=row["comment"],
+            metadata=json.loads(row["metadata_json"] or "{}"),
+            created_at=datetime.fromisoformat(row["created_at"]),
+        )
+
     def _suppression_from_row(self, row: sqlite3.Row) -> SuppressionWindow:
         return SuppressionWindow(
             id=row["id"],
