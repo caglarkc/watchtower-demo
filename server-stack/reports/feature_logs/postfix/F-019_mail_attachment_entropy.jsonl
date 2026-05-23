@@ -57,3 +57,4 @@
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "feature_id": "F-019", "timestamp": "2026-05-23T05:35:32.778183+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "feature_id": "F-019", "timestamp": "2026-05-23T05:35:40.154016+00:00"}
 {"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "feature_id": "F-019", "timestamp": "2026-05-23T05:35:50.234894+00:00"}
+{"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 4.1, "declared_type": "pdf", "actual_type": "pdf", "feature_id": "F-019", "timestamp": "2026-05-23T05:35:52.475000+00:00"}
