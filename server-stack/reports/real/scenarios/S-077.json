@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-077",
   "title": "Hukuk Ekibine CFO Adına Gelen Sahte İç Mail",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "Hukuk",
   "deterministic_seed": 8077,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-023",
-            "count": 1040,
+            "count": 1280,
             "result": "PASS"
           },
           "result": "PASS",
@@ -103,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-026",
-            "count": 640,
+            "count": 720,
             "result": "PASS"
           },
           "result": "PASS",
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-023",
-        "count": 1040,
+        "count": 1280,
         "result": "PASS"
       },
       "result": "PASS",
@@ -197,7 +197,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-026",
-        "count": 640,
+        "count": 720,
         "result": "PASS"
       },
       "result": "PASS",
@@ -220,12 +220,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:24.888392+00:00",
+  "generated_at": "2026-05-23T03:14:52.622730+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-077:8077:positive:real"
+  "replay_key": "S-077:8077:negative:real"
 }
