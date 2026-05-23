@@ -50,3 +50,5 @@
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "feature_id": "F-060", "timestamp": "2026-05-23T03:17:54.684792+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "feature_id": "F-060", "timestamp": "2026-05-23T05:09:31.470204+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "feature_id": "F-060", "timestamp": "2026-05-23T05:09:38.850228+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "feature_id": "F-060", "timestamp": "2026-05-23T05:09:51.014056+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "feature_id": "F-060", "timestamp": "2026-05-23T05:09:54.178397+00:00"}
