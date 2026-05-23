@@ -41,7 +41,14 @@ def main() -> int:
     import sys
 
     here = Path(__file__).resolve().parent
-    for script in ("seed_real_identity.py", "seed_real_files.py", "seed_real_mail.py", "seed_real_apps.py"):
+    for script in (
+        "seed_real_identity.py",
+        "seed_real_files.py",
+        "seed_real_mail.py",
+        "seed_real_apps.py",
+        "seed_real_security.py",
+        "seed_real_endpoint.py",
+    ):
         subprocess.run([sys.executable, str(here / script)], check=True)
 
     for d in DIRS:

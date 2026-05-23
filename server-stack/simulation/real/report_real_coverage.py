@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RI-0/RI-1 real integration coverage — metadata + evidence gate."""
+"""RI real integration coverage — metadata + evidence gate."""
 
 from __future__ import annotations
 
@@ -33,6 +33,15 @@ RI1_FEATURES = frozenset(
 RI2_FEATURES = frozenset(
     {f"F-{i:03d}" for i in range(16, 30)} | {f"F-{i:03d}" for i in range(45, 55)}
 )
+RI3_FEATURES = frozenset(
+    {"F-012", "F-013"}
+    | {f"F-{i:03d}" for i in range(30, 37)}
+    | {"F-042", "F-043", "F-044"}
+    | {f"F-{i:03d}" for i in range(58, 63)}
+    | {f"F-{i:03d}" for i in range(64, 67)}
+    | {f"F-{i:03d}" for i in range(67, 70)}
+)
+ALL_REAL = RI1_FEATURES | RI2_FEATURES | RI3_FEATURES
 
 
 def load_features() -> list[dict]:
@@ -40,66 +49,74 @@ def load_features() -> list[dict]:
     return doc["features"]
 
 
+def _evidence_pass(fid: str) -> bool:
+    pos = REPORTS / f"{fid}-positive.json"
+    neg = REPORTS / f"{fid}-negative.json"
+    if not (pos.exists() and neg.exists()):
+        return False
+    try:
+        pdata = json.loads(pos.read_text(encoding="utf-8"))
+        ndata = json.loads(neg.read_text(encoding="utf-8"))
+        return pdata.get("result") == "PASS" and ndata.get("result") == "PASS"
+    except json.JSONDecodeError:
+        return False
+
+
 def report() -> dict:
     features = load_features()
     rows = []
-    meta_ok = pos_ok = neg_ok = ri1_l2 = 0
+    meta_ok = pos_ok = neg_ok = 0
     for feat in features:
         fid = feat["feature_id"]
         has_meta = all(feat.get(f) for f in REQUIRED_META)
         if has_meta:
             meta_ok += 1
-        pos = REPORTS / f"{fid}-positive.json"
-        neg = REPORTS / f"{fid}-negative.json"
-        has_pos = pos.exists()
-        has_neg = neg.exists()
+        has_pos = (REPORTS / f"{fid}-positive.json").exists()
+        has_neg = (REPORTS / f"{fid}-negative.json").exists()
         if has_pos:
             pos_ok += 1
         if has_neg:
             neg_ok += 1
-        level = feat.get("real_parity_level", "L0")
-        if fid in RI1_FEATURES and level in ("L2", "L3"):
-            ri1_l2 += 1
-        status = "PASS" if has_meta and has_pos and has_neg else "PENDING"
-        if fid in RI1_FEATURES and has_pos and has_neg:
-            try:
-                pdata = json.loads(pos.read_text(encoding="utf-8"))
-                ndata = json.loads(neg.read_text(encoding="utf-8"))
-                if pdata.get("result") == "PASS" and ndata.get("result") == "PASS":
-                    status = "PASS"
-            except json.JSONDecodeError:
-                pass
+        status = "PASS" if has_meta and _evidence_pass(fid) else ("PENDING" if fid in ALL_REAL else "N/A")
         rows.append(
             {
                 "feature_id": fid,
-                "real_parity_level": level,
-                "real_tool": feat.get("real_tool"),
+                "real_parity_level": feat.get("real_parity_level", "L0"),
                 "metadata_complete": has_meta,
                 "positive_evidence": has_pos,
                 "negative_evidence": has_neg,
                 "status": status,
             }
         )
-    implemented = sum(1 for r in rows if r["status"] == "PASS")
-    ri1_rows = [r for r in rows if r["feature_id"] in RI1_FEATURES]
-    ri1_pass = sum(1 for r in ri1_rows if r["status"] == "PASS")
-    ri2_rows = [r for r in rows if r["feature_id"] in RI2_FEATURES]
-    ri2_pass = sum(1 for r in ri2_rows if r["status"] == "PASS")
-    ri2_l2 = sum(1 for r in ri2_rows if r.get("real_parity_level") in ("L2", "L3"))
+
+    def _phase_stats(ids: frozenset) -> dict:
+        subset = [r for r in rows if r["feature_id"] in ids]
+        return {
+            "count": len(ids),
+            "l2_metadata": sum(1 for r in subset if r["real_parity_level"] in ("L2", "L3")),
+            "pass": sum(1 for r in subset if r["status"] == "PASS"),
+        }
+
+    ri1 = _phase_stats(RI1_FEATURES)
+    ri2 = _phase_stats(RI2_FEATURES)
+    ri3 = _phase_stats(RI3_FEATURES)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "phase": "RI-2",
+        "phase": "RI-3",
         "total_features": len(rows),
         "metadata_complete": meta_ok,
-        "implemented": implemented,
+        "implemented": sum(1 for r in rows if r["status"] == "PASS"),
         "positive_real_tests_passed": pos_ok,
         "negative_real_tests_passed": neg_ok,
-        "ri1_features": len(RI1_FEATURES),
-        "ri1_l2_metadata": ri1_l2,
-        "ri1_pass": ri1_pass,
-        "ri2_features": len(RI2_FEATURES),
-        "ri2_l2_metadata": ri2_l2,
-        "ri2_pass": ri2_pass,
+        "ri1_features": ri1["count"],
+        "ri1_l2_metadata": ri1["l2_metadata"],
+        "ri1_pass": ri1["pass"],
+        "ri2_features": ri2["count"],
+        "ri2_l2_metadata": ri2["l2_metadata"],
+        "ri2_pass": ri2["pass"],
+        "ri3_features": ri3["count"],
+        "ri3_l2_metadata": ri3["l2_metadata"],
+        "ri3_pass": ri3["pass"],
         "l2_or_higher": sum(1 for r in rows if r.get("real_parity_level") in ("L2", "L3")),
         "waivers": [],
         "features": rows,
@@ -109,7 +126,7 @@ def report() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--all", action="store_true", default=True)
-    args = parser.parse_args()
+    parser.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
     data = report()
@@ -118,12 +135,14 @@ def main() -> int:
     print(
         f"wrote {out} metadata={data['metadata_complete']}/{data['total_features']} "
         f"ri1={data['ri1_pass']}/{data['ri1_features']} "
-        f"ri2={data['ri2_pass']}/{data['ri2_features']}"
+        f"ri2={data['ri2_pass']}/{data['ri2_features']} "
+        f"ri3={data['ri3_pass']}/{data['ri3_features']}"
     )
     gate = (
         data["metadata_complete"] == 81
-        and data["ri1_l2_metadata"] == len(RI1_FEATURES)
-        and data["ri2_l2_metadata"] == len(RI2_FEATURES)
+        and data["ri1_l2_metadata"] == data["ri1_features"]
+        and data["ri2_l2_metadata"] == data["ri2_features"]
+        and data["ri3_l2_metadata"] == data["ri3_features"]
     )
     return 0 if gate else 1
 
