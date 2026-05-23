@@ -1,0 +1,60 @@
+{
+  "id": "F-071",
+  "feature_id": "F-071",
+  "title": "Çapraz Kaynak Risk Skoru (Composite Risk Score)",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "mattermost",
+  "actions_executed": [
+    {
+      "service": "mattermost",
+      "response": {
+        "signals": [
+          "ai_leak",
+          "exfil",
+          "secret_burst"
+        ]
+      }
+    },
+    {
+      "service": "ai-gateway",
+      "response": {
+        "accepted": true,
+        "tokens": 4
+      }
+    },
+    {
+      "service": "proxy",
+      "response": {
+        "stored": true
+      }
+    },
+    {
+      "service": "vault",
+      "response": {
+        "reads": 10
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/mattermost/chat.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "composite risk score input set",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:51:10.343962+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

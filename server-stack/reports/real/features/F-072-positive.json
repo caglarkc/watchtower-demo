@@ -1,0 +1,44 @@
+{
+  "id": "F-072",
+  "feature_id": "F-072",
+  "title": "Offboarding SLA — Ayrılan Hesap Aktivitesi",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "hris-app",
+  "actions_executed": [
+    {
+      "service": "hris",
+      "response": {
+        "status": "terminated",
+        "logins_after": 6
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "leaver account activity",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:51:10.473731+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

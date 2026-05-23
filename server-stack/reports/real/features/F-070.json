@@ -1,0 +1,43 @@
+{
+  "id": "F-070",
+  "feature_id": "F-070",
+  "title": "Fiziksel Badge Geçişi ile Sistem Login Uyuşmazlığı",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "badge-api",
+  "actions_executed": [
+    {
+      "service": "badge",
+      "response": {
+        "mismatch": true
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/badge/badge.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "physical badge/login mismatch",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:51:10.219898+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}
