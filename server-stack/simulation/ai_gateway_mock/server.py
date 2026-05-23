@@ -42,13 +42,17 @@ class Handler(BaseHTTPRequestHandler):
         except json.JSONDecodeError:
             self._json(400, {"error": "invalid json"})
             return
-        if self.path == "/v1/prompt":
-            _log("prompt", body)
-            self._json(200, {"accepted": True, "tokens": len(str(body.get("prompt", "")))})
-            return
-        if self.path == "/v1/upload":
-            _log("upload", body)
-            self._json(200, {"accepted": True, "bytes": body.get("bytes", 0)})
+        routes = {
+            "/v1/prompt": ("prompt", {"accepted": True, "tokens": len(str(body.get("prompt", "")))}),
+            "/v1/upload": ("upload", {"accepted": True, "bytes": body.get("bytes", 0)}),
+            "/action/prompt": ("prompt", {"accepted": True}),
+            "/action/upload": ("upload", {"accepted": True, "bytes": body.get("bytes", 0)}),
+        }
+        if self.path in routes:
+            action, resp = routes[self.path]
+            body.setdefault("anomaly", body.get("sensitive", False))
+            _log(action, body)
+            self._json(200, resp)
             return
         self._json(404, {"error": "not found"})
 
