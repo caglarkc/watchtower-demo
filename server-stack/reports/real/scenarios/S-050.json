@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-050",
   "title": "Satış Müşteri Segmentasyon Modeline Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Satış",
   "deterministic_seed": 4050,
@@ -75,14 +75,8 @@
         {
           "service": "hris",
           "response": {
-            "status": "terminated",
-            "logins_after": 6
-          }
-        },
-        {
-          "service": "samba-ad",
-          "response": {
-            "events": 1
+            "status": "active",
+            "logins_after": 0
           }
         }
       ],
@@ -135,7 +129,7 @@
         {
           "service": "hris",
           "response": {
-            "old_group_used": true
+            "old_group_used": false
           }
         }
       ],
@@ -191,20 +185,14 @@
     {
       "service": "hris",
       "response": {
-        "status": "terminated",
-        "logins_after": 6
-      }
-    },
-    {
-      "service": "samba-ad",
-      "response": {
-        "events": 1
+        "status": "active",
+        "logins_after": 0
       }
     },
     {
       "service": "hris",
       "response": {
-        "old_group_used": true
+        "old_group_used": false
       }
     }
   ],
@@ -312,12 +300,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
-  "event_count": 4,
+  "anomaly_detected": false,
+  "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:41.767208+00:00",
+  "generated_at": "2026-05-23T05:11:05.992936+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-050:4050:positive:real"
+  "replay_key": "S-050:4050:negative:real"
 }
