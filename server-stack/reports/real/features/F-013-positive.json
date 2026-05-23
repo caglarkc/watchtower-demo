@@ -1,0 +1,53 @@
+{
+  "id": "F-013",
+  "feature_id": "F-013",
+  "title": "Secret Store Okuma Burst",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "vault",
+  "actions_executed": [
+    {
+      "service": "vault",
+      "response": {
+        "reads": 25
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/vault/audit.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs:F-013",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+",
+      "parity_level": "L3"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "secret read burst event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:43:03.648546+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}
