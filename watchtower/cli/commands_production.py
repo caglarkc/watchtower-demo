@@ -65,6 +65,73 @@ def health_root(
         raise typer.Exit(code=1)
 
 
+@metrics_app.callback(invoke_without_command=True)
+def metrics_root(
+    ctx: typer.Context,
+    json_output: Annotated[bool, typer.Option("--json", help="JSON output")] = False,
+) -> None:
+    """Show durable runtime counters (daemon / ingest / graph / LLM)."""
+    wt_app = ctx.obj
+    with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+            snap = session.metrics.snapshot(tenant_id)
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+    payload = snap.to_dict()
+    if json_output:
+        typer.echo(json.dumps(payload, indent=2))
+        return
+    typer.echo(f"tenant: {tenant_id}")
+    for name, value in sorted(snap.counters.items()):
+        typer.echo(f"  {name}: {value:g}")
+    avg = snap.loop_duration_avg_ms
+    if avg is not None:
+        typer.echo(f"  loop_duration_avg_ms: {avg:.1f}")
+
+
+@health_app.command("readiness")
+def health_readiness(
+    ctx: typer.Context,
+    output: Annotated[
+        Optional[Path],
+        typer.Option("--output", "-o", help="Write JSON readiness report"),
+    ] = None,
+    soak_report: Annotated[
+        Optional[Path],
+        typer.Option("--soak-report", help="Merge soak JSON summary into report"),
+    ] = None,
+) -> None:
+    """Emit production readiness JSON (health + metrics + optional soak evidence)."""
+    wt_app = ctx.obj
+    soak_summary = None
+    if soak_report is not None and soak_report.is_file():
+        soak_summary = json.loads(soak_report.read_text(encoding="utf-8"))
+    with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+        report = build_production_readiness_report(
+            conn=session.conn,
+            settings=wt_app.settings,
+            session=session,
+            metrics=session.metrics,
+            tenant_id=tenant_id,
+            soak_summary=soak_summary,
+        )
+        session.conn.commit()
+    body = json.dumps(report, indent=2)
+    if output:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(body, encoding="utf-8")
+        typer.echo(f"wrote {output}")
+    else:
+        typer.echo(body)
+
+
 @backup_app.command("create")
 def backup_create(ctx: typer.Context) -> None:
     """Create a SQLite backup under WATCHTOWER_BACKUP_DIR."""
