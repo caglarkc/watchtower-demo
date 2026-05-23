@@ -2,7 +2,7 @@
   "id": "F-015",
   "feature_id": "F-015",
   "title": "RDP/PSRemoting Hop Pattern",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "zeek",
@@ -10,7 +10,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 2,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -48,7 +48,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 17664,
+        "count": 18144,
         "result": "PASS"
       },
       "result": "PASS",
@@ -70,10 +70,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "hop-chain session event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:38.738672+00:00",
+  "generated_at": "2026-05-23T08:41:47.203704+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

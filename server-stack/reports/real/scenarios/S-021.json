@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-021",
   "title": "Eski Credential ile API Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 2021,
@@ -27,7 +27,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 5
+            "reads": 1
           }
         }
       ],
@@ -109,7 +109,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 8080,
+            "count": 8480,
             "result": "PASS"
           },
           "result": "PASS",
@@ -144,7 +144,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 5
+        "reads": 1
       }
     },
     {
@@ -209,7 +209,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 8080,
+        "count": 8480,
         "result": "PASS"
       },
       "result": "PASS",
@@ -236,12 +236,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:21.692871+00:00",
+  "generated_at": "2026-05-23T08:41:46.314266+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-021:2021:positive:real"
+  "replay_key": "S-021:2021:negative:real"
 }
