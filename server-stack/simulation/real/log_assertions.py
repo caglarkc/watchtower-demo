@@ -95,6 +95,42 @@ def assert_nginx_access(since: float, code: str = "403") -> dict:
     return {"path": str(candidates[0]), "result": "FAIL"}
 
 
+def assert_jsonl(path: Path, needle: str, min_bytes: int = 20) -> dict:
+    return {"path": str(path), "result": "PASS" if _grep_file(path, needle, min_bytes) else "FAIL"}
+
+
+def assert_vault_audit(since: float) -> dict:
+    return assert_jsonl(LOG_PATHS["vault-audit"], "secret_read")
+
+
+def assert_ai_gateway(since: float, action: str = "prompt") -> dict:
+    return assert_jsonl(LOG_PATHS["ai-gateway"], action)
+
+
+def assert_proxy_log(since: float, action: str) -> dict:
+    ok = _grep_file(LOG_PATHS["proxy-audit"], action, 20)
+    if not ok:
+        ok = _grep_file(LOG_PATHS["proxy-squid"], action, 10)
+    return {"path": str(LOG_PATHS["proxy-audit"]), "result": "PASS" if ok else "FAIL"}
+
+
+def assert_cloud_upload(since: float) -> dict:
+    return assert_jsonl(LOG_PATHS["cloud-upload"], "s3_put_object")
+
+
+def assert_wiki_access(since: float) -> dict:
+    return assert_jsonl(LOG_PATHS["wiki-access"], "wiki_page_download")
+
+
+def assert_dlp_health(since: float, disabled: bool = False) -> dict:
+    needle = "disabled" if disabled else "healthy"
+    return assert_jsonl(LOG_PATHS["dlp-health"], needle)
+
+
+def assert_activity(since: float, action: str) -> dict:
+    return assert_jsonl(LOG_PATHS["activity"], action)
+
+
 def assert_app_audit(role: str, action: str) -> dict:
     key = {"internal-app": "app-audit", "siem": "siem-audit", "hypervisor": "hypervisor-audit", "artifact": "artifact-audit"}.get(role, "app-audit")
     path = LOG_PATHS[key]
