@@ -1,0 +1,38 @@
+{
+  "id": "F-046",
+  "feature_id": "F-046",
+  "title": "Uygulama Süresi ve Süreç Ağacı",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "wazuh-agent",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/process_tree_anomaly.jsonl",
+        "event_type": "process_tree_anomaly"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/process_tree_anomaly.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "unusual process duration/tree event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:36:16.538814+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

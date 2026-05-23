@@ -1,0 +1,38 @@
+{
+  "id": "F-053",
+  "feature_id": "F-053",
+  "title": "Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "endpoint-synthetic",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/backup_disabled.jsonl",
+        "event_type": "backup_disabled"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/backup_disabled.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "backup disable/delete event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:36:17.752939+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

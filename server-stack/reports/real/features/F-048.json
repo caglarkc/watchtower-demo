@@ -1,0 +1,91 @@
+{
+  "id": "F-048",
+  "feature_id": "F-048",
+  "title": "HTTP 4xx Hata Yoğunlaşması",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "nginx",
+  "actions_executed": [
+    {
+      "service": "nginx",
+      "http_codes": [
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403"
+      ]
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-048",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "HTTP 401/403/4xx spike",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:36:17.020762+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}
