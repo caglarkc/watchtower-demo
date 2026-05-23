@@ -10,7 +10,7 @@ from watchtower.cli.main import app
 from tests.alerts.helpers import produce_real_alert_via_graph
 
 
-def test_cli_cases_timeline_and_export(db_path: Path, tenant_id, app):
+def test_cli_cases_timeline_and_export(db_path: Path, tenant_id, wt_app):
     runner = CliRunner()
     boot = runner.invoke(
         app,
@@ -18,7 +18,7 @@ def test_cli_cases_timeline_and_export(db_path: Path, tenant_id, app):
     )
     assert boot.exit_code == 0
 
-    alert_id, case_id, _ = produce_real_alert_via_graph(app, tenant_id)
+    alert_id, case_id, _ = produce_real_alert_via_graph(wt_app, tenant_id)
 
     tl = runner.invoke(app, ["--db", str(db_path), "cases", "timeline", case_id])
     assert tl.exit_code == 0, tl.stdout

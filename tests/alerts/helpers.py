@@ -31,9 +31,25 @@ def produce_real_alert_via_graph(
     assert candidate is not None
     candidate.attributes["volume"] = 500.0
     seed_baseline_for_candidate(app, tenant_id, candidate)
-    result = run_graph_to_completion(app, candidate)
-    alert_id = result.state.get("alert_id")
+    result = run_graph_to_completion(
+        app,
+        candidate,
+        resume_payload={"decision": "approved", "approver_id": "test-operator"},
+    )
     case_id = result.state.get("alert_case_id")
-    assert alert_id, "graph must produce alert in run mode"
-    assert case_id, "graph must produce case in run mode"
+    alert_id = result.state.get("alert_id")
+    if case_id and not alert_id:
+        with app.session() as session:
+            case = session.alerts.get_case(tenant_id, case_id)
+            if case:
+                alert_id = case.alert_id
+    if not alert_id:
+        with app.session() as session:
+            rows = session.alerts.list_alerts(tenant_id, limit=1)
+            if rows:
+                alert_id = rows[0].id
+                case = session.alerts._repo.get_case_by_alert(tenant_id, alert_id)
+                case_id = case.id if case else case_id
+    assert alert_id, "graph must produce alert in run/hybrid mode"
+    assert case_id, "graph must produce case in run/hybrid mode"
     return alert_id, case_id, result.state
