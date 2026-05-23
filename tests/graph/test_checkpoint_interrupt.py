@@ -80,10 +80,9 @@ def test_validation_failure_halts_safely(app, tenant_id):
     )
     with app.session() as session:
         result = session.graph_runner.run(candidate)
-        if result.interrupted:
-            result = session.graph_runner.resume(result.thread_id, {"decision": "none"})
+        run_row = session.graph.get_run(result.run_id)
     assert result.state.get("halted") is True
     assert result.state.get("status") == "failed"
     assert "validation failed" in (result.state.get("error") or "").lower()
-    run = app.session().__enter__()  # wrong - fix test
-    
+    assert run_row is not None
+    assert run_row["status"] == "failed"

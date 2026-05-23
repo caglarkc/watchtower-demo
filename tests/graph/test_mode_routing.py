@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from watchtower.domain.rules import RuleScope
-from watchtower.feedback.service import FeedbackService
 from tests.graph.conftest import make_candidate, seed_anomaly_baseline, set_tenant_mode
 
 

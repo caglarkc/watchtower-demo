@@ -22,7 +22,7 @@ from watchtower.storage.repositories.mode import ModeRepository
 from watchtower.baseline.engine import BaselineEngine
 from watchtower.baseline.query import BaselineQueryAPI
 from watchtower.decision.service import DecisionService
-from watchtower.graph.runner import build_graph_runner
+from watchtower.graph.runner import GraphRunner, build_graph_runner
 from watchtower.storage.repositories.graph import GraphRepository
 from watchtower.feedback.engine import FeedbackEngine
 from watchtower.feedback.service import FeedbackService
@@ -69,7 +69,7 @@ class SessionContext:
     rules: RuleEngine
     decision: DecisionService
     graph: GraphRepository
-    graph_runner: object
+    graph_runner: GraphRunner
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
