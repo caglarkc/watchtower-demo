@@ -24,9 +24,11 @@ def seed_metric_series(
 ) -> None:
     """Insert one observation per day for ``days`` ending at ``end``."""
     anchor = end or datetime.now(UTC)
-    start = anchor - timedelta(days=days - 1)
+    start = anchor - timedelta(days=days)
     for offset in range(days):
-        observed_at = start + timedelta(days=offset, hours=1)
+        observed_at = start + timedelta(days=offset + 1, hours=1)
+        if observed_at > anchor:
+            observed_at = anchor - timedelta(minutes=1)
         jitter = (offset % 3 - 1) * daily_jitter
         engine.record_observation(
             BehaviorObservation(
