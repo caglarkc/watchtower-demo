@@ -33,7 +33,7 @@ services:
       corp-lan:
         ipv4_address: ${SAMBA_AD_IP:-172.28.0.10}
     environment:
-      DOMAIN: ${DOMAIN_NETBIOS:-CORP}
+      DOMAIN: ${DOMAIN:-corp.local}
       DOMAINPASS: ${ADMIN_PASSWORD:-Watchtower1!}
       DNSFORWARDER: ${DNS_FORWARDER:-1.1.1.1}
     volumes:
@@ -61,10 +61,10 @@ services:
       - ./logs/samba:/var/log/corp/samba
       - ./configs/samba/files:/etc/samba/external:ro
     command: >
-      -n "Finance;finance;no;no;no;finance,hr,legal"
-      -n "HR;hr;no;no;no;hr"
-      -n "Legal;legal;no;no;no;legal"
-      -n "Dev;dev;no;no;no;dev"
+      -s "Finance;/share/finance;yes;no;no;all;none;none"
+      -s "HR;/share/hr;yes;no;no;all;none;none"
+      -s "Legal;/share/legal;yes;no;no;all;none;none"
+      -s "Dev;/share/dev;yes;no;no;all;none;none"
       -u "svc_sql;Watchtower1!"
       -u "cfo;Watchtower1!"
       -p
