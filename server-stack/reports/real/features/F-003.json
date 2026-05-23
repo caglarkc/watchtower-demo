@@ -1,0 +1,67 @@
+{
+  "id": "F-003",
+  "feature_id": "F-003",
+  "title": "İç DNS Sorgu Entropisi",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "bind9",
+  "actions_executed": [
+    {
+      "service": "bind-dns",
+      "dig": [
+        {
+          "query": "entropy-23650.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-59357.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-35633.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-36628.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-82331.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-32458.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-53664.corp.local",
+          "returncode": 9
+        },
+        {
+          "query": "entropy-43191.corp.local",
+          "returncode": 0
+        }
+      ]
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/dns/query.log",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:28:14.603327+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}
