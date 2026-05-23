@@ -37,6 +37,13 @@ PLACEHOLDER_FILES = {
 
 
 def main() -> int:
+    import subprocess
+    import sys
+
+    here = Path(__file__).resolve().parent
+    for script in ("seed_real_identity.py", "seed_real_files.py", "seed_real_mail.py", "seed_real_apps.py"):
+        subprocess.run([sys.executable, str(here / script)], check=True)
+
     for d in DIRS:
         (SEEDS / d).mkdir(parents=True, exist_ok=True)
     for rel, content in PLACEHOLDER_FILES.items():
