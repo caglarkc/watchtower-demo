@@ -17,3 +17,6 @@
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T02:09:36.934313+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T02:09:38.463185+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T02:09:59.733375+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T02:10:05.287472+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T02:10:06.898904+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T02:10:08.436798+00:00"}
