@@ -2,7 +2,7 @@
   "id": "F-065",
   "feature_id": "F-065",
   "title": "Uzun Süre Kullanılmayan Sistemlere Ani Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -28,10 +28,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "dormant system sudden access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:17.585282+00:00",
+  "generated_at": "2026-05-23T02:56:28.365354+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

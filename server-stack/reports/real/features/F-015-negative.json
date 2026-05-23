@@ -42,7 +42,7 @@
   "anomaly_detected": false,
   "evidence_expected": "hop-chain session event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:27.527219+00:00",
+  "generated_at": "2026-05-23T02:56:28.486642+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

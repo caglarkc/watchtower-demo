@@ -46,7 +46,7 @@
   "anomaly_detected": false,
   "evidence_expected": "bulk table/select scope event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:25.167675+00:00",
+  "generated_at": "2026-05-23T02:56:28.305390+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
