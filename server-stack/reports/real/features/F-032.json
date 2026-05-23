@@ -2,7 +2,7 @@
   "id": "F-032",
   "feature_id": "F-032",
   "title": "AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 16
+        "tokens": 25
       }
     }
   ],
@@ -21,17 +21,44 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-032",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 41,
+        "index": "corp-logs-f-032",
+        "pipeline": {
+          "feature_id": "F-032",
+          "index": "corp-logs-f-032",
+          "indexed": 41
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/vault/secrets.yml",
     "seeds/real/ai/prompts.yml",
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "internal host/user/network prompt event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.628936+00:00",
+  "generated_at": "2026-05-23T03:06:17.739481+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

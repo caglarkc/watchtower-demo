@@ -22,7 +22,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-033",
+      "assertion": "L2:log-pipeline:corp-events:F-033",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -30,11 +30,22 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 34,
+        "index": "corp-logs-f-033",
+        "pipeline": {
+          "feature_id": "F-033",
+          "index": "corp-logs-f-033",
+          "indexed": 34
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -46,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "unapproved AI tool access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:19.643077+00:00",
+  "generated_at": "2026-05-23T03:06:20.526876+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
