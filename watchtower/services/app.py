@@ -93,6 +93,10 @@ def _build_session(
         audit,
         default_tenant_slug=settings.default_tenant_slug,
     )
+    sources = SourceRepository(conn)
+    source_cursors = SourceCursorRepository(conn)
+    raw_events = RawEventRepository(conn)
+    ingest = IngestService(sources, source_cursors, raw_events)
     return SessionContext(
         conn=conn,
         settings=settings,
@@ -104,6 +108,10 @@ def _build_session(
         audit=audit,
         mode_controller=mode_controller,
         bootstrap_service=bootstrap_service,
+        sources=sources,
+        source_cursors=source_cursors,
+        raw_events=raw_events,
+        ingest=ingest,
     )
 
 
