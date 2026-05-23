@@ -2,7 +2,7 @@
   "id": "F-062",
   "feature_id": "F-062",
   "title": "İç Log Arama Anahtar Kelimesi Riski",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-siem",
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "risky internal log search keyword",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:06.415712+00:00",
+  "generated_at": "2026-05-23T10:26:09.623150+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

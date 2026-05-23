@@ -43,12 +43,12 @@
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 77,
+        "indexed": 78,
         "index": "corp-logs-f-081",
         "pipeline": {
           "feature_id": "F-081",
           "index": "corp-logs-f-081",
-          "indexed": 77
+          "indexed": 78
         }
       }
     }
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "role-based work-window deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:07.797141+00:00",
+  "generated_at": "2026-05-23T10:26:08.257545+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
