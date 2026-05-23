@@ -24,35 +24,35 @@
           "service": "bind-dns",
           "dig": [
             {
-              "query": "entropy-64774.corp.local",
+              "query": "entropy-22041.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-37099.corp.local",
+              "query": "entropy-37819.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-92914.corp.local",
+              "query": "entropy-86113.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-45908.corp.local",
+              "query": "entropy-71960.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-31235.corp.local",
+              "query": "entropy-12354.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-27249.corp.local",
+              "query": "entropy-15292.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-74883.corp.local",
+              "query": "entropy-18086.corp.local",
               "returncode": 9
             },
             {
-              "query": "entropy-58916.corp.local",
+              "query": "entropy-70969.corp.local",
               "returncode": 9
             }
           ]
@@ -170,35 +170,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-64774.corp.local",
+          "query": "entropy-22041.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-37099.corp.local",
+          "query": "entropy-37819.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-92914.corp.local",
+          "query": "entropy-86113.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-45908.corp.local",
+          "query": "entropy-71960.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-31235.corp.local",
+          "query": "entropy-12354.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-27249.corp.local",
+          "query": "entropy-15292.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-74883.corp.local",
+          "query": "entropy-18086.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-58916.corp.local",
+          "query": "entropy-70969.corp.local",
           "returncode": 9
         }
       ]
@@ -270,7 +270,7 @@
   "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:37.435699+00:00",
+  "generated_at": "2026-05-23T02:56:16.188873+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

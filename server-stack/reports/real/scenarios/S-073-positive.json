@@ -1,0 +1,116 @@
+{
+  "scenario_id": "S-073",
+  "title": "İK Bilgisayarında Keylogger Çalışması",
+  "mode": "positive",
+  "category": "dış saldırı desteği",
+  "user_role": "İK",
+  "deterministic_seed": 7073,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-046",
+    "F-059"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-046",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/process_tree_anomaly.jsonl",
+            "event_type": "process_tree_anomaly"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/process_tree_anomaly.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-059",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/clipboard_large_copy.jsonl",
+            "event_type": "clipboard_large_copy"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/clipboard_large_copy.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/process_tree_anomaly.jsonl",
+        "event_type": "process_tree_anomaly"
+      }
+    },
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/clipboard_large_copy.jsonl",
+        "event_type": "clipboard_large_copy"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/process_tree_anomaly.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/clipboard_large_copy.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml",
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:56:17.358843+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-073:7073:positive:real"
+}

@@ -46,7 +46,7 @@
   "anomaly_detected": true,
   "evidence_expected": "host/port fan-out event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:32.023656+00:00",
+  "generated_at": "2026-05-23T02:56:17.049533+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

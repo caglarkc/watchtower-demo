@@ -31,7 +31,7 @@
   "anomaly_detected": true,
   "evidence_expected": "unusual process duration/tree event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:16.538814+00:00",
+  "generated_at": "2026-05-23T02:56:17.507972+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
