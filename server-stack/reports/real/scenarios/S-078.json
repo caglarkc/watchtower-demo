@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-078",
   "title": "Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "Destek Personeli",
   "deterministic_seed": 8078,
@@ -22,52 +22,14 @@
         {
           "service": "nginx",
           "http_codes": [
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403"
+            "404",
+            "404"
           ]
         }
       ],
       "raw_logs_asserted": [
         {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
           "result": "PASS"
         }
       ],
@@ -86,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-048",
-            "count": 2960,
+            "count": 3440,
             "result": "PASS"
           },
           "result": "PASS",
@@ -118,8 +80,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 11,
-            "pattern": "4625_burst_then_4624"
+            "events": 1
           }
         }
       ],
@@ -144,7 +105,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-006",
-            "count": 2320,
+            "count": 2640,
             "result": "PASS"
           },
           "result": "PASS",
@@ -200,7 +161,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-029",
-            "count": 960,
+            "count": 1040,
             "result": "PASS"
           },
           "result": "PASS",
@@ -229,53 +190,14 @@
     {
       "service": "nginx",
       "http_codes": [
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403"
+        "404",
+        "404"
       ]
     },
     {
       "service": "samba-ad",
       "response": {
-        "events": 11,
-        "pattern": "4625_burst_then_4624"
+        "events": 1
       }
     },
     {
@@ -287,7 +209,7 @@
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
       "result": "PASS"
     },
     {
@@ -314,7 +236,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 2960,
+        "count": 3440,
         "result": "PASS"
       },
       "result": "PASS",
@@ -344,7 +266,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-006",
-        "count": 2320,
+        "count": 2640,
         "result": "PASS"
       },
       "result": "PASS",
@@ -374,7 +296,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-029",
-        "count": 960,
+        "count": 1040,
         "result": "PASS"
       },
       "result": "PASS",
@@ -400,12 +322,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:12.734323+00:00",
+  "generated_at": "2026-05-23T03:18:36.650528+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-078:8078:positive:real"
+  "replay_key": "S-078:8078:negative:real"
 }
