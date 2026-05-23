@@ -41,7 +41,10 @@ RI3_FEATURES = frozenset(
     | {f"F-{i:03d}" for i in range(64, 67)}
     | {f"F-{i:03d}" for i in range(67, 70)}
 )
-ALL_REAL = RI1_FEATURES | RI2_FEATURES | RI3_FEATURES
+RI4_FEATURES = frozenset(
+    {"F-009", "F-014", "F-056", "F-070", "F-071", "F-072", "F-073", "F-074", "F-075", "F-076", "F-077", "F-078"}
+)
+ALL_REAL = RI1_FEATURES | RI2_FEATURES | RI3_FEATURES | RI4_FEATURES
 
 
 def load_features() -> list[dict]:
@@ -100,9 +103,10 @@ def report() -> dict:
     ri1 = _phase_stats(RI1_FEATURES)
     ri2 = _phase_stats(RI2_FEATURES)
     ri3 = _phase_stats(RI3_FEATURES)
+    ri4 = _phase_stats(RI4_FEATURES)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "phase": "RI-3",
+        "phase": "RI-4",
         "total_features": len(rows),
         "metadata_complete": meta_ok,
         "implemented": sum(1 for r in rows if r["status"] == "PASS"),
