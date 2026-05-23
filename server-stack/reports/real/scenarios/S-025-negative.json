@@ -16,7 +16,7 @@
     {
       "feature_id": "F-015",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "zeek",
@@ -44,7 +44,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-015",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-015",
+            "count": 1449,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 111,
+            "index": "corp-logs-f-015",
+            "pipeline": {
+              "feature_id": "F-015",
+              "index": "corp-logs-f-015",
+              "indexed": 111
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -54,7 +85,7 @@
     {
       "feature_id": "F-063",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -70,7 +101,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-063",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-063",
+            "count": 198,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 24,
+            "index": "corp-logs-f-063",
+            "pipeline": {
+              "feature_id": "F-063",
+              "index": "corp-logs-f-063",
+              "indexed": 24
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -116,7 +178,68 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-015",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-015",
+        "count": 1449,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 111,
+        "index": "corp-logs-f-015",
+        "pipeline": {
+          "feature_id": "F-015",
+          "index": "corp-logs-f-015",
+          "indexed": 111
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-063",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-063",
+        "count": 198,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 24,
+        "index": "corp-logs-f-063",
+        "pipeline": {
+          "feature_id": "F-063",
+          "index": "corp-logs-f-063",
+          "indexed": 24
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
@@ -125,7 +248,7 @@
   "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:27.144285+00:00",
+  "generated_at": "2026-05-23T03:12:13.920893+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

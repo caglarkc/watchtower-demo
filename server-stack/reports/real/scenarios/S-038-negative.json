@@ -15,7 +15,7 @@
     {
       "feature_id": "F-048",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "nginx",
@@ -33,7 +33,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-048",
+          "assertion": "L3:elasticsearch:corp-logs-f-048",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -41,10 +41,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-048",
+            "count": 880,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-048",
+            "pipeline": {
+              "feature_id": "F-048",
+              "index": "corp-logs-f-048",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -72,7 +88,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-048",
+      "assertion": "L3:elasticsearch:corp-logs-f-048",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -80,10 +96,26 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-048",
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-048",
+        "pipeline": {
+          "feature_id": "F-048",
+          "index": "corp-logs-f-048",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -95,7 +127,7 @@
   "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:29.281601+00:00",
+  "generated_at": "2026-05-23T03:12:16.342093+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

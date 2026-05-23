@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-038",
   "title": "Güvenlik Duvarı Kurallarının Esnetilmesi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3038,
@@ -20,52 +20,14 @@
         {
           "service": "nginx",
           "http_codes": [
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403"
+            "404",
+            "404"
           ]
         }
       ],
       "raw_logs_asserted": [
         {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
           "result": "PASS"
         }
       ],
@@ -84,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-048",
-            "count": 400,
+            "count": 880,
             "result": "PASS"
           },
           "result": "PASS",
@@ -113,52 +75,14 @@
     {
       "service": "nginx",
       "http_codes": [
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403"
+        "404",
+        "404"
       ]
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
       "result": "PASS"
     }
   ],
@@ -177,7 +101,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 400,
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -200,12 +124,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:36.504856+00:00",
+  "generated_at": "2026-05-23T03:12:16.342093+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-038:3038:positive:real"
+  "replay_key": "S-038:3038:negative:real"
 }
