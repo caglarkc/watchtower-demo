@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from tests.graph.conftest import seed_anomaly_baseline, set_tenant_mode
+from tests.e2e.conftest import seed_baseline_for_candidate
+from tests.graph.conftest import set_tenant_mode
 from watchtower.e2e.replay import first_candidate_from_feature
 from watchtower.e2e.runner import run_graph_to_completion
 from watchtower.candidates.extractor import CandidateExtractor
@@ -23,16 +24,6 @@ def _candidate_from_f001(
     )
     assert cand is not None, "F-001 replay must yield a candidate"
     return cand
-
-
-def _seed_for_candidate(app, tenant_id: str, candidate) -> None:
-    seed_anomaly_baseline(
-        app,
-        tenant_id,
-        user_id=str(candidate.attributes.get("user_id") or candidate.actor),
-        department_id=candidate.attributes.get("department_id"),
-        metric_name=str(candidate.attributes.get("metric_name", "event_volume")),
-    )
 
 
 def test_learn_mode_zero_alert_silent_and_learning_queue(
