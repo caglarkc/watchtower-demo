@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-018",
-        "count": 720,
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "out-of-mailbox access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:12:17.786856+00:00",
+  "generated_at": "2026-05-23T03:13:32.617840+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
