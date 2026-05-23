@@ -16,6 +16,13 @@ SERVICE_URLS = [
     "http://172.28.0.15:8080/health",
     "http://172.28.0.42:8080/health",
     "http://172.28.0.43:8080/health",
+    "http://172.28.0.20:8080/health",
+    "http://172.28.0.21:8080/health",
+    "http://172.28.0.22:8080/health",
+    "http://172.28.0.44:8080/health",
+    "http://172.28.0.45:8080/health",
+    "http://172.28.0.26:8080/health",
+    "http://172.28.0.28:8080/health",
 ]
 
 
