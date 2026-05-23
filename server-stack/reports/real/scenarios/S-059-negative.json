@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 15303,
+            "count": 16743,
             "result": "PASS"
           },
           "result": "PASS",
@@ -170,7 +170,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 8202,
+            "count": 9162,
             "result": "PASS"
           },
           "result": "PASS",
@@ -321,7 +321,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 15303,
+        "count": 16743,
         "result": "PASS"
       },
       "result": "PASS",
@@ -377,7 +377,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 8202,
+        "count": 9162,
         "result": "PASS"
       },
       "result": "PASS",
@@ -433,7 +433,7 @@
   "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:23.701066+00:00",
+  "generated_at": "2026-05-23T10:27:41.407129+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-064",
   "title": "Stajyerin Wi-Fi Ağı Sniffing Denemesi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 6064,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-057",
-            "count": 3204,
+            "count": 3364,
             "result": "PASS"
           },
           "result": "PASS",
@@ -100,7 +100,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-057",
-        "count": 3204,
+        "count": 3364,
         "result": "PASS"
       },
       "result": "PASS",
@@ -122,12 +122,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:18.690442+00:00",
+  "generated_at": "2026-05-23T10:27:42.497314+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-064:6064:positive:real"
+  "replay_key": "S-064:6064:negative:real"
 }
