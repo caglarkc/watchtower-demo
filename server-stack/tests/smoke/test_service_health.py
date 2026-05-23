@@ -31,11 +31,14 @@ def test_core_services_running() -> None:
         pytest.skip("Stack not running — run: make up")
 
     expected = [
+        "corp-samba-ad",
+        "corp-samba-files",
         "corp-bind-dns",
         "corp-dhcp",
         "corp-zeek-synthetic",
         "corp-endpoint-synthetic",
         "corp-log-pipeline",
+        "corp-elasticsearch",
     ]
     for name in expected:
         assert name in out, f"Missing container {name}"
