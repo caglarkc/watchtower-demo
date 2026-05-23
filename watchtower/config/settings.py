@@ -74,6 +74,24 @@ class WatchtowerSettings(BaseSettings):
     retention_audit_days: int = Field(default=365, ge=0, le=3650)
     retention_llm_audit_days: int = Field(default=90, ge=0, le=3650)
     daemon_ingest_interval_seconds: int = Field(default=60, ge=5, le=3600)
+    graph_checkpoint_enabled: bool = Field(
+        default=True,
+        description="Persist LangGraph checkpoints to SQLite (production default)",
+    )
+    graph_checkpoint_use_memory: bool = Field(
+        default=False,
+        description="Force in-process MemorySaver (tests/dev only)",
+    )
+    graph_checkpoint_path: Path = Field(
+        default=PROJECT_ROOT / "data" / "graph_checkpoints.db",
+        description="Separate SQLite file for LangGraph checkpoints",
+    )
+    graph_checkpoint_retention_days: int = Field(
+        default=30,
+        ge=0,
+        le=3650,
+        description="Days to keep checkpoint blobs for completed runs (0=disable prune)",
+    )
     health_listen_host: str = Field(default="127.0.0.1")
     health_listen_port: int = Field(default=8080, ge=1, le=65535)
 
