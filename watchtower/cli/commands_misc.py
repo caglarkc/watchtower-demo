@@ -8,8 +8,6 @@ from typing import Annotated, Optional
 import typer
 
 from watchtower.cli.deps import require_bootstrap
-from watchtower.domain.rules import ApproverRole
-
 findings_app = typer.Typer(help="Silent findings commands")
 baseline_app = typer.Typer(help="Baseline profile commands")
 rules_app = typer.Typer(help="Feedback rule approval commands")
@@ -20,13 +18,18 @@ def findings_silent(
     ctx: typer.Context,
     last: Annotated[str, typer.Option("--last", help="e.g. 7d")] = "7d",
 ) -> None:
-    from watchtower.alerts.duration import parse_duration
+    from datetime import UTC, datetime, timedelta
 
     wt_app = ctx.obj
-    since = parse_duration(last) - __import__("datetime").timedelta(0)
+    if last.endswith("d"):
+        since = datetime.now(UTC) - timedelta(days=int(last[:-1]))
+    elif last.endswith("h"):
+        since = datetime.now(UTC) - timedelta(hours=int(last[:-1]))
+    else:
+        since = datetime.now(UTC) - timedelta(days=7)
     with wt_app.session() as session:
         tenant_id = require_bootstrap(session)
-        rows = session.alerts._repo.list_silent_findings(tenant_id, since=since)
+        rows = session.alerts.list_silent_findings(tenant_id, since=since)
     if not rows:
         typer.echo("(no silent findings)")
         return

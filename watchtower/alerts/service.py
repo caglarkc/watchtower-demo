@@ -222,6 +222,15 @@ class AlertService:
             tenant_id, as_of=datetime.now(UTC)
         )
 
+    def list_silent_findings(
+        self,
+        tenant_id: str,
+        *,
+        since: datetime | None = None,
+        limit: int = 100,
+    ) -> list[dict[str, Any]]:
+        return self._repo.list_silent_findings(tenant_id, since=since, limit=limit)
+
     def _transition(
         self,
         tenant_id: str,
