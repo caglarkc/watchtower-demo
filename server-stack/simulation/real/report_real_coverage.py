@@ -114,7 +114,7 @@ def report() -> dict:
     ri4 = _phase_stats(RI4_FEATURES)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "phase": "RI-4",
+        "phase": "RI-6",
         "total_features": len(rows),
         "metadata_complete": meta_ok,
         "implemented": sum(1 for r in rows if r["status"] == "PASS"),
