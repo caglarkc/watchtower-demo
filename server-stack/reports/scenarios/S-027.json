@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-027",
   "title": "İç Ağda Gizli Posta Kuralı Oluşturma",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Satış",
   "deterministic_seed": 2027,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for İç Ağda Gizli Posta Kuralı Oluşturma",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,12 +24,12 @@
       "user_role": "Satış",
       "category": "credential ihlali",
       "seed": 2027,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "mail_rule_change",
       "log_channel": "dovecot",
-      "forward_rules_added": 3,
+      "forward_rules_added": 0,
       "source_feature": "F-017",
       "scenario_id": "S-027"
     }
@@ -38,9 +38,12 @@
     "reports/scenario_logs/S-027/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-027/dovecot/mail_rule_change.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:36:01.926778+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:36:04.748884+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-027:2027:positive"
+  "replay_key": "S-027:2027:negative"
 }

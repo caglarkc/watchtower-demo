@@ -61,7 +61,7 @@
     "reports/scenario_logs/S-047/activity/activity_burst.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T05:09:57.697332+00:00",
+  "generated_at": "2026-05-23T05:36:02.585833+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-047:4047:positive"

@@ -60,7 +60,7 @@
     "reports/scenario_logs/S-028/scenarios/after_hours_session.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T05:09:57.024676+00:00",
+  "generated_at": "2026-05-23T05:36:01.963186+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-028:3028:positive"

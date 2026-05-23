@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-021",
   "title": "Eski Credential ile API Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 2021,
@@ -15,7 +15,7 @@
     "internal-app"
   ],
   "expected_evidence": "Multi-signal workflow for Eski Credential ile API Kullanımı",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,20 +25,20 @@
       "user_role": "Yazılım Geliştirici",
       "category": "credential ihlali",
       "seed": 2021,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "api_key_usage",
       "log_channel": "app",
       "key_id": "svc-deploy",
-      "source_ips": 3,
+      "source_ips": 1,
       "source_feature": "F-012",
       "scenario_id": "S-021"
     },
     {
       "event_type": "api_pattern_deviation",
       "log_channel": "app",
-      "calls_per_hour": 430,
+      "calls_per_hour": 38,
       "baseline": 40,
       "source_feature": "F-047",
       "scenario_id": "S-021"
@@ -49,9 +49,12 @@
     "reports/scenario_logs/S-021/app/api_key_usage.jsonl",
     "reports/scenario_logs/S-021/app/api_pattern_deviation.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:36:01.719618+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:36:04.535608+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-021:2021:positive"
+  "replay_key": "S-021:2021:negative"
 }

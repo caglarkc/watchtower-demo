@@ -40,7 +40,7 @@
     "reports/scenario_logs/S-061/hris/credential_reset_burst.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T05:09:58.165049+00:00",
+  "generated_at": "2026-05-23T05:36:03.048796+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-061:6061:positive"

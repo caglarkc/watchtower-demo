@@ -26,3 +26,4 @@
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "source_feature": "F-037", "scenario_id": "S-075", "timestamp": "2026-05-23T03:18:02.171521+00:00"}
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "source_feature": "F-037", "scenario_id": "S-075", "timestamp": "2026-05-23T05:09:58.637405+00:00"}
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "source_feature": "F-037", "scenario_id": "S-075", "timestamp": "2026-05-23T05:10:01.523686+00:00"}
+{"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "source_feature": "F-037", "scenario_id": "S-075", "timestamp": "2026-05-23T05:36:03.515616+00:00"}
