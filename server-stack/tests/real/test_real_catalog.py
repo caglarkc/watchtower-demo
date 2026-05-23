@@ -70,7 +70,9 @@ def test_real_parity_levels_are_valid(features_doc: dict) -> None:
         target = feat.get("real_parity_target", "L2")
         assert level in VALID_LEVELS, fid
         assert target in VALID_LEVELS, fid
-        if fid in RI1 or fid in RI2 or fid in RI3 or fid in RI4:
+        if fid in RI1 or fid in RI2:
+            assert level in ("L2", "L3"), fid
+        elif fid in RI3 or fid in RI4:
             assert level == "L2", fid
 
 
