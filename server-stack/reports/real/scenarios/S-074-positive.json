@@ -17,7 +17,7 @@
     {
       "feature_id": "F-046",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -33,7 +33,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-046",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-046",
+            "count": 34,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 12,
+            "index": "corp-logs-f-046",
+            "pipeline": {
+              "feature_id": "F-046",
+              "index": "corp-logs-f-046",
+              "indexed": 12
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -60,7 +91,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-065",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 12,
+            "index": "corp-logs-f-065",
+            "pipeline": {
+              "feature_id": "F-065",
+              "index": "corp-logs-f-065",
+              "indexed": 12
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/vault/secrets.yml",
         "seeds/real/ai/prompts.yml",
@@ -88,7 +146,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "L3:elasticsearch:corp-logs:F-069",
+          "assertion": "L2:log-pipeline:corp-events:F-069",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -96,11 +154,22 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+",
-          "parity_level": "L3"
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 58,
+            "index": "corp-logs-f-069",
+            "pipeline": {
+              "feature_id": "F-069",
+              "index": "corp-logs-f-069",
+              "indexed": 58
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -149,7 +218,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-069",
+      "assertion": "L3:elasticsearch:corp-logs-f-046",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -157,11 +226,78 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-046",
+        "count": 34,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 12,
+        "index": "corp-logs-f-046",
+        "pipeline": {
+          "feature_id": "F-046",
+          "index": "corp-logs-f-046",
+          "indexed": 12
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-065",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 12,
+        "index": "corp-logs-f-065",
+        "pipeline": {
+          "feature_id": "F-065",
+          "index": "corp-logs-f-065",
+          "indexed": 12
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-069",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 58,
+        "index": "corp-logs-f-069",
+        "pipeline": {
+          "feature_id": "F-069",
+          "index": "corp-logs-f-069",
+          "indexed": 58
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -177,7 +313,7 @@
   "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:17.647789+00:00",
+  "generated_at": "2026-05-23T03:12:02.545940+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

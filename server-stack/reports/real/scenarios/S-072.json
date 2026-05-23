@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-072",
   "title": "CTO Hesabından Ağ Trafik Kopyalama Kuralı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "CTO",
   "deterministic_seed": 7072,
@@ -17,12 +17,12 @@
     {
       "feature_id": "F-002",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 20,
             "log": "/var/log/corp/zeek/conn.log"
           }
         }
@@ -36,7 +36,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-002",
+          "assertion": "L3:elasticsearch:corp-logs-f-002",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -44,10 +44,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-002",
+            "count": 560,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-002",
+            "pipeline": {
+              "feature_id": "F-002",
+              "index": "corp-logs-f-002",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -59,7 +75,7 @@
     {
       "feature_id": "F-057",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -75,7 +91,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-057",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-057",
+            "count": 84,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 16,
+            "index": "corp-logs-f-057",
+            "pipeline": {
+              "feature_id": "F-057",
+              "index": "corp-logs-f-057",
+              "indexed": 16
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -102,7 +149,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "L3:elasticsearch:corp-logs:F-069",
+          "assertion": "L2:log-pipeline:corp-events:F-069",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -110,11 +157,22 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+",
-          "parity_level": "L3"
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 57,
+            "index": "corp-logs-f-069",
+            "pipeline": {
+              "feature_id": "F-069",
+              "index": "corp-logs-f-069",
+              "indexed": 57
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -129,7 +187,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 20,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -164,7 +222,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-002",
+      "assertion": "L3:elasticsearch:corp-logs-f-002",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -172,13 +230,29 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-002",
+        "count": 560,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-002",
+        "pipeline": {
+          "feature_id": "F-002",
+          "index": "corp-logs-f-002",
+          "indexed": 80
+        }
+      }
     },
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-069",
+      "assertion": "L3:elasticsearch:corp-logs-f-057",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -186,11 +260,52 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-057",
+        "count": 84,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 16,
+        "index": "corp-logs-f-057",
+        "pipeline": {
+          "feature_id": "F-057",
+          "index": "corp-logs-f-057",
+          "indexed": 16
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-069",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 57,
+        "index": "corp-logs-f-069",
+        "pipeline": {
+          "feature_id": "F-069",
+          "index": "corp-logs-f-069",
+          "indexed": 57
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -202,12 +317,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:40.489550+00:00",
+  "generated_at": "2026-05-23T03:12:02.029391+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-072:7072:negative:real"
+  "replay_key": "S-072:7072:positive:real"
 }
