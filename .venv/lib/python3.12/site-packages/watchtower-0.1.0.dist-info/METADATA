@@ -7,5 +7,7 @@ Requires-Dist: pydantic>=2.0
 Requires-Dist: pydantic-settings>=2.0
 Requires-Dist: PyYAML>=6.0
 Requires-Dist: typer>=0.12
+Requires-Dist: langgraph>=0.2
+Requires-Dist: langgraph-checkpoint-sqlite>=2.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0; extra == "dev"

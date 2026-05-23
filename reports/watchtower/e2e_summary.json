@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-05-23T05:12:47.408829+00:00",
+  "preflight_ok": true,
+  "features_total": 81,
+  "features_ingested_normalized": 81,
+  "scenarios_total": 83,
+  "scenarios_ingested_normalized": 83,
+  "feature_failures": [],
+  "scenario_failures": [],
+  "real_gate_pass": true,
+  "gates": {
+    "81_features": true,
+    "83_scenarios": true
+  }
+}
