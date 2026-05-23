@@ -1,8 +1,9 @@
-"""Read-only JSONL file connector."""
+"""Read-only JSONL file connector with rotation/truncation-safe cursors."""
 
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -31,6 +32,12 @@ def _parse_timestamp(payload: dict[str, Any]) -> datetime | None:
     return None
 
 
+def _file_identity(path: Path) -> tuple[int, int]:
+    stat = path.stat()
+    inode = int(getattr(stat, "st_ino", 0) or 0)
+    return inode, int(stat.st_size)
+
+
 class FileJsonlConnector(BaseConnector):
     connector_type = "file_jsonl"
 
@@ -44,10 +51,26 @@ class FileJsonlConnector(BaseConnector):
                 status="unhealthy",
                 message=f"file not found: {self.file_path}",
             )
+        inode, size = _file_identity(self.file_path)
         return SourceHealth(
             status="healthy",
             message="jsonl file readable",
-            details={"path": str(self.file_path), "size": self.file_path.stat().st_size},
+            details={
+                "path": str(self.file_path),
+                "size": size,
+                "inode": inode,
+            },
+        )
+
+    def _reset_file_cursor(self, cursor: ConnectorCursor, path_key: str, reason: str) -> None:
+        cursor.set_file_state(
+            path_key,
+            offset=0,
+            line_number=0,
+            partial="",
+            inode=_file_identity(self.file_path)[0],
+            size=_file_identity(self.file_path)[1],
+            reset_reason=reason,
         )
 
     def poll(self, cursor: ConnectorCursor, limit: int) -> EventBatch:
@@ -55,19 +78,53 @@ class FileJsonlConnector(BaseConnector):
         if not self.file_path.is_file():
             raise ConnectorError(f"file not found: {self.file_path}")
 
-        offset = cursor.file_offset(path_key)
+        inode, size = _file_identity(self.file_path)
+        state = cursor.file_state(path_key)
+        offset = int(state.get("offset", 0))
+        line_number = int(state.get("line_number", 0))
+        partial = str(state.get("partial", "") or "")
+
+        prev_inode = state.get("inode")
+        prev_size = state.get("size")
+        if prev_inode is not None and int(prev_inode) != inode:
+            self._reset_file_cursor(cursor, path_key, "inode_rotation")
+            offset = 0
+            line_number = 0
+            partial = ""
+            state = cursor.file_state(path_key)
+        elif prev_size is not None and size < int(prev_size):
+            self._reset_file_cursor(cursor, path_key, "truncation")
+            offset = 0
+            line_number = 0
+            partial = ""
+            state = cursor.file_state(path_key)
+        elif offset > size:
+            self._reset_file_cursor(cursor, path_key, "offset_past_eof")
+            offset = 0
+            line_number = 0
+            partial = ""
+
         events: list[RawEventRecord] = []
-        line_number = 0
         bytes_read = 0
 
-        with self.file_path.open(encoding="utf-8") as handle:
+        with self.file_path.open(encoding="utf-8", errors="replace") as handle:
             if offset:
                 handle.seek(offset)
+            buffer = partial
             while len(events) < limit:
                 line = handle.readline()
                 if not line:
+                    if buffer.strip():
+                        partial = buffer
+                    else:
+                        partial = ""
                     break
                 bytes_read += len(line.encode("utf-8"))
+                buffer += line
+                if not line.endswith("\n"):
+                    partial = buffer
+                    break
+                buffer = ""
                 line_number += 1
                 stripped = line.strip()
                 if not stripped:
@@ -91,9 +148,16 @@ class FileJsonlConnector(BaseConnector):
                 )
 
         new_offset = offset + bytes_read
+        cursor.set_file_state(
+            path_key,
+            offset=new_offset,
+            line_number=line_number,
+            partial=partial,
+            inode=inode,
+            size=size,
+        )
+        has_more = new_offset < size or bool(partial)
         next_cursor = ConnectorCursor(data=dict(cursor.data))
-        next_cursor.set_file_offset(path_key, new_offset)
-        has_more = bool(events) and new_offset < self.file_path.stat().st_size
         return EventBatch(events=events, next_cursor=next_cursor, has_more=has_more)
 
     def ack(self, cursor: ConnectorCursor) -> None:
@@ -103,5 +167,5 @@ class FileJsonlConnector(BaseConnector):
         return SourceSchemaHint(
             format="jsonl",
             fields=["timestamp", "user", "event_type"],
-            notes="One JSON object per line",
+            notes="Byte-offset cursor with rotation/truncation detection",
         )
