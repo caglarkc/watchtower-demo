@@ -13,6 +13,7 @@ from watchtower.domain.mode import VALID_MODES
 from watchtower.services.app import create_app
 from watchtower.services.bootstrap import BootstrapRequiredError
 from watchtower.cli.commands_alerts import alerts_app
+from watchtower.cli.commands_cases import register_cases_commands
 from watchtower.cli.commands_misc import (
     baseline_app,
     findings_app,
@@ -46,6 +47,7 @@ register_query_command(app)
 register_production_commands(app)
 register_daemon_commands(app)
 register_graph_commands(app)
+register_cases_commands(app)
 register_sources_onboard(sources_app)
 
 

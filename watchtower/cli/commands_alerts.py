@@ -41,21 +41,20 @@ def alerts_list(
 def alerts_show(
     ctx: typer.Context,
     alert_id: Annotated[str, typer.Argument(help="Alert id")],
+    explain: Annotated[bool, typer.Option("--explain", help="Generate LLM explanation")] = False,
 ) -> None:
+    from watchtower.cli.commands_cases import _render_alert_detail
+
     wt_app = ctx.obj
     with wt_app.session() as session:
         tenant_id = require_bootstrap(session)
-        alert = session.alerts.get_alert(tenant_id, alert_id)
-    if alert is None:
+        detail = session.alerts.get_alert_detail(
+            tenant_id, alert_id, include_llm=explain
+        )
+    if detail is None:
         typer.echo(f"alert not found: {alert_id}", err=True)
         raise typer.Exit(code=1)
-    typer.echo(f"id: {alert.id}")
-    typer.echo(f"feature: {alert.feature_id}")
-    typer.echo(f"severity: {alert.severity}")
-    typer.echo(f"status: {alert.status}")
-    typer.echo(f"title: {alert.title}")
-    if alert.summary:
-        typer.echo(f"summary: {alert.summary}")
+    _render_alert_detail(detail)
 
 
 @alerts_app.command("ack")
