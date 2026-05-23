@@ -12,6 +12,13 @@ from watchtower.cli.deps import get_settings, require_bootstrap
 from watchtower.domain.mode import VALID_MODES
 from watchtower.services.app import create_app
 from watchtower.services.bootstrap import BootstrapRequiredError
+from watchtower.cli.commands_alerts import alerts_app
+from watchtower.cli.commands_misc import (
+    baseline_app,
+    findings_app,
+    register_query_command,
+    rules_app,
+)
 
 app = typer.Typer(
     name="wt",
@@ -25,6 +32,11 @@ ingest_app = typer.Typer(help="Ingest commands")
 app.add_typer(modes_app, name="modes")
 app.add_typer(sources_app, name="sources")
 app.add_typer(ingest_app, name="ingest")
+app.add_typer(alerts_app, name="alerts")
+app.add_typer(findings_app, name="findings")
+app.add_typer(baseline_app, name="baseline")
+app.add_typer(rules_app, name="rules")
+register_query_command(app)
 
 
 def _open_app(
