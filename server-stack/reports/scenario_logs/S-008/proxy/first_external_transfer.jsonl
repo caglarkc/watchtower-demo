@@ -14,3 +14,4 @@
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "partner.corp.local", "mb": 50, "first_seen": false, "source_feature": "F-068", "scenario_id": "S-008", "timestamp": "2026-05-23T02:29:20.351147+00:00"}
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "source_feature": "F-068", "scenario_id": "S-008", "timestamp": "2026-05-23T02:36:55.644389+00:00"}
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "partner.corp.local", "mb": 50, "first_seen": false, "source_feature": "F-068", "scenario_id": "S-008", "timestamp": "2026-05-23T02:36:58.447963+00:00"}
+{"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "source_feature": "F-068", "scenario_id": "S-008", "timestamp": "2026-05-23T02:44:09.337126+00:00"}

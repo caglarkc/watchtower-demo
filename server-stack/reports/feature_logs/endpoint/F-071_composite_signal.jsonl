@@ -14,3 +14,4 @@
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "feature_id": "F-071", "timestamp": "2026-05-23T02:36:39.310807+00:00"}
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "feature_id": "F-071", "timestamp": "2026-05-23T02:36:54.414807+00:00"}
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "feature_id": "F-071", "timestamp": "2026-05-23T02:43:52.740801+00:00"}
+{"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "feature_id": "F-071", "timestamp": "2026-05-23T02:44:08.107767+00:00"}
