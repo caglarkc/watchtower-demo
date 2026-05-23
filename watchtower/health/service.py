@@ -12,6 +12,10 @@ from typing import Any, Literal
 from watchtower import __version__
 from watchtower.config.settings import WatchtowerSettings
 from watchtower.llm.providers.onboarding import resolve_provider_chain
+from watchtower.observability.metrics import (
+    METRIC_LOOP_DURATION_LAST,
+    METRIC_SOURCE_ERRORS,
+)
 from watchtower.storage.migrations.runner import MigrationRunner
 
 HealthStatus = Literal["healthy", "degraded", "unhealthy"]
@@ -64,6 +68,9 @@ class HealthService:
         checks.append(self._check_disk(settings))
         if session is not None:
             checks.extend(self._check_runtime(session, settings, conn))
+            tenant = session.bootstrap_service.get_default_tenant()
+            if tenant is not None and hasattr(session, "metrics"):
+                checks.append(self._check_metrics(session, tenant.id))
         status = _aggregate_status(checks)
         return HealthReport(status=status, version=__version__, checks=checks)
 
