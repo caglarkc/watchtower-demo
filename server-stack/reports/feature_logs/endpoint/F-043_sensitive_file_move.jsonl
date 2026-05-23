@@ -56,3 +56,4 @@
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "feature_id": "F-043", "timestamp": "2026-05-23T05:35:42.446010+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "feature_id": "F-043", "timestamp": "2026-05-23T05:35:55.452077+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "feature_id": "F-043", "timestamp": "2026-05-23T05:35:58.642342+00:00"}
+{"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "feature_id": "F-043", "timestamp": "2026-05-23T08:40:55.316260+00:00"}
