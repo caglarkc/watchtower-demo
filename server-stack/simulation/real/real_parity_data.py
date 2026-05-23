@@ -143,7 +143,7 @@ def _raw_log_assertion(tool: str, evidence_expected: str) -> str:
 
 def _ingest_assertion(feature_id: str, priority: str) -> str:
     if feature_id in INGEST_L3_FEATURES:
-        return "pending:L3:elasticsearch:wazuh-alerts-*"
+        return "L3:elasticsearch:corp-logs:wazuh-alerts-*"
     if priority in ("P0", "P1"):
         return "pending:L3:log-pipeline:corp-events-*"
     return "none:L0:synthetic-authoritative"

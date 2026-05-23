@@ -106,7 +106,9 @@ def _checks_ri2(feature_id: str, positive: bool) -> list:
 
 
 def _checks_ri3(feature_id: str, positive: bool) -> list:
-    if feature_id in ("F-012", "F-013"):
+    if feature_id == "F-012":
+        return [lambda s: assert_vault_audit(s), lambda s: assert_app_audit("internal-app", "api_pattern")]
+    if feature_id == "F-013":
         return [lambda s: assert_vault_audit(s)]
     if feature_id in ("F-030", "F-031", "F-032", "F-035", "F-036"):
         return [lambda s: assert_ai_gateway(s, "prompt")]
