@@ -131,6 +131,26 @@ def assert_activity(since: float, action: str) -> dict:
     return assert_jsonl(LOG_PATHS["activity"], action)
 
 
+def assert_hris(since: float, event_type: str) -> dict:
+    return assert_jsonl(LOG_PATHS["hris-audit"], event_type)
+
+
+def assert_badge(since: float, event_type: str) -> dict:
+    return assert_jsonl(LOG_PATHS["badge-audit"], event_type)
+
+
+def assert_cups(since: float, needle: str = "print_job") -> dict:
+    return assert_jsonl(LOG_PATHS["cups-print"], needle)
+
+
+def assert_mattermost(since: float, needle: str = "composite_signal") -> dict:
+    return assert_jsonl(LOG_PATHS["mattermost-chat"], needle)
+
+
+def assert_suitecrm(since: float, needle: str = "multi_user_record_chain") -> dict:
+    return assert_jsonl(LOG_PATHS["suitecrm-audit"], needle)
+
+
 def assert_app_audit(role: str, action: str) -> dict:
     key = {"internal-app": "app-audit", "siem": "siem-audit", "hypervisor": "hypervisor-audit", "artifact": "artifact-audit"}.get(role, "app-audit")
     path = LOG_PATHS[key]
