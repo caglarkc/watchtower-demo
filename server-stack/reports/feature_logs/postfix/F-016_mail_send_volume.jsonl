@@ -56,3 +56,4 @@
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "feature_id": "F-016", "timestamp": "2026-05-23T05:09:45.008077+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "feature_id": "F-016", "timestamp": "2026-05-23T05:09:47.259593+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "feature_id": "F-016", "timestamp": "2026-05-23T05:35:32.498942+00:00"}
+{"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "feature_id": "F-016", "timestamp": "2026-05-23T05:35:39.856096+00:00"}
