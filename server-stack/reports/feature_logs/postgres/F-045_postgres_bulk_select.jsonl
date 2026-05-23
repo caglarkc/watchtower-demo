@@ -52,3 +52,4 @@
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "feature_id": "F-045", "timestamp": "2026-05-23T03:17:48.896150+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "feature_id": "F-045", "timestamp": "2026-05-23T05:09:30.140953+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "feature_id": "F-045", "timestamp": "2026-05-23T05:09:37.473595+00:00"}
+{"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "feature_id": "F-045", "timestamp": "2026-05-23T05:09:46.321725+00:00"}
