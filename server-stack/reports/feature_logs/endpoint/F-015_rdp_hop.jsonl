@@ -62,3 +62,4 @@
 {"event_type": "rdp_hop", "hops": ["ws1", "files1"], "feature_id": "F-015", "timestamp": "2026-05-23T05:35:48.822034+00:00"}
 {"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "feature_id": "F-015", "timestamp": "2026-05-23T08:40:52.698088+00:00"}
 {"event_type": "rdp_hop", "hops": ["ws1", "files1"], "feature_id": "F-015", "timestamp": "2026-05-23T08:41:00.376536+00:00"}
+{"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "feature_id": "F-015", "timestamp": "2026-05-23T08:41:07.611851+00:00"}

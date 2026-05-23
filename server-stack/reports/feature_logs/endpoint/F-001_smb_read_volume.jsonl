@@ -62,3 +62,5 @@
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "feature_id": "F-001", "timestamp": "2026-05-23T05:35:47.929124+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "feature_id": "F-001", "timestamp": "2026-05-23T08:40:51.401859+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "feature_id": "F-001", "timestamp": "2026-05-23T08:40:59.008642+00:00"}
+{"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "feature_id": "F-001", "timestamp": "2026-05-23T08:41:06.648627+00:00"}
+{"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "feature_id": "F-001", "timestamp": "2026-05-23T08:41:08.793327+00:00"}
