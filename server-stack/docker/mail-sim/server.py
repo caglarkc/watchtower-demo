@@ -42,8 +42,13 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
+    def loop() -> None:
+        while True:
+            _baseline()
+            time.sleep(45)
+
     _baseline()
-    threading.Thread(target=lambda: [(_baseline(), time.sleep(45)) for _ in iter(int, 1)], daemon=True).start()
+    threading.Thread(target=loop, daemon=True).start()
     HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 
 
