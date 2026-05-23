@@ -28,7 +28,7 @@ from watchtower.graph.state import GraphState
 from watchtower.graph.validation import safe_node
 from watchtower.policy.engine import PolicyEngine
 from watchtower.rules.scope import scope_matches
-from watchtower.taxonomy.loader import load_feature_taxonomy
+from watchtower.taxonomy.loader import load_feature_taxonomy as get_feature_taxonomy
 
 
 def _candidate(state: GraphState) -> CandidateEvent:
@@ -79,7 +79,7 @@ def resolve_asset(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
 @safe_node("load_feature_taxonomy", TaxonomyOutput)
 def load_feature_taxonomy(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
     cand = _candidate(state)
-    entry = load_feature_taxonomy().by_id()[cand.feature_hint]
+    entry = get_feature_taxonomy().by_id()[cand.feature_hint]
     tax = TaxonomyOutput(
         feature_id=entry.feature_id,
         primary_detection_class=entry.primary_detection_class,
@@ -93,7 +93,7 @@ def load_feature_taxonomy(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
 def load_policy_context(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
     cand = _candidate(state)
     identity = state.get("identity", {})
-    entry = load_feature_taxonomy().by_id()[cand.feature_hint]
+    entry = get_feature_taxonomy().by_id()[cand.feature_hint]
     inp = AssessmentInput(
         tenant_id=state["tenant_id"],
         feature_id=cand.feature_hint,
