@@ -121,6 +121,13 @@ def _build_session(
         candidate_events,
         normalizer,
     )
+    baseline_repo = BaselineRepository(conn)
+    baseline = BaselineEngine(
+        baseline_repo,
+        learning_window_days=settings.baseline_learning_window_days,
+        min_user_samples=settings.baseline_min_user_samples,
+        run_transition_confidence_threshold=settings.baseline_run_transition_confidence_threshold,
+    )
     return SessionContext(
         conn=conn,
         settings=settings,
@@ -141,6 +148,7 @@ def _build_session(
         candidate_events=candidate_events,
         normalizer=normalizer,
         pipeline=pipeline,
+        baseline=baseline,
     )
 
 
