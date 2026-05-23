@@ -63,3 +63,4 @@
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "feature_id": "F-030", "timestamp": "2026-05-23T10:20:41.363707+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "feature_id": "F-030", "timestamp": "2026-05-23T10:20:48.881960+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "feature_id": "F-030", "timestamp": "2026-05-23T10:21:02.356622+00:00"}
+{"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "feature_id": "F-030", "timestamp": "2026-05-23T10:21:05.533728+00:00"}

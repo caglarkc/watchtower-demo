@@ -62,3 +62,4 @@
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 1, "window_minutes": 30, "feature_id": "F-073", "timestamp": "2026-05-23T08:41:21.469721+00:00"}
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 3, "window_minutes": 30, "feature_id": "F-073", "timestamp": "2026-05-23T10:20:45.394805+00:00"}
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 1, "window_minutes": 30, "feature_id": "F-073", "timestamp": "2026-05-23T10:20:52.724508+00:00"}
+{"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 3, "window_minutes": 30, "feature_id": "F-073", "timestamp": "2026-05-23T10:21:04.633918+00:00"}
