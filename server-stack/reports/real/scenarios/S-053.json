@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-053",
   "title": "Yeni Yazılımcının Hatalı Script Döngüsü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 5053,
@@ -21,8 +21,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 11,
-            "pattern": "4625_burst_then_4624"
+            "events": 1
           }
         }
       ],
@@ -47,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-006",
-            "count": 9280,
+            "count": 9600,
             "result": "PASS"
           },
           "result": "PASS",
@@ -78,52 +77,14 @@
         {
           "service": "nginx",
           "http_codes": [
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403",
-            "403"
+            "404",
+            "404"
           ]
         }
       ],
       "raw_logs_asserted": [
         {
-          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
           "result": "PASS"
         }
       ],
@@ -142,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-048",
-            "count": 12800,
+            "count": 13280,
             "result": "PASS"
           },
           "result": "PASS",
@@ -171,53 +132,14 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 11,
-        "pattern": "4625_burst_then_4624"
+        "events": 1
       }
     },
     {
       "service": "nginx",
       "http_codes": [
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403",
-        "403"
+        "404",
+        "404"
       ]
     }
   ],
@@ -227,7 +149,7 @@
       "result": "PASS"
     },
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
       "result": "PASS"
     }
   ],
@@ -246,7 +168,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-006",
-        "count": 9280,
+        "count": 9600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -276,7 +198,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 12800,
+        "count": 13280,
         "result": "PASS"
       },
       "result": "PASS",
@@ -302,12 +224,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:15.236851+00:00",
+  "generated_at": "2026-05-23T10:27:39.594586+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-053:5053:positive:real"
+  "replay_key": "S-053:5053:negative:real"
 }
