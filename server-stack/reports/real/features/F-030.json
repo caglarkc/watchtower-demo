@@ -2,7 +2,7 @@
   "id": "F-030",
   "feature_id": "F-030",
   "title": "Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 5
+        "tokens": 25
       }
     }
   ],
@@ -23,7 +23,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "L3:elasticsearch:corp-logs:F-030",
+      "assertion": "L2:log-pipeline:corp-events:F-030",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -31,11 +31,22 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+",
-      "parity_level": "L3"
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 39,
+        "index": "corp-logs-f-030",
+        "pipeline": {
+          "feature_id": "F-030",
+          "index": "corp-logs-f-030",
+          "indexed": 39
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -44,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "confidential prompt/upload event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.571179+00:00",
+  "generated_at": "2026-05-23T03:06:12.217245+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
