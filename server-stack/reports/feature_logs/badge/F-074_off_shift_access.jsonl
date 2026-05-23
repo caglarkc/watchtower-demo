@@ -9,3 +9,4 @@
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T01:27:08.376143+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T01:27:10.834819+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T02:09:29.263270+00:00"}
+{"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "feature_id": "F-074", "timestamp": "2026-05-23T02:09:34.884660+00:00"}

@@ -9,3 +9,4 @@
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["payroll-db", "dc-admin"], "feature_id": "F-078", "timestamp": "2026-05-23T01:27:08.648507+00:00"}
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["dev-git"], "feature_id": "F-078", "timestamp": "2026-05-23T01:27:11.109536+00:00"}
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["payroll-db", "dc-admin"], "feature_id": "F-078", "timestamp": "2026-05-23T02:09:29.549809+00:00"}
+{"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["dev-git"], "feature_id": "F-078", "timestamp": "2026-05-23T02:09:35.184894+00:00"}
