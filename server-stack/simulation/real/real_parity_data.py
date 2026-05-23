@@ -49,6 +49,8 @@ RI3_FEATURES = frozenset(
     | {f"F-{i:03d}" for i in range(67, 70)}
 )
 RI3_CURRENT_LEVEL = "L2"
+RI4_FEATURES = frozenset(P3_FEATURES)
+RI4_CURRENT_LEVEL = "L2"
 
 INGEST_L3_FEATURES = frozenset(
     {"F-012", "F-013", "F-030", "F-033", "F-067", "F-068", "F-069"}
