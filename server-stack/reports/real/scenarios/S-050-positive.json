@@ -32,7 +32,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-066",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-066",
+            "pipeline": {
+              "feature_id": "F-066",
+              "index": "corp-logs-f-066",
+              "indexed": 80
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/vault/secrets.yml",
         "seeds/real/ai/prompts.yml",
@@ -65,7 +92,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-072",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 77,
+            "index": "corp-logs-f-072",
+            "pipeline": {
+              "feature_id": "F-072",
+              "index": "corp-logs-f-072",
+              "indexed": 77
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -91,7 +145,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-076",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 78,
+            "index": "corp-logs-f-076",
+            "pipeline": {
+              "feature_id": "F-076",
+              "index": "corp-logs-f-076",
+              "indexed": 78
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/hris/employees.yml",
         "seeds/real/badge/locations.yml",
@@ -141,7 +222,86 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-066",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-066",
+        "pipeline": {
+          "feature_id": "F-066",
+          "index": "corp-logs-f-066",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-072",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 77,
+        "index": "corp-logs-f-072",
+        "pipeline": {
+          "feature_id": "F-072",
+          "index": "corp-logs-f-072",
+          "indexed": 77
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-076",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 78,
+        "index": "corp-logs-f-076",
+        "pipeline": {
+          "feature_id": "F-076",
+          "index": "corp-logs-f-076",
+          "indexed": 78
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/vault/secrets.yml",
     "seeds/real/ai/prompts.yml",
@@ -155,7 +315,7 @@
   "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:55.030409+00:00",
+  "generated_at": "2026-05-23T03:11:39.026845+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
