@@ -48,6 +48,7 @@ class RuleEffect(BaseModel):
     effect_type: RuleEffectType = "downrank"
     severity_delta: int = Field(default=-2, description="Negative lowers severity")
     suppress_alert: bool = False
+    suppression_requested: bool = False
     policy_suppression_approved: bool = False
 
 
