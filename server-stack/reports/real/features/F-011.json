@@ -44,7 +44,7 @@
   "anomaly_detected": false,
   "evidence_expected": "privileged group add/remove event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:29.589839+00:00",
+  "generated_at": "2026-05-23T02:56:41.306038+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

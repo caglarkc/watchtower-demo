@@ -2,7 +2,7 @@
   "id": "F-003",
   "feature_id": "F-003",
   "title": "İç DNS Sorgu Entropisi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "bind9",
@@ -11,35 +11,11 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-22041.corp.local",
+          "query": "www.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-37819.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-86113.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-71960.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-12354.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-15292.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-18086.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-70969.corp.local",
+          "query": "dc1.corp.local",
           "returncode": 9
         }
       ]
@@ -57,10 +33,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:15.990488+00:00",
+  "generated_at": "2026-05-23T02:56:39.661564+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

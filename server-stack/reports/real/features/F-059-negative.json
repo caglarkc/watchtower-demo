@@ -31,7 +31,7 @@
   "anomaly_detected": false,
   "evidence_expected": "large clipboard copy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:28.188068+00:00",
+  "generated_at": "2026-05-23T02:56:40.672015+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

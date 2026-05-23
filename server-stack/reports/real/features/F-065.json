@@ -31,7 +31,7 @@
   "anomaly_detected": false,
   "evidence_expected": "dormant system sudden access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:28.365354+00:00",
+  "generated_at": "2026-05-23T02:56:40.855005+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

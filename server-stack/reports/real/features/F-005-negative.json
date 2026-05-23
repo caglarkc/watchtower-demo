@@ -15,7 +15,7 @@
   "raw_logs_asserted": [
     {
       "result": "PASS",
-      "note": "negative skip"
+      "note": "negative"
     }
   ],
   "ingest_assertions": [],
@@ -27,7 +27,7 @@
   "anomaly_detected": false,
   "evidence_expected": "duplicate lease/scope change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:52.838852+00:00",
+  "generated_at": "2026-05-23T02:56:39.725243+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
