@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-018",
   "title": "Domain Admin Hesabıyla Sıra Dışı Giriş",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2018,
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 15869,
+            "count": 17469,
             "result": "PASS"
           },
           "result": "PASS",
@@ -115,7 +115,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-010",
-            "count": 4560,
+            "count": 4960,
             "result": "PASS"
           },
           "result": "PASS",
@@ -146,7 +146,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -184,7 +184,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 13344,
+            "count": 14624,
             "result": "PASS"
           },
           "result": "PASS",
@@ -232,7 +232,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -282,7 +282,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 15869,
+        "count": 17469,
         "result": "PASS"
       },
       "result": "PASS",
@@ -312,7 +312,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-010",
-        "count": 4560,
+        "count": 4960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -342,7 +342,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 13344,
+        "count": 14624,
         "result": "PASS"
       },
       "result": "PASS",
@@ -364,12 +364,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:07.684901+00:00",
+  "generated_at": "2026-05-23T05:37:59.012097+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-018:2018:negative:real"
+  "replay_key": "S-018:2018:positive:real"
 }
