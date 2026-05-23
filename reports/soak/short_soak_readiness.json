@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-05-23T10:05:51.289387+00:00",
+  "version": "0.1.0",
+  "health": {
+    "status": "healthy",
+    "version": "0.1.0",
+    "checks": [
+      {
+        "name": "database",
+        "status": "healthy",
+        "message": "sqlite reachable",
+        "details": {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/data/soak_short.db"
+        }
+      },
+      {
+        "name": "migrations",
+        "status": "healthy",
+        "message": "schema up to date",
+        "details": {}
+      },
+      {
+        "name": "disk",
+        "status": "healthy",
+        "message": "62.7% free on data volume",
+        "details": {
+          "free_bytes": 207741460480,
+          "total_bytes": 331196526592
+        }
+      },
+      {
+        "name": "bootstrap",
+        "status": "healthy",
+        "message": "bootstrapped",
+        "details": {
+          "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b"
+        }
+      },
+      {
+        "name": "sources",
+        "status": "healthy",
+        "message": "1 source(s), 0 unhealthy",
+        "details": {
+          "registered": 1,
+          "unhealthy": 0,
+          "source_errors_total": 0
+        }
+      },
+      {
+        "name": "providers",
+        "status": "healthy",
+        "message": "provider chain available",
+        "details": {
+          "providers": [
+            "openai",
+            "anthropic",
+            "gemini",
+            "ollama"
+          ]
+        }
+      },
+      {
+        "name": "metrics",
+        "status": "healthy",
+        "message": "runtime metrics nominal; last loop 0ms",
+        "details": {
+          "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+          "counters": {
+            "candidates_total": 1.0,
+            "events_polled_total": 1.0,
+            "graph_runs_total": 1.0,
+            "llm_calls_total": 1.0,
+            "loop_duration_ms_count": 4.0,
+            "loop_duration_ms_last": 0.4571129975374788,
+            "loop_duration_ms_max": 1834.987986003398,
+            "loop_duration_ms_sum": 1836.4557510067243,
+            "normalized_events_total": 1.0,
+            "raw_events_stored_total": 1.0
+          },
+          "loop_duration_avg_ms": 459.11,
+          "loop_duration_last_ms": 0.4571129975374788,
+          "loop_duration_max_ms": 1834.987986003398
+        }
+      }
+    ]
+  },
+  "metrics": {
+    "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+    "counters": {
+      "candidates_total": 1.0,
+      "events_polled_total": 1.0,
+      "graph_runs_total": 1.0,
+      "llm_calls_total": 1.0,
+      "loop_duration_ms_count": 4.0,
+      "loop_duration_ms_last": 0.4571129975374788,
+      "loop_duration_ms_max": 1834.987986003398,
+      "loop_duration_ms_sum": 1836.4557510067243,
+      "normalized_events_total": 1.0,
+      "raw_events_stored_total": 1.0
+    },
+    "loop_duration_avg_ms": 459.11,
+    "loop_duration_last_ms": 0.4571129975374788,
+    "loop_duration_max_ms": 1834.987986003398
+  },
+  "soak": {
+    "label": "short_soak",
+    "finished_at": "2026-05-23T10:05:50.094588+00:00",
+    "pipeline_counts": {
+      "raw_events": 1,
+      "normalized_events": 1,
+      "candidate_events": 1,
+      "graph_runs": 1,
+      "alerts": 0,
+      "silent_findings": 1,
+      "learning_events": 1
+    },
+    "metrics": {
+      "tenant_id": "339573b0-bbc3-4405-97f3-e1998545c10b",
+      "counters": {
+        "candidates_total": 1.0,
+        "events_polled_total": 1.0,
+        "graph_runs_total": 1.0,
+        "llm_calls_total": 1.0,
+        "loop_duration_ms_count": 4.0,
+        "loop_duration_ms_last": 0.4571129975374788,
+        "loop_duration_ms_max": 1834.987986003398,
+        "loop_duration_ms_sum": 1836.4557510067243,
+        "normalized_events_total": 1.0,
+        "raw_events_stored_total": 1.0
+      },
+      "loop_duration_avg_ms": 459.11,
+      "loop_duration_last_ms": 0.4571129975374788,
+      "loop_duration_max_ms": 1834.987986003398
+    },
+    "passed": true
+  }
+}
