@@ -15,7 +15,7 @@ from watchtower.observability.metrics import (
     METRIC_RAW_STORED,
 )
 from watchtower.services.app import create_app
-from tests.daemon.helpers import db_pipeline_counts
+from watchtower.e2e.soak import db_pipeline_counts
 
 
 def main() -> None:

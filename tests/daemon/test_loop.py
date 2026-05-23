@@ -20,13 +20,9 @@ def _run_daemon_once(app, tenant_id):
 
 
 def _seed_f001_baseline(app, tenant_id):
-    normalizer = NormalizationService()
-    extractor = CandidateExtractor()
-    candidate = first_candidate_from_feature(
-        normalizer, extractor, tenant_id=tenant_id, feature_id="F-001"
-    )
-    assert candidate is not None
-    seed_baseline_for_candidate(app, tenant_id, candidate)
+    from watchtower.e2e.soak import seed_f001_baseline
+
+    seed_f001_baseline(app, tenant_id)
 
 
 def test_daemon_pipeline_raw_to_graph_chain(app, tenant_id, f001_source):

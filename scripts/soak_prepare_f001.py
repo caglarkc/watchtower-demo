@@ -50,7 +50,7 @@ def main() -> None:
         session.conn.commit()
 
     register_f001_jsonl_source(app, tenant_id, jsonl, source_id="src-soak-f001")
-    _seed_f001_baseline(app, tenant_id)
+    seed_f001_baseline(app, tenant_id)
     set_tenant_mode(app, tenant_id, args.mode)
     print(f"soak prepared tenant={tenant_id} jsonl={jsonl} mode={args.mode}")
 
