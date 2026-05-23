@@ -37,6 +37,7 @@ class DaemonService:
         pipeline_limit: int = 500,
         graph_limit: int = 100,
     ) -> DaemonLoopSummary:
+        started = time.perf_counter()
         settings = self._session.settings
         default_limit = ingest_limit or settings.ingest_default_limit
         mode = self._session.mode_controller.get_mode(tenant_id)
@@ -53,6 +54,7 @@ class DaemonService:
 
             limit = int(source.config.get("poll_limit", default_limit))
             result = self._session.ingest.ingest_once(tenant_id, source.id, limit=limit)
+            self._session.metrics.record_ingest(tenant_id, result)
             poll = SourcePollResult(
                 source_id=source.id,
                 polled=result.polled,
@@ -70,7 +72,15 @@ class DaemonService:
                 summary.errors.append(
                     f"source {source.id}: {result.error} (backoff {delay:.0f}s)"
                 )
-                logger.warning("daemon ingest failed for %s: %s", source.id, result.error)
+                emit_structured_log(
+                    logger,
+                    logging.WARNING,
+                    result.error or "ingest failed",
+                    tenant_id=tenant_id,
+                    source_id=source.id,
+                    event_counts={"polled": 0, "stored": 0},
+                    extra={"degraded": True},
+                )
                 continue
 
             self._backoff.record_success(source.id)
