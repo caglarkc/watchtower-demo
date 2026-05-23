@@ -4,3 +4,4 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T01:25:54.302590+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T01:26:03.381061+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T01:26:05.764349+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T01:26:52.972875+00:00"}

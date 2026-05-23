@@ -9,3 +9,4 @@
 {"event_type": "smb_downgrade", "smb_version": "SMB1", "ntlm": "NTLMv1", "feature_id": "F-004", "timestamp": "2026-05-23T01:25:55.733570+00:00"}
 {"event_type": "smb_downgrade", "smb_version": "SMB3", "ntlm": "NTLMv2", "feature_id": "F-004", "timestamp": "2026-05-23T01:25:57.247299+00:00"}
 {"event_type": "smb_downgrade", "smb_version": "SMB1", "ntlm": "NTLMv1", "feature_id": "F-004", "timestamp": "2026-05-23T01:26:48.663736+00:00"}
+{"event_type": "smb_downgrade", "smb_version": "SMB3", "ntlm": "NTLMv2", "feature_id": "F-004", "timestamp": "2026-05-23T01:26:54.300901+00:00"}
