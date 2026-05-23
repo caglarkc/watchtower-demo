@@ -2,8 +2,8 @@
   "id": "F-041",
   "feature_id": "F-041",
   "title": "ACL ve Everyone İzin Değişikliği",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
   "actions_executed": [
@@ -20,16 +20,47 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-041",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-041",
+        "count": 80,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-041",
+        "pipeline": {
+          "feature_id": "F-041",
+          "index": "corp-logs-f-041",
+          "indexed": 80
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "Everyone permission change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:35.023732+00:00",
+  "generated_at": "2026-05-23T03:04:05.464453+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

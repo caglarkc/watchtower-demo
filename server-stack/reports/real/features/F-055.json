@@ -2,8 +2,8 @@
   "id": "F-055",
   "feature_id": "F-055",
   "title": "USB Takma-Yazma Korelasyonu",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
   "actions_executed": [
@@ -21,16 +21,47 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-055",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-055",
+        "count": 15,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 15,
+        "index": "corp-logs-f-055",
+        "pipeline": {
+          "feature_id": "F-055",
+          "index": "corp-logs-f-055",
+          "indexed": 15
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "USB attach/write correlation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:33.320277+00:00",
+  "generated_at": "2026-05-23T03:04:07.381342+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
