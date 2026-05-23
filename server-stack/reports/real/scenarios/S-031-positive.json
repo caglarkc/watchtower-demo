@@ -1,0 +1,116 @@
+{
+  "scenario_id": "S-031",
+  "title": "CTO Bilgisayarından SSH Anahtarı Hasadı",
+  "mode": "positive",
+  "category": "yetkisiz erişim",
+  "user_role": "CTO",
+  "deterministic_seed": 3031,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-042",
+    "F-054"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-042",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/local_sensitive_accumulation.jsonl",
+            "event_type": "local_sensitive_accumulation"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/local_sensitive_accumulation.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    },
+    {
+      "feature_id": "F-054",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/encoded_script.jsonl",
+            "event_type": "encoded_script"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/encoded_script.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/local_sensitive_accumulation.jsonl",
+        "event_type": "local_sensitive_accumulation"
+      }
+    },
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/encoded_script.jsonl",
+        "event_type": "encoded_script"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/local_sensitive_accumulation.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/encoded_script.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin",
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:51.192449+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-031:3031:positive:real"
+}

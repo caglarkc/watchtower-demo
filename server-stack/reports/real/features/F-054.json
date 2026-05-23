@@ -2,7 +2,7 @@
   "id": "F-054",
   "feature_id": "F-054",
   "title": "Kodlanmış veya Politika Atlatan Betik Komutları",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -28,10 +28,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "encoded/policy-bypass script event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:20.855190+00:00",
+  "generated_at": "2026-05-23T02:55:53.810859+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

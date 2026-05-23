@@ -1,0 +1,108 @@
+{
+  "scenario_id": "S-036",
+  "title": "Veri Analistinin Tüm Posta Kutusu Taraması",
+  "mode": "positive",
+  "category": "yetkisiz erişim",
+  "user_role": "Veri Analisti",
+  "deterministic_seed": 3036,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-018",
+    "F-024"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-018",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "dovecot",
+          "response": {
+            "written": "/var/log/corp/dovecot/dovecot.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-024",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "dovecot",
+          "response": {
+            "written": "/var/log/corp/dovecot/dovecot.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "dovecot",
+      "response": {
+        "written": "/var/log/corp/dovecot/dovecot.jsonl"
+      }
+    },
+    {
+      "service": "dovecot",
+      "response": {
+        "written": "/var/log/corp/dovecot/dovecot.jsonl"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:52.332059+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-036:3036:positive:real"
+}

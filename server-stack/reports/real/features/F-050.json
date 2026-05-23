@@ -2,7 +2,7 @@
   "id": "F-050",
   "feature_id": "F-050",
   "title": "SIEM/Log Suppress Kural Değişimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-siem",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "log suppress rule change",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:20.376088+00:00",
+  "generated_at": "2026-05-23T02:55:53.439369+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -2,7 +2,7 @@
   "id": "F-052",
   "feature_id": "F-052",
   "title": "Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -28,10 +28,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "new scheduled task/service event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:20.618337+00:00",
+  "generated_at": "2026-05-23T02:55:53.180166+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

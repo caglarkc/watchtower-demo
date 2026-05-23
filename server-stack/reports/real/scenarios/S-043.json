@@ -1,0 +1,73 @@
+{
+  "scenario_id": "S-043",
+  "title": "Admin Tarafından Eski Yedeklerin Silinmesi",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "IT Admin",
+  "deterministic_seed": 4043,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-053"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-053",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/backup_disabled.jsonl",
+            "event_type": "backup_disabled"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/backup_disabled.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/backup_disabled.jsonl",
+        "event_type": "backup_disabled"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/backup_disabled.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 1,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:53.623222+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-043:4043:positive:real"
+}
