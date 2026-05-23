@@ -57,7 +57,7 @@
   "anomaly_detected": false,
   "evidence_expected": "risky internal log search keyword",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:23.748986+00:00",
+  "generated_at": "2026-05-23T05:10:55.332455+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
