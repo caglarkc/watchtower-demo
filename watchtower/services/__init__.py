@@ -12,8 +12,9 @@ __all__ = [
     "BootstrapRequiredError",
     "BootstrapService",
     "ModeController",
+    "SessionContext",
     "TenantContext",
     "TenantIsolationError",
-    "get_app_context",
+    "create_app",
     "init_app",
 ]
