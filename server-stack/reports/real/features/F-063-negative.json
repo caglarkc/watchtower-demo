@@ -30,7 +30,7 @@
   "anomaly_detected": false,
   "evidence_expected": "unknown hardware login attempt",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:56.485412+00:00",
+  "generated_at": "2026-05-23T02:56:27.144036+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

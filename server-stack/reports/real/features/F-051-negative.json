@@ -30,7 +30,7 @@
   "anomaly_detected": false,
   "evidence_expected": "management-console access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:20.498533+00:00",
+  "generated_at": "2026-05-23T02:56:24.879103+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

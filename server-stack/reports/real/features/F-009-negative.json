@@ -38,7 +38,7 @@
   "anomaly_detected": false,
   "evidence_expected": "same user multi-location session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:51:11.396872+00:00",
+  "generated_at": "2026-05-23T02:56:27.279553+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

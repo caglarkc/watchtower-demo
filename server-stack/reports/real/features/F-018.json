@@ -2,7 +2,7 @@
   "id": "F-018",
   "feature_id": "F-018",
   "title": "Dahili Mail Kutu Dışı Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "dovecot",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "out-of-mailbox access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:54.055231+00:00",
+  "generated_at": "2026-05-23T02:56:24.696870+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
