@@ -8,20 +8,23 @@
 >
 > Bu dosya `server-stack` ortamında hangi davranışların izleneceğini tanımlar; `watchtower-demo` bu sinyalleri analiz eder.
 
-**Toplam:** 40 izleme fikri | Kaynak: ChatGPT + Gemini + Composer çıktıları birleştirildi, tekrar edenler tekilleştirildi.  
+**Toplam:** 81 izleme fikri | Kaynak: ChatGPT + Gemini + Composer çıktıları birleştirildi, tekrar edenler tekilleştirildi.  
 **Amaç:** Bu liste senaryo değil; sistemin ölçmesi gereken davranışsal sinyal ve metrik önerilerini içerir.
 
 **Kaynak notu:** `VERİ KAYNAĞI` satırlarında mümkün olduğunda önce **gerçek kurumsal kaynak**, sonra Watchtower demo ortamındaki **simülasyon karşılığı** düşünülmüştür. Faz 1 başlangıç kapsamı `Wazuh + AD + file/network login telemetry` ile sınırlıdır; mail ve bazı uygulama kaynakları Faz 2 kapsamındadır.
 
 **Kategoriler:**
-- [Ağ Trafiği](#ağ-trafiği) (6)
+- [Ağ Trafiği](#ağ-trafiği) (7)
 - [Kimlik ve Erişim](#kimlik-ve-erişim) (8)
-- [Mail ve İletişim](#mail-ve-i̇letişim) (5)
-- [Dosya Sistemi](#dosya-sistemi) (6)
-- [Uygulama ve Süreç](#uygulama-ve-süreç) (7)
+- [Mail ve İletişim](#mail-ve-i̇letişim) (14)
+- [Yapay Zeka Kullanımı](#yapay-zeka-kullanımı) (7)
+- [Dosya Sistemi](#dosya-sistemi) (8)
+- [Uygulama ve Süreç](#uygulama-ve-süreç) (10)
 - [Donanım ve Uç Nokta](#donanım-ve-uç-nokta) (4)
-- [Davranışsal](#davranışsal) (4)
+- [Davranışsal](#davranışsal) (8)
+- [Dış Bağlantı ve Çıkış Trafiği](#dış-bağlantı-ve-çıkış-trafiği) (3)
 - [Çapraz Veri ve Korelasyon](#çapraz-veri-ve-korelasyon) (5)
+- [İnsan Kaynakları ve Personel Yaşam Döngüsü](#i̇nsan-kaynakları-ve-personel-yaşam-döngüsü) (4)
 - [Zamanlama](#zamanlama) (3)
 
 Uygulama zorluğu: **Kolay / Orta / Zor**
