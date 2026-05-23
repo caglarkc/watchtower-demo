@@ -7,6 +7,7 @@ import json
 import pytest
 
 from watchtower.llm.gateway import LLMGateway
+from watchtower.services.app import AppContext
 from watchtower.storage.repositories.llm_audit import LLMCallAuditRepository
 
 
@@ -22,14 +23,21 @@ def valid_alert_explanation_json() -> str:
 
 
 @pytest.fixture
-def llm_audit_repo(app):
-    with app.session() as session:
-        yield LLMCallAuditRepository(session.conn)
+def gateway_with_audit(app: AppContext):
+    def _build(providers):
+        return LLMGateway(providers, audit_repo=None, max_retries=2)
+
+    return _build
 
 
 @pytest.fixture
-def gateway_with_audit(llm_audit_repo):
+def gateway_with_db_audit(app: AppContext):
+    class _AuditProxy:
+        def insert(self, **kwargs):
+            with app.session() as session:
+                return LLMCallAuditRepository(session.conn).insert(**kwargs)
+
     def _build(providers):
-        return LLMGateway(providers, audit_repo=llm_audit_repo, max_retries=2)
+        return LLMGateway(providers, audit_repo=_AuditProxy(), max_retries=2)
 
     return _build
