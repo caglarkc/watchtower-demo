@@ -29,7 +29,8 @@ def _es_request(method: str, path: str, body: bytes | None = None) -> dict:
 
 def _ensure_index(index: str) -> None:
     try:
-        _es_request("HEAD", f"/{index}")
+        _es_request("GET", f"/{index}")
+        return
     except RuntimeError:
         _es_request(
             "PUT",
