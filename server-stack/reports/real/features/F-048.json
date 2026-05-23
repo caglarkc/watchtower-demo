@@ -62,7 +62,7 @@
   "anomaly_detected": false,
   "evidence_expected": "HTTP 401/403/4xx spike",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:30.948080+00:00",
+  "generated_at": "2026-05-23T05:38:31.188999+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

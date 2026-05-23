@@ -2,7 +2,7 @@
   "id": "F-027",
   "feature_id": "F-027",
   "title": "Yasaklı veya Politika Dışı İfade Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-027",
-        "count": 3760,
+        "count": 3840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "banned phrase policy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:15.295179+00:00",
+  "generated_at": "2026-05-23T05:38:33.627229+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
