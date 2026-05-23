@@ -62,6 +62,7 @@ def build_features() -> dict:
     features = []
     for row in FEATURE_MATRIX:
         fid = row["id"]
+        real_meta = real_metadata_for(fid, row["simulation_source"], row["evidence_expected"])
         features.append(
             {
                 "feature_id": fid,
@@ -77,6 +78,16 @@ def build_features() -> dict:
                 "evidence_path": f"reports/features/{fid}.json",
                 "replay_positive": f"simulation/feature_replays/{fid}_positive.yaml",
                 "replay_negative": f"simulation/feature_replays/{fid}_negative.yaml",
+                "real_parity_level": real_meta["real_parity_level"],
+                "real_parity_target": real_meta["real_parity_target"],
+                "real_priority": real_meta["real_priority"],
+                "real_tool": real_meta["real_tool"],
+                "real_action_command": real_meta["real_action_command"],
+                "real_negative_command": real_meta["real_negative_command"],
+                "raw_log_assertion": real_meta["raw_log_assertion"],
+                "ingest_assertion": real_meta["ingest_assertion"],
+                "real_evidence_positive": real_meta["real_evidence_positive"],
+                "real_evidence_negative": real_meta["real_evidence_negative"],
                 "status": "manifest",
             }
         )
