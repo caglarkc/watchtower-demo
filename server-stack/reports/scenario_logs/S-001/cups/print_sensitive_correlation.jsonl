@@ -4,3 +4,5 @@
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 4, "sensitive_labels": 0, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T01:26:41.200295+00:00"}
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 180, "sensitive_labels": 45, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T01:27:11.471176+00:00"}
 {"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 4, "sensitive_labels": 0, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T01:27:14.356293+00:00"}
+{"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 180, "sensitive_labels": 45, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T01:27:27.265749+00:00"}
+{"event_type": "print_sensitive_correlation", "log_channel": "cups", "pages": 4, "sensitive_labels": 0, "source_feature": "F-056", "scenario_id": "S-001", "timestamp": "2026-05-23T01:27:27.303061+00:00"}
