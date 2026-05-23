@@ -94,6 +94,108 @@ evidence:
   - reports/features/F-001.json
 ```
 
+### 3.1 81 Feature Simulation Matrix
+
+Bu tablo implementor AI için bağlayıcıdır. Her satır kapalı sunucuda
+simüle edilebilir hale gelmeden Faz 4 kapanamaz.
+
+Her feature için standart komutlar:
+
+```bash
+make feature FEATURE=F-001
+make feature-negative FEATURE=F-001
+```
+
+Her feature için standart evidence dosyası:
+
+```text
+reports/features/F-001.json
+```
+
+| Feature | Faz | Simülasyon kaynağı | Üretilecek kanıt |
+| --- | --- | --- | --- |
+| F-001 | 1 | Samba file audit + Zeek/synthetic SMB flow | SMB read volume event |
+| F-002 | 1 | Zeek conn.log + east-west flow generator | host/port fan-out event |
+| F-003 | 1 | BIND query log + DNS entropy generator | TXT/NXDOMAIN/high-entropy query event |
+| F-004 | 1 | SMB downgrade synthetic packet/log generator | SMBv1/NTLMv1 downgrade attempt |
+| F-005 | 1 | DHCP server log + rogue DHCP/ARP generator | duplicate lease/scope change event |
+| F-006 | 1 | Samba AD auth log + failed/success login replay | 4625 burst then 4624 success |
+| F-007 | 1 | Zeek conn.log + port scan replay | high cardinality port scan event |
+| F-008 | 1 | Samba AD Kerberos/NTLM synthetic auth log | TGT/NTLM target diversity event |
+| F-009 | 3 | Badge API + AD login replay + switch-port mock | same user multi-location session |
+| F-010 | 1 | Samba AD login event generator | service account interactive logon |
+| F-011 | 1 | Samba AD group-change replay | privileged group add/remove event |
+| F-012 | 3 | API gateway mock + Vault audit + app access log | API key multi-source usage |
+| F-013 | 3 | Vault audit log replay | secret read burst event |
+| F-014 | 3 | HR/helpdesk mock + AD admin action log | reset/unlock burst event |
+| F-015 | 1 | RDP/WinRM synthetic session log + Zeek flow | hop-chain session event |
+| F-016 | 2 | Postfix/Dovecot/Roundcube logs | mail volume and attachment-size event |
+| F-017 | 2 | Dovecot/Roundcube rule-change synthetic log | forward/delegate rule change |
+| F-018 | 2 | Dovecot IMAP audit replay | out-of-mailbox access event |
+| F-019 | 2 | Postfix attachment metadata generator | entropy/type mismatch event |
+| F-020 | 2 | Postfix envelope log generator | BCC/distribution-list anomaly |
+| F-021 | 2 | Postfix outbound log + personal-domain sink | personal email attachment event |
+| F-022 | 2 | Postfix outbound log + external-domain allowlist mock | unknown competitor-domain attachment |
+| F-023 | 2 | Mail content metadata generator | sensitive keyword mail event |
+| F-024 | 2 | Dovecot IMAP audit replay | old archive bulk-read event |
+| F-025 | 2 | Roundcube/contact-export synthetic log | address-book export event |
+| F-026 | 2 | Mail text fixture generator | writing-style deviation fixture |
+| F-027 | 2 | Mail text fixture generator | banned phrase policy event |
+| F-028 | 2 | Postfix outbound log + recipient-history fixture | first-time external sensitive mail |
+| F-029 | 2 | Roundcube auth log replay | personal/unknown account login attempt |
+| F-030 | 3 | AI gateway mock + proxy sink | confidential prompt/upload event |
+| F-031 | 3 | AI gateway prompt fixture | source-code/architecture paste event |
+| F-032 | 3 | AI gateway prompt fixture | internal host/user/network prompt event |
+| F-033 | 3 | Proxy sink + unauthorized AI domain list | unapproved AI tool access event |
+| F-034 | 3 | AI gateway upload endpoint mock | AI file upload volume/type event |
+| F-035 | 3 | AI gateway prompt fixture | security-procedure discovery prompt |
+| F-036 | 3 | AI gateway conversation fixture | strategy/legal-content conversation |
+| F-037 | 1 | Samba audit + AD group fixture | out-of-department file access |
+| F-038 | 1 | Samba audit + file operation generator | bulk read/write ratio event |
+| F-039 | 1 | Samba audit + rename storm generator | mass rename rate event |
+| F-040 | 1 | Samba audit + directory traversal replay | sensitive directory traversal event |
+| F-041 | 1 | Samba ACL/change synthetic log | Everyone permission change event |
+| F-042 | 3 | endpoint synthetic generator + local file inventory fixture | local sensitive-data accumulation |
+| F-043 | 3 | file classification mock + Samba/local move log | labeled file moved to unrestricted area |
+| F-044 | 3 | wiki/intranet mock access log | bulk intranet/wiki download |
+| F-045 | 2 | PostgreSQL pg_audit + query replay | bulk table/select scope event |
+| F-046 | 2 | endpoint process tree generator | unusual process duration/tree event |
+| F-047 | 2 | internal API mock + Nginx access log | API call-pattern deviation |
+| F-048 | 2 | Nginx access/error log replay | HTTP 401/403/4xx spike |
+| F-049 | 2 | Gitea + artifact registry mock logs | repo clone/artifact download volume |
+| F-050 | 2 | SIEM/admin console mock audit log | log suppress rule change |
+| F-051 | 2 | hypervisor console mock audit log | management-console access event |
+| F-052 | 2 | endpoint scheduled-task/service synthetic log | new scheduled task/service event |
+| F-053 | 2 | backup/shadow-copy synthetic log | backup disable/delete event |
+| F-054 | 2 | endpoint command-line synthetic log | encoded/policy-bypass script event |
+| F-055 | 1 | endpoint USB generator + file write replay | USB attach/write correlation |
+| F-056 | 3 | CUPS print log + file classification fixture | sensitive print-volume event |
+| F-057 | 1 | endpoint network-state generator | promiscuous mode change event |
+| F-058 | 3 | DLP agent health mock | DLP disable/bypass event |
+| F-059 | 3 | clipboard synthetic generator | large clipboard copy event |
+| F-060 | 3 | screenshot synthetic generator | screenshot frequency spike |
+| F-061 | 3 | AD role seed + flow/session generator | role-to-server contact map deviation |
+| F-062 | 3 | SIEM/log-search mock audit log | risky internal log search keyword |
+| F-063 | 1 | AD login + device inventory fixture | unknown hardware login attempt |
+| F-064 | 3 | user activity generator | compressed activity burst event |
+| F-065 | 3 | app/file access generator + history fixture | dormant system sudden access |
+| F-066 | 3 | peer group baseline fixture + event generator | peer group statistical deviation |
+| F-067 | 3 | cloud/object-storage mock + proxy sink | personal cloud large upload |
+| F-068 | 3 | proxy sink + first-seen destination fixture | first external high-volume transfer |
+| F-069 | 3 | proxy sink + tunnel protocol generator | encrypted tunnel/unusual protocol |
+| F-070 | 3 | Badge API + AD login replay | physical badge/login mismatch |
+| F-071 | 3 | multi-signal event bundle generator | composite risk score input set |
+| F-072 | 3 | HRIS offboarding mock + AD/app activity replay | leaver account activity |
+| F-073 | 3 | Samba/app record access replay | same file/record multi-user chain |
+| F-074 | 3 | Badge API + after-hours login replay | off-shift physical/logical access |
+| F-075 | 3 | HRIS new-hire seed + access replay | new employee excessive access |
+| F-076 | 3 | HRIS role-change seed + old-permission replay | old entitlement use after role change |
+| F-077 | 3 | HRIS leave calendar + activity replay | activity while officially on leave |
+| F-078 | 3 | contractor identity seed + app access replay | contractor out-of-scope system use |
+| F-079 | 1 | AD interactive login replay + work-hours calendar | after-hours interactive session |
+| F-080 | 1 | session log + keyboard/mouse generator | idle session abuse event |
+| F-081 | 1 | role work-window fixture + activity replay | role-based work-window deviation |
+
 ---
 
 ## 4. Dizin Tasarımı
