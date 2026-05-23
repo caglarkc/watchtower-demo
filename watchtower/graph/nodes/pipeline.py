@@ -299,16 +299,36 @@ def create_alert_case(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
         return {}
     cand = _candidate(state)
     assessment = state.get("assessment", {})
-    aid = deps.graph_repo.insert_alert_case(
-        tenant_id=state["tenant_id"],
-        run_id=state["run_id"],
-        candidate_id=cand.id,
-        feature_id=cand.feature_hint,
-        severity=assessment.get("severity", "ALERT"),
-        payload={"assessment": assessment},
-    )
-    _audit_repo(deps, state, "create_alert_case", {"alert_case_id": aid})
-    return {"alert_case_id": aid}
+    identity = state.get("identity", {})
+    if deps.alerts is not None:
+        alert, case = deps.alerts.create_alert(
+            state["tenant_id"],
+            feature_id=cand.feature_hint,
+            severity=assessment.get("severity", "ALERT"),
+            title=f"{cand.feature_hint} — {cand.action}",
+            summary=str(assessment.get("detection_class", "")),
+            user_id=identity.get("user_id"),
+            department_id=identity.get("department_id"),
+            resource=cand.resource,
+            action=cand.action,
+            graph_run_id=state["run_id"],
+            run_id=state["run_id"],
+            candidate_id=cand.id,
+            payload={"assessment": assessment},
+        )
+        out = {"alert_case_id": case.id, "alert_id": alert.id}
+    else:
+        aid = deps.graph_repo.insert_alert_case(
+            tenant_id=state["tenant_id"],
+            run_id=state["run_id"],
+            candidate_id=cand.id,
+            feature_id=cand.feature_hint,
+            severity=assessment.get("severity", "ALERT"),
+            payload={"assessment": assessment},
+        )
+        out = {"alert_case_id": aid}
+    _audit_repo(deps, state, "create_alert_case", out)
+    return out
 
 
 def enqueue_controlled_learning(state: GraphState, deps: GraphDeps) -> dict[str, Any]:

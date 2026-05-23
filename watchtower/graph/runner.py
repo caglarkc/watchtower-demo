@@ -109,6 +109,7 @@ def build_graph_runner(
     graph_repo: GraphRepository,
     conn: sqlite3.Connection,
     llm_gateway: Any | None = None,
+    alerts: Any | None = None,
 ) -> GraphRunner:
     deps = GraphDeps(
         mode_controller=mode_controller,
@@ -118,5 +119,6 @@ def build_graph_runner(
         rules=rules,
         graph_repo=graph_repo,
         llm_gateway=llm_gateway,
+        alerts=alerts,
     )
     return GraphRunner(deps, conn)
