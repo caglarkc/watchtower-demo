@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-043",
   "title": "Admin Tarafından Eski Yedeklerin Silinmesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4043,
@@ -15,7 +15,7 @@
     {
       "feature_id": "F-053",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -31,7 +31,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-053",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-053",
+            "count": 45,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 12,
+            "index": "corp-logs-f-053",
+            "pipeline": {
+              "feature_id": "F-053",
+              "index": "corp-logs-f-053",
+              "indexed": 12
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -55,19 +86,50 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-053",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-053",
+        "count": 45,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 12,
+        "index": "corp-logs-f-053",
+        "pipeline": {
+          "feature_id": "F-053",
+          "index": "corp-logs-f-053",
+          "indexed": 12
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:30.082314+00:00",
+  "generated_at": "2026-05-23T03:11:37.443987+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-043:4043:negative:real"
+  "replay_key": "S-043:4043:positive:real"
 }

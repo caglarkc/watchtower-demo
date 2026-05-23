@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-040",
   "title": "Shadow Admin Hesabı Oluşturma",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4040,
@@ -16,7 +16,7 @@
     {
       "feature_id": "F-011",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "samba-ad",
@@ -33,7 +33,7 @@
       ],
       "ingest_assertions": [
         {
-          "assertion": "elasticsearch:corp-logs:F-011",
+          "assertion": "L3:elasticsearch:corp-logs-f-011",
           "elasticsearch": {
             "target": "http://172.28.0.17:9200",
             "cluster_status": "green",
@@ -41,10 +41,26 @@
           },
           "log_pipeline": {
             "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-011",
+            "count": 640,
             "result": "PASS"
           },
           "result": "PASS",
-          "note": "RI-1: cluster healthy; index routing in RI-2+"
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 80,
+            "index": "corp-logs-f-011",
+            "pipeline": {
+              "feature_id": "F-011",
+              "index": "corp-logs-f-011",
+              "indexed": 80
+            }
+          }
         }
       ],
       "seed_refs": [
@@ -56,7 +72,7 @@
     {
       "feature_id": "F-052",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -72,7 +88,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-052",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-052",
+            "count": 26,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 9,
+            "index": "corp-logs-f-052",
+            "pipeline": {
+              "feature_id": "F-052",
+              "index": "corp-logs-f-052",
+              "indexed": 9
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/mail/mailboxes.yml",
         "seeds/real/postgres/schema.sql",
@@ -108,7 +155,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-011",
+      "assertion": "L3:elasticsearch:corp-logs-f-011",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -116,10 +163,56 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-011",
+        "count": 640,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-011",
+        "pipeline": {
+          "feature_id": "F-011",
+          "index": "corp-logs-f-011",
+          "indexed": 80
+        }
+      }
+    },
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-052",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-052",
+        "count": 26,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 9,
+        "index": "corp-logs-f-052",
+        "pipeline": {
+          "feature_id": "F-052",
+          "index": "corp-logs-f-052",
+          "indexed": 9
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -131,12 +224,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:29.650079+00:00",
+  "generated_at": "2026-05-23T03:11:36.942066+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-040:4040:negative:real"
+  "replay_key": "S-040:4040:positive:real"
 }
