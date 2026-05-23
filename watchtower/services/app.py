@@ -46,6 +46,8 @@ from watchtower.query.service import QueryService
 from watchtower.storage.repositories.source import SourceRepository
 from watchtower.storage.repositories.source_cursor import SourceCursorRepository
 from watchtower.storage.repositories.tenant import TenantRepository
+from watchtower.storage.repositories.metrics import MetricsRepository
+from watchtower.observability.service import MetricsService
 
 
 @dataclass
@@ -80,6 +82,7 @@ class SessionContext:
     llm: LLMGateway
     alerts: AlertService
     query: QueryService
+    metrics: MetricsService
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
@@ -165,10 +168,13 @@ def _build_session(
     graph_repo = GraphRepository(conn)
     llm_audit = LLMCallAuditRepository(conn)
     provider_chain = resolve_provider_chain(settings, conn)
+    metrics_repo = MetricsRepository(conn)
+    metrics_service = MetricsService(metrics_repo)
     llm_gateway = LLMGateway(
         provider_chain,
         audit_repo=llm_audit,
         max_retries=settings.llm_max_retries,
+        metrics=metrics_service,
     )
     alert_repo = AlertRepository(conn)
     alert_service = AlertService(alert_repo, feedback=feedback, llm=llm_gateway)
