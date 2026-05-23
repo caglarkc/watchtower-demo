@@ -1,0 +1,37 @@
+{
+  "id": "F-004",
+  "feature_id": "F-004",
+  "title": "İç Ağda SMB/NTLM Sürüm Düşürme (Downgrade)",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "endpoint-synthetic",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/smb_downgrade.jsonl",
+        "event_type": "smb_downgrade"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/smb_downgrade.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "SMBv1/NTLMv1 downgrade attempt",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:37.372746+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

@@ -1,0 +1,675 @@
+{
+  "generated_at": "2026-05-23T02:55:43.554871+00:00",
+  "phase": "RI-5",
+  "total_scenarios": 83,
+  "implemented": 0,
+  "positive_replays_passed": 0,
+  "negative_replays_passed": 0,
+  "waivers": [],
+  "scenarios": [
+    {
+      "scenario_id": "S-001",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-002",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-003",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-004",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-005",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-006",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-007",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-008",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-009",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-010",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-011",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-012",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-013",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-014",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-015",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-016",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-017",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-018",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-019",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-020",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-021",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-022",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-023",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-024",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-025",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-026",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-027",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-028",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-029",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-030",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-031",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-032",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-033",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-034",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-035",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-036",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-037",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-038",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-039",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-040",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-041",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-042",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-043",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-044",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-045",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-046",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-047",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-048",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-049",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-050",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-051",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-052",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-053",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-054",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-055",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-056",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-057",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-058",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-059",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-060",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-061",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-062",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-063",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-064",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-065",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-066",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-067",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-068",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-069",
+      "positive_evidence": true,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-070",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-071",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-072",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-073",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-074",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-075",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-076",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-077",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-078",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-079",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-080",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-081",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-082",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    },
+    {
+      "scenario_id": "S-083",
+      "positive_evidence": false,
+      "negative_evidence": false,
+      "positive_pass": false,
+      "negative_pass": false,
+      "status": "PENDING"
+    }
+  ]
+}
