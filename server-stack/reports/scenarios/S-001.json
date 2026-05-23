@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-001",
   "title": "Gece Yarısı Finans Paylaşımı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "CFO",
   "deterministic_seed": 1001,
@@ -18,7 +18,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Gece Yarısı Finans Paylaşımı",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 6,
   "events": [
     {
@@ -28,26 +28,26 @@
       "user_role": "CFO",
       "category": "veri sızdırma",
       "seed": 1001,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "smb_read_volume",
       "user": "cfo",
-      "bytes_read": 800000000,
-      "anomaly": false,
+      "bytes_read": 14000000000,
+      "anomaly": true,
       "source_feature": "F-001",
       "scenario_id": "S-001"
     },
     {
       "event_type": "after_hours_session",
-      "hour": 14,
+      "hour": 2,
       "interactive": true,
       "source_feature": "F-079",
       "scenario_id": "S-001"
     },
     {
       "event_type": "smb_bulk_io",
-      "read_bytes": 320000000,
+      "read_bytes": 18400000000,
       "write_bytes": 0,
       "source_feature": "F-038",
       "scenario_id": "S-001"
@@ -55,8 +55,8 @@
     {
       "event_type": "print_sensitive_correlation",
       "log_channel": "cups",
-      "pages": 4,
-      "sensitive_labels": 0,
+      "pages": 180,
+      "sensitive_labels": 45,
       "source_feature": "F-056",
       "scenario_id": "S-001"
     },
@@ -64,10 +64,10 @@
       "event_type": "role_work_window",
       "role": "support",
       "active_hours": [
-        9,
-        10,
-        11,
-        14
+        0,
+        1,
+        2,
+        3
       ],
       "source_feature": "F-081",
       "scenario_id": "S-001"
@@ -81,12 +81,9 @@
     "reports/scenario_logs/S-001/cups/print_sensitive_correlation.jsonl",
     "reports/scenario_logs/S-001/scenarios/role_work_window.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:29:20.104506+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:36:55.404622+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-001:1001:negative"
+  "replay_key": "S-001:1001:positive"
 }

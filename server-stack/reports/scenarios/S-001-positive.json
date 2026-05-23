@@ -82,7 +82,7 @@
     "reports/scenario_logs/S-001/scenarios/role_work_window.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:29:17.342065+00:00",
+  "generated_at": "2026-05-23T02:36:55.404622+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-001:1001:positive"
