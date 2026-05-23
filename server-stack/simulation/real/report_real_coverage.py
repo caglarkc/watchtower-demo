@@ -30,6 +30,9 @@ RI1_FEATURES = frozenset(
         "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
     }
 )
+RI2_FEATURES = frozenset(
+    {f"F-{i:03d}" for i in range(16, 30)} | {f"F-{i:03d}" for i in range(45, 55)}
+)
 
 
 def load_features() -> list[dict]:
@@ -80,9 +83,12 @@ def report() -> dict:
     implemented = sum(1 for r in rows if r["status"] == "PASS")
     ri1_rows = [r for r in rows if r["feature_id"] in RI1_FEATURES]
     ri1_pass = sum(1 for r in ri1_rows if r["status"] == "PASS")
+    ri2_rows = [r for r in rows if r["feature_id"] in RI2_FEATURES]
+    ri2_pass = sum(1 for r in ri2_rows if r["status"] == "PASS")
+    ri2_l2 = sum(1 for r in ri2_rows if r.get("real_parity_level") in ("L2", "L3"))
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "phase": "RI-1",
+        "phase": "RI-2",
         "total_features": len(rows),
         "metadata_complete": meta_ok,
         "implemented": implemented,
