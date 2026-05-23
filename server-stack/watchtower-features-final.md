@@ -959,6 +959,58 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+## İnsan Kaynakları ve Personel Yaşam Döngüsü
+
+---
+
+### F-999: Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi
+
+**KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
+**VERİ KAYNAĞI:** HRIS onboarding feed, AD/IAM logs, app audit, file server audit  
+**NE İZLENİYOR:** Yeni işe başlayan çalışanın ilk günlerinde eriştiği sistem sayısı, veri hacmi, yetki kullanımı ve departman dışı temasları  
+**NEDEN DEĞERLI:** Yanlış yetki ataması, hesap paylaşımı, kötü niyetli onboarding veya sosyal mühendislik etkisini erken gösterir  
+**ANOMALİ SİNYALİ:** İlk hafta rolüyle ilgisiz çok sayıda sisteme hızlı erişim; hassas klasör veya uygulama export denemesi  
+**UYGULAMA ZORLUĞU:** Orta — HRIS başlangıç tarihi ve rol/department baseline gerekir  
+**ÖRNEK METRIK:** Yeni stajyer: ilk 2 günde 18 uygulama, 11 file share, 4.5 GB download
+
+---
+
+### F-999: Rol Değişikliği Sonrası Eski Yetkilerin Kullanılması
+
+**KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
+**VERİ KAYNAĞI:** HRIS role-change feed, AD group membership, IAM audit, app access logs  
+**NE İZLENİYOR:** Rol değişikliği veya terfi sonrası kaldırılması gereken eski grup/yetkilerle erişimin sürmesi ve bu yetkilerin aktif kullanımı  
+**NEDEN DEĞERLI:** Yetki kalıntıları least privilege ihlalidir; çalışan iyi niyetli olsa bile veri kapsamı gereksiz genişler  
+**ANOMALİ SİNYALİ:** Eski departman paylaşımına erişim, önceki rolün yönetim paneli veya eski müşteri portföyü export'u  
+**UYGULAMA ZORLUĞU:** Orta — HRIS role timeline ile IAM yetki durumunu karşılaştırmak gerekir  
+**ÖRNEK METRIK:** Satıştan pazarlamaya geçen kullanıcı: 30 gün sonra hâlâ CRM fiyat onay panelinde 42 işlem
+
+---
+
+### F-999: Resmi İzin Kaydı Varken Sistem Aktivitesi
+
+**KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
+**VERİ KAYNAĞI:** HRIS leave records, AD/VPN/app logs, badge sistemi  
+**NE İZLENİYOR:** Resmi izin, hastalık izni veya seyahat kaydı olan kullanıcının kurumsal sistem, ağ veya fiziksel erişim aktivitesinin devam etmesi  
+**NEDEN DEĞERLI:** Hesap paylaşımı, açık oturum suistimali, ele geçirilmiş hesap veya politika dışı çalışma düzenini gösterir  
+**ANOMALİ SİNYALİ:** İzinli kullanıcıdan mesai saatinde VPN, dosya sunucu veya ERP işlemi; aynı gün badge kaydı olmaması  
+**UYGULAMA ZORLUĞU:** Orta — HRIS izin takvimi ve dijital olayların saat/durum eşleşmesi gerekir  
+**ÖRNEK METRIK:** İzinli İK uzmanı: 13:20'de payroll export + badge kaydı yok + 2 GB download
+
+---
+
+### F-999: Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı
+
+**KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
+**VERİ KAYNAĞI:** Vendor/contractor registry, IAM entitlements, app audit, VPN logs  
+**NE İZLENİYOR:** Danışman veya yüklenici hesabının sözleşme kapsamı dışındaki sistem, zaman aralığı, veri sınıfı veya departman alanlarını kullanması  
+**NEDEN DEĞERLI:** Üçüncü taraf hesapları yüksek risklidir; kapsam dışı kullanım veri sızıntısı ve tedarik zinciri ihlali oluşturabilir  
+**ANOMALİ SİNYALİ:** Sözleşme bitişi sonrası aktif oturum, kapsam dışı uygulama, gece erişim veya beklenmeyen veri çekişi  
+**UYGULAMA ZORLUĞU:** Orta — sözleşme kapsamı makine-okunur hale getirilmelidir  
+**ÖRNEK METRIK:** Network danışmanı: sadece VPN cihazları yetkisi varken HR file share üzerinde 600 MB read
+
+---
+
 ## Zamanlama
 
 ---
