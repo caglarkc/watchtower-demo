@@ -2,6 +2,9 @@
 
 from pathlib import Path
 
+from watchtower.config.loader import load_settings
+from watchtower.config.settings import DEFAULT_SETTINGS, WatchtowerMode, WatchtowerSettings
+
 PACKAGE_ROOT = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = PACKAGE_ROOT.parent
 FEATURE_TAXONOMY_PATH = PACKAGE_ROOT / "config" / "feature_taxonomy.yml"
@@ -25,8 +28,12 @@ PREFLIGHT_REFERENCES: dict[str, Path] = {
 }
 
 __all__ = [
+    "DEFAULT_SETTINGS",
     "FEATURE_TAXONOMY_PATH",
     "PACKAGE_ROOT",
     "PREFLIGHT_REFERENCES",
     "PROJECT_ROOT",
+    "WatchtowerMode",
+    "WatchtowerSettings",
+    "load_settings",
 ]
