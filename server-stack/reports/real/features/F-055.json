@@ -2,7 +2,7 @@
   "id": "F-055",
   "feature_id": "F-055",
   "title": "USB Takma-Yazma Korelasyonu",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -43,12 +43,12 @@
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 15,
+        "indexed": 16,
         "index": "corp-logs-f-055",
         "pipeline": {
           "feature_id": "F-055",
           "index": "corp-logs-f-055",
-          "indexed": 15
+          "indexed": 16
         }
       }
     }
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "USB attach/write correlation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:04:07.381342+00:00",
+  "generated_at": "2026-05-23T03:04:23.782230+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

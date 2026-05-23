@@ -3,7 +3,7 @@
   "feature_id": "F-079",
   "title": "Mesai Dışı İnteraktif Oturum",
   "mode": "negative",
-  "parity_level": "L2",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
   "actions_executed": [
@@ -33,7 +33,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-079",
+      "assertion": "L3:elasticsearch:corp-logs-f-079",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -41,10 +41,26 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-079",
+        "count": 99,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 100,
+        "index": "corp-logs-f-079",
+        "pipeline": {
+          "feature_id": "F-079",
+          "index": "corp-logs-f-079",
+          "indexed": 100
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -55,7 +71,7 @@
   "anomaly_detected": false,
   "evidence_expected": "after-hours interactive session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:41.170652+00:00",
+  "generated_at": "2026-05-23T03:04:24.223582+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
