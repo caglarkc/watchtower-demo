@@ -3,3 +3,4 @@
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "feature_id": "F-046", "timestamp": "2026-05-23T01:16:26.012745+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "feature_id": "F-046", "timestamp": "2026-05-23T01:16:27.620215+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "feature_id": "F-046", "timestamp": "2026-05-23T01:25:47.418467+00:00"}
+{"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "feature_id": "F-046", "timestamp": "2026-05-23T01:25:52.908344+00:00"}
