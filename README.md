@@ -261,7 +261,8 @@ SOAK_HOURS=24 ./scripts/soak_24h.sh
 - Keep `.env` outside git; `.env.example` is the only committed template.
 - Configure at least one LLM provider for explanations, or rely on fail-open notes.
 - Run the documented 24-hour soak before the first closed-network deployment.
-- Current graph checkpointing uses in-process `MemorySaver`; durable checkpointing
+- Graph checkpointing defaults to durable SQLite (`WATCHTOWER_GRAPH_CHECKPOINT_PATH`); set
+  `WATCHTOWER_GRAPH_CHECKPOINT_USE_MEMORY=true` for in-process `MemorySaver` only in dev/tests
   should be added before relying on long in-flight human approval workflows.
 
 ## Documentation
