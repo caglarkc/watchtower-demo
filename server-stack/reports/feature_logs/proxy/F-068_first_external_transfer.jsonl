@@ -48,3 +48,4 @@
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "partner.corp.local", "mb": 50, "first_seen": false, "feature_id": "F-068", "timestamp": "2026-05-23T03:17:39.796281+00:00"}
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "feature_id": "F-068", "timestamp": "2026-05-23T03:17:52.027886+00:00"}
 {"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "partner.corp.local", "mb": 50, "first_seen": false, "feature_id": "F-068", "timestamp": "2026-05-23T03:17:55.339239+00:00"}
+{"event_type": "first_external_transfer", "log_channel": "proxy", "destination": "203.0.113.50", "mb": 3200, "first_seen": true, "feature_id": "F-068", "timestamp": "2026-05-23T05:09:32.184988+00:00"}
