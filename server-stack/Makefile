@@ -17,8 +17,6 @@ clean:
 config:
 	$(COMPOSE) config
 
-seed-baseline: seed-phase1 seed-phase2 seed-phase3
-
 seed-phase1:
 	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint} reports/features
 	$(PYTHON) simulation/event_generator/generate_phase1_replays.py
