@@ -14,7 +14,7 @@ def test_extractor_only_accepts_normalized_event():
     sig = inspect.signature(CandidateExtractor.extract)
     assert "normalized" in sig.parameters
     ann = sig.parameters["normalized"].annotation
-  if isinstance(ann, str):
+    if isinstance(ann, str):
         assert ann == "NormalizedEvent"
     else:
         assert ann is NormalizedEvent
