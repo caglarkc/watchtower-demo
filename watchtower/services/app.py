@@ -23,6 +23,9 @@ from watchtower.baseline.engine import BaselineEngine
 from watchtower.baseline.query import BaselineQueryAPI
 from watchtower.decision.service import DecisionService
 from watchtower.graph.runner import GraphRunner, build_graph_runner
+from watchtower.llm.gateway import LLMGateway
+from watchtower.llm.providers.factory import build_provider_chain
+from watchtower.storage.repositories.llm_audit import LLMCallAuditRepository
 from watchtower.storage.repositories.graph import GraphRepository
 from watchtower.feedback.engine import FeedbackEngine
 from watchtower.feedback.service import FeedbackService
@@ -70,6 +73,7 @@ class SessionContext:
     decision: DecisionService
     graph: GraphRepository
     graph_runner: GraphRunner
+    llm: LLMGateway
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()

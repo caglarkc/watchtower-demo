@@ -346,7 +346,38 @@ def enqueue_controlled_learning(state: GraphState, deps: GraphDeps) -> dict[str,
 def maybe_generate_llm_explanation(state: GraphState, deps: GraphDeps) -> dict[str, Any]:
     if state.get("halted"):
         return {}
-    out = {"llm_explanation": {"skipped": True, "reason": "LLM not in decision path"}}
+    assessment = state.get("assessment", {})
+    if deps.llm_gateway is None:
+        out = {"llm_explanation": {"skipped": True, "reason": "LLM gateway not configured"}}
+        _audit_repo(deps, state, "maybe_generate_llm_explanation", out)
+        return out
+    prompt = (
+        f"Explain alert for feature {state.get('taxonomy_entry', {}).get('feature_id')} "
+        f"with severity {assessment.get('severity')} for operator review. "
+        "Do not change severity or make a final decision."
+    )
+    result = deps.llm_gateway.invoke(
+        "alert_explanation",
+        prompt,
+        tenant_id=state["tenant_id"],
+        context={"assessment": assessment, "run_id": state.get("run_id")},
+    )
+    if result.success and result.data is not None:
+        out = {
+            "llm_explanation": {
+                "skipped": False,
+                "provider": result.provider,
+                "data": result.data.model_dump(),
+            }
+        }
+    else:
+        out = {
+            "llm_explanation": {
+                "skipped": False,
+                "fail_open": True,
+                "note": result.note,
+            }
+        }
     _audit_repo(deps, state, "maybe_generate_llm_explanation", out)
     return out
 
