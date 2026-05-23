@@ -283,6 +283,202 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+### F-999: Kişisel E-posta Adreslerine Ekli Posta Gönderimi
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Gerçek ortam: Exchange Message Tracking, mail gateway DLP | Demo: Postfix transport log + domain classifier  
+**NE İZLENİYOR:** Kurumsal hesaptan gmail, hotmail, yahoo ve benzeri kişisel alan adlarına ek içeren posta gönderimi; ek türü ve boyutu  
+**NEDEN DEĞERLI:** Kişisel posta kutuları kurumsal denetim dışıdır; veri sızdırma ve yanlış paylaşım için sık kullanılan çıkış yoludur  
+**ANOMALİ SİNYALİ:** Daha önce kişisel adrese ek göndermeyen kullanıcının mesai dışı hassas ek göndermesi; ek boyutunda ani artış  
+**UYGULAMA ZORLUĞU:** Kolay — alıcı domain sınıflandırması ve attachment metadata yeterlidir  
+**ÖRNEK METRIK:** İK uzmanı: 0 kişisel ekli mail/90 gün → 22:40'ta gmail.com adresine 18 MB bordro eki
+
+---
+
+### F-999: Bilinmeyen veya Rakip Kuruluşa Ekli Posta Gönderimi
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Exchange/SMTP gateway logs, CRM/vendor domain envanteri, DLP sınıflandırması  
+**NE İZLENİYOR:** Onaylı müşteri/tedarikçi listesinde olmayan veya rakip olabilecek harici domainlere ekli posta gönderimi  
+**NEDEN DEĞERLI:** Rekabet hassasiyeti olan dosyaların yanlış veya kötü niyetli paylaşımını gösterir; satış, hukuk ve strateji ekipleri için kritik sinyaldir  
+**ANOMALİ SİNYALİ:** İlk kez görülen harici domaine fiyat listesi, sözleşme, müşteri listesi veya ürün dokümanı gönderilmesi  
+**UYGULAMA ZORLUĞU:** Orta — domain itibar listesi, müşteri/tedarikçi envanteri ve rakip listesi gerekir  
+**ÖRNEK METRIK:** Satış: onaylı domain dışı ilk alıcı + 12 MB "pricing_2026.xlsx" eki
+
+---
+
+### F-999: Mail İçeriğinde Hassas Anahtar Kelime Sinyali
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Mail gateway content inspection, Exchange eDiscovery audit, DLP keyword policy  
+**NE İZLENİYOR:** Konu satırı veya gövdede maaş, istifa, gizli, dava, rakip firma adı, birleşme, müşteri listesi gibi hassas kelimeler  
+**NEDEN DEĞERLI:** İç tehdit ve yanlış paylaşım senaryolarında iletişim içeriği davranışsal bağlamı güçlendirir  
+**ANOMALİ SİNYALİ:** Rol dışı kullanıcının hassas terimli maili geniş dağıtıma veya harici alıcıya göndermesi  
+**UYGULAMA ZORLUĞU:** Orta — dil desteği, false positive azaltımı ve gizlilik politikası gerekir  
+**ÖRNEK METRIK:** Destek kullanıcısı: "maaş" veya "dava" kelimesi 0/ay → 1 günde 7 harici mail
+
+---
+
+### F-999: Eski Mail Arşivinin Toplu Okunması
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Exchange mailbox audit, IMAP access log, archive mailbox audit  
+**NE İZLENİYOR:** Uzun süredir erişilmeyen eski arşiv klasörlerinin kısa sürede toplu okunması, aranması veya export edilmesi  
+**NEDEN DEĞERLI:** Yönetici yazışmaları, hukuki süreçler ve ticari sırlar eski arşivlerde yoğunlaşır; hesap ele geçirilmesi sonrası keşif davranışını gösterir  
+**ANOMALİ SİNYALİ:** Yıllardır açılmayan arşiv klasöründen yüzlerce mailin dakikalar içinde okunması veya eklerinin indirilmesi  
+**UYGULAMA ZORLUĞU:** Orta — mailbox audit olaylarını klasör yaşı ve kullanıcı baseline'ı ile eşlemek gerekir  
+**ÖRNEK METRIK:** CEO arşivi: 0 erişim/2 yıl → 35 dakikada 1.200 mail read + 240 ek download
+
+---
+
+### F-999: Kişi Listesi veya Adres Defteri Dışa Aktarımı
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Exchange audit, EWS/Graph API audit, Roundcube/Dovecot export log  
+**NE İZLENİYOR:** Kullanıcının kişisel kişi listesini, global adres defterini veya departman dağıtım listelerini dışa aktarması  
+**NEDEN DEĞERLI:** Phishing hazırlığı, müşteri/çalışan listesi sızdırma ve ayrılış öncesi bilgi toplama davranışını gösterir  
+**ANOMALİ SİNYALİ:** Daha önce export yapmamış kullanıcının yüzlerce kişi kaydını CSV/VCF olarak indirmesi  
+**UYGULAMA ZORLUĞU:** Kolay — export event ve API çağrıları doğrudan izlenebilir  
+**ÖRNEK METRIK:** Satış kullanıcısı: 0 contact export/1 yıl → 4.800 kayıt CSV export
+
+---
+
+### F-999: Yazışma Üslubu ve Dil Tonu Sapması
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Mail content metadata, NLP style baseline, güvenli içerik analiz pipeline'ı  
+**NE İZLENİYOR:** Kullanıcının normal resmiyet seviyesi, dil tonu, yazım kalıpları, imza ve cümle uzunluğu profilinden sapması  
+**NEDEN DEĞERLI:** Hesap ele geçirilmesi, sosyal mühendislik ve kullanıcı adına gönderilen sahte talimatları yakalamaya yardımcı olur  
+**ANOMALİ SİNYALİ:** Normalde Türkçe ve resmi yazan kullanıcının ani İngilizce, kısa, baskıcı veya link odaklı yazışmaya geçmesi  
+**UYGULAMA ZORLUĞU:** Zor — gizlilik, dil modeli kalitesi ve departman bağlamı dikkatli yönetilmelidir  
+**ÖRNEK METRIK:** CFO hesabı: tipik 120 kelime resmi yazışma → 9 kelimelik acil ödeme talimatı + yeni alıcı
+
+---
+
+### F-999: Yasaklı veya Politika Dışı İfade Kullanımı
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Mail DLP, HR policy keyword list, eDiscovery audit  
+**NE İZLENİYOR:** Tehdit, ayrımcı ifade, gizlilik ihlali riski taşıyan metin, kişisel veri paylaşımı veya şirket iletişim politikasıyla uyumsuz içerik  
+**NEDEN DEĞERLI:** Hukuki risk, etik ihlal ve çalışan güvenliği açısından mail kanalı erken uyarı üretir  
+**ANOMALİ SİNYALİ:** Hassas veya yasaklı ifadelerin yönetici, aday, müşteri veya geniş dağıtım listelerine gönderilmesi  
+**UYGULAMA ZORLUĞU:** Orta — sözlük, bağlam analizi ve insan incelemesi gerektirir  
+**ÖRNEK METRIK:** Bir kullanıcıdan 1 gün içinde 5 politika dışı ifade alarmı; 3'ü harici alıcılı
+
+---
+
+### F-999: İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Exchange/SMTP logs, mail graph history, DLP keyword classifier  
+**NE İZLENİYOR:** Daha önce hiç yazışılmamış harici kişilere veya şirket çalışanı olmayan alıcılara hassas konu/ek içeren mail gönderimi  
+**NEDEN DEĞERLI:** Hatalı alıcı seçimi, sahte tedarikçi dolandırıcılığı ve sızıntı girişimlerinde ilk temas paterni güçlü sinyaldir  
+**ANOMALİ SİNYALİ:** İlk temas edilen domaine "gizli", "maaş", "dava", "strateji" veya müşteri verisi içeren mail gitmesi  
+**UYGULAMA ZORLUĞU:** Orta — geçmiş yazışma grafı ve hassas içerik sınıflandırması gerekir  
+**ÖRNEK METRIK:** Hukuk: ilk kez görülen alıcı + "dava dosyası" konusu + 24 MB ek
+
+---
+
+### F-999: Kurumsal Mail Sistemine Kişisel/Bilinmeyen Hesapla Giriş Denemesi
+
+**KATEGORİ:** mail ve iletişim  
+**VERİ KAYNAĞI:** Exchange/O365 sign-in logs, IMAP/SMTP auth logs, IdP audit  
+**NE İZLENİYOR:** Kurumsal posta altyapısına kişisel, bilinmeyen veya şirket domaini dışındaki hesap kimliğiyle giriş denemesi  
+**NEDEN DEĞERLI:** Yanlış yapılandırılmış istemci, kimlik avı sonrası otomasyon veya kurumsal posta sistemine yetkisiz kullanım girişimi göstergesidir  
+**ANOMALİ SİNYALİ:** Şirket dışı hesapla IMAP/SMTP auth denemesi; aynı IP'den ardından geçerli kurumsal hesap denemeleri  
+**UYGULAMA ZORLUĞU:** Kolay — authentication logları ve domain allowlist yeterlidir  
+**ÖRNEK METRIK:** Aynı workstation: personalmail@gmail.com auth fail → 3 dakika sonra 12 kurumsal kullanıcı denemesi
+
+---
+
+## Yapay Zeka Kullanımı
+
+---
+
+### F-999: Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** Secure web gateway, CASB, DLP agent, browser telemetry  
+**NE İZLENİYOR:** ChatGPT, Claude, Gemini ve benzeri harici AI platformlarına müşteri bilgisi, finansal veri, personel kaydı veya hukuki belge içeriği gönderimi  
+**NEDEN DEĞERLI:** Kurumsal gizli verinin üçüncü taraf AI servislerine taşınması regülasyon, sözleşme ve veri sızıntısı riski üretir  
+**ANOMALİ SİNYALİ:** Hassas sınıflı metin veya dosyanın onaysız AI domaine POST edilmesi; büyük prompt payload'ı  
+**UYGULAMA ZORLUĞU:** Orta — TLS inspection, CASB veya endpoint DLP entegrasyonu gerekir  
+**ÖRNEK METRIK:** Hukuk kullanıcısı: claude.ai'a 4.2 MB "dava_dosyasi.docx" içeriği gönderimi
+
+---
+
+### F-999: Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** Browser DLP, clipboard telemetry, CASB, proxy request metadata  
+**NE İZLENİYOR:** Dahili servis adları, bağlantı bilgileri, kaynak kod, mimari diyagram metni, iş mantığı veya secret içerebilecek kod parçalarının AI arayüzlerine gönderimi  
+**NEDEN DEĞERLI:** Kod tabanı ve mimari bilgiler rekabet avantajı ve saldırı yüzeyi bilgisidir; geliştirici üretkenliği ile veri koruma dengesi kurulmalıdır  
+**ANOMALİ SİNYALİ:** Repository dosya adı, internal hostname veya config içeren uzun prompt'ların onaysız AI servisine gönderilmesi  
+**UYGULAMA ZORLUĞU:** Orta — kod/secret sınıflandırması ve geliştirici allowlist politikası gerekir  
+**ÖRNEK METRIK:** Dev workstation: 1.800 satır config ve internal API route listesi chat.openai.com prompt payload'ında
+
+---
+
+### F-999: AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** CASB/DLP content inspection, proxy logs, browser extension telemetry  
+**NE İZLENİYOR:** AI platformuna iletilen sorgularda iç sistem adı, kullanıcı adı, parola ipucu, IP adresi, subnet, sunucu rolü veya bağlantı string'i bulunması  
+**NEDEN DEĞERLI:** Saldırgan için doğrudan keşif değeri taşıyan iç ağ bilgisinin dış servise taşınmasını gösterir  
+**ANOMALİ SİNYALİ:** `10.x.x.x`, internal FQDN, servis hesabı adı veya parola ipucu içeren prompt; güvenlik prosedürüyle birlikte sorulması  
+**UYGULAMA ZORLUĞU:** Orta — regex, entity extraction ve false positive kontrolü gerekir  
+**ÖRNEK METRIK:** Prompt içinde 14 internal hostname + 3 servis hesabı adı + "password reset procedure"
+
+---
+
+### F-999: Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** Proxy/SWG logs, DNS logs, CASB SaaS discovery  
+**NE İZLENİYOR:** Şirket politikasında tanımlanmamış AI domainlerine erişim, yeni AI SaaS kullanımı, kişisel hesapla AI servisi oturumu  
+**NEDEN DEĞERLI:** Gölge AI kullanımı veri işleme koşulları bilinmeyen platformlara hassas veri taşınmasına neden olur  
+**ANOMALİ SİNYALİ:** İlk kez görülen AI domaine yüksek hacimli POST; departman politikasında olmayan servis kullanımı  
+**UYGULAMA ZORLUĞU:** Kolay — domain kategorisi ve SaaS allowlist ile izlenebilir  
+**ÖRNEK METRIK:** Pazarlama kullanıcısı: onaysız ai-writer.example domaine 600 MB upload / 1 gün
+
+---
+
+### F-999: AI Platformlarına Dosya Yükleme Hacmi ve İçerik Türü
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** CASB, secure web gateway, endpoint DLP, browser upload telemetry  
+**NE İZLENİYOR:** AI platformuna yüklenen dosyaların boyutu, türü, sınıflandırması ve toplu belge/dataset aktarımı  
+**NEDEN DEĞERLI:** Prompt metninden daha yüksek riskli olan dosya yüklemeleri, tam doküman ve veri seti sızıntısına yol açabilir  
+**ANOMALİ SİNYALİ:** Kısa sürede çok sayıda PDF/XLSX/CSV upload; confidential etiketli dosyanın AI servisine yüklenmesi  
+**UYGULAMA ZORLUĞU:** Orta — upload metadata ve DLP sınıflandırması gerekir  
+**ÖRNEK METRIK:** Analist: 45 CSV dosyası / 1.6 GB dataset upload to AI platform
+
+---
+
+### F-999: AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** CASB/DLP content inspection, browser history telemetry, security search audit  
+**NE İZLENİYOR:** AI aracına şirket süreçleri, yetkiler, güvenlik prosedürleri, erişim onay akışı veya sistem zayıflıkları hakkında detaylı soru sorulması  
+**NEDEN DEĞERLI:** İçeriden keşif, sosyal mühendislik hazırlığı veya yeni başlayan bir kullanıcının rol dışı sistem öğrenme girişimi olabilir  
+**ANOMALİ SİNYALİ:** "VPN onayı nasıl aşılır", "kim hangi payroll yetkisine sahip" gibi şirket bağlamlı prosedür sorguları  
+**UYGULAMA ZORLUĞU:** Zor — niyet analizi ve meşru destek/öğrenme senaryolarını ayırmak gerekir  
+**ÖRNEK METRIK:** Stajyer hesabı: 30 dakikada 12 şirket güvenlik prosedürü sorgusu + iç sistem adları
+
+---
+
+### F-999: AI Konuşma Geçmişinde Rekabet, Strateji veya Hukuki Süreç İçeriği
+
+**KATEGORİ:** yapay zeka kullanımı  
+**VERİ KAYNAĞI:** Kurumsal onaylı AI tenant audit, CASB, DLP review queue  
+**NE İZLENİYOR:** AI konuşmalarında rakip firma adları, stratejik planlar, birleşme/satın alma, devam eden dava veya regülasyon incelemesi içeriği  
+**NEDEN DEĞERLI:** Stratejik veya hukuki hassasiyet taşıyan konuların dış AI sistemlerinde işlenmesi üst seviye kurumsal risk oluşturur  
+**ANOMALİ SİNYALİ:** Rakip adı + strateji dokümanı + yönetici rolü kombinasyonu; hukuki dosya özetletme girişimi  
+**UYGULAMA ZORLUĞU:** Orta — onaylı AI tenant audit varsa kolaylaşır, kişisel AI kullanımı için CASB gerekir  
+**ÖRNEK METRIK:** Strateji ekibi kullanıcısı: 9 prompt içinde 3 rakip firma adı + "2026 pricing plan"
+
+---
+
 ## Dosya Sistemi
 
 ---
