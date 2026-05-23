@@ -98,6 +98,8 @@ def _infer_real_tool(simulation_source: str) -> str:
         ("cups", "cups"),
         ("dlp", "dlp-agent"),
         ("mattermost", "mattermost"),
+        ("suitecrm", "suitecrm"),
+        ("crm", "suitecrm"),
         ("wiki/intranet", "wiki-app"),
         ("siem", "wazuh-siem"),
         ("hypervisor", "hypervisor-console"),
@@ -138,6 +140,8 @@ def _raw_log_assertion(tool: str, evidence_expected: str) -> str:
         "cups": "/var/log/cups/access_log",
         "dlp-agent": "/var/log/dlp/health.log",
         "ai-gateway": "/var/log/ai-gateway/audit.log",
+        "mattermost": "/var/log/mattermost/chat.jsonl",
+        "suitecrm": "/var/log/suitecrm/crm.jsonl",
     }
     path = log_paths.get(tool, "/var/log/endpoint/events.jsonl")
     return f"{tool}:{path}:{evidence_expected}"
