@@ -2,8 +2,8 @@
   "id": "F-025",
   "feature_id": "F-025",
   "title": "Kişi Listesi veya Adres Defteri Dışa Aktarımı",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "roundcube",
   "actions_executed": [
@@ -20,17 +20,48 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-025",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-025",
+        "count": 80,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-025",
+        "pipeline": {
+          "feature_id": "F-025",
+          "index": "corp-logs-f-025",
+          "indexed": 80
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "address-book export event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:24.207076+00:00",
+  "generated_at": "2026-05-23T03:05:26.418067+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
