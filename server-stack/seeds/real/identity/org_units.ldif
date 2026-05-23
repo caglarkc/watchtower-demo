@@ -1,0 +1,5 @@
+dn: OU=Finance,DC=corp,DC=local
+ou: Finance
+
+dn: OU=HR,DC=corp,DC=local
+ou: HR

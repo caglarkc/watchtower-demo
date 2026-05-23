@@ -1,1 +1,8 @@
-user_id,display_name,department,role
+user_id,display_name,department,role,enabled
+u001,CFO User,Finance,CFO,1
+u002,Finance Analyst,Finance,Analyst,1
+u003,HR Manager,HR,Manager,1
+u004,Legal Counsel,Legal,Counsel,1
+u005,Dev Lead,Engineering,Lead,1
+u006,Service SQL,IT,ServiceAccount,1
+u007,Contractor One,External,Contractor,1

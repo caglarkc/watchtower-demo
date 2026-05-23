@@ -1,1 +1,7 @@
-group_id,group_name
+group_id,group_name,members
+g001,Domain Admins,u001
+g002,Finance-RO,u002
+g003,HR-Full,u003
+g004,Legal-Confidential,u004
+g005,Dev-Write,u005
+g006,Service-Accounts,u006
