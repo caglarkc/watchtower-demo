@@ -9,3 +9,4 @@
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "feature_id": "F-054", "timestamp": "2026-05-23T01:26:52.151716+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "feature_id": "F-054", "timestamp": "2026-05-23T01:26:57.915171+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "feature_id": "F-054", "timestamp": "2026-05-23T01:27:04.555918+00:00"}
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "feature_id": "F-054", "timestamp": "2026-05-23T01:27:06.209648+00:00"}
