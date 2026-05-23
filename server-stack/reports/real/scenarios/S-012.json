@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-012",
   "title": "Stajyer CRM Export",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Stajyer",
   "deterministic_seed": 1012,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 5520,
+            "count": 6080,
             "result": "PASS"
           },
           "result": "PASS",
@@ -78,7 +78,7 @@
         {
           "service": "hris",
           "response": {
-            "systems_accessed": 6
+            "systems_accessed": 28
           }
         }
       ],
@@ -134,7 +134,7 @@
     {
       "service": "hris",
       "response": {
-        "systems_accessed": 6
+        "systems_accessed": 28
       }
     }
   ],
@@ -163,7 +163,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 5520,
+        "count": 6080,
         "result": "PASS"
       },
       "result": "PASS",
@@ -216,12 +216,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:15.953932+00:00",
+  "generated_at": "2026-05-23T05:36:41.450045+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-012:1012:negative:real"
+  "replay_key": "S-012:1012:positive:real"
 }

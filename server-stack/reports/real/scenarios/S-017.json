@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-017",
   "title": "Token Vault Dump",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2017,
@@ -20,7 +20,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 1
+            "reads": 25
           }
         }
       ],
@@ -70,7 +70,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 1
+        "reads": 25
       }
     }
   ],
@@ -114,12 +114,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:17.355337+00:00",
+  "generated_at": "2026-05-23T05:36:42.744763+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-017:2017:negative:real"
+  "replay_key": "S-017:2017:positive:real"
 }
