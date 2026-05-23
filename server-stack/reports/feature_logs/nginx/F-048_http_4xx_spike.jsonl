@@ -1,1 +1,2 @@
 {"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 5200, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T01:09:42.432938+00:00"}
+{"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 12, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T01:09:44.073481+00:00"}
