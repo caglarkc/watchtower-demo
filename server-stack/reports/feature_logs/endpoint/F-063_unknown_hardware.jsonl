@@ -1,3 +1,4 @@
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "feature_id": "F-063", "timestamp": "2026-05-23T01:02:34.147483+00:00"}
 {"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "feature_id": "F-063", "timestamp": "2026-05-23T01:02:35.681310+00:00"}
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "feature_id": "F-063", "timestamp": "2026-05-23T01:09:45.892404+00:00"}
+{"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "feature_id": "F-063", "timestamp": "2026-05-23T01:09:47.474459+00:00"}

@@ -1,3 +1,4 @@
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "feature_id": "F-037", "timestamp": "2026-05-23T01:02:33.659723+00:00"}
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "feature_id": "F-037", "timestamp": "2026-05-23T01:02:35.186619+00:00"}
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "feature_id": "F-037", "timestamp": "2026-05-23T01:09:45.420995+00:00"}
+{"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "feature_id": "F-037", "timestamp": "2026-05-23T01:09:46.949456+00:00"}

@@ -1,2 +1,4 @@
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T01:02:34.290980+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T01:02:35.815691+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T01:09:46.033264+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T01:09:47.609634+00:00"}
