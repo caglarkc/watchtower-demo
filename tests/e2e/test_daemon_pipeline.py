@@ -11,6 +11,7 @@ from tests.daemon.helpers import (
 from tests.daemon.test_loop import _run_daemon_once, _seed_f001_baseline
 from tests.graph.conftest import set_tenant_mode
 from watchtower.config.paths import PROJECT_ROOT
+from watchtower.daemon.service import DaemonService
 
 
 def test_e2e_daemon_f001_replay_jsonl_pipeline(app, tenant_id, tmp_path):
@@ -53,11 +54,8 @@ def test_e2e_daemon_server_stack_jsonl_when_logs_present(app, tenant_id):
     set_tenant_mode(app, tenant_id, "learn")
 
     with app.session() as session:
-        daemon = __import__(
-            "watchtower.daemon.service", fromlist=["DaemonService"]
-        ).DaemonService(session)
+        daemon = DaemonService(session)
         summary = daemon.run_once(tenant_id)
         session.conn.commit()
 
     assert summary.sources_polled >= 1 or summary.raw_stored >= 0
-    del source_id

@@ -30,9 +30,6 @@ def test_cli_daemon_run_once(db_path: Path, tmp_path: Path):
     )
     assert boot.exit_code == 0, boot.stdout
 
-    with open(db_path, "rb"):
-        pass
-
     from watchtower.services.app import create_app
     from watchtower.config.settings import WatchtowerSettings
     from tests.daemon.helpers import register_f001_jsonl_source
