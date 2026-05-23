@@ -1,14 +1,13 @@
-"""Elasticsearch read-only connector (search_after polling)."""
+"""Elasticsearch read-only connector (search_after, auth, TLS, retry)."""
 
 from __future__ import annotations
 
-import json
-import urllib.error
-import urllib.request
+import time
 from datetime import datetime
 from typing import Any, Callable
 
 from watchtower.connectors.base import BaseConnector, ConnectorError
+from watchtower.connectors.http_util import ConnectorHttpClient, HttpClientConfig
 from watchtower.domain.events import (
     ConnectorCursor,
     EventBatch,
@@ -17,6 +16,23 @@ from watchtower.domain.events import (
     SourceSchemaHint,
 )
 from watchtower.ingest.dedupe import dedupe_key_for_es_doc
+
+
+def _http_config_from_dict(config: dict[str, Any]) -> HttpClientConfig:
+    return HttpClientConfig(
+        timeout_seconds=float(config.get("timeout_seconds", 10.0)),
+        max_retries=int(config.get("max_retries", 2)),
+        backoff_base_seconds=float(config.get("backoff_base_seconds", 0.5)),
+        verify_tls=bool(config.get("verify_tls", True)),
+        ca_cert_path=config.get("ca_cert_path"),
+        auth_type=config.get("auth_type"),
+        username=config.get("username"),
+        password=config.get("password"),
+        token=config.get("token") or config.get("api_key"),
+        api_key=config.get("api_key"),
+        api_key_header=str(config.get("api_key_header", "Authorization")),
+        api_key_prefix=str(config.get("api_key_prefix", "ApiKey")),
+    )
 
 
 class ElasticsearchConnector(BaseConnector):
@@ -29,6 +45,7 @@ class ElasticsearchConnector(BaseConnector):
         base_url: str,
         index: str,
         query: dict[str, Any] | None = None,
+        http_config: dict[str, Any] | None = None,
         http_get: Callable[..., Any] | None = None,
         http_post: Callable[..., Any] | None = None,
     ) -> None:
@@ -36,44 +53,32 @@ class ElasticsearchConnector(BaseConnector):
         self.base_url = base_url.rstrip("/")
         self.index = index
         self.query = query or {"match_all": {}}
-        self._http_get = http_get or self._default_get
-        self._http_post = http_post or self._default_post
-
-    def _default_get(self, url: str, timeout: float = 10.0) -> dict[str, Any]:
-        request = urllib.request.Request(url, method="GET")
-        try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except urllib.error.URLError as exc:
-            raise ConnectorError(str(exc)) from exc
-
-    def _default_post(
-        self, url: str, body: dict[str, Any], timeout: float = 10.0
-    ) -> dict[str, Any]:
-        data = json.dumps(body).encode("utf-8")
-        request = urllib.request.Request(
-            url,
-            data=data,
-            method="POST",
-            headers={"Content-Type": "application/json"},
+        cfg = _http_config_from_dict(http_config or {})
+        self._http = ConnectorHttpClient(
+            cfg,
+            http_get=http_get,  # type: ignore[arg-type]
+            http_post=http_post,  # type: ignore[arg-type]
         )
-        try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except urllib.error.URLError as exc:
-            raise ConnectorError(str(exc)) from exc
 
     def health(self) -> SourceHealth:
         try:
-            payload = self._http_get(f"{self.base_url}/_cluster/health")
+            payload = self._http.get(f"{self.base_url}/_cluster/health")
         except ConnectorError as exc:
-            return SourceHealth(status="unhealthy", message=str(exc))
+            return SourceHealth(
+                status="unhealthy",
+                message=str(exc),
+                details={"retries": self._http.stats.retries},
+            )
         status = payload.get("status", "unknown")
         mapped = "healthy" if status in {"green", "yellow"} else "degraded"
         return SourceHealth(
             status=mapped,
             message=f"cluster status: {status}",
-            details={"cluster_name": payload.get("cluster_name")},
+            details={
+                "cluster_name": payload.get("cluster_name"),
+                "latency_ms": self._http.stats.last_latency_ms,
+                "retries": self._http.stats.retries,
+            },
         )
 
     def poll(self, cursor: ConnectorCursor, limit: int) -> EventBatch:
@@ -87,8 +92,9 @@ class ElasticsearchConnector(BaseConnector):
             body["search_after"] = search_after
 
         url = f"{self.base_url}/{self.index}/_search"
+        started = time.monotonic()
         try:
-            result = self._http_post(url, body)
+            result = self._http.post(url, body)
         except ConnectorError:
             raise
 
@@ -120,6 +126,7 @@ class ElasticsearchConnector(BaseConnector):
         next_cursor = ConnectorCursor(data=dict(cursor.data))
         next_cursor.set_es_search_after(last_sort)
         has_more = len(hits) >= limit
+        _ = started  # latency captured in http stats
         return EventBatch(events=events, next_cursor=next_cursor, has_more=has_more)
 
     def ack(self, cursor: ConnectorCursor) -> None:
@@ -130,3 +137,11 @@ class ElasticsearchConnector(BaseConnector):
             format="elasticsearch_hit",
             fields=["@timestamp", "user", "source_ip", "detection_type"],
         )
+
+    @property
+    def http_retries(self) -> int:
+        return self._http.stats.retries
+
+    @property
+    def last_latency_ms(self) -> float | None:
+        return self._http.stats.last_latency_ms
