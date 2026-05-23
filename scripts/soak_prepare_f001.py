@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from tests.daemon.helpers import register_f001_jsonl_source, replay_events_to_jsonl
-from tests.daemon.test_loop import _seed_f001_baseline
+from watchtower.e2e.soak import (
+    register_f001_jsonl_source,
+    replay_events_to_jsonl,
+    seed_f001_baseline,
+)
 from tests.graph.conftest import set_tenant_mode
 from watchtower.config.settings import WatchtowerSettings
 from watchtower.services.app import create_app
