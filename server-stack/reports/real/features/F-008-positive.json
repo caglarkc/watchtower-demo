@@ -29,7 +29,7 @@
   "anomaly_detected": true,
   "evidence_expected": "TGT/NTLM target diversity event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:34.800865+00:00",
+  "generated_at": "2026-05-23T02:29:53.473845+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

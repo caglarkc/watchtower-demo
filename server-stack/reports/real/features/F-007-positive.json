@@ -46,7 +46,7 @@
   "anomaly_detected": true,
   "evidence_expected": "high cardinality port scan event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:34.681952+00:00",
+  "generated_at": "2026-05-23T02:29:53.224931+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

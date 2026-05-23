@@ -29,7 +29,7 @@
   "anomaly_detected": false,
   "evidence_expected": "Everyone permission change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:42.506665+00:00",
+  "generated_at": "2026-05-23T02:29:55.743416+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
