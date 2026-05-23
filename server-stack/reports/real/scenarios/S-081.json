@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-081",
   "title": "Çoklu Departman Zincirli Fiziksel-Dijital Saldırı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 9081,
@@ -24,29 +24,8 @@
           "service": "mattermost",
           "response": {
             "signals": [
-              "ai_leak",
-              "exfil",
-              "secret_burst"
+              "baseline"
             ]
-          }
-        },
-        {
-          "service": "ai-gateway",
-          "response": {
-            "accepted": true,
-            "tokens": 4
-          }
-        },
-        {
-          "service": "proxy",
-          "response": {
-            "stored": true
-          }
-        },
-        {
-          "service": "vault",
-          "response": {
-            "reads": 10
           }
         }
       ],
@@ -99,7 +78,7 @@
         {
           "service": "badge",
           "response": {
-            "shift": "off"
+            "shift": "day"
           }
         }
       ],
@@ -127,12 +106,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 75,
+            "indexed": 80,
             "index": "corp-logs-f-074",
             "pipeline": {
               "feature_id": "F-074",
               "index": "corp-logs-f-074",
-              "indexed": 75
+              "indexed": 80
             }
           }
         }
@@ -152,7 +131,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 2,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -190,19 +169,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 2725,
+            "count": 3472,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 122,
+            "indexed": 128,
             "index": "corp-logs-f-015",
             "pipeline": {
               "feature_id": "F-015",
               "index": "corp-logs-f-015",
-              "indexed": 122
+              "indexed": 128
             }
           }
         }
@@ -272,41 +251,20 @@
       "service": "mattermost",
       "response": {
         "signals": [
-          "ai_leak",
-          "exfil",
-          "secret_burst"
+          "baseline"
         ]
-      }
-    },
-    {
-      "service": "ai-gateway",
-      "response": {
-        "accepted": true,
-        "tokens": 4
-      }
-    },
-    {
-      "service": "proxy",
-      "response": {
-        "stored": true
-      }
-    },
-    {
-      "service": "vault",
-      "response": {
-        "reads": 10
       }
     },
     {
       "service": "badge",
       "response": {
-        "shift": "off"
+        "shift": "day"
       }
     },
     {
       "service": "zeek",
       "response": {
-        "written": 2,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -391,12 +349,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 75,
+        "indexed": 80,
         "index": "corp-logs-f-074",
         "pipeline": {
           "feature_id": "F-074",
           "index": "corp-logs-f-074",
-          "indexed": 75
+          "indexed": 80
         }
       }
     },
@@ -414,19 +372,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 2725,
+        "count": 3472,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 122,
+        "indexed": 128,
         "index": "corp-logs-f-015",
         "pipeline": {
           "feature_id": "F-015",
           "index": "corp-logs-f-015",
-          "indexed": 122
+          "indexed": 128
         }
       }
     },
@@ -470,12 +428,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
-  "event_count": 8,
+  "anomaly_detected": false,
+  "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:27.188092+00:00",
+  "generated_at": "2026-05-23T03:14:54.575466+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-081:9081:positive:real"
+  "replay_key": "S-081:9081:negative:real"
 }
