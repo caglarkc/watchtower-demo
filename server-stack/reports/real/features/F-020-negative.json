@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-020",
-        "count": 1040,
+        "count": 1200,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "BCC/distribution-list anomaly",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:53.159777+00:00",
+  "generated_at": "2026-05-23T03:17:36.618985+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

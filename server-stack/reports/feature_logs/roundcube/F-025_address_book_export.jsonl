@@ -47,3 +47,4 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T03:08:27.615967+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T03:08:29.951286+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T03:17:28.219504+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T03:17:35.741933+00:00"}

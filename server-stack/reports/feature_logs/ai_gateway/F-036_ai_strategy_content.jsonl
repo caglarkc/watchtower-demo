@@ -45,3 +45,4 @@
 {"event_type": "ai_strategy_content", "log_channel": "ai_gateway", "legal_terms": 14, "strategy_terms": 22, "feature_id": "F-036", "timestamp": "2026-05-23T03:08:32.259707+00:00"}
 {"event_type": "ai_strategy_content", "log_channel": "ai_gateway", "legal_terms": 0, "strategy_terms": 0, "feature_id": "F-036", "timestamp": "2026-05-23T03:08:35.506826+00:00"}
 {"event_type": "ai_strategy_content", "log_channel": "ai_gateway", "legal_terms": 14, "strategy_terms": 22, "feature_id": "F-036", "timestamp": "2026-05-23T03:17:29.210199+00:00"}
+{"event_type": "ai_strategy_content", "log_channel": "ai_gateway", "legal_terms": 0, "strategy_terms": 0, "feature_id": "F-036", "timestamp": "2026-05-23T03:17:36.725805+00:00"}
