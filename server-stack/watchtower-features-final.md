@@ -107,6 +107,18 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+### F-999: İç Ağ Port Taraması ve Servis Keşfi
+
+**KATEGORİ:** ağ trafiği  
+**VERİ KAYNAĞI:** Zeek conn.log, NetFlow, firewall east-west log, EDR network telemetry  
+**NE İZLENİYOR:** Tek host'un kısa sürede çok sayıda iç IP/port kombinasyonuna bağlantı denemesi; başarısız SYN yoğunluğu; servis banner keşfi  
+**NEDEN DEĞERLI:** Lateral movement öncesindeki keşif adımını, yanlış yapılandırılmış tarama araçlarını ve ele geçirilmiş uç noktaları erken gösterir  
+**ANOMALİ SİNYALİ:** Normalde 3-5 iç servise bağlanan kullanıcının 10 dakikada 200 host veya 1.000 port denemesi üretmesi  
+**UYGULAMA ZORLUĞU:** Orta — port tarama ile meşru envanter taramasını asset/owner bilgisiyle ayırmak gerekir  
+**ÖRNEK METRIK:** Satış laptop'u: 8 hedef/gün → 12 dakikada 180 iç host ve 25 farklı port
+
+---
+
 ## Kimlik ve Erişim
 
 ---
