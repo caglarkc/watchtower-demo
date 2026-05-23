@@ -1,0 +1,87 @@
+{
+  "scenario_id": "S-008",
+  "title": "Yedekleme Sunucusundan Olağan Dışı Veri Çekme",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "IT Admin",
+  "deterministic_seed": 1008,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-001",
+    "F-055",
+    "F-053",
+    "F-067",
+    "F-068"
+  ],
+  "services": [
+    "cloud-storage-mock",
+    "endpoint-synthetic",
+    "proxy-sink"
+  ],
+  "expected_evidence": "Multi-signal workflow for Yedekleme Sunucusundan Olağan Dışı Veri Çekme",
+  "anomaly_detected": true,
+  "event_count": 6,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-008",
+      "user_role": "IT Admin",
+      "category": "veri sızdırma",
+      "seed": 1008,
+      "anomaly": true
+    },
+    {
+      "event_type": "smb_read_volume",
+      "user": "cfo",
+      "bytes_read": 14000000000,
+      "anomaly": true,
+      "source_feature": "F-001",
+      "scenario_id": "S-008"
+    },
+    {
+      "event_type": "usb_write",
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
+      "source_feature": "F-055",
+      "scenario_id": "S-008"
+    },
+    {
+      "event_type": "backup_shadow_delete",
+      "log_channel": "endpoint",
+      "shadow_copies_deleted": 48,
+      "source_feature": "F-053",
+      "scenario_id": "S-008"
+    },
+    {
+      "event_type": "personal_cloud_upload",
+      "log_channel": "cloud",
+      "provider": "dropbox-personal",
+      "mb": 2100,
+      "source_feature": "F-067",
+      "scenario_id": "S-008"
+    },
+    {
+      "event_type": "first_external_transfer",
+      "log_channel": "proxy",
+      "destination": "203.0.113.50",
+      "mb": 3200,
+      "first_seen": true,
+      "source_feature": "F-068",
+      "scenario_id": "S-008"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-008/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-008/scenarios/smb_read_volume.jsonl",
+    "reports/scenario_logs/S-008/scenarios/usb_write.jsonl",
+    "reports/scenario_logs/S-008/endpoint/backup_shadow_delete.jsonl",
+    "reports/scenario_logs/S-008/cloud/personal_cloud_upload.jsonl",
+    "reports/scenario_logs/S-008/proxy/first_external_transfer.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.749402+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-008:1008:positive"
+}

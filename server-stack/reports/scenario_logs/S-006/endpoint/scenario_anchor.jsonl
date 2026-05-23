@@ -1,0 +1,1 @@
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-006", "user_role": "Yazılım Geliştirici", "category": "veri sızdırma", "seed": 1006, "anomaly": true, "timestamp": "2026-05-23T01:26:21.677613+00:00"}

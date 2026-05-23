@@ -1,0 +1,60 @@
+{
+  "scenario_id": "S-020",
+  "title": "Çoklu Lokasyon Çakışması",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "CEO",
+  "deterministic_seed": 2020,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-009",
+    "F-070"
+  ],
+  "services": [
+    "badge-api",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Çoklu Lokasyon Çakışması",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-020",
+      "user_role": "CEO",
+      "category": "credential ihlali",
+      "seed": 2020,
+      "anomaly": true
+    },
+    {
+      "event_type": "concurrent_session",
+      "log_channel": "badge",
+      "locations": [
+        "floor-3",
+        "floor-b1"
+      ],
+      "minutes_apart": 12,
+      "source_feature": "F-009",
+      "scenario_id": "S-020"
+    },
+    {
+      "event_type": "badge_login_mismatch",
+      "log_channel": "badge",
+      "badge_present": false,
+      "login_success": true,
+      "source_feature": "F-070",
+      "scenario_id": "S-020"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-020/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-020/badge/concurrent_session.jsonl",
+    "reports/scenario_logs/S-020/badge/badge_login_mismatch.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.144462+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-020:2020:positive"
+}

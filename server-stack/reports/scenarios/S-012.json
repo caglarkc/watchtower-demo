@@ -1,0 +1,58 @@
+{
+  "scenario_id": "S-012",
+  "title": "Stajyer CRM Export",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "Stajyer",
+  "deterministic_seed": 1012,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-047",
+    "F-075"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "hris-mock",
+    "internal-app"
+  ],
+  "expected_evidence": "Multi-signal workflow for Stajyer CRM Export",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-012",
+      "user_role": "Stajyer",
+      "category": "veri sızdırma",
+      "seed": 1012,
+      "anomaly": true
+    },
+    {
+      "event_type": "api_pattern_deviation",
+      "log_channel": "app",
+      "calls_per_hour": 430,
+      "baseline": 40,
+      "source_feature": "F-047",
+      "scenario_id": "S-012"
+    },
+    {
+      "event_type": "new_hire_excess_access",
+      "log_channel": "hris",
+      "day": 1,
+      "systems_accessed": 28,
+      "source_feature": "F-075",
+      "scenario_id": "S-012"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-012/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-012/app/api_pattern_deviation.jsonl",
+    "reports/scenario_logs/S-012/hris/new_hire_excess_access.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.880374+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-012:1012:positive"
+}

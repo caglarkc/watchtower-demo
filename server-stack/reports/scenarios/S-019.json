@@ -1,0 +1,45 @@
+{
+  "scenario_id": "S-019",
+  "title": "Hizmet Hesabının Kötüye Kullanımı",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 2019,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-010"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Hizmet Hesabının Kötüye Kullanımı",
+  "anomaly_detected": true,
+  "event_count": 2,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-019",
+      "user_role": "IT Admin",
+      "category": "credential ihlali",
+      "seed": 2019,
+      "anomaly": true
+    },
+    {
+      "event_type": "service_interactive",
+      "account": "svc_sql",
+      "logon_type": 2,
+      "source_feature": "F-010",
+      "scenario_id": "S-019"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-019/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-019/scenarios/service_interactive.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.113201+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-019:2019:positive"
+}

@@ -1,0 +1,57 @@
+{
+  "scenario_id": "S-006",
+  "title": "Kaynak Kod Deposunun Kitlesel Klonlanması",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 1006,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-049",
+    "F-042"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "gitea"
+  ],
+  "expected_evidence": "Multi-signal workflow for Kaynak Kod Deposunun Kitlesel Klonlanması",
+  "anomaly_detected": true,
+  "event_count": 3,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-006",
+      "user_role": "Yazılım Geliştirici",
+      "category": "veri sızdırma",
+      "seed": 1006,
+      "anomaly": true
+    },
+    {
+      "event_type": "git_clone_volume",
+      "log_channel": "gitea",
+      "repos_cloned": 40,
+      "bytes": 4700000000,
+      "source_feature": "F-049",
+      "scenario_id": "S-006"
+    },
+    {
+      "event_type": "local_sensitive_accumulation",
+      "log_channel": "endpoint",
+      "labeled_files": 420,
+      "gb": 18,
+      "source_feature": "F-042",
+      "scenario_id": "S-006"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-006/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-006/gitea/git_clone_volume.jsonl",
+    "reports/scenario_logs/S-006/endpoint/local_sensitive_accumulation.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.678874+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-006:1006:positive"
+}

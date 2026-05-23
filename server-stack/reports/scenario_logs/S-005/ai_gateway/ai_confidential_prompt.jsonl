@@ -1,0 +1,1 @@
+{"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "source_feature": "F-030", "scenario_id": "S-005", "timestamp": "2026-05-23T01:26:21.643516+00:00"}

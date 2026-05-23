@@ -1,0 +1,67 @@
+{
+  "scenario_id": "S-018",
+  "title": "Domain Admin Hesabıyla Sıra Dışı Giriş",
+  "mode": "positive",
+  "category": "credential ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 2018,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-079",
+    "F-010",
+    "F-015"
+  ],
+  "services": [
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Domain Admin Hesabıyla Sıra Dışı Giriş",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-018",
+      "user_role": "IT Admin",
+      "category": "credential ihlali",
+      "seed": 2018,
+      "anomaly": true
+    },
+    {
+      "event_type": "after_hours_session",
+      "hour": 2,
+      "interactive": true,
+      "source_feature": "F-079",
+      "scenario_id": "S-018"
+    },
+    {
+      "event_type": "service_interactive",
+      "account": "svc_sql",
+      "logon_type": 2,
+      "source_feature": "F-010",
+      "scenario_id": "S-018"
+    },
+    {
+      "event_type": "rdp_hop",
+      "hops": [
+        "ws1",
+        "dc1",
+        "files1",
+        "db1"
+      ],
+      "source_feature": "F-015",
+      "scenario_id": "S-018"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-018/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-018/scenarios/after_hours_session.jsonl",
+    "reports/scenario_logs/S-018/scenarios/service_interactive.jsonl",
+    "reports/scenario_logs/S-018/scenarios/rdp_hop.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:22.077495+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-018:2018:positive"
+}

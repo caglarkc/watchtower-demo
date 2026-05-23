@@ -1,0 +1,89 @@
+{
+  "scenario_id": "S-001",
+  "title": "Gece Yarısı Finans Paylaşımı",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "CFO",
+  "deterministic_seed": 1001,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-001",
+    "F-079",
+    "F-038",
+    "F-056",
+    "F-081"
+  ],
+  "services": [
+    "cups",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Gece Yarısı Finans Paylaşımı",
+  "anomaly_detected": true,
+  "event_count": 6,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-001",
+      "user_role": "CFO",
+      "category": "veri sızdırma",
+      "seed": 1001,
+      "anomaly": true
+    },
+    {
+      "event_type": "smb_read_volume",
+      "user": "cfo",
+      "bytes_read": 14000000000,
+      "anomaly": true,
+      "source_feature": "F-001",
+      "scenario_id": "S-001"
+    },
+    {
+      "event_type": "after_hours_session",
+      "hour": 2,
+      "interactive": true,
+      "source_feature": "F-079",
+      "scenario_id": "S-001"
+    },
+    {
+      "event_type": "smb_bulk_io",
+      "read_bytes": 18400000000,
+      "write_bytes": 0,
+      "source_feature": "F-038",
+      "scenario_id": "S-001"
+    },
+    {
+      "event_type": "print_sensitive_correlation",
+      "log_channel": "cups",
+      "pages": 180,
+      "sensitive_labels": 45,
+      "source_feature": "F-056",
+      "scenario_id": "S-001"
+    },
+    {
+      "event_type": "role_work_window",
+      "role": "support",
+      "active_hours": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source_feature": "F-081",
+      "scenario_id": "S-001"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-001/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-001/scenarios/smb_read_volume.jsonl",
+    "reports/scenario_logs/S-001/scenarios/after_hours_session.jsonl",
+    "reports/scenario_logs/S-001/scenarios/smb_bulk_io.jsonl",
+    "reports/scenario_logs/S-001/cups/print_sensitive_correlation.jsonl",
+    "reports/scenario_logs/S-001/scenarios/role_work_window.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.508712+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-001:1001:positive"
+}

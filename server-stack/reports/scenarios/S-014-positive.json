@@ -1,0 +1,66 @@
+{
+  "scenario_id": "S-014",
+  "title": "Admin Prod-HR VM Snapshot",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "IT Admin",
+  "deterministic_seed": 1014,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-051",
+    "F-001",
+    "F-055"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "hypervisor-console"
+  ],
+  "expected_evidence": "Multi-signal workflow for Admin Prod-HR VM Snapshot",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-014",
+      "user_role": "IT Admin",
+      "category": "veri sızdırma",
+      "seed": 1014,
+      "anomaly": true
+    },
+    {
+      "event_type": "hypervisor_console_access",
+      "log_channel": "hypervisor",
+      "user": "pm",
+      "console": "proxmox",
+      "source_feature": "F-051",
+      "scenario_id": "S-014"
+    },
+    {
+      "event_type": "smb_read_volume",
+      "user": "cfo",
+      "bytes_read": 14000000000,
+      "anomaly": true,
+      "source_feature": "F-001",
+      "scenario_id": "S-014"
+    },
+    {
+      "event_type": "usb_write",
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
+      "source_feature": "F-055",
+      "scenario_id": "S-014"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-014/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-014/hypervisor/hypervisor_console_access.jsonl",
+    "reports/scenario_logs/S-014/scenarios/smb_read_volume.jsonl",
+    "reports/scenario_logs/S-014/scenarios/usb_write.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.945346+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-014:1014:positive"
+}

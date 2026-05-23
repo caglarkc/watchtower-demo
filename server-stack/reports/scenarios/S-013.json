@@ -1,0 +1,65 @@
+{
+  "scenario_id": "S-013",
+  "title": "Destek Ticket PII Toplu Arşivi",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "Destek Personeli",
+  "deterministic_seed": 1013,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-038",
+    "F-018",
+    "F-060"
+  ],
+  "services": [
+    "activity-generator",
+    "dovecot",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for Destek Ticket PII Toplu Arşivi",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-013",
+      "user_role": "Destek Personeli",
+      "category": "veri sızdırma",
+      "seed": 1013,
+      "anomaly": true
+    },
+    {
+      "event_type": "smb_bulk_io",
+      "read_bytes": 18400000000,
+      "write_bytes": 0,
+      "source_feature": "F-038",
+      "scenario_id": "S-013"
+    },
+    {
+      "event_type": "imap_mailbox_access",
+      "log_channel": "dovecot",
+      "foreign_mailbox": "ceo@corp.local",
+      "source_feature": "F-018",
+      "scenario_id": "S-013"
+    },
+    {
+      "event_type": "screenshot_spike",
+      "log_channel": "activity",
+      "count_per_hour": 85,
+      "source_feature": "F-060",
+      "scenario_id": "S-013"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-013/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-013/scenarios/smb_bulk_io.jsonl",
+    "reports/scenario_logs/S-013/dovecot/imap_mailbox_access.jsonl",
+    "reports/scenario_logs/S-013/activity/screenshot_spike.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.913449+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-013:1013:positive"
+}

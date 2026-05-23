@@ -1,0 +1,76 @@
+{
+  "scenario_id": "S-004",
+  "title": "IT Admin Fazladan USB Yedekleme",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "IT Admin",
+  "deterministic_seed": 1004,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-055",
+    "F-001",
+    "F-042",
+    "F-067"
+  ],
+  "services": [
+    "cloud-storage-mock",
+    "endpoint-synthetic"
+  ],
+  "expected_evidence": "Multi-signal workflow for IT Admin Fazladan USB Yedekleme",
+  "anomaly_detected": true,
+  "event_count": 5,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-004",
+      "user_role": "IT Admin",
+      "category": "veri sızdırma",
+      "seed": 1004,
+      "anomaly": true
+    },
+    {
+      "event_type": "usb_write",
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
+      "source_feature": "F-055",
+      "scenario_id": "S-004"
+    },
+    {
+      "event_type": "smb_read_volume",
+      "user": "cfo",
+      "bytes_read": 14000000000,
+      "anomaly": true,
+      "source_feature": "F-001",
+      "scenario_id": "S-004"
+    },
+    {
+      "event_type": "local_sensitive_accumulation",
+      "log_channel": "endpoint",
+      "labeled_files": 420,
+      "gb": 18,
+      "source_feature": "F-042",
+      "scenario_id": "S-004"
+    },
+    {
+      "event_type": "personal_cloud_upload",
+      "log_channel": "cloud",
+      "provider": "dropbox-personal",
+      "mb": 2100,
+      "source_feature": "F-067",
+      "scenario_id": "S-004"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-004/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-004/scenarios/usb_write.jsonl",
+    "reports/scenario_logs/S-004/scenarios/smb_read_volume.jsonl",
+    "reports/scenario_logs/S-004/endpoint/local_sensitive_accumulation.jsonl",
+    "reports/scenario_logs/S-004/cloud/personal_cloud_upload.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.612604+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-004:1004:positive"
+}

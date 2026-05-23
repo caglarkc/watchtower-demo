@@ -1,0 +1,1 @@
+{"event_type": "mail_attachment_entropy", "log_channel": "postfix", "entropy": 7.8, "declared_type": "pdf", "actual_type": "zip", "source_feature": "F-019", "scenario_id": "S-011", "timestamp": "2026-05-23T01:26:21.847286+00:00"}

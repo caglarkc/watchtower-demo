@@ -1,0 +1,69 @@
+{
+  "scenario_id": "S-011",
+  "title": "CEO Mail Kutusundan Toplu Arşiv Export",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "CEO",
+  "deterministic_seed": 1011,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-024",
+    "F-025",
+    "F-019"
+  ],
+  "services": [
+    "dovecot",
+    "endpoint-synthetic",
+    "postfix",
+    "roundcube"
+  ],
+  "expected_evidence": "Multi-signal workflow for CEO Mail Kutusundan Toplu Arşiv Export",
+  "anomaly_detected": true,
+  "event_count": 4,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-011",
+      "user_role": "CEO",
+      "category": "veri sızdırma",
+      "seed": 1011,
+      "anomaly": true
+    },
+    {
+      "event_type": "imap_archive_bulk_read",
+      "log_channel": "dovecot",
+      "messages_read": 14000,
+      "years_span": 14,
+      "source_feature": "F-024",
+      "scenario_id": "S-011"
+    },
+    {
+      "event_type": "address_book_export",
+      "log_channel": "roundcube",
+      "contacts_exported": 4800,
+      "source_feature": "F-025",
+      "scenario_id": "S-011"
+    },
+    {
+      "event_type": "mail_attachment_entropy",
+      "log_channel": "postfix",
+      "entropy": 7.8,
+      "declared_type": "pdf",
+      "actual_type": "zip",
+      "source_feature": "F-019",
+      "scenario_id": "S-011"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-011/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-011/dovecot/imap_archive_bulk_read.jsonl",
+    "reports/scenario_logs/S-011/roundcube/address_book_export.jsonl",
+    "reports/scenario_logs/S-011/postfix/mail_attachment_entropy.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.848551+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-011:1011:positive"
+}

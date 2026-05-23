@@ -1,0 +1,86 @@
+{
+  "scenario_id": "S-003",
+  "title": "Satış Ekibinden Sessiz CRM Dökümü",
+  "mode": "positive",
+  "category": "veri sızdırma",
+  "user_role": "Satış",
+  "deterministic_seed": 1003,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-038",
+    "F-039",
+    "F-072",
+    "F-022",
+    "F-068"
+  ],
+  "services": [
+    "endpoint-synthetic",
+    "hris-mock",
+    "postfix",
+    "proxy-sink"
+  ],
+  "expected_evidence": "Multi-signal workflow for Satış Ekibinden Sessiz CRM Dökümü",
+  "anomaly_detected": true,
+  "event_count": 6,
+  "events": [
+    {
+      "event_type": "scenario_anchor",
+      "log_channel": "endpoint",
+      "scenario_id": "S-003",
+      "user_role": "Satış",
+      "category": "veri sızdırma",
+      "seed": 1003,
+      "anomaly": true
+    },
+    {
+      "event_type": "smb_bulk_io",
+      "read_bytes": 18400000000,
+      "write_bytes": 0,
+      "source_feature": "F-038",
+      "scenario_id": "S-003"
+    },
+    {
+      "event_type": "smb_rename_storm",
+      "renames_per_minute": 120,
+      "source_feature": "F-039",
+      "scenario_id": "S-003"
+    },
+    {
+      "event_type": "offboarding_activity",
+      "log_channel": "hris",
+      "status": "terminated",
+      "logins_after": 6,
+      "source_feature": "F-072",
+      "scenario_id": "S-003"
+    },
+    {
+      "event_type": "mail_external_competitor",
+      "log_channel": "postfix",
+      "recipient_domain": "rival-corp.com",
+      "source_feature": "F-022",
+      "scenario_id": "S-003"
+    },
+    {
+      "event_type": "first_external_transfer",
+      "log_channel": "proxy",
+      "destination": "203.0.113.50",
+      "mb": 3200,
+      "first_seen": true,
+      "source_feature": "F-068",
+      "scenario_id": "S-003"
+    }
+  ],
+  "log_paths": [
+    "reports/scenario_logs/S-003/endpoint/scenario_anchor.jsonl",
+    "reports/scenario_logs/S-003/scenarios/smb_bulk_io.jsonl",
+    "reports/scenario_logs/S-003/scenarios/smb_rename_storm.jsonl",
+    "reports/scenario_logs/S-003/hris/offboarding_activity.jsonl",
+    "reports/scenario_logs/S-003/postfix/mail_external_competitor.jsonl",
+    "reports/scenario_logs/S-003/proxy/first_external_transfer.jsonl"
+  ],
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:26:21.574094+00:00",
+  "stack": "watchtower-corp",
+  "status": "PASS",
+  "replay_key": "S-003:1003:positive"
+}
