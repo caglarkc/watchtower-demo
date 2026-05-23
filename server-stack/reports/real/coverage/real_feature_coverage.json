@@ -1,24 +1,26 @@
 {
-  "generated_at": "2026-05-23T02:36:23.890261+00:00",
-  "phase": "RI-2",
+  "generated_at": "2026-05-23T02:43:33.400296+00:00",
+  "phase": "RI-3",
   "total_features": 81,
   "metadata_complete": 81,
-  "implemented": 45,
-  "positive_real_tests_passed": 45,
-  "negative_real_tests_passed": 45,
+  "implemented": 68,
+  "positive_real_tests_passed": 68,
+  "negative_real_tests_passed": 68,
   "ri1_features": 21,
   "ri1_l2_metadata": 21,
   "ri1_pass": 21,
   "ri2_features": 24,
   "ri2_l2_metadata": 24,
   "ri2_pass": 24,
-  "l2_or_higher": 45,
+  "ri3_features": 23,
+  "ri3_l2_metadata": 23,
+  "ri3_pass": 23,
+  "l2_or_higher": 68,
   "waivers": [],
   "features": [
     {
       "feature_id": "F-001",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -27,7 +29,6 @@
     {
       "feature_id": "F-002",
       "real_parity_level": "L2",
-      "real_tool": "zeek",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -36,7 +37,6 @@
     {
       "feature_id": "F-003",
       "real_parity_level": "L2",
-      "real_tool": "bind9",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -45,16 +45,14 @@
     {
       "feature_id": "F-004",
       "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-005",
       "real_parity_level": "L2",
-      "real_tool": "dhcp-server",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -63,7 +61,6 @@
     {
       "feature_id": "F-006",
       "real_parity_level": "L2",
-      "real_tool": "samba-ad",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -72,7 +69,6 @@
     {
       "feature_id": "F-007",
       "real_parity_level": "L2",
-      "real_tool": "zeek",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -81,7 +77,6 @@
     {
       "feature_id": "F-008",
       "real_parity_level": "L2",
-      "real_tool": "samba-ad",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -90,16 +85,14 @@
     {
       "feature_id": "F-009",
       "real_parity_level": "L0",
-      "real_tool": "badge-api",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-010",
       "real_parity_level": "L2",
-      "real_tool": "samba-ad",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -108,7 +101,6 @@
     {
       "feature_id": "F-011",
       "real_parity_level": "L2",
-      "real_tool": "samba-ad",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -116,35 +108,31 @@
     },
     {
       "feature_id": "F-012",
-      "real_parity_level": "L0",
-      "real_tool": "vault",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-013",
-      "real_parity_level": "L0",
-      "real_tool": "vault",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-014",
       "real_parity_level": "L0",
-      "real_tool": "samba-ad",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-015",
       "real_parity_level": "L2",
-      "real_tool": "zeek",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -153,7 +141,6 @@
     {
       "feature_id": "F-016",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -162,7 +149,6 @@
     {
       "feature_id": "F-017",
       "real_parity_level": "L2",
-      "real_tool": "dovecot",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -171,7 +157,6 @@
     {
       "feature_id": "F-018",
       "real_parity_level": "L2",
-      "real_tool": "dovecot",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -180,7 +165,6 @@
     {
       "feature_id": "F-019",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -189,7 +173,6 @@
     {
       "feature_id": "F-020",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -198,7 +181,6 @@
     {
       "feature_id": "F-021",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -207,7 +189,6 @@
     {
       "feature_id": "F-022",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -216,7 +197,6 @@
     {
       "feature_id": "F-023",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -225,7 +205,6 @@
     {
       "feature_id": "F-024",
       "real_parity_level": "L2",
-      "real_tool": "dovecot",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -234,7 +213,6 @@
     {
       "feature_id": "F-025",
       "real_parity_level": "L2",
-      "real_tool": "roundcube",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -243,7 +221,6 @@
     {
       "feature_id": "F-026",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -252,7 +229,6 @@
     {
       "feature_id": "F-027",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -261,7 +237,6 @@
     {
       "feature_id": "F-028",
       "real_parity_level": "L2",
-      "real_tool": "postfix",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -270,7 +245,6 @@
     {
       "feature_id": "F-029",
       "real_parity_level": "L2",
-      "real_tool": "roundcube",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -278,71 +252,63 @@
     },
     {
       "feature_id": "F-030",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-031",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-032",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-033",
-      "real_parity_level": "L0",
-      "real_tool": "squid-proxy",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-034",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-035",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-036",
-      "real_parity_level": "L0",
-      "real_tool": "ai-gateway",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-037",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -351,7 +317,6 @@
     {
       "feature_id": "F-038",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -360,7 +325,6 @@
     {
       "feature_id": "F-039",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -369,7 +333,6 @@
     {
       "feature_id": "F-040",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -378,7 +341,6 @@
     {
       "feature_id": "F-041",
       "real_parity_level": "L2",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -386,35 +348,31 @@
     },
     {
       "feature_id": "F-042",
-      "real_parity_level": "L0",
-      "real_tool": "wazuh-agent",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-043",
-      "real_parity_level": "L0",
-      "real_tool": "samba-files",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-044",
-      "real_parity_level": "L0",
-      "real_tool": "wiki-app",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-045",
       "real_parity_level": "L2",
-      "real_tool": "postgres",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -423,7 +381,6 @@
     {
       "feature_id": "F-046",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-agent",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -432,7 +389,6 @@
     {
       "feature_id": "F-047",
       "real_parity_level": "L2",
-      "real_tool": "nginx",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -441,7 +397,6 @@
     {
       "feature_id": "F-048",
       "real_parity_level": "L2",
-      "real_tool": "nginx",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -450,7 +405,6 @@
     {
       "feature_id": "F-049",
       "real_parity_level": "L2",
-      "real_tool": "gitea",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -459,7 +413,6 @@
     {
       "feature_id": "F-050",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-siem",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -468,7 +421,6 @@
     {
       "feature_id": "F-051",
       "real_parity_level": "L2",
-      "real_tool": "hypervisor-console",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -477,7 +429,6 @@
     {
       "feature_id": "F-052",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-agent",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -486,7 +437,6 @@
     {
       "feature_id": "F-053",
       "real_parity_level": "L2",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -495,7 +445,6 @@
     {
       "feature_id": "F-054",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-agent",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -504,7 +453,6 @@
     {
       "feature_id": "F-055",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-agent",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -513,16 +461,14 @@
     {
       "feature_id": "F-056",
       "real_parity_level": "L0",
-      "real_tool": "cups",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-057",
       "real_parity_level": "L2",
-      "real_tool": "wazuh-agent",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -530,53 +476,47 @@
     },
     {
       "feature_id": "F-058",
-      "real_parity_level": "L0",
-      "real_tool": "dlp-agent",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-059",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-060",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-061",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-062",
-      "real_parity_level": "L0",
-      "real_tool": "wazuh-siem",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-063",
       "real_parity_level": "L2",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -584,143 +524,127 @@
     },
     {
       "feature_id": "F-064",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-065",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-066",
-      "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-067",
-      "real_parity_level": "L0",
-      "real_tool": "squid-proxy",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-068",
-      "real_parity_level": "L0",
-      "real_tool": "squid-proxy",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-069",
-      "real_parity_level": "L0",
-      "real_tool": "squid-proxy",
+      "real_parity_level": "L2",
       "metadata_complete": true,
-      "positive_evidence": false,
-      "negative_evidence": false,
-      "status": "PENDING"
+      "positive_evidence": true,
+      "negative_evidence": true,
+      "status": "PASS"
     },
     {
       "feature_id": "F-070",
       "real_parity_level": "L0",
-      "real_tool": "badge-api",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-071",
       "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-072",
       "real_parity_level": "L0",
-      "real_tool": "hris-app",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-073",
       "real_parity_level": "L0",
-      "real_tool": "samba-files",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-074",
       "real_parity_level": "L0",
-      "real_tool": "badge-api",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-075",
       "real_parity_level": "L0",
-      "real_tool": "hris-app",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-076",
       "real_parity_level": "L0",
-      "real_tool": "hris-app",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-077",
       "real_parity_level": "L0",
-      "real_tool": "hris-app",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-078",
       "real_parity_level": "L0",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": false,
       "negative_evidence": false,
-      "status": "PENDING"
+      "status": "N/A"
     },
     {
       "feature_id": "F-079",
       "real_parity_level": "L2",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -729,7 +653,6 @@
     {
       "feature_id": "F-080",
       "real_parity_level": "L2",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
@@ -738,7 +661,6 @@
     {
       "feature_id": "F-081",
       "real_parity_level": "L2",
-      "real_tool": "endpoint-synthetic",
       "metadata_complete": true,
       "positive_evidence": true,
       "negative_evidence": true,
