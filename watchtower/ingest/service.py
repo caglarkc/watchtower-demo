@@ -107,13 +107,26 @@ class IngestService:
 
         return IngestResult(
             source_id=source_id,
+            connector_type=source.connector_type,
             polled=len(batch.events),
             stored=stored,
             duplicates=duplicates,
             has_more=batch.has_more,
             health_status=health.status,
             degraded=health.status == "degraded",
+            latency_ms=latency_ms,
+            http_retries=http_retries,
         )
+
+
+def _connector_latency_ms(connector: BaseConnector) -> float | None:
+    value = getattr(connector, "last_latency_ms", None)
+    return float(value) if value is not None else None
+
+
+def _connector_http_retries(connector: BaseConnector) -> int:
+    value = getattr(connector, "http_retries", 0)
+    return int(value) if value is not None else 0
 
     def check_health(self, source: SourceRecord) -> SourceHealth:
         connector = build_connector(source)
