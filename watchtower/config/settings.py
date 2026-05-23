@@ -86,6 +86,9 @@ class WatchtowerSettings(BaseSettings):
         default=PROJECT_ROOT / "data" / "graph_checkpoints.db",
         description="Separate SQLite file for LangGraph checkpoints",
     )
+    connector_timeout_seconds: float = Field(default=10.0, ge=1.0, le=120.0)
+    connector_max_retries: int = Field(default=2, ge=0, le=5)
+    connector_backoff_base_seconds: float = Field(default=0.5, ge=0.1, le=30.0)
     graph_checkpoint_retention_days: int = Field(
         default=30,
         ge=0,
