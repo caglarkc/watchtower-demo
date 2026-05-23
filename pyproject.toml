@@ -9,7 +9,9 @@ description = "Watchtower UEBA product"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.0",
+    "pydantic-settings>=2.0",
     "PyYAML>=6.0",
+    "typer>=0.12",
 ]
 
 [project.optional-dependencies]
@@ -17,9 +19,15 @@ dev = [
     "pytest>=8.0",
 ]
 
+[project.scripts]
+wt = "watchtower.cli.main:run"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["watchtower*"]
+
+[tool.setuptools.package-data]
+watchtower = ["config/feature_taxonomy.yml", "storage/migrations/versions/*.sql"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
