@@ -123,6 +123,53 @@ class Handler(BaseHTTPRequestHandler):
         _log({"action": "peer_group_deviation", "z_score": body.get("z_score", 4.2), "anomaly": body.get("anomaly", False)})
         return {"logged": True}
 
+    def _print_job(self, body: dict) -> dict:
+        pages = int(body.get("pages", 180 if body.get("anomaly") else 4))
+        labels = int(body.get("sensitive_labels", 45 if body.get("anomaly") else 0))
+        _log(
+            {
+                "action": "print_job",
+                "event_type": "print_sensitive_correlation",
+                "pages": pages,
+                "sensitive_labels": labels,
+                "document": body.get("document", "confidential-report.pdf"),
+                "anomaly": body.get("anomaly", False),
+            }
+        )
+        return {"pages": pages}
+
+    def _mattermost_export(self, body: dict) -> dict:
+        _log(
+            {
+                "action": "channel_export",
+                "channel": body.get("channel", "exec-private"),
+                "messages": body.get("messages", 500 if body.get("anomaly") else 5),
+                "anomaly": body.get("anomaly", False),
+            }
+        )
+        return {"exported": True}
+
+    def _composite_bundle(self, body: dict) -> dict:
+        signals = body.get("signals", ["ai_leak", "exfil", "secret_burst"] if body.get("anomaly") else ["baseline"])
+        for sig in signals:
+            _log({"action": "composite_signal", "signal": sig, "event_type": "composite_signal", "anomaly": body.get("anomaly", False)})
+        return {"signals": signals}
+
+    def _record_chain(self, body: dict) -> dict:
+        users = int(body.get("users", 3 if body.get("anomaly") else 1))
+        record_id = body.get("record_id", "contract-991")
+        for i in range(users):
+            _log(
+                {
+                    "action": "crm_record_access",
+                    "event_type": "multi_user_record_chain",
+                    "record_id": record_id,
+                    "user": f"user{i + 1}",
+                    "anomaly": body.get("anomaly", False),
+                }
+            )
+        return {"users": users, "record_id": record_id}
+
     def log_message(self, *_args) -> None:
         return
 
