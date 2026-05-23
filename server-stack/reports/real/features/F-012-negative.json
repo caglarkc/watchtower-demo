@@ -67,7 +67,7 @@
   "anomaly_detected": false,
   "evidence_expected": "API key multi-source usage",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:29.550290+00:00",
+  "generated_at": "2026-05-23T10:26:52.803913+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

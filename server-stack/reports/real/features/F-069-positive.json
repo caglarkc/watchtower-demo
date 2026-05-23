@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "encrypted tunnel/unusual protocol",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:34.054407+00:00",
+  "generated_at": "2026-05-23T10:26:52.661800+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

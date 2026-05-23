@@ -2,7 +2,7 @@
   "id": "F-034",
   "feature_id": "F-034",
   "title": "AI Platformlarına Dosya Yükleme Hacmi ve İçerik Türü",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "bytes": 80000000
+        "bytes": 1000
       }
     }
   ],
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "AI file upload volume/type event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:50.296584+00:00",
+  "generated_at": "2026-05-23T10:26:53.682224+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
