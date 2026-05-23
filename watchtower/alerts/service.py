@@ -115,7 +115,9 @@ class AlertService:
         *,
         actor: str = "operator",
     ) -> Alert:
-        return self._transition(tenant_id, alert_id, "investigating", actor=actor)
+        return self._transition(
+            tenant_id, alert_id, "investigating", actor=actor, comment=None
+        )
 
     def close(
         self,
