@@ -68,5 +68,6 @@ def seed_anomaly_baseline(
 
 
 def set_tenant_mode(app: AppContext, tenant_id: str, mode: str) -> None:
-    with app.session() as session:
-        session.mode_controller.set_mode(tenant_id, mode)  # type: ignore[arg-type]
+    from watchtower.e2e.soak import set_tenant_mode as _set
+
+    _set(app, tenant_id, mode)
