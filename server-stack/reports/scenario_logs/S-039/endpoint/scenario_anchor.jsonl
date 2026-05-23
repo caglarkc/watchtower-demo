@@ -22,3 +22,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": false, "timestamp": "2026-05-23T02:57:30.706217+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": true, "timestamp": "2026-05-23T03:08:39.480357+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": false, "timestamp": "2026-05-23T03:08:42.302552+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": true, "timestamp": "2026-05-23T03:17:58.012971+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-039", "user_role": "Proje Yöneticisi", "category": "yetkisiz erişim", "seed": 3039, "anomaly": false, "timestamp": "2026-05-23T03:18:00.866506+00:00"}

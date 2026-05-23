@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-022",
   "title": "API Servis Hesabını İnsan Gibi Kullanan Analist",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Veri Analisti",
   "deterministic_seed": 2022,
@@ -16,7 +16,7 @@
     "internal-app"
   ],
   "expected_evidence": "Multi-signal workflow for API Servis Hesabını İnsan Gibi Kullanan Analist",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -26,12 +26,12 @@
       "user_role": "Veri Analisti",
       "category": "credential ihlali",
       "seed": 2022,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "service_interactive",
       "account": "svc_sql",
-      "logon_type": 2,
+      "logon_type": 5,
       "source_feature": "F-010",
       "scenario_id": "S-022"
     },
@@ -39,14 +39,14 @@
       "event_type": "api_key_usage",
       "log_channel": "app",
       "key_id": "svc-deploy",
-      "source_ips": 3,
+      "source_ips": 1,
       "source_feature": "F-012",
       "scenario_id": "S-022"
     },
     {
       "event_type": "api_pattern_deviation",
       "log_channel": "app",
-      "calls_per_hour": 430,
+      "calls_per_hour": 38,
       "baseline": 40,
       "source_feature": "F-047",
       "scenario_id": "S-022"
@@ -58,9 +58,12 @@
     "reports/scenario_logs/S-022/app/api_key_usage.jsonl",
     "reports/scenario_logs/S-022/app/api_pattern_deviation.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T03:17:57.426429+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T03:18:00.311951+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-022:2022:positive"
+  "replay_key": "S-022:2022:negative"
 }

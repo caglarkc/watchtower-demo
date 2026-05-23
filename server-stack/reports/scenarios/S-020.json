@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-020",
   "title": "Çoklu Lokasyon Çakışması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "CEO",
   "deterministic_seed": 2020,
@@ -15,7 +15,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Çoklu Lokasyon Çakışması",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,23 +25,22 @@
       "user_role": "CEO",
       "category": "credential ihlali",
       "seed": 2020,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "concurrent_session",
       "log_channel": "badge",
       "locations": [
-        "floor-3",
-        "floor-b1"
+        "floor-3"
       ],
-      "minutes_apart": 12,
+      "minutes_apart": 0,
       "source_feature": "F-009",
       "scenario_id": "S-020"
     },
     {
       "event_type": "badge_login_mismatch",
       "log_channel": "badge",
-      "badge_present": false,
+      "badge_present": true,
       "login_success": true,
       "source_feature": "F-070",
       "scenario_id": "S-020"
@@ -52,9 +51,12 @@
     "reports/scenario_logs/S-020/badge/concurrent_session.jsonl",
     "reports/scenario_logs/S-020/badge/badge_login_mismatch.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T03:17:57.360740+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T03:18:00.242561+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-020:2020:positive"
+  "replay_key": "S-020:2020:negative"
 }

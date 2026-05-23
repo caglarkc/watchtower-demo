@@ -23,3 +23,4 @@
 {"event_type": "smb_bulk_io", "read_bytes": 18400000000, "write_bytes": 0, "source_feature": "F-038", "scenario_id": "S-003", "timestamp": "2026-05-23T03:08:38.164765+00:00"}
 {"event_type": "smb_bulk_io", "read_bytes": 320000000, "write_bytes": 0, "source_feature": "F-038", "scenario_id": "S-003", "timestamp": "2026-05-23T03:08:41.098822+00:00"}
 {"event_type": "smb_bulk_io", "read_bytes": 18400000000, "write_bytes": 0, "source_feature": "F-038", "scenario_id": "S-003", "timestamp": "2026-05-23T03:17:56.801784+00:00"}
+{"event_type": "smb_bulk_io", "read_bytes": 320000000, "write_bytes": 0, "source_feature": "F-038", "scenario_id": "S-003", "timestamp": "2026-05-23T03:17:59.662764+00:00"}

@@ -60,7 +60,7 @@
     "reports/scenario_logs/S-074/proxy/proxy_tunnel.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:40.691852+00:00",
+  "generated_at": "2026-05-23T03:17:59.233506+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-074:7074:positive"

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-018",
   "title": "Domain Admin Hesabıyla Sıra Dışı Giriş",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2018,
@@ -15,7 +15,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Domain Admin Hesabıyla Sıra Dışı Giriş",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -25,11 +25,11 @@
       "user_role": "IT Admin",
       "category": "credential ihlali",
       "seed": 2018,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "after_hours_session",
-      "hour": 2,
+      "hour": 14,
       "interactive": true,
       "source_feature": "F-079",
       "scenario_id": "S-018"
@@ -37,7 +37,7 @@
     {
       "event_type": "service_interactive",
       "account": "svc_sql",
-      "logon_type": 2,
+      "logon_type": 5,
       "source_feature": "F-010",
       "scenario_id": "S-018"
     },
@@ -45,9 +45,7 @@
       "event_type": "rdp_hop",
       "hops": [
         "ws1",
-        "dc1",
-        "files1",
-        "db1"
+        "files1"
       ],
       "source_feature": "F-015",
       "scenario_id": "S-018"
@@ -59,9 +57,12 @@
     "reports/scenario_logs/S-018/scenarios/service_interactive.jsonl",
     "reports/scenario_logs/S-018/scenarios/rdp_hop.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T03:17:57.296417+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T03:18:00.177426+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-018:2018:positive"
+  "replay_key": "S-018:2018:negative"
 }

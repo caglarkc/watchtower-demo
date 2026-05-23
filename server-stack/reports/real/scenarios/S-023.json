@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-023",
   "title": "Muhasebe Terminalinden Gece Loginleri",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Muhasebe",
   "deterministic_seed": 2023,
@@ -58,19 +58,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 3795,
+            "count": 5019,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 132,
+            "indexed": 141,
             "index": "corp-logs-f-079",
             "pipeline": {
               "feature_id": "F-079",
               "index": "corp-logs-f-079",
-              "indexed": 132
+              "indexed": 141
             }
           }
         }
@@ -115,19 +115,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 450,
+            "count": 663,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 33,
+            "indexed": 39,
             "index": "corp-logs-f-063",
             "pipeline": {
               "feature_id": "F-063",
               "index": "corp-logs-f-063",
-              "indexed": 33
+              "indexed": 39
             }
           }
         }
@@ -146,7 +146,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": false
+            "mismatch": true
           }
         },
         {
@@ -180,12 +180,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 78,
+            "indexed": 80,
             "index": "corp-logs-f-070",
             "pipeline": {
               "feature_id": "F-070",
               "index": "corp-logs-f-070",
-              "indexed": 78
+              "indexed": 80
             }
           }
         }
@@ -222,7 +222,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": false
+        "mismatch": true
       }
     },
     {
@@ -265,19 +265,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 3795,
+        "count": 5019,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 132,
+        "indexed": 141,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 132
+          "indexed": 141
         }
       }
     },
@@ -295,19 +295,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 450,
+        "count": 663,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 33,
+        "indexed": 39,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 33
+          "indexed": 39
         }
       }
     },
@@ -328,12 +328,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 78,
+        "indexed": 80,
         "index": "corp-logs-f-070",
         "pipeline": {
           "feature_id": "F-070",
           "index": "corp-logs-f-070",
-          "indexed": 78
+          "indexed": 80
         }
       }
     }
@@ -347,12 +347,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:35.689032+00:00",
+  "generated_at": "2026-05-23T03:17:57.728650+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-023:2023:negative:real"
+  "replay_key": "S-023:2023:positive:real"
 }

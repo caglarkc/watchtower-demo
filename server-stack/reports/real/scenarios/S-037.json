@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-037",
   "title": "Satıştan Muhasebeye Kesişen Erişim",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Satış",
   "deterministic_seed": 3037,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 2800,
+            "count": 3600,
             "result": "PASS"
           },
           "result": "PASS",
@@ -98,7 +98,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 2800,
+        "count": 3600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -120,12 +120,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:38.434251+00:00",
+  "generated_at": "2026-05-23T03:18:00.607830+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-037:3037:negative:real"
+  "replay_key": "S-037:3037:positive:real"
 }

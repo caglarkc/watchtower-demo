@@ -23,3 +23,4 @@
 {"event_type": "api_pattern_deviation", "log_channel": "app", "calls_per_hour": 430, "baseline": 40, "source_feature": "F-047", "scenario_id": "S-022", "timestamp": "2026-05-23T03:08:38.884989+00:00"}
 {"event_type": "api_pattern_deviation", "log_channel": "app", "calls_per_hour": 38, "baseline": 40, "source_feature": "F-047", "scenario_id": "S-022", "timestamp": "2026-05-23T03:08:41.728136+00:00"}
 {"event_type": "api_pattern_deviation", "log_channel": "app", "calls_per_hour": 430, "baseline": 40, "source_feature": "F-047", "scenario_id": "S-022", "timestamp": "2026-05-23T03:17:57.425247+00:00"}
+{"event_type": "api_pattern_deviation", "log_channel": "app", "calls_per_hour": 38, "baseline": 40, "source_feature": "F-047", "scenario_id": "S-022", "timestamp": "2026-05-23T03:18:00.310684+00:00"}

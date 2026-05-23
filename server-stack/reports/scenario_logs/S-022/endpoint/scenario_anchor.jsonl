@@ -23,3 +23,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-022", "user_role": "Veri Analisti", "category": "credential ihlali", "seed": 2022, "anomaly": true, "timestamp": "2026-05-23T03:08:38.884699+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-022", "user_role": "Veri Analisti", "category": "credential ihlali", "seed": 2022, "anomaly": false, "timestamp": "2026-05-23T03:08:41.727842+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-022", "user_role": "Veri Analisti", "category": "credential ihlali", "seed": 2022, "anomaly": true, "timestamp": "2026-05-23T03:17:57.424936+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-022", "user_role": "Veri Analisti", "category": "credential ihlali", "seed": 2022, "anomaly": false, "timestamp": "2026-05-23T03:18:00.310377+00:00"}

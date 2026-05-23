@@ -22,3 +22,4 @@
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "source_feature": "F-011", "scenario_id": "S-076", "timestamp": "2026-05-23T02:57:31.941417+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "source_feature": "F-011", "scenario_id": "S-076", "timestamp": "2026-05-23T03:08:40.755293+00:00"}
 {"event_type": "ad_group_change", "event_id": 4728, "group": "Helpdesk", "source_feature": "F-011", "scenario_id": "S-076", "timestamp": "2026-05-23T03:08:43.574762+00:00"}
+{"event_type": "ad_group_change", "event_id": 4728, "group": "Domain Admins", "source_feature": "F-011", "scenario_id": "S-076", "timestamp": "2026-05-23T03:17:59.305867+00:00"}

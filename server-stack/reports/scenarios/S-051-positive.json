@@ -37,7 +37,7 @@
     "reports/scenario_logs/S-051/scenarios/acl_change.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:39.883029+00:00",
+  "generated_at": "2026-05-23T03:17:58.423893+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-051:5051:positive"
