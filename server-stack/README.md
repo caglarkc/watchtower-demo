@@ -73,6 +73,19 @@ Seed corpus: `seeds/real/vault`, `seeds/real/ai`, `seeds/real/baseline`, `seeds/
 
 L2: HTTP action → host `logs/` raw assertion zorunlu. Vault/proxy/cloud için ek L3 ingest hedefi: F-012, F-013, F-030, F-033, F-067–F-069.
 
+### RI-4 — Real physical, HR, collaboration, print, CRM (12 P3 features @ L2)
+
+```bash
+make real-up
+make seed-real-physical-hr
+make real-feature FEATURE=F-072
+pytest tests/real/test_physical_hr_collab_print.py
+pytest tests/real/features -m p3
+make real-coverage
+```
+
+Servisler: DB-backed `hris-mock`, `badge-api`, `cups`/`mattermost`/`suitecrm` (phase3-sim action API). Seed: `seeds/real/hris`, `seeds/real/badge`, `seeds/real/print`, `seeds/real/crm`.
+
 ## Hızlı başlangıç
 
 ```bash
