@@ -10,11 +10,18 @@ from watchtower.retention.service import RetentionService
 def test_retention_deletes_old_raw_events(prod_app, bootstrapped_tenant, prod_settings):
     old = (datetime.now(UTC) - timedelta(days=30)).isoformat()
     with prod_app.session() as session:
+        session.sources.create(
+            bootstrapped_tenant,
+            "mock",
+            "retention-src",
+            source_id="s-ret",
+            config={"events": []},
+        )
         session.conn.execute(
             """
             INSERT INTO raw_events
                 (id, tenant_id, source_id, dedupe_key, payload_json, ingested_at)
-            VALUES ('e-old', ?, 's1', 'd1', '{}', ?)
+            VALUES ('e-old', ?, 's-ret', 'd1', '{}', ?)
             """,
             (bootstrapped_tenant, old),
         )
