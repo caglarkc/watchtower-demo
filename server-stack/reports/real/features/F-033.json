@@ -2,7 +2,7 @@
   "id": "F-033",
   "feature_id": "F-033",
   "title": "Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "squid-proxy",
@@ -10,7 +10,7 @@
     {
       "service": "proxy",
       "response": {
-        "allowed": true
+        "allowed": false
       }
     }
   ],
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "unapproved AI tool access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:15.105412+00:00",
+  "generated_at": "2026-05-23T05:11:35.151835+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
