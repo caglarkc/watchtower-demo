@@ -95,13 +95,20 @@ test-all: seed-baseline test-smoke test-features test-scenarios coverage-all
 
 real-up:
 	$(COMPOSE) up -d
-	$(COMPOSE) --profile real-ad up -d 2>/dev/null || true
-	@mkdir -p reports/real/{features,scenarios,coverage,logs} seeds/real
+	$(COMPOSE) --profile real-identity up -d
+	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns seeds/real
 
 real-down:
+	$(COMPOSE) --profile real-identity down
 	$(COMPOSE) down
 
-seed-real-all:
+seed-real-identity:
+	$(PYTHON) simulation/real/seed_real_identity.py
+
+seed-real-files:
+	$(PYTHON) simulation/real/seed_real_files.py
+
+seed-real-all: seed-real-identity seed-real-files
 	$(PYTHON) simulation/real/seed_real_all.py
 
 real-feature:
@@ -115,7 +122,10 @@ real-feature-negative:
 test-real:
 	$(PYTEST) tests/real -v
 
-test-real-all: seed-real-all test-real real-coverage
+test-real-p0:
+	$(PYTEST) tests/real/features -m p0 -v
+
+test-real-all: seed-real-all test-real test-real-p0 real-coverage
 
 real-coverage:
 	$(PYTHON) simulation/real/report_real_coverage.py --all
