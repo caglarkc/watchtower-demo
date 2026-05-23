@@ -2,7 +2,7 @@
   "id": "F-051",
   "feature_id": "F-051",
   "title": "Hypervisor ve Yönetim Konsolu Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "hypervisor-console",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-051",
-        "count": 3760,
+        "count": 3840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "management-console access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:03.778130+00:00",
+  "generated_at": "2026-05-23T05:38:22.266787+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
