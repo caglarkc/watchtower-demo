@@ -37,7 +37,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-007",
-        "count": 1040,
+        "count": 1360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -62,7 +62,7 @@
   "anomaly_detected": false,
   "evidence_expected": "high cardinality port scan event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:26.039902+00:00",
+  "generated_at": "2026-05-23T03:14:38.050535+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-026",
   "title": "Stajyer Çift Oturum",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 2026,
@@ -21,8 +21,7 @@
           "service": "badge",
           "response": {
             "locations": [
-              "floor-3",
-              "floor-b1"
+              "floor-3"
             ]
           }
         },
@@ -57,12 +56,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 72,
+            "indexed": 79,
             "index": "corp-logs-f-009",
             "pipeline": {
               "feature_id": "F-009",
               "index": "corp-logs-f-009",
-              "indexed": 72
+              "indexed": 79
             }
           }
         }
@@ -80,8 +79,7 @@
       "service": "badge",
       "response": {
         "locations": [
-          "floor-3",
-          "floor-b1"
+          "floor-3"
         ]
       }
     },
@@ -116,12 +114,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 72,
+        "indexed": 79,
         "index": "corp-logs-f-009",
         "pipeline": {
           "feature_id": "F-009",
           "index": "corp-logs-f-009",
-          "indexed": 72
+          "indexed": 79
         }
       }
     }
@@ -132,12 +130,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:54.352284+00:00",
+  "generated_at": "2026-05-23T03:14:36.215342+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-026:2026:positive:real"
+  "replay_key": "S-026:2026:negative:real"
 }

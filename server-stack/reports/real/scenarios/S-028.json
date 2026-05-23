@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-028",
   "title": "IT Admin Yetki Zinciri",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3028,
@@ -22,7 +22,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 2,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -60,19 +60,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 2484,
+            "count": 3219,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 120,
+            "indexed": 126,
             "index": "corp-logs-f-015",
             "pipeline": {
               "feature_id": "F-015",
               "index": "corp-logs-f-015",
-              "indexed": 120
+              "indexed": 126
             }
           }
         }
@@ -120,12 +120,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 13,
+            "indexed": 14,
             "index": "corp-logs-f-061",
             "pipeline": {
               "feature_id": "F-061",
               "index": "corp-logs-f-061",
-              "indexed": 13
+              "indexed": 14
             }
           }
         }
@@ -181,19 +181,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 3024,
+            "count": 3927,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 126,
+            "indexed": 133,
             "index": "corp-logs-f-079",
             "pipeline": {
               "feature_id": "F-079",
               "index": "corp-logs-f-079",
-              "indexed": 126
+              "indexed": 133
             }
           }
         }
@@ -209,7 +209,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 2,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -279,19 +279,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 2484,
+        "count": 3219,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 120,
+        "indexed": 126,
         "index": "corp-logs-f-015",
         "pipeline": {
           "feature_id": "F-015",
           "index": "corp-logs-f-015",
-          "indexed": 120
+          "indexed": 126
         }
       }
     },
@@ -312,12 +312,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 13,
+        "indexed": 14,
         "index": "corp-logs-f-061",
         "pipeline": {
           "feature_id": "F-061",
           "index": "corp-logs-f-061",
-          "indexed": 13
+          "indexed": 14
         }
       }
     },
@@ -335,19 +335,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 3024,
+        "count": 3927,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 126,
+        "indexed": 133,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 126
+          "indexed": 133
         }
       }
     }
@@ -361,12 +361,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:54.882016+00:00",
+  "generated_at": "2026-05-23T03:14:36.641152+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-028:3028:positive:real"
+  "replay_key": "S-028:3028:negative:real"
 }
