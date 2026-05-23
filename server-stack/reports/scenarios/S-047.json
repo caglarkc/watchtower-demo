@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-047",
   "title": "Ayrılış Öncesi Veri Rampa-Up",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 4047,
@@ -17,7 +17,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Ayrılış Öncesi Veri Rampa-Up",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -27,28 +27,28 @@
       "user_role": "Yazılım Geliştirici",
       "category": "insider threat",
       "seed": 4047,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "smb_read_volume",
       "user": "cfo",
-      "bytes_read": 14000000000,
-      "anomaly": true,
+      "bytes_read": 800000000,
+      "anomaly": false,
       "source_feature": "F-001",
       "scenario_id": "S-047"
     },
     {
       "event_type": "offboarding_activity",
       "log_channel": "hris",
-      "status": "terminated",
-      "logins_after": 6,
+      "status": "active",
+      "logins_after": 0,
       "source_feature": "F-072",
       "scenario_id": "S-047"
     },
     {
       "event_type": "activity_burst",
       "log_channel": "activity",
-      "events_per_hour": 4200,
+      "events_per_hour": 380,
       "baseline": 400,
       "source_feature": "F-064",
       "scenario_id": "S-047"
@@ -60,9 +60,12 @@
     "reports/scenario_logs/S-047/hris/offboarding_activity.jsonl",
     "reports/scenario_logs/S-047/activity/activity_burst.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T01:27:13.076398+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T01:27:15.932722+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-047:4047:positive"
+  "replay_key": "S-047:4047:negative"
 }

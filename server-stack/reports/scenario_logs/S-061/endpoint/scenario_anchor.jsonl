@@ -3,3 +3,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": true, "timestamp": "2026-05-23T01:26:40.387718+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": false, "timestamp": "2026-05-23T01:26:43.294097+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": true, "timestamp": "2026-05-23T01:27:13.560292+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-061", "user_role": "Proje Yöneticisi", "category": "politika ihlali", "seed": 6061, "anomaly": false, "timestamp": "2026-05-23T01:27:16.399307+00:00"}
