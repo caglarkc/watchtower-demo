@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-016",
-        "count": 2160,
+        "count": 2240,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "mail volume and attachment-size event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:17.498549+00:00",
+  "generated_at": "2026-05-23T05:11:26.686513+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

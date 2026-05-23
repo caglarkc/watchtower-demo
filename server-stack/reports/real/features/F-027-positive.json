@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-027",
-        "count": 2320,
+        "count": 2560,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "banned phrase policy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:51.134170+00:00",
+  "generated_at": "2026-05-23T05:11:28.345497+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
