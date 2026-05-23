@@ -6,7 +6,7 @@ COMPOSE ?= docker compose
 
 up:
 	$(COMPOSE) up -d
-	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint,postfix,dovecot,roundcube,postgres,gitea,nginx,app,artifact,siem,hypervisor} reports/features reports/coverage
+	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint,postfix,dovecot,roundcube,postgres,gitea,nginx,app,artifact,siem,hypervisor,ai_gateway,proxy,cloud,vault,mattermost,cups,badge,hris,suitecrm,wiki,dlp,activity} reports/features reports/coverage
 
 down:
 	$(COMPOSE) down
@@ -17,7 +17,7 @@ clean:
 config:
 	$(COMPOSE) config
 
-seed-baseline: seed-phase1 seed-phase2
+seed-baseline: seed-phase1 seed-phase2 seed-phase3
 
 seed-phase1:
 	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint} reports/features
@@ -25,6 +25,9 @@ seed-phase1:
 
 seed-phase2:
 	$(PYTHON) simulation/event_generator/generate_phase2_replays.py
+
+seed-phase3:
+	$(PYTHON) simulation/event_generator/generate_phase3_replays.py
 
 feature:
 	@test -n "$(FEATURE)" || (echo "Usage: make feature FEATURE=F-001" && exit 1)
