@@ -1,0 +1,3 @@
+policy:
+  max_users_per_record: 2
+  audit_channel: suitecrm

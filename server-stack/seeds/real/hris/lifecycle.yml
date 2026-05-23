@@ -1,0 +1,6 @@
+events:
+  - offboarding
+  - leave
+  - role_change
+  - new_hire
+  - contractor_scope

@@ -1,0 +1,6 @@
+records:
+  - id: contract-991
+    type: opportunity
+    classification: confidential
+  - id: account-220
+    type: account

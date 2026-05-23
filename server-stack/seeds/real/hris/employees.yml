@@ -1,0 +1,14 @@
+employees:
+  - id: E001
+    name: Alice CFO
+    status: active
+    role: finance
+  - id: E003
+    name: Carol Leaver
+    status: terminated
+  - id: E004
+    name: Dan Contractor
+    identity: contractor
+  - id: E005
+    name: Eve Newhire
+    hire_day: 1
