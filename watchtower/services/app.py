@@ -22,6 +22,7 @@ from watchtower.storage.repositories.mode import ModeRepository
 from watchtower.baseline.engine import BaselineEngine
 from watchtower.baseline.query import BaselineQueryAPI
 from watchtower.decision.service import DecisionService
+from watchtower.graph.checkpointing import GraphCheckpointStore
 from watchtower.graph.runner import GraphRunner, build_graph_runner
 from watchtower.llm.gateway import LLMGateway
 from watchtower.llm.providers.onboarding import resolve_provider_chain
@@ -93,6 +94,7 @@ class SessionContext:
 class AppContext:
     settings: WatchtowerSettings
     database: Database
+    checkpoint_store: GraphCheckpointStore
 
     def run_migrations(self) -> list[str]:
         with self.database.session() as conn:
@@ -101,7 +103,7 @@ class AppContext:
     @contextmanager
     def session(self) -> Iterator[SessionContext]:
         with self.database.session() as conn:
-            ctx = _build_session(conn, self.settings, self.database)
+            ctx = _build_session(conn, self.settings, self.database, self.checkpoint_store)
             tenant_id = ctx.set_default_tenant_context()
             try:
                 yield ctx
