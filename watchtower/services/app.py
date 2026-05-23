@@ -39,6 +39,9 @@ from watchtower.storage.repositories.raw_event import RawEventRepository
 from watchtower.storage.repositories.unknown_schema import UnknownSchemaRepository
 from watchtower.storage.repositories.baseline import BaselineRepository
 from watchtower.storage.repositories.feedback_rules import FeedbackRulesRepository
+from watchtower.storage.repositories.alerts import AlertRepository
+from watchtower.alerts.service import AlertService
+from watchtower.query.service import QueryService
 from watchtower.storage.repositories.source import SourceRepository
 from watchtower.storage.repositories.source_cursor import SourceCursorRepository
 from watchtower.storage.repositories.tenant import TenantRepository
@@ -74,6 +77,8 @@ class SessionContext:
     graph: GraphRepository
     graph_runner: GraphRunner
     llm: LLMGateway
+    alerts: AlertService
+    query: QueryService
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
@@ -162,6 +167,9 @@ def _build_session(
         audit_repo=llm_audit,
         max_retries=settings.llm_max_retries,
     )
+    alert_repo = AlertRepository(conn)
+    alert_service = AlertService(alert_repo, feedback=feedback)
+    query_service = QueryService(alert_repo, baseline_repo)
     graph_runner = build_graph_runner(
         mode_controller=mode_controller,
         decision=decision,
@@ -171,6 +179,7 @@ def _build_session(
         graph_repo=graph_repo,
         conn=conn,
         llm_gateway=llm_gateway,
+        alerts=alert_service,
     )
     return SessionContext(
         conn=conn,
@@ -199,6 +208,8 @@ def _build_session(
         graph=graph_repo,
         graph_runner=graph_runner,
         llm=llm_gateway,
+        alerts=alert_service,
+        query=query_service,
     )
 
 
