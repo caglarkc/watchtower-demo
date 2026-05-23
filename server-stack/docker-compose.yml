@@ -301,7 +301,7 @@ services:
       - ./logs/dovecot:/var/log/corp/dovecot
       - ./configs/dovecot:/etc/dovecot/external:ro
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
