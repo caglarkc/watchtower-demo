@@ -55,7 +55,6 @@ def test_durable_checkpoint_survives_new_app_instance(app, tenant_id, settings):
     assert app.checkpoint_store.thread_has_checkpoint(thread_id)
 
     app2 = create_app(settings=settings, database_path=settings.database_path)
-    assert not app2.checkpoint_store.thread_has_checkpoint.__self__  # noqa: B018 — sanity
     assert app2.checkpoint_store.thread_has_checkpoint(thread_id)
 
     with app2.session() as session:
