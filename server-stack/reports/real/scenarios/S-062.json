@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-062",
   "title": "Sabit Şifre Koda Gömme",
-  "mode": "negative",
+  "mode": "positive",
   "category": "politika ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 6062,
@@ -23,7 +23,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 1
+            "clones": 8
           }
         },
         {
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 1223,
+            "count": 2343,
             "result": "PASS"
           },
           "result": "PASS",
@@ -116,19 +116,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 222,
+            "count": 418,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 25,
+            "indexed": 32,
             "index": "corp-logs-f-054",
             "pipeline": {
               "feature_id": "F-054",
               "index": "corp-logs-f-054",
-              "indexed": 25
+              "indexed": 32
             }
           }
         }
@@ -149,7 +149,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 13
+            "tokens": 42
           }
         }
       ],
@@ -227,7 +227,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-027",
-            "count": 480,
+            "count": 880,
             "result": "PASS"
           },
           "result": "PASS",
@@ -256,7 +256,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 1
+        "clones": 8
       }
     },
     {
@@ -276,7 +276,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 13
+        "tokens": 42
       }
     },
     {
@@ -323,7 +323,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 1223,
+        "count": 2343,
         "result": "PASS"
       },
       "result": "PASS",
@@ -353,19 +353,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 222,
+        "count": 418,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 25,
+        "indexed": 32,
         "index": "corp-logs-f-054",
         "pipeline": {
           "feature_id": "F-054",
           "index": "corp-logs-f-054",
-          "indexed": 25
+          "indexed": 32
         }
       }
     },
@@ -409,7 +409,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-027",
-        "count": 480,
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -436,12 +436,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:12:22.204581+00:00",
+  "generated_at": "2026-05-23T03:14:04.350528+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-062:6062:negative:real"
+  "replay_key": "S-062:6062:positive:real"
 }
