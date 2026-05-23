@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +11,7 @@ import yaml
 
 from watchtower.candidates.extractor import CandidateExtractor
 from watchtower.config.paths import PROJECT_ROOT
+from watchtower.domain.profiles import BehaviorObservation
 from watchtower.e2e.preflight import FEATURE_REPLAYS
 from watchtower.e2e.replay import first_candidate_from_feature
 from watchtower.normalization.service import NormalizationService
