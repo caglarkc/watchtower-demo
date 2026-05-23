@@ -50,3 +50,5 @@
 {"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "feature_id": "F-003", "timestamp": "2026-05-23T03:08:24.705267+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "feature_id": "F-003", "timestamp": "2026-05-23T03:17:26.151626+00:00"}
 {"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "feature_id": "F-003", "timestamp": "2026-05-23T03:17:33.712640+00:00"}
+{"event_type": "dns_entropy", "txt_queries": 5000, "nxdomain_ratio": 0.4, "feature_id": "F-003", "timestamp": "2026-05-23T03:17:41.318130+00:00"}
+{"event_type": "dns_entropy", "txt_queries": 10, "nxdomain_ratio": 0.01, "feature_id": "F-003", "timestamp": "2026-05-23T03:17:43.409440+00:00"}
