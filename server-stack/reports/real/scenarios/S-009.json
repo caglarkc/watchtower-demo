@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-009",
   "title": "BI Ham PII Export",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Veri Analisti",
   "deterministic_seed": 1009,
@@ -22,7 +22,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 2"
+            "sql": "SELECT * FROM customers LIMIT 500"
           }
         }
       ],
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 6895,
+            "count": 7535,
             "result": "PASS"
           },
           "result": "PASS",
@@ -130,7 +130,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     },
     {
@@ -165,7 +165,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 6895,
+        "count": 7535,
         "result": "PASS"
       },
       "result": "PASS",
@@ -218,12 +218,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:43.198544+00:00",
+  "generated_at": "2026-05-23T08:42:34.519407+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-009:1009:negative:real"
+  "replay_key": "S-009:1009:positive:real"
 }

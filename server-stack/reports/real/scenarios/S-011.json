@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-011",
   "title": "CEO Mail Kutusundan Toplu Arşiv Export",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "CEO",
   "deterministic_seed": 1011,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-024",
-            "count": 7040,
+            "count": 7520,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-025",
-            "count": 2960,
+            "count": 3200,
             "result": "PASS"
           },
           "result": "PASS",
@@ -161,7 +161,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-019",
-            "count": 4320,
+            "count": 4640,
             "result": "PASS"
           },
           "result": "PASS",
@@ -235,7 +235,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-024",
-        "count": 7040,
+        "count": 7520,
         "result": "PASS"
       },
       "result": "PASS",
@@ -265,7 +265,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-025",
-        "count": 2960,
+        "count": 3200,
         "result": "PASS"
       },
       "result": "PASS",
@@ -295,7 +295,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-019",
-        "count": 4320,
+        "count": 4640,
         "result": "PASS"
       },
       "result": "PASS",
@@ -318,12 +318,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:43.754492+00:00",
+  "generated_at": "2026-05-23T08:42:35.117801+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-011:1011:negative:real"
+  "replay_key": "S-011:1011:positive:real"
 }
