@@ -241,7 +241,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange Management audit, EWS | Demo: Postfix/Roundcube rule-action logları + custom parser  
 **NE İZLENİYOR:** Yeni inbox rule, auto-forward, delegate ekleme/silme; anahtar kelime filtreli kurallar  
 **NEDEN DEĞERLI:** Gizli exfil ve hesap ele geçirme sonrası kalıcılık; sessiz veri toplama  
-**ANOMALİ SİNYALİ:** İlk kez oluşturulan kural; gece oluşturulan filtré; "salary"/"contract"/"termination" keyword filtresi  
+**ANOMALİ SİNYALİ:** İlk kez oluşturulan kural; gece oluşturulan filtre; "salary"/"contract"/"termination" keyword filtresi  
 **UYGULAMA ZORLUĞU:** Kolay  
 **ÖRNEK METRIK:** İK: forward rule 0 → 1 (kişisel iç mailbox); satış: aynı gün 3 yeni hassas keyword kuralı
 
