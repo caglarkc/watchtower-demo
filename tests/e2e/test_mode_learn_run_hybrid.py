@@ -25,13 +25,23 @@ def _candidate_from_f001(
     return cand
 
 
+def _seed_for_candidate(app, tenant_id: str, candidate) -> None:
+    seed_anomaly_baseline(
+        app,
+        tenant_id,
+        user_id=str(candidate.attributes.get("user_id") or candidate.actor),
+        department_id=candidate.attributes.get("department_id"),
+        metric_name=str(candidate.attributes.get("metric_name", "event_volume")),
+    )
+
+
 def test_learn_mode_zero_alert_silent_and_learning_queue(
     app, tenant_id, normalizer, extractor, server_stack_preflight
 ):
     del server_stack_preflight
-    seed_anomaly_baseline(app, tenant_id)
-    set_tenant_mode(app, tenant_id, "learn")
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
+    _seed_for_candidate(app, tenant_id, candidate)
+    set_tenant_mode(app, tenant_id, "learn")
 
     result = run_graph_to_completion(app, candidate)
     with app.session() as session:

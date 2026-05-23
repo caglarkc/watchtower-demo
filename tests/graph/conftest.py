@@ -50,17 +50,19 @@ def seed_anomaly_baseline(
     tenant_id: str,
     *,
     user_id: str = "worker-1",
+    department_id: str | None = "backend",
+    metric_name: str = "sql_query_count",
     normal_value: float = 10.0,
 ) -> None:
     with app.session() as session:
         seed_metric_series(
             session.baseline,
             tenant_id=tenant_id,
-            metric_name="sql_query_count",
+            metric_name=metric_name,
             value=normal_value,
             days=30,
             user_id=user_id,
-            department_id="backend",
+            department_id=department_id,
         )
         session.baseline.rebuild_profiles(tenant_id, window_days=45)
 
