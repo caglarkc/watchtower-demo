@@ -1,0 +1,37 @@
+{
+  "id": "F-044",
+  "feature_id": "F-044",
+  "title": "Bilgi Bankası/Wiki/Intranet Toplu İndirme",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "wiki-app",
+  "actions_executed": [
+    {
+      "service": "wiki",
+      "response": {
+        "pages": 80
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/wiki/access.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "bulk intranet/wiki download",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:43:25.083907+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

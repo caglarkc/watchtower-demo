@@ -1,0 +1,38 @@
+{
+  "id": "F-042",
+  "feature_id": "F-042",
+  "title": "Yerel Diskte Hassas Veri Birikimi",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "wazuh-agent",
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/local_sensitive_accumulation.jsonl",
+        "event_type": "local_sensitive_accumulation"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/local_sensitive_accumulation.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "local sensitive-data accumulation",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:43:24.843121+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}
