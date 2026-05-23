@@ -65,7 +65,6 @@ def _checks_ri1(feature_id: str, positive: bool) -> list:
 
 
 def _checks_ri2(feature_id: str, positive: bool) -> list:
-    mail_postfix = {f"F-{i:03d}" for i in range(16, 30)} - {"F-017", "F-018", "F-024", "F-025", "F-029"}
     if feature_id in ("F-016", "F-019", "F-020", "F-021", "F-022", "F-023", "F-026", "F-027", "F-028"):
         return [lambda s: assert_mail_log("postfix", "smtp_send")]
     if feature_id == "F-017":
