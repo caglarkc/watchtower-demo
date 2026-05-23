@@ -20,6 +20,8 @@ from watchtower.storage.repositories.audit import AuditRepository
 from watchtower.storage.repositories.bootstrap import BootstrapRepository
 from watchtower.storage.repositories.mode import ModeRepository
 from watchtower.baseline.engine import BaselineEngine
+from watchtower.feedback.service import FeedbackService
+from watchtower.rules.engine import RuleEngine
 from watchtower.candidates.service import CandidatePipelineService
 from watchtower.ingest.service import IngestService
 from watchtower.normalization.service import NormalizationService
@@ -28,6 +30,7 @@ from watchtower.storage.repositories.normalized_event import NormalizedEventRepo
 from watchtower.storage.repositories.raw_event import RawEventRepository
 from watchtower.storage.repositories.unknown_schema import UnknownSchemaRepository
 from watchtower.storage.repositories.baseline import BaselineRepository
+from watchtower.storage.repositories.feedback_rules import FeedbackRulesRepository
 from watchtower.storage.repositories.source import SourceRepository
 from watchtower.storage.repositories.source_cursor import SourceCursorRepository
 from watchtower.storage.repositories.tenant import TenantRepository
@@ -57,6 +60,8 @@ class SessionContext:
     normalizer: NormalizationService
     pipeline: CandidatePipelineService
     baseline: BaselineEngine
+    feedback: FeedbackService
+    rules: RuleEngine
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
