@@ -7,10 +7,7 @@ from pathlib import Path
 
 from watchtower.connectors.file_jsonl import FileJsonlConnector
 from watchtower.domain.events import ConnectorCursor
-from watchtower.ingest.service import IngestService
-
-
-def test_file_jsonl_cursor_resume_no_duplicates(app, tenant_id, tmp_path: Path):
+def test_file_jsonl_cursor_resume_no_duplicates(tmp_path: Path):
     log_file = tmp_path / "resume.jsonl"
     rows = [{"timestamp": f"2026-05-23T10:0{i}:00+00:00", "event_type": "ping", "i": i} for i in range(5)]
     log_file.write_text("\n".join(json.dumps(r) for r in rows) + "\n", encoding="utf-8")
