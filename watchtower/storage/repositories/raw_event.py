@@ -50,6 +50,64 @@ class RawEventRepository:
         except sqlite3.IntegrityError:
             return False
 
+    def list_unprocessed(
+        self,
+        tenant_id: str,
+        *,
+        limit: int = 500,
+    ) -> list[dict[str, Any]]:
+        """Raw events not yet normalized or queued as unknown."""
+        rows = self._conn.execute(
+            """
+            SELECT r.id, r.source_id, r.payload_json, r.source_path,
+                   r.event_timestamp, r.dedupe_key, s.connector_type
+            FROM raw_events r
+            JOIN sources s ON s.id = r.source_id
+            LEFT JOIN normalized_events n ON n.raw_event_id = r.id
+            LEFT JOIN unknown_schema_queue u ON u.raw_event_id = r.id
+            WHERE r.tenant_id = ?
+              AND n.id IS NULL
+              AND u.id IS NULL
+            ORDER BY r.ingested_at
+            LIMIT ?
+            """,
+            (tenant_id, limit),
+        ).fetchall()
+        return [
+            {
+                "id": row["id"],
+                "source_id": row["source_id"],
+                "connector_type": row["connector_type"],
+                "payload": json.loads(row["payload_json"]),
+                "source_path": row["source_path"],
+                "event_timestamp": row["event_timestamp"],
+                "dedupe_key": row["dedupe_key"],
+            }
+            for row in rows
+        ]
+
+    def get_by_id(self, raw_event_id: str, tenant_id: str) -> dict[str, Any] | None:
+        row = self._conn.execute(
+            """
+            SELECT r.id, r.source_id, r.payload_json, r.source_path,
+                   r.event_timestamp, s.connector_type
+            FROM raw_events r
+            JOIN sources s ON s.id = r.source_id
+            WHERE r.id = ? AND r.tenant_id = ?
+            """,
+            (raw_event_id, tenant_id),
+        ).fetchone()
+        if row is None:
+            return None
+        return {
+            "id": row["id"],
+            "source_id": row["source_id"],
+            "connector_type": row["connector_type"],
+            "payload": json.loads(row["payload_json"]),
+            "source_path": row["source_path"],
+            "event_timestamp": row["event_timestamp"],
+        }
+
     def count_for_source(self, tenant_id: str, source_id: str) -> int:
         row = self._conn.execute(
             """
