@@ -5,3 +5,4 @@
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T01:26:03.233221+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T01:26:05.628683+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T01:26:52.836832+00:00"}
+{"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "feature_id": "F-064", "timestamp": "2026-05-23T01:26:58.628351+00:00"}

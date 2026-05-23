@@ -5,3 +5,4 @@
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["incident_response", "password_policy"], "feature_id": "F-035", "timestamp": "2026-05-23T01:26:02.483037+00:00"}
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["general_help"], "feature_id": "F-035", "timestamp": "2026-05-23T01:26:04.890198+00:00"}
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["incident_response", "password_policy"], "feature_id": "F-035", "timestamp": "2026-05-23T01:26:50.826822+00:00"}
+{"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["general_help"], "feature_id": "F-035", "timestamp": "2026-05-23T01:26:56.588676+00:00"}
