@@ -8,7 +8,7 @@ from typing import Literal
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from watchtower.config import PACKAGE_ROOT, PROJECT_ROOT
+from watchtower.config.paths import PACKAGE_ROOT, PROJECT_ROOT
 
 WatchtowerMode = Literal["learn", "run", "hybrid"]
 
