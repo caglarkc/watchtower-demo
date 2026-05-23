@@ -63,5 +63,8 @@ INGEST_FEATURES = frozenset(
     {
         "F-001", "F-002", "F-006", "F-007", "F-010", "F-011",
         "F-037", "F-038", "F-079",
+        "F-016", "F-023", "F-045", "F-048", "F-049",
     }
 )
+
+ALL_REAL_FEATURES = RI1_FEATURES | RI2_FEATURES
