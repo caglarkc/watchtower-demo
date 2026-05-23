@@ -184,6 +184,8 @@ def _build_session(
         feedback=feedback,
         rules=rules,
         decision=decision,
+        graph=graph_repo,
+        graph_runner=graph_runner,
     )
 
 

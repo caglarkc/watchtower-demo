@@ -12,6 +12,8 @@ dependencies = [
     "pydantic-settings>=2.0",
     "PyYAML>=6.0",
     "typer>=0.12",
+    "langgraph>=0.2",
+    "langgraph-checkpoint-sqlite>=2.0",
 ]
 
 [project.optional-dependencies]
