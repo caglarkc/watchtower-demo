@@ -17,7 +17,7 @@ features:
   evidence_path: reports/features/F-001.json
   replay_positive: simulation/feature_replays/F-001_positive.yaml
   replay_negative: simulation/feature_replays/F-001_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -42,7 +42,7 @@ features:
   evidence_path: reports/features/F-002.json
   replay_positive: simulation/feature_replays/F-002_positive.yaml
   replay_negative: simulation/feature_replays/F-002_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: zeek
@@ -67,7 +67,7 @@ features:
   evidence_path: reports/features/F-003.json
   replay_positive: simulation/feature_replays/F-003_positive.yaml
   replay_negative: simulation/feature_replays/F-003_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: bind9
@@ -119,7 +119,7 @@ features:
   evidence_path: reports/features/F-005.json
   replay_positive: simulation/feature_replays/F-005_positive.yaml
   replay_negative: simulation/feature_replays/F-005_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: dhcp-server
@@ -144,7 +144,7 @@ features:
   evidence_path: reports/features/F-006.json
   replay_positive: simulation/feature_replays/F-006_positive.yaml
   replay_negative: simulation/feature_replays/F-006_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-ad
@@ -169,7 +169,7 @@ features:
   evidence_path: reports/features/F-007.json
   replay_positive: simulation/feature_replays/F-007_positive.yaml
   replay_negative: simulation/feature_replays/F-007_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: zeek
@@ -195,7 +195,7 @@ features:
   evidence_path: reports/features/F-008.json
   replay_positive: simulation/feature_replays/F-008_positive.yaml
   replay_negative: simulation/feature_replays/F-008_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-ad
@@ -246,7 +246,7 @@ features:
   evidence_path: reports/features/F-010.json
   replay_positive: simulation/feature_replays/F-010_positive.yaml
   replay_negative: simulation/feature_replays/F-010_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-ad
@@ -272,7 +272,7 @@ features:
   evidence_path: reports/features/F-011.json
   replay_positive: simulation/feature_replays/F-011_positive.yaml
   replay_negative: simulation/feature_replays/F-011_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-ad
@@ -373,7 +373,7 @@ features:
   evidence_path: reports/features/F-015.json
   replay_positive: simulation/feature_replays/F-015_positive.yaml
   replay_negative: simulation/feature_replays/F-015_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: zeek
@@ -936,7 +936,7 @@ features:
   evidence_path: reports/features/F-037.json
   replay_positive: simulation/feature_replays/F-037_positive.yaml
   replay_negative: simulation/feature_replays/F-037_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -961,7 +961,7 @@ features:
   evidence_path: reports/features/F-038.json
   replay_positive: simulation/feature_replays/F-038_positive.yaml
   replay_negative: simulation/feature_replays/F-038_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -986,7 +986,7 @@ features:
   evidence_path: reports/features/F-039.json
   replay_positive: simulation/feature_replays/F-039_positive.yaml
   replay_negative: simulation/feature_replays/F-039_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -1011,7 +1011,7 @@ features:
   evidence_path: reports/features/F-040.json
   replay_positive: simulation/feature_replays/F-040_positive.yaml
   replay_negative: simulation/feature_replays/F-040_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -1037,7 +1037,7 @@ features:
   evidence_path: reports/features/F-041.json
   replay_positive: simulation/feature_replays/F-041_positive.yaml
   replay_negative: simulation/feature_replays/F-041_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: samba-files
@@ -1396,7 +1396,7 @@ features:
   evidence_path: reports/features/F-055.json
   replay_positive: simulation/feature_replays/F-055_positive.yaml
   replay_negative: simulation/feature_replays/F-055_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: wazuh-agent
@@ -1446,7 +1446,7 @@ features:
   evidence_path: reports/features/F-057.json
   replay_positive: simulation/feature_replays/F-057_positive.yaml
   replay_negative: simulation/feature_replays/F-057_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: wazuh-agent
@@ -1601,7 +1601,7 @@ features:
   evidence_path: reports/features/F-063.json
   replay_positive: simulation/feature_replays/F-063_positive.yaml
   replay_negative: simulation/feature_replays/F-063_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: endpoint-synthetic
@@ -2013,7 +2013,7 @@ features:
   evidence_path: reports/features/F-079.json
   replay_positive: simulation/feature_replays/F-079_positive.yaml
   replay_negative: simulation/feature_replays/F-079_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: endpoint-synthetic
@@ -2039,7 +2039,7 @@ features:
   evidence_path: reports/features/F-080.json
   replay_positive: simulation/feature_replays/F-080_positive.yaml
   replay_negative: simulation/feature_replays/F-080_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: endpoint-synthetic
@@ -2065,7 +2065,7 @@ features:
   evidence_path: reports/features/F-081.json
   replay_positive: simulation/feature_replays/F-081_positive.yaml
   replay_negative: simulation/feature_replays/F-081_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P0
   real_tool: endpoint-synthetic
