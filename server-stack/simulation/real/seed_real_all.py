@@ -48,6 +48,7 @@ def main() -> int:
         "seed_real_apps.py",
         "seed_real_security.py",
         "seed_real_endpoint.py",
+        "seed_real_physical_hr.py",
     ):
         subprocess.run([sys.executable, str(here / script)], check=True)
 

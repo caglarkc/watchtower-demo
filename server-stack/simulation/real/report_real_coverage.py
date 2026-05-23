@@ -143,13 +143,15 @@ def main() -> int:
         f"wrote {out} metadata={data['metadata_complete']}/{data['total_features']} "
         f"ri1={data['ri1_pass']}/{data['ri1_features']} "
         f"ri2={data['ri2_pass']}/{data['ri2_features']} "
-        f"ri3={data['ri3_pass']}/{data['ri3_features']}"
+        f"ri3={data['ri3_pass']}/{data['ri3_features']} "
+        f"ri4={data['ri4_pass']}/{data['ri4_features']}"
     )
     gate = (
         data["metadata_complete"] == 81
         and data["ri1_l2_metadata"] == data["ri1_features"]
         and data["ri2_l2_metadata"] == data["ri2_features"]
         and data["ri3_l2_metadata"] == data["ri3_features"]
+        and data["ri4_l2_metadata"] == data["ri4_features"]
     )
     return 0 if gate else 1
 
