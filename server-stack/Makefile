@@ -6,7 +6,7 @@ COMPOSE ?= docker compose
 
 up:
 	$(COMPOSE) up -d
-	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint,postfix,dovecot,roundcube,postgres,gitea,nginx,app,artifact,siem,hypervisor,ai_gateway,proxy,cloud,vault,mattermost,cups,badge,hris,suitecrm,wiki,dlp,activity} reports/features reports/coverage
+	@mkdir -p logs/{identity,samba,dns,dhcp,zeek,endpoint,postfix,dovecot,roundcube,postgres,gitea,nginx,app,artifact,siem,hypervisor,ai_gateway,proxy,cloud,vault,mattermost,cups,badge,hris,suitecrm,wiki,dlp,activity} reports/features reports/scenarios reports/coverage reports/scenario_logs
 
 down:
 	$(COMPOSE) down
