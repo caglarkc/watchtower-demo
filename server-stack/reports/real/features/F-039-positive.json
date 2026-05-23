@@ -1,0 +1,36 @@
+{
+  "id": "F-039",
+  "feature_id": "F-039",
+  "title": "Kitlesel Dosya Yeniden Adlandırma Hızı",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "samba-files",
+  "actions_executed": [
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "renames": 15
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "mass rename rate event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:28:35.585887+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

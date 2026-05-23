@@ -1,0 +1,49 @@
+{
+  "id": "F-015",
+  "feature_id": "F-015",
+  "title": "RDP/PSRemoting Hop Pattern",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "zeek",
+  "actions_executed": [
+    {
+      "service": "zeek",
+      "response": {
+        "written": 2,
+        "log": "/var/log/corp/zeek/conn.log"
+      }
+    },
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/rdp_hop.jsonl",
+        "event_type": "rdp_hop"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+      "records": 20,
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/rdp_hop.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "hop-chain session event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:28:35.163881+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

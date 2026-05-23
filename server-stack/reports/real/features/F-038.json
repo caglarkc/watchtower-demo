@@ -45,7 +45,7 @@
   "anomaly_detected": true,
   "evidence_expected": "bulk read/write ratio event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:27:52.531484+00:00",
+  "generated_at": "2026-05-23T02:28:35.440518+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,29 +1,29 @@
 {
-  "id": "F-038",
-  "feature_id": "F-038",
-  "title": "Dosya Sunucu Toplu Okuma/Yazma Oranı",
+  "id": "F-010",
+  "feature_id": "F-010",
+  "title": "Hizmet Hesaplarının İnteraktif Kullanımı",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "samba-files",
+  "real_tool": "samba-ad",
   "actions_executed": [
     {
-      "service": "samba-files-actions",
+      "service": "samba-ad",
       "response": {
-        "read_bytes": 18400000000,
-        "write_bytes": 0
+        "events": 1,
+        "anomaly": "service_account_interactive"
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-038",
+      "assertion": "elasticsearch:corp-logs:F-010",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,9 +43,9 @@
     "seeds/real/baseline/normal_day.yml"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "bulk read/write ratio event",
+  "evidence_expected": "service account interactive logon",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:35.440518+00:00",
+  "generated_at": "2026-05-23T02:28:34.922815+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

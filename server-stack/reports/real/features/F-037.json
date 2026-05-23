@@ -1,7 +1,7 @@
 {
-  "id": "F-038",
-  "feature_id": "F-038",
-  "title": "Dosya Sunucu Toplu Okuma/Yazma Oranı",
+  "id": "F-037",
+  "feature_id": "F-037",
+  "title": "Departman Dışı Dosya Paylaşım Erişimi",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
@@ -10,8 +10,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 18400000000,
-        "write_bytes": 0
+        "cross_department": true
       }
     }
   ],
@@ -23,7 +22,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-038",
+      "assertion": "elasticsearch:corp-logs:F-037",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,9 +42,9 @@
     "seeds/real/baseline/normal_day.yml"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "bulk read/write ratio event",
+  "evidence_expected": "out-of-department file access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:35.440518+00:00",
+  "generated_at": "2026-05-23T02:28:35.285865+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
