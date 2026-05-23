@@ -3,3 +3,4 @@
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T01:27:14.210877+00:00"}
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T02:09:26.562348+00:00"}
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T02:10:19.944566+00:00"}
+{"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "source_feature": "F-071", "scenario_id": "S-080", "timestamp": "2026-05-23T02:19:56.566294+00:00"}

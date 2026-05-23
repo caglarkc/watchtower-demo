@@ -67,7 +67,7 @@
     "reports/scenario_logs/S-078/roundcube/webmail_login_attempt.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:10:19.876083+00:00",
+  "generated_at": "2026-05-23T02:19:56.492536+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-078:8078:positive"

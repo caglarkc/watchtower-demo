@@ -8,3 +8,5 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:09:27.068292+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:10:17.534458+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:10:20.562001+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:19:54.256356+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:19:57.065041+00:00"}

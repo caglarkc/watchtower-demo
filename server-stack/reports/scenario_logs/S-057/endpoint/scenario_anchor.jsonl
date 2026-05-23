@@ -8,3 +8,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": false, "timestamp": "2026-05-23T02:09:28.674478+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": true, "timestamp": "2026-05-23T02:10:19.141699+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": false, "timestamp": "2026-05-23T02:10:22.243701+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": true, "timestamp": "2026-05-23T02:19:55.799178+00:00"}

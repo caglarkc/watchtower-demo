@@ -38,7 +38,7 @@
     "reports/scenario_logs/S-043/endpoint/backup_shadow_delete.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:10:18.648032+00:00",
+  "generated_at": "2026-05-23T02:19:55.330295+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-043:4043:positive"

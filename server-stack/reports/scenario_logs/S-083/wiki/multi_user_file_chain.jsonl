@@ -8,3 +8,4 @@
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 1, "window_minutes": 30, "source_feature": "F-073", "scenario_id": "S-083", "timestamp": "2026-05-23T02:09:29.626507+00:00"}
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 3, "window_minutes": 30, "source_feature": "F-073", "scenario_id": "S-083", "timestamp": "2026-05-23T02:10:20.060571+00:00"}
 {"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 1, "window_minutes": 30, "source_feature": "F-073", "scenario_id": "S-083", "timestamp": "2026-05-23T02:10:23.188463+00:00"}
+{"event_type": "multi_user_file_chain", "log_channel": "wiki", "file_id": "contract-991", "users": 3, "window_minutes": 30, "source_feature": "F-073", "scenario_id": "S-083", "timestamp": "2026-05-23T02:19:56.672221+00:00"}

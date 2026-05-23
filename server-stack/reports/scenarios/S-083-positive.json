@@ -59,7 +59,7 @@
     "reports/scenario_logs/S-083/scenarios/smb_access.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:10:20.062448+00:00",
+  "generated_at": "2026-05-23T02:19:56.673569+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-083:9083:positive"

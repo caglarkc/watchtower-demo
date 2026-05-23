@@ -3,3 +3,4 @@
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T01:27:14.252991+00:00"}
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:09:26.598033+00:00"}
 {"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:10:19.989616+00:00"}
+{"event_type": "composite_signal", "log_channel": "proxy", "signal": "exfil", "weight": 0.35, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:19:56.603305+00:00"}

@@ -68,7 +68,7 @@
     "reports/scenario_logs/S-067/badge/off_shift_access.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:10:19.497886+00:00",
+  "generated_at": "2026-05-23T02:19:56.129048+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-067:7067:positive"

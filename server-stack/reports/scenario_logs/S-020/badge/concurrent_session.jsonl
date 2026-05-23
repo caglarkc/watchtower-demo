@@ -8,3 +8,5 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "source_feature": "F-009", "scenario_id": "S-020", "timestamp": "2026-05-23T02:09:27.380020+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "source_feature": "F-009", "scenario_id": "S-020", "timestamp": "2026-05-23T02:10:17.838305+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "source_feature": "F-009", "scenario_id": "S-020", "timestamp": "2026-05-23T02:10:20.865579+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "source_feature": "F-009", "scenario_id": "S-020", "timestamp": "2026-05-23T02:19:54.554264+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "source_feature": "F-009", "scenario_id": "S-020", "timestamp": "2026-05-23T02:19:57.363652+00:00"}
