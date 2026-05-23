@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-075",
   "title": "CEO Asistanı Gibi Davranan Arama Sonrası Erişim",
-  "mode": "negative",
+  "mode": "positive",
   "category": "sosyal mühendislik",
   "user_role": "CEO",
   "deterministic_seed": 8075,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 4480,
+            "count": 5280,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,19 +104,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 957,
+            "count": 1248,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 46,
+            "indexed": 52,
             "index": "corp-logs-f-063",
             "pipeline": {
               "feature_id": "F-063",
               "index": "corp-logs-f-063",
-              "indexed": 46
+              "indexed": 52
             }
           }
         }
@@ -171,19 +171,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 6324,
+            "count": 7710,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 150,
+            "indexed": 159,
             "index": "corp-logs-f-079",
             "pipeline": {
               "feature_id": "F-079",
               "index": "corp-logs-f-079",
-              "indexed": 150
+              "indexed": 159
             }
           }
         }
@@ -256,7 +256,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 4480,
+        "count": 5280,
         "result": "PASS"
       },
       "result": "PASS",
@@ -286,19 +286,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 957,
+        "count": 1248,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 46,
+        "indexed": 52,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 46
+          "indexed": 52
         }
       }
     },
@@ -316,19 +316,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 6324,
+        "count": 7710,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 150,
+        "indexed": 159,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 150
+          "indexed": 159
         }
       }
     }
@@ -338,12 +338,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:35.809514+00:00",
+  "generated_at": "2026-05-23T03:19:29.724071+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-075:8075:negative:real"
+  "replay_key": "S-075:8075:positive:real"
 }

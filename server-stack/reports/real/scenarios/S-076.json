@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-076",
   "title": "CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
-  "mode": "negative",
+  "mode": "positive",
   "category": "sosyal mühendislik",
   "user_role": "IT Admin",
   "deterministic_seed": 8076,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-011",
-            "count": 2640,
+            "count": 3120,
             "result": "PASS"
           },
           "result": "PASS",
@@ -77,14 +77,14 @@
         {
           "service": "hris",
           "response": {
-            "resets": 1,
-            "unlocks": 0
+            "resets": 12,
+            "unlocks": 8
           }
         },
         {
           "service": "samba-ad",
           "response": {
-            "events": 1
+            "events": 12
           }
         }
       ],
@@ -144,14 +144,14 @@
     {
       "service": "hris",
       "response": {
-        "resets": 1,
-        "unlocks": 0
+        "resets": 12,
+        "unlocks": 8
       }
     },
     {
       "service": "samba-ad",
       "response": {
-        "events": 1
+        "events": 12
       }
     }
   ],
@@ -184,7 +184,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-011",
-        "count": 2640,
+        "count": 3120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -236,12 +236,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:36.073764+00:00",
+  "generated_at": "2026-05-23T03:19:29.970971+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-076:8076:negative:real"
+  "replay_key": "S-076:8076:positive:real"
 }
