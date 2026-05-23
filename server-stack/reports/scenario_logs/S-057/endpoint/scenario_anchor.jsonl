@@ -11,3 +11,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": true, "timestamp": "2026-05-23T02:19:55.799178+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": false, "timestamp": "2026-05-23T02:19:58.571532+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": true, "timestamp": "2026-05-23T02:29:19.202899+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-057", "user_role": "Veri Analisti", "category": "kazara ihlal", "seed": 5057, "anomaly": false, "timestamp": "2026-05-23T02:29:22.086053+00:00"}

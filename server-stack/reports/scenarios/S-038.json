@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-038",
   "title": "Güvenlik Duvarı Kurallarının Esnetilmesi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3038,
@@ -14,7 +14,7 @@
     "nginx"
   ],
   "expected_evidence": "Multi-signal workflow for Güvenlik Duvarı Kurallarının Esnetilmesi",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,12 +24,12 @@
       "user_role": "IT Admin",
       "category": "yetkisiz erişim",
       "seed": 3038,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 5200,
+      "status_4xx": 12,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-038"
@@ -39,9 +39,12 @@
     "reports/scenario_logs/S-038/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-038/nginx/http_4xx_spike.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:29:18.588440+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:29:21.429204+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-038:3038:positive"
+  "replay_key": "S-038:3038:negative"
 }
