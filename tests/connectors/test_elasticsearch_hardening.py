@@ -62,7 +62,6 @@ def test_elasticsearch_unavailable_returns_unhealthy_degraded():
     assert health.details.get("retries", 0) >= 0
 
 
-@pytest.mark.optional
 def test_elasticsearch_live_health_when_configured():
     url = os.environ.get("WATCHTOWER_ELASTICSEARCH_URL", "").strip()
     if not url:
