@@ -30,6 +30,19 @@ make test-real-all
 
 Kanıt: `reports/real/features/F-xxx-{positive,negative}.json`, coverage: `reports/real/coverage/real_feature_coverage.json`
 
+### RI-1 — Real identity, file, DNS, DHCP, network (21 P0 features @ L2)
+
+```bash
+make real-up
+make seed-real-identity seed-real-files
+make real-feature FEATURE=F-001
+pytest tests/real/test_identity_file_network.py
+pytest tests/real/features -m p0
+make real-coverage
+```
+
+Servisler: Samba AD API, Samba files actions + `audit.log`, BIND query log, DHCP logger, Zeek `/emit`, endpoint `/emit`. Kritik feature’larda Elasticsearch health ingest assertion.
+
 ## Hızlı başlangıç
 
 ```bash
