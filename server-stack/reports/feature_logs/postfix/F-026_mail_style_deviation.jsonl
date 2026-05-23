@@ -64,3 +64,4 @@
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.12, "feature_id": "F-026", "timestamp": "2026-05-23T08:41:14.095404+00:00"}
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.92, "feature_id": "F-026", "timestamp": "2026-05-23T10:20:40.980611+00:00"}
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.12, "feature_id": "F-026", "timestamp": "2026-05-23T10:20:48.489101+00:00"}
+{"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.92, "feature_id": "F-026", "timestamp": "2026-05-23T10:20:58.451055+00:00"}
