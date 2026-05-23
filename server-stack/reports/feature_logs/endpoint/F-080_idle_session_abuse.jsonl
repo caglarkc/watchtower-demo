@@ -29,3 +29,4 @@
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T02:29:04.187300+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T02:29:06.181903+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T02:36:32.847953+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T02:36:40.113553+00:00"}

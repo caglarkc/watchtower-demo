@@ -30,3 +30,4 @@
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "feature_id": "F-002", "timestamp": "2026-05-23T02:29:04.459153+00:00"}
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 42, "bytes": 8000000000, "feature_id": "F-002", "timestamp": "2026-05-23T02:36:25.713991+00:00"}
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "feature_id": "F-002", "timestamp": "2026-05-23T02:36:33.121389+00:00"}
+{"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 42, "bytes": 8000000000, "feature_id": "F-002", "timestamp": "2026-05-23T02:36:40.376416+00:00"}
