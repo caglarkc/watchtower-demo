@@ -31,3 +31,4 @@
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-059", "timestamp": "2026-05-23T08:41:24.362413+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-059", "timestamp": "2026-05-23T08:41:27.266433+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-059", "timestamp": "2026-05-23T10:21:10.661715+00:00"}
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-059", "timestamp": "2026-05-23T10:21:13.420821+00:00"}

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-054",
   "title": "Canlı Ortam Yerine Test Aracı Yanlışlığı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 5054,
@@ -17,7 +17,7 @@
     "postgres"
   ],
   "expected_evidence": "Multi-signal workflow for Canlı Ortam Yerine Test Aracı Yanlışlığı",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -27,28 +27,28 @@
       "user_role": "Yazılım Geliştirici",
       "category": "kazara ihlal",
       "seed": 5054,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "postgres_bulk_select",
       "log_channel": "postgres",
-      "tables": 12,
-      "rows_scanned": 4500000,
+      "tables": 1,
+      "rows_scanned": 1200,
       "source_feature": "F-045",
       "scenario_id": "S-054"
     },
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 5200,
+      "status_4xx": 12,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-054"
     },
     {
       "event_type": "port_scan",
-      "targets": 200,
-      "ports": 25,
+      "targets": 5,
+      "ports": 3,
       "window_minutes": 12,
       "source_feature": "F-007",
       "scenario_id": "S-054"
@@ -60,9 +60,12 @@
     "reports/scenario_logs/S-054/nginx/http_4xx_spike.jsonl",
     "reports/scenario_logs/S-054/scenarios/port_scan.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T10:21:10.500551+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T10:21:13.256251+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-054:5054:positive"
+  "replay_key": "S-054:5054:negative"
 }

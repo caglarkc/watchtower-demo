@@ -31,3 +31,4 @@
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T08:41:24.077584+00:00"}
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T08:41:26.957722+00:00"}
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T10:21:10.363956+00:00"}
+{"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "source_feature": "F-076", "scenario_id": "S-050", "timestamp": "2026-05-23T10:21:13.130636+00:00"}

@@ -30,3 +30,5 @@
 {"event_type": "proxy_tunnel", "log_channel": "proxy", "protocol": "https", "duration_minutes": 2, "source_feature": "F-069", "scenario_id": "S-069", "timestamp": "2026-05-23T05:36:06.171171+00:00"}
 {"event_type": "proxy_tunnel", "log_channel": "proxy", "protocol": "unknown-tls-tunnel", "duration_minutes": 45, "source_feature": "F-069", "scenario_id": "S-069", "timestamp": "2026-05-23T08:41:24.697377+00:00"}
 {"event_type": "proxy_tunnel", "log_channel": "proxy", "protocol": "https", "duration_minutes": 2, "source_feature": "F-069", "scenario_id": "S-069", "timestamp": "2026-05-23T08:41:27.602171+00:00"}
+{"event_type": "proxy_tunnel", "log_channel": "proxy", "protocol": "unknown-tls-tunnel", "duration_minutes": 45, "source_feature": "F-069", "scenario_id": "S-069", "timestamp": "2026-05-23T10:21:10.974300+00:00"}
+{"event_type": "proxy_tunnel", "log_channel": "proxy", "protocol": "https", "duration_minutes": 2, "source_feature": "F-069", "scenario_id": "S-069", "timestamp": "2026-05-23T10:21:13.778385+00:00"}

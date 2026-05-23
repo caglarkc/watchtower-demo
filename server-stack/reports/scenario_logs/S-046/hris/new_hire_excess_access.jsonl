@@ -31,3 +31,4 @@
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "source_feature": "F-075", "scenario_id": "S-046", "timestamp": "2026-05-23T08:41:23.946196+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "source_feature": "F-075", "scenario_id": "S-046", "timestamp": "2026-05-23T08:41:26.807365+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "source_feature": "F-075", "scenario_id": "S-046", "timestamp": "2026-05-23T10:21:10.231488+00:00"}
+{"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "source_feature": "F-075", "scenario_id": "S-046", "timestamp": "2026-05-23T10:21:13.003665+00:00"}

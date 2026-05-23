@@ -62,3 +62,7 @@
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T08:41:24.767926+00:00"}
 {"event_type": "ad_auth", "event_id": 4625, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T08:41:27.670192+00:00"}
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T08:41:27.670288+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 18, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T10:21:11.039979+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T10:21:11.040065+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T10:21:13.844570+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "source_feature": "F-006", "scenario_id": "S-071", "timestamp": "2026-05-23T10:21:13.844688+00:00"}

@@ -34,3 +34,4 @@
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T08:41:22.397099+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T08:41:25.298537+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T10:21:08.682613+00:00"}
+{"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "source_feature": "F-001", "scenario_id": "S-001", "timestamp": "2026-05-23T10:21:11.500952+00:00"}

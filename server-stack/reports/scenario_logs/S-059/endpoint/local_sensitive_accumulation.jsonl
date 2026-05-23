@@ -31,3 +31,4 @@
 {"event_type": "local_sensitive_accumulation", "log_channel": "endpoint", "labeled_files": 420, "gb": 18, "source_feature": "F-042", "scenario_id": "S-059", "timestamp": "2026-05-23T08:41:24.362339+00:00"}
 {"event_type": "local_sensitive_accumulation", "log_channel": "endpoint", "labeled_files": 5, "gb": 0.4, "source_feature": "F-042", "scenario_id": "S-059", "timestamp": "2026-05-23T08:41:27.266355+00:00"}
 {"event_type": "local_sensitive_accumulation", "log_channel": "endpoint", "labeled_files": 420, "gb": 18, "source_feature": "F-042", "scenario_id": "S-059", "timestamp": "2026-05-23T10:21:10.661648+00:00"}
+{"event_type": "local_sensitive_accumulation", "log_channel": "endpoint", "labeled_files": 5, "gb": 0.4, "source_feature": "F-042", "scenario_id": "S-059", "timestamp": "2026-05-23T10:21:13.420737+00:00"}

@@ -45,7 +45,7 @@
     "reports/scenario_logs/S-066/scenarios/smb_rename_storm.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T08:41:24.597296+00:00",
+  "generated_at": "2026-05-23T10:21:10.880180+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-066:6066:positive"

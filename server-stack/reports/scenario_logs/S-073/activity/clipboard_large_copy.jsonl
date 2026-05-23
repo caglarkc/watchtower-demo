@@ -30,3 +30,5 @@
 {"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 1200, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T05:36:06.305973+00:00"}
 {"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 48000000, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T08:41:24.846805+00:00"}
 {"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 1200, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T08:41:27.743485+00:00"}
+{"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 48000000, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T10:21:11.104023+00:00"}
+{"event_type": "clipboard_large_copy", "log_channel": "activity", "bytes": 1200, "source_feature": "F-059", "scenario_id": "S-073", "timestamp": "2026-05-23T10:21:13.926549+00:00"}
