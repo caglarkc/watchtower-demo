@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-051",
   "title": "Yanlış Paylaşılan Bordro Klasörü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "Muhasebe",
   "deterministic_seed": 5051,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-041",
-            "count": 1920,
+            "count": 2080,
             "result": "PASS"
           },
           "result": "PASS",
@@ -98,7 +98,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-041",
-        "count": 1920,
+        "count": 2080,
         "result": "PASS"
       },
       "result": "PASS",
@@ -120,12 +120,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:21.918918+00:00",
+  "generated_at": "2026-05-23T03:19:46.050904+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-051:5051:positive:real"
+  "replay_key": "S-051:5051:negative:real"
 }
