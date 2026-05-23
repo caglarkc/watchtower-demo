@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-046",
   "title": "İK Sisteminde Hayalet Çalışan Oluşturma",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "İK",
   "deterministic_seed": 4046,
@@ -20,7 +20,7 @@
         {
           "service": "hris",
           "response": {
-            "systems_accessed": 6
+            "systems_accessed": 28
           }
         }
       ],
@@ -70,7 +70,7 @@
     {
       "service": "hris",
       "response": {
-        "systems_accessed": 6
+        "systems_accessed": 28
       }
     }
   ],
@@ -114,12 +114,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:05.040096+00:00",
+  "generated_at": "2026-05-23T05:11:58.358496+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-046:4046:negative:real"
+  "replay_key": "S-046:4046:positive:real"
 }
