@@ -2,7 +2,7 @@
   "id": "F-042",
   "feature_id": "F-042",
   "title": "Yerel Diskte Hassas Veri Birikimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "local sensitive-data accumulation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:54.098816+00:00",
+  "generated_at": "2026-05-23T10:27:02.229667+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

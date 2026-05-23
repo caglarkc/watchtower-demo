@@ -61,7 +61,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-001",
-            "count": 25280,
+            "count": 27840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -128,7 +128,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 24829,
+            "count": 27389,
             "result": "PASS"
           },
           "result": "PASS",
@@ -185,7 +185,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 15680,
+            "count": 17200,
             "result": "PASS"
           },
           "result": "PASS",
@@ -242,19 +242,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-081",
-            "count": 2814,
+            "count": 3204,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 76,
+            "indexed": 80,
             "index": "corp-logs-f-081",
             "pipeline": {
               "feature_id": "F-081",
               "index": "corp-logs-f-081",
-              "indexed": 76
+              "indexed": 80
             }
           }
         }
@@ -351,7 +351,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 25280,
+        "count": 27840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -381,7 +381,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 24829,
+        "count": 27389,
         "result": "PASS"
       },
       "result": "PASS",
@@ -411,7 +411,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 15680,
+        "count": 17200,
         "result": "PASS"
       },
       "result": "PASS",
@@ -441,19 +441,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-081",
-        "count": 2814,
+        "count": 3204,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 76,
+        "indexed": 80,
         "index": "corp-logs-f-081",
         "pipeline": {
           "feature_id": "F-081",
           "index": "corp-logs-f-081",
-          "indexed": 76
+          "indexed": 80
         }
       }
     }
@@ -466,7 +466,7 @@
   "anomaly_detected": true,
   "event_count": 6,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:41.809360+00:00",
+  "generated_at": "2026-05-23T10:27:01.311691+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
