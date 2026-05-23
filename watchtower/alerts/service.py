@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from typing import Any, Literal
+from typing import Any
+
+from watchtower.domain.alerts import CaseTimelineEntry, Literal
 
 from watchtower.domain.alerts import (
     TERMINAL_STATUSES,
@@ -314,8 +316,6 @@ class AlertService:
         *,
         actor: str = "operator",
     ) -> CaseTimelineEntry:
-        from watchtower.domain.alerts import CaseTimelineEntry
-
         case = self._repo.get_case(tenant_id, case_id)
         if case is None:
             msg = f"Case not found: {case_id}"

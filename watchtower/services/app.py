@@ -171,7 +171,7 @@ def _build_session(
         max_retries=settings.llm_max_retries,
     )
     alert_repo = AlertRepository(conn)
-    alert_service = AlertService(alert_repo, feedback=feedback)
+    alert_service = AlertService(alert_repo, feedback=feedback, llm=llm_gateway)
     query_service = QueryService(alert_repo, baseline_repo)
     graph_runner = build_graph_runner(
         mode_controller=mode_controller,
