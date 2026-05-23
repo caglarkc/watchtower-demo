@@ -4,3 +4,4 @@
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 1, "feature_id": "F-012", "timestamp": "2026-05-23T01:25:50.625762+00:00"}
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 3, "feature_id": "F-012", "timestamp": "2026-05-23T01:26:01.932208+00:00"}
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 1, "feature_id": "F-012", "timestamp": "2026-05-23T01:26:04.348485+00:00"}
+{"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 3, "feature_id": "F-012", "timestamp": "2026-05-23T01:26:49.229185+00:00"}
