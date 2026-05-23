@@ -1,0 +1,37 @@
+{
+  "id": "F-018",
+  "feature_id": "F-018",
+  "title": "Dahili Mail Kutu Dışı Erişim",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "dovecot",
+  "actions_executed": [
+    {
+      "service": "dovecot",
+      "response": {
+        "written": "/var/log/corp/dovecot/dovecot.jsonl"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dovecot/dovecot.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "out-of-mailbox access event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:36:14.954591+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

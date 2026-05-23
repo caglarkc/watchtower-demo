@@ -1,0 +1,37 @@
+{
+  "id": "F-025",
+  "feature_id": "F-025",
+  "title": "Kişi Listesi veya Adres Defteri Dışa Aktarımı",
+  "mode": "positive",
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "real_tool": "roundcube",
+  "actions_executed": [
+    {
+      "service": "roundcube",
+      "response": {
+        "written": "/var/log/corp/roundcube/roundcube.jsonl"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/roundcube/roundcube.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "evidence_expected": "address-book export event",
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:36:15.795287+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS"
+}

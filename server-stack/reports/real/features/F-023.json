@@ -1,7 +1,7 @@
 {
-  "id": "F-016",
-  "feature_id": "F-016",
-  "title": "Dahili Mail Gönderim Hacmi ve Ek Boyutu",
+  "id": "F-023",
+  "feature_id": "F-023",
+  "title": "Mail İçeriğinde Hassas Anahtar Kelime Sinyali",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
@@ -22,7 +22,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-016",
+      "assertion": "elasticsearch:corp-logs:F-023",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,9 +43,9 @@
     "seeds/real/web/endpoints.yml"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "mail volume and attachment-size event",
+  "evidence_expected": "sensitive keyword mail event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:14.705099+00:00",
+  "generated_at": "2026-05-23T02:36:15.555845+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,28 +1,38 @@
 {
-  "id": "F-016",
-  "feature_id": "F-016",
-  "title": "Dahili Mail Gönderim Hacmi ve Ek Boyutu",
+  "id": "F-049",
+  "feature_id": "F-049",
+  "title": "Git/Artifact Erişim ve Clone Hacmi",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "postfix",
+  "real_tool": "gitea",
   "actions_executed": [
     {
-      "service": "postfix",
+      "service": "gitea-actions",
       "response": {
-        "written": "/var/log/corp/postfix/postfix.jsonl"
+        "clones": 8
+      }
+    },
+    {
+      "service": "artifact",
+      "response": {
+        "role": "artifact"
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/gitea/gitea-access.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/artifact/audit.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-016",
+      "assertion": "elasticsearch:corp-logs:F-049",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -43,9 +53,9 @@
     "seeds/real/web/endpoints.yml"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "mail volume and attachment-size event",
+  "evidence_expected": "repo clone/artifact download volume",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:14.705099+00:00",
+  "generated_at": "2026-05-23T02:36:14.438631+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

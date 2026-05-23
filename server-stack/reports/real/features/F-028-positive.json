@@ -1,7 +1,7 @@
 {
-  "id": "F-016",
-  "feature_id": "F-016",
-  "title": "Dahili Mail Gönderim Hacmi ve Ek Boyutu",
+  "id": "F-028",
+  "feature_id": "F-028",
+  "title": "İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail",
   "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
@@ -20,22 +20,7 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [
-    {
-      "assertion": "elasticsearch:corp-logs:F-016",
-      "elasticsearch": {
-        "target": "http://172.28.0.17:9200",
-        "cluster_status": "green",
-        "result": "PASS"
-      },
-      "log_pipeline": {
-        "target": "http://172.28.0.16:9201",
-        "result": "PASS"
-      },
-      "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
-    }
-  ],
+  "ingest_assertions": [],
   "seed_refs": [
     "seeds/real/mail/mailboxes.yml",
     "seeds/real/postgres/schema.sql",
@@ -43,9 +28,9 @@
     "seeds/real/web/endpoints.yml"
   ],
   "anomaly_detected": true,
-  "evidence_expected": "mail volume and attachment-size event",
+  "evidence_expected": "first-time external sensitive mail",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:14.705099+00:00",
+  "generated_at": "2026-05-23T02:36:16.148700+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
