@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-075",
   "title": "CEO Asistanı Gibi Davranan Arama Sonrası Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "CEO",
   "deterministic_seed": 8075,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 6720,
+            "count": 7360,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,19 +104,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 1813,
+            "count": 2067,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 62,
+            "indexed": 66,
             "index": "corp-logs-f-063",
             "pipeline": {
               "feature_id": "F-063",
               "index": "corp-logs-f-063",
-              "indexed": 62
+              "indexed": 66
             }
           }
         }
@@ -171,7 +171,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 10269,
+            "count": 11389,
             "result": "PASS"
           },
           "result": "PASS",
@@ -256,7 +256,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 6720,
+        "count": 7360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -286,19 +286,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 1813,
+        "count": 2067,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 62,
+        "indexed": 66,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 62
+          "indexed": 66
         }
       }
     },
@@ -316,7 +316,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 10269,
+        "count": 11389,
         "result": "PASS"
       },
       "result": "PASS",
@@ -338,12 +338,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:49.730145+00:00",
+  "generated_at": "2026-05-23T05:11:13.061338+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-075:8075:positive:real"
+  "replay_key": "S-075:8075:negative:real"
 }
