@@ -2,7 +2,7 @@
   "id": "F-023",
   "feature_id": "F-023",
   "title": "Mail İçeriğinde Hassas Anahtar Kelime Sinyali",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-023",
-        "count": 5920,
+        "count": 6000,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "sensitive keyword mail event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:13.810377+00:00",
+  "generated_at": "2026-05-23T08:42:17.666897+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
