@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "idle session abuse event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:36.438235+00:00",
+  "generated_at": "2026-05-23T02:29:56.857960+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
