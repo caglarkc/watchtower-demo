@@ -2,7 +2,7 @@
   "id": "F-069",
   "feature_id": "F-069",
   "title": "Proxy Üzerinden Şifreli Tünel veya Alışılmadık Protokol Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "squid-proxy",
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "encrypted tunnel/unusual protocol",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:08.018223+00:00",
+  "generated_at": "2026-05-23T08:41:11.244074+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

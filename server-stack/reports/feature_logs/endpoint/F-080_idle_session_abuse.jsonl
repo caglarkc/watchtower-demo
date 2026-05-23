@@ -63,3 +63,4 @@
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T08:40:58.811398+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T08:41:06.471378+00:00"}
 {"event_type": "idle_session_abuse", "session_hours": 8, "keyboard_events": 3, "feature_id": "F-080", "timestamp": "2026-05-23T08:41:08.615923+00:00"}
+{"event_type": "idle_session_abuse", "session_hours": 2, "keyboard_events": 900, "feature_id": "F-080", "timestamp": "2026-05-23T08:41:10.623196+00:00"}
