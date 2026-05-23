@@ -263,7 +263,163 @@ class AlertService:
             self._repo.update_case(
                 tenant_id, case.id, status="ticket_linked", ticket_id=ticket_id
             )
+            self._timeline.record(
+                tenant_id,
+                alert_id,
+                case.id,
+                "ticket_linked",
+                actor=actor,
+                metadata={"ticket_id": ticket_id},
+            )
         return alert
+
+    def list_cases(self, tenant_id: str, **kwargs: Any) -> list[AlertCase]:
+        return self._repo.list_cases(tenant_id, **kwargs)
+
+    def get_case(self, tenant_id: str, case_id: str) -> AlertCase | None:
+        return self._repo.get_case(tenant_id, case_id)
+
+    def assign_case(
+        self,
+        tenant_id: str,
+        case_id: str,
+        assignee: str,
+        *,
+        actor: str = "operator",
+    ) -> AlertCase:
+        case = self._repo.get_case(tenant_id, case_id)
+        if case is None:
+            msg = f"Case not found: {case_id}"
+            raise ValueError(msg)
+        self._repo.update_case(
+            tenant_id, case_id, status=case.status, assigned_to=assignee
+        )
+        self._timeline.record(
+            tenant_id,
+            case.alert_id,
+            case_id,
+            "assigned",
+            actor=actor,
+            metadata={"assignee": assignee},
+        )
+        updated = self._repo.get_case(tenant_id, case_id)
+        assert updated is not None
+        return updated
+
+    def add_case_comment(
+        self,
+        tenant_id: str,
+        case_id: str,
+        text: str,
+        *,
+        actor: str = "operator",
+    ) -> CaseTimelineEntry:
+        from watchtower.domain.alerts import CaseTimelineEntry
+
+        case = self._repo.get_case(tenant_id, case_id)
+        if case is None:
+            msg = f"Case not found: {case_id}"
+            raise ValueError(msg)
+        return self._timeline.record(
+            tenant_id,
+            case.alert_id,
+            case_id,
+            "comment_added",
+            actor=actor,
+            comment=text,
+        )
+
+    def get_timeline(
+        self,
+        tenant_id: str,
+        *,
+        alert_id: str | None = None,
+        case_id: str | None = None,
+    ) -> list:
+        return self._repo.list_timeline(
+            tenant_id, alert_id=alert_id, case_id=case_id
+        )
+
+    def get_alert_detail(
+        self,
+        tenant_id: str,
+        alert_id: str,
+        *,
+        include_llm: bool = False,
+    ) -> AlertDetailView | None:
+        alert = self._repo.get_alert(tenant_id, alert_id)
+        if alert is None:
+            return None
+        case = self._repo.get_case_by_alert(tenant_id, alert_id)
+        assessment = None
+        score_breakdown = None
+        source_evidence: dict[str, Any] = {}
+        run_id = alert.graph_run_id or (case.run_id if case else None)
+        if run_id:
+            assessment = self._repo.get_graph_run_assessment(run_id)
+            if assessment:
+                breakdown = assessment.get("breakdown")
+                if isinstance(breakdown, dict):
+                    score_breakdown = breakdown
+            source_evidence["graph_audit"] = self._repo.get_graph_run_audit_summary(
+                run_id
+            )
+        if alert.payload.get("assessment"):
+            assessment = assessment or alert.payload.get("assessment")
+        timeline = self._repo.list_timeline(tenant_id, alert_id=alert_id)
+        llm_explanation = alert.payload.get("llm_explanation")
+        detail = AlertDetailView(
+            alert=alert,
+            case=case,
+            score_breakdown=score_breakdown,
+            assessment=assessment,
+            source_evidence=source_evidence,
+            llm_explanation=llm_explanation,
+            timeline=timeline,
+        )
+        if include_llm and self._llm is not None:
+            explanation, _result = explain_alert(self._llm, detail, tenant_id=tenant_id)
+            detail.llm_explanation = explanation
+        return detail
+
+    def generate_explanation(
+        self,
+        tenant_id: str,
+        alert_id: str,
+    ) -> dict[str, Any]:
+        if self._llm is None:
+            return {"skipped": True, "reason": "LLM gateway not configured"}
+        detail = self.get_alert_detail(tenant_id, alert_id)
+        if detail is None:
+            msg = f"Alert not found: {alert_id}"
+            raise ValueError(msg)
+        explanation, _result = explain_alert(self._llm, detail, tenant_id=tenant_id)
+        return explanation
+
+    def export_case(
+        self,
+        tenant_id: str,
+        case_id: str,
+        *,
+        fmt: str = "json",
+        include_llm: bool = False,
+    ) -> str:
+        case = self._repo.get_case(tenant_id, case_id)
+        if case is None:
+            msg = f"Case not found: {case_id}"
+            raise ValueError(msg)
+        detail = self.get_alert_detail(
+            tenant_id, case.alert_id, include_llm=include_llm
+        )
+        if detail is None:
+            msg = f"Alert not found for case: {case_id}"
+            raise ValueError(msg)
+        detail.timeline = self._repo.list_timeline(
+            tenant_id, case_id=case_id
+        ) or detail.timeline
+        if fmt == "md" or fmt == "markdown":
+            return export_case_markdown(detail)
+        return export_case_json(detail)
 
     def is_suppressed(self, tenant_id: str, alert_id: str) -> bool:
         return self._repo.is_alert_suppressed(
