@@ -40,8 +40,10 @@ services:
       - samba-ad-data:/var/lib/samba
       - ./logs/identity:/var/log/corp/identity
       - ./configs/samba/ad:/etc/samba/external:ro
+    privileged: true
     cap_add:
       - NET_ADMIN
+      - SYS_ADMIN
     healthcheck:
       test: ["CMD-SHELL", "pgrep -x samba || pgrep -x smbd || exit 1"]
       <<: *health-http
