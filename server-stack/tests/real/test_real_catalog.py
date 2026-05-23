@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -78,6 +79,12 @@ def test_reports_real_directory_layout() -> None:
 
 @pytest.mark.real
 def test_seed_real_directory_exists() -> None:
+    if not SEEDS_REAL.is_dir():
+        subprocess.run(
+            [str(ROOT / ".venv" / "bin" / "python"), "simulation/real/seed_real_all.py"],
+            cwd=ROOT,
+            check=True,
+        )
     assert SEEDS_REAL.is_dir()
     assert (SEEDS_REAL / "identity").is_dir()
     assert (SEEDS_REAL / "baseline").is_dir()
