@@ -31,6 +31,25 @@ wt migrate status
 wt migrate upgrade
 ```
 
+## Daemon pipeline
+
+Single runtime loop: source poll → raw store → normalize → candidate → graph → alert/silent finding.
+
+```bash
+# One iteration (CI / smoke)
+wt daemon run --once
+
+# Bounded iterations
+wt daemon run --max-iterations 1
+
+# Continuous (default interval from WATCHTOWER_DAEMON_INGEST_INTERVAL_SECONDS)
+wt daemon run
+```
+
+Graceful shutdown: `SIGINT` / `SIGTERM` finish the current iteration then exit.
+
+Per-source options in source `config` JSON: `poll_limit`, `backoff_base_seconds`, `backoff_max_seconds`.
+
 ## Soak tests
 
 CI-friendly short soak:
