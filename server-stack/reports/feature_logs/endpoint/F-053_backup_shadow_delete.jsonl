@@ -55,3 +55,4 @@
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "feature_id": "F-053", "timestamp": "2026-05-23T05:09:47.066799+00:00"}
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 0, "feature_id": "F-053", "timestamp": "2026-05-23T05:09:49.291810+00:00"}
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "feature_id": "F-053", "timestamp": "2026-05-23T05:35:35.856750+00:00"}
+{"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 0, "feature_id": "F-053", "timestamp": "2026-05-23T05:35:43.352393+00:00"}
