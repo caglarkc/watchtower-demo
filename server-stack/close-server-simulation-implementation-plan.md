@@ -1,853 +1,689 @@
-# Close Server Simulation — Implementation Plan
+# Closed Server Simulation — Implementation Plan
 
 > [!IMPORTANT]
 > **Klasör Ayrımı — Karıştırılmamalı**
 >
-> - **`watchtower-demo/`** = Bizzat inşa ettiğimiz **ürünün kendisi**. LLM destekli izleme ve uyarı CLI sistemi.
-> - **`server-stack/`** = Bu ürünü test etmek için kurduğumuz **kapalı sunucu ortamı**. Simüle edilmiş şirket ağı.
+> - **`watchtower-demo/`** = Watchtower ürün ailesinin repo kökü.
+> - **`watchtower-demo/server-stack/`** = Bu dokümanın kapsamı olan kapalı şirket ağı simülasyonu.
 >
-> Bu dosya `server-stack` ortamını adım adım nasıl kuracağımızı açıklar.
+> Bu plan **Watchtower gözlemleme ürününü yazmaz**. `src/watchtower`, CLI, adapter,
+> normalizer, alert engine, Telegram veya LLM entegrasyonu bu planın kapsamı değildir.
+> Bu plan yalnızca kapalı sunucu ortamını kurar, feature davranışlarını simüle eder
+> ve çalıştığını test kanıtı ile doğrular.
 
-**Amaç:** Watchtower için tüm kapalı kurumsal ağı Docker tabanlı olarak sıfırdan kurmak, log akışını entegre etmek, uçtan uca test etmek ve senaryo üretimini doğrulamak için uygulanabilir mühendislik planı.  
-**Ana referans:** [watchtower-tool-stack.md](watchtower-tool-stack.md)  
-**Destekleyici bağlam:** [watchtower-master-plan.md](../watchtower-master-plan.md), [watchtower-features-final.md](watchtower-features-final.md), [watchtower-scenarios-final.md](watchtower-scenarios-final.md)
+**Amaç:** `watchtower-features-final.md` içindeki 81 feature ve
+`watchtower-scenarios-final.md` içindeki 83 senaryonun kapalı LAN içinde
+simüle edilebilir olmasını sağlamak.
 
----
+**Ana referanslar:**
 
-## 1. Hedef
-
-Bu planın sonunda aşağıdaki durum eksiksiz sağlanmış olmalıdır:
-
-1. Tam kapalı şirket ağı Docker network üzerinde ayağa kalkar.
-2. Kimlik, dosya, mail, DB, Git, DNS, ağ ve uygulama logları üretilir.
-3. Wazuh + Elasticsearch + Logstash + Filebeat hattı logları ingest eder.
-4. Watchtower `security-gateway` ve `analysis-daemon` bu verileri okuyup normalize eder.
-5. Hibrit OS simülasyonu `windows-event-bridge` ile desteklenir.
-6. Temel ve gelişmiş senaryolar otomatik testlerle tetiklenir.
-7. Her faz için deterministik acceptance test ve smoke test komutları bulunur.
-
----
-
-## 2. Sabit Kapsam
-
-Bu plan aşağıdaki kararları sabit kabul eder:
-
-- Ürün dizini: `watchtower/`
-- Simülasyon kökü: `watchtower-demo/`
-- İlk SIEM: `Wazuh-only`
-- İlk bildirim: `CLI + Telegram`
-- Model stratejisi: `OpenAI-compatible abstraction`, kapalı ağ için `local model path` zorunlu
-- Faz 1 kapsamı: `login + file + network + AD`
-- Mail ve uygulama davranışları: Faz 2'de genişletilir
-- Auto-remediation: yok, sadece alert ve öneri
-
----
-
-## 3. Başarı Kriterleri
-
-Bir implementasyon ancak aşağıdaki koşullar sağlanırsa tamamlanmış sayılır:
-
-- `docker compose up` ile tüm temel servisler temiz şekilde ayağa kalkar.
-- Wazuh API sağlıklıdır ve agent kayıtları görünür.
-- Elasticsearch indexleri beklenen şemalarla dolar.
-- Watchtower en az `Windows path` ve `Linux path` için normalize edilmiş event üretir.
-- En az 10 temel feature ve 10 kritik scenario deterministik test ile doğrulanır.
-- Faz 1 smoke suite 15 dakika altında tamamlanır.
-- Test sonucu aynı seed ile tekrarlandığında aynı ana alert çıktıları oluşur.
-- Hiçbir faz, o fazın kendi testleri yeşil olmadan tamamlanmış sayılmaz.
-
----
-
-## 3.1 Faz Kapanış Kuralı
-
-Bu belgeye göre implementor AI için temel kural şudur:
-
-- Her fazda yapılan **her parça** test edilmelidir.
-- "Kod yazıldı" durumu faz tamamlandı anlamına gelmez.
-- Bir servis eklendiyse healthcheck + ingest + integration testi zorunludur.
-- Bir parser eklendiyse contract test + snapshot test zorunludur.
-- Bir senaryo eklendiyse positive + negative replay testi zorunludur.
-- Bir CLI komutu eklendiyse command smoke testi zorunludur.
-
-Faz tamamlandı kararı ancak şu sırayla verilir:
-
-1. kod yazıldı
-2. ilgili testler yazıldı
-3. testler local/demo ortamında çalıştı
-4. rapor üretildi
-5. manager AI review etti
-
----
-
-## 3.2 Manager AI Kullanım Şekli
-
-Bu dosya doğrudan kod yazacak AI için değil, öncelikle bir **yönetici AI** için yazılmıştır.
-
-Yönetici AI'nın görevi:
-
-1. Bu belgeyi okuyup fazı seçmek
-2. Fazı küçük görevlere bölmek
-3. Her görev için alt AI'a net prompt üretmek
-4. Doğru referans markdownları prompt'a eklemek
-5. Alt AI çıktısını test zorunluluğuna göre review etmek
-6. Testsiz işi kabul etmemek
-
-Yönetici AI şu belgeleri görev prompt'larında gerektiği kadar referans göstermelidir:
-
-- [close-server-simulation-implementation-plan.md](close-server-simulation-implementation-plan.md)
 - [watchtower-tool-stack.md](watchtower-tool-stack.md)
-- [watchtower-master-plan.md](../watchtower-master-plan.md)
 - [watchtower-features-final.md](watchtower-features-final.md)
 - [watchtower-scenarios-final.md](watchtower-scenarios-final.md)
 
 ---
 
-## 3.3 Prompt Orchestration Kuralı
+## 1. Net Kapsam
 
-Yönetici AI altındaki kod yazan AI'a görev verirken her prompt içinde şunları zorunlu taşımalıdır:
+Bu dosya kod yazacak AI için faz bazlı kontrol dokümanıdır.
 
-```text
-GÖREV:
-FAZ:
-ALT HEDEF:
-REFERANS DOSYALAR:
-ETKİLENECEK DOSYALAR:
-YAPILACAKLAR:
-TESTLER:
-TESLİM KRİTERLERİ:
+Yapılacaklar:
+
+1. Docker tabanlı kapalı şirket ağı kurulacak.
+2. Kimlik, dosya, mail, DB, Git, DNS, DHCP, proxy, ağ, endpoint, badge, HR ve uygulama davranışları üretilecek.
+3. Her feature için simülasyon yolu tanımlanacak.
+4. Her feature için pozitif ve negatif test kanıtı üretilecek.
+5. 83 senaryo replay edilebilir hale getirilecek.
+6. Test sonunda coverage raporu üretilecek.
+
+Yapılmayacaklar:
+
+- Watchtower ürün kodu yazılmayacak.
+- `security-gateway`, `analysis-daemon`, LangGraph pipeline, alert engine veya LLM entegrasyonu kurulmayacak.
+- Simülasyon başarısı Watchtower çıktısına bağlanmayacak.
+- Telegram, Slack, e-posta alarmı veya manager notification kabul kriteri olmayacak.
+
+Bu planda geçen Wazuh, Elasticsearch, Logstash ve Filebeat yalnızca
+**server-stack içindeki log üretim/toplama doğrulama araçlarıdır**. Watchtower
+gözlemleme ürünü değildir.
+
+---
+
+## 2. Başarı Kriterleri
+
+Bir faz ancak aşağıdaki kanıtlarla tamamlanmış sayılır:
+
+- `docker compose config` hatasız çalışır.
+- Faz servisleri `docker compose up -d` ile ayağa kalkar veya ortam yetersizse gerçek hata çıktısı raporlanır.
+- Eklenen her servis için healthcheck veya eşdeğer smoke kontrolü vardır.
+- Eklenen her feature için en az bir simülasyon komutu vardır.
+- Eklenen her feature için pozitif test vardır.
+- Eklenen her feature için negatif kontrol vardır veya neden ertelendiği açıkça yazılmıştır.
+- Her scenario replay aynı seed ile deterministik çıktı üretir.
+- Raporlar `watchtower-demo/server-stack/reports/` altına yazılır.
+
+Testsiz teslim kabul edilmez.
+
+---
+
+## 3. Simülasyon İlkeleri
+
+Her feature üç simülasyon tipinden biriyle karşılanabilir:
+
+| Tip | Anlam | Kabul koşulu |
+| --- | --- | --- |
+| `service-backed` | Gerçek container servisi olay üretir | Servis health + log üretimi + test |
+| `synthetic-log` | Gerçek servis ağır veya gereksizdir; fixture/log generator olay üretir | Deterministik fixture + schema/field test |
+| `hybrid` | Servis var, bazı edge eventler script ile enjekte edilir | Servis health + replay + log assertion |
+
+Her feature için zorunlu metadata:
+
+```yaml
+feature_id: F-001
+category: network
+phase: 1
+simulation_type: service-backed|synthetic-log|hybrid
+services:
+  - samba-file
+log_sources:
+  - samba_audit
+  - zeek_conn
+positive_replay: make feature FEATURE=F-001
+negative_replay: make feature-negative FEATURE=F-001
+evidence:
+  - reports/features/F-001.json
 ```
 
-`TESTLER` alanı boş bırakılamaz.
+---
 
-Alt AI'dan istenecek minimum teslim:
+## 4. Dizin Tasarımı
 
-- yapılan iş özeti
-- değişen dosyalar
-- çalışan davranış
-- yazdığı testler
-- çalıştırdığı testler
-- başarısız kalan nokta varsa açık not
+Kod yazacak AI bu yapıyı hedeflemelidir:
+
+```text
+watchtower-demo/server-stack/
+├── docker-compose.yml
+├── .env.example
+├── Makefile
+├── configs/
+│   ├── samba/
+│   ├── wazuh/
+│   ├── elasticsearch/
+│   ├── logstash/
+│   ├── filebeat/
+│   ├── bind/
+│   ├── dhcp/
+│   ├── postfix/
+│   ├── dovecot/
+│   ├── roundcube/
+│   ├── postgres/
+│   ├── gitea/
+│   ├── nginx/
+│   ├── zeek/
+│   ├── vault/
+│   ├── mattermost/
+│   ├── cups/
+│   ├── proxy/
+│   └── suitecrm/
+├── simulation/
+│   ├── event_generator/
+│   ├── feature_catalog/
+│   ├── feature_replays/
+│   ├── scenarios/
+│   ├── seeds/
+│   ├── badge_api/
+│   ├── hris_mock/
+│   ├── ai_gateway_mock/
+│   ├── proxy_sink/
+│   └── fixtures/
+├── tests/
+│   ├── smoke/
+│   ├── integration/
+│   ├── feature/
+│   ├── scenario/
+│   └── fixtures/
+└── reports/
+    ├── smoke/
+    ├── integration/
+    ├── features/
+    ├── scenarios/
+    └── coverage/
+```
+
+`watchtower-demo/src/watchtower/` bu planın dışındadır.
 
 ---
 
-## 3.4 Alt AI Rol Ayrımı
+## 5. Fazlar
 
-Bu plan en az dört farklı uzman AI rolünü destekleyecek şekilde düşünülmelidir:
+### Faz 0 — Feature Coverage Freeze
 
-1. **Manager AI**: fazı böler, prompt üretir, review yapar
-2. **Infra Builder AI**: Docker, network, config, volumes, healthcheck
-3. **Core Coder AI**: watchtower Python kodu, adapters, graph, storage
-4. **Test/QA AI**: smoke, integration, scenario, soak testleri
+Hedef:
 
-Gerekirse ek roller:
+- 81 feature listesini makine okunur coverage manifestine çevirmek.
+- 83 scenario listesini makine okunur scenario manifestine çevirmek.
+- Her feature için faz, servis, log kaynağı ve test komutu alanlarını tanımlamak.
 
-- **Scenario AI**
-- **Normalizer AI**
-- **Observability Pipeline AI**
+Etkilenecek dosyalar:
 
----
+- `simulation/feature_catalog/features.yml`
+- `simulation/feature_catalog/scenarios.yml`
+- `simulation/feature_catalog/coverage_matrix.yml`
+- `tests/feature/test_catalog_integrity.py`
+- `reports/coverage/phase0_catalog.json`
 
-## 4. Hedef Mimari Bileşenleri
+Testler:
 
-`watchtower-tool-stack.md` içindeki Faz 1-4 sırası korunarak implementasyon yapılacaktır.
+- Feature ID sayısı 81 olmalı.
+- Scenario ID sayısı 83 olmalı.
+- Duplicate ID olmamalı.
+- Her feature için `simulation_type`, `services`, `positive_replay`, `negative_replay` alanları dolu olmalı.
+- Her scenario en az bir feature ile eşleşmeli.
 
-Not: Bu belgede geçen `Aşama 0-7` yürütme sırasını anlatır; `watchtower-master-plan.md` içindeki `Faz 0-5` ise ürün/mimari olgunluk katmanlarını anlatır. Manager AI görev üretirken bu iki ekseni birbirine eşitlemeye çalışmamalı, her task'ta her iki etiketi de açıkça yazmalıdır.
+Kapanış komutları:
 
-### Faz 1 çekirdeği
+```bash
+pytest tests/feature/test_catalog_integrity.py
+python simulation/feature_catalog/validate_catalog.py
+```
+
+### Faz 1 — Base LAN, Identity, File, DNS, DHCP, Endpoint
+
+Hedef:
+
+- Kapalı LAN iskeletini kurmak.
+- Kimlik, dosya, temel ağ ve endpoint davranışlarını simüle etmek.
+- İlk feature test kapısını yeşil yapmak.
+
+Servisler:
 
 - Samba4 AD
-- Samba File Server
-- Wazuh Manager
-- Wazuh Agents
-- Elasticsearch + Kibana
-- Filebeat + Logstash
-- DHCP
-- User Simulator
-- Watchtower core
-- `windows-event-bridge`
+- Samba file server
+- BIND DNS
+- ISC DHCP veya Kea DHCP
+- Wazuh manager/agent veya synthetic endpoint log generator
+- Zeek veya synthetic network-flow generator
+- Filebeat/Logstash/Elasticsearch sadece log doğrulama hattı olarak
+- user simulator
 
-### Faz 2 genişlemesi
+Feature kapsamı:
 
-- Postfix + Dovecot + Roundcube
-- PostgreSQL + `pg_audit`
+- F-001 SMB/dosya veri çekim profili
+- F-002 east-west lateral trafik
+- F-003 DNS sorgu entropisi
+- F-004 SMB/NTLM downgrade
+- F-005 DHCP/ARP anomalisi
+- F-006 failed login sonrası success
+- F-007 port tarama ve servis keşfi
+- F-008 Kerberos/NTLM hacmi
+- F-010 servis hesabı interaktif kullanım
+- F-011 AD privileged grup değişikliği
+- F-015 RDP/PSRemoting hop pattern
+- F-037 departman dışı dosya erişimi
+- F-038 dosya sunucu toplu okuma/yazma
+- F-039 kitlesel dosya rename
+- F-040 hassas dizin dolaşma
+- F-041 ACL Everyone izin değişikliği
+- F-055 USB takma-yazma korelasyonu
+- F-057 promiscuous mode
+- F-063 bilinmeyen donanım kimliğiyle oturum
+- F-079 mesai dışı interaktif oturum
+- F-080 boş oturum suistimali
+- F-081 rol bazlı aktif çalışma penceresi sapması
+
+Testler:
+
+- Compose config testi.
+- Servis health smoke testi.
+- DNS/DHCP lease testi.
+- AD login success/failure replay testi.
+- SMB file access replay testi.
+- Port scan replay testi.
+- Her listed feature için positive + negative feature test.
+
+Kapanış komutları:
+
+```bash
+docker compose config
+docker compose up -d
+pytest tests/smoke
+pytest tests/feature -m phase1
+python simulation/feature_catalog/report_coverage.py --phase 1
+```
+
+### Faz 2 — Mail, Database, Git, Web, Application Logs
+
+Hedef:
+
+- Mail ve uygulama servislerini kapalı LAN içinde çalıştırmak.
+- Mail, DB, Git, HTTP ve uygulama davranışlarını simüle etmek.
+
+Servisler:
+
+- Postfix
+- Dovecot
+- Roundcube
+- PostgreSQL + pg_audit
 - Gitea
-- Nginx Gateway
-- Zeek
+- Nginx gateway
+- internal app mock
+- artifact registry mock
+- SIEM/admin console mock
+- hypervisor console mock
 
-### Faz 3 genişlemesi
+Feature kapsamı:
 
+- F-016 dahili mail gönderim hacmi ve ek boyutu
+- F-017 mail forward/delegate kural değişimi
+- F-018 mail kutu dışı erişim
+- F-019 mail ek entropi ve dosya tipi uyuşmazlığı
+- F-020 BCC ve toplu dağıtım sapması
+- F-021 kişisel e-posta adreslerine ekli posta
+- F-022 bilinmeyen/rakip kuruluşa ekli posta
+- F-023 mail içeriğinde hassas anahtar kelime
+- F-024 eski mail arşivinin toplu okunması
+- F-025 kişi listesi/adres defteri export
+- F-026 yazışma üslubu ve dil tonu sapması
+- F-027 yasaklı/politika dışı ifade
+- F-028 ilk kez harici alıcıya hassas mail
+- F-029 kurumsal mail sistemine kişisel hesapla login denemesi
+- F-045 veritabanı sorgu hacmi ve tablo kapsamı
+- F-046 uygulama süresi ve süreç ağacı
+- F-047 iç API çağrı deseni
+- F-048 HTTP 4xx yoğunlaşması
+- F-049 Git/artifact erişim ve clone hacmi
+- F-050 SIEM/log suppress kural değişimi
+- F-051 hypervisor ve yönetim konsolu erişimi
+- F-052 yeni scheduled task veya servis
+- F-053 backup shadow copy silme/devre dışı bırakma
+- F-054 kodlanmış veya politika atlatan betikler
+
+Testler:
+
+- Mail send/read/forward replay testleri.
+- Postgres bulk select replay testi.
+- Gitea mass clone replay testi.
+- Nginx 401/403 spike testi.
+- Admin console config-change synthetic-log testi.
+- Her listed feature için positive + negative feature test.
+
+Kapanış komutları:
+
+```bash
+docker compose config
+docker compose up -d
+pytest tests/integration -m phase2
+pytest tests/feature -m phase2
+python simulation/feature_catalog/report_coverage.py --phase 2
+```
+
+### Faz 3 — AI, Proxy, Physical, HR, Collaboration, Peripheral
+
+Hedef:
+
+- Yeni feature kategorilerindeki AI kullanımı, dış bağlantı, fiziksel erişim, HR lifecycle ve çevre birimi davranışlarını simüle etmek.
+- Ağ dışı internet gerektirmeden external-benzeri endpointler mock servislerle taklit edilecek.
+
+Servisler:
+
+- AI gateway mock
+- proxy sink
+- object storage/cloud mock
 - Vault
 - Mattermost
 - CUPS
 - Badge API
-- ntopng
+- HRIS mock
 - SuiteCRM
+- wiki/intranet mock
+- DLP agent health mock
+- keyboard/mouse activity generator
 
-### Faz 4 genişlemesi
+Feature kapsamı:
 
-- 83 senaryo script kütüphanesi
-- Composite risk score
-- Offboarding / HRIS mock entegrasyonu
+- F-009 eşzamanlı oturum ve bina içi lokasyon çakışması
+- F-012 servis hesabı/API key kullanım haritası
+- F-013 secret store okuma burst
+- F-014 credential reset/unlock yoğunluğu
+- F-030 harici AI platformlarına gizli veri gönderimi
+- F-031 kaynak kod/sistem mimarisi AI sohbetine yapıştırma
+- F-032 AI prompt içinde iç sistem/kullanıcı/ağ bilgisi
+- F-033 onaylanmamış AI araçlarının kullanımı
+- F-034 AI platformlarına dosya yükleme
+- F-035 AI ile şirket süreçleri/güvenlik prosedürü keşfi
+- F-036 AI konuşma geçmişinde strateji/hukuk içeriği
+- F-042 yerel diskte hassas veri birikimi
+- F-043 etiketli hassas dosyanın kısıtsız alana taşınması
+- F-044 wiki/intranet toplu indirme
+- F-056 yazıcı iş hacmi ve hassas belge korelasyonu
+- F-058 DLP agent sağlık ve bypass denemesi
+- F-059 clipboard büyük veri kopyalama
+- F-060 ekran görüntüsü alma frekansı
+- F-061 rol bazlı sunucu temas haritası
+- F-062 iç log arama anahtar kelimesi riski
+- F-064 normal aktivite örüntüsünün yoğunlaşması
+- F-065 uzun süre kullanılmayan sistemlere ani erişim
+- F-066 akran grup davranışından istatistiksel sapma
+- F-067 kişisel bulut depolamaya büyük dosya upload
+- F-068 ilk kez harici adrese yüksek hacimli transfer
+- F-069 proxy üzerinden tünel/alışılmadık protokol
+- F-070 badge geçişi ile sistem login uyuşmazlığı
+- F-071 composite risk score için çoklu sinyal seti
+- F-072 offboarding ayrılan hesap aktivitesi
+- F-073 aynı dosya/kayıt çoklu kullanıcı erişim zinciri
+- F-074 vardiya dışı fiziksel + mantıksal erişim
+- F-075 yeni çalışanın ilk gün aşırı sistem erişimi
+- F-076 rol değişikliği sonrası eski yetki kullanımı
+- F-077 izin kaydı varken sistem aktivitesi
+- F-078 üçüncü taraf/yüklenici kapsam dışı sistem kullanımı
 
----
+Testler:
 
-## 5. Repo ve Dizin Tasarımı
+- AI gateway prompt/upload replay testleri.
+- Proxy/cloud mock upload replay testleri.
+- Badge + login correlation replay testleri.
+- HRIS offboarding/leave/role-change replay testleri.
+- CUPS print replay testi.
+- Vault burst replay testi.
+- Her listed feature için positive + negative feature test.
 
-Önerilen yapı:
+Kapanış komutları:
 
-```text
-watchtower/
-├── pyproject.toml
-├── src/watchtower/
-│   ├── cli/
-│   ├── config/
-│   ├── gateway/
-│   ├── graph/
-│   ├── normalizers/
-│   ├── adapters/
-│   ├── storage/
-│   ├── alerts/
-│   └── tests/
-├── scripts/
-└── fixtures/
+```bash
+docker compose config
+docker compose up -d
+pytest tests/integration -m phase3
+pytest tests/feature -m phase3
+python simulation/feature_catalog/report_coverage.py --phase 3
+```
 
-watchtower-demo/
-├── docker-compose.yml
-├── .env.example
-├── configs/
-│   ├── wazuh/
-│   ├── logstash/
-│   ├── filebeat/
-│   ├── samba/
-│   ├── postgres/
-│   ├── zeek/
-│   └── nginx/
-├── simulation/
-│   ├── event_generator/
-│   ├── scenarios/
-│   ├── badge_api/
-│   ├── windows_event_bridge.py
-│   └── seeds/
-├── tests/
-│   ├── smoke/
-│   ├── integration/
-│   ├── scenario/
-│   └── fixtures/
-└── reports/
+### Faz 4 — 83 Scenario Replay ve Full Coverage Gate
+
+Hedef:
+
+- 83 senaryo replay edilebilir hale gelsin.
+- 81 feature için simülasyon coverage yüzde 100 olsun.
+- Full regression raporu üretilsin.
+
+Scenario kapsamı:
+
+- S-001 ile S-083 arası tüm senaryolar.
+
+Testler:
+
+- Her scenario için deterministic replay.
+- Her scenario için expected event evidence.
+- Her scenario için negative control veya explicit waiver.
+- Repeated replay duplicate üretmemeli veya deterministic duplicate key üretmeli.
+- Coverage matrix tüm feature ve scenario eşleşmelerini raporlamalı.
+
+Kapanış komutları:
+
+```bash
+pytest tests/scenario
+pytest tests/feature
+python simulation/feature_catalog/report_coverage.py --all
+python simulation/scenarios/report_scenario_coverage.py --all
 ```
 
 ---
 
-## 6. Uygulama Sırası
+## 6. Servis Envanteri
 
-### Aşama 0: Tasarım freeze
+Kod yazacak AI, servis eklerken aşağıdaki kurallara uymalıdır:
 
-- `watchtower-tool-stack.md` içindeki servis listesini implementation backlog'a çevir
-- Ortak alanları sabitle: `user`, `timestamp`, `source_ip`, `source_os`, `event_type`
-- Elasticsearch index adlarını Bölüm 13 ile birebir eşle
-- `WatchtowerEvent` şemasını yazılı sözleşme haline getir
+- Her servis sabit isim kullanır.
+- Her servis `corp-lan` ağına bağlıdır.
+- Her servis için healthcheck veya smoke kontrolü vardır.
+- Her servis için persistent volume veya açıkça stateless gerekçesi vardır.
+- Her servis loglarını `logs/` veya log collector path’ine yazar.
+- Her servis test fixture’larından bağımsız boot edebilmelidir.
 
-### Aşama 1: Altyapı iskeleti
+Zorunlu servis grupları:
 
-- `watchtower/` Python paketini oluştur
-- CLI komutlarını iskeletle: `wt status`, `wt alerts`, `wt rules`, `wt learning`
-- SQLite store'ları oluştur: `rules.db`, `baseline.db`, `alerts.db`
-- `security-gateway` ve `analysis-daemon` process boundary’sini ayır
-
-### Aşama 2: Demo network kurulumu
-
-- `corp-lan` Docker ağı ve statik IP planını oluştur
-- `docker-compose.yml` içine önce Faz 1 servislerini ekle
-- Healthcheck, volume, restart policy ve bağımlılık ağacını tamamla
-- Her servis için config mount ve seed data volume hazırla
-
-### Aşama 3: Log ingestion hattı
-
-- Wazuh Manager kurulumu
-- Elasticsearch + Kibana kurulumu
-- Logstash pipeline ve Filebeat input/output mapping
-- Wazuh alert index ve custom app log indexlerinin doğrulanması
-
-### Aşama 4: Hibrit OS normalizasyonu
-
-- `windows-event-bridge` ile Samba AD loglarını `Event ID` benzeri yapıya çevir
-- Linux audit/syslog/JSON parser’larını yaz
-- `EventNormalizer` node’unu iki giriş yoluyla test et
-- Ortak `WatchtowerEvent` çıktısını snapshot test ile sabitle
-
-### Aşama 5: Watchtower çekirdeği
-
-- Wazuh REST adapter
-- Elasticsearch query adapter
-- LangGraph node zinciri
-- Rule Store lifecycle
-- Learning mode state machine
-- Severity engine v1
-
-### Aşama 6: Senaryo üretim sistemi
-
-- Deterministic `event_generator`
-- Role-based user seed’leri
-- Temel senaryo DSL veya YAML tanımı
-- Senaryo başlatma komutları: `run_scenario <id>`
-
-### Aşama 7: Test otomasyonu
-
-- Container smoke test
-- Adapter integration test
-- Normalizer contract test
-- Scenario replay test
-- Alert assertion test
-
-Her aşamanın sonunda manager AI şu soruyu kapatmadan fazı ilerletmez:
-
-- "Bu aşamada eklenen her şey için çalışan test kanıtı var mı?"
+| Grup | Servisler |
+| --- | --- |
+| identity | Samba4 AD, LDAP opsiyonel |
+| file | Samba file server, audit logs |
+| network | BIND DNS, DHCP, Zeek/synthetic-flow, proxy sink |
+| endpoint | Wazuh agent veya endpoint synthetic generator |
+| mail | Postfix, Dovecot, Roundcube |
+| application | PostgreSQL, Gitea, Nginx, internal app mock, wiki/intranet mock |
+| security/admin | Vault, SIEM admin mock, hypervisor console mock, DLP health mock |
+| physical/hr | Badge API, HRIS mock |
+| collaboration | Mattermost, SuiteCRM |
+| peripheral | CUPS, USB/clipboard/screenshot synthetic generator |
+| validation | Elasticsearch, Logstash, Filebeat veya lightweight log assertion pipeline |
 
 ---
 
-## 7. WatchtowerEvent Sözleşmesi
-
-İlk sürüm için minimum normalized event:
-
-```json
-{
-  "event_id": "uuid",
-  "timestamp": "2026-05-22T03:47:00Z",
-  "user": "ali.koc",
-  "source_ip": "10.0.2.15",
-  "source_host": "WS-ALIKOC-01",
-  "source_os": "windows|linux",
-  "source_os_layer": "identity|application|endpoint",
-  "event_type": "login_success|login_failed|file_access|group_change|process_create|network_connect|usb_connect|print_job|nic_promiscuous|acl_change|clipboard_copy",
-  "detection_type": "hard_rule|baseline_anomaly|cross_signal|unknown",
-  "target": "HR-DB-01",
-  "severity_hint": "low|medium|high",
-  "session_id": "optional — session_map korelasyonu için",
-  "raw_ref": "index/id",
-  "attributes": {}
-}
-```
-
-**`detection_type` alanı kararı:**
-- `hard_rule` → Baseline Check atlanır, doğrudan Hard-Rule Check node’a yönlendirilir, Faz 1’de de ateşlenir
-- `baseline_anomaly` → Baseline Check aktif, Faz 2’den itibaren ateşlenir
-- `cross_signal` → Korelasyon engine aktif, Faz 2’den itibaren ateşlenir
-- `unknown` → Henüz sınıflandırılmamış; LLM fallback devreye girer
-
-**`source_os_layer` alanı kararı:**
-- `identity` → Samba AD / Windows DC kaynaklı (Event ID bazlı parse)
-- `application` → Linux app server kaynaklı (auditd/syslog/JSON)
-- `endpoint` → Kullanıcı iş istasyonu kaynaklı (Sysmon/WazuhAgent)
-
-Bu sözleşme değişirse aynı commit içinde şunlar güncellenmek zorundadır:
-- normalizer testleri
-- correlation testleri
-- scenario assertion fixture’ları
-- Elasticsearch index mapping’leri
-
----
-
-## 7a. Alert Store Şeması (alert_case lifecycle)
-
-```sql
--- alerts.db içinde
-CREATE TABLE alert (
-    alert_id    TEXT PRIMARY KEY,
-    timestamp   TEXT NOT NULL,
-    user        TEXT NOT NULL,
-    event_type  TEXT NOT NULL,
-    detection_type TEXT NOT NULL,  -- hard_rule | baseline_anomaly | cross_signal
-    severity    TEXT NOT NULL,     -- log | warning | alert | critical
-    raw_events  TEXT,              -- JSON array of related event_ids
-    llm_summary TEXT,              -- LLM'in ürettiği açıklama
-    created_at  TEXT NOT NULL
-);
-
-CREATE TABLE alert_case (
-    case_id     TEXT PRIMARY KEY,
-    alert_id    TEXT NOT NULL REFERENCES alert(alert_id),
-    status      TEXT NOT NULL DEFAULT 'open',
-    -- open | investigating | true_positive | false_positive | suppressed | ticket_linked
-    operator    TEXT,              -- işlemi yapan operatör
-    ticket_ref  TEXT,             -- dış ticketing sistem referansı
-    suppress_until TEXT,          -- suppressed durumlarda bitiş zamanı
-    outcome_note TEXT,
-    updated_at  TEXT NOT NULL
-);
-```
-
-**Durum geçiş kuralları:**
-- `open` → herhangi bir duruma geçebilir
-- `investigating` → `true_positive`, `false_positive`, `suppressed`
-- `true_positive` → `ticket_linked`
-- `false_positive` → sistem bu pattern'i öğrenir (baseline negatif sample olarak işaretlenir)
-- `suppressed` → `suppress_until` geçince otomatik `open`'a döner
-
----
-
-## 8. Docker Compose Tasarım Kuralları
-
-Her servis için aşağıdakiler zorunludur:
-
-- sabit servis adı
-- sabit IP
-- `healthcheck`
-- persistent volume
-- log output strategy
-- minimal config override
-- deterministic boot order
-
-Zorunlu compose bölümleri:
-
-- `networks`
-- `volumes`
-- `x-health-defaults` benzeri tekrar azaltıcı anchor yapıları
-- `depends_on` + health şartları
-
-Örnek servis gruplaması:
-
-- `identity`: samba-ad, openldap
-- `observability`: wazuh, elasticsearch, kibana, filebeat, logstash
-- `business`: postfix, dovecot, postgres, gitea, nginx, suitecrm
-- `simulation`: badge-api, user-simulator, windows-event-bridge
-- `watchtower`: security-gateway, analysis-daemon
-
----
-
-## 9. Konfigürasyon Yönetimi
-
-Her servis için üç katmanlı config yaklaşımı kullanılmalı:
-
-1. `base config`
-2. `demo override`
-3. `test override`
-
-Örnek:
-
-- `configs/logstash/base/pipeline.conf`
-- `configs/logstash/demo/pipeline.override.conf`
-- `configs/logstash/test/pipeline.override.conf`
-
-Zorunlu `.env` alanları:
-
-- `TZ`
-- `WATCHTOWER_MODE`
-- `ELASTICSEARCH_URL`
-- `WAZUH_API_URL`
-- `WAZUH_API_USER`
-- `WAZUH_API_PASSWORD`
-- `WATCHTOWER_LOCAL_MODEL_URL`
-- `WATCHTOWER_FAST_MODEL`
-- `WATCHTOWER_POWER_MODEL`
-- `TELEGRAM_BOT_TOKEN`
-- `TELEGRAM_CHAT_ID`
-
----
-
-## 10. Test Stratejisi
-
-### Test katmanları
-
-1. `unit`
-2. `contract`
-3. `integration`
-4. `scenario`
-5. `smoke`
-6. `soak`
-
-Temel kural:
-
-- Her implementasyon görevi en az bir test katmanına bağlanmalıdır.
-- Teste bağlanmayan iş kabul edilmez.
-
-### 10.1 Unit test
-
-Kapsam:
-
-- field mapping
-- event classification helpers
-- severity score calculation
-- baseline update functions
-- Rule Store lifecycle
-
-### 10.2 Contract test
-
-Kapsam:
-
-- Wazuh alert JSON → internal adapter contract
-- Samba audit → windows bridge contract
-- auditd/syslog → linux parser contract
-- `WatchtowerEvent` JSON schema validation
-
-### 10.3 Integration test
-
-Kapsam:
-
-- Wazuh API erişimi
-- Elasticsearch indexleme
-- Logstash pipeline parsing
-- Filebeat shipping
-- `security-gateway` query path
-- `analysis-daemon` ingest path
-
-### 10.4 Scenario test
-
-Kapsam:
-
-- 1 senaryo → 1 veya daha fazla beklenen alert
-- negative case: normal davranışta alert çıkmaması
-- repeated replay: duplicate suppression davranışı
-
-### 10.5 Smoke test
-
-Kapsam:
-
-- servislerin ayağa kalkması
-- ingest hattının canlı olması
-- örnek login event üretimi
-- örnek file access event üretimi
-- `wt status` sağlığı
-
-### 10.6 Soak test
-
-Kapsam:
-
-- 6-12 saat sürekli event akışı
-- resource leak
-- Elasticsearch disk büyümesi
-- baseline drift dayanıklılığı
-
----
-
-## 11. Faz Bazlı Test Planı
-
-Her faz için manager AI görev bölmeden önce şu matrisi doldurmuş kabul etmelidir:
-
-- hangi servis ekleniyor
-- hangi parser/adapter ekleniyor
-- hangi CLI veya daemon davranışı ekleniyor
-- bunun unit testi ne
-- bunun integration testi ne
-- bunun smoke testi ne
-- varsa scenario testi ne
-
-### Faz 1 testleri
-
-- AD login success/failure
-- SMB file read volume anomaly
-- DHCP lease map doğrulama
-- Wazuh alert ingest
-- Windows path normalizasyonu
-- Linux path normalizasyonu
-
-### Faz 2 testleri
-
-- mail send volume anomaly
-- mailbox access anomaly
-- Postgres bulk select anomaly
-- Gitea mass clone anomaly
-- Nginx 401/403 spike anomaly
-- Zeek east-west traffic anomaly
-
-### Faz 3 testleri
-
-- Vault secret burst
-- Mattermost credential pattern
-- CUPS unusual print
-- badge + login impossible travel
-- ntopng high-volume east-west
-
-### Faz 4 testleri
-
-- 83 scenario replay coverage
-- feature-to-scenario matrix coverage
-- composite risk score stability
-
----
-
-## 11.1 Faz Bazlı AI Çalışma Protokolü
-
-Her faz aşağıdaki rollerle ilerler:
-
-### Faz başlangıcı
-
-- Manager AI faz hedefini seçer
-- Bu belgeden ilgili bölüm numaralarını referans alır
-- Alt görevleri 1-4 küçük prompt'a böler
-
-### Faz implementasyonu
-
-- Infra ile ilgili işler Infra Builder AI'a gider
-- Python core ile ilgili işler Core Coder AI'a gider
-- Test harness işleri Test/QA AI'a gider
-- Senaryo replay işleri Scenario AI'a gider
-
-### Faz review
-
-- Manager AI teslimleri toplar
-- Test kanıtı olmayan işi geri çevirir
-- Gerekirse revize prompt üretir
-- Ancak tüm kapılar yeşilse bir sonraki faza geçer
-
----
-
-## 12. Feature Coverage Gate
-
-Her feature için aşağıdaki artefact zorunludur:
-
-- kaynak log örneği
-- parser veya adapter
-- normalized event örneği (detection_type etiketi dahil)
-- positive test
-- negative test
-- alert expectation
-
-**Faz 1 gate — hard_rule tespitler (badge/NAC bağımsız, öğrenme fazında da aktif):**
-
-| Feature | detection_type | Kaynak | Faz 1'de ateşlenir mi? |
-|---------|---------------|--------|----------------------|
-| `F-009` — Servis hesabı interaktif login | `hard_rule` | Wazuh (Logon Type 2/10) | Evet |
-| `F-010` — Privileged grup değişikliği | `hard_rule` | Wazuh (4728/4729) | Evet |
-| `F-024` — ACL Everyone izin değişikliği | `hard_rule` | Wazuh (4670) | Evet |
-| `F-006` — Login patlaması sonrası başarı | `hard_rule` | Wazuh (4625→4624 zinciri) | Evet |
-
-**Faz 1 gate — baseline_anomaly tespitler (Faz 2'den itibaren ateşlenir, Faz 1'de veri biriktirir):**
-
-| Feature | detection_type | Kaynak |
-|---------|---------------|--------|
-| `F-001` — SMB veri çekim profili | `baseline_anomaly` | Zeek conn.log + Samba audit |
-| `F-007` — Kerberos/NTLM auth hacmi | `baseline_anomaly` | Wazuh (4624, 4776) |
-| `F-020` — Departman dışı dosya erişimi | `baseline_anomaly` | Wazuh (4663) + AD grup |
-| `F-021` — Dosya sunucu toplu okuma | `baseline_anomaly` | Wazuh (4663) + Samba audit |
-| `F-014` — RDP/PSRemoting hop pattern | `baseline_anomaly` | Wazuh (1149) + Sysmon 3 |
-| `F-028` — İç API çağrı deseni sapması | `baseline_anomaly` | Nginx access log |
-
-> [!NOTE]
-> `F-008` (fiziksel-dijital çakışma) **Faz 1 gate'den çıkarıldı.** Badge API Faz 3 aracıdır; F-008 `cross_signal` tipinde olup Faz 3 gate'e aittir.
-> `F-035` (promiscuous mod) Windows/Linux syslog yoluyla Wazuh'ta Faz 1'de izlenebilir; Zeek gerektirmez.
-
----
-
-## 13. Scenario Coverage Gate
-
-İlk zorunlu senaryolar:
-
-- `S-002`
-- `S-004`
-- `S-006`
-- `S-016`
-- `S-018`
-- `S-019`
-- `S-020`
-- `S-021`
-- `S-030`
-- `S-034`
-
-Bu ilk set:
-
-- veri sızdırma
-- credential abuse
-- privilege change
-- network ve endpoint korelasyonu
-
-alanlarını birlikte doğrulamalıdır.
-
----
-
-## 14. Uçtan Uca Çalıştırma Akışı
-
-### Adım 1
-
-- `.env` üret
-- volume klasörlerini hazırla
-- sertifika ve demo credential seed’lerini yaz
-
-### Adım 2
-
-- observability servislerini ayağa kaldır
-- Wazuh, Elasticsearch, Kibana health kontrolü yap
-
-### Adım 3
-
-- identity ve file servislerini ayağa kaldır
-- agent registration ve log shipping doğrula
-
-### Adım 4
-
-- Watchtower `security-gateway` ve `analysis-daemon` başlat
-- `wt status` ve `wt rules list` doğrula
-
-### Adım 5
-
-- user simulator ile normal davranış seed’i çalıştır
-- learning-mode ingestion doğrula
-
-### Adım 6
-
-- tekil scenario replay çalıştır
-- alert assertion ve index assertion yap
-
-### Adım 7
-
-- smoke suite
-- integration suite
-- selected scenario suite
-
----
-
-## 15. Komut Yüzeyi
+## 7. Komut Yüzeyi
 
 Planlanan komutlar:
 
 ```bash
-# demo altyapısını başlat
-docker compose up -d
-
-# sağlık kontrolü
-docker compose ps
-wt status
-
-# normal seed
+make up
+make down
+make clean
 make seed-baseline
-
-# tekil senaryo replay
-make scenario SCENARIO=S-016
-
-# Faz 1 smoke
+make feature FEATURE=F-001
+make feature-negative FEATURE=F-001
+make scenario SCENARIO=S-001
 make test-smoke
-
-# entegrasyon testleri
 make test-integration
-
-# senaryo testleri
+make test-features
 make test-scenarios
-
-# tam regression
+make coverage
 make test-all
 ```
 
----
-
-## 16. Test Araçları
-
-Önerilen araçlar:
-
-- `pytest`
-- `pytest-asyncio`
-- `testcontainers` veya docker compose tabanlı fixture yönetimi
-- `schemathesis` gerekirse API contract için
-- `jsonschema`
-- `freezegun`
-- `factory-boy` veya custom fixture builder
-
-Log doğrulama için:
-
-- Elasticsearch query helper
-- Wazuh alert poll helper
-- SQLite assertion helper
-- Telegram mock sink
+Komutların tamamı `watchtower-demo/server-stack/` altında çalışmalıdır.
 
 ---
 
-## 17. Gözlemlenebilirlik ve Raporlama
+## 8. Test Stratejisi
 
-Test sonunda otomatik üretilmesi gereken raporlar:
+Test katmanları:
 
-- servis sağlık raporu
-- container boot süresi
-- index dolum raporu
-- normalize event sayısı
-- alert sayısı
-- scenario başına başarı durumu
-- flaky test raporu
+1. `catalog`: feature/scenario manifest bütünlüğü.
+2. `smoke`: container boot, health, port ve volume kontrolleri.
+3. `integration`: servisler arası gerçek akış kontrolleri.
+4. `feature`: tek feature için positive/negative replay.
+5. `scenario`: bir veya daha fazla feature üreten iş akışı replay.
+6. `coverage`: feature ve scenario kapsama raporu.
 
-Rapor dizini:
+Kabul edilmeyen teslimler:
+
+- Sadece compose yazıp `docker compose config` çalıştırmamak.
+- Sadece replay script yazıp test eklememek.
+- Sadece positive case yazıp negative control eklememek.
+- “Ortam yoktu” deyip gerçek hata çıktısı vermemek.
+- Feature coverage raporu üretmemek.
+
+---
+
+## 9. Feature Coverage Gate
+
+Her feature için şu checklist tamamlanmalıdır:
 
 ```text
-watchtower-demo/reports/
-├── smoke/
-├── integration/
-├── scenario/
-└── soak/
+[ ] feature_id manifestte var
+[ ] kategori doğru
+[ ] faz atanmış
+[ ] simülasyon tipi atanmış
+[ ] en az bir servis veya synthetic source atanmış
+[ ] positive replay komutu var
+[ ] negative replay komutu var
+[ ] evidence dosyası üretiliyor
+[ ] pytest positive assertion var
+[ ] pytest negative assertion var
+[ ] coverage raporunda PASS görünüyor
+```
+
+Faz kapanışında `reports/coverage/feature_coverage.json` şu alanları içermelidir:
+
+```json
+{
+  "total_features": 81,
+  "implemented": 81,
+  "positive_tests_passed": 81,
+  "negative_tests_passed": 81,
+  "waivers": []
+}
+```
+
+Faz içinde henüz tüm feature’lar bitmediyse `implemented` sadece o faz kapsamını
+ifade eder; Faz 4 sonunda `implemented` 81 olmak zorundadır.
+
+---
+
+## 10. Scenario Coverage Gate
+
+Her scenario için şu checklist tamamlanmalıdır:
+
+```text
+[ ] scenario_id manifestte var
+[ ] ilişkili feature ID listesi var
+[ ] kullanılan servisler var
+[ ] deterministic seed var
+[ ] replay komutu var
+[ ] expected event evidence var
+[ ] negative control var veya waiver var
+[ ] pytest scenario assertion var
+[ ] coverage raporunda PASS görünüyor
+```
+
+Faz 4 sonunda `reports/coverage/scenario_coverage.json` şu alanları içermelidir:
+
+```json
+{
+  "total_scenarios": 83,
+  "implemented": 83,
+  "replay_tests_passed": 83,
+  "waivers": []
+}
 ```
 
 ---
 
-## 18. Riskler ve Koruyucu Önlemler
+## 11. Kod Yazacak AI İçin Çalışma Protokolü
 
-### Teknik riskler
+Her görev başlangıcında AI şu dosyaları okumalıdır:
 
-- Wazuh boot karmaşıklığı
-- Elasticsearch kaynak tüketimi
-- Logstash parser drift
-- deterministik olmayan scenario üretimi
-- LLM bağımlılığı nedeniyle test nondeterminism
+- `server-stack/close-server-simulation-implementation-plan.md`
+- `server-stack/watchtower-tool-stack.md`
+- `server-stack/watchtower-features-final.md`
+- `server-stack/watchtower-scenarios-final.md`
 
-### Önlemler
+Her teslim şu formatta olmalıdır:
 
-- tüm LLM node’ları için test modunda mock veya recorded response seçeneği
-- scenario seed’leri için sabit random seed
-- healthcheck timeout ve retry standardı
-- her parser için fixture snapshot
-- ağır servisleri fazlara bölerek ayağa kaldırma
+```text
+YAPILAN İŞ:
+- ...
 
----
+DEĞİŞEN DOSYALAR:
+- ...
 
-## 19. Acceptance Checklist
+FEATURE KAPSAMI:
+- F-xxx PASS/FAIL
 
-Tamamlandı demek için hepsi işaretlenmiş olmalı:
+SCENARIO KAPSAMI:
+- S-xxx PASS/FAIL
 
-- [ ] Compose dosyası tüm Faz 1 servisleriyle çalışıyor
-- [ ] Wazuh agent kayıtları sağlıklı
-- [ ] Elasticsearch indexleri beklenen alanları içeriyor
-- [ ] `windows-event-bridge` beklenen `Event ID` dönüşümlerini üretiyor
-- [ ] Linux parser `auditd/syslog/JSON` akışlarını parse ediyor
-- [ ] `EventNormalizer` iki yolu tek şemada birleştiriyor
-- [ ] Watchtower learning mode veri topluyor
-- [ ] En az 10 feature testten geçiyor
-- [ ] En az 10 scenario testten geçiyor
-- [ ] Telegram mock veya gerçek sink ile alert doğrulanıyor
-- [ ] `wt status` ve temel CLI komutları çalışıyor
-- [ ] Smoke suite yeşil
-- [ ] Integration suite yeşil
-- [ ] Scenario suite seçili set için yeşil
+YAZILAN TESTLER:
+- ...
 
----
+ÇALIŞTIRILAN TESTLER:
+- komut
+- sonuç
 
-## 20. Uygulama İş Paketi Sırası
+RAPORLAR:
+- reports/...
 
-Bu plan doğrudan backlog'a şu sırayla çevrilmelidir:
+KALAN RİSKLER:
+- ...
+```
 
-1. `watchtower/` package scaffold
-2. `watchtower-demo/docker-compose.yml` Faz 1 iskeleti
-3. Wazuh + Elasticsearch boot ve healthcheck
-4. Samba AD + File Server + log shipping
-5. `windows-event-bridge`
-6. Watchtower normalizer contracts
-7. Wazuh adapter + Elasticsearch adapter
-8. LangGraph ingest → normalize → baseline pipeline
-9. User simulator baseline mode
-10. Scenario runner
-11. Smoke/integration/scenario tests
-12. Faz 2 genişleme servisleri
+`YAZILAN TESTLER` veya `ÇALIŞTIRILAN TESTLER` boşsa teslim geçersizdir.
 
 ---
 
-## 21. Net Sonuç
+## 12. Prompt Üretim Formatı
 
-Bu planın amacı sadece mimari açıklama değildir. Bu belge, `watchtower-tool-stack.md` içinde tanımlanan tüm kapalı sunucu simülasyon yapısını:
+Manager AI, implementor AI’a görev verirken bu formatı kullanmalıdır:
 
-- kurulur,
-- entegre edilir,
-- test edilir,
-- tekrar çalıştırılır,
-- regression'a sokulur
+```text
+[GÖREV]
+GÖREV: <tek cümle>
+FAZ: <Faz 0|Faz 1|Faz 2|Faz 3|Faz 4>
+ROL: <infra|scenario|test>
 
-hale getirecek operasyonel uygulama planıdır.
+BAĞLAM:
+- Proje: Watchtower closed server simulation
+- Kapsam: Sadece server-stack; Watchtower ürün/gözlemleme kodu yok
+- Referanslar:
+  - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/close-server-simulation-implementation-plan.md
+  - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/watchtower-tool-stack.md
+  - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/watchtower-features-final.md
+  - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/watchtower-scenarios-final.md
+- Etkilenecek dosyalar: <liste>
 
-İmplementasyon sırasında kural şudur:
+YAPILACAK:
+1. ...
+2. ...
 
-- önce Faz 1'i yeşil yap,
-- sonra Faz 2 servislerini ekle,
-- ardından scenario kütüphanesini büyüt,
-- en son soak ve tam regression seviyesine çık.
+FEATURE KAPSAMI:
+- F-...
+
+TESTLER:
+1. ...
+2. ...
+
+TESLİM KRİTERLERİ:
+- değişen dosyalar
+- feature coverage
+- scenario coverage
+- yazılan testler
+- çalıştırılan testler
+- rapor dosyaları
+- kalan riskler
+```
+
+---
+
+## 13. Final Acceptance Checklist
+
+Faz 4 sonunda hepsi tamamlanmış olmalıdır:
+
+- [ ] `docker compose config` yeşil.
+- [ ] Base LAN servisleri boot ediyor.
+- [ ] Identity/file/network servisleri boot ediyor.
+- [ ] Mail/DB/Git/Web servisleri boot ediyor.
+- [ ] AI/proxy/physical/HR/peripheral mock servisleri boot ediyor.
+- [ ] 81 feature manifestte var.
+- [ ] 81 feature için simulation path var.
+- [ ] 81 feature için positive test var.
+- [ ] 81 feature için negative test var veya sıfır waiver hedefi sağlandı.
+- [ ] 83 scenario manifestte var.
+- [ ] 83 scenario replay ediliyor.
+- [ ] Coverage raporları üretiliyor.
+- [ ] `make test-all` çalışıyor veya ortam kaynaklı blokaj gerçek hata çıktısıyla belgeleniyor.
+
+---
+
+## 14. Net Sonuç
+
+Bu planın çıktısı bir gözlemleme ürünü değildir.
+
+Bu planın çıktısı:
+
+- kapalı LAN,
+- simüle kurumsal servisler,
+- deterministic event üretimi,
+- feature replay komutları,
+- scenario replay komutları,
+- positive/negative pytest kanıtları,
+- coverage raporlarıdır.
+
+Kod yazacak AI bu dokümanı her fazda self-check listesi olarak kullanmalı ve
+testsiz hiçbir fazı tamamlanmış saymamalıdır.
