@@ -97,3 +97,6 @@ class IngestResult(BaseModel):
     health_status: SourceHealthStatus = "healthy"
     error: str | None = None
     degraded: bool = False
+    connector_type: str | None = None
+    latency_ms: float | None = None
+    http_retries: int = 0
