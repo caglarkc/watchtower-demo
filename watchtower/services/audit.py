@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from watchtower.config.settings import WatchtowerSettings
+from watchtower.security.masking import mask_mapping
 from watchtower.storage.repositories.audit import AuditRepository
 from watchtower.services.tenant_context import TenantContext
 

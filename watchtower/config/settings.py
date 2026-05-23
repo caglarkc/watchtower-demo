@@ -65,6 +65,17 @@ class WatchtowerSettings(BaseSettings):
     custom_openai_api_key: str | None = Field(default=None)
     custom_openai_model: str = Field(default="default")
     llm_test_provider: str | None = Field(default=None)
+    backup_dir: Path = Field(
+        default=PROJECT_ROOT / "backups",
+        description="Directory for SQLite backup files",
+    )
+    retention_raw_events_days: int = Field(default=90, ge=0, le=3650)
+    retention_normalized_events_days: int = Field(default=180, ge=0, le=3650)
+    retention_audit_days: int = Field(default=365, ge=0, le=3650)
+    retention_llm_audit_days: int = Field(default=90, ge=0, le=3650)
+    daemon_ingest_interval_seconds: int = Field(default=60, ge=5, le=3600)
+    health_listen_host: str = Field(default="127.0.0.1")
+    health_listen_port: int = Field(default=8080, ge=1, le=65535)
 
     @property
     def migrations_dir(self) -> Path:
