@@ -2,7 +2,7 @@
   "id": "F-072",
   "feature_id": "F-072",
   "title": "Offboarding SLA — Ayrılan Hesap Aktivitesi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,8 +10,14 @@
     {
       "service": "hris",
       "response": {
-        "status": "active",
-        "logins_after": 0
+        "status": "terminated",
+        "logins_after": 6
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
       }
     }
   ],
@@ -39,12 +45,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 68,
+        "indexed": 73,
         "index": "corp-logs-f-072",
         "pipeline": {
           "feature_id": "F-072",
           "index": "corp-logs-f-072",
-          "indexed": 68
+          "indexed": 73
         }
       }
     }
@@ -55,10 +61,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "leaver account activity",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:25.058515+00:00",
+  "generated_at": "2026-05-23T03:11:27.363803+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -2,7 +2,7 @@
   "id": "F-076",
   "feature_id": "F-076",
   "title": "Rol Değişikliği Sonrası Eski Yetkilerin Kullanılması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,7 +10,7 @@
     {
       "service": "hris",
       "response": {
-        "old_group_used": true
+        "old_group_used": false
       }
     }
   ],
@@ -38,12 +38,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 64,
+        "indexed": 70,
         "index": "corp-logs-f-076",
         "pipeline": {
           "feature_id": "F-076",
           "index": "corp-logs-f-076",
-          "indexed": 64
+          "indexed": 70
         }
       }
     }
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "old entitlement use after role change",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:23.836126+00:00",
+  "generated_at": "2026-05-23T03:11:25.663951+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
