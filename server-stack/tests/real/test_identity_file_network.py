@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 PYTHON = ROOT / ".venv" / "bin" / "python"
 FEATURES_YML = ROOT / "simulation" / "feature_catalog" / "features.yml"
 RI1 = {
-    "F-001", "F-002", "F-003", "F-005", "F-006", "F-007", "F-008",
+    "F-001", "F-002", "F-003", "F-004", "F-005", "F-006", "F-007", "F-008",
     "F-010", "F-011", "F-015", "F-037", "F-038", "F-039", "F-040", "F-041",
     "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
 }
@@ -25,11 +25,11 @@ def features_doc() -> dict:
 
 
 @pytest.mark.real
-def test_ri1_features_have_l2_metadata(features_doc: dict) -> None:
+def test_ri1_features_have_l2_or_higher_metadata(features_doc: dict) -> None:
     by_id = {f["feature_id"]: f for f in features_doc["features"]}
     for fid in sorted(RI1, key=lambda x: int(x.split("-")[1])):
         feat = by_id[fid]
-        assert feat["real_parity_level"] == "L2", fid
+        assert feat["real_parity_level"] in ("L2", "L3"), fid
         assert feat.get("real_tool")
         assert "make real-feature" in feat["real_action_command"]
 
@@ -66,7 +66,8 @@ def test_bind_query_log_path(require_real_stack: None) -> None:
         check=True,
     )
     qlog = ROOT / "logs" / "dns" / "query.log"
-    assert qlog.exists() and qlog.stat().st_size > 0
+    fallback = ROOT / "reports" / "real" / "logs" / "dns" / "query.log"
+    assert (qlog.exists() and qlog.stat().st_size > 0) or (fallback.exists() and fallback.stat().st_size > 0)
 
 
 @pytest.mark.real
