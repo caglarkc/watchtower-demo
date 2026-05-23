@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-032",
   "title": "Junior Dev Prod Veritabanı Erişimi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "yetkisiz erişim",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 3032,
@@ -22,7 +22,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 2"
+            "sql": "SELECT * FROM customers LIMIT 500"
           }
         }
       ],
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 3055,
+            "count": 3695,
             "result": "PASS"
           },
           "result": "PASS",
@@ -108,12 +108,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 37,
+            "indexed": 41,
             "index": "corp-logs-f-065",
             "pipeline": {
               "feature_id": "F-065",
               "index": "corp-logs-f-065",
-              "indexed": 37
+              "indexed": 41
             }
           }
         }
@@ -131,7 +131,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     },
     {
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 3055,
+        "count": 3695,
         "result": "PASS"
       },
       "result": "PASS",
@@ -200,12 +200,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 37,
+        "indexed": 41,
         "index": "corp-logs-f-065",
         "pipeline": {
           "feature_id": "F-065",
           "index": "corp-logs-f-065",
-          "indexed": 37
+          "indexed": 41
         }
       }
     }
@@ -220,12 +220,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:02.197034+00:00",
+  "generated_at": "2026-05-23T05:11:54.921825+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-032:3032:negative:real"
+  "replay_key": "S-032:3032:positive:real"
 }
