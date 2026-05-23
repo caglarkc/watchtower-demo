@@ -50,7 +50,7 @@ def mock_llm_gateway():
 @pytest.fixture
 def app_mock_llm(app: AppContext, mock_llm_gateway: LLMGateway):
     with app.session() as session:
-        attach_mock_llm(session, mock_llm_gateway)
+        attach_mock_llm(session, mock_llm_gateway, checkpoint_store=app.checkpoint_store)
         session.conn.commit()
     return app
 
