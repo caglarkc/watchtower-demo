@@ -60,3 +60,4 @@
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "feature_id": "F-077", "timestamp": "2026-05-23T08:41:06.181772+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "feature_id": "F-077", "timestamp": "2026-05-23T08:41:18.564008+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "feature_id": "F-077", "timestamp": "2026-05-23T08:41:21.884522+00:00"}
+{"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "feature_id": "F-077", "timestamp": "2026-05-23T10:20:45.755885+00:00"}

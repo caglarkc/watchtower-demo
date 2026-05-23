@@ -64,3 +64,4 @@
 {"event_type": "nic_promiscuous", "enabled": false, "feature_id": "F-057", "timestamp": "2026-05-23T08:41:04.318166+00:00"}
 {"event_type": "nic_promiscuous", "enabled": true, "feature_id": "F-057", "timestamp": "2026-05-23T08:41:08.345180+00:00"}
 {"event_type": "nic_promiscuous", "enabled": false, "feature_id": "F-057", "timestamp": "2026-05-23T08:41:10.358498+00:00"}
+{"event_type": "nic_promiscuous", "enabled": true, "feature_id": "F-057", "timestamp": "2026-05-23T10:20:43.801656+00:00"}
