@@ -13,3 +13,13 @@ files1  IN  A   172.28.0.11
 dhcp1   IN  A   172.28.0.13
 zeek1   IN  A   172.28.0.14
 es1     IN  A   172.28.0.17
+mail1   IN  A   172.28.0.20
+imap1   IN  A   172.28.0.21
+webmail1 IN A   172.28.0.22
+db1     IN  A   172.28.0.23
+git1    IN  A   172.28.0.24
+api-gw1 IN  A   172.28.0.25
+app1    IN  A   172.28.0.26
+artifacts1 IN A 172.28.0.27
+siem1   IN  A   172.28.0.28
+hv1     IN  A   172.28.0.29
