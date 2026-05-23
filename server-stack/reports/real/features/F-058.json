@@ -2,7 +2,7 @@
   "id": "F-058",
   "feature_id": "F-058",
   "title": "DLP Agent Sağlık ve Bypass Denemesi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "dlp-agent",
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "DLP disable/bypass event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:41.431848+00:00",
+  "generated_at": "2026-05-23T03:17:44.820986+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

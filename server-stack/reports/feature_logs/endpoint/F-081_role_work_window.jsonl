@@ -51,3 +51,4 @@
 {"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "feature_id": "F-081", "timestamp": "2026-05-23T03:17:33.426398+00:00"}
 {"event_type": "role_work_window", "role": "support", "active_hours": [9, 10, 11, 14], "feature_id": "F-081", "timestamp": "2026-05-23T03:17:41.033695+00:00"}
 {"event_type": "role_work_window", "role": "support", "active_hours": [0, 1, 2, 3], "feature_id": "F-081", "timestamp": "2026-05-23T03:17:43.131264+00:00"}
+{"event_type": "role_work_window", "role": "support", "active_hours": [9, 10, 11, 14], "feature_id": "F-081", "timestamp": "2026-05-23T03:17:45.165699+00:00"}
