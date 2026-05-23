@@ -107,6 +107,17 @@ def _build_session(
     source_cursors = SourceCursorRepository(conn)
     raw_events = RawEventRepository(conn)
     ingest = IngestService(sources, source_cursors, raw_events)
+    normalized_events = NormalizedEventRepository(conn)
+    unknown_schema = UnknownSchemaRepository(conn)
+    candidate_events = CandidateEventRepository(conn)
+    normalizer = NormalizationService()
+    pipeline = CandidatePipelineService(
+        raw_events,
+        normalized_events,
+        unknown_schema,
+        candidate_events,
+        normalizer,
+    )
     return SessionContext(
         conn=conn,
         settings=settings,
@@ -122,6 +133,11 @@ def _build_session(
         source_cursors=source_cursors,
         raw_events=raw_events,
         ingest=ingest,
+        normalized_events=normalized_events,
+        unknown_schema=unknown_schema,
+        candidate_events=candidate_events,
+        normalizer=normalizer,
+        pipeline=pipeline,
     )
 
 
