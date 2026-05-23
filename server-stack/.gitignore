@@ -1,0 +1,9 @@
+.env
+.venv/
+.pytest_cache/
+__pycache__/
+logs/**/*.jsonl
+logs/**/*.log
+reports/features/*.json
+reports/coverage/*.json
+!reports/coverage/.gitkeep
