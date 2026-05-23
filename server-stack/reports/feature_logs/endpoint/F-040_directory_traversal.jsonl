@@ -34,3 +34,4 @@
 {"event_type": "directory_traversal", "sensitive_paths": 0, "feature_id": "F-040", "timestamp": "2026-05-23T02:36:43.624503+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 15, "feature_id": "F-040", "timestamp": "2026-05-23T02:43:42.535240+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 0, "feature_id": "F-040", "timestamp": "2026-05-23T02:43:49.918954+00:00"}
+{"event_type": "directory_traversal", "sensitive_paths": 15, "feature_id": "F-040", "timestamp": "2026-05-23T02:43:55.036119+00:00"}
