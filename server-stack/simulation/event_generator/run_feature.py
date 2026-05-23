@@ -51,11 +51,28 @@ def resolve_events(feature_id: str, mode: str) -> list[dict]:
     return [{"event_type": "generic", "mode": mode, "feature_id": feature_id}]
 
 
+def _log_subdir(ev: dict) -> str:
+    channel = ev.get("log_channel")
+    if channel and channel in LOG_CHANNEL_DIRS:
+        return LOG_CHANNEL_DIRS[channel]
+    if event_type := ev.get("event_type", ""):
+        if event_type.startswith("mail_") or event_type.startswith("imap_"):
+            return ev.get("log_channel", "postfix")
+        if event_type.startswith("postgres_"):
+            return "postgres"
+        if event_type.startswith("git_"):
+            return "gitea"
+        if event_type.startswith("http_"):
+            return "nginx"
+    return "endpoint"
+
+
 def write_logs(feature_id: str, events: list[dict]) -> list[str]:
     written: list[str] = []
     for ev in events:
         event_type = ev.get("event_type", "generic")
-        log_dir = LOG_ROOT / "endpoint"
+        subdir = _log_subdir(ev)
+        log_dir = LOG_ROOT / subdir
         log_dir.mkdir(parents=True, exist_ok=True)
         path = log_dir / f"{feature_id}_{event_type}.jsonl"
         row = {**ev, "feature_id": feature_id}
