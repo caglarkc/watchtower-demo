@@ -1,0 +1,520 @@
+{
+  "generated_at": "2026-05-23T03:08:05.965696+00:00",
+  "phase": "RI-6",
+  "result": "PASS",
+  "gates": {
+    "features_81_positive": true,
+    "features_81_negative": true,
+    "features_l2_or_higher": true,
+    "features_l3_min_40": true,
+    "scenarios_83_positive": true,
+    "scenarios_83_negative": true,
+    "metadata_complete": true,
+    "waivers_empty": true
+  },
+  "feature_evidence": {
+    "features_total": 81,
+    "positive_pass": 81,
+    "negative_pass": 81,
+    "l2_or_higher": 81,
+    "l3_count": 45,
+    "l3_target": 46,
+    "features": [
+      {
+        "feature_id": "F-001",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-002",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-003",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-004",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-005",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-006",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-007",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-008",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-009",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-010",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-011",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-012",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-013",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-014",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-015",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-016",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-017",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-018",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-019",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-020",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-021",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-022",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-023",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-024",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-025",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-026",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-027",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-028",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-029",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-030",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-031",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-032",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-033",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-034",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-035",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-036",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-037",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-038",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-039",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-040",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-041",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-042",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-043",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-044",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-045",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-046",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-047",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-048",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-049",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-050",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-051",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-052",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-053",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-054",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-055",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-056",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-057",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-058",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-059",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-060",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-061",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-062",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-063",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-064",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-065",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-066",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-067",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-068",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-069",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-070",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-071",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-072",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-073",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-074",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-075",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-076",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-077",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-078",
+        "parity_level": "L2",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-079",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-080",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      },
+      {
+        "feature_id": "F-081",
+        "parity_level": "L3",
+        "positive_pass": true,
+        "negative_pass": true
+      }
+    ]
+  },
+  "feature_coverage": {
+    "implemented": 81,
+    "l2_or_higher": 81
+  },
+  "scenario_coverage": {
+    "positive": 83,
+    "negative": 83
+  },
+  "waivers": []
+}
