@@ -27,6 +27,14 @@ ARTIFACT_URL = os.environ.get("ARTIFACT_URL", "http://172.28.0.27:8080")
 SIEM_URL = os.environ.get("SIEM_URL", "http://172.28.0.28:8080")
 HYPERVISOR_URL = os.environ.get("HYPERVISOR_URL", "http://172.28.0.29:8080")
 
+VAULT_URL = os.environ.get("VAULT_URL", "http://172.28.0.33:8080")
+AI_GATEWAY_URL = os.environ.get("AI_GATEWAY_URL", "http://172.28.0.30:8080")
+PROXY_URL = os.environ.get("PROXY_URL", "http://172.28.0.31:8080")
+CLOUD_URL = os.environ.get("CLOUD_URL", "http://172.28.0.32:8080")
+WIKI_URL = os.environ.get("WIKI_URL", "http://172.28.0.39:8080")
+DLP_URL = os.environ.get("DLP_URL", "http://172.28.0.40:8080")
+ACTIVITY_URL = os.environ.get("ACTIVITY_URL", "http://172.28.0.41:8080")
+
 LOG_PATHS = {
     "samba-ad": ROOT / "logs" / "identity" / "ad_events.jsonl",
     "samba-audit": ROOT / "logs" / "samba" / "audit.log",
