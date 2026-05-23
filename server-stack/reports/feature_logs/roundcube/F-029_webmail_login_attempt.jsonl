@@ -39,3 +39,4 @@
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "personal@gmail.com", "feature_id": "F-029", "timestamp": "2026-05-23T02:51:36.754657+00:00"}
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "user@corp.local", "feature_id": "F-029", "timestamp": "2026-05-23T02:51:38.961008+00:00"}
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "personal@gmail.com", "feature_id": "F-029", "timestamp": "2026-05-23T02:56:59.319895+00:00"}
+{"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "user@corp.local", "feature_id": "F-029", "timestamp": "2026-05-23T02:57:06.733956+00:00"}
