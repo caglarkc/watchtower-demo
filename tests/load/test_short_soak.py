@@ -10,7 +10,11 @@ from watchtower.e2e.soak import (
     seed_f001_baseline,
 )
 from watchtower.health.service import HealthService
-from watchtower.observability.metrics import METRIC_GRAPH_RUNS, METRIC_RAW_STORED
+from watchtower.observability.metrics import (
+    METRIC_GRAPH_RUNS,
+    METRIC_LOOP_DURATION_COUNT,
+    METRIC_RAW_STORED,
+)
 from tests.graph.conftest import set_tenant_mode
 
 
@@ -41,7 +45,8 @@ def test_short_soak_daemon_pipeline_and_metrics(prod_app, bootstrapped_tenant, t
     assert counts["normalized_events"] >= 1
     assert counts["graph_runs"] >= 1
     assert snap.get(METRIC_RAW_STORED) >= 1
-    assert snap.get(METRIC_GRAPH_RUNS) >= iterations
+    assert snap.get(METRIC_GRAPH_RUNS) >= 1
+    assert snap.get(METRIC_LOOP_DURATION_COUNT) >= iterations
     assert report.status in ("healthy", "degraded")
     metric_check = next(c for c in report.checks if c.name == "metrics")
     assert metric_check.details.get("counters")
