@@ -1,41 +1,39 @@
 {
-  "id": "F-001",
-  "feature_id": "F-001",
-  "title": "Kullanıcı Başına SMB/Dosya Sunucu Veri Çekim Profili",
-  "mode": "negative",
+  "id": "F-079",
+  "feature_id": "F-079",
+  "title": "Mesai Dışı İnteraktif Oturum",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "samba-files",
+  "real_tool": "endpoint-synthetic",
   "actions_executed": [
     {
-      "service": "samba-files-actions",
+      "service": "endpoint",
       "response": {
-        "events": 1,
-        "smb_attempted": true
+        "written": "/var/log/corp/endpoint/after_hours_session.jsonl",
+        "event_type": "after_hours_session"
       }
     },
     {
-      "service": "zeek",
+      "service": "samba-ad",
       "response": {
-        "written": 1,
-        "log": "/var/log/corp/zeek/conn.log"
+        "events": 1
       }
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/after_hours_session.jsonl",
       "result": "PASS"
     },
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
-      "records": 20,
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
       "result": "PASS"
     }
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-001",
+      "assertion": "elasticsearch:corp-logs:F-079",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -54,10 +52,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
-  "evidence_expected": "SMB read volume event",
+  "anomaly_detected": true,
+  "evidence_expected": "after-hours interactive session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:28:36.706462+00:00",
+  "generated_at": "2026-05-23T02:28:36.310702+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
