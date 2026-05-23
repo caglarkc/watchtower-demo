@@ -37,3 +37,4 @@
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "feature_id": "F-010", "timestamp": "2026-05-23T02:43:54.496200+00:00"}
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 5, "feature_id": "F-010", "timestamp": "2026-05-23T02:43:56.497053+00:00"}
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "feature_id": "F-010", "timestamp": "2026-05-23T02:51:17.774241+00:00"}
+{"event_type": "service_interactive", "account": "svc_sql", "logon_type": 5, "feature_id": "F-010", "timestamp": "2026-05-23T02:51:25.108620+00:00"}
