@@ -107,7 +107,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: İç Ağ Port Taraması ve Servis Keşfi
+### F-007: İç Ağ Port Taraması ve Servis Keşfi
 
 **KATEGORİ:** ağ trafiği  
 **VERİ KAYNAĞI:** Zeek conn.log, NetFlow, firewall east-west log, EDR network telemetry  
@@ -123,7 +123,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-007: Kerberos / NTLM Auth Hacmi ve Hedef Çeşitliliği
+### F-008: Kerberos / NTLM Auth Hacmi ve Hedef Çeşitliliği
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** Windows Security Log (4624, 4776), DC syslog  
@@ -135,7 +135,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-008: Eşzamanlı Oturum ve Bina İçi Lokasyon Çakışması
+### F-009: Eşzamanlı Oturum ve Bina İçi Lokasyon Çakışması
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** AD logon events, NAC, switch port mapping, badge/kartlı geçiş sistemi  
@@ -147,7 +147,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-009: Hizmet Hesaplarının İnteraktif Kullanımı
+### F-010: Hizmet Hesaplarının İnteraktif Kullanımı
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** Active Directory / Windows Event Log (Logon Type 2 veya 10)  
@@ -159,7 +159,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-010: AD Grup Üyeliği ve Privileged Değişiklik
+### F-011: AD Grup Üyeliği ve Privileged Değişiklik
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** Windows Security 4728/4729/4732, AD replication audit  
@@ -171,7 +171,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-011: Servis Hesabı ve API Key Kullanım Haritası
+### F-012: Servis Hesabı ve API Key Kullanım Haritası
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** API gateway log, HashiCorp Vault audit, uygulama access log  
@@ -183,7 +183,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-012: Secret Store Okuma Burst
+### F-013: Secret Store Okuma Burst
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** HashiCorp Vault audit, CyberArk session log  
@@ -195,7 +195,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-013: Credential Reset ve Unlock Yoğunluğu
+### F-014: Credential Reset ve Unlock Yoğunluğu
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** AD, IAM logs, helpdesk/ticket sistemi  
@@ -207,7 +207,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-014: RDP/PSRemoting Hop Pattern
+### F-015: RDP/PSRemoting Hop Pattern
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** Windows 1149, Sysmon 3, jump server session broker  
@@ -223,7 +223,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-015: Dahili Mail Gönderim Hacmi ve Ek Boyutu
+### F-016: Dahili Mail Gönderim Hacmi ve Ek Boyutu
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange Message Tracking, EWS audit | Demo: Postfix/Dovecot SMTP-IMAP log  
@@ -235,7 +235,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-016: Mail Forward/Delegate Kural Değişimi
+### F-017: Mail Forward/Delegate Kural Değişimi
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange Management audit, EWS | Demo: Postfix/Roundcube rule-action logları + custom parser  
@@ -247,7 +247,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-017: Dahili Mail Kutu Dışı Erişim
+### F-018: Dahili Mail Kutu Dışı Erişim
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange audit log, mailbox audit | Demo: Dovecot/Roundcube access log + SMTP log  
@@ -259,7 +259,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-018: Mail Ek Entropi ve Dosya Tipi Uyuşmazlığı
+### F-019: Mail Ek Entropi ve Dosya Tipi Uyuşmazlığı
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange Transport Agent, Mail Gateway logs | Demo: Postfix transport log + attachment metadata parser  
@@ -271,7 +271,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-019: Gizli Alıcı (BCC) ve Toplu Dağıtım Sapması
+### F-020: Gizli Alıcı (BCC) ve Toplu Dağıtım Sapması
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange API | Demo: Postfix message tracking logs  
@@ -283,7 +283,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kişisel E-posta Adreslerine Ekli Posta Gönderimi
+### F-021: Kişisel E-posta Adreslerine Ekli Posta Gönderimi
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Gerçek ortam: Exchange Message Tracking, mail gateway DLP | Demo: Postfix transport log + domain classifier  
@@ -295,7 +295,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Bilinmeyen veya Rakip Kuruluşa Ekli Posta Gönderimi
+### F-022: Bilinmeyen veya Rakip Kuruluşa Ekli Posta Gönderimi
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Exchange/SMTP gateway logs, CRM/vendor domain envanteri, DLP sınıflandırması  
@@ -307,7 +307,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Mail İçeriğinde Hassas Anahtar Kelime Sinyali
+### F-023: Mail İçeriğinde Hassas Anahtar Kelime Sinyali
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Mail gateway content inspection, Exchange eDiscovery audit, DLP keyword policy  
@@ -319,7 +319,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Eski Mail Arşivinin Toplu Okunması
+### F-024: Eski Mail Arşivinin Toplu Okunması
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Exchange mailbox audit, IMAP access log, archive mailbox audit  
@@ -331,7 +331,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kişi Listesi veya Adres Defteri Dışa Aktarımı
+### F-025: Kişi Listesi veya Adres Defteri Dışa Aktarımı
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Exchange audit, EWS/Graph API audit, Roundcube/Dovecot export log  
@@ -343,7 +343,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Yazışma Üslubu ve Dil Tonu Sapması
+### F-026: Yazışma Üslubu ve Dil Tonu Sapması
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Mail content metadata, NLP style baseline, güvenli içerik analiz pipeline'ı  
@@ -355,7 +355,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Yasaklı veya Politika Dışı İfade Kullanımı
+### F-027: Yasaklı veya Politika Dışı İfade Kullanımı
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Mail DLP, HR policy keyword list, eDiscovery audit  
@@ -367,7 +367,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail
+### F-028: İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Exchange/SMTP logs, mail graph history, DLP keyword classifier  
@@ -379,7 +379,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kurumsal Mail Sistemine Kişisel/Bilinmeyen Hesapla Giriş Denemesi
+### F-029: Kurumsal Mail Sistemine Kişisel/Bilinmeyen Hesapla Giriş Denemesi
 
 **KATEGORİ:** mail ve iletişim  
 **VERİ KAYNAĞI:** Exchange/O365 sign-in logs, IMAP/SMTP auth logs, IdP audit  
@@ -395,7 +395,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi
+### F-030: Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** Secure web gateway, CASB, DLP agent, browser telemetry  
@@ -407,7 +407,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması
+### F-031: Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** Browser DLP, clipboard telemetry, CASB, proxy request metadata  
@@ -419,7 +419,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi
+### F-032: AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** CASB/DLP content inspection, proxy logs, browser extension telemetry  
@@ -431,7 +431,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı
+### F-033: Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** Proxy/SWG logs, DNS logs, CASB SaaS discovery  
@@ -443,7 +443,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: AI Platformlarına Dosya Yükleme Hacmi ve İçerik Türü
+### F-034: AI Platformlarına Dosya Yükleme Hacmi ve İçerik Türü
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** CASB, secure web gateway, endpoint DLP, browser upload telemetry  
@@ -455,7 +455,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi
+### F-035: AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** CASB/DLP content inspection, browser history telemetry, security search audit  
@@ -467,7 +467,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: AI Konuşma Geçmişinde Rekabet, Strateji veya Hukuki Süreç İçeriği
+### F-036: AI Konuşma Geçmişinde Rekabet, Strateji veya Hukuki Süreç İçeriği
 
 **KATEGORİ:** yapay zeka kullanımı  
 **VERİ KAYNAĞI:** Kurumsal onaylı AI tenant audit, CASB, DLP review queue  
@@ -483,7 +483,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-020: Departman Dışı Dosya Paylaşım Erişimi
+### F-037: Departman Dışı Dosya Paylaşım Erişimi
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Windows Event Log, File Server audit log, AD grup üyelikleri  
@@ -495,7 +495,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-021: Dosya Sunucu Toplu Okuma/Yazma Oranı
+### F-038: Dosya Sunucu Toplu Okuma/Yazma Oranı
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Windows Security 4663, NAS syslog, SMB audit  
@@ -507,7 +507,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-022: Kitlesel Dosya Yeniden Adlandırma Hızı
+### F-039: Kitlesel Dosya Yeniden Adlandırma Hızı
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Dosya Sunucu audit log (File Server Auditing / Syslog)  
@@ -519,7 +519,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-023: Hassas Dizin Dolaşma (Directory Traversal) Davranışı
+### F-040: Hassas Dizin Dolaşma (Directory Traversal) Davranışı
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Windows Object Access Auditing, Linux Auditd  
@@ -531,7 +531,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-024: ACL ve "Everyone" İzin Değişikliği
+### F-041: ACL ve "Everyone" İzin Değişikliği
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Windows Security 4670, 4911, file server audit  
@@ -543,7 +543,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-025: Yerel Diskte Hassas Veri Birikimi
+### F-042: Yerel Diskte Hassas Veri Birikimi
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** DLP agent, EDR file inventory, Windows file auditing  
@@ -555,7 +555,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Etiketli Hassas Dosyanın Kısıtsız Alana Taşınması
+### F-043: Etiketli Hassas Dosyanın Kısıtsız Alana Taşınması
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** DLP label audit, Microsoft Purview/MIP logs, file server audit, EDR file telemetry  
@@ -567,7 +567,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Bilgi Bankası/Wiki/Intranet Toplu İndirme
+### F-044: Bilgi Bankası/Wiki/Intranet Toplu İndirme
 
 **KATEGORİ:** dosya sistemi  
 **VERİ KAYNAĞI:** Confluence/SharePoint/wiki audit, intranet web logs, reverse proxy logs  
@@ -583,7 +583,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-026: Veritabanı Sorgu Hacmi ve Tablo Kapsamı
+### F-045: Veritabanı Sorgu Hacmi ve Tablo Kapsamı
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** SQL Server audit, PostgreSQL pg_audit, proxy query log  
@@ -595,7 +595,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-027: Uygulama Süresi ve Süreç Ağacı
+### F-046: Uygulama Süresi ve Süreç Ağacı
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Sysmon (1/3), Wazuh syscheck, EDR process telemetry  
@@ -607,7 +607,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-028: İç API Çağrı Deseni Sapması
+### F-047: İç API Çağrı Deseni Sapması
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** API gateway logs, reverse proxy logs, app audit logs  
@@ -619,7 +619,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-029: HTTP 4xx Hata Yoğunlaşması
+### F-048: HTTP 4xx Hata Yoğunlaşması
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** İç web sunucu / API Gateway logs (Nginx, IIS, WAF)  
@@ -631,7 +631,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-030: Git/Artifact Erişim ve Clone Hacmi
+### F-049: Git/Artifact Erişim ve Clone Hacmi
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Gerçek ortam: self-hosted Git audit log | Demo: Gitea audit log, reverse proxy, git-mirror NetFlow  
@@ -643,7 +643,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-031: SIEM/Log Suppress Kural Değişimi
+### F-050: SIEM/Log Suppress Kural Değişimi
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Splunk/Elastic/Wazuh manager audit  
@@ -655,7 +655,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-032: Hypervisor ve Yönetim Konsolu Erişimi
+### F-051: Hypervisor ve Yönetim Konsolu Erişimi
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** vCenter/Proxmox audit, jump host session log  
@@ -667,7 +667,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması
+### F-052: Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Windows Security/System logs, Sysmon Event ID 1/12/13, Wazuh/Sysmon telemetry  
@@ -679,7 +679,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması
+### F-053: Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Windows Event Log, Sysmon process command line, backup platform audit  
@@ -691,7 +691,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kodlanmış veya Politika Atlatan Betik Komutları
+### F-054: Kodlanmış veya Politika Atlatan Betik Komutları
 
 **KATEGORİ:** uygulama ve süreç  
 **VERİ KAYNAĞI:** Sysmon Event ID 1, PowerShell Script Block Logging, Wazuh command telemetry  
@@ -707,7 +707,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-033: USB Takma-Yazma Korelasyonu
+### F-055: USB Takma-Yazma Korelasyonu
 
 **KATEGORİ:** donanım ve uç nokta  
 **VERİ KAYNAĞI:** Windows Event Log (6416, 4663), EDR/DLP agent  
@@ -719,7 +719,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-034: Yazıcı İş Hacmi ve Hassas Belge Korelasyonu
+### F-056: Yazıcı İş Hacmi ve Hassas Belge Korelasyonu
 
 **KATEGORİ:** donanım ve uç nokta  
 **VERİ KAYNAĞI:** Windows Print Service Log (Event ID 307/801), yazıcı SNMP/syslog  
@@ -731,7 +731,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-035: Ağ Kartı Promiscuous Mod Değişimi
+### F-057: Ağ Kartı Promiscuous Mod Değişimi
 
 **KATEGORİ:** donanım ve uç nokta  
 **VERİ KAYNAĞI:** Windows Security Log (Event ID 7045), Linux syslog  
@@ -743,7 +743,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-036: DLP Agent Sağlık ve Bypass Denemesi
+### F-058: DLP Agent Sağlık ve Bypass Denemesi
 
 **KATEGORİ:** donanım ve uç nokta  
 **VERİ KAYNAĞI:** DLP management server, endpoint heartbeat  
@@ -759,7 +759,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-037: Clipboard Büyük Veri Kopyalama
+### F-059: Clipboard Büyük Veri Kopyalama
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** DLP endpoint agent, Windows ETW (Clipboard API), Sysmon Event ID 24  
@@ -771,7 +771,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-038: Ekran Görüntüsü Alma Frekansı
+### F-060: Ekran Görüntüsü Alma Frekansı
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** EDR, Windows Graphics Capture API telemetry, OS hook telemetry  
@@ -783,7 +783,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-039: Rol Bazlı Sunucu Temas Haritası
+### F-061: Rol Bazlı Sunucu Temas Haritası
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** NetFlow, Sysmon network connections, Windows logs  
@@ -795,7 +795,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-040: İç Log Arama Anahtar Kelimesi Riski
+### F-062: İç Log Arama Anahtar Kelimesi Riski
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** SIEM search audit, log platform query logs, Wazuh/Kibana audit  
@@ -807,7 +807,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Daha Önce Görülmemiş Donanım Kimliğiyle Oturum Denemesi
+### F-063: Daha Önce Görülmemiş Donanım Kimliğiyle Oturum Denemesi
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** IdP device inventory, EDR asset ID, NAC, AD logon events  
@@ -819,7 +819,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Normal Aktivite Örüntüsünün Saatler İçinde Yoğunlaşması
+### F-064: Normal Aktivite Örüntüsünün Saatler İçinde Yoğunlaşması
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** UEBA baseline store, AD/app/file/network telemetry  
@@ -831,7 +831,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Uzun Süre Kullanılmayan Sistemlere Ani Erişim
+### F-065: Uzun Süre Kullanılmayan Sistemlere Ani Erişim
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** AD logon, app audit, NetFlow, IAM access logs  
@@ -843,7 +843,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Akran Grup Davranışından İstatistiksel Sapma
+### F-066: Akran Grup Davranışından İstatistiksel Sapma
 
 **KATEGORİ:** davranışsal  
 **VERİ KAYNAĞI:** UEBA baseline store, HR/department metadata, telemetry warehouse  
@@ -859,7 +859,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme
+### F-067: Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme
 
 **KATEGORİ:** dış bağlantı ve çıkış trafiği  
 **VERİ KAYNAĞI:** Proxy/SWG logs, CASB, firewall egress logs, DLP agent  
@@ -871,7 +871,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi
+### F-068: İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi
 
 **KATEGORİ:** dış bağlantı ve çıkış trafiği  
 **VERİ KAYNAĞI:** NetFlow, firewall egress logs, proxy logs, DNS logs  
@@ -883,7 +883,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Proxy Üzerinden Şifreli Tünel veya Alışılmadık Protokol Kullanımı
+### F-069: Proxy Üzerinden Şifreli Tünel veya Alışılmadık Protokol Kullanımı
 
 **KATEGORİ:** dış bağlantı ve çıkış trafiği  
 **VERİ KAYNAĞI:** Proxy/SWG logs, firewall app-ID, Zeek, DNS logs  
@@ -899,7 +899,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-036b: Fiziksel Badge Geçişi ile Sistem Login Uyuşmazlığı
+### F-070: Fiziksel Badge Geçişi ile Sistem Login Uyuşmazlığı
 
 **KATEGORİ:** çapraz veri ve korelasyon  
 **VERİ KAYNAĞI:** Fiziksel erişim sistemi SQL logu, AD logon events, NAC  
@@ -911,7 +911,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-041: Çapraz Kaynak Risk Skoru (Composite Risk Score)
+### F-071: Çapraz Kaynak Risk Skoru (Composite Risk Score)
 
 **KATEGORİ:** çapraz veri ve korelasyon  
 **VERİ KAYNAĞI:** SIEM, AD, NetFlow, mail audit, EDR, badge sistemi  
@@ -923,7 +923,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-042: Offboarding SLA — Ayrılan Hesap Aktivitesi
+### F-072: Offboarding SLA — Ayrılan Hesap Aktivitesi
 
 **KATEGORİ:** çapraz veri ve korelasyon  
 **VERİ KAYNAĞI:** İK HRIS feed, AD disable timestamp, VPN, dosya sunucu log  
@@ -935,7 +935,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-043: Aynı Dosya/Kayıt Çoklu Kullanıcı Erişim Zinciri
+### F-073: Aynı Dosya/Kayıt Çoklu Kullanıcı Erişim Zinciri
 
 **KATEGORİ:** çapraz veri ve korelasyon  
 **VERİ KAYNAĞI:** SMB audit, CRM/ERP uygulama log  
@@ -947,7 +947,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-044: Vardiya Dışı Fiziksel + Mantıksal Erişim Korelasyonu
+### F-074: Vardiya Dışı Fiziksel + Mantıksal Erişim Korelasyonu
 
 **KATEGORİ:** çapraz veri ve korelasyon  
 **VERİ KAYNAĞI:** Badge/access control, AD, VPN  
@@ -963,7 +963,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi
+### F-075: Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi
 
 **KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
 **VERİ KAYNAĞI:** HRIS onboarding feed, AD/IAM logs, app audit, file server audit  
@@ -975,7 +975,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Rol Değişikliği Sonrası Eski Yetkilerin Kullanılması
+### F-076: Rol Değişikliği Sonrası Eski Yetkilerin Kullanılması
 
 **KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
 **VERİ KAYNAĞI:** HRIS role-change feed, AD group membership, IAM audit, app access logs  
@@ -987,7 +987,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Resmi İzin Kaydı Varken Sistem Aktivitesi
+### F-077: Resmi İzin Kaydı Varken Sistem Aktivitesi
 
 **KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
 **VERİ KAYNAĞI:** HRIS leave records, AD/VPN/app logs, badge sistemi  
@@ -999,7 +999,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-999: Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı
+### F-078: Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı
 
 **KATEGORİ:** insan kaynakları ve personel yaşam döngüsü  
 **VERİ KAYNAĞI:** Vendor/contractor registry, IAM entitlements, app audit, VPN logs  
@@ -1015,7 +1015,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-045: Mesai Dışı İnteraktif Oturum
+### F-079: Mesai Dışı İnteraktif Oturum
 
 **KATEGORİ:** zamanlama  
 **VERİ KAYNAĞI:** AD logon, VPN, RDP gateway, fiziksel badge (opsiyonel)  
@@ -1027,7 +1027,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-046: Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)
+### F-080: Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)
 
 **KATEGORİ:** zamanlama  
 **VERİ KAYNAĞI:** EDR, Windows session telemetry  
@@ -1039,7 +1039,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-047: Rol Bazlı Aktif Çalışma Penceresi Sapması
+### F-081: Rol Bazlı Aktif Çalışma Penceresi Sapması
 
 **KATEGORİ:** zamanlama  
 **VERİ KAYNAĞI:** Windows etkinlik günlükleri, uygulama erişim logları  
