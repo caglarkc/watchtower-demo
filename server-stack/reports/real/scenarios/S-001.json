@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-001",
   "title": "Gece Yarısı Finans Paylaşımı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "CFO",
   "deterministic_seed": 1001,
@@ -24,7 +24,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "events": 1,
+            "events": 5,
             "smb_attempted": true
           }
         },
@@ -62,7 +62,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-001",
-            "count": 4640,
+            "count": 6080,
             "result": "PASS"
           },
           "result": "PASS",
@@ -129,19 +129,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 3277,
+            "count": 4465,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 128,
+            "indexed": 137,
             "index": "corp-logs-f-079",
             "pipeline": {
               "feature_id": "F-079",
               "index": "corp-logs-f-079",
-              "indexed": 128
+              "indexed": 137
             }
           }
         }
@@ -160,7 +160,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "read_bytes": 100000,
+            "read_bytes": 18400000000,
             "write_bytes": 0
           }
         }
@@ -186,7 +186,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 2720,
+            "count": 3680,
             "result": "PASS"
           },
           "result": "PASS",
@@ -217,7 +217,7 @@
         {
           "service": "cups",
           "response": {
-            "pages": 4
+            "pages": 180
           }
         }
       ],
@@ -296,19 +296,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-081",
-            "count": 217,
+            "count": 315,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 23,
+            "indexed": 27,
             "index": "corp-logs-f-081",
             "pipeline": {
               "feature_id": "F-081",
               "index": "corp-logs-f-081",
-              "indexed": 23
+              "indexed": 27
             }
           }
         }
@@ -324,7 +324,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 1,
+        "events": 5,
         "smb_attempted": true
       }
     },
@@ -351,14 +351,14 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 100000,
+        "read_bytes": 18400000000,
         "write_bytes": 0
       }
     },
     {
       "service": "cups",
       "response": {
-        "pages": 4
+        "pages": 180
       }
     },
     {
@@ -415,7 +415,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 4640,
+        "count": 6080,
         "result": "PASS"
       },
       "result": "PASS",
@@ -445,19 +445,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 3277,
+        "count": 4465,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 128,
+        "indexed": 137,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 128
+          "indexed": 137
         }
       }
     },
@@ -475,7 +475,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 2720,
+        "count": 3680,
         "result": "PASS"
       },
       "result": "PASS",
@@ -531,19 +531,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-081",
-        "count": 217,
+        "count": 315,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 23,
+        "indexed": 27,
         "index": "corp-logs-f-081",
         "pipeline": {
           "feature_id": "F-081",
           "index": "corp-logs-f-081",
-          "indexed": 23
+          "indexed": 27
         }
       }
     }
@@ -557,12 +557,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 7,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:28.499189+00:00",
+  "generated_at": "2026-05-23T03:17:50.557159+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-001:1001:negative:real"
+  "replay_key": "S-001:1001:positive:real"
 }
