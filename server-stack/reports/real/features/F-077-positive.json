@@ -1,8 +1,8 @@
 {
-  "id": "F-072",
-  "feature_id": "F-072",
-  "title": "Offboarding SLA — Ayrılan Hesap Aktivitesi",
-  "mode": "negative",
+  "id": "F-077",
+  "feature_id": "F-077",
+  "title": "Resmi İzin Kaydı Varken Sistem Aktivitesi",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,8 +10,7 @@
     {
       "service": "hris",
       "response": {
-        "status": "active",
-        "logins_after": 0
+        "keyboard_events": 900
       }
     }
   ],
@@ -28,10 +27,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
-  "evidence_expected": "leaver account activity",
+  "anomaly_detected": true,
+  "evidence_expected": "activity while officially on leave",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:51:12.050816+00:00",
+  "generated_at": "2026-05-23T02:51:11.134948+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

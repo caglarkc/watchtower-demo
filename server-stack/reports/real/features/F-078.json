@@ -1,17 +1,18 @@
 {
-  "id": "F-072",
-  "feature_id": "F-072",
-  "title": "Offboarding SLA — Ayrılan Hesap Aktivitesi",
+  "id": "F-078",
+  "feature_id": "F-078",
+  "title": "Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı",
   "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
-  "real_tool": "hris-app",
+  "real_tool": "endpoint-synthetic",
   "actions_executed": [
     {
       "service": "hris",
       "response": {
-        "status": "active",
-        "logins_after": 0
+        "systems": [
+          "dev-git"
+        ]
       }
     }
   ],
@@ -29,9 +30,9 @@
     "seeds/real/crm/records.yml"
   ],
   "anomaly_detected": false,
-  "evidence_expected": "leaver account activity",
+  "evidence_expected": "contractor out-of-scope system use",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:51:12.050816+00:00",
+  "generated_at": "2026-05-23T02:51:12.844731+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
