@@ -31,6 +31,22 @@ wt migrate status
 wt migrate upgrade
 ```
 
+## Case management
+
+```bash
+wt cases list
+wt cases show <case_id>
+wt alerts show <alert_id>          # includes score breakdown
+wt cases assign <case_id> <user>
+wt cases comment <case_id> "text"
+wt cases link-ticket <case_id> INC-123
+wt cases timeline <case_id>
+wt cases export <case_id> --format md -o report.md
+wt cases show <case_id> --explain  # LLM narrative; severity unchanged
+```
+
+Closing as `false_positive` records `feedback_submitted` on the timeline with `pending_rule_id`.
+
 ## Connectors (production)
 
 | Connector | Auth / TLS | Pagination |
