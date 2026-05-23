@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-082",
   "title": "İK ve Bilgi İşlem Çapraz Hesap Manipülasyonu",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "İK",
   "deterministic_seed": 9082,
@@ -23,14 +23,14 @@
         {
           "service": "hris",
           "response": {
-            "resets": 12,
-            "unlocks": 8
+            "resets": 1,
+            "unlocks": 0
           }
         },
         {
           "service": "samba-ad",
           "response": {
-            "events": 12
+            "events": 1
           }
         }
       ],
@@ -87,14 +87,8 @@
         {
           "service": "hris",
           "response": {
-            "status": "terminated",
-            "logins_after": 6
-          }
-        },
-        {
-          "service": "samba-ad",
-          "response": {
-            "events": 1
+            "status": "active",
+            "logins_after": 0
           }
         }
       ],
@@ -172,7 +166,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-024",
-            "count": 9360,
+            "count": 9680,
             "result": "PASS"
           },
           "result": "PASS",
@@ -204,7 +198,7 @@
         {
           "service": "hris",
           "response": {
-            "old_group_used": true
+            "old_group_used": false
           }
         }
       ],
@@ -254,27 +248,21 @@
     {
       "service": "hris",
       "response": {
-        "resets": 12,
-        "unlocks": 8
-      }
-    },
-    {
-      "service": "samba-ad",
-      "response": {
-        "events": 12
-      }
-    },
-    {
-      "service": "hris",
-      "response": {
-        "status": "terminated",
-        "logins_after": 6
+        "resets": 1,
+        "unlocks": 0
       }
     },
     {
       "service": "samba-ad",
       "response": {
         "events": 1
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "status": "active",
+        "logins_after": 0
       }
     },
     {
@@ -286,7 +274,7 @@
     {
       "service": "hris",
       "response": {
-        "old_group_used": true
+        "old_group_used": false
       }
     }
   ],
@@ -379,7 +367,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-024",
-        "count": 9360,
+        "count": 9680,
         "result": "PASS"
       },
       "result": "PASS",
@@ -432,12 +420,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
-  "event_count": 6,
+  "anomaly_detected": false,
+  "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:25.311967+00:00",
+  "generated_at": "2026-05-23T10:27:48.329504+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-082:9082:positive:real"
+  "replay_key": "S-082:9082:negative:real"
 }

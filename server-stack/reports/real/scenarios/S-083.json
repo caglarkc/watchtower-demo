@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-083",
   "title": "Aynı Dosyaya Zincirleme Çapraz Departman Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "Satış",
   "deterministic_seed": 9083,
@@ -22,14 +22,14 @@
         {
           "service": "suitecrm",
           "response": {
-            "users": 3,
+            "users": 1,
             "record_id": "contract-991"
           }
         },
         {
           "service": "wiki",
           "response": {
-            "pages": 3
+            "pages": 1
           }
         }
       ],
@@ -82,7 +82,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "renames": 15
+            "renames": 1
           }
         }
       ],
@@ -107,7 +107,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-039",
-            "count": 9520,
+            "count": 9840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -163,7 +163,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 16880,
+            "count": 17520,
             "result": "PASS"
           },
           "result": "PASS",
@@ -191,20 +191,20 @@
     {
       "service": "suitecrm",
       "response": {
-        "users": 3,
+        "users": 1,
         "record_id": "contract-991"
       }
     },
     {
       "service": "wiki",
       "response": {
-        "pages": 3
+        "pages": 1
       }
     },
     {
       "service": "samba-files-actions",
       "response": {
-        "renames": 15
+        "renames": 1
       }
     },
     {
@@ -269,7 +269,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-039",
-        "count": 9520,
+        "count": 9840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -299,7 +299,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 16880,
+        "count": 17520,
         "result": "PASS"
       },
       "result": "PASS",
@@ -325,12 +325,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:25.662426+00:00",
+  "generated_at": "2026-05-23T10:27:48.654310+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-083:9083:positive:real"
+  "replay_key": "S-083:9083:negative:real"
 }
