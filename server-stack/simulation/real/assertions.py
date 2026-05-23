@@ -2,19 +2,26 @@
 
 from __future__ import annotations
 
-from config import ALL_REAL_FEATURES, INGEST_FEATURES, RI1_FEATURES, RI2_FEATURES
+from config import ALL_REAL_FEATURES, INGEST_FEATURES, INGEST_L3_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES
 from ingest_assertions import assert_ingest_for_feature
 from log_assertions import (
+    assert_activity,
     assert_ad_event,
+    assert_ai_gateway,
     assert_app_audit,
     assert_bind_query,
+    assert_cloud_upload,
     assert_dhcp_log,
+    assert_dlp_health,
     assert_endpoint_event,
     assert_gitea_access,
     assert_mail_log,
     assert_nginx_access,
     assert_postgres_audit,
+    assert_proxy_log,
     assert_samba_audit,
+    assert_vault_audit,
+    assert_wiki_access,
     assert_zeek_conn,
     wait_for_log,
 )
