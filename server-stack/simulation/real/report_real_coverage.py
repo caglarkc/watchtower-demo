@@ -133,6 +133,8 @@ def report() -> dict:
         "ri4_l2_metadata": ri4["l2_metadata"],
         "ri4_pass": ri4["pass"],
         "l2_or_higher": sum(1 for r in rows if r.get("real_parity_level") in ("L2", "L3")),
+        "l3_count": sum(1 for r in rows if r.get("real_parity_level") == "L3"),
+        "l3_minimum": 40,
         "waivers": [],
         "features": rows,
     }
@@ -160,6 +162,9 @@ def main() -> int:
         and data["ri2_l2_metadata"] == data["ri2_features"]
         and data["ri3_l2_metadata"] == data["ri3_features"]
         and data["ri4_l2_metadata"] == data["ri4_features"]
+        and data["l2_or_higher"] == 81
+        and data["l3_count"] >= 40
+        and data["implemented"] == 81
     )
     return 0 if gate else 1
 
