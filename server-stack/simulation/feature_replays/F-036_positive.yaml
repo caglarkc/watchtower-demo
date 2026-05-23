@@ -1,0 +1,8 @@
+feature_id: F-036
+mode: positive
+phase: 3
+events:
+- event_type: ai_strategy_content
+  log_channel: ai_gateway
+  legal_terms: 14
+  strategy_terms: 22

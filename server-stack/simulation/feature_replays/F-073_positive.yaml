@@ -1,0 +1,9 @@
+feature_id: F-073
+mode: positive
+phase: 3
+events:
+- event_type: multi_user_file_chain
+  log_channel: wiki
+  file_id: contract-991
+  users: 3
+  window_minutes: 30

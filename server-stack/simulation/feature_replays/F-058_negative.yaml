@@ -1,0 +1,8 @@
+feature_id: F-058
+mode: negative
+phase: 3
+events:
+- event_type: dlp_bypass
+  log_channel: dlp
+  agent_healthy: true
+  bypass_attempt: false

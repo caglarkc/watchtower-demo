@@ -1,0 +1,8 @@
+feature_id: F-066
+mode: positive
+phase: 3
+events:
+- event_type: peer_group_deviation
+  log_channel: app
+  z_score: 4.2
+  metric: file_reads

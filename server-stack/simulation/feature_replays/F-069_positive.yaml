@@ -1,0 +1,8 @@
+feature_id: F-069
+mode: positive
+phase: 3
+events:
+- event_type: proxy_tunnel
+  log_channel: proxy
+  protocol: unknown-tls-tunnel
+  duration_minutes: 45

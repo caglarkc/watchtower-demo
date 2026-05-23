@@ -1,0 +1,8 @@
+feature_id: F-044
+mode: negative
+phase: 3
+events:
+- event_type: wiki_bulk_download
+  log_channel: wiki
+  pages: 12
+  mb: 8

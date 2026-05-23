@@ -1,0 +1,8 @@
+feature_id: F-030
+mode: negative
+phase: 3
+events:
+- event_type: ai_confidential_prompt
+  log_channel: ai_gateway
+  contains_pii: false
+  bytes: 200

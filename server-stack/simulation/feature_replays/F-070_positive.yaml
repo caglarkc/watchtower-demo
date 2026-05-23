@@ -1,0 +1,8 @@
+feature_id: F-070
+mode: positive
+phase: 3
+events:
+- event_type: badge_login_mismatch
+  log_channel: badge
+  badge_present: false
+  login_success: true

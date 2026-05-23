@@ -1,0 +1,8 @@
+feature_id: F-033
+mode: negative
+phase: 3
+events:
+- event_type: unapproved_ai_domain
+  log_channel: proxy
+  domain: ai-approved.corp.local
+  allowed: true

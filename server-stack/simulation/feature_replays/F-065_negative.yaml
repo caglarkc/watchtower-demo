@@ -1,0 +1,8 @@
+feature_id: F-065
+mode: negative
+phase: 3
+events:
+- event_type: dormant_system_access
+  log_channel: endpoint
+  idle_days: 2
+  access_count: 1

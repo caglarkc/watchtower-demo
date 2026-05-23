@@ -1,0 +1,8 @@
+feature_id: F-076
+mode: negative
+phase: 3
+events:
+- event_type: old_entitlement_use
+  log_channel: hris
+  role_changed: true
+  old_group_used: false

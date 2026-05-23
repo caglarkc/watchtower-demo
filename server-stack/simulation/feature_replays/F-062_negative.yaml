@@ -1,0 +1,8 @@
+feature_id: F-062
+mode: negative
+phase: 3
+events:
+- event_type: risky_log_search
+  log_channel: siem
+  keywords:
+  - dashboard

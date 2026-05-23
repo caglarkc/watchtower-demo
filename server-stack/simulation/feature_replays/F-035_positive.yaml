@@ -1,0 +1,9 @@
+feature_id: F-035
+mode: positive
+phase: 3
+events:
+- event_type: ai_procedure_discovery
+  log_channel: ai_gateway
+  topics:
+  - incident_response
+  - password_policy

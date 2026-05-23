@@ -1,0 +1,8 @@
+feature_id: F-042
+mode: negative
+phase: 3
+events:
+- event_type: local_sensitive_accumulation
+  log_channel: endpoint
+  labeled_files: 5
+  gb: 0.4

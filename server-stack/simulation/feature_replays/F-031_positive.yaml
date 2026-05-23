@@ -1,0 +1,8 @@
+feature_id: F-031
+mode: positive
+phase: 3
+events:
+- event_type: ai_source_code_paste
+  log_channel: ai_gateway
+  lines: 2400
+  language: python

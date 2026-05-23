@@ -1,0 +1,9 @@
+feature_id: F-074
+mode: negative
+phase: 3
+events:
+- event_type: off_shift_access
+  log_channel: badge
+  shift: day
+  login_hour: 10
+  badge_swipe: true

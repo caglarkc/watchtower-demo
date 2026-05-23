@@ -1,0 +1,8 @@
+feature_id: F-072
+mode: negative
+phase: 3
+events:
+- event_type: offboarding_activity
+  log_channel: hris
+  status: active
+  logins_after: 0

@@ -1,0 +1,9 @@
+feature_id: F-078
+mode: negative
+phase: 3
+events:
+- event_type: contractor_out_of_scope
+  log_channel: hris
+  identity: contractor
+  systems:
+  - dev-git

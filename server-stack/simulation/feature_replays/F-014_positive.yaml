@@ -1,0 +1,8 @@
+feature_id: F-014
+mode: positive
+phase: 3
+events:
+- event_type: credential_reset_burst
+  log_channel: hris
+  resets: 12
+  unlocks: 8

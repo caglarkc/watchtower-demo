@@ -1,0 +1,16 @@
+feature_id: F-071
+mode: positive
+phase: 3
+events:
+- event_type: composite_signal
+  log_channel: ai_gateway
+  signal: ai_leak
+  weight: 0.4
+- event_type: composite_signal
+  log_channel: proxy
+  signal: exfil
+  weight: 0.35
+- event_type: composite_signal
+  log_channel: vault
+  signal: secret_burst
+  weight: 0.25

@@ -1,0 +1,9 @@
+feature_id: F-068
+mode: positive
+phase: 3
+events:
+- event_type: first_external_transfer
+  log_channel: proxy
+  destination: 203.0.113.50
+  mb: 3200
+  first_seen: true

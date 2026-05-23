@@ -1,0 +1,8 @@
+feature_id: F-035
+mode: negative
+phase: 3
+events:
+- event_type: ai_procedure_discovery
+  log_channel: ai_gateway
+  topics:
+  - general_help

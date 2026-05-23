@@ -1,0 +1,9 @@
+feature_id: F-068
+mode: negative
+phase: 3
+events:
+- event_type: first_external_transfer
+  log_channel: proxy
+  destination: partner.corp.local
+  mb: 50
+  first_seen: false

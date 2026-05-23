@@ -1,0 +1,8 @@
+feature_id: F-067
+mode: negative
+phase: 3
+events:
+- event_type: personal_cloud_upload
+  log_channel: cloud
+  provider: corp-onedrive
+  mb: 12

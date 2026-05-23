@@ -1,0 +1,8 @@
+feature_id: F-013
+mode: negative
+phase: 3
+events:
+- event_type: vault_read_burst
+  log_channel: vault
+  reads: 5
+  window_minutes: 60

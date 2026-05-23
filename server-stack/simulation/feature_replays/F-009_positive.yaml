@@ -1,0 +1,10 @@
+feature_id: F-009
+mode: positive
+phase: 3
+events:
+- event_type: concurrent_session
+  log_channel: badge
+  locations:
+  - floor-3
+  - floor-b1
+  minutes_apart: 12

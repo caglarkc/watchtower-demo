@@ -1,0 +1,7 @@
+feature_id: F-059
+mode: positive
+phase: 3
+events:
+- event_type: clipboard_large_copy
+  log_channel: activity
+  bytes: 48000000

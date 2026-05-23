@@ -1,0 +1,8 @@
+feature_id: F-077
+mode: negative
+phase: 3
+events:
+- event_type: leave_activity
+  log_channel: hris
+  on_leave: true
+  keyboard_events: 0

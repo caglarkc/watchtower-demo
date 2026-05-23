@@ -1,0 +1,8 @@
+feature_id: F-056
+mode: positive
+phase: 3
+events:
+- event_type: print_sensitive_correlation
+  log_channel: cups
+  pages: 180
+  sensitive_labels: 45

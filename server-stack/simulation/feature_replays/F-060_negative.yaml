@@ -1,0 +1,7 @@
+feature_id: F-060
+mode: negative
+phase: 3
+events:
+- event_type: screenshot_spike
+  log_channel: activity
+  count_per_hour: 3
