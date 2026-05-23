@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-081",
   "title": "Çoklu Departman Zincirli Fiziksel-Dijital Saldırı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "çapraz/multi-user",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 9081,
@@ -24,8 +24,29 @@
           "service": "mattermost",
           "response": {
             "signals": [
-              "baseline"
+              "ai_leak",
+              "exfil",
+              "secret_burst"
             ]
+          }
+        },
+        {
+          "service": "ai-gateway",
+          "response": {
+            "accepted": true,
+            "tokens": 4
+          }
+        },
+        {
+          "service": "proxy",
+          "response": {
+            "stored": true
+          }
+        },
+        {
+          "service": "vault",
+          "response": {
+            "reads": 10
           }
         }
       ],
@@ -78,7 +99,7 @@
         {
           "service": "badge",
           "response": {
-            "shift": "day"
+            "shift": "off"
           }
         }
       ],
@@ -131,7 +152,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 1,
+            "written": 2,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -169,7 +190,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 23104,
+            "count": 24384,
             "result": "PASS"
           },
           "result": "PASS",
@@ -251,20 +272,41 @@
       "service": "mattermost",
       "response": {
         "signals": [
-          "baseline"
+          "ai_leak",
+          "exfil",
+          "secret_burst"
         ]
+      }
+    },
+    {
+      "service": "ai-gateway",
+      "response": {
+        "accepted": true,
+        "tokens": 4
+      }
+    },
+    {
+      "service": "proxy",
+      "response": {
+        "stored": true
+      }
+    },
+    {
+      "service": "vault",
+      "response": {
+        "reads": 10
       }
     },
     {
       "service": "badge",
       "response": {
-        "shift": "day"
+        "shift": "off"
       }
     },
     {
       "service": "zeek",
       "response": {
-        "written": 1,
+        "written": 2,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -372,7 +414,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 23104,
+        "count": 24384,
         "result": "PASS"
       },
       "result": "PASS",
@@ -428,12 +470,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
-  "event_count": 5,
+  "anomaly_detected": true,
+  "event_count": 8,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:30.476990+00:00",
+  "generated_at": "2026-05-23T10:27:24.915526+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-081:9081:negative:real"
+  "replay_key": "S-081:9081:positive:real"
 }
