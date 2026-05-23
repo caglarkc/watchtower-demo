@@ -9,6 +9,7 @@ from watchtower.decision.service import DecisionService
 from watchtower.feedback.service import FeedbackService
 from watchtower.rules.engine import RuleEngine
 from watchtower.services.mode_controller import ModeController
+from watchtower.llm.gateway import LLMGateway
 from watchtower.storage.repositories.graph import GraphRepository
 
 
@@ -22,3 +23,4 @@ class GraphDeps:
     feedback: FeedbackService
     rules: RuleEngine
     graph_repo: GraphRepository
+    llm_gateway: LLMGateway | None = None

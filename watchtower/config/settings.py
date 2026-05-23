@@ -48,6 +48,23 @@ class WatchtowerSettings(BaseSettings):
         ge=0.0,
         le=1.0,
     )
+    llm_provider_chain: str = Field(
+        default="openai,anthropic,gemini,ollama,custom_openai_compatible",
+        description="Comma-separated provider fallback order",
+    )
+    llm_max_retries: int = Field(default=2, ge=0, le=2)
+    openai_api_key: str | None = Field(default=None)
+    openai_model: str = Field(default="gpt-4o-mini")
+    anthropic_api_key: str | None = Field(default=None)
+    anthropic_model: str = Field(default="claude-3-5-sonnet-20241022")
+    gemini_api_key: str | None = Field(default=None)
+    gemini_model: str = Field(default="gemini-2.0-flash")
+    ollama_base_url: str = Field(default="http://127.0.0.1:11434/v1")
+    ollama_model: str = Field(default="llama3.2")
+    custom_openai_base_url: str | None = Field(default=None)
+    custom_openai_api_key: str | None = Field(default=None)
+    custom_openai_model: str = Field(default="default")
+    llm_test_provider: str | None = Field(default=None)
 
     @property
     def migrations_dir(self) -> Path:
