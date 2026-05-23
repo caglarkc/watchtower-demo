@@ -33,8 +33,12 @@ cp .env.example .env
 ```bash
 wt sources register -t file_jsonl -n "AD JSONL" -c '{"file_path":"/data/ad.jsonl"}'
 wt sources register -t server_stack -n "Lab logs" -c '{"logs_root":"/lab/server-stack/logs"}'
+wt sources register -t elasticsearch -n "Corp ES" -c '{"base_url":"https://es:9200","index":"corp-*","auth_type":"api_key","api_key":"..."}'
+wt sources register -t wazuh -n "Wazuh" -c '{"api_url":"https://wazuh:55000","username":"wazuh","password":"..."}'
 wt sources health
 ```
+
+Invalid configs are rejected at registration (missing `file_path`, bad URL, Wazuh without credentials).
 
 ## Provider onboarding
 
