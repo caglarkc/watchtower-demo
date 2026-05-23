@@ -4,3 +4,4 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T01:25:50.427746+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T01:26:01.866166+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T01:26:04.284378+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T01:26:49.016700+00:00"}
