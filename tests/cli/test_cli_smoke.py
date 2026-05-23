@@ -8,6 +8,9 @@ from watchtower.cli.main import app
 from watchtower.services.app import create_app
 from watchtower.config.settings import WatchtowerSettings
 
+# Static test fixture; not a real credential.
+TEST_BOOTSTRAP_PASSWORD = "not-a-real-password-for-cli-tests"
+
 
 def test_cli_smoke_commands(tmp_path):
     db = tmp_path / "cli.db"
@@ -17,7 +20,15 @@ def test_cli_smoke_commands(tmp_path):
 
     result = runner.invoke(
         app,
-        ["--db", str(db), "bootstrap", "--username", "admin", "--password", "secret123"],
+        [
+            "--db",
+            str(db),
+            "bootstrap",
+            "--username",
+            "admin",
+            "--password",
+            TEST_BOOTSTRAP_PASSWORD,
+        ],
         obj=wt_app,
     )
     assert result.exit_code == 0, result.output
@@ -41,7 +52,15 @@ def test_cli_alerts_and_query(tmp_path):
     runner = CliRunner()
     runner.invoke(
         app,
-        ["--db", str(db), "bootstrap", "--username", "admin", "--password", "secret123"],
+        [
+            "--db",
+            str(db),
+            "bootstrap",
+            "--username",
+            "admin",
+            "--password",
+            TEST_BOOTSTRAP_PASSWORD,
+        ],
         obj=wt_app,
     )
     with wt_app.session() as session:
