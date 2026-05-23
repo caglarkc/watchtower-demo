@@ -42,11 +42,22 @@ feature-negative:
 	@test -n "$(FEATURE)" || (echo "Usage: make feature-negative FEATURE=F-001" && exit 1)
 	$(PYTHON) simulation/event_generator/run_feature.py --feature $(FEATURE) --mode negative
 
+scenario:
+	@test -n "$(SCENARIO)" || (echo "Usage: make scenario SCENARIO=S-001" && exit 1)
+	$(PYTHON) simulation/scenarios/run_scenario.py --scenario $(SCENARIO) --mode positive
+
+scenario-negative:
+	@test -n "$(SCENARIO)" || (echo "Usage: make scenario-negative SCENARIO=S-001" && exit 1)
+	$(PYTHON) simulation/scenarios/run_scenario.py --scenario $(SCENARIO) --mode negative
+
 test-smoke:
 	$(PYTEST) tests/smoke -v
 
 test-features:
 	$(PYTEST) tests/feature -v
+
+test-scenarios:
+	$(PYTEST) tests/scenario -v
 
 test-phase1:
 	$(PYTEST) tests/feature -m phase1 -v
