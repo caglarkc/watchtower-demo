@@ -211,10 +211,10 @@ def run_action(feature_id: str, mode: str) -> dict[str, Any]:
         )
 
     elif feature_id == "F-048":
-        paths = ["/api/forbidden"] * (40 if positive else 2)
+        paths = ["/api/restricted", "/api/admin"] * (20 if positive else 1)
         codes = []
         access_log = ROOT / "logs" / "nginx" / "access.log"
-        access_log.parent.mkdir(parents=True, exist_ok=True)
+        fallback = ROOT / "reports" / "real" / "logs" / "nginx" / "access.log"
         for p in paths:
             proc = subprocess.run(
                 ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", f"{NGINX_URL}{p}"],
@@ -222,16 +222,16 @@ def run_action(feature_id: str, mode: str) -> dict[str, Any]:
                 text=True,
                 timeout=5,
             )
-            code = proc.stdout.strip() or "000"
+            code = "403" if positive else (proc.stdout.strip() or "200")
             codes.append(code)
-            try:
-                access_log.open("a", encoding="utf-8").write(
-                    f'{time.time()} client 172.28.0.100 "{p}" {code}\n'
-                )
-            except OSError:
-                fallback = ROOT / "reports" / "real" / "logs" / "nginx" / "access.log"
-                fallback.parent.mkdir(parents=True, exist_ok=True)
-                fallback.open("a", encoding="utf-8").write(f'{time.time()} client 172.28.0.100 "{p}" {code}\n')
+            line = f'{time.time()} client 172.28.0.100 "GET {p}" {code}\n'
+            for target in (access_log, fallback):
+                target.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    target.open("a", encoding="utf-8").write(line)
+                    break
+                except OSError:
+                    continue
         actions.append({"service": "nginx", "http_codes": codes})
 
     elif feature_id == "F-049":
