@@ -116,6 +116,7 @@ def _build_session(
     conn: sqlite3.Connection,
     settings: WatchtowerSettings,
     database: Database,
+    checkpoint_store: GraphCheckpointStore,
 ) -> SessionContext:
     tenants = TenantRepository(conn)
     bootstrap = BootstrapRepository(conn)
@@ -180,6 +181,7 @@ def _build_session(
         rules=rules,
         graph_repo=graph_repo,
         conn=conn,
+        checkpoint_store=checkpoint_store,
         llm_gateway=llm_gateway,
         alerts=alert_service,
     )
@@ -233,7 +235,12 @@ def init_app(
         )
 
     database = Database(resolved_settings.database_path)
-    _app = AppContext(settings=resolved_settings, database=database)
+    checkpoint_store = GraphCheckpointStore.from_settings(resolved_settings)
+    _app = AppContext(
+        settings=resolved_settings,
+        database=database,
+        checkpoint_store=checkpoint_store,
+    )
     if run_migrations:
         _app.run_migrations()
     return _app
