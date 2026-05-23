@@ -101,7 +101,8 @@ def build_scenarios() -> dict:
                 "replay_command": f"make scenario SCENARIO={sid}",
                 "negative_command": f"make scenario-negative SCENARIO={sid}",
                 "evidence_path": f"reports/scenarios/{sid}.json",
-                "replay_script": f"simulation/scenarios/{sid}_replay.yaml",
+                "replay_script": f"simulation/scenarios/{sid}_positive.yaml",
+                "negative_replay_script": f"simulation/scenarios/{sid}_negative.yaml",
                 "status": "manifest",
             }
         )
