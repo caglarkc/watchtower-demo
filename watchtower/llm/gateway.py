@@ -53,6 +53,7 @@ class LLMGateway:
         *,
         audit_repo: LLMCallAuditRepository | None = None,
         max_retries: int = 2,
+        metrics: MetricsService | None = None,
     ) -> None:
         if not providers:
             msg = "At least one LLM provider is required"
@@ -60,6 +61,7 @@ class LLMGateway:
         self._providers = providers
         self._audit = audit_repo
         self._max_retries = max(0, min(max_retries, 2))
+        self._metrics = metrics
 
     @property
     def provider_names(self) -> list[str]:
@@ -77,6 +79,8 @@ class LLMGateway:
         schema = task_json_schema(allowed_task)
         errors: list[str] = []
         total_attempts = 0
+        if self._metrics is not None:
+            self._metrics.record_llm_call(tenant_id)
 
         for provider in self._providers:
             for attempt in range(self._max_retries + 1):
