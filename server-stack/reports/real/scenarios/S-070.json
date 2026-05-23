@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-070",
   "title": "Domain Controller Üzerinde Credential Dumping Script",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "IT Admin",
   "deterministic_seed": 7070,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 7402,
+            "count": 7962,
             "result": "PASS"
           },
           "result": "PASS",
@@ -79,7 +79,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 1
+            "events": 5
           }
         }
       ],
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-008",
-            "count": 5040,
+            "count": 5360,
             "result": "PASS"
           },
           "result": "PASS",
@@ -139,7 +139,7 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 1
+        "events": 5
       }
     }
   ],
@@ -168,7 +168,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 7402,
+        "count": 7962,
         "result": "PASS"
       },
       "result": "PASS",
@@ -198,7 +198,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-008",
-        "count": 5040,
+        "count": 5360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -224,12 +224,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:15.170935+00:00",
+  "generated_at": "2026-05-23T10:26:01.815671+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-070:7070:negative:real"
+  "replay_key": "S-070:7070:positive:real"
 }

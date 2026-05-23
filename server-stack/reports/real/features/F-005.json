@@ -2,20 +2,22 @@
   "id": "F-005",
   "feature_id": "F-005",
   "title": "DHCP/ARP Anomalisi (Rogue DHCP)",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "dhcp-server",
   "actions_executed": [
     {
       "service": "dhcp-logger",
-      "note": "negative: no rogue event emitted"
+      "response": {
+        "events": 4
+      }
     }
   ],
   "raw_logs_asserted": [
     {
-      "result": "PASS",
-      "note": "negative"
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dhcp/dhcpd.log",
+      "result": "PASS"
     }
   ],
   "ingest_assertions": [
@@ -39,9 +41,14 @@
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
-        "shipped": false,
-        "indexed": 0,
-        "note": "no log paths"
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-005",
+        "pipeline": {
+          "feature_id": "F-005",
+          "index": "corp-logs-f-005",
+          "indexed": 80
+        }
       }
     }
   ],
@@ -50,10 +57,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "duplicate lease/scope change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:20.038144+00:00",
+  "generated_at": "2026-05-23T10:26:01.393525+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
