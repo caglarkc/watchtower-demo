@@ -1,1 +1,2 @@
 {"event_type": "smb_rename_storm", "renames_per_minute": 120, "feature_id": "F-039", "timestamp": "2026-05-23T01:02:33.802650+00:00"}
+{"event_type": "smb_rename_storm", "renames_per_minute": 2, "feature_id": "F-039", "timestamp": "2026-05-23T01:02:35.326724+00:00"}

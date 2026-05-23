@@ -1,1 +1,2 @@
 {"event_type": "nic_promiscuous", "enabled": true, "feature_id": "F-057", "timestamp": "2026-05-23T01:02:34.075664+00:00"}
+{"event_type": "nic_promiscuous", "enabled": false, "feature_id": "F-057", "timestamp": "2026-05-23T01:02:35.614297+00:00"}

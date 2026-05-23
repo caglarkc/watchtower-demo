@@ -1,1 +1,2 @@
 {"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "feature_id": "F-015", "timestamp": "2026-05-23T01:02:33.593967+00:00"}
+{"event_type": "rdp_hop", "hops": ["ws1", "files1"], "feature_id": "F-015", "timestamp": "2026-05-23T01:02:35.122176+00:00"}

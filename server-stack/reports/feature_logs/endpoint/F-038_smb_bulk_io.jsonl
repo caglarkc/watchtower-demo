@@ -1,1 +1,2 @@
 {"event_type": "smb_bulk_io", "read_bytes": 18400000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T01:02:33.724773+00:00"}
+{"event_type": "smb_bulk_io", "read_bytes": 320000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T01:02:35.258693+00:00"}
