@@ -212,10 +212,15 @@ services:
     networks:
       corp-lan:
         ipv4_address: ${LOG_PIPELINE_IP:-172.28.0.16}
+    environment:
+      ELASTICSEARCH_URL: http://${ELASTICSEARCH_IP:-172.28.0.17}:9200
+      HOST_LOG_PREFIX: /var/log/corp/host
     volumes:
       - corp-logs:/var/log/corp
       - ./logs:/var/log/corp/host
     depends_on:
+      elasticsearch:
+        condition: service_healthy
       zeek-synthetic:
         condition: service_healthy
       endpoint-synthetic:
