@@ -20,6 +20,9 @@ from watchtower.storage.repositories.audit import AuditRepository
 from watchtower.storage.repositories.bootstrap import BootstrapRepository
 from watchtower.storage.repositories.mode import ModeRepository
 from watchtower.baseline.engine import BaselineEngine
+from watchtower.baseline.query import BaselineQueryAPI
+from watchtower.decision.service import DecisionService
+from watchtower.feedback.engine import FeedbackEngine
 from watchtower.feedback.service import FeedbackService
 from watchtower.rules.engine import RuleEngine
 from watchtower.candidates.service import CandidatePipelineService
@@ -62,6 +65,7 @@ class SessionContext:
     baseline: BaselineEngine
     feedback: FeedbackService
     rules: RuleEngine
+    decision: DecisionService
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
@@ -136,6 +140,12 @@ def _build_session(
     feedback_rules_repo = FeedbackRulesRepository(conn)
     feedback = FeedbackService(feedback_rules_repo)
     rules = RuleEngine(feedback_rules_repo)
+    baseline_query = BaselineQueryAPI(baseline)
+    feedback_engine = FeedbackEngine(rules)
+    decision = DecisionService(
+        baseline=baseline_query,
+        feedback=feedback_engine,
+    )
     return SessionContext(
         conn=conn,
         settings=settings,
@@ -159,6 +169,7 @@ def _build_session(
         baseline=baseline,
         feedback=feedback,
         rules=rules,
+        decision=decision,
     )
 
 
