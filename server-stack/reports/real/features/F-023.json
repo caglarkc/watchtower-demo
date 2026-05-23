@@ -2,8 +2,8 @@
   "id": "F-023",
   "feature_id": "F-023",
   "title": "Mail İçeriğinde Hassas Anahtar Kelime Sinyali",
-  "mode": "negative",
-  "parity_level": "L2",
+  "mode": "positive",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
   "actions_executed": [
@@ -22,7 +22,7 @@
   ],
   "ingest_assertions": [
     {
-      "assertion": "elasticsearch:corp-logs:F-023",
+      "assertion": "L3:elasticsearch:corp-logs-f-023",
       "elasticsearch": {
         "target": "http://172.28.0.17:9200",
         "cluster_status": "green",
@@ -30,10 +30,26 @@
       },
       "log_pipeline": {
         "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-023",
+        "count": 4,
         "result": "PASS"
       },
       "result": "PASS",
-      "note": "RI-1: cluster healthy; index routing in RI-2+"
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 80,
+        "index": "corp-logs-f-023",
+        "pipeline": {
+          "feature_id": "F-023",
+          "index": "corp-logs-f-023",
+          "indexed": 80
+        }
+      }
     }
   ],
   "seed_refs": [
@@ -42,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "sensitive keyword mail event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:42.049389+00:00",
+  "generated_at": "2026-05-23T03:05:22.277464+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
