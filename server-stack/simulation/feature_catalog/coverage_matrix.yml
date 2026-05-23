@@ -1,0 +1,830 @@
+version: '1.0'
+phase: 0
+scenario_to_features:
+- scenario_id: S-001
+  feature_ids:
+  - F-001
+  - F-079
+  - F-038
+  - F-056
+  - F-081
+- scenario_id: S-002
+  feature_ids:
+  - F-001
+  - F-079
+  - F-038
+  - F-081
+- scenario_id: S-003
+  feature_ids:
+  - F-038
+  - F-039
+  - F-072
+  - F-022
+  - F-068
+- scenario_id: S-004
+  feature_ids:
+  - F-055
+  - F-001
+  - F-042
+  - F-067
+- scenario_id: S-005
+  feature_ids:
+  - F-037
+  - F-039
+  - F-062
+  - F-030
+  - F-036
+- scenario_id: S-006
+  feature_ids:
+  - F-049
+  - F-042
+- scenario_id: S-007
+  feature_ids:
+  - F-045
+  - F-043
+  - F-031
+  - F-034
+- scenario_id: S-008
+  feature_ids:
+  - F-001
+  - F-055
+  - F-053
+  - F-067
+  - F-068
+- scenario_id: S-009
+  feature_ids:
+  - F-045
+  - F-066
+- scenario_id: S-010
+  feature_ids:
+  - F-038
+  - F-037
+- scenario_id: S-011
+  feature_ids:
+  - F-024
+  - F-025
+  - F-019
+- scenario_id: S-012
+  feature_ids:
+  - F-047
+  - F-075
+- scenario_id: S-013
+  feature_ids:
+  - F-038
+  - F-018
+  - F-060
+- scenario_id: S-014
+  feature_ids:
+  - F-051
+  - F-001
+  - F-055
+- scenario_id: S-015
+  feature_ids:
+  - F-045
+- scenario_id: S-016
+  feature_ids:
+  - F-008
+  - F-015
+  - F-079
+- scenario_id: S-017
+  feature_ids:
+  - F-013
+- scenario_id: S-018
+  feature_ids:
+  - F-079
+  - F-010
+  - F-015
+- scenario_id: S-019
+  feature_ids:
+  - F-010
+- scenario_id: S-020
+  feature_ids:
+  - F-009
+  - F-070
+- scenario_id: S-021
+  feature_ids:
+  - F-012
+  - F-047
+- scenario_id: S-022
+  feature_ids:
+  - F-010
+  - F-012
+  - F-047
+- scenario_id: S-023
+  feature_ids:
+  - F-079
+  - F-063
+  - F-070
+- scenario_id: S-024
+  feature_ids:
+  - F-012
+- scenario_id: S-025
+  feature_ids:
+  - F-015
+  - F-063
+- scenario_id: S-026
+  feature_ids:
+  - F-009
+- scenario_id: S-027
+  feature_ids:
+  - F-017
+- scenario_id: S-028
+  feature_ids:
+  - F-015
+  - F-061
+  - F-079
+- scenario_id: S-029
+  feature_ids:
+  - F-037
+  - F-040
+- scenario_id: S-030
+  feature_ids:
+  - F-011
+- scenario_id: S-031
+  feature_ids:
+  - F-042
+  - F-054
+- scenario_id: S-032
+  feature_ids:
+  - F-045
+  - F-065
+- scenario_id: S-033
+  feature_ids:
+  - F-015
+  - F-048
+- scenario_id: S-034
+  feature_ids:
+  - F-011
+- scenario_id: S-035
+  feature_ids:
+  - F-007
+- scenario_id: S-036
+  feature_ids:
+  - F-018
+  - F-024
+- scenario_id: S-037
+  feature_ids:
+  - F-037
+- scenario_id: S-038
+  feature_ids:
+  - F-048
+- scenario_id: S-039
+  feature_ids:
+  - F-051
+  - F-050
+- scenario_id: S-040
+  feature_ids:
+  - F-011
+  - F-052
+- scenario_id: S-041
+  feature_ids:
+  - F-047
+- scenario_id: S-042
+  feature_ids:
+  - F-050
+  - F-058
+- scenario_id: S-043
+  feature_ids:
+  - F-053
+- scenario_id: S-044
+  feature_ids:
+  - F-062
+  - F-054
+  - F-058
+- scenario_id: S-045
+  feature_ids:
+  - F-024
+  - F-018
+- scenario_id: S-046
+  feature_ids:
+  - F-075
+- scenario_id: S-047
+  feature_ids:
+  - F-001
+  - F-072
+  - F-064
+- scenario_id: S-048
+  feature_ids:
+  - F-047
+- scenario_id: S-049
+  feature_ids:
+  - F-062
+- scenario_id: S-050
+  feature_ids:
+  - F-066
+  - F-072
+  - F-076
+- scenario_id: S-051
+  feature_ids:
+  - F-041
+- scenario_id: S-052
+  feature_ids:
+  - F-020
+  - F-023
+  - F-021
+  - F-028
+  - F-019
+- scenario_id: S-053
+  feature_ids:
+  - F-006
+  - F-048
+- scenario_id: S-054
+  feature_ids:
+  - F-045
+  - F-048
+  - F-007
+- scenario_id: S-055
+  feature_ids:
+  - F-055
+  - F-043
+- scenario_id: S-056
+  feature_ids:
+  - F-080
+  - F-037
+  - F-060
+  - F-077
+- scenario_id: S-057
+  feature_ids:
+  - F-043
+  - F-038
+- scenario_id: S-058
+  feature_ids:
+  - F-055
+  - F-063
+- scenario_id: S-059
+  feature_ids:
+  - F-049
+  - F-042
+  - F-054
+  - F-031
+- scenario_id: S-060
+  feature_ids:
+  - F-037
+  - F-038
+- scenario_id: S-061
+  feature_ids:
+  - F-014
+- scenario_id: S-062
+  feature_ids:
+  - F-049
+  - F-054
+  - F-031
+  - F-027
+- scenario_id: S-063
+  feature_ids:
+  - F-014
+- scenario_id: S-064
+  feature_ids:
+  - F-057
+- scenario_id: S-065
+  feature_ids:
+  - F-078
+  - F-072
+  - F-077
+- scenario_id: S-066
+  feature_ids:
+  - F-041
+  - F-039
+- scenario_id: S-067
+  feature_ids:
+  - F-006
+  - F-070
+  - F-074
+- scenario_id: S-068
+  feature_ids:
+  - F-007
+- scenario_id: S-069
+  feature_ids:
+  - F-003
+  - F-005
+  - F-004
+  - F-069
+- scenario_id: S-070
+  feature_ids:
+  - F-054
+  - F-008
+- scenario_id: S-071
+  feature_ids:
+  - F-006
+  - F-048
+- scenario_id: S-072
+  feature_ids:
+  - F-002
+  - F-057
+  - F-069
+- scenario_id: S-073
+  feature_ids:
+  - F-046
+  - F-059
+- scenario_id: S-074
+  feature_ids:
+  - F-046
+  - F-065
+  - F-069
+- scenario_id: S-075
+  feature_ids:
+  - F-037
+  - F-063
+  - F-079
+- scenario_id: S-076
+  feature_ids:
+  - F-011
+  - F-014
+- scenario_id: S-077
+  feature_ids:
+  - F-023
+  - F-026
+- scenario_id: S-078
+  feature_ids:
+  - F-048
+  - F-006
+  - F-029
+- scenario_id: S-079
+  feature_ids:
+  - F-016
+  - F-020
+  - F-023
+  - F-027
+- scenario_id: S-080
+  feature_ids:
+  - F-071
+  - F-044
+  - F-012
+  - F-050
+  - F-038
+  - F-030
+  - F-032
+  - F-033
+  - F-035
+- scenario_id: S-081
+  feature_ids:
+  - F-071
+  - F-074
+  - F-015
+  - F-062
+- scenario_id: S-082
+  feature_ids:
+  - F-014
+  - F-072
+  - F-024
+  - F-076
+- scenario_id: S-083
+  feature_ids:
+  - F-073
+  - F-039
+  - F-037
+feature_to_scenarios:
+- feature_id: F-001
+  scenario_ids:
+  - S-001
+  - S-002
+  - S-004
+  - S-008
+  - S-014
+  - S-047
+  scenario_count: 6
+- feature_id: F-002
+  scenario_ids:
+  - S-072
+  scenario_count: 1
+- feature_id: F-003
+  scenario_ids:
+  - S-069
+  scenario_count: 1
+- feature_id: F-004
+  scenario_ids:
+  - S-069
+  scenario_count: 1
+- feature_id: F-005
+  scenario_ids:
+  - S-069
+  scenario_count: 1
+- feature_id: F-006
+  scenario_ids:
+  - S-053
+  - S-067
+  - S-071
+  - S-078
+  scenario_count: 4
+- feature_id: F-007
+  scenario_ids:
+  - S-035
+  - S-054
+  - S-068
+  scenario_count: 3
+- feature_id: F-008
+  scenario_ids:
+  - S-016
+  - S-070
+  scenario_count: 2
+- feature_id: F-009
+  scenario_ids:
+  - S-020
+  - S-026
+  scenario_count: 2
+- feature_id: F-010
+  scenario_ids:
+  - S-018
+  - S-019
+  - S-022
+  scenario_count: 3
+- feature_id: F-011
+  scenario_ids:
+  - S-030
+  - S-034
+  - S-040
+  - S-076
+  scenario_count: 4
+- feature_id: F-012
+  scenario_ids:
+  - S-021
+  - S-022
+  - S-024
+  - S-080
+  scenario_count: 4
+- feature_id: F-013
+  scenario_ids:
+  - S-017
+  scenario_count: 1
+- feature_id: F-014
+  scenario_ids:
+  - S-061
+  - S-063
+  - S-076
+  - S-082
+  scenario_count: 4
+- feature_id: F-015
+  scenario_ids:
+  - S-016
+  - S-018
+  - S-025
+  - S-028
+  - S-033
+  - S-081
+  scenario_count: 6
+- feature_id: F-016
+  scenario_ids:
+  - S-079
+  scenario_count: 1
+- feature_id: F-017
+  scenario_ids:
+  - S-027
+  scenario_count: 1
+- feature_id: F-018
+  scenario_ids:
+  - S-013
+  - S-036
+  - S-045
+  scenario_count: 3
+- feature_id: F-019
+  scenario_ids:
+  - S-011
+  - S-052
+  scenario_count: 2
+- feature_id: F-020
+  scenario_ids:
+  - S-052
+  - S-079
+  scenario_count: 2
+- feature_id: F-021
+  scenario_ids:
+  - S-052
+  scenario_count: 1
+- feature_id: F-022
+  scenario_ids:
+  - S-003
+  scenario_count: 1
+- feature_id: F-023
+  scenario_ids:
+  - S-052
+  - S-077
+  - S-079
+  scenario_count: 3
+- feature_id: F-024
+  scenario_ids:
+  - S-011
+  - S-036
+  - S-045
+  - S-082
+  scenario_count: 4
+- feature_id: F-025
+  scenario_ids:
+  - S-011
+  scenario_count: 1
+- feature_id: F-026
+  scenario_ids:
+  - S-077
+  scenario_count: 1
+- feature_id: F-027
+  scenario_ids:
+  - S-062
+  - S-079
+  scenario_count: 2
+- feature_id: F-028
+  scenario_ids:
+  - S-052
+  scenario_count: 1
+- feature_id: F-029
+  scenario_ids:
+  - S-078
+  scenario_count: 1
+- feature_id: F-030
+  scenario_ids:
+  - S-005
+  - S-080
+  scenario_count: 2
+- feature_id: F-031
+  scenario_ids:
+  - S-007
+  - S-059
+  - S-062
+  scenario_count: 3
+- feature_id: F-032
+  scenario_ids:
+  - S-080
+  scenario_count: 1
+- feature_id: F-033
+  scenario_ids:
+  - S-080
+  scenario_count: 1
+- feature_id: F-034
+  scenario_ids:
+  - S-007
+  scenario_count: 1
+- feature_id: F-035
+  scenario_ids:
+  - S-080
+  scenario_count: 1
+- feature_id: F-036
+  scenario_ids:
+  - S-005
+  scenario_count: 1
+- feature_id: F-037
+  scenario_ids:
+  - S-005
+  - S-010
+  - S-029
+  - S-037
+  - S-056
+  - S-060
+  - S-075
+  - S-083
+  scenario_count: 8
+- feature_id: F-038
+  scenario_ids:
+  - S-001
+  - S-002
+  - S-003
+  - S-010
+  - S-013
+  - S-057
+  - S-060
+  - S-080
+  scenario_count: 8
+- feature_id: F-039
+  scenario_ids:
+  - S-003
+  - S-005
+  - S-066
+  - S-083
+  scenario_count: 4
+- feature_id: F-040
+  scenario_ids:
+  - S-029
+  scenario_count: 1
+- feature_id: F-041
+  scenario_ids:
+  - S-051
+  - S-066
+  scenario_count: 2
+- feature_id: F-042
+  scenario_ids:
+  - S-004
+  - S-006
+  - S-031
+  - S-059
+  scenario_count: 4
+- feature_id: F-043
+  scenario_ids:
+  - S-007
+  - S-055
+  - S-057
+  scenario_count: 3
+- feature_id: F-044
+  scenario_ids:
+  - S-080
+  scenario_count: 1
+- feature_id: F-045
+  scenario_ids:
+  - S-007
+  - S-009
+  - S-015
+  - S-032
+  - S-054
+  scenario_count: 5
+- feature_id: F-046
+  scenario_ids:
+  - S-073
+  - S-074
+  scenario_count: 2
+- feature_id: F-047
+  scenario_ids:
+  - S-012
+  - S-021
+  - S-022
+  - S-041
+  - S-048
+  scenario_count: 5
+- feature_id: F-048
+  scenario_ids:
+  - S-033
+  - S-038
+  - S-053
+  - S-054
+  - S-071
+  - S-078
+  scenario_count: 6
+- feature_id: F-049
+  scenario_ids:
+  - S-006
+  - S-059
+  - S-062
+  scenario_count: 3
+- feature_id: F-050
+  scenario_ids:
+  - S-039
+  - S-042
+  - S-080
+  scenario_count: 3
+- feature_id: F-051
+  scenario_ids:
+  - S-014
+  - S-039
+  scenario_count: 2
+- feature_id: F-052
+  scenario_ids:
+  - S-040
+  scenario_count: 1
+- feature_id: F-053
+  scenario_ids:
+  - S-008
+  - S-043
+  scenario_count: 2
+- feature_id: F-054
+  scenario_ids:
+  - S-031
+  - S-044
+  - S-059
+  - S-062
+  - S-070
+  scenario_count: 5
+- feature_id: F-055
+  scenario_ids:
+  - S-004
+  - S-008
+  - S-014
+  - S-055
+  - S-058
+  scenario_count: 5
+- feature_id: F-056
+  scenario_ids:
+  - S-001
+  scenario_count: 1
+- feature_id: F-057
+  scenario_ids:
+  - S-064
+  - S-072
+  scenario_count: 2
+- feature_id: F-058
+  scenario_ids:
+  - S-042
+  - S-044
+  scenario_count: 2
+- feature_id: F-059
+  scenario_ids:
+  - S-073
+  scenario_count: 1
+- feature_id: F-060
+  scenario_ids:
+  - S-013
+  - S-056
+  scenario_count: 2
+- feature_id: F-061
+  scenario_ids:
+  - S-028
+  scenario_count: 1
+- feature_id: F-062
+  scenario_ids:
+  - S-005
+  - S-044
+  - S-049
+  - S-081
+  scenario_count: 4
+- feature_id: F-063
+  scenario_ids:
+  - S-023
+  - S-025
+  - S-058
+  - S-075
+  scenario_count: 4
+- feature_id: F-064
+  scenario_ids:
+  - S-047
+  scenario_count: 1
+- feature_id: F-065
+  scenario_ids:
+  - S-032
+  - S-074
+  scenario_count: 2
+- feature_id: F-066
+  scenario_ids:
+  - S-009
+  - S-050
+  scenario_count: 2
+- feature_id: F-067
+  scenario_ids:
+  - S-004
+  - S-008
+  scenario_count: 2
+- feature_id: F-068
+  scenario_ids:
+  - S-003
+  - S-008
+  scenario_count: 2
+- feature_id: F-069
+  scenario_ids:
+  - S-069
+  - S-072
+  - S-074
+  scenario_count: 3
+- feature_id: F-070
+  scenario_ids:
+  - S-020
+  - S-023
+  - S-067
+  scenario_count: 3
+- feature_id: F-071
+  scenario_ids:
+  - S-080
+  - S-081
+  scenario_count: 2
+- feature_id: F-072
+  scenario_ids:
+  - S-003
+  - S-047
+  - S-050
+  - S-065
+  - S-082
+  scenario_count: 5
+- feature_id: F-073
+  scenario_ids:
+  - S-083
+  scenario_count: 1
+- feature_id: F-074
+  scenario_ids:
+  - S-067
+  - S-081
+  scenario_count: 2
+- feature_id: F-075
+  scenario_ids:
+  - S-012
+  - S-046
+  scenario_count: 2
+- feature_id: F-076
+  scenario_ids:
+  - S-050
+  - S-082
+  scenario_count: 2
+- feature_id: F-077
+  scenario_ids:
+  - S-056
+  - S-065
+  scenario_count: 2
+- feature_id: F-078
+  scenario_ids:
+  - S-065
+  scenario_count: 1
+- feature_id: F-079
+  scenario_ids:
+  - S-001
+  - S-002
+  - S-016
+  - S-018
+  - S-023
+  - S-028
+  - S-075
+  scenario_count: 7
+- feature_id: F-080
+  scenario_ids:
+  - S-056
+  scenario_count: 1
+- feature_id: F-081
+  scenario_ids:
+  - S-001
+  - S-002
+  scenario_count: 2
+summary:
+  total_features: 81
+  total_scenarios: 83
+  features_with_scenario: 81
+  features_without_scenario: []

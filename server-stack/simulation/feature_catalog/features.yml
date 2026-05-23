@@ -1,0 +1,1225 @@
+version: '1.0'
+phase: 0
+total_features: 81
+features:
+- feature_id: F-001
+  title: Kullanıcı Başına SMB/Dosya Sunucu Veri Çekim Profili
+  category: ağ trafiği
+  phase: 1
+  simulation_source: Samba file audit + Zeek/synthetic SMB flow
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  - zeek
+  evidence_expected: SMB read volume event
+  positive_command: make feature FEATURE=F-001
+  negative_command: make feature-negative FEATURE=F-001
+  evidence_path: reports/features/F-001.json
+  replay_positive: simulation/feature_replays/F-001_positive.yaml
+  replay_negative: simulation/feature_replays/F-001_negative.yaml
+  status: manifest
+- feature_id: F-002
+  title: East-West Lateral Trafik Patterni
+  category: ağ trafiği
+  phase: 1
+  simulation_source: Zeek conn.log + east-west flow generator
+  simulation_type: synthetic_replay
+  services:
+  - zeek
+  evidence_expected: host/port fan-out event
+  positive_command: make feature FEATURE=F-002
+  negative_command: make feature-negative FEATURE=F-002
+  evidence_path: reports/features/F-002.json
+  replay_positive: simulation/feature_replays/F-002_positive.yaml
+  replay_negative: simulation/feature_replays/F-002_negative.yaml
+  status: manifest
+- feature_id: F-003
+  title: İç DNS Sorgu Entropisi
+  category: ağ trafiği
+  phase: 1
+  simulation_source: BIND query log + DNS entropy generator
+  simulation_type: synthetic_replay
+  services:
+  - bind
+  evidence_expected: TXT/NXDOMAIN/high-entropy query event
+  positive_command: make feature FEATURE=F-003
+  negative_command: make feature-negative FEATURE=F-003
+  evidence_path: reports/features/F-003.json
+  replay_positive: simulation/feature_replays/F-003_positive.yaml
+  replay_negative: simulation/feature_replays/F-003_negative.yaml
+  status: manifest
+- feature_id: F-004
+  title: İç Ağda SMB/NTLM Sürüm Düşürme (Downgrade)
+  category: ağ trafiği
+  phase: 1
+  simulation_source: SMB downgrade synthetic packet/log generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: SMBv1/NTLMv1 downgrade attempt
+  positive_command: make feature FEATURE=F-004
+  negative_command: make feature-negative FEATURE=F-004
+  evidence_path: reports/features/F-004.json
+  replay_positive: simulation/feature_replays/F-004_positive.yaml
+  replay_negative: simulation/feature_replays/F-004_negative.yaml
+  status: manifest
+- feature_id: F-005
+  title: DHCP/ARP Anomalisi (Rogue DHCP)
+  category: ağ trafiği
+  phase: 1
+  simulation_source: DHCP server log + rogue DHCP/ARP generator
+  simulation_type: synthetic_replay
+  services:
+  - dhcp
+  evidence_expected: duplicate lease/scope change event
+  positive_command: make feature FEATURE=F-005
+  negative_command: make feature-negative FEATURE=F-005
+  evidence_path: reports/features/F-005.json
+  replay_positive: simulation/feature_replays/F-005_positive.yaml
+  replay_negative: simulation/feature_replays/F-005_negative.yaml
+  status: manifest
+- feature_id: F-006
+  title: Başarısız Login Patlaması Sonrası Başarılı Erişim
+  category: ağ trafiği
+  phase: 1
+  simulation_source: Samba AD auth log + failed/success login replay
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: 4625 burst then 4624 success
+  positive_command: make feature FEATURE=F-006
+  negative_command: make feature-negative FEATURE=F-006
+  evidence_path: reports/features/F-006.json
+  replay_positive: simulation/feature_replays/F-006_positive.yaml
+  replay_negative: simulation/feature_replays/F-006_negative.yaml
+  status: manifest
+- feature_id: F-007
+  title: İç Ağ Port Taraması ve Servis Keşfi
+  category: ağ trafiği
+  phase: 1
+  simulation_source: Zeek conn.log + port scan replay
+  simulation_type: synthetic_replay
+  services:
+  - zeek
+  evidence_expected: high cardinality port scan event
+  positive_command: make feature FEATURE=F-007
+  negative_command: make feature-negative FEATURE=F-007
+  evidence_path: reports/features/F-007.json
+  replay_positive: simulation/feature_replays/F-007_positive.yaml
+  replay_negative: simulation/feature_replays/F-007_negative.yaml
+  status: manifest
+- feature_id: F-008
+  title: Kerberos / NTLM Auth Hacmi ve Hedef Çeşitliliği
+  category: kimlik ve erişim
+  phase: 1
+  simulation_source: Samba AD Kerberos/NTLM synthetic auth log
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: TGT/NTLM target diversity event
+  positive_command: make feature FEATURE=F-008
+  negative_command: make feature-negative FEATURE=F-008
+  evidence_path: reports/features/F-008.json
+  replay_positive: simulation/feature_replays/F-008_positive.yaml
+  replay_negative: simulation/feature_replays/F-008_negative.yaml
+  status: manifest
+- feature_id: F-009
+  title: Eşzamanlı Oturum ve Bina İçi Lokasyon Çakışması
+  category: kimlik ve erişim
+  phase: 3
+  simulation_source: Badge API + AD login replay + switch-port mock
+  simulation_type: synthetic_replay
+  services:
+  - badge_api
+  evidence_expected: same user multi-location session
+  positive_command: make feature FEATURE=F-009
+  negative_command: make feature-negative FEATURE=F-009
+  evidence_path: reports/features/F-009.json
+  replay_positive: simulation/feature_replays/F-009_positive.yaml
+  replay_negative: simulation/feature_replays/F-009_negative.yaml
+  status: manifest
+- feature_id: F-010
+  title: Hizmet Hesaplarının İnteraktif Kullanımı
+  category: kimlik ve erişim
+  phase: 1
+  simulation_source: Samba AD login event generator
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: service account interactive logon
+  positive_command: make feature FEATURE=F-010
+  negative_command: make feature-negative FEATURE=F-010
+  evidence_path: reports/features/F-010.json
+  replay_positive: simulation/feature_replays/F-010_positive.yaml
+  replay_negative: simulation/feature_replays/F-010_negative.yaml
+  status: manifest
+- feature_id: F-011
+  title: AD Grup Üyeliği ve Privileged Değişiklik
+  category: kimlik ve erişim
+  phase: 1
+  simulation_source: Samba AD group-change replay
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: privileged group add/remove event
+  positive_command: make feature FEATURE=F-011
+  negative_command: make feature-negative FEATURE=F-011
+  evidence_path: reports/features/F-011.json
+  replay_positive: simulation/feature_replays/F-011_positive.yaml
+  replay_negative: simulation/feature_replays/F-011_negative.yaml
+  status: manifest
+- feature_id: F-012
+  title: Servis Hesabı ve API Key Kullanım Haritası
+  category: kimlik ve erişim
+  phase: 3
+  simulation_source: API gateway mock + Vault audit + app access log
+  simulation_type: synthetic_replay
+  services:
+  - vault
+  evidence_expected: API key multi-source usage
+  positive_command: make feature FEATURE=F-012
+  negative_command: make feature-negative FEATURE=F-012
+  evidence_path: reports/features/F-012.json
+  replay_positive: simulation/feature_replays/F-012_positive.yaml
+  replay_negative: simulation/feature_replays/F-012_negative.yaml
+  status: manifest
+- feature_id: F-013
+  title: Secret Store Okuma Burst
+  category: kimlik ve erişim
+  phase: 3
+  simulation_source: Vault audit log replay
+  simulation_type: synthetic_replay
+  services:
+  - vault
+  evidence_expected: secret read burst event
+  positive_command: make feature FEATURE=F-013
+  negative_command: make feature-negative FEATURE=F-013
+  evidence_path: reports/features/F-013.json
+  replay_positive: simulation/feature_replays/F-013_positive.yaml
+  replay_negative: simulation/feature_replays/F-013_negative.yaml
+  status: manifest
+- feature_id: F-014
+  title: Credential Reset ve Unlock Yoğunluğu
+  category: kimlik ve erişim
+  phase: 3
+  simulation_source: HR/helpdesk mock + AD admin action log
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: reset/unlock burst event
+  positive_command: make feature FEATURE=F-014
+  negative_command: make feature-negative FEATURE=F-014
+  evidence_path: reports/features/F-014.json
+  replay_positive: simulation/feature_replays/F-014_positive.yaml
+  replay_negative: simulation/feature_replays/F-014_negative.yaml
+  status: manifest
+- feature_id: F-015
+  title: RDP/PSRemoting Hop Pattern
+  category: kimlik ve erişim
+  phase: 1
+  simulation_source: RDP/WinRM synthetic session log + Zeek flow
+  simulation_type: synthetic_replay
+  services:
+  - zeek
+  evidence_expected: hop-chain session event
+  positive_command: make feature FEATURE=F-015
+  negative_command: make feature-negative FEATURE=F-015
+  evidence_path: reports/features/F-015.json
+  replay_positive: simulation/feature_replays/F-015_positive.yaml
+  replay_negative: simulation/feature_replays/F-015_negative.yaml
+  status: manifest
+- feature_id: F-016
+  title: Dahili Mail Gönderim Hacmi ve Ek Boyutu
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix/Dovecot/Roundcube logs
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  - dovecot
+  - roundcube
+  evidence_expected: mail volume and attachment-size event
+  positive_command: make feature FEATURE=F-016
+  negative_command: make feature-negative FEATURE=F-016
+  evidence_path: reports/features/F-016.json
+  replay_positive: simulation/feature_replays/F-016_positive.yaml
+  replay_negative: simulation/feature_replays/F-016_negative.yaml
+  status: manifest
+- feature_id: F-017
+  title: Mail Forward/Delegate Kural Değişimi
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Dovecot/Roundcube rule-change synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - dovecot
+  - roundcube
+  evidence_expected: forward/delegate rule change
+  positive_command: make feature FEATURE=F-017
+  negative_command: make feature-negative FEATURE=F-017
+  evidence_path: reports/features/F-017.json
+  replay_positive: simulation/feature_replays/F-017_positive.yaml
+  replay_negative: simulation/feature_replays/F-017_negative.yaml
+  status: manifest
+- feature_id: F-018
+  title: Dahili Mail Kutu Dışı Erişim
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Dovecot IMAP audit replay
+  simulation_type: synthetic_replay
+  services:
+  - dovecot
+  evidence_expected: out-of-mailbox access event
+  positive_command: make feature FEATURE=F-018
+  negative_command: make feature-negative FEATURE=F-018
+  evidence_path: reports/features/F-018.json
+  replay_positive: simulation/feature_replays/F-018_positive.yaml
+  replay_negative: simulation/feature_replays/F-018_negative.yaml
+  status: manifest
+- feature_id: F-019
+  title: Mail Ek Entropi ve Dosya Tipi Uyuşmazlığı
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix attachment metadata generator
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  evidence_expected: entropy/type mismatch event
+  positive_command: make feature FEATURE=F-019
+  negative_command: make feature-negative FEATURE=F-019
+  evidence_path: reports/features/F-019.json
+  replay_positive: simulation/feature_replays/F-019_positive.yaml
+  replay_negative: simulation/feature_replays/F-019_negative.yaml
+  status: manifest
+- feature_id: F-020
+  title: Gizli Alıcı (BCC) ve Toplu Dağıtım Sapması
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix envelope log generator
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  evidence_expected: BCC/distribution-list anomaly
+  positive_command: make feature FEATURE=F-020
+  negative_command: make feature-negative FEATURE=F-020
+  evidence_path: reports/features/F-020.json
+  replay_positive: simulation/feature_replays/F-020_positive.yaml
+  replay_negative: simulation/feature_replays/F-020_negative.yaml
+  status: manifest
+- feature_id: F-021
+  title: Kişisel E-posta Adreslerine Ekli Posta Gönderimi
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix outbound log + personal-domain sink
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  evidence_expected: personal email attachment event
+  positive_command: make feature FEATURE=F-021
+  negative_command: make feature-negative FEATURE=F-021
+  evidence_path: reports/features/F-021.json
+  replay_positive: simulation/feature_replays/F-021_positive.yaml
+  replay_negative: simulation/feature_replays/F-021_negative.yaml
+  status: manifest
+- feature_id: F-022
+  title: Bilinmeyen veya Rakip Kuruluşa Ekli Posta Gönderimi
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix outbound log + external-domain allowlist mock
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  evidence_expected: unknown competitor-domain attachment
+  positive_command: make feature FEATURE=F-022
+  negative_command: make feature-negative FEATURE=F-022
+  evidence_path: reports/features/F-022.json
+  replay_positive: simulation/feature_replays/F-022_positive.yaml
+  replay_negative: simulation/feature_replays/F-022_negative.yaml
+  status: manifest
+- feature_id: F-023
+  title: Mail İçeriğinde Hassas Anahtar Kelime Sinyali
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Mail content metadata generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: sensitive keyword mail event
+  positive_command: make feature FEATURE=F-023
+  negative_command: make feature-negative FEATURE=F-023
+  evidence_path: reports/features/F-023.json
+  replay_positive: simulation/feature_replays/F-023_positive.yaml
+  replay_negative: simulation/feature_replays/F-023_negative.yaml
+  status: manifest
+- feature_id: F-024
+  title: Eski Mail Arşivinin Toplu Okunması
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Dovecot IMAP audit replay
+  simulation_type: synthetic_replay
+  services:
+  - dovecot
+  evidence_expected: old archive bulk-read event
+  positive_command: make feature FEATURE=F-024
+  negative_command: make feature-negative FEATURE=F-024
+  evidence_path: reports/features/F-024.json
+  replay_positive: simulation/feature_replays/F-024_positive.yaml
+  replay_negative: simulation/feature_replays/F-024_negative.yaml
+  status: manifest
+- feature_id: F-025
+  title: Kişi Listesi veya Adres Defteri Dışa Aktarımı
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Roundcube/contact-export synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - roundcube
+  evidence_expected: address-book export event
+  positive_command: make feature FEATURE=F-025
+  negative_command: make feature-negative FEATURE=F-025
+  evidence_path: reports/features/F-025.json
+  replay_positive: simulation/feature_replays/F-025_positive.yaml
+  replay_negative: simulation/feature_replays/F-025_negative.yaml
+  status: manifest
+- feature_id: F-026
+  title: Yazışma Üslubu ve Dil Tonu Sapması
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Mail text fixture generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: writing-style deviation fixture
+  positive_command: make feature FEATURE=F-026
+  negative_command: make feature-negative FEATURE=F-026
+  evidence_path: reports/features/F-026.json
+  replay_positive: simulation/feature_replays/F-026_positive.yaml
+  replay_negative: simulation/feature_replays/F-026_negative.yaml
+  status: manifest
+- feature_id: F-027
+  title: Yasaklı veya Politika Dışı İfade Kullanımı
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Mail text fixture generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: banned phrase policy event
+  positive_command: make feature FEATURE=F-027
+  negative_command: make feature-negative FEATURE=F-027
+  evidence_path: reports/features/F-027.json
+  replay_positive: simulation/feature_replays/F-027_positive.yaml
+  replay_negative: simulation/feature_replays/F-027_negative.yaml
+  status: manifest
+- feature_id: F-028
+  title: İlk Kez Yazışılan Harici Alıcıya Hassas Konulu Mail
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Postfix outbound log + recipient-history fixture
+  simulation_type: synthetic_replay
+  services:
+  - postfix
+  evidence_expected: first-time external sensitive mail
+  positive_command: make feature FEATURE=F-028
+  negative_command: make feature-negative FEATURE=F-028
+  evidence_path: reports/features/F-028.json
+  replay_positive: simulation/feature_replays/F-028_positive.yaml
+  replay_negative: simulation/feature_replays/F-028_negative.yaml
+  status: manifest
+- feature_id: F-029
+  title: Kurumsal Mail Sistemine Kişisel/Bilinmeyen Hesapla Giriş Denemesi
+  category: mail ve iletişim
+  phase: 2
+  simulation_source: Roundcube auth log replay
+  simulation_type: synthetic_replay
+  services:
+  - roundcube
+  evidence_expected: personal/unknown account login attempt
+  positive_command: make feature FEATURE=F-029
+  negative_command: make feature-negative FEATURE=F-029
+  evidence_path: reports/features/F-029.json
+  replay_positive: simulation/feature_replays/F-029_positive.yaml
+  replay_negative: simulation/feature_replays/F-029_negative.yaml
+  status: manifest
+- feature_id: F-030
+  title: Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway mock + proxy sink
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  - proxy_sink
+  evidence_expected: confidential prompt/upload event
+  positive_command: make feature FEATURE=F-030
+  negative_command: make feature-negative FEATURE=F-030
+  evidence_path: reports/features/F-030.json
+  replay_positive: simulation/feature_replays/F-030_positive.yaml
+  replay_negative: simulation/feature_replays/F-030_negative.yaml
+  status: manifest
+- feature_id: F-031
+  title: Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway prompt fixture
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  evidence_expected: source-code/architecture paste event
+  positive_command: make feature FEATURE=F-031
+  negative_command: make feature-negative FEATURE=F-031
+  evidence_path: reports/features/F-031.json
+  replay_positive: simulation/feature_replays/F-031_positive.yaml
+  replay_negative: simulation/feature_replays/F-031_negative.yaml
+  status: manifest
+- feature_id: F-032
+  title: AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway prompt fixture
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  evidence_expected: internal host/user/network prompt event
+  positive_command: make feature FEATURE=F-032
+  negative_command: make feature-negative FEATURE=F-032
+  evidence_path: reports/features/F-032.json
+  replay_positive: simulation/feature_replays/F-032_positive.yaml
+  replay_negative: simulation/feature_replays/F-032_negative.yaml
+  status: manifest
+- feature_id: F-033
+  title: Onaylanmamış AI Araçlarının Kurumsal Ağdan Kullanımı
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: Proxy sink + unauthorized AI domain list
+  simulation_type: synthetic_replay
+  services:
+  - proxy_sink
+  evidence_expected: unapproved AI tool access event
+  positive_command: make feature FEATURE=F-033
+  negative_command: make feature-negative FEATURE=F-033
+  evidence_path: reports/features/F-033.json
+  replay_positive: simulation/feature_replays/F-033_positive.yaml
+  replay_negative: simulation/feature_replays/F-033_negative.yaml
+  status: manifest
+- feature_id: F-034
+  title: AI Platformlarına Dosya Yükleme Hacmi ve İçerik Türü
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway upload endpoint mock
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  - endpoint_synthetic
+  evidence_expected: AI file upload volume/type event
+  positive_command: make feature FEATURE=F-034
+  negative_command: make feature-negative FEATURE=F-034
+  evidence_path: reports/features/F-034.json
+  replay_positive: simulation/feature_replays/F-034_positive.yaml
+  replay_negative: simulation/feature_replays/F-034_negative.yaml
+  status: manifest
+- feature_id: F-035
+  title: AI ile Şirket Süreçleri ve Güvenlik Prosedürü Keşfi
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway prompt fixture
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  evidence_expected: security-procedure discovery prompt
+  positive_command: make feature FEATURE=F-035
+  negative_command: make feature-negative FEATURE=F-035
+  evidence_path: reports/features/F-035.json
+  replay_positive: simulation/feature_replays/F-035_positive.yaml
+  replay_negative: simulation/feature_replays/F-035_negative.yaml
+  status: manifest
+- feature_id: F-036
+  title: AI Konuşma Geçmişinde Rekabet, Strateji veya Hukuki Süreç İçeriği
+  category: yapay zeka kullanımı
+  phase: 3
+  simulation_source: AI gateway conversation fixture
+  simulation_type: synthetic_replay
+  services:
+  - ai_gateway_mock
+  evidence_expected: strategy/legal-content conversation
+  positive_command: make feature FEATURE=F-036
+  negative_command: make feature-negative FEATURE=F-036
+  evidence_path: reports/features/F-036.json
+  replay_positive: simulation/feature_replays/F-036_positive.yaml
+  replay_negative: simulation/feature_replays/F-036_negative.yaml
+  status: manifest
+- feature_id: F-037
+  title: Departman Dışı Dosya Paylaşım Erişimi
+  category: dosya sistemi
+  phase: 1
+  simulation_source: Samba audit + AD group fixture
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: out-of-department file access
+  positive_command: make feature FEATURE=F-037
+  negative_command: make feature-negative FEATURE=F-037
+  evidence_path: reports/features/F-037.json
+  replay_positive: simulation/feature_replays/F-037_positive.yaml
+  replay_negative: simulation/feature_replays/F-037_negative.yaml
+  status: manifest
+- feature_id: F-038
+  title: Dosya Sunucu Toplu Okuma/Yazma Oranı
+  category: dosya sistemi
+  phase: 1
+  simulation_source: Samba audit + file operation generator
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: bulk read/write ratio event
+  positive_command: make feature FEATURE=F-038
+  negative_command: make feature-negative FEATURE=F-038
+  evidence_path: reports/features/F-038.json
+  replay_positive: simulation/feature_replays/F-038_positive.yaml
+  replay_negative: simulation/feature_replays/F-038_negative.yaml
+  status: manifest
+- feature_id: F-039
+  title: Kitlesel Dosya Yeniden Adlandırma Hızı
+  category: dosya sistemi
+  phase: 1
+  simulation_source: Samba audit + rename storm generator
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: mass rename rate event
+  positive_command: make feature FEATURE=F-039
+  negative_command: make feature-negative FEATURE=F-039
+  evidence_path: reports/features/F-039.json
+  replay_positive: simulation/feature_replays/F-039_positive.yaml
+  replay_negative: simulation/feature_replays/F-039_negative.yaml
+  status: manifest
+- feature_id: F-040
+  title: Hassas Dizin Dolaşma (Directory Traversal) Davranışı
+  category: dosya sistemi
+  phase: 1
+  simulation_source: Samba audit + directory traversal replay
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: sensitive directory traversal event
+  positive_command: make feature FEATURE=F-040
+  negative_command: make feature-negative FEATURE=F-040
+  evidence_path: reports/features/F-040.json
+  replay_positive: simulation/feature_replays/F-040_positive.yaml
+  replay_negative: simulation/feature_replays/F-040_negative.yaml
+  status: manifest
+- feature_id: F-041
+  title: ACL ve Everyone İzin Değişikliği
+  category: dosya sistemi
+  phase: 1
+  simulation_source: Samba ACL/change synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: Everyone permission change event
+  positive_command: make feature FEATURE=F-041
+  negative_command: make feature-negative FEATURE=F-041
+  evidence_path: reports/features/F-041.json
+  replay_positive: simulation/feature_replays/F-041_positive.yaml
+  replay_negative: simulation/feature_replays/F-041_negative.yaml
+  status: manifest
+- feature_id: F-042
+  title: Yerel Diskte Hassas Veri Birikimi
+  category: dosya sistemi
+  phase: 3
+  simulation_source: endpoint synthetic generator + local file inventory fixture
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: local sensitive-data accumulation
+  positive_command: make feature FEATURE=F-042
+  negative_command: make feature-negative FEATURE=F-042
+  evidence_path: reports/features/F-042.json
+  replay_positive: simulation/feature_replays/F-042_positive.yaml
+  replay_negative: simulation/feature_replays/F-042_negative.yaml
+  status: manifest
+- feature_id: F-043
+  title: Etiketli Hassas Dosyanın Kısıtsız Alana Taşınması
+  category: dosya sistemi
+  phase: 3
+  simulation_source: file classification mock + Samba/local move log
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: labeled file moved to unrestricted area
+  positive_command: make feature FEATURE=F-043
+  negative_command: make feature-negative FEATURE=F-043
+  evidence_path: reports/features/F-043.json
+  replay_positive: simulation/feature_replays/F-043_positive.yaml
+  replay_negative: simulation/feature_replays/F-043_negative.yaml
+  status: manifest
+- feature_id: F-044
+  title: Bilgi Bankası/Wiki/Intranet Toplu İndirme
+  category: dosya sistemi
+  phase: 3
+  simulation_source: wiki/intranet mock access log
+  simulation_type: synthetic_replay
+  services:
+  - wiki_mock
+  evidence_expected: bulk intranet/wiki download
+  positive_command: make feature FEATURE=F-044
+  negative_command: make feature-negative FEATURE=F-044
+  evidence_path: reports/features/F-044.json
+  replay_positive: simulation/feature_replays/F-044_positive.yaml
+  replay_negative: simulation/feature_replays/F-044_negative.yaml
+  status: manifest
+- feature_id: F-045
+  title: Veritabanı Sorgu Hacmi ve Tablo Kapsamı
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: PostgreSQL pg_audit + query replay
+  simulation_type: synthetic_replay
+  services:
+  - postgres
+  evidence_expected: bulk table/select scope event
+  positive_command: make feature FEATURE=F-045
+  negative_command: make feature-negative FEATURE=F-045
+  evidence_path: reports/features/F-045.json
+  replay_positive: simulation/feature_replays/F-045_positive.yaml
+  replay_negative: simulation/feature_replays/F-045_negative.yaml
+  status: manifest
+- feature_id: F-046
+  title: Uygulama Süresi ve Süreç Ağacı
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: endpoint process tree generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: unusual process duration/tree event
+  positive_command: make feature FEATURE=F-046
+  negative_command: make feature-negative FEATURE=F-046
+  evidence_path: reports/features/F-046.json
+  replay_positive: simulation/feature_replays/F-046_positive.yaml
+  replay_negative: simulation/feature_replays/F-046_negative.yaml
+  status: manifest
+- feature_id: F-047
+  title: İç API Çağrı Deseni Sapması
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: internal API mock + Nginx access log
+  simulation_type: synthetic_replay
+  services:
+  - nginx
+  evidence_expected: API call-pattern deviation
+  positive_command: make feature FEATURE=F-047
+  negative_command: make feature-negative FEATURE=F-047
+  evidence_path: reports/features/F-047.json
+  replay_positive: simulation/feature_replays/F-047_positive.yaml
+  replay_negative: simulation/feature_replays/F-047_negative.yaml
+  status: manifest
+- feature_id: F-048
+  title: HTTP 4xx Hata Yoğunlaşması
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: Nginx access/error log replay
+  simulation_type: synthetic_replay
+  services:
+  - nginx
+  evidence_expected: HTTP 401/403/4xx spike
+  positive_command: make feature FEATURE=F-048
+  negative_command: make feature-negative FEATURE=F-048
+  evidence_path: reports/features/F-048.json
+  replay_positive: simulation/feature_replays/F-048_positive.yaml
+  replay_negative: simulation/feature_replays/F-048_negative.yaml
+  status: manifest
+- feature_id: F-049
+  title: Git/Artifact Erişim ve Clone Hacmi
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: Gitea + artifact registry mock logs
+  simulation_type: synthetic_replay
+  services:
+  - gitea
+  evidence_expected: repo clone/artifact download volume
+  positive_command: make feature FEATURE=F-049
+  negative_command: make feature-negative FEATURE=F-049
+  evidence_path: reports/features/F-049.json
+  replay_positive: simulation/feature_replays/F-049_positive.yaml
+  replay_negative: simulation/feature_replays/F-049_negative.yaml
+  status: manifest
+- feature_id: F-050
+  title: SIEM/Log Suppress Kural Değişimi
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: SIEM/admin console mock audit log
+  simulation_type: synthetic_replay
+  services:
+  - siem_admin_mock
+  evidence_expected: log suppress rule change
+  positive_command: make feature FEATURE=F-050
+  negative_command: make feature-negative FEATURE=F-050
+  evidence_path: reports/features/F-050.json
+  replay_positive: simulation/feature_replays/F-050_positive.yaml
+  replay_negative: simulation/feature_replays/F-050_negative.yaml
+  status: manifest
+- feature_id: F-051
+  title: Hypervisor ve Yönetim Konsolu Erişimi
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: hypervisor console mock audit log
+  simulation_type: synthetic_replay
+  services:
+  - hypervisor_mock
+  evidence_expected: management-console access event
+  positive_command: make feature FEATURE=F-051
+  negative_command: make feature-negative FEATURE=F-051
+  evidence_path: reports/features/F-051.json
+  replay_positive: simulation/feature_replays/F-051_positive.yaml
+  replay_negative: simulation/feature_replays/F-051_negative.yaml
+  status: manifest
+- feature_id: F-052
+  title: Yeni Zamanlanmış Görev veya Sistem Servisi Oluşturulması
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: endpoint scheduled-task/service synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: new scheduled task/service event
+  positive_command: make feature FEATURE=F-052
+  negative_command: make feature-negative FEATURE=F-052
+  evidence_path: reports/features/F-052.json
+  replay_positive: simulation/feature_replays/F-052_positive.yaml
+  replay_negative: simulation/feature_replays/F-052_negative.yaml
+  status: manifest
+- feature_id: F-053
+  title: Yedekleme Gölge Kopyalarının Silinmesi veya Devre Dışı Bırakılması
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: backup/shadow-copy synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: backup disable/delete event
+  positive_command: make feature FEATURE=F-053
+  negative_command: make feature-negative FEATURE=F-053
+  evidence_path: reports/features/F-053.json
+  replay_positive: simulation/feature_replays/F-053_positive.yaml
+  replay_negative: simulation/feature_replays/F-053_negative.yaml
+  status: manifest
+- feature_id: F-054
+  title: Kodlanmış veya Politika Atlatan Betik Komutları
+  category: uygulama ve süreç
+  phase: 2
+  simulation_source: endpoint command-line synthetic log
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: encoded/policy-bypass script event
+  positive_command: make feature FEATURE=F-054
+  negative_command: make feature-negative FEATURE=F-054
+  evidence_path: reports/features/F-054.json
+  replay_positive: simulation/feature_replays/F-054_positive.yaml
+  replay_negative: simulation/feature_replays/F-054_negative.yaml
+  status: manifest
+- feature_id: F-055
+  title: USB Takma-Yazma Korelasyonu
+  category: donanım ve uç nokta
+  phase: 1
+  simulation_source: endpoint USB generator + file write replay
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: USB attach/write correlation
+  positive_command: make feature FEATURE=F-055
+  negative_command: make feature-negative FEATURE=F-055
+  evidence_path: reports/features/F-055.json
+  replay_positive: simulation/feature_replays/F-055_positive.yaml
+  replay_negative: simulation/feature_replays/F-055_negative.yaml
+  status: manifest
+- feature_id: F-056
+  title: Yazıcı İş Hacmi ve Hassas Belge Korelasyonu
+  category: donanım ve uç nokta
+  phase: 3
+  simulation_source: CUPS print log + file classification fixture
+  simulation_type: synthetic_replay
+  services:
+  - cups
+  evidence_expected: sensitive print-volume event
+  positive_command: make feature FEATURE=F-056
+  negative_command: make feature-negative FEATURE=F-056
+  evidence_path: reports/features/F-056.json
+  replay_positive: simulation/feature_replays/F-056_positive.yaml
+  replay_negative: simulation/feature_replays/F-056_negative.yaml
+  status: manifest
+- feature_id: F-057
+  title: Ağ Kartı Promiscuous Mod Değişimi
+  category: donanım ve uç nokta
+  phase: 1
+  simulation_source: endpoint network-state generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: promiscuous mode change event
+  positive_command: make feature FEATURE=F-057
+  negative_command: make feature-negative FEATURE=F-057
+  evidence_path: reports/features/F-057.json
+  replay_positive: simulation/feature_replays/F-057_positive.yaml
+  replay_negative: simulation/feature_replays/F-057_negative.yaml
+  status: manifest
+- feature_id: F-058
+  title: DLP Agent Sağlık ve Bypass Denemesi
+  category: donanım ve uç nokta
+  phase: 3
+  simulation_source: DLP agent health mock
+  simulation_type: synthetic_replay
+  services:
+  - dlp_mock
+  evidence_expected: DLP disable/bypass event
+  positive_command: make feature FEATURE=F-058
+  negative_command: make feature-negative FEATURE=F-058
+  evidence_path: reports/features/F-058.json
+  replay_positive: simulation/feature_replays/F-058_positive.yaml
+  replay_negative: simulation/feature_replays/F-058_negative.yaml
+  status: manifest
+- feature_id: F-059
+  title: Clipboard Büyük Veri Kopyalama
+  category: davranışsal
+  phase: 3
+  simulation_source: clipboard synthetic generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: large clipboard copy event
+  positive_command: make feature FEATURE=F-059
+  negative_command: make feature-negative FEATURE=F-059
+  evidence_path: reports/features/F-059.json
+  replay_positive: simulation/feature_replays/F-059_positive.yaml
+  replay_negative: simulation/feature_replays/F-059_negative.yaml
+  status: manifest
+- feature_id: F-060
+  title: Ekran Görüntüsü Alma Frekansı
+  category: davranışsal
+  phase: 3
+  simulation_source: screenshot synthetic generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: screenshot frequency spike
+  positive_command: make feature FEATURE=F-060
+  negative_command: make feature-negative FEATURE=F-060
+  evidence_path: reports/features/F-060.json
+  replay_positive: simulation/feature_replays/F-060_positive.yaml
+  replay_negative: simulation/feature_replays/F-060_negative.yaml
+  status: manifest
+- feature_id: F-061
+  title: Rol Bazlı Sunucu Temas Haritası
+  category: davranışsal
+  phase: 3
+  simulation_source: AD role seed + flow/session generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: role-to-server contact map deviation
+  positive_command: make feature FEATURE=F-061
+  negative_command: make feature-negative FEATURE=F-061
+  evidence_path: reports/features/F-061.json
+  replay_positive: simulation/feature_replays/F-061_positive.yaml
+  replay_negative: simulation/feature_replays/F-061_negative.yaml
+  status: manifest
+- feature_id: F-062
+  title: İç Log Arama Anahtar Kelimesi Riski
+  category: davranışsal
+  phase: 3
+  simulation_source: SIEM/log-search mock audit log
+  simulation_type: synthetic_replay
+  services:
+  - siem_admin_mock
+  evidence_expected: risky internal log search keyword
+  positive_command: make feature FEATURE=F-062
+  negative_command: make feature-negative FEATURE=F-062
+  evidence_path: reports/features/F-062.json
+  replay_positive: simulation/feature_replays/F-062_positive.yaml
+  replay_negative: simulation/feature_replays/F-062_negative.yaml
+  status: manifest
+- feature_id: F-063
+  title: Daha Önce Görülmemiş Donanım Kimliğiyle Oturum Denemesi
+  category: davranışsal
+  phase: 1
+  simulation_source: AD login + device inventory fixture
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: unknown hardware login attempt
+  positive_command: make feature FEATURE=F-063
+  negative_command: make feature-negative FEATURE=F-063
+  evidence_path: reports/features/F-063.json
+  replay_positive: simulation/feature_replays/F-063_positive.yaml
+  replay_negative: simulation/feature_replays/F-063_negative.yaml
+  status: manifest
+- feature_id: F-064
+  title: Normal Aktivite Örüntüsünün Saatler İçinde Yoğunlaşması
+  category: davranışsal
+  phase: 3
+  simulation_source: user activity generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: compressed activity burst event
+  positive_command: make feature FEATURE=F-064
+  negative_command: make feature-negative FEATURE=F-064
+  evidence_path: reports/features/F-064.json
+  replay_positive: simulation/feature_replays/F-064_positive.yaml
+  replay_negative: simulation/feature_replays/F-064_negative.yaml
+  status: manifest
+- feature_id: F-065
+  title: Uzun Süre Kullanılmayan Sistemlere Ani Erişim
+  category: davranışsal
+  phase: 3
+  simulation_source: app/file access generator + history fixture
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: dormant system sudden access
+  positive_command: make feature FEATURE=F-065
+  negative_command: make feature-negative FEATURE=F-065
+  evidence_path: reports/features/F-065.json
+  replay_positive: simulation/feature_replays/F-065_positive.yaml
+  replay_negative: simulation/feature_replays/F-065_negative.yaml
+  status: manifest
+- feature_id: F-066
+  title: Akran Grup Davranışından İstatistiksel Sapma
+  category: davranışsal
+  phase: 3
+  simulation_source: peer group baseline fixture + event generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: peer group statistical deviation
+  positive_command: make feature FEATURE=F-066
+  negative_command: make feature-negative FEATURE=F-066
+  evidence_path: reports/features/F-066.json
+  replay_positive: simulation/feature_replays/F-066_positive.yaml
+  replay_negative: simulation/feature_replays/F-066_negative.yaml
+  status: manifest
+- feature_id: F-067
+  title: Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme
+  category: dış bağlantı ve çıkış trafiği
+  phase: 3
+  simulation_source: cloud/object-storage mock + proxy sink
+  simulation_type: synthetic_replay
+  services:
+  - proxy_sink
+  evidence_expected: personal cloud large upload
+  positive_command: make feature FEATURE=F-067
+  negative_command: make feature-negative FEATURE=F-067
+  evidence_path: reports/features/F-067.json
+  replay_positive: simulation/feature_replays/F-067_positive.yaml
+  replay_negative: simulation/feature_replays/F-067_negative.yaml
+  status: manifest
+- feature_id: F-068
+  title: İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi
+  category: dış bağlantı ve çıkış trafiği
+  phase: 3
+  simulation_source: proxy sink + first-seen destination fixture
+  simulation_type: synthetic_replay
+  services:
+  - proxy_sink
+  evidence_expected: first external high-volume transfer
+  positive_command: make feature FEATURE=F-068
+  negative_command: make feature-negative FEATURE=F-068
+  evidence_path: reports/features/F-068.json
+  replay_positive: simulation/feature_replays/F-068_positive.yaml
+  replay_negative: simulation/feature_replays/F-068_negative.yaml
+  status: manifest
+- feature_id: F-069
+  title: Proxy Üzerinden Şifreli Tünel veya Alışılmadık Protokol Kullanımı
+  category: dış bağlantı ve çıkış trafiği
+  phase: 3
+  simulation_source: proxy sink + tunnel protocol generator
+  simulation_type: synthetic_replay
+  services:
+  - proxy_sink
+  evidence_expected: encrypted tunnel/unusual protocol
+  positive_command: make feature FEATURE=F-069
+  negative_command: make feature-negative FEATURE=F-069
+  evidence_path: reports/features/F-069.json
+  replay_positive: simulation/feature_replays/F-069_positive.yaml
+  replay_negative: simulation/feature_replays/F-069_negative.yaml
+  status: manifest
+- feature_id: F-070
+  title: Fiziksel Badge Geçişi ile Sistem Login Uyuşmazlığı
+  category: çapraz veri ve korelasyon
+  phase: 3
+  simulation_source: Badge API + AD login replay
+  simulation_type: synthetic_replay
+  services:
+  - badge_api
+  evidence_expected: physical badge/login mismatch
+  positive_command: make feature FEATURE=F-070
+  negative_command: make feature-negative FEATURE=F-070
+  evidence_path: reports/features/F-070.json
+  replay_positive: simulation/feature_replays/F-070_positive.yaml
+  replay_negative: simulation/feature_replays/F-070_negative.yaml
+  status: manifest
+- feature_id: F-071
+  title: Çapraz Kaynak Risk Skoru (Composite Risk Score)
+  category: çapraz veri ve korelasyon
+  phase: 3
+  simulation_source: multi-signal event bundle generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: composite risk score input set
+  positive_command: make feature FEATURE=F-071
+  negative_command: make feature-negative FEATURE=F-071
+  evidence_path: reports/features/F-071.json
+  replay_positive: simulation/feature_replays/F-071_positive.yaml
+  replay_negative: simulation/feature_replays/F-071_negative.yaml
+  status: manifest
+- feature_id: F-072
+  title: Offboarding SLA — Ayrılan Hesap Aktivitesi
+  category: çapraz veri ve korelasyon
+  phase: 3
+  simulation_source: HRIS offboarding mock + AD/app activity replay
+  simulation_type: synthetic_replay
+  services:
+  - hris_mock
+  evidence_expected: leaver account activity
+  positive_command: make feature FEATURE=F-072
+  negative_command: make feature-negative FEATURE=F-072
+  evidence_path: reports/features/F-072.json
+  replay_positive: simulation/feature_replays/F-072_positive.yaml
+  replay_negative: simulation/feature_replays/F-072_negative.yaml
+  status: manifest
+- feature_id: F-073
+  title: Aynı Dosya/Kayıt Çoklu Kullanıcı Erişim Zinciri
+  category: çapraz veri ve korelasyon
+  phase: 3
+  simulation_source: Samba/app record access replay
+  simulation_type: synthetic_replay
+  services:
+  - samba
+  evidence_expected: same file/record multi-user chain
+  positive_command: make feature FEATURE=F-073
+  negative_command: make feature-negative FEATURE=F-073
+  evidence_path: reports/features/F-073.json
+  replay_positive: simulation/feature_replays/F-073_positive.yaml
+  replay_negative: simulation/feature_replays/F-073_negative.yaml
+  status: manifest
+- feature_id: F-074
+  title: Vardiya Dışı Fiziksel + Mantıksal Erişim Korelasyonu
+  category: çapraz veri ve korelasyon
+  phase: 3
+  simulation_source: Badge API + after-hours login replay
+  simulation_type: synthetic_replay
+  services:
+  - badge_api
+  evidence_expected: off-shift physical/logical access
+  positive_command: make feature FEATURE=F-074
+  negative_command: make feature-negative FEATURE=F-074
+  evidence_path: reports/features/F-074.json
+  replay_positive: simulation/feature_replays/F-074_positive.yaml
+  replay_negative: simulation/feature_replays/F-074_negative.yaml
+  status: manifest
+- feature_id: F-075
+  title: Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi
+  category: insan kaynakları ve personel yaşam döngüsü
+  phase: 3
+  simulation_source: HRIS new-hire seed + access replay
+  simulation_type: synthetic_replay
+  services:
+  - hris_mock
+  evidence_expected: new employee excessive access
+  positive_command: make feature FEATURE=F-075
+  negative_command: make feature-negative FEATURE=F-075
+  evidence_path: reports/features/F-075.json
+  replay_positive: simulation/feature_replays/F-075_positive.yaml
+  replay_negative: simulation/feature_replays/F-075_negative.yaml
+  status: manifest
+- feature_id: F-076
+  title: Rol Değişikliği Sonrası Eski Yetkilerin Kullanılması
+  category: insan kaynakları ve personel yaşam döngüsü
+  phase: 3
+  simulation_source: HRIS role-change seed + old-permission replay
+  simulation_type: synthetic_replay
+  services:
+  - hris_mock
+  evidence_expected: old entitlement use after role change
+  positive_command: make feature FEATURE=F-076
+  negative_command: make feature-negative FEATURE=F-076
+  evidence_path: reports/features/F-076.json
+  replay_positive: simulation/feature_replays/F-076_positive.yaml
+  replay_negative: simulation/feature_replays/F-076_negative.yaml
+  status: manifest
+- feature_id: F-077
+  title: Resmi İzin Kaydı Varken Sistem Aktivitesi
+  category: insan kaynakları ve personel yaşam döngüsü
+  phase: 3
+  simulation_source: HRIS leave calendar + activity replay
+  simulation_type: synthetic_replay
+  services:
+  - hris_mock
+  evidence_expected: activity while officially on leave
+  positive_command: make feature FEATURE=F-077
+  negative_command: make feature-negative FEATURE=F-077
+  evidence_path: reports/features/F-077.json
+  replay_positive: simulation/feature_replays/F-077_positive.yaml
+  replay_negative: simulation/feature_replays/F-077_negative.yaml
+  status: manifest
+- feature_id: F-078
+  title: Üçüncü Taraf/Yüklenici Kapsam Dışı Sistem Kullanımı
+  category: insan kaynakları ve personel yaşam döngüsü
+  phase: 3
+  simulation_source: contractor identity seed + app access replay
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: contractor out-of-scope system use
+  positive_command: make feature FEATURE=F-078
+  negative_command: make feature-negative FEATURE=F-078
+  evidence_path: reports/features/F-078.json
+  replay_positive: simulation/feature_replays/F-078_positive.yaml
+  replay_negative: simulation/feature_replays/F-078_negative.yaml
+  status: manifest
+- feature_id: F-079
+  title: Mesai Dışı İnteraktif Oturum
+  category: zamanlama
+  phase: 1
+  simulation_source: AD interactive login replay + work-hours calendar
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: after-hours interactive session
+  positive_command: make feature FEATURE=F-079
+  negative_command: make feature-negative FEATURE=F-079
+  evidence_path: reports/features/F-079.json
+  replay_positive: simulation/feature_replays/F-079_positive.yaml
+  replay_negative: simulation/feature_replays/F-079_negative.yaml
+  status: manifest
+- feature_id: F-080
+  title: Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)
+  category: zamanlama
+  phase: 1
+  simulation_source: session log + keyboard/mouse generator
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: idle session abuse event
+  positive_command: make feature FEATURE=F-080
+  negative_command: make feature-negative FEATURE=F-080
+  evidence_path: reports/features/F-080.json
+  replay_positive: simulation/feature_replays/F-080_positive.yaml
+  replay_negative: simulation/feature_replays/F-080_negative.yaml
+  status: manifest
+- feature_id: F-081
+  title: Rol Bazlı Aktif Çalışma Penceresi Sapması
+  category: zamanlama
+  phase: 1
+  simulation_source: role work-window fixture + activity replay
+  simulation_type: synthetic_replay
+  services:
+  - endpoint_synthetic
+  evidence_expected: role-based work-window deviation
+  positive_command: make feature FEATURE=F-081
+  negative_command: make feature-negative FEATURE=F-081
+  evidence_path: reports/features/F-081.json
+  replay_positive: simulation/feature_replays/F-081_positive.yaml
+  replay_negative: simulation/feature_replays/F-081_negative.yaml
+  status: manifest

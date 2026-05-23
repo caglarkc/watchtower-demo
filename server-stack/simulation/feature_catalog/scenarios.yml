@@ -1,0 +1,1206 @@
+version: '1.0'
+phase: 0
+total_scenarios: 83
+scenarios:
+- scenario_id: S-001
+  title: Gece Yarısı Finans Paylaşımı
+  category: veri sızdırma
+  user_role: CFO
+  expected_severity: CRITICAL
+  deterministic_seed: 1001
+  feature_ids:
+  - F-001
+  - F-079
+  - F-038
+  - F-056
+  - F-081
+  replay_command: make scenario SCENARIO=S-001
+  negative_command: make scenario-negative SCENARIO=S-001
+  evidence_path: reports/scenarios/S-001.json
+  replay_script: simulation/scenarios/S-001_replay.yaml
+  status: manifest
+- scenario_id: S-002
+  title: Gece Yedek Çekimi
+  category: veri sızdırma
+  user_role: Muhasebe
+  expected_severity: CRITICAL
+  deterministic_seed: 1002
+  feature_ids:
+  - F-001
+  - F-079
+  - F-038
+  - F-081
+  replay_command: make scenario SCENARIO=S-002
+  negative_command: make scenario-negative SCENARIO=S-002
+  evidence_path: reports/scenarios/S-002.json
+  replay_script: simulation/scenarios/S-002_replay.yaml
+  status: manifest
+- scenario_id: S-003
+  title: Satış Ekibinden Sessiz CRM Dökümü
+  category: veri sızdırma
+  user_role: Satış
+  expected_severity: CRITICAL
+  deterministic_seed: 1003
+  feature_ids:
+  - F-038
+  - F-039
+  - F-072
+  - F-022
+  - F-068
+  replay_command: make scenario SCENARIO=S-003
+  negative_command: make scenario-negative SCENARIO=S-003
+  evidence_path: reports/scenarios/S-003.json
+  replay_script: simulation/scenarios/S-003_replay.yaml
+  status: manifest
+- scenario_id: S-004
+  title: IT Admin Fazladan USB Yedekleme
+  category: veri sızdırma
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 1004
+  feature_ids:
+  - F-055
+  - F-001
+  - F-042
+  - F-067
+  replay_command: make scenario SCENARIO=S-004
+  negative_command: make scenario-negative SCENARIO=S-004
+  evidence_path: reports/scenarios/S-004.json
+  replay_script: simulation/scenarios/S-004_replay.yaml
+  status: manifest
+- scenario_id: S-005
+  title: CTO'nun Gizli Yedek Klasörü
+  category: veri sızdırma
+  user_role: CTO
+  expected_severity: CRITICAL
+  deterministic_seed: 1005
+  feature_ids:
+  - F-037
+  - F-039
+  - F-062
+  - F-030
+  - F-036
+  replay_command: make scenario SCENARIO=S-005
+  negative_command: make scenario-negative SCENARIO=S-005
+  evidence_path: reports/scenarios/S-005.json
+  replay_script: simulation/scenarios/S-005_replay.yaml
+  status: manifest
+- scenario_id: S-006
+  title: Kaynak Kod Deposunun Kitlesel Klonlanması
+  category: veri sızdırma
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 1006
+  feature_ids:
+  - F-049
+  - F-042
+  replay_command: make scenario SCENARIO=S-006
+  negative_command: make scenario-negative SCENARIO=S-006
+  evidence_path: reports/scenarios/S-006.json
+  replay_script: simulation/scenarios/S-006_replay.yaml
+  status: manifest
+- scenario_id: S-007
+  title: Geçici Toplantı Dosyasında Gizlenen Veritabanı Dökümü
+  category: veri sızdırma
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 1007
+  feature_ids:
+  - F-045
+  - F-043
+  - F-031
+  - F-034
+  replay_command: make scenario SCENARIO=S-007
+  negative_command: make scenario-negative SCENARIO=S-007
+  evidence_path: reports/scenarios/S-007.json
+  replay_script: simulation/scenarios/S-007_replay.yaml
+  status: manifest
+- scenario_id: S-008
+  title: Yedekleme Sunucusundan Olağan Dışı Veri Çekme
+  category: veri sızdırma
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 1008
+  feature_ids:
+  - F-001
+  - F-055
+  - F-053
+  - F-067
+  - F-068
+  replay_command: make scenario SCENARIO=S-008
+  negative_command: make scenario-negative SCENARIO=S-008
+  evidence_path: reports/scenarios/S-008.json
+  replay_script: simulation/scenarios/S-008_replay.yaml
+  status: manifest
+- scenario_id: S-009
+  title: BI Ham PII Export
+  category: veri sızdırma
+  user_role: Veri Analisti
+  expected_severity: ALERT
+  deterministic_seed: 1009
+  feature_ids:
+  - F-045
+  - F-066
+  replay_command: make scenario SCENARIO=S-009
+  negative_command: make scenario-negative SCENARIO=S-009
+  evidence_path: reports/scenarios/S-009.json
+  replay_script: simulation/scenarios/S-009_replay.yaml
+  status: manifest
+- scenario_id: S-010
+  title: İK'dan Toplu CV Arşivi Kopyası
+  category: veri sızdırma
+  user_role: İK
+  expected_severity: ALERT
+  deterministic_seed: 1010
+  feature_ids:
+  - F-038
+  - F-037
+  replay_command: make scenario SCENARIO=S-010
+  negative_command: make scenario-negative SCENARIO=S-010
+  evidence_path: reports/scenarios/S-010.json
+  replay_script: simulation/scenarios/S-010_replay.yaml
+  status: manifest
+- scenario_id: S-011
+  title: CEO Mail Kutusundan Toplu Arşiv Export
+  category: veri sızdırma
+  user_role: CEO
+  expected_severity: CRITICAL
+  deterministic_seed: 1011
+  feature_ids:
+  - F-024
+  - F-025
+  - F-019
+  replay_command: make scenario SCENARIO=S-011
+  negative_command: make scenario-negative SCENARIO=S-011
+  evidence_path: reports/scenarios/S-011.json
+  replay_script: simulation/scenarios/S-011_replay.yaml
+  status: manifest
+- scenario_id: S-012
+  title: Stajyer CRM Export
+  category: veri sızdırma
+  user_role: Stajyer
+  expected_severity: CRITICAL
+  deterministic_seed: 1012
+  feature_ids:
+  - F-047
+  - F-075
+  replay_command: make scenario SCENARIO=S-012
+  negative_command: make scenario-negative SCENARIO=S-012
+  evidence_path: reports/scenarios/S-012.json
+  replay_script: simulation/scenarios/S-012_replay.yaml
+  status: manifest
+- scenario_id: S-013
+  title: Destek Ticket PII Toplu Arşivi
+  category: veri sızdırma
+  user_role: Destek Personeli
+  expected_severity: ALERT
+  deterministic_seed: 1013
+  feature_ids:
+  - F-038
+  - F-018
+  - F-060
+  replay_command: make scenario SCENARIO=S-013
+  negative_command: make scenario-negative SCENARIO=S-013
+  evidence_path: reports/scenarios/S-013.json
+  replay_script: simulation/scenarios/S-013_replay.yaml
+  status: manifest
+- scenario_id: S-014
+  title: Admin Prod-HR VM Snapshot
+  category: veri sızdırma
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 1014
+  feature_ids:
+  - F-051
+  - F-001
+  - F-055
+  replay_command: make scenario SCENARIO=S-014
+  negative_command: make scenario-negative SCENARIO=S-014
+  evidence_path: reports/scenarios/S-014.json
+  replay_script: simulation/scenarios/S-014_replay.yaml
+  status: manifest
+- scenario_id: S-015
+  title: Payroll SQL Dump
+  category: veri sızdırma
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 1015
+  feature_ids:
+  - F-045
+  replay_command: make scenario SCENARIO=S-015
+  negative_command: make scenario-negative SCENARIO=S-015
+  evidence_path: reports/scenarios/S-015.json
+  replay_script: simulation/scenarios/S-015_replay.yaml
+  status: manifest
+- scenario_id: S-016
+  title: Gece Admin Kerberos TGT Zinciri
+  category: credential ihlali
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 2016
+  feature_ids:
+  - F-008
+  - F-015
+  - F-079
+  replay_command: make scenario SCENARIO=S-016
+  negative_command: make scenario-negative SCENARIO=S-016
+  evidence_path: reports/scenarios/S-016.json
+  replay_script: simulation/scenarios/S-016_replay.yaml
+  status: manifest
+- scenario_id: S-017
+  title: Token Vault Dump
+  category: credential ihlali
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 2017
+  feature_ids:
+  - F-013
+  replay_command: make scenario SCENARIO=S-017
+  negative_command: make scenario-negative SCENARIO=S-017
+  evidence_path: reports/scenarios/S-017.json
+  replay_script: simulation/scenarios/S-017_replay.yaml
+  status: manifest
+- scenario_id: S-018
+  title: Domain Admin Hesabıyla Sıra Dışı Giriş
+  category: credential ihlali
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 2018
+  feature_ids:
+  - F-079
+  - F-010
+  - F-015
+  replay_command: make scenario SCENARIO=S-018
+  negative_command: make scenario-negative SCENARIO=S-018
+  evidence_path: reports/scenarios/S-018.json
+  replay_script: simulation/scenarios/S-018_replay.yaml
+  status: manifest
+- scenario_id: S-019
+  title: Hizmet Hesabının Kötüye Kullanımı
+  category: credential ihlali
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 2019
+  feature_ids:
+  - F-010
+  replay_command: make scenario SCENARIO=S-019
+  negative_command: make scenario-negative SCENARIO=S-019
+  evidence_path: reports/scenarios/S-019.json
+  replay_script: simulation/scenarios/S-019_replay.yaml
+  status: manifest
+- scenario_id: S-020
+  title: Çoklu Lokasyon Çakışması
+  category: credential ihlali
+  user_role: CEO
+  expected_severity: CRITICAL
+  deterministic_seed: 2020
+  feature_ids:
+  - F-009
+  - F-070
+  replay_command: make scenario SCENARIO=S-020
+  negative_command: make scenario-negative SCENARIO=S-020
+  evidence_path: reports/scenarios/S-020.json
+  replay_script: simulation/scenarios/S-020_replay.yaml
+  status: manifest
+- scenario_id: S-021
+  title: Eski Credential ile API Kullanımı
+  category: credential ihlali
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 2021
+  feature_ids:
+  - F-012
+  - F-047
+  replay_command: make scenario SCENARIO=S-021
+  negative_command: make scenario-negative SCENARIO=S-021
+  evidence_path: reports/scenarios/S-021.json
+  replay_script: simulation/scenarios/S-021_replay.yaml
+  status: manifest
+- scenario_id: S-022
+  title: API Servis Hesabını İnsan Gibi Kullanan Analist
+  category: credential ihlali
+  user_role: Veri Analisti
+  expected_severity: ALERT
+  deterministic_seed: 2022
+  feature_ids:
+  - F-010
+  - F-012
+  - F-047
+  replay_command: make scenario SCENARIO=S-022
+  negative_command: make scenario-negative SCENARIO=S-022
+  evidence_path: reports/scenarios/S-022.json
+  replay_script: simulation/scenarios/S-022_replay.yaml
+  status: manifest
+- scenario_id: S-023
+  title: Muhasebe Terminalinden Gece Loginleri
+  category: credential ihlali
+  user_role: Muhasebe
+  expected_severity: CRITICAL
+  deterministic_seed: 2023
+  feature_ids:
+  - F-079
+  - F-063
+  - F-070
+  replay_command: make scenario SCENARIO=S-023
+  negative_command: make scenario-negative SCENARIO=S-023
+  evidence_path: reports/scenarios/S-023.json
+  replay_script: simulation/scenarios/S-023_replay.yaml
+  status: manifest
+- scenario_id: S-024
+  title: Deploy Key 3 Farklı IP
+  category: credential ihlali
+  user_role: Yazılım Geliştirici
+  expected_severity: ALERT
+  deterministic_seed: 2024
+  feature_ids:
+  - F-012
+  replay_command: make scenario SCENARIO=S-024
+  negative_command: make scenario-negative SCENARIO=S-024
+  evidence_path: reports/scenarios/S-024.json
+  replay_script: simulation/scenarios/S-024_replay.yaml
+  status: manifest
+- scenario_id: S-025
+  title: Admin Hesaplarının Çapraz Kullanımı
+  category: credential ihlali
+  user_role: IT Admin
+  expected_severity: ALERT
+  deterministic_seed: 2025
+  feature_ids:
+  - F-015
+  - F-063
+  replay_command: make scenario SCENARIO=S-025
+  negative_command: make scenario-negative SCENARIO=S-025
+  evidence_path: reports/scenarios/S-025.json
+  replay_script: simulation/scenarios/S-025_replay.yaml
+  status: manifest
+- scenario_id: S-026
+  title: Stajyer Çift Oturum
+  category: credential ihlali
+  user_role: Stajyer
+  expected_severity: ALERT
+  deterministic_seed: 2026
+  feature_ids:
+  - F-009
+  replay_command: make scenario SCENARIO=S-026
+  negative_command: make scenario-negative SCENARIO=S-026
+  evidence_path: reports/scenarios/S-026.json
+  replay_script: simulation/scenarios/S-026_replay.yaml
+  status: manifest
+- scenario_id: S-027
+  title: İç Ağda Gizli Posta Kuralı Oluşturma
+  category: credential ihlali
+  user_role: Satış
+  expected_severity: ALERT
+  deterministic_seed: 2027
+  feature_ids:
+  - F-017
+  replay_command: make scenario SCENARIO=S-027
+  negative_command: make scenario-negative SCENARIO=S-027
+  evidence_path: reports/scenarios/S-027.json
+  replay_script: simulation/scenarios/S-027_replay.yaml
+  status: manifest
+- scenario_id: S-028
+  title: IT Admin Yetki Zinciri
+  category: yetkisiz erişim
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 3028
+  feature_ids:
+  - F-015
+  - F-061
+  - F-079
+  replay_command: make scenario SCENARIO=S-028
+  negative_command: make scenario-negative SCENARIO=S-028
+  evidence_path: reports/scenarios/S-028.json
+  replay_script: simulation/scenarios/S-028_replay.yaml
+  status: manifest
+- scenario_id: S-029
+  title: Hukuk Belgelerine Meraklı Geliştirici
+  category: yetkisiz erişim
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 3029
+  feature_ids:
+  - F-037
+  - F-040
+  replay_command: make scenario SCENARIO=S-029
+  negative_command: make scenario-negative SCENARIO=S-029
+  evidence_path: reports/scenarios/S-029.json
+  replay_script: simulation/scenarios/S-029_replay.yaml
+  status: manifest
+- scenario_id: S-030
+  title: Yetki Yükseltme (Privilege Escalation)
+  category: yetkisiz erişim
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 3030
+  feature_ids:
+  - F-011
+  replay_command: make scenario SCENARIO=S-030
+  negative_command: make scenario-negative SCENARIO=S-030
+  evidence_path: reports/scenarios/S-030.json
+  replay_script: simulation/scenarios/S-030_replay.yaml
+  status: manifest
+- scenario_id: S-031
+  title: CTO Bilgisayarından SSH Anahtarı Hasadı
+  category: yetkisiz erişim
+  user_role: CTO
+  expected_severity: CRITICAL
+  deterministic_seed: 3031
+  feature_ids:
+  - F-042
+  - F-054
+  replay_command: make scenario SCENARIO=S-031
+  negative_command: make scenario-negative SCENARIO=S-031
+  evidence_path: reports/scenarios/S-031.json
+  replay_script: simulation/scenarios/S-031_replay.yaml
+  status: manifest
+- scenario_id: S-032
+  title: Junior Dev Prod Veritabanı Erişimi
+  category: yetkisiz erişim
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 3032
+  feature_ids:
+  - F-045
+  - F-065
+  replay_command: make scenario SCENARIO=S-032
+  negative_command: make scenario-negative SCENARIO=S-032
+  evidence_path: reports/scenarios/S-032.json
+  replay_script: simulation/scenarios/S-032_replay.yaml
+  status: manifest
+- scenario_id: S-033
+  title: Destek Personeli DC RDP
+  category: yetkisiz erişim
+  user_role: Destek Personeli
+  expected_severity: CRITICAL
+  deterministic_seed: 3033
+  feature_ids:
+  - F-015
+  - F-048
+  replay_command: make scenario SCENARIO=S-033
+  negative_command: make scenario-negative SCENARIO=S-033
+  evidence_path: reports/scenarios/S-033.json
+  replay_script: simulation/scenarios/S-033_replay.yaml
+  status: manifest
+- scenario_id: S-034
+  title: Muhasebe Domain Admin Grubu Denemesi
+  category: yetkisiz erişim
+  user_role: Muhasebe
+  expected_severity: CRITICAL
+  deterministic_seed: 3034
+  feature_ids:
+  - F-011
+  replay_command: make scenario SCENARIO=S-034
+  negative_command: make scenario-negative SCENARIO=S-034
+  evidence_path: reports/scenarios/S-034.json
+  replay_script: simulation/scenarios/S-034_replay.yaml
+  status: manifest
+- scenario_id: S-035
+  title: Stajyer Ağ Keşfi
+  category: yetkisiz erişim
+  user_role: Stajyer
+  expected_severity: ALERT
+  deterministic_seed: 3035
+  feature_ids:
+  - F-007
+  replay_command: make scenario SCENARIO=S-035
+  negative_command: make scenario-negative SCENARIO=S-035
+  evidence_path: reports/scenarios/S-035.json
+  replay_script: simulation/scenarios/S-035_replay.yaml
+  status: manifest
+- scenario_id: S-036
+  title: Veri Analistinin Tüm Posta Kutusu Taraması
+  category: yetkisiz erişim
+  user_role: Veri Analisti
+  expected_severity: ALERT
+  deterministic_seed: 3036
+  feature_ids:
+  - F-018
+  - F-024
+  replay_command: make scenario SCENARIO=S-036
+  negative_command: make scenario-negative SCENARIO=S-036
+  evidence_path: reports/scenarios/S-036.json
+  replay_script: simulation/scenarios/S-036_replay.yaml
+  status: manifest
+- scenario_id: S-037
+  title: Satıştan Muhasebeye Kesişen Erişim
+  category: yetkisiz erişim
+  user_role: Satış
+  expected_severity: ALERT
+  deterministic_seed: 3037
+  feature_ids:
+  - F-037
+  replay_command: make scenario SCENARIO=S-037
+  negative_command: make scenario-negative SCENARIO=S-037
+  evidence_path: reports/scenarios/S-037.json
+  replay_script: simulation/scenarios/S-037_replay.yaml
+  status: manifest
+- scenario_id: S-038
+  title: Güvenlik Duvarı Kurallarının Esnetilmesi
+  category: yetkisiz erişim
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 3038
+  feature_ids:
+  - F-048
+  replay_command: make scenario SCENARIO=S-038
+  negative_command: make scenario-negative SCENARIO=S-038
+  evidence_path: reports/scenarios/S-038.json
+  replay_script: simulation/scenarios/S-038_replay.yaml
+  status: manifest
+- scenario_id: S-039
+  title: PM SIEM Konsol Erişimi
+  category: yetkisiz erişim
+  user_role: Proje Yöneticisi
+  expected_severity: ALERT
+  deterministic_seed: 3039
+  feature_ids:
+  - F-051
+  - F-050
+  replay_command: make scenario SCENARIO=S-039
+  negative_command: make scenario-negative SCENARIO=S-039
+  evidence_path: reports/scenarios/S-039.json
+  replay_script: simulation/scenarios/S-039_replay.yaml
+  status: manifest
+- scenario_id: S-040
+  title: Shadow Admin Hesabı Oluşturma
+  category: insider threat
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 4040
+  feature_ids:
+  - F-011
+  - F-052
+  replay_command: make scenario SCENARIO=S-040
+  negative_command: make scenario-negative SCENARIO=S-040
+  evidence_path: reports/scenarios/S-040.json
+  replay_script: simulation/scenarios/S-040_replay.yaml
+  status: manifest
+- scenario_id: S-041
+  title: Sahte Tedarikçi IBAN Değişikliği
+  category: insider threat
+  user_role: Muhasebe
+  expected_severity: CRITICAL
+  deterministic_seed: 4041
+  feature_ids:
+  - F-047
+  replay_command: make scenario SCENARIO=S-041
+  negative_command: make scenario-negative SCENARIO=S-041
+  evidence_path: reports/scenarios/S-041.json
+  replay_script: simulation/scenarios/S-041_replay.yaml
+  status: manifest
+- scenario_id: S-042
+  title: SOC Log Suppress Kuralı
+  category: insider threat
+  user_role: Güvenlik Görevlisi
+  expected_severity: CRITICAL
+  deterministic_seed: 4042
+  feature_ids:
+  - F-050
+  - F-058
+  replay_command: make scenario SCENARIO=S-042
+  negative_command: make scenario-negative SCENARIO=S-042
+  evidence_path: reports/scenarios/S-042.json
+  replay_script: simulation/scenarios/S-042_replay.yaml
+  status: manifest
+- scenario_id: S-043
+  title: Admin Tarafından Eski Yedeklerin Silinmesi
+  category: insider threat
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 4043
+  feature_ids:
+  - F-053
+  replay_command: make scenario SCENARIO=S-043
+  negative_command: make scenario-negative SCENARIO=S-043
+  evidence_path: reports/scenarios/S-043.json
+  replay_script: simulation/scenarios/S-043_replay.yaml
+  status: manifest
+- scenario_id: S-044
+  title: Yönetici Yetkisiyle Kitlesel Log Silme
+  category: insider threat
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 4044
+  feature_ids:
+  - F-062
+  - F-054
+  - F-058
+  replay_command: make scenario SCENARIO=S-044
+  negative_command: make scenario-negative SCENARIO=S-044
+  evidence_path: reports/scenarios/S-044.json
+  replay_script: simulation/scenarios/S-044_replay.yaml
+  status: manifest
+- scenario_id: S-045
+  title: İK Hesabından Gece Mail Arşiv Taraması
+  category: insider threat
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 4045
+  feature_ids:
+  - F-024
+  - F-018
+  replay_command: make scenario SCENARIO=S-045
+  negative_command: make scenario-negative SCENARIO=S-045
+  evidence_path: reports/scenarios/S-045.json
+  replay_script: simulation/scenarios/S-045_replay.yaml
+  status: manifest
+- scenario_id: S-046
+  title: İK Sisteminde Hayalet Çalışan Oluşturma
+  category: insider threat
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 4046
+  feature_ids:
+  - F-075
+  replay_command: make scenario SCENARIO=S-046
+  negative_command: make scenario-negative SCENARIO=S-046
+  evidence_path: reports/scenarios/S-046.json
+  replay_script: simulation/scenarios/S-046_replay.yaml
+  status: manifest
+- scenario_id: S-047
+  title: Ayrılış Öncesi Veri Rampa-Up
+  category: insider threat
+  user_role: Yazılım Geliştirici
+  expected_severity: ALERT
+  deterministic_seed: 4047
+  feature_ids:
+  - F-001
+  - F-072
+  - F-064
+  replay_command: make scenario SCENARIO=S-047
+  negative_command: make scenario-negative SCENARIO=S-047
+  evidence_path: reports/scenarios/S-047.json
+  replay_script: simulation/scenarios/S-047_replay.yaml
+  status: manifest
+- scenario_id: S-048
+  title: PM Proje Maliyet Tablosu Toplu Güncelleme
+  category: insider threat
+  user_role: Proje Yöneticisi
+  expected_severity: ALERT
+  deterministic_seed: 4048
+  feature_ids:
+  - F-047
+  replay_command: make scenario SCENARIO=S-048
+  negative_command: make scenario-negative SCENARIO=S-048
+  evidence_path: reports/scenarios/S-048.json
+  replay_script: simulation/scenarios/S-048_replay.yaml
+  status: manifest
+- scenario_id: S-049
+  title: Muhasebe Login Saatleri Toplu İnceleme
+  category: insider threat
+  user_role: Muhasebe
+  expected_severity: ALERT
+  deterministic_seed: 4049
+  feature_ids:
+  - F-062
+  replay_command: make scenario SCENARIO=S-049
+  negative_command: make scenario-negative SCENARIO=S-049
+  evidence_path: reports/scenarios/S-049.json
+  replay_script: simulation/scenarios/S-049_replay.yaml
+  status: manifest
+- scenario_id: S-050
+  title: Satış Müşteri Segmentasyon Modeline Erişim
+  category: insider threat
+  user_role: Satış
+  expected_severity: ALERT
+  deterministic_seed: 4050
+  feature_ids:
+  - F-066
+  - F-072
+  - F-076
+  replay_command: make scenario SCENARIO=S-050
+  negative_command: make scenario-negative SCENARIO=S-050
+  evidence_path: reports/scenarios/S-050.json
+  replay_script: simulation/scenarios/S-050_replay.yaml
+  status: manifest
+- scenario_id: S-051
+  title: Yanlış Paylaşılan Bordro Klasörü
+  category: kazara ihlal
+  user_role: Muhasebe
+  expected_severity: ALERT
+  deterministic_seed: 5051
+  feature_ids:
+  - F-041
+  replay_command: make scenario SCENARIO=S-051
+  negative_command: make scenario-negative SCENARIO=S-051
+  evidence_path: reports/scenarios/S-051.json
+  replay_script: simulation/scenarios/S-051_replay.yaml
+  status: manifest
+- scenario_id: S-052
+  title: İK'dan Yanlış Odaya Giden Hassas Mail
+  category: kazara ihlal
+  user_role: İK
+  expected_severity: WARNING
+  deterministic_seed: 5052
+  feature_ids:
+  - F-020
+  - F-023
+  - F-021
+  - F-028
+  - F-019
+  replay_command: make scenario SCENARIO=S-052
+  negative_command: make scenario-negative SCENARIO=S-052
+  evidence_path: reports/scenarios/S-052.json
+  replay_script: simulation/scenarios/S-052_replay.yaml
+  status: manifest
+- scenario_id: S-053
+  title: Yeni Yazılımcının Hatalı Script Döngüsü
+  category: kazara ihlal
+  user_role: Yazılım Geliştirici
+  expected_severity: ALERT
+  deterministic_seed: 5053
+  feature_ids:
+  - F-006
+  - F-048
+  replay_command: make scenario SCENARIO=S-053
+  negative_command: make scenario-negative SCENARIO=S-053
+  evidence_path: reports/scenarios/S-053.json
+  replay_script: simulation/scenarios/S-053_replay.yaml
+  status: manifest
+- scenario_id: S-054
+  title: Canlı Ortam Yerine Test Aracı Yanlışlığı
+  category: kazara ihlal
+  user_role: Yazılım Geliştirici
+  expected_severity: ALERT
+  deterministic_seed: 5054
+  feature_ids:
+  - F-045
+  - F-048
+  - F-007
+  replay_command: make scenario SCENARIO=S-054
+  negative_command: make scenario-negative SCENARIO=S-054
+  evidence_path: reports/scenarios/S-054.json
+  replay_script: simulation/scenarios/S-054_replay.yaml
+  status: manifest
+- scenario_id: S-055
+  title: USB ile İçeri Veri Taşıyan Stajyer
+  category: kazara ihlal
+  user_role: Stajyer
+  expected_severity: ALERT
+  deterministic_seed: 5055
+  feature_ids:
+  - F-055
+  - F-043
+  replay_command: make scenario SCENARIO=S-055
+  negative_command: make scenario-negative SCENARIO=S-055
+  evidence_path: reports/scenarios/S-055.json
+  replay_script: simulation/scenarios/S-055_replay.yaml
+  status: manifest
+- scenario_id: S-056
+  title: Destek Personelinin Aşırı Geniş Oturum Süresi
+  category: kazara ihlal
+  user_role: Destek Personeli
+  expected_severity: WARNING
+  deterministic_seed: 5056
+  feature_ids:
+  - F-080
+  - F-037
+  - F-060
+  - F-077
+  replay_command: make scenario SCENARIO=S-056
+  negative_command: make scenario-negative SCENARIO=S-056
+  evidence_path: reports/scenarios/S-056.json
+  replay_script: simulation/scenarios/S-056_replay.yaml
+  status: manifest
+- scenario_id: S-057
+  title: Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi
+  category: kazara ihlal
+  user_role: Veri Analisti
+  expected_severity: ALERT
+  deterministic_seed: 5057
+  feature_ids:
+  - F-043
+  - F-038
+  replay_command: make scenario SCENARIO=S-057
+  negative_command: make scenario-negative SCENARIO=S-057
+  evidence_path: reports/scenarios/S-057.json
+  replay_script: simulation/scenarios/S-057_replay.yaml
+  status: manifest
+- scenario_id: S-058
+  title: Hukuk Bilgisayarına Bilinmeyen USB Takılması
+  category: kazara ihlal
+  user_role: Hukuk
+  expected_severity: ALERT
+  deterministic_seed: 5058
+  feature_ids:
+  - F-055
+  - F-063
+  replay_command: make scenario SCENARIO=S-058
+  negative_command: make scenario-negative SCENARIO=S-058
+  evidence_path: reports/scenarios/S-058.json
+  replay_script: simulation/scenarios/S-058_replay.yaml
+  status: manifest
+- scenario_id: S-059
+  title: Stajyerin Kaynak Kod Aynası
+  category: politika ihlali
+  user_role: Stajyer
+  expected_severity: ALERT
+  deterministic_seed: 6059
+  feature_ids:
+  - F-049
+  - F-042
+  - F-054
+  - F-031
+  replay_command: make scenario SCENARIO=S-059
+  negative_command: make scenario-negative SCENARIO=S-059
+  evidence_path: reports/scenarios/S-059.json
+  replay_script: simulation/scenarios/S-059_replay.yaml
+  status: manifest
+- scenario_id: S-060
+  title: Hukuk Klasörünü Yedekleyen PM
+  category: politika ihlali
+  user_role: Proje Yöneticisi
+  expected_severity: ALERT
+  deterministic_seed: 6060
+  feature_ids:
+  - F-037
+  - F-038
+  replay_command: make scenario SCENARIO=S-060
+  negative_command: make scenario-negative SCENARIO=S-060
+  evidence_path: reports/scenarios/S-060.json
+  replay_script: simulation/scenarios/S-060_replay.yaml
+  status: manifest
+- scenario_id: S-061
+  title: PM'den Gereksiz Credential İstemi
+  category: politika ihlali
+  user_role: Proje Yöneticisi
+  expected_severity: ALERT
+  deterministic_seed: 6061
+  feature_ids:
+  - F-014
+  replay_command: make scenario SCENARIO=S-061
+  negative_command: make scenario-negative SCENARIO=S-061
+  evidence_path: reports/scenarios/S-061.json
+  replay_script: simulation/scenarios/S-061_replay.yaml
+  status: manifest
+- scenario_id: S-062
+  title: Sabit Şifre Koda Gömme
+  category: politika ihlali
+  user_role: Yazılım Geliştirici
+  expected_severity: ALERT
+  deterministic_seed: 6062
+  feature_ids:
+  - F-049
+  - F-054
+  - F-031
+  - F-027
+  replay_command: make scenario SCENARIO=S-062
+  negative_command: make scenario-negative SCENARIO=S-062
+  evidence_path: reports/scenarios/S-062.json
+  replay_script: simulation/scenarios/S-062_replay.yaml
+  status: manifest
+- scenario_id: S-063
+  title: Süresi Dolan Şifrelerin Toplu Uzatılması
+  category: politika ihlali
+  user_role: IT Admin
+  expected_severity: WARNING
+  deterministic_seed: 6063
+  feature_ids:
+  - F-014
+  replay_command: make scenario SCENARIO=S-063
+  negative_command: make scenario-negative SCENARIO=S-063
+  evidence_path: reports/scenarios/S-063.json
+  replay_script: simulation/scenarios/S-063_replay.yaml
+  status: manifest
+- scenario_id: S-064
+  title: Stajyerin Wi-Fi Ağı Sniffing Denemesi
+  category: politika ihlali
+  user_role: Stajyer
+  expected_severity: CRITICAL
+  deterministic_seed: 6064
+  feature_ids:
+  - F-057
+  replay_command: make scenario SCENARIO=S-064
+  negative_command: make scenario-negative SCENARIO=S-064
+  evidence_path: reports/scenarios/S-064.json
+  replay_script: simulation/scenarios/S-064_replay.yaml
+  status: manifest
+- scenario_id: S-065
+  title: Geçici Erişim Süresinin Aşılması
+  category: politika ihlali
+  user_role: IT Admin
+  expected_severity: WARNING
+  deterministic_seed: 6065
+  feature_ids:
+  - F-078
+  - F-072
+  - F-077
+  replay_command: make scenario SCENARIO=S-065
+  negative_command: make scenario-negative SCENARIO=S-065
+  evidence_path: reports/scenarios/S-065.json
+  replay_script: simulation/scenarios/S-065_replay.yaml
+  status: manifest
+- scenario_id: S-066
+  title: Hukuk Toplu PDF OCR Geçici Klasörü
+  category: politika ihlali
+  user_role: Hukuk
+  expected_severity: ALERT
+  deterministic_seed: 6066
+  feature_ids:
+  - F-041
+  - F-039
+  replay_command: make scenario SCENARIO=S-066
+  negative_command: make scenario-negative SCENARIO=S-066
+  evidence_path: reports/scenarios/S-066.json
+  replay_script: simulation/scenarios/S-066_replay.yaml
+  status: manifest
+- scenario_id: S-067
+  title: Güvenlik Görevlisinin Sunucu Odası Erişim Olayı
+  category: dış saldırı desteği
+  user_role: Güvenlik Görevlisi
+  expected_severity: CRITICAL
+  deterministic_seed: 7067
+  feature_ids:
+  - F-006
+  - F-070
+  - F-074
+  replay_command: make scenario SCENARIO=S-067
+  negative_command: make scenario-negative SCENARIO=S-067
+  evidence_path: reports/scenarios/S-067.json
+  replay_script: simulation/scenarios/S-067_replay.yaml
+  status: manifest
+- scenario_id: S-068
+  title: Admin Bilgisayarından Agresif Port Taraması
+  category: dış saldırı desteği
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 7068
+  feature_ids:
+  - F-007
+  replay_command: make scenario SCENARIO=S-068
+  negative_command: make scenario-negative SCENARIO=S-068
+  evidence_path: reports/scenarios/S-068.json
+  replay_script: simulation/scenarios/S-068_replay.yaml
+  status: manifest
+- scenario_id: S-069
+  title: DNS Sunucu Yönlendirme Manipülasyonu
+  category: dış saldırı desteği
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 7069
+  feature_ids:
+  - F-003
+  - F-005
+  - F-004
+  - F-069
+  replay_command: make scenario SCENARIO=S-069
+  negative_command: make scenario-negative SCENARIO=S-069
+  evidence_path: reports/scenarios/S-069.json
+  replay_script: simulation/scenarios/S-069_replay.yaml
+  status: manifest
+- scenario_id: S-070
+  title: Domain Controller Üzerinde Credential Dumping Script
+  category: dış saldırı desteği
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 7070
+  feature_ids:
+  - F-054
+  - F-008
+  replay_command: make scenario SCENARIO=S-070
+  negative_command: make scenario-negative SCENARIO=S-070
+  evidence_path: reports/scenarios/S-070.json
+  replay_script: simulation/scenarios/S-070_replay.yaml
+  status: manifest
+- scenario_id: S-071
+  title: Geliştirici Bilgisayarından SSH Kaba Kuvvet Saldırısı
+  category: dış saldırı desteği
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 7071
+  feature_ids:
+  - F-006
+  - F-048
+  replay_command: make scenario SCENARIO=S-071
+  negative_command: make scenario-negative SCENARIO=S-071
+  evidence_path: reports/scenarios/S-071.json
+  replay_script: simulation/scenarios/S-071_replay.yaml
+  status: manifest
+- scenario_id: S-072
+  title: CTO Hesabından Ağ Trafik Kopyalama Kuralı
+  category: dış saldırı desteği
+  user_role: CTO
+  expected_severity: CRITICAL
+  deterministic_seed: 7072
+  feature_ids:
+  - F-002
+  - F-057
+  - F-069
+  replay_command: make scenario SCENARIO=S-072
+  negative_command: make scenario-negative SCENARIO=S-072
+  evidence_path: reports/scenarios/S-072.json
+  replay_script: simulation/scenarios/S-072_replay.yaml
+  status: manifest
+- scenario_id: S-073
+  title: İK Bilgisayarında Keylogger Çalışması
+  category: dış saldırı desteği
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 7073
+  feature_ids:
+  - F-046
+  - F-059
+  replay_command: make scenario SCENARIO=S-073
+  negative_command: make scenario-negative SCENARIO=S-073
+  evidence_path: reports/scenarios/S-073.json
+  replay_script: simulation/scenarios/S-073_replay.yaml
+  status: manifest
+- scenario_id: S-074
+  title: Docker Container Escape Denemesi
+  category: dış saldırı desteği
+  user_role: Yazılım Geliştirici
+  expected_severity: CRITICAL
+  deterministic_seed: 7074
+  feature_ids:
+  - F-046
+  - F-065
+  - F-069
+  replay_command: make scenario SCENARIO=S-074
+  negative_command: make scenario-negative SCENARIO=S-074
+  evidence_path: reports/scenarios/S-074.json
+  replay_script: simulation/scenarios/S-074_replay.yaml
+  status: manifest
+- scenario_id: S-075
+  title: CEO Asistanı Gibi Davranan Arama Sonrası Erişim
+  category: sosyal mühendislik
+  user_role: CEO
+  expected_severity: ALERT
+  deterministic_seed: 8075
+  feature_ids:
+  - F-037
+  - F-063
+  - F-079
+  replay_command: make scenario SCENARIO=S-075
+  negative_command: make scenario-negative SCENARIO=S-075
+  evidence_path: reports/scenarios/S-075.json
+  replay_script: simulation/scenarios/S-075_replay.yaml
+  status: manifest
+- scenario_id: S-076
+  title: CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme
+  category: sosyal mühendislik
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 8076
+  feature_ids:
+  - F-011
+  - F-014
+  replay_command: make scenario SCENARIO=S-076
+  negative_command: make scenario-negative SCENARIO=S-076
+  evidence_path: reports/scenarios/S-076.json
+  replay_script: simulation/scenarios/S-076_replay.yaml
+  status: manifest
+- scenario_id: S-077
+  title: Hukuk Ekibine CFO Adına Gelen Sahte İç Mail
+  category: sosyal mühendislik
+  user_role: Hukuk
+  expected_severity: ALERT
+  deterministic_seed: 8077
+  feature_ids:
+  - F-023
+  - F-026
+  replay_command: make scenario SCENARIO=S-077
+  negative_command: make scenario-negative SCENARIO=S-077
+  evidence_path: reports/scenarios/S-077.json
+  replay_script: simulation/scenarios/S-077_replay.yaml
+  status: manifest
+- scenario_id: S-078
+  title: Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan
+  category: sosyal mühendislik
+  user_role: Destek Personeli
+  expected_severity: ALERT
+  deterministic_seed: 8078
+  feature_ids:
+  - F-048
+  - F-006
+  - F-029
+  replay_command: make scenario SCENARIO=S-078
+  negative_command: make scenario-negative SCENARIO=S-078
+  evidence_path: reports/scenarios/S-078.json
+  replay_script: simulation/scenarios/S-078_replay.yaml
+  status: manifest
+- scenario_id: S-079
+  title: Tüm Şirkete Sahte CEO İstifa Maili
+  category: sosyal mühendislik
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 8079
+  feature_ids:
+  - F-016
+  - F-020
+  - F-023
+  - F-027
+  replay_command: make scenario SCENARIO=S-079
+  negative_command: make scenario-negative SCENARIO=S-079
+  evidence_path: reports/scenarios/S-079.json
+  replay_script: simulation/scenarios/S-079_replay.yaml
+  status: manifest
+- scenario_id: S-080
+  title: Çok Kaynaklı Kademeli İhlal Simülasyonu
+  category: çapraz/multi-user
+  user_role: IT Admin
+  expected_severity: CRITICAL
+  deterministic_seed: 9080
+  feature_ids:
+  - F-071
+  - F-044
+  - F-012
+  - F-050
+  - F-038
+  - F-030
+  - F-032
+  - F-033
+  - F-035
+  replay_command: make scenario SCENARIO=S-080
+  negative_command: make scenario-negative SCENARIO=S-080
+  evidence_path: reports/scenarios/S-080.json
+  replay_script: simulation/scenarios/S-080_replay.yaml
+  status: manifest
+- scenario_id: S-081
+  title: Çoklu Departman Zincirli Fiziksel-Dijital Saldırı
+  category: çapraz/multi-user
+  user_role: Güvenlik Görevlisi
+  expected_severity: CRITICAL
+  deterministic_seed: 9081
+  feature_ids:
+  - F-071
+  - F-074
+  - F-015
+  - F-062
+  replay_command: make scenario SCENARIO=S-081
+  negative_command: make scenario-negative SCENARIO=S-081
+  evidence_path: reports/scenarios/S-081.json
+  replay_script: simulation/scenarios/S-081_replay.yaml
+  status: manifest
+- scenario_id: S-082
+  title: İK ve Bilgi İşlem Çapraz Hesap Manipülasyonu
+  category: çapraz/multi-user
+  user_role: İK
+  expected_severity: CRITICAL
+  deterministic_seed: 9082
+  feature_ids:
+  - F-014
+  - F-072
+  - F-024
+  - F-076
+  replay_command: make scenario SCENARIO=S-082
+  negative_command: make scenario-negative SCENARIO=S-082
+  evidence_path: reports/scenarios/S-082.json
+  replay_script: simulation/scenarios/S-082_replay.yaml
+  status: manifest
+- scenario_id: S-083
+  title: Aynı Dosyaya Zincirleme Çapraz Departman Erişimi
+  category: çapraz/multi-user
+  user_role: Satış
+  expected_severity: ALERT
+  deterministic_seed: 9083
+  feature_ids:
+  - F-073
+  - F-039
+  - F-037
+  replay_command: make scenario SCENARIO=S-083
+  negative_command: make scenario-negative SCENARIO=S-083
+  evidence_path: reports/scenarios/S-083.json
+  replay_script: simulation/scenarios/S-083_replay.yaml
+  status: manifest
