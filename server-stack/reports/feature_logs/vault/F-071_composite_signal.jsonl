@@ -27,3 +27,4 @@
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "feature_id": "F-071", "timestamp": "2026-05-23T05:09:51.918392+00:00"}
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "feature_id": "F-071", "timestamp": "2026-05-23T05:35:37.498565+00:00"}
 {"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "feature_id": "F-071", "timestamp": "2026-05-23T05:35:56.836692+00:00"}
+{"event_type": "composite_signal", "log_channel": "vault", "signal": "secret_burst", "weight": 0.25, "feature_id": "F-071", "timestamp": "2026-05-23T08:40:57.952383+00:00"}

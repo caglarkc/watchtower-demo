@@ -2,7 +2,7 @@
   "id": "F-021",
   "feature_id": "F-021",
   "title": "Kişisel E-posta Adreslerine Ekli Posta Gönderimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "personal email attachment event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:30.566492+00:00",
+  "generated_at": "2026-05-23T08:40:58.297146+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
