@@ -2,3 +2,5 @@
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T01:26:25.893913+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T01:26:39.814412+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T01:26:42.748124+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T01:27:13.004422+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T01:27:15.862816+00:00"}

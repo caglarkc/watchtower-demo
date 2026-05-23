@@ -2,3 +2,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-026", "user_role": "Stajyer", "category": "credential ihlali", "seed": 2026, "anomaly": false, "timestamp": "2026-05-23T01:26:25.236277+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-026", "user_role": "Stajyer", "category": "credential ihlali", "seed": 2026, "anomaly": true, "timestamp": "2026-05-23T01:26:39.177474+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-026", "user_role": "Stajyer", "category": "credential ihlali", "seed": 2026, "anomaly": false, "timestamp": "2026-05-23T01:26:42.080752+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-026", "user_role": "Stajyer", "category": "credential ihlali", "seed": 2026, "anomaly": true, "timestamp": "2026-05-23T01:27:12.318674+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-026", "user_role": "Stajyer", "category": "credential ihlali", "seed": 2026, "anomaly": false, "timestamp": "2026-05-23T01:27:15.226944+00:00"}

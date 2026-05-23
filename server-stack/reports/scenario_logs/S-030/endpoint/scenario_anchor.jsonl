@@ -2,3 +2,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-030", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3030, "anomaly": false, "timestamp": "2026-05-23T01:26:25.368399+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-030", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3030, "anomaly": true, "timestamp": "2026-05-23T01:26:39.314456+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-030", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3030, "anomaly": false, "timestamp": "2026-05-23T01:26:42.220979+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-030", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3030, "anomaly": true, "timestamp": "2026-05-23T01:27:12.491003+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-030", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3030, "anomaly": false, "timestamp": "2026-05-23T01:27:15.353683+00:00"}

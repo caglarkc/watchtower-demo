@@ -2,3 +2,4 @@
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-067", "timestamp": "2026-05-23T01:26:26.677243+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-067", "timestamp": "2026-05-23T01:26:40.596927+00:00"}
 {"event_type": "off_shift_access", "log_channel": "badge", "shift": "day", "login_hour": 10, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-067", "timestamp": "2026-05-23T01:26:43.504713+00:00"}
+{"event_type": "off_shift_access", "log_channel": "badge", "shift": "off", "login_hour": 2, "badge_swipe": true, "source_feature": "F-074", "scenario_id": "S-067", "timestamp": "2026-05-23T01:27:13.766848+00:00"}

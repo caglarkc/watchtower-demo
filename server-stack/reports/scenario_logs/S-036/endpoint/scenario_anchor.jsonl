@@ -2,3 +2,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T01:26:25.585294+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": true, "timestamp": "2026-05-23T01:26:39.530954+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T01:26:42.429602+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": true, "timestamp": "2026-05-23T01:27:12.695874+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T01:27:15.558204+00:00"}

@@ -2,3 +2,4 @@
 {"event_type": "acl_change", "permission": "Finance-RW", "source_feature": "F-041", "scenario_id": "S-051", "timestamp": "2026-05-23T01:26:26.094022+00:00"}
 {"event_type": "acl_change", "permission": "Everyone:FullControl", "source_feature": "F-041", "scenario_id": "S-051", "timestamp": "2026-05-23T01:26:40.017745+00:00"}
 {"event_type": "acl_change", "permission": "Finance-RW", "source_feature": "F-041", "scenario_id": "S-051", "timestamp": "2026-05-23T01:26:42.950846+00:00"}
+{"event_type": "acl_change", "permission": "Everyone:FullControl", "source_feature": "F-041", "scenario_id": "S-051", "timestamp": "2026-05-23T01:27:13.213916+00:00"}

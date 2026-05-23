@@ -2,3 +2,4 @@
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T01:26:26.508225+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T01:26:40.422710+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T01:26:43.328369+00:00"}
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "source_feature": "F-054", "scenario_id": "S-062", "timestamp": "2026-05-23T01:27:13.595334+00:00"}

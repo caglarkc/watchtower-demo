@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-058",
   "title": "Hukuk Bilgisayarına Bilinmeyen USB Takılması",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Hukuk",
   "deterministic_seed": 5058,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Hukuk Bilgisayarına Bilinmeyen USB Takılması",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,18 +24,18 @@
       "user_role": "Hukuk",
       "category": "kazara ihlal",
       "seed": 5058,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "usb_write",
-      "device_id": null,
-      "bytes_written": 0,
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
       "source_feature": "F-055",
       "scenario_id": "S-058"
     },
     {
       "event_type": "unknown_hardware",
-      "device_id": "KNOWN-MAC-001",
+      "device_id": "NEW-MAC-9912",
       "success": true,
       "source_feature": "F-063",
       "scenario_id": "S-058"
@@ -46,12 +46,9 @@
     "reports/scenario_logs/S-058/scenarios/usb_write.jsonl",
     "reports/scenario_logs/S-058/scenarios/unknown_hardware.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:26:43.193596+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:27:13.458581+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-058:5058:negative"
+  "replay_key": "S-058:5058:positive"
 }

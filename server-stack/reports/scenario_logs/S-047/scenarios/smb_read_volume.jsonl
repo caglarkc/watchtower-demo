@@ -2,3 +2,4 @@
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "source_feature": "F-001", "scenario_id": "S-047", "timestamp": "2026-05-23T01:26:25.957166+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "source_feature": "F-001", "scenario_id": "S-047", "timestamp": "2026-05-23T01:26:39.879758+00:00"}
 {"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 800000000, "anomaly": false, "source_feature": "F-001", "scenario_id": "S-047", "timestamp": "2026-05-23T01:26:42.813114+00:00"}
+{"event_type": "smb_read_volume", "user": "cfo", "bytes_read": 14000000000, "anomaly": true, "source_feature": "F-001", "scenario_id": "S-047", "timestamp": "2026-05-23T01:27:13.074974+00:00"}

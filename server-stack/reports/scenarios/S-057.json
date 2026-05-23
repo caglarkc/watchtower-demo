@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-057",
   "title": "Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Veri Analisti",
   "deterministic_seed": 5057,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,19 +24,19 @@
       "user_role": "Veri Analisti",
       "category": "kazara ihlal",
       "seed": 5057,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "sensitive_file_move",
       "log_channel": "endpoint",
       "from_zone": "restricted",
-      "to_zone": "restricted",
+      "to_zone": "public",
       "source_feature": "F-043",
       "scenario_id": "S-057"
     },
     {
       "event_type": "smb_bulk_io",
-      "read_bytes": 320000000,
+      "read_bytes": 18400000000,
       "write_bytes": 0,
       "source_feature": "F-038",
       "scenario_id": "S-057"
@@ -47,12 +47,9 @@
     "reports/scenario_logs/S-057/endpoint/sensitive_file_move.jsonl",
     "reports/scenario_logs/S-057/scenarios/smb_bulk_io.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:26:43.153990+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:27:13.425454+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-057:5057:negative"
+  "replay_key": "S-057:5057:positive"
 }

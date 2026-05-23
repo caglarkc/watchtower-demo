@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-061",
   "title": "PM'den Gereksiz Credential İstemi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "politika ihlali",
   "user_role": "Proje Yöneticisi",
   "deterministic_seed": 6061,
@@ -14,7 +14,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for PM'den Gereksiz Credential İstemi",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -24,13 +24,13 @@
       "user_role": "Proje Yöneticisi",
       "category": "politika ihlali",
       "seed": 6061,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "credential_reset_burst",
       "log_channel": "hris",
-      "resets": 1,
-      "unlocks": 0,
+      "resets": 12,
+      "unlocks": 8,
       "source_feature": "F-014",
       "scenario_id": "S-061"
     }
@@ -39,12 +39,9 @@
     "reports/scenario_logs/S-061/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-061/hris/credential_reset_burst.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T01:26:43.295173+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T01:27:13.561422+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-061:6061:negative"
+  "replay_key": "S-061:6061:positive"
 }

@@ -2,3 +2,5 @@
 {"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:25.203477+00:00"}
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "source_feature": "F-063", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:39.145207+00:00"}
 {"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-025", "timestamp": "2026-05-23T01:26:42.048735+00:00"}
+{"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "source_feature": "F-063", "scenario_id": "S-025", "timestamp": "2026-05-23T01:27:12.283435+00:00"}
+{"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-025", "timestamp": "2026-05-23T01:27:15.194854+00:00"}
