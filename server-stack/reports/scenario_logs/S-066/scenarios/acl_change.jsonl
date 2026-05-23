@@ -13,3 +13,4 @@
 {"event_type": "acl_change", "permission": "Everyone:FullControl", "source_feature": "F-041", "scenario_id": "S-066", "timestamp": "2026-05-23T02:29:19.512572+00:00"}
 {"event_type": "acl_change", "permission": "Finance-RW", "source_feature": "F-041", "scenario_id": "S-066", "timestamp": "2026-05-23T02:29:22.377126+00:00"}
 {"event_type": "acl_change", "permission": "Everyone:FullControl", "source_feature": "F-041", "scenario_id": "S-066", "timestamp": "2026-05-23T02:36:57.571718+00:00"}
+{"event_type": "acl_change", "permission": "Finance-RW", "source_feature": "F-041", "scenario_id": "S-066", "timestamp": "2026-05-23T02:37:00.415574+00:00"}

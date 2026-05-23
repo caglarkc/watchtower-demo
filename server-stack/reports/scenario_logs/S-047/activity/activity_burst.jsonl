@@ -13,3 +13,4 @@
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "source_feature": "F-064", "scenario_id": "S-047", "timestamp": "2026-05-23T02:29:18.874170+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "source_feature": "F-064", "scenario_id": "S-047", "timestamp": "2026-05-23T02:29:21.741111+00:00"}
 {"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 4200, "baseline": 400, "source_feature": "F-064", "scenario_id": "S-047", "timestamp": "2026-05-23T02:36:56.933482+00:00"}
+{"event_type": "activity_burst", "log_channel": "activity", "events_per_hour": 380, "baseline": 400, "source_feature": "F-064", "scenario_id": "S-047", "timestamp": "2026-05-23T02:36:59.758018+00:00"}

@@ -13,3 +13,4 @@
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "source_feature": "F-050", "scenario_id": "S-080", "timestamp": "2026-05-23T02:29:19.956985+00:00"}
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "source_feature": "F-050", "scenario_id": "S-080", "timestamp": "2026-05-23T02:29:22.865367+00:00"}
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "source_feature": "F-050", "scenario_id": "S-080", "timestamp": "2026-05-23T02:36:58.062690+00:00"}
+{"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "source_feature": "F-050", "scenario_id": "S-080", "timestamp": "2026-05-23T02:37:00.904971+00:00"}

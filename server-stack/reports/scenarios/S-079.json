@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-079",
   "title": "Tüm Şirkete Sahte CEO İstifa Maili",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "İK",
   "deterministic_seed": 8079,
@@ -17,7 +17,7 @@
     "postfix"
   ],
   "expected_evidence": "Multi-signal workflow for Tüm Şirkete Sahte CEO İstifa Maili",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "events": [
     {
@@ -27,39 +27,35 @@
       "user_role": "İK",
       "category": "sosyal mühendislik",
       "seed": 8079,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "mail_send_volume",
       "log_channel": "postfix",
-      "messages": 450,
-      "attachment_mb": 120,
+      "messages": 12,
+      "attachment_mb": 5,
       "source_feature": "F-016",
       "scenario_id": "S-079"
     },
     {
       "event_type": "mail_bcc_anomaly",
       "log_channel": "postfix",
-      "bcc_count": 11,
-      "distribution_list": true,
+      "bcc_count": 0,
+      "distribution_list": false,
       "source_feature": "F-020",
       "scenario_id": "S-079"
     },
     {
       "event_type": "mail_sensitive_keyword",
       "log_channel": "postfix",
-      "keywords": [
-        "bordro",
-        "maaş",
-        "confidential"
-      ],
+      "keywords": [],
       "source_feature": "F-023",
       "scenario_id": "S-079"
     },
     {
       "event_type": "mail_banned_phrase",
       "log_channel": "postfix",
-      "phrase": "gizli iç bilgi",
+      "phrase": null,
       "source_feature": "F-027",
       "scenario_id": "S-079"
     }
@@ -71,9 +67,12 @@
     "reports/scenario_logs/S-079/postfix/mail_sensitive_keyword.jsonl",
     "reports/scenario_logs/S-079/postfix/mail_banned_phrase.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:36:58.027178+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:37:00.860409+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-079:8079:positive"
+  "replay_key": "S-079:8079:negative"
 }

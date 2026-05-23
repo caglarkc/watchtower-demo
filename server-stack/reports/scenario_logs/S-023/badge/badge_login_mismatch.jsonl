@@ -13,3 +13,4 @@
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-023", "timestamp": "2026-05-23T02:29:18.091312+00:00"}
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-023", "timestamp": "2026-05-23T02:29:20.899324+00:00"}
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-023", "timestamp": "2026-05-23T02:36:56.131464+00:00"}
+{"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-023", "timestamp": "2026-05-23T02:36:58.965651+00:00"}

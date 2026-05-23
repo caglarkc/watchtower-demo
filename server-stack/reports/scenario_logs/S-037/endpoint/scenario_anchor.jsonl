@@ -13,3 +13,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-037", "user_role": "Satış", "category": "yetkisiz erişim", "seed": 3037, "anomaly": true, "timestamp": "2026-05-23T02:29:18.557598+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-037", "user_role": "Satış", "category": "yetkisiz erişim", "seed": 3037, "anomaly": false, "timestamp": "2026-05-23T02:29:21.397512+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-037", "user_role": "Satış", "category": "yetkisiz erişim", "seed": 3037, "anomaly": true, "timestamp": "2026-05-23T02:36:56.582787+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-037", "user_role": "Satış", "category": "yetkisiz erişim", "seed": 3037, "anomaly": false, "timestamp": "2026-05-23T02:36:59.420397+00:00"}
