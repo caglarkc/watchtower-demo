@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-072",
   "title": "CTO Hesabından Ağ Trafik Kopyalama Kuralı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "CTO",
   "deterministic_seed": 7072,
@@ -22,7 +22,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 20,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         }
@@ -49,7 +49,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-002",
-            "count": 1840,
+            "count": 1920,
             "result": "PASS"
           },
           "result": "PASS",
@@ -106,19 +106,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-057",
-            "count": 525,
+            "count": 594,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 34,
+            "indexed": 36,
             "index": "corp-logs-f-057",
             "pipeline": {
               "feature_id": "F-057",
               "index": "corp-logs-f-057",
-              "indexed": 34
+              "indexed": 36
             }
           }
         }
@@ -187,7 +187,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 20,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -235,7 +235,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-002",
-        "count": 1840,
+        "count": 1920,
         "result": "PASS"
       },
       "result": "PASS",
@@ -265,19 +265,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-057",
-        "count": 525,
+        "count": 594,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 34,
+        "indexed": 36,
         "index": "corp-logs-f-057",
         "pipeline": {
           "feature_id": "F-057",
           "index": "corp-logs-f-057",
-          "indexed": 34
+          "indexed": 36
         }
       }
     },
@@ -317,12 +317,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:28.909660+00:00",
+  "generated_at": "2026-05-23T03:19:51.943159+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-072:7072:positive:real"
+  "replay_key": "S-072:7072:negative:real"
 }
