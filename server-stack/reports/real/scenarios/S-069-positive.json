@@ -24,35 +24,35 @@
           "service": "bind-dns",
           "dig": [
             {
-              "query": "entropy-38068.corp.local",
+              "query": "entropy-58304.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-20258.corp.local",
+              "query": "entropy-23864.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-48980.corp.local",
+              "query": "entropy-38975.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-90710.corp.local",
+              "query": "entropy-26168.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-62991.corp.local",
+              "query": "entropy-34988.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-64908.corp.local",
+              "query": "entropy-42078.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-61432.corp.local",
+              "query": "entropy-90141.corp.local",
               "returncode": 0
             },
             {
-              "query": "entropy-75898.corp.local",
+              "query": "entropy-27798.corp.local",
               "returncode": 0
             }
           ]
@@ -79,7 +79,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-003",
-            "count": 3822,
+            "count": 4222,
             "result": "PASS"
           },
           "result": "PASS",
@@ -135,7 +135,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-005",
-            "count": 1375,
+            "count": 1535,
             "result": "PASS"
           },
           "result": "PASS",
@@ -192,19 +192,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-004",
-            "count": 1122,
+            "count": 1320,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 48,
+            "indexed": 52,
             "index": "corp-logs-f-004",
             "pipeline": {
               "feature_id": "F-004",
               "index": "corp-logs-f-004",
-              "indexed": 48
+              "indexed": 52
             }
           }
         }
@@ -274,35 +274,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-38068.corp.local",
+          "query": "entropy-58304.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-20258.corp.local",
+          "query": "entropy-23864.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-48980.corp.local",
+          "query": "entropy-38975.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-90710.corp.local",
+          "query": "entropy-26168.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-62991.corp.local",
+          "query": "entropy-34988.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-64908.corp.local",
+          "query": "entropy-42078.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-61432.corp.local",
+          "query": "entropy-90141.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-75898.corp.local",
+          "query": "entropy-27798.corp.local",
           "returncode": 0
         }
       ]
@@ -360,7 +360,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 3822,
+        "count": 4222,
         "result": "PASS"
       },
       "result": "PASS",
@@ -390,7 +390,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-005",
-        "count": 1375,
+        "count": 1535,
         "result": "PASS"
       },
       "result": "PASS",
@@ -420,19 +420,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-004",
-        "count": 1122,
+        "count": 1320,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 48,
+        "indexed": 52,
         "index": "corp-logs-f-004",
         "pipeline": {
           "feature_id": "F-004",
           "index": "corp-logs-f-004",
-          "indexed": 48
+          "indexed": 52
         }
       }
     },
@@ -475,7 +475,7 @@
   "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:01.567877+00:00",
+  "generated_at": "2026-05-23T10:27:20.374057+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
