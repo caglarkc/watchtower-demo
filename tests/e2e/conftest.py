@@ -67,13 +67,13 @@ def app_mock_llm(app: AppContext, mock_llm_gateway: LLMGateway):
 
 
 def seed_baseline_for_candidate(app: AppContext, tenant_id: str, candidate) -> None:
-    from tests.baseline.conftest import seed_metric_series
     from tests.graph.conftest import seed_anomaly_baseline
 
+    dept = candidate.attributes.get("department_id")
     seed_anomaly_baseline(
         app,
         tenant_id,
         user_id=str(candidate.attributes.get("user_id") or candidate.actor),
-        department_id=candidate.attributes.get("department_id"),
+        department_id=str(dept) if dept else "unknown",
         metric_name=str(candidate.attributes.get("metric_name", "event_volume")),
     )

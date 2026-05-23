@@ -72,7 +72,7 @@ def test_graph_llm_unavailable_fail_open_passes(app, tenant_id, normalizer, extr
         prefer_anomaly=True,
     )
     assert candidate is not None
-    _seed_for_candidate(app, tenant_id, candidate)
+    seed_baseline_for_candidate(app, tenant_id, candidate)
     set_tenant_mode(app, tenant_id, "hybrid")
     candidate.attributes["volume"] = 500.0
     with app.session() as session:
