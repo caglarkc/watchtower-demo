@@ -2,7 +2,7 @@
   "id": "F-036",
   "feature_id": "F-036",
   "title": "AI Konuşma Geçmişinde Rekabet, Strateji veya Hukuki Süreç İçeriği",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 39
+        "tokens": 13
       }
     }
   ],
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "strategy/legal-content conversation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:19.385346+00:00",
+  "generated_at": "2026-05-23T05:10:22.625363+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
