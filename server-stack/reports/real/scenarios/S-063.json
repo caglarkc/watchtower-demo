@@ -1,0 +1,93 @@
+{
+  "scenario_id": "S-063",
+  "title": "Süresi Dolan Şifrelerin Toplu Uzatılması",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 6063,
+  "expected_severity": "WARNING",
+  "feature_ids": [
+    "F-014"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-014",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "resets": 12,
+            "unlocks": 8
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 12
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        },
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "hris",
+      "response": {
+        "resets": 12,
+        "unlocks": 8
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 12
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:58.709254+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-063:6063:positive:real"
+}

@@ -2,7 +2,7 @@
   "id": "F-057",
   "feature_id": "F-057",
   "title": "Ağ Kartı Promiscuous Mod Değişimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -27,10 +27,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "promiscuous mode change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:56.231835+00:00",
+  "generated_at": "2026-05-23T02:55:58.831649+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

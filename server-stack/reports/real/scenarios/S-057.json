@@ -1,0 +1,144 @@
+{
+  "scenario_id": "S-057",
+  "title": "Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Veri Analisti",
+  "deterministic_seed": 5057,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-043",
+    "F-038"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-043",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "endpoint",
+          "response": {
+            "written": "/var/log/corp/endpoint/labeled_file_move.jsonl",
+            "event_type": "labeled_file_move"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/labeled_file_move.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    },
+    {
+      "feature_id": "F-038",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "read_bytes": 18400000000,
+            "write_bytes": 0
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-038",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "endpoint",
+      "response": {
+        "written": "/var/log/corp/endpoint/labeled_file_move.jsonl",
+        "event_type": "labeled_file_move"
+      }
+    },
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "read_bytes": 18400000000,
+        "write_bytes": 0
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/endpoint/labeled_file_move.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-038",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin",
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 2,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:57.295422+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-057:5057:positive:real"
+}

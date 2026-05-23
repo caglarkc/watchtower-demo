@@ -2,7 +2,7 @@
   "id": "F-027",
   "feature_id": "F-027",
   "title": "Yasaklı veya Politika Dışı İfade Kullanımı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "banned phrase policy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:19.351242+00:00",
+  "generated_at": "2026-05-23T02:55:58.567750+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

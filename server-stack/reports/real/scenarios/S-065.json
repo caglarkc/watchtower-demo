@@ -1,0 +1,165 @@
+{
+  "scenario_id": "S-065",
+  "title": "Geçici Erişim Süresinin Aşılması",
+  "mode": "positive",
+  "category": "politika ihlali",
+  "user_role": "IT Admin",
+  "deterministic_seed": 6065,
+  "expected_severity": "WARNING",
+  "feature_ids": [
+    "F-078",
+    "F-072",
+    "F-077"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-078",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "systems": [
+              "payroll-db",
+              "dc-admin"
+            ]
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    },
+    {
+      "feature_id": "F-072",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "status": "terminated",
+            "logins_after": 6
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    },
+    {
+      "feature_id": "F-077",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "keyboard_events": 900
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "hris",
+      "response": {
+        "systems": [
+          "payroll-db",
+          "dc-admin"
+        ]
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "status": "terminated",
+        "logins_after": 6
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "keyboard_events": 900
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 4,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:59.098017+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-065:6065:positive:real"
+}
