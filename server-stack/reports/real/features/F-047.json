@@ -2,7 +2,7 @@
   "id": "F-047",
   "feature_id": "F-047",
   "title": "İç API Çağrı Deseni Sapması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "nginx",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 9680,
+        "count": 9760,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "API call-pattern deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:08.948583+00:00",
+  "generated_at": "2026-05-23T10:25:25.207692+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
