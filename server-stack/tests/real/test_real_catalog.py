@@ -51,6 +51,14 @@ RI1 = {
     "F-055", "F-057", "F-063", "F-079", "F-080", "F-081",
 }
 RI2 = {f"F-{i:03d}" for i in range(16, 30)} | {f"F-{i:03d}" for i in range(45, 55)}
+RI3 = (
+    {"F-012", "F-013"}
+    | {f"F-{i:03d}" for i in range(30, 37)}
+    | {"F-042", "F-043", "F-044"}
+    | {f"F-{i:03d}" for i in range(58, 63)}
+    | {f"F-{i:03d}" for i in range(64, 67)}
+    | {f"F-{i:03d}" for i in range(67, 70)}
+)
 
 
 @pytest.mark.real
@@ -61,7 +69,7 @@ def test_real_parity_levels_are_valid(features_doc: dict) -> None:
         target = feat.get("real_parity_target", "L2")
         assert level in VALID_LEVELS, fid
         assert target in VALID_LEVELS, fid
-        if fid in RI1 or fid in RI2:
+        if fid in RI1 or fid in RI2 or fid in RI3:
             assert level == "L2", fid
 
 
