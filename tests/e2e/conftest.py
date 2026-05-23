@@ -32,18 +32,7 @@ def extractor() -> CandidateExtractor:
 
 
 def attach_mock_llm(session, mock_gateway: LLMGateway) -> None:
-    session.graph_runner = build_graph_runner(
-        mode_controller=session.mode_controller,
-        decision=session.decision,
-        baseline=session.baseline,
-        feedback=session.feedback,
-        rules=session.rules,
-        graph_repo=session.graph,
-        conn=session.conn,
-        llm_gateway=mock_gateway,
-        alerts=session.alerts,
-    )
-    session.llm = mock_gateway
+    _attach_llm_gateway(session, mock_gateway)
 
 
 @pytest.fixture

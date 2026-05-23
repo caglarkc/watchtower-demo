@@ -42,11 +42,7 @@ def test_graph_llm_mock_explanation_from_replay(
     assert candidate is not None
     candidate.attributes["volume"] = 500.0
 
-    with app_mock_llm.session() as session:
-        attach_mock_llm(session, mock_llm_gateway)
-        session.conn.commit()
-
-    result = run_graph_to_completion(app_mock_llm, candidate)
+    result = run_graph_to_completion(app_mock_llm, candidate, llm_gateway=mock_llm_gateway)
     expl = result.state.get("llm_explanation") or {}
     assert expl.get("skipped") is False
     assert expl.get("fail_open") is not True
@@ -57,7 +53,7 @@ def test_graph_llm_unavailable_fail_open_passes(app, tenant_id, normalizer, extr
     from watchtower.llm.gateway import LLMGateway
     from watchtower.llm.providers.mock import mock_openai
 
-    from tests.e2e.conftest import attach_mock_llm, seed_baseline_for_candidate
+    from tests.e2e.conftest import seed_baseline_for_candidate
 
     unavailable_gw = LLMGateway(
         [mock_openai([], unavailable=True)],
@@ -75,9 +71,6 @@ def test_graph_llm_unavailable_fail_open_passes(app, tenant_id, normalizer, extr
     seed_baseline_for_candidate(app, tenant_id, candidate)
     set_tenant_mode(app, tenant_id, "hybrid")
     candidate.attributes["volume"] = 500.0
-    with app.session() as session:
-        attach_mock_llm(session, unavailable_gw)
-        session.conn.commit()
-    result = run_graph_to_completion(app, candidate)
+    result = run_graph_to_completion(app, candidate, llm_gateway=unavailable_gw)
     expl = result.state.get("llm_explanation") or {}
     assert expl.get("fail_open") is True
