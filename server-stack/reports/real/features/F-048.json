@@ -2,7 +2,7 @@
   "id": "F-048",
   "feature_id": "F-048",
   "title": "HTTP 4xx Hata Yoğunlaşması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "nginx",
@@ -10,14 +10,52 @@
     {
       "service": "nginx",
       "http_codes": [
-        "404",
-        "404"
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403",
+        "403"
       ]
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/nginx/access.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/nginx/access.log",
       "result": "PASS"
     }
   ],
@@ -36,7 +74,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-048",
-        "count": 6800,
+        "count": 6880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -59,10 +97,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "HTTP 401/403/4xx spike",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:32.191915+00:00",
+  "generated_at": "2026-05-23T05:36:22.235280+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
