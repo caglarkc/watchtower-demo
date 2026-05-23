@@ -95,9 +95,15 @@ test-all: seed-baseline test-smoke test-features test-scenarios coverage-all
 
 real-up:
 	$(COMPOSE) up -d
-	$(COMPOSE) --profile real-identity up -d
-	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns seeds/real
-	@chmod -R a+rwX logs/dns logs/samba 2>/dev/null || true
+	$(COMPOSE) --profile real-identity --profile real-apps up -d
+	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns logs/postfix logs/gitea logs/nginx seeds/real
+	@chmod -R a+rwX logs/dns logs/samba logs/postfix logs/nginx logs/postgres logs/gitea 2>/dev/null || true
+
+seed-real-mail:
+	$(PYTHON) simulation/real/seed_real_mail.py
+
+seed-real-apps:
+	$(PYTHON) simulation/real/seed_real_apps.py
 
 real-down:
 	$(COMPOSE) --profile real-identity down
@@ -109,8 +115,7 @@ seed-real-identity:
 seed-real-files:
 	$(PYTHON) simulation/real/seed_real_files.py
 
-seed-real-all: seed-real-identity seed-real-files
-	$(PYTHON) simulation/real/seed_real_all.py
+seed-real-all: seed-real-identity seed-real-files seed-real-mail seed-real-apps
 
 real-feature:
 	@test -n "$(FEATURE)" || (echo "Usage: make real-feature FEATURE=F-001" && exit 1)
@@ -126,7 +131,10 @@ test-real:
 test-real-p0:
 	$(PYTEST) tests/real/features -m p0 -v
 
-test-real-all: seed-real-all test-real test-real-p0 real-coverage
+test-real-p1:
+	$(PYTEST) tests/real/features -m p1 -v
+
+test-real-all: seed-real-all test-real test-real-p0 test-real-p1 real-coverage
 
 real-coverage:
 	$(PYTHON) simulation/real/report_real_coverage.py --all
