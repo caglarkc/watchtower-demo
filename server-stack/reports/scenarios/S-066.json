@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-066",
   "title": "Hukuk Toplu PDF OCR Geçici Klasörü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Hukuk",
   "deterministic_seed": 6066,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Hukuk Toplu PDF OCR Geçici Klasörü",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -24,17 +24,17 @@
       "user_role": "Hukuk",
       "category": "politika ihlali",
       "seed": 6066,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "acl_change",
-      "permission": "Everyone:FullControl",
+      "permission": "Finance-RW",
       "source_feature": "F-041",
       "scenario_id": "S-066"
     },
     {
       "event_type": "smb_rename_storm",
-      "renames_per_minute": 120,
+      "renames_per_minute": 2,
       "source_feature": "F-039",
       "scenario_id": "S-066"
     }
@@ -44,9 +44,12 @@
     "reports/scenario_logs/S-066/scenarios/acl_change.jsonl",
     "reports/scenario_logs/S-066/scenarios/smb_rename_storm.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:36:03.213414+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:36:06.075833+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-066:6066:positive"
+  "replay_key": "S-066:6066:negative"
 }

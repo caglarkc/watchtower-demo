@@ -27,3 +27,4 @@
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "source_feature": "F-065", "scenario_id": "S-074", "timestamp": "2026-05-23T05:09:58.605616+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "source_feature": "F-065", "scenario_id": "S-074", "timestamp": "2026-05-23T05:10:01.485314+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "source_feature": "F-065", "scenario_id": "S-074", "timestamp": "2026-05-23T05:36:03.483200+00:00"}
+{"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "source_feature": "F-065", "scenario_id": "S-074", "timestamp": "2026-05-23T05:36:06.336290+00:00"}
