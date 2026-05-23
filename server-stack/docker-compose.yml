@@ -1,4 +1,4 @@
-# Watchtower closed server simulation — Phase 1 base LAN
+# Watchtower closed server simulation — Phase 1 + Phase 2
 # All services attach to corp-lan with static IPv4 assignments.
 
 name: watchtower-corp
@@ -17,6 +17,8 @@ volumes:
   dhcp-leases:
   es-data:
   corp-logs:
+  postgres-data:
+  gitea-data:
 
 x-health-http: &health-http
   interval: 15s
