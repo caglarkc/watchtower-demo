@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from watchtower.daemon.models import DaemonLoopSummary
 from watchtower.domain.events import IngestResult
 from watchtower.observability.metrics import (
     METRIC_ALERTS,
@@ -62,7 +61,7 @@ class MetricsService:
     def record_daemon_loop(
         self,
         tenant_id: str,
-        _summary: DaemonLoopSummary,
+        _summary: object,
         *,
         duration_ms: float,
     ) -> None:
