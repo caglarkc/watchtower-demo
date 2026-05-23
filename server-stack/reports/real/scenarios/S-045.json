@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-045",
   "title": "İK Hesabından Gece Mail Arşiv Taraması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "İK",
   "deterministic_seed": 4045,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-024",
-            "count": 8480,
+            "count": 8800,
             "result": "PASS"
           },
           "result": "PASS",
@@ -103,7 +103,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-018",
-            "count": 6880,
+            "count": 7120,
             "result": "PASS"
           },
           "result": "PASS",
@@ -167,7 +167,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-024",
-        "count": 8480,
+        "count": 8800,
         "result": "PASS"
       },
       "result": "PASS",
@@ -197,7 +197,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-018",
-        "count": 6880,
+        "count": 7120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -220,12 +220,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:53.921242+00:00",
+  "generated_at": "2026-05-23T10:26:19.766629+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-045:4045:positive:real"
+  "replay_key": "S-045:4045:negative:real"
 }
