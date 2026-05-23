@@ -14,3 +14,4 @@
 {"event_type": "smb_downgrade", "smb_version": "SMB3", "ntlm": "NTLMv2", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T02:29:22.483761+00:00"}
 {"event_type": "smb_downgrade", "smb_version": "SMB1", "ntlm": "NTLMv1", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T02:36:57.672993+00:00"}
 {"event_type": "smb_downgrade", "smb_version": "SMB3", "ntlm": "NTLMv2", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T02:37:00.509877+00:00"}
+{"event_type": "smb_downgrade", "smb_version": "SMB1", "ntlm": "NTLMv1", "source_feature": "F-004", "scenario_id": "S-069", "timestamp": "2026-05-23T02:44:11.352132+00:00"}

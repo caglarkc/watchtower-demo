@@ -14,3 +14,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-064", "user_role": "Stajyer", "category": "politika ihlali", "seed": 6064, "anomaly": false, "timestamp": "2026-05-23T02:29:22.317681+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-064", "user_role": "Stajyer", "category": "politika ihlali", "seed": 6064, "anomaly": true, "timestamp": "2026-05-23T02:36:57.501125+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-064", "user_role": "Stajyer", "category": "politika ihlali", "seed": 6064, "anomaly": false, "timestamp": "2026-05-23T02:37:00.338041+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-064", "user_role": "Stajyer", "category": "politika ihlali", "seed": 6064, "anomaly": true, "timestamp": "2026-05-23T02:44:11.188336+00:00"}

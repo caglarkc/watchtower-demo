@@ -143,7 +143,7 @@
     "reports/scenario_logs/S-080/ai_gateway/ai_procedure_discovery.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:36:58.065506+00:00",
+  "generated_at": "2026-05-23T02:44:11.713206+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-080:9080:positive"

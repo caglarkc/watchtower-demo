@@ -58,7 +58,7 @@
     "reports/scenario_logs/S-023/badge/badge_login_mismatch.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:36:56.132777+00:00",
+  "generated_at": "2026-05-23T02:44:09.840461+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-023:2023:positive"

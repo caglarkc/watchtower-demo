@@ -50,7 +50,7 @@
     "reports/scenario_logs/S-039/siem/siem_suppress_rule.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:36:56.652517+00:00",
+  "generated_at": "2026-05-23T02:44:10.367420+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-039:3039:positive"

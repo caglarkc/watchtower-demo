@@ -14,3 +14,4 @@
 {"event_type": "port_scan", "targets": 5, "ports": 3, "window_minutes": 12, "source_feature": "F-007", "scenario_id": "S-068", "timestamp": "2026-05-23T02:29:22.440282+00:00"}
 {"event_type": "port_scan", "targets": 200, "ports": 25, "window_minutes": 12, "source_feature": "F-007", "scenario_id": "S-068", "timestamp": "2026-05-23T02:36:57.640394+00:00"}
 {"event_type": "port_scan", "targets": 5, "ports": 3, "window_minutes": 12, "source_feature": "F-007", "scenario_id": "S-068", "timestamp": "2026-05-23T02:37:00.478025+00:00"}
+{"event_type": "port_scan", "targets": 200, "ports": 25, "window_minutes": 12, "source_feature": "F-007", "scenario_id": "S-068", "timestamp": "2026-05-23T02:44:11.321075+00:00"}

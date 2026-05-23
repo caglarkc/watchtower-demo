@@ -61,7 +61,7 @@
     "reports/scenario_logs/S-050/hris/old_entitlement_use.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:36:57.034888+00:00",
+  "generated_at": "2026-05-23T02:44:10.726919+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-050:4050:positive"

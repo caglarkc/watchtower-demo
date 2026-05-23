@@ -40,7 +40,7 @@
     "reports/scenario_logs/S-024/app/api_key_usage.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:36:56.165461+00:00",
+  "generated_at": "2026-05-23T02:44:09.874703+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-024:2024:positive"
