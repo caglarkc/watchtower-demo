@@ -35,6 +35,12 @@ WIKI_URL = os.environ.get("WIKI_URL", "http://172.28.0.39:8080")
 DLP_URL = os.environ.get("DLP_URL", "http://172.28.0.40:8080")
 ACTIVITY_URL = os.environ.get("ACTIVITY_URL", "http://172.28.0.41:8080")
 
+HRIS_URL = os.environ.get("HRIS_URL", "http://172.28.0.37:8080")
+BADGE_URL = os.environ.get("BADGE_URL", "http://172.28.0.36:8080")
+MATTERMOST_URL = os.environ.get("MATTERMOST_URL", "http://172.28.0.34:8080")
+CUPS_URL = os.environ.get("CUPS_URL", "http://172.28.0.35:8080")
+SUITECRM_URL = os.environ.get("SUITECRM_URL", "http://172.28.0.38:8080")
+
 LOG_PATHS = {
     "samba-ad": ROOT / "logs" / "identity" / "ad_events.jsonl",
     "samba-audit": ROOT / "logs" / "samba" / "audit.log",
