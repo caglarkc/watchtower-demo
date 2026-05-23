@@ -131,6 +131,11 @@ def graph_checkpoint_prune(
         return
 
     with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
         if dry_run:
             cutoff_rows = session.conn.execute(
                 """
@@ -148,7 +153,7 @@ def graph_checkpoint_prune(
         )
         session.audit.log(
             "cli.graph.checkpoint_prune",
-            tenant_id=require_bootstrap(session),
+            tenant_id=tenant_id,
             details={"retention_days": days, "threads_pruned": removed},
         )
         session.conn.commit()
