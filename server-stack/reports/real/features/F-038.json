@@ -2,7 +2,7 @@
   "id": "F-038",
   "feature_id": "F-038",
   "title": "Dosya Sunucu Toplu Okuma/Yazma Oranı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -10,7 +10,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 100000,
+        "read_bytes": 18400000000,
         "write_bytes": 0
       }
     }
@@ -36,7 +36,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 15360,
+        "count": 15440,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "bulk read/write ratio event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:43:18.290412+00:00",
+  "generated_at": "2026-05-23T10:25:17.649690+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
