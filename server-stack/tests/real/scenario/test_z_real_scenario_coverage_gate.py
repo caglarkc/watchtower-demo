@@ -1,4 +1,4 @@
-"""RI-5 real scenario coverage gate."""
+"""RI-5 real scenario coverage gate (runs after replay tests)."""
 
 from __future__ import annotations
 
