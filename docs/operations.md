@@ -31,6 +31,18 @@ wt migrate status
 wt migrate upgrade
 ```
 
+## Graph checkpoint & approval resume
+
+Production default: durable SQLite checkpoints at `WATCHTOWER_GRAPH_CHECKPOINT_PATH` (separate from product DB).
+
+```bash
+wt graph interrupted
+wt graph resume --thread-id <thread_id> --decision approved --approver-id sec-1
+wt graph checkpoint-prune --retention-days 30
+```
+
+Set `WATCHTOWER_GRAPH_CHECKPOINT_USE_MEMORY=true` only for local dev/tests. After process restart, interrupted runs resume from disk via `Command(resume=...)`.
+
 ## Daemon pipeline
 
 Single runtime loop: source poll → raw store → normalize → candidate → graph → alert/silent finding.
