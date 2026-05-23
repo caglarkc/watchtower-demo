@@ -2,7 +2,7 @@
   "id": "F-040",
   "feature_id": "F-040",
   "title": "Hassas Dizin Dolaşma (Directory Traversal) Davranışı",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -10,7 +10,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "paths": 1
+        "paths": 2
       }
     }
   ],
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-040",
-        "count": 2480,
+        "count": 2560,
         "result": "PASS"
       },
       "result": "PASS",
@@ -57,10 +57,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "sensitive directory traversal event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:10.109884+00:00",
+  "generated_at": "2026-05-23T05:37:30.190339+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
