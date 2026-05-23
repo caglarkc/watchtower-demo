@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-048",
   "title": "PM Proje Maliyet Tablosu Toplu Güncelleme",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Proje Yöneticisi",
   "deterministic_seed": 4048,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 7360,
+            "count": 7760,
             "result": "PASS"
           },
           "result": "PASS",
@@ -99,7 +99,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 7360,
+        "count": 7760,
         "result": "PASS"
       },
       "result": "PASS",
@@ -122,12 +122,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:05.729748+00:00",
+  "generated_at": "2026-05-23T05:38:29.603727+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-048:4048:positive:real"
+  "replay_key": "S-048:4048:negative:real"
 }
