@@ -99,6 +99,19 @@ make real-scenario-coverage
 
 Her scenario, `SCENARIO_FEATURE_MAP` içindeki feature’lar için `run_real_feature` aksiyonlarını orkestre eder. Kanıt: `reports/real/scenarios/S-xxx-{positive,negative}.json` (seed_refs, actions_executed, raw_logs_asserted, parity_level, result). Synthetic `make scenario` / `pytest tests/scenario` değişmez.
 
+### RI-6 — Real ingest gate (81 L2+, 46 L3)
+
+```bash
+make real-up
+docker compose build log-pipeline && docker compose up -d log-pipeline
+make test-real-ingest
+make real-final-gate
+```
+
+Log-pipeline (`172.28.0.16:9201`) host `logs/` → Elasticsearch `corp-logs-f-xxx` indeksleri. P0+P1 (46 feature) L3 index/query assertion; tüm 81 feature L2 raw-log + ship.
+
+Final raporlar: `reports/real/coverage/real_feature_coverage.json`, `real_scenario_coverage.json`, `real_final_gate.json`.
+
 ## Hızlı başlangıç
 
 ```bash
