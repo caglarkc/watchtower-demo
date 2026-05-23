@@ -154,7 +154,8 @@ def main() -> int:
         f"ri1={data['ri1_pass']}/{data['ri1_features']} "
         f"ri2={data['ri2_pass']}/{data['ri2_features']} "
         f"ri3={data['ri3_pass']}/{data['ri3_features']} "
-        f"ri4={data['ri4_pass']}/{data['ri4_features']}"
+        f"ri4={data['ri4_pass']}/{data['ri4_features']} "
+        f"l3={data['l3_count']}/{data['l3_minimum']}"
     )
     gate = (
         data["metadata_complete"] == 81
