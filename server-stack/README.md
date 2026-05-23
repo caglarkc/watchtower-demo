@@ -86,6 +86,19 @@ make real-coverage
 
 Servisler: DB-backed `hris-mock`, `badge-api`, `cups`/`mattermost`/`suitecrm` (phase3-sim action API). Seed: `seeds/real/hris`, `seeds/real/badge`, `seeds/real/print`, `seeds/real/crm`.
 
+### RI-5 — Real scenario replay 83/83
+
+```bash
+make real-up
+make seed-real-all
+make real-scenario SCENARIO=S-001
+make real-scenario-negative SCENARIO=S-001
+pytest tests/real/scenario
+make real-scenario-coverage
+```
+
+Her scenario, `SCENARIO_FEATURE_MAP` içindeki feature’lar için `run_real_feature` aksiyonlarını orkestre eder. Kanıt: `reports/real/scenarios/S-xxx-{positive,negative}.json` (seed_refs, actions_executed, raw_logs_asserted, parity_level, result). Synthetic `make scenario` / `pytest tests/scenario` değişmez.
+
 ## Hızlı başlangıç
 
 ```bash

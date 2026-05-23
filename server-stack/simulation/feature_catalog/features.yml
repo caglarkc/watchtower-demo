@@ -93,7 +93,7 @@ features:
   evidence_path: reports/features/F-004.json
   replay_positive: simulation/feature_replays/F-004_positive.yaml
   replay_negative: simulation/feature_replays/F-004_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P4
   real_tool: endpoint-synthetic
