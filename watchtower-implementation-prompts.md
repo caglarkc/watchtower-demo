@@ -11,6 +11,8 @@ Kural:
 - `server-stack/` urun kodu degildir; sadece E2E test lab olarak kullanilir.
 - LLM final alert karari vermez.
 - Manager feedback direkt stable rule yapmaz; `pending_rule -> approve -> stable`.
+- Kod yazacak AI, verilen faz kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli tum komutlari calistirmaya yetkilidir.
+- Komut/test fail olursa teslim etmez; once hatayi duzeltir, sonra ayni komutu/gate'i tekrar calistirir ve pass kanitiyla teslim eder.
 
 ---
 
@@ -22,6 +24,12 @@ GOREV: Watchtower product implementation fazlarini sirasiyla yonet, alt gorevler
 FAZ: Tum Fazlar
 ROL: test
 SKILL: /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-pm-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -68,6 +76,12 @@ ROL: taxonomy
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -138,6 +152,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -193,6 +213,12 @@ ROL: connector
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -252,6 +278,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -305,6 +337,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -354,6 +392,12 @@ ROL: decision
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -418,6 +462,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -478,6 +528,12 @@ ROL: langgraph
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-langgraph-decision-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -550,6 +606,12 @@ ROL: llm
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-llm-provider-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -628,6 +690,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -695,6 +763,12 @@ ROL: test
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
@@ -776,6 +850,12 @@ SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
+
 BAGLAM:
 - Proje: Watchtower product
 - Referanslar:
@@ -845,6 +925,12 @@ ROL: test
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-pm-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
+
+YETKI VE CALISTIRMA:
+- Bu gorev kapsaminda gerekli dosyalari yazmaya/degistirmeye ve gerekli her komutu calistirmaya yetkilisin.
+- Test, migration, seed, script, docker, make ve pytest gate'lerini kendin calistir.
+- Komut veya test fail olursa teslim etme; hatayi duzelt, ayni komutu/gate'i tekrar calistir ve pass kanitiyla teslim et.
+- Server-stack urun kodu olarak degistirilmez; server-stack komutlari ve testleri E2E dogrulama icin calistirilabilir.
 
 BAGLAM:
 - Proje: Watchtower product
