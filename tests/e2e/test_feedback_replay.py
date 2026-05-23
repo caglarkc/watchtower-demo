@@ -5,8 +5,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 from watchtower.domain.rules import DecisionContext, RuleScope
-from watchtower.e2e.replay import first_candidate_from_feature
-from watchtower.e2e.runner import run_graph_to_completion
+from tests.decision.conftest import assessment_input
 from tests.graph.conftest import seed_anomaly_baseline, set_tenant_mode
 
 
@@ -62,17 +61,14 @@ def test_benign_feedback_pending_rule_then_scope_behavior(app, tenant_id, normal
             )
         )
         out_assess = session.decision.assess(
-            __import__(
-                "watchtower.decision.service", fromlist=["AssessmentInput"]
-            ).AssessmentInput(
-                tenant_id=tenant_id,
+            assessment_input(
+                tenant_id,
                 feature_id="F-003",
                 user_id="yigit",
                 department_id="backend",
                 resource="HR-DB-01",
                 action="sql_query",
                 volume=500.0,
-                occurred_at=datetime(2026, 5, 23, 10, 0, 0, tzinfo=UTC),
             )
         )
 
