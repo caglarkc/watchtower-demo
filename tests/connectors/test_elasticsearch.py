@@ -7,10 +7,6 @@ from watchtower.domain.events import ConnectorCursor
 
 
 def test_elasticsearch_health_and_query_mocked():
-    def fake_get(url: str) -> dict:
-        assert "_cluster/health" in url
-        return {"status": "green", "cluster_name": "test"}
-
     hits = [
         {
             "_id": "1",
@@ -24,10 +20,17 @@ def test_elasticsearch_health_and_query_mocked():
         },
     ]
 
-    def fake_post(url: str, body: dict) -> dict:
+    def fake_post(url: str, body: dict, headers: dict | None = None) -> dict:
         assert "/_search" in url
         assert body["size"] == 2
         return {"hits": {"hits": hits}}
+
+    def fake_get(url: str, headers: dict | None = None) -> dict:
+        return fake_get_health(url)
+
+    def fake_get_health(url: str) -> dict:
+        assert "_cluster/health" in url
+        return {"status": "green", "cluster_name": "test"}
 
     connector = ElasticsearchConnector(
         "es-1",
