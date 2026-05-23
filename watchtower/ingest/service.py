@@ -51,24 +51,34 @@ class IngestService:
 
         connector = build_connector(source)
         health = self._safe_health(connector)
+        latency_ms = _connector_latency_ms(connector)
+        http_retries = _connector_http_retries(connector)
         if health.status == "unhealthy":
             return IngestResult(
                 source_id=source_id,
+                connector_type=source.connector_type,
                 health_status=health.status,
                 error=health.message,
                 degraded=True,
+                latency_ms=latency_ms,
+                http_retries=http_retries,
             )
 
         cursor = self._cursors.get(source_id, tenant_id)
         try:
             batch = connector.poll(cursor, limit)
+            latency_ms = _connector_latency_ms(connector) or latency_ms
+            http_retries = _connector_http_retries(connector) or http_retries
         except ConnectorError as exc:
             logger.warning("connector poll failed for %s: %s", source_id, exc)
             return IngestResult(
                 source_id=source_id,
+                connector_type=source.connector_type,
                 health_status=health.status,
                 error=str(exc),
                 degraded=True,
+                latency_ms=latency_ms,
+                http_retries=http_retries,
             )
 
         stored = 0
