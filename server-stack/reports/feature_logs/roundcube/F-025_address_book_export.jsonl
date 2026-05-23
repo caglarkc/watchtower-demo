@@ -1,2 +1,4 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T01:09:41.897782+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T01:09:43.532310+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T01:16:25.584489+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T01:16:27.217464+00:00"}

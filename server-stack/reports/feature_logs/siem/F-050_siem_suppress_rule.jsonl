@@ -1,2 +1,4 @@
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "feature_id": "F-050", "timestamp": "2026-05-23T01:09:42.568356+00:00"}
 {"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "feature_id": "F-050", "timestamp": "2026-05-23T01:09:44.206336+00:00"}
+{"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": true, "feature_id": "F-050", "timestamp": "2026-05-23T01:16:26.282229+00:00"}
+{"event_type": "siem_suppress_rule", "log_channel": "siem", "self_ip_suppress": false, "feature_id": "F-050", "timestamp": "2026-05-23T01:16:27.885821+00:00"}

@@ -1,2 +1,4 @@
 {"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "gmail.com", "has_attachment": true, "feature_id": "F-021", "timestamp": "2026-05-23T01:09:41.630658+00:00"}
 {"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "corp.local", "has_attachment": false, "feature_id": "F-021", "timestamp": "2026-05-23T01:09:43.266021+00:00"}
+{"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "gmail.com", "has_attachment": true, "feature_id": "F-021", "timestamp": "2026-05-23T01:16:25.310658+00:00"}
+{"event_type": "mail_personal_domain", "log_channel": "postfix", "recipient_domain": "corp.local", "has_attachment": false, "feature_id": "F-021", "timestamp": "2026-05-23T01:16:26.949048+00:00"}

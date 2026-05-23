@@ -1,2 +1,4 @@
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "feature_id": "F-052", "timestamp": "2026-05-23T01:09:42.716857+00:00"}
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "feature_id": "F-052", "timestamp": "2026-05-23T01:09:44.336373+00:00"}
+{"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "feature_id": "F-052", "timestamp": "2026-05-23T01:16:26.419391+00:00"}
+{"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "feature_id": "F-052", "timestamp": "2026-05-23T01:16:28.022567+00:00"}
