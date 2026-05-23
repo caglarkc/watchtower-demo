@@ -23,6 +23,12 @@ class CandidateExtractor:
         action = normalized.action or normalized.event_type
         resource = normalized.resource or normalized.event_type
 
+        attrs = dict(normalized.attributes)
+        if "user_id" not in attrs and actor != "unknown":
+            attrs["user_id"] = actor
+        if "volume" not in attrs and attrs.get("bytes_read") is not None:
+            attrs["volume"] = float(attrs["bytes_read"])
+
         return CandidateEvent(
             id=str(uuid.uuid4()),
             tenant_id=normalized.tenant_id,
@@ -34,5 +40,5 @@ class CandidateExtractor:
             occurred_at=normalized.occurred_at,
             scenario_id=normalized.scenario_id,
             anomaly_flag=normalized.anomaly_flag,
-            attributes=dict(normalized.attributes),
+            attributes=attrs,
         )

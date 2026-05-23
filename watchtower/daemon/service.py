@@ -1,0 +1,131 @@
+"""Daemon runtime: ingest → normalize → candidate → graph → alert/finding."""
+
+from __future__ import annotations
+
+import logging
+from typing import Any
+
+from watchtower.daemon.backoff import SourceBackoffTracker
+from watchtower.daemon.models import DaemonLoopSummary, SourcePollResult
+from watchtower.domain.normalized_event import CandidateEvent
+from watchtower.graph.runner import GraphRunResult
+from watchtower.services.app import SessionContext
+
+logger = logging.getLogger(__name__)
+
+
+class DaemonService:
+    """Single-loop pipeline orchestration for enabled ingest sources."""
+
+    def __init__(
+        self,
+        session: SessionContext,
+        *,
+        backoff: SourceBackoffTracker | None = None,
+    ) -> None:
+        self._session = session
+        self._backoff = backoff or SourceBackoffTracker()
+
+    def run_once(
+        self,
+        tenant_id: str,
+        *,
+        iteration: int = 1,
+        ingest_limit: int | None = None,
+        pipeline_limit: int = 500,
+        graph_limit: int = 100,
+    ) -> DaemonLoopSummary:
+        settings = self._session.settings
+        default_limit = ingest_limit or settings.ingest_default_limit
+        mode = self._session.mode_controller.get_mode(tenant_id)
+        summary = DaemonLoopSummary(iteration=iteration, tenant_id=tenant_id, mode=mode)
+
+        sources = self._session.sources.list_for_tenant(tenant_id, enabled_only=True)
+        for source in sources:
+            if self._backoff.is_blocked(source.id):
+                summary.sources_skipped_backoff += 1
+                summary.source_results.append(
+                    SourcePollResult(source_id=source.id, skipped_backoff=True)
+                )
+                continue
+
+            limit = int(source.config.get("poll_limit", default_limit))
+            result = self._session.ingest.ingest_once(tenant_id, source.id, limit=limit)
+            poll = SourcePollResult(
+                source_id=source.id,
+                polled=result.polled,
+                stored=result.stored,
+                duplicates=result.duplicates,
+                error=result.error,
+                degraded=result.degraded,
+            )
+            summary.source_results.append(poll)
+
+            failed = bool(result.error) and result.stored == 0 and result.polled == 0
+            if failed:
+                delay = self._backoff.record_failure(source.id)
+                summary.sources_failed += 1
+                summary.errors.append(
+                    f"source {source.id}: {result.error} (backoff {delay:.0f}s)"
+                )
+                logger.warning("daemon ingest failed for %s: %s", source.id, result.error)
+                continue
+
+            self._backoff.record_success(source.id)
+            summary.sources_polled += 1
+            summary.raw_stored += result.stored
+
+        pipeline = self._session.pipeline.process_raw_batch(
+            tenant_id, limit=pipeline_limit
+        )
+        summary.pipeline = {
+            "processed": pipeline.processed,
+            "normalized": pipeline.normalized,
+            "candidates": pipeline.candidates,
+            "unknown": pipeline.unknown,
+            "skipped": pipeline.skipped,
+        }
+
+        pending = self._session.candidate_events.list_pending_graph(
+            tenant_id, limit=graph_limit
+        )
+        for row in pending:
+            candidate = self._session.candidate_events.get_by_id(row["id"], tenant_id)
+            if candidate is None:
+                continue
+            graph_result = self._run_graph(candidate)
+            summary.graph_runs += 1
+            if graph_result.interrupted:
+                summary.graph_interrupted += 1
+            self._accumulate_graph_outcomes(summary, tenant_id, graph_result)
+
+        return summary
+
+    def _run_graph(self, candidate: CandidateEvent) -> GraphRunResult:
+        result = self._session.graph_runner.run(candidate)
+        if result.interrupted:
+            result = self._session.graph_runner.resume(
+                result.thread_id, {"decision": "none"}
+            )
+        return result
+
+    def _accumulate_graph_outcomes(
+        self,
+        summary: DaemonLoopSummary,
+        tenant_id: str,
+        result: GraphRunResult,
+    ) -> None:
+        run_id = result.run_id
+        alerts = self._session.graph.count_alerts(tenant_id, run_id)
+        silent = self._session.graph.count_silent_findings(tenant_id, run_id)
+        learning = self._session.graph.count_learning_events(tenant_id, run_id)
+        summary.alerts_created += alerts
+        summary.silent_findings += silent
+        summary.learning_events += learning
+        state = result.state
+        if state.get("alert_id") and alerts == 0:
+            summary.alerts_created += 1
+        if state.get("silent_finding_id") and silent == 0:
+            summary.silent_findings += 1
+        if state.get("learning_event_id") and learning == 0:
+            summary.learning_events += 1
