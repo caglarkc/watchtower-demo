@@ -45,7 +45,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 12263,
+        "count": 12903,
         "result": "PASS"
       },
       "result": "PASS",
@@ -71,7 +71,7 @@
   "anomaly_detected": true,
   "evidence_expected": "repo clone/artifact download volume",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:32.266596+00:00",
+  "generated_at": "2026-05-23T08:42:03.827502+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
