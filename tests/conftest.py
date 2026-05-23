@@ -23,3 +23,12 @@ def settings(db_path: Path) -> WatchtowerSettings:
 @pytest.fixture
 def app(settings: WatchtowerSettings) -> AppContext:
     return create_app(settings=settings, run_migrations=True)
+
+
+@pytest.fixture
+def tenant_id(app: AppContext) -> str:
+    with app.session() as session:
+        tenant, _ = session.bootstrap_service.bootstrap(
+            "admin", "admin@test.local", "test-password"
+        )
+        return tenant.id
