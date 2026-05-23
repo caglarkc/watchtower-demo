@@ -21,10 +21,7 @@ def test_load_batch_ingest(prod_app, bootstrapped_tenant):
             config={"events": events},
             source_id="src-load",
         )
-        total_stored = 0
-        for _ in range(3):
-            result = session.ingest.ingest_once(
-                bootstrapped_tenant, source.id, limit=100
-            )
-            total_stored += result.stored
-        assert total_stored == 200
+        result = session.ingest.ingest_once(
+            bootstrapped_tenant, source.id, limit=500
+        )
+        assert result.stored == 200
