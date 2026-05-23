@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-027",
   "title": "İç Ağda Gizli Posta Kuralı Oluşturma",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Satış",
   "deterministic_seed": 2027,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-017",
-            "count": 1360,
+            "count": 1600,
             "result": "PASS"
           },
           "result": "PASS",
@@ -99,7 +99,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-017",
-        "count": 1360,
+        "count": 1600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -122,12 +122,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:41.170057+00:00",
+  "generated_at": "2026-05-23T05:10:36.357659+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-027:2027:negative:real"
+  "replay_key": "S-027:2027:positive:real"
 }
