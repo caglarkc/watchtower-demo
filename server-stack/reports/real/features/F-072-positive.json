@@ -64,7 +64,7 @@
   "anomaly_detected": true,
   "evidence_expected": "leaver account activity",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:08.358787+00:00",
+  "generated_at": "2026-05-23T03:18:14.696221+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
