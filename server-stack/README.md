@@ -41,3 +41,32 @@ Tam Samba4 DC için: `docker compose --profile real-ad up -d`
 ## Phase 1 feature’lar (22)
 
 F-001, F-002, F-003, F-004, F-005, F-006, F-007, F-008, F-010, F-011, F-015, F-037, F-038, F-039, F-040, F-041, F-055, F-057, F-063, F-079, F-080, F-081
+
+## Phase 2 — Mail, DB, Git, Web
+
+```bash
+make seed-phase2
+make up
+make test-integration
+make test-phase2
+make coverage-phase2
+```
+
+### Phase 2 servisler (172.28.0.20–29)
+
+| Servis | IP | Rol |
+|--------|-----|-----|
+| postfix | .20 | SMTP log sim |
+| dovecot | .21 | IMAP log sim |
+| roundcube | .22 | Webmail log sim |
+| postgres | .23 | PostgreSQL + init schema |
+| gitea | .24 | Git sunucusu |
+| nginx | .25 | API gateway |
+| internal-app | .26 | İç uygulama mock |
+| artifact-registry | .27 | Artifact mock |
+| siem-admin | .28 | SIEM admin mock |
+| hypervisor-console | .29 | Hypervisor mock |
+
+### Phase 2 feature’lar (24)
+
+F-016..F-029 (mail), F-045..F-054 (uygulama/DB/Git/HTTP/admin/endpoint)
