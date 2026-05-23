@@ -6,3 +6,4 @@
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "source_feature": "F-017", "scenario_id": "S-027", "timestamp": "2026-05-23T01:27:15.259556+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "source_feature": "F-017", "scenario_id": "S-027", "timestamp": "2026-05-23T02:09:24.324618+00:00"}
 {"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 0, "source_feature": "F-017", "scenario_id": "S-027", "timestamp": "2026-05-23T02:09:27.620789+00:00"}
+{"event_type": "mail_rule_change", "log_channel": "dovecot", "forward_rules_added": 3, "source_feature": "F-017", "scenario_id": "S-027", "timestamp": "2026-05-23T02:10:18.075613+00:00"}

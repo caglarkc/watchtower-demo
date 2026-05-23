@@ -6,3 +6,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-013", "user_role": "Destek Personeli", "category": "veri sızdırma", "seed": 1013, "anomaly": false, "timestamp": "2026-05-23T01:27:14.773241+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-013", "user_role": "Destek Personeli", "category": "veri sızdırma", "seed": 1013, "anomaly": true, "timestamp": "2026-05-23T02:09:23.706834+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-013", "user_role": "Destek Personeli", "category": "veri sızdırma", "seed": 1013, "anomaly": false, "timestamp": "2026-05-23T02:09:27.132135+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-013", "user_role": "Destek Personeli", "category": "veri sızdırma", "seed": 1013, "anomaly": true, "timestamp": "2026-05-23T02:10:17.608541+00:00"}

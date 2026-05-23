@@ -6,3 +6,4 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T01:27:14.708265+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:09:23.609215+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:09:27.068292+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T02:10:17.534458+00:00"}

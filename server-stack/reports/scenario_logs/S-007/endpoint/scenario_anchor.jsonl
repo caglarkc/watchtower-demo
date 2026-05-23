@@ -6,3 +6,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-007", "user_role": "Yazılım Geliştirici", "category": "veri sızdırma", "seed": 1007, "anomaly": false, "timestamp": "2026-05-23T01:27:14.568356+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-007", "user_role": "Yazılım Geliştirici", "category": "veri sızdırma", "seed": 1007, "anomaly": true, "timestamp": "2026-05-23T02:09:23.418822+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-007", "user_role": "Yazılım Geliştirici", "category": "veri sızdırma", "seed": 1007, "anomaly": false, "timestamp": "2026-05-23T02:09:26.926984+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-007", "user_role": "Yazılım Geliştirici", "category": "veri sızdırma", "seed": 1007, "anomaly": true, "timestamp": "2026-05-23T02:10:17.400539+00:00"}
