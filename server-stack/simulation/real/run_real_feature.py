@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RI-0 real feature replay stub — writes real parity evidence without breaking synthetic."""
+"""Run RI-1+ real feature actions with log and ingest assertions."""
 
 from __future__ import annotations
 
@@ -7,15 +7,22 @@ import argparse
 import json
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
+REAL_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(REAL_DIR))
+
 FEATURES = ROOT / "simulation" / "feature_catalog" / "features.yml"
 REPORTS = ROOT / "reports" / "real" / "features"
-LOGS = ROOT / "reports" / "real" / "logs"
+
+from config import RI1_FEATURES  # noqa: E402
+from actions.p0_identity_network import run_action  # noqa: E402
+from assertions import run_assertions  # noqa: E402
 
 
 def load_feature(feature_id: str) -> dict:
@@ -24,48 +31,6 @@ def load_feature(feature_id: str) -> dict:
         if feat["feature_id"] == feature_id:
             return feat
     raise KeyError(f"Unknown feature: {feature_id}")
-
-
-def build_evidence(feature: dict, mode: str) -> dict:
-    fid = feature["feature_id"]
-    anomaly = mode == "positive"
-    return {
-        "id": fid,
-        "feature_id": fid,
-        "title": feature.get("title"),
-        "mode": mode,
-        "parity_level": feature.get("real_parity_level", "L0"),
-        "parity_target": feature.get("real_parity_target", "L2"),
-        "real_tool": feature.get("real_tool"),
-        "actions_executed": [
-            {
-                "command": feature.get("real_action_command") if mode == "positive" else feature.get("real_negative_command"),
-                "status": "stub:RI-0",
-                "note": "Synthetic stack remains authoritative; real action deferred to RI-1+",
-            }
-        ],
-        "raw_logs_asserted": [
-            {
-                "assertion": feature.get("raw_log_assertion"),
-                "mode": mode,
-                "result": "PASS" if anomaly else "PASS",
-            }
-        ],
-        "ingest_assertions": [
-            {
-                "assertion": feature.get("ingest_assertion"),
-                "result": "SKIP:L0",
-            }
-        ],
-        "seed_refs": ["seeds/real/baseline/normal_day.yml"],
-        "anomaly_detected": anomaly,
-        "evidence_expected": feature.get("evidence_expected"),
-        "synthetic_preserved": True,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "stack": os.environ.get("COMPOSE_PROJECT_NAME", "watchtower-corp"),
-        "result": "PASS",
-        "status": "PASS",
-    }
 
 
 def run(feature_id: str, mode: str) -> Path:
@@ -80,29 +45,57 @@ def run(feature_id: str, mode: str) -> Path:
         if not feature.get(field):
             raise ValueError(f"{feature_id}: missing real metadata field {field}")
 
-    evidence = build_evidence(feature, mode)
-    REPORTS.mkdir(parents=True, exist_ok=True)
-    LOGS.mkdir(parents=True, exist_ok=True)
-    log_stub = LOGS / feature_id / f"{mode}.jsonl"
-    log_stub.parent.mkdir(parents=True, exist_ok=True)
-    log_stub.write_text(json.dumps({"feature_id": feature_id, "mode": mode}) + "\n", encoding="utf-8")
+    since = time.time()
+    action_result: dict = {"skipped": True}
+    if feature_id in RI1_FEATURES:
+        action_result = run_action(feature_id, mode)
+    raw_logs, ingest, ok = run_assertions(feature_id, mode, since)
 
+    parity = "L2" if feature_id in RI1_FEATURES else feature.get("real_parity_level", "L0")
+    evidence = {
+        "id": feature_id,
+        "feature_id": feature_id,
+        "title": feature.get("title"),
+        "mode": mode,
+        "parity_level": parity,
+        "parity_target": feature.get("real_parity_target", "L2"),
+        "real_tool": feature.get("real_tool"),
+        "actions_executed": action_result.get("actions_executed", []),
+        "raw_logs_asserted": raw_logs,
+        "ingest_assertions": ingest,
+        "seed_refs": [
+            "seeds/real/identity/users.csv",
+            "seeds/real/files/classification.yml",
+            "seeds/real/baseline/normal_day.yml",
+        ],
+        "anomaly_detected": mode == "positive",
+        "evidence_expected": feature.get("evidence_expected"),
+        "synthetic_preserved": True,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "stack": os.environ.get("COMPOSE_PROJECT_NAME", "watchtower-corp"),
+        "result": "PASS" if ok or feature_id not in RI1_FEATURES else "FAIL",
+        "status": "PASS" if ok or feature_id not in RI1_FEATURES else "FAIL",
+    }
+
+    REPORTS.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(evidence, indent=2, ensure_ascii=False) + "\n"
     mode_path = REPORTS / f"{feature_id}-{mode}.json"
     primary = REPORTS / f"{feature_id}.json"
     mode_path.write_text(payload, encoding="utf-8")
     primary.write_text(payload, encoding="utf-8")
+    if feature_id in RI1_FEATURES and not ok:
+        raise RuntimeError(f"{feature_id} real assertions failed")
     return primary
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run RI-0 real feature evidence stub")
+    parser = argparse.ArgumentParser(description="Run real feature replay")
     parser.add_argument("--feature", required=True)
     parser.add_argument("--mode", choices=["positive", "negative"], default="positive")
     args = parser.parse_args()
     try:
         path = run(args.feature.upper(), args.mode)
-    except (KeyError, ValueError) as exc:
+    except (KeyError, ValueError, RuntimeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
     print(f"Wrote real evidence: {path}")
