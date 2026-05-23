@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-067",
   "title": "Güvenlik Görevlisinin Sunucu Odası Erişim Olayı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 7067,
@@ -22,7 +22,8 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 1
+            "events": 11,
+            "pattern": "4625_burst_then_4624"
           }
         }
       ],
@@ -47,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-006",
-            "count": 5680,
+            "count": 6160,
             "result": "PASS"
           },
           "result": "PASS",
@@ -78,7 +79,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": false
+            "mismatch": true
           }
         },
         {
@@ -137,7 +138,7 @@
         {
           "service": "badge",
           "response": {
-            "shift": "day"
+            "shift": "off"
           }
         }
       ],
@@ -187,13 +188,14 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 1
+        "events": 11,
+        "pattern": "4625_burst_then_4624"
       }
     },
     {
       "service": "badge",
       "response": {
-        "mismatch": false
+        "mismatch": true
       }
     },
     {
@@ -205,7 +207,7 @@
     {
       "service": "badge",
       "response": {
-        "shift": "day"
+        "shift": "off"
       }
     }
   ],
@@ -238,7 +240,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-006",
-        "count": 5680,
+        "count": 6160,
         "result": "PASS"
       },
       "result": "PASS",
@@ -316,12 +318,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:19.230611+00:00",
+  "generated_at": "2026-05-23T05:38:11.352830+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-067:7067:negative:real"
+  "replay_key": "S-067:7067:positive:real"
 }

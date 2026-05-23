@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-057",
-        "count": 1449,
+        "count": 1617,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 55,
+        "indexed": 58,
         "index": "corp-logs-f-057",
         "pipeline": {
           "feature_id": "F-057",
           "index": "corp-logs-f-057",
-          "indexed": 55
+          "indexed": 58
         }
       }
     }
@@ -61,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "promiscuous mode change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:30.614919+00:00",
+  "generated_at": "2026-05-23T05:38:12.973477+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
