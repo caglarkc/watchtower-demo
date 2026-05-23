@@ -31,6 +31,19 @@ wt migrate status
 wt migrate upgrade
 ```
 
+## Connectors (production)
+
+| Connector | Auth / TLS | Pagination |
+|-----------|------------|------------|
+| `file_jsonl` | local path | byte offset + rotation/truncation detection |
+| `elasticsearch` | basic / bearer / api_key, `ca_cert_path`, `verify_tls` | `search_after` |
+| `wazuh` | token or username/password → token | offset + `timestamp>` window |
+| `server_stack` | read-only lab logs | file index + offset |
+
+Shared HTTP settings per source config: `timeout_seconds`, `max_retries`, `backoff_base_seconds`.
+
+Ingest results include `latency_ms` and `http_retries` for audit/daemon summaries.
+
 ## Graph checkpoint & approval resume
 
 Production default: durable SQLite checkpoints at `WATCHTOWER_GRAPH_CHECKPOINT_PATH` (separate from product DB).

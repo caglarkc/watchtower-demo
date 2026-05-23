@@ -9,7 +9,7 @@ from watchtower.connectors.factory import build_connector
 from watchtower.connectors.server_stack import ServerStackConnector
 from watchtower.domain.events import ConnectorCursor
 from watchtower.security.masking import mask_mapping
-from tests.daemon.helpers import replay_events_to_jsonl, register_f001_jsonl_source
+from tests.daemon.helpers import replay_events_to_jsonl
 
 
 def test_server_stack_connector_read_only_real_logs():
