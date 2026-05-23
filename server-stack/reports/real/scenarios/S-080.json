@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-080",
   "title": "Çok Kaynaklı Kademeli İhlal Simülasyonu",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "IT Admin",
   "deterministic_seed": 9080,
@@ -29,29 +29,8 @@
           "service": "mattermost",
           "response": {
             "signals": [
-              "ai_leak",
-              "exfil",
-              "secret_burst"
+              "baseline"
             ]
-          }
-        },
-        {
-          "service": "ai-gateway",
-          "response": {
-            "accepted": true,
-            "tokens": 4
-          }
-        },
-        {
-          "service": "proxy",
-          "response": {
-            "stored": true
-          }
-        },
-        {
-          "service": "vault",
-          "response": {
-            "reads": 10
           }
         }
       ],
@@ -104,7 +83,7 @@
         {
           "service": "wiki",
           "response": {
-            "pages": 80
+            "pages": 2
           }
         }
       ],
@@ -163,7 +142,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 5
+            "reads": 1
           }
         }
       ],
@@ -245,7 +224,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-050",
-            "count": 5600,
+            "count": 5840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -277,7 +256,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "read_bytes": 18400000000,
+            "read_bytes": 100000,
             "write_bytes": 0
           }
         }
@@ -303,7 +282,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 13200,
+            "count": 13840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -335,7 +314,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 25
+            "tokens": 5
           }
         }
       ],
@@ -389,7 +368,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 25
+            "tokens": 16
           }
         }
       ],
@@ -442,7 +421,7 @@
         {
           "service": "proxy",
           "response": {
-            "allowed": false
+            "allowed": true
           }
         }
       ],
@@ -496,7 +475,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 45
+            "tokens": 10
           }
         }
       ],
@@ -547,35 +526,14 @@
       "service": "mattermost",
       "response": {
         "signals": [
-          "ai_leak",
-          "exfil",
-          "secret_burst"
+          "baseline"
         ]
-      }
-    },
-    {
-      "service": "ai-gateway",
-      "response": {
-        "accepted": true,
-        "tokens": 4
-      }
-    },
-    {
-      "service": "proxy",
-      "response": {
-        "stored": true
-      }
-    },
-    {
-      "service": "vault",
-      "response": {
-        "reads": 10
       }
     },
     {
       "service": "wiki",
       "response": {
-        "pages": 80
+        "pages": 2
       }
     },
     {
@@ -587,7 +545,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 5
+        "reads": 1
       }
     },
     {
@@ -599,7 +557,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 18400000000,
+        "read_bytes": 100000,
         "write_bytes": 0
       }
     },
@@ -607,27 +565,27 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 25
+        "tokens": 5
       }
     },
     {
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 25
+        "tokens": 16
       }
     },
     {
       "service": "proxy",
       "response": {
-        "allowed": false
+        "allowed": true
       }
     },
     {
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 45
+        "tokens": 10
       }
     }
   ],
@@ -766,7 +724,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-050",
-        "count": 5600,
+        "count": 5840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -796,7 +754,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 13200,
+        "count": 13840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -934,12 +892,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
-  "event_count": 13,
+  "anomaly_detected": false,
+  "event_count": 10,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:38.431385+00:00",
+  "generated_at": "2026-05-23T08:42:01.325661+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-080:9080:positive:real"
+  "replay_key": "S-080:9080:negative:real"
 }

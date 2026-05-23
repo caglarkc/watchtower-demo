@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-079",
   "title": "Tüm Şirkete Sahte CEO İstifa Maili",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "İK",
   "deterministic_seed": 8079,
@@ -48,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-016",
-            "count": 3440,
+            "count": 3520,
             "result": "PASS"
           },
           "result": "PASS",
@@ -105,7 +105,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-020",
-            "count": 4240,
+            "count": 4400,
             "result": "PASS"
           },
           "result": "PASS",
@@ -162,7 +162,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-023",
-            "count": 5600,
+            "count": 5840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -219,7 +219,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-027",
-            "count": 4240,
+            "count": 4400,
             "result": "PASS"
           },
           "result": "PASS",
@@ -303,7 +303,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-016",
-        "count": 3440,
+        "count": 3520,
         "result": "PASS"
       },
       "result": "PASS",
@@ -333,7 +333,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-020",
-        "count": 4240,
+        "count": 4400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -363,7 +363,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-023",
-        "count": 5600,
+        "count": 5840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -393,7 +393,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-027",
-        "count": 4240,
+        "count": 4400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -416,12 +416,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:37.636330+00:00",
+  "generated_at": "2026-05-23T08:42:00.533346+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-079:8079:positive:real"
+  "replay_key": "S-079:8079:negative:real"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-075",
   "title": "CEO Asistanı Gibi Davranan Arama Sonrası Erişim",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "CEO",
   "deterministic_seed": 8075,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 12480,
+            "count": 13120,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 4842,
+            "count": 5162,
             "result": "PASS"
           },
           "result": "PASS",
@@ -171,7 +171,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 20509,
+            "count": 21629,
             "result": "PASS"
           },
           "result": "PASS",
@@ -256,7 +256,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 12480,
+        "count": 13120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -286,7 +286,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 4842,
+        "count": 5162,
         "result": "PASS"
       },
       "result": "PASS",
@@ -316,7 +316,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 20509,
+        "count": 21629,
         "result": "PASS"
       },
       "result": "PASS",
@@ -338,12 +338,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:36.168642+00:00",
+  "generated_at": "2026-05-23T08:41:59.262144+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-075:8075:positive:real"
+  "replay_key": "S-075:8075:negative:real"
 }

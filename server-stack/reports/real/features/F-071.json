@@ -2,7 +2,7 @@
   "id": "F-071",
   "feature_id": "F-071",
   "title": "Çapraz Kaynak Risk Skoru (Composite Risk Score)",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "mattermost",
@@ -11,29 +11,8 @@
       "service": "mattermost",
       "response": {
         "signals": [
-          "ai_leak",
-          "exfil",
-          "secret_burst"
+          "baseline"
         ]
-      }
-    },
-    {
-      "service": "ai-gateway",
-      "response": {
-        "accepted": true,
-        "tokens": 4
-      }
-    },
-    {
-      "service": "proxy",
-      "response": {
-        "stored": true
-      }
-    },
-    {
-      "service": "vault",
-      "response": {
-        "reads": 10
       }
     }
   ],
@@ -77,10 +56,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "composite risk score input set",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:38.567822+00:00",
+  "generated_at": "2026-05-23T08:42:00.685993+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

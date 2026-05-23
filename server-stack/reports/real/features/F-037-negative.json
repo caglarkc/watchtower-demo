@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 13040,
+        "count": 13120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -60,7 +60,7 @@
   "anomaly_detected": false,
   "evidence_expected": "out-of-department file access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:55.209089+00:00",
+  "generated_at": "2026-05-23T08:41:59.107938+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
