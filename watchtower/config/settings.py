@@ -34,6 +34,13 @@ class WatchtowerSettings(BaseSettings):
     default_tenant_slug: str = Field(default="default")
     default_mode: WatchtowerMode = Field(default="learn")
     audit_log_enabled: bool = Field(default=True)
+    server_stack_logs_root: Path = Field(
+        default=PROJECT_ROOT / "server-stack" / "logs",
+        description="Default server-stack logs directory for ingestion",
+    )
+    ingest_default_limit: int = Field(default=500, ge=1, le=10_000)
+    elasticsearch_url: str | None = Field(default=None)
+    wazuh_api_url: str | None = Field(default=None)
 
     @property
     def migrations_dir(self) -> Path:

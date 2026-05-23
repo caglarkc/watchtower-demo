@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Iterator
 
 from watchtower.connectors.base import BaseConnector, ConnectorError
 from watchtower.connectors.file_jsonl import _parse_timestamp

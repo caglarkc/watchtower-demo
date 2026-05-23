@@ -19,6 +19,10 @@ from watchtower.storage.migrations.runner import apply_migrations
 from watchtower.storage.repositories.audit import AuditRepository
 from watchtower.storage.repositories.bootstrap import BootstrapRepository
 from watchtower.storage.repositories.mode import ModeRepository
+from watchtower.ingest.service import IngestService
+from watchtower.storage.repositories.raw_event import RawEventRepository
+from watchtower.storage.repositories.source import SourceRepository
+from watchtower.storage.repositories.source_cursor import SourceCursorRepository
 from watchtower.storage.repositories.tenant import TenantRepository
 
 
@@ -36,6 +40,10 @@ class SessionContext:
     audit: AuditService
     mode_controller: ModeController
     bootstrap_service: BootstrapService
+    sources: SourceRepository
+    source_cursors: SourceCursorRepository
+    raw_events: RawEventRepository
+    ingest: IngestService
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
