@@ -47,19 +47,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-046",
-            "count": 1155,
+            "count": 1464,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 49,
+            "indexed": 55,
             "index": "corp-logs-f-046",
             "pipeline": {
               "feature_id": "F-046",
               "index": "corp-logs-f-046",
-              "indexed": 49
+              "indexed": 55
             }
           }
         }
@@ -108,12 +108,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 34,
+            "indexed": 38,
             "index": "corp-logs-f-059",
             "pipeline": {
               "feature_id": "F-059",
               "index": "corp-logs-f-059",
-              "indexed": 34
+              "indexed": 38
             }
           }
         }
@@ -167,19 +167,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-046",
-        "count": 1155,
+        "count": 1464,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 49,
+        "indexed": 55,
         "index": "corp-logs-f-046",
         "pipeline": {
           "feature_id": "F-046",
           "index": "corp-logs-f-046",
-          "indexed": 49
+          "indexed": 55
         }
       }
     },
@@ -200,12 +200,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 34,
+        "indexed": 38,
         "index": "corp-logs-f-059",
         "pipeline": {
           "feature_id": "F-059",
           "index": "corp-logs-f-059",
-          "indexed": 34
+          "indexed": 38
         }
       }
     }
@@ -223,7 +223,7 @@
   "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:20.764172+00:00",
+  "generated_at": "2026-05-23T05:38:36.463476+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

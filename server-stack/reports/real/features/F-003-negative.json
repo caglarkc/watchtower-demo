@@ -42,7 +42,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 2702,
+        "count": 2862,
         "result": "PASS"
       },
       "result": "PASS",
@@ -67,7 +67,7 @@
   "anomaly_detected": false,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:31.648328+00:00",
+  "generated_at": "2026-05-23T05:38:35.294381+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
