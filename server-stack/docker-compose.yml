@@ -26,7 +26,8 @@ x-health-http: &health-http
 
 services:
   samba-ad:
-    image: nowsci/samba-domain:latest
+    build:
+      context: ./docker/samba-ad-sim
     container_name: corp-samba-ad
     hostname: dc1
     networks:
@@ -34,19 +35,31 @@ services:
         ipv4_address: ${SAMBA_AD_IP:-172.28.0.10}
     environment:
       DOMAIN: ${DOMAIN:-corp.local}
+      LOG_ROOT: /var/log/corp/identity
+    volumes:
+      - ./logs/identity:/var/log/corp/identity
+      - ./configs/samba/ad:/etc/samba/external:ro
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      <<: *health-http
+    restart: unless-stopped
+
+  # Optional full Samba4 DC (heavy; enable with: docker compose --profile real-ad up -d)
+  samba-ad-real:
+    profiles: ["real-ad"]
+    image: nowsci/samba-domain:latest
+    container_name: corp-samba-ad-real
+    hostname: dc1-real
+    networks:
+      corp-lan:
+        ipv4_address: 172.28.0.19
+    environment:
+      DOMAIN: ${DOMAIN:-corp.local}
       DOMAINPASS: ${ADMIN_PASSWORD:-Watchtower1!}
       DNSFORWARDER: ${DNS_FORWARDER:-1.1.1.1}
     volumes:
       - samba-ad-data:/var/lib/samba
-      - ./logs/identity:/var/log/corp/identity
-      - ./configs/samba/ad:/etc/samba/external:ro
     privileged: true
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-    healthcheck:
-      test: ["CMD-SHELL", "pgrep -x samba || pgrep -x smbd || exit 1"]
-      <<: *health-http
     restart: unless-stopped
 
   samba-files:
