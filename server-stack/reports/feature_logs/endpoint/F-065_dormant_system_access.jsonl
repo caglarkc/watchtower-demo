@@ -33,3 +33,4 @@
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "feature_id": "F-065", "timestamp": "2026-05-23T02:44:04.258876+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "feature_id": "F-065", "timestamp": "2026-05-23T02:44:07.513528+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "feature_id": "F-065", "timestamp": "2026-05-23T02:51:22.785778+00:00"}
+{"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "feature_id": "F-065", "timestamp": "2026-05-23T02:51:30.031596+00:00"}
