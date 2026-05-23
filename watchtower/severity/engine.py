@@ -86,6 +86,20 @@ class SeverityEngine:
         if entry.requires_baseline and baseline is not None:
             if not baseline.is_normal and baseline.source != "none":
                 pts = 20
+                high = max(baseline.effective_high, 1.0)
+                low = max(baseline.effective_low, 0.0)
+                if baseline.value > high:
+                    ratio = baseline.value / high
+                    if ratio >= 5:
+                        pts = 40
+                    elif ratio >= 2:
+                        pts = 28
+                elif baseline.value < low and low > 0:
+                    ratio = low / max(baseline.value, 1.0)
+                    if ratio >= 5:
+                        pts = 35
+                    elif ratio >= 2:
+                        pts = 26
                 baseline_anomaly = True
                 components.append(
                     ScoreComponent(

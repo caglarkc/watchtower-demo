@@ -96,7 +96,7 @@ def test_manager_and_worker_different_severity_same_volume(app, tenant_id):
         app,
         tenant_id,
         user_id="mgr-1",
-        value=500.0,
+        value=100.0,
         role_id="engineering_manager",
         seniority="manager",
     )
@@ -122,6 +122,8 @@ def test_manager_and_worker_different_severity_same_volume(app, tenant_id):
     assert worker.baseline_anomaly is True
     assert manager.baseline_anomaly is False
     assert SEVERITY_ORDER[worker.severity] > SEVERITY_ORDER[manager.severity]
+    assert worker.should_alert is True
+    assert manager.should_alert is False
 
 
 def test_manager_personal_baseline_deviation_still_alerts(app, tenant_id):
