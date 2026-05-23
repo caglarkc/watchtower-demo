@@ -807,6 +807,94 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
+### F-999: Daha Önce Görülmemiş Donanım Kimliğiyle Oturum Denemesi
+
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** IdP device inventory, EDR asset ID, NAC, AD logon events  
+**NE İZLENİYOR:** Kullanıcı hesabıyla daha önce ilişkilendirilmemiş cihaz seri numarası, hardware hash, MAC veya EDR asset ID üzerinden oturum açma denemesi  
+**NEDEN DEĞERLI:** Çalıntı kimlik bilgisi, yetkisiz cihaz kullanımı ve kurumsal cihaz envanteri dışı erişim için güçlü sinyaldir  
+**ANOMALİ SİNYALİ:** Kullanıcının ilk kez görülen donanımdan hassas uygulama, VPN veya dosya sunucusuna erişmeye çalışması  
+**UYGULAMA ZORLUĞU:** Orta — kimlik, cihaz envanteri ve NAC kayıtlarını eşlemek gerekir  
+**ÖRNEK METRIK:** CFO hesabı: 0 yeni cihaz/1 yıl → bilinmeyen laptop hardware ID ile 3 failed + 1 successful login
+
+---
+
+### F-999: Normal Aktivite Örüntüsünün Saatler İçinde Yoğunlaşması
+
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** UEBA baseline store, AD/app/file/network telemetry  
+**NE İZLENİYOR:** Haftalara yayılan normal işlem hacminin birkaç saatlik pencereye sıkışması; login, dosya, mail, API ve sorgu olaylarının zaman yoğunluğu  
+**NEDEN DEĞERLI:** Ayrılış öncesi veri toplama, hesap ele geçirilmesi veya otomasyonla toplu işlem davranışı için çapraz sinyal üretir  
+**ANOMALİ SİNYALİ:** Kullanıcının aylık ortalama dosya okuma, mail export veya API çağrı hacmini tek mesai dışı oturumda üretmesi  
+**UYGULAMA ZORLUĞU:** Orta — uzun dönem baseline ve pencere bazlı yoğunluk skoru gerekir  
+**ÖRNEK METRIK:** 30 günlük toplam wiki download hacminin %80'i cuma 22:00-23:30 arasında gerçekleşti
+
+---
+
+### F-999: Uzun Süre Kullanılmayan Sistemlere Ani Erişim
+
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** AD logon, app audit, NetFlow, IAM access logs  
+**NE İZLENİYOR:** Kullanıcının daha önce hiç girmediği veya uzun süredir kullanmadığı sistem, sunucu, uygulama veya veri alanlarına ani erişimi  
+**NEDEN DEĞERLI:** Keşif, yetki kalıntısı suistimali ve ele geçirilmiş hesapla değerli sistem arama davranışını gösterir  
+**ANOMALİ SİNYALİ:** 180+ gündür erişilmeyen uygulamaya mesai dışı giriş; ilk kez kritik sunucuya bağlantı  
+**UYGULAMA ZORLUĞU:** Kolay — last-seen ve first-seen kayıtlarıyla izlenebilir  
+**ÖRNEK METRIK:** Satış hesabı: ilk kez backup console login + 8 dakika sonra file server yoğun okuma
+
+---
+
+### F-999: Akran Grup Davranışından İstatistiksel Sapma
+
+**KATEGORİ:** davranışsal  
+**VERİ KAYNAĞI:** UEBA baseline store, HR/department metadata, telemetry warehouse  
+**NE İZLENİYOR:** Aynı departman, rol, kıdem ve lokasyondaki kullanıcı grubuna göre dosya, mail, login, uygulama ve veri hacmi sapmaları  
+**NEDEN DEĞERLI:** Kişisel baseline yeni veya zayıf olduğunda peer-group kıyası yanlış yetki, insider ve compromise sinyalini güçlendirir  
+**ANOMALİ SİNYALİ:** Aynı roldeki kullanıcıların p95 değerinin çok üstünde veri çekme, gece login veya harici paylaşım davranışı  
+**UYGULAMA ZORLUĞU:** Orta — doğru akran grubu tanımı ve istatistiksel eşik gerekir  
+**ÖRNEK METRIK:** Aynı roldeki 18 analiste göre p99 üstü: 12x daha fazla DB row export + 6x daha fazla harici mail eki
+
+---
+
+## Dış Bağlantı ve Çıkış Trafiği
+
+---
+
+### F-999: Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme
+
+**KATEGORİ:** dış bağlantı ve çıkış trafiği  
+**VERİ KAYNAĞI:** Proxy/SWG logs, CASB, firewall egress logs, DLP agent  
+**NE İZLENİYOR:** Google Drive, Dropbox, OneDrive personal, iCloud, WeTransfer ve benzeri kişisel bulut hizmetlerine upload hacmi, dosya türü ve kullanıcı ilişkisi  
+**NEDEN DEĞERLI:** Kurumsal denetim dışı bulut hesapları veri sızdırma ve yanlış paylaşım için ana çıkış kanallarından biridir  
+**ANOMALİ SİNYALİ:** Departman baseline'ının üstünde upload; confidential etiketli dosya; kişisel hesap oturumu üzerinden transfer  
+**UYGULAMA ZORLUĞU:** Orta — CASB veya TLS-aware proxy görünürlüğü gerekir  
+**ÖRNEK METRIK:** Finans kullanıcısı: drive.google.com personal upload 0 → 7.4 GB / 40 dk
+
+---
+
+### F-999: İlk Kez Görülen Harici Adrese Yüksek Hacimli Veri Transferi
+
+**KATEGORİ:** dış bağlantı ve çıkış trafiği  
+**VERİ KAYNAĞI:** NetFlow, firewall egress logs, proxy logs, DNS logs  
+**NE İZLENİYOR:** Kurumsal ağdan daha önce hiç bağlanılmamış harici IP/domainlere yüksek hacimli upload veya uzun süreli bağlantı  
+**NEDEN DEĞERLI:** Yeni C2, geçici dosya paylaşımı, kişisel VPS veya rakip/üçüncü taraf servislerine veri çıkışını yakalar  
+**ANOMALİ SİNYALİ:** First-seen domain veya ASN'ye kısa sürede GB seviyesinde outbound veri; DNS yaşı düşük domain  
+**UYGULAMA ZORLUĞU:** Orta — first-seen takibi, ASN/domain zenginleştirme ve upload/download ayrımı gerekir  
+**ÖRNEK METRIK:** İlk kez görülen `files-transfer.example`: 3.2 GB outbound / 18 dk / tek kullanıcı
+
+---
+
+### F-999: Proxy Üzerinden Şifreli Tünel veya Alışılmadık Protokol Kullanımı
+
+**KATEGORİ:** dış bağlantı ve çıkış trafiği  
+**VERİ KAYNAĞI:** Proxy/SWG logs, firewall app-ID, Zeek, DNS logs  
+**NE İZLENİYOR:** CONNECT tüneli, SSH-over-HTTPS, DoH, VPN/proxy bypass araçları, alışılmadık port/protokol ve yüksek entropili uzun oturumlar  
+**NEDEN DEĞERLI:** Denetimden kaçırılmış veri çıkışı, C2 iletişimi ve politika ihlali için ortak yöntemdir  
+**ANOMALİ SİNYALİ:** Standart web trafiği gibi görünen ama uzun süreli, sabit upload üreten tünel; yasaklı VPN/proxy domainleri  
+**UYGULAMA ZORLUĞU:** Zor — protokol parmak izi ve false positive azaltımı gerekir  
+**ÖRNEK METRIK:** Tek workstation: 6 saat kesintisiz CONNECT tunnel + 1.8 GB outbound + bilinmeyen ASN
+
+---
+
 ## Çapraz Veri ve Korelasyon
 
 ---
