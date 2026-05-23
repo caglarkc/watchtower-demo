@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-022",
   "title": "API Servis Hesabını İnsan Gibi Kullanan Analist",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Veri Analisti",
   "deterministic_seed": 2022,
@@ -48,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-010",
-            "count": 1920,
+            "count": 2080,
             "result": "PASS"
           },
           "result": "PASS",
@@ -85,7 +85,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 5
+            "reads": 1
           }
         }
       ],
@@ -167,7 +167,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-047",
-            "count": 2320,
+            "count": 2720,
             "result": "PASS"
           },
           "result": "PASS",
@@ -209,7 +209,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 5
+        "reads": 1
       }
     },
     {
@@ -252,7 +252,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-010",
-        "count": 1920,
+        "count": 2080,
         "result": "PASS"
       },
       "result": "PASS",
@@ -308,7 +308,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-047",
-        "count": 2320,
+        "count": 2720,
         "result": "PASS"
       },
       "result": "PASS",
@@ -338,12 +338,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:57.394913+00:00",
+  "generated_at": "2026-05-23T03:18:22.686442+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-022:2022:positive:real"
+  "replay_key": "S-022:2022:negative:real"
 }

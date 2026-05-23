@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-030",
   "title": "Yetki Yükseltme (Privilege Escalation)",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3030,
@@ -45,7 +45,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-011",
-            "count": 2080,
+            "count": 2400,
             "result": "PASS"
           },
           "result": "PASS",
@@ -98,7 +98,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-011",
-        "count": 2080,
+        "count": 2400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -120,12 +120,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:59.093367+00:00",
+  "generated_at": "2026-05-23T03:18:24.385729+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-030:3030:positive:real"
+  "replay_key": "S-030:3030:negative:real"
 }

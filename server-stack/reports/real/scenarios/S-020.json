@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-020",
   "title": "Çoklu Lokasyon Çakışması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "CEO",
   "deterministic_seed": 2020,
@@ -22,8 +22,7 @@
           "service": "badge",
           "response": {
             "locations": [
-              "floor-3",
-              "floor-b1"
+              "floor-3"
             ]
           }
         },
@@ -83,7 +82,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": true
+            "mismatch": false
           }
         },
         {
@@ -140,8 +139,7 @@
       "service": "badge",
       "response": {
         "locations": [
-          "floor-3",
-          "floor-b1"
+          "floor-3"
         ]
       }
     },
@@ -154,7 +152,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": true
+        "mismatch": false
       }
     },
     {
@@ -234,12 +232,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:56.865355+00:00",
+  "generated_at": "2026-05-23T03:18:22.159531+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-020:2020:positive:real"
+  "replay_key": "S-020:2020:negative:real"
 }
