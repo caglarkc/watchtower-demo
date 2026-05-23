@@ -62,15 +62,26 @@ class Handler(BaseHTTPRequestHandler):
         except json.JSONDecodeError:
             self._json(400, {"error": "invalid json"})
             return
-        handlers = {
-            "/action/secret-read-burst": self._vault_secret_burst,
-            "/action/s3-upload": self._cloud_upload,
-            "/action/dlp-health": self._dlp_health,
-            "/action/wiki-bulk-download": self._wiki_bulk,
-            "/action/activity-burst": self._activity_burst,
-            "/action/peer-deviation": self._peer_deviation,
-            "/emit": lambda b: (_log(b), {"ok": True})[1],
+        common = {"/emit": lambda b: (_log(b), {"ok": True})[1]}
+        role_handlers: dict[str, dict] = {
+            "vault": {
+                "/action/secret-read-burst": self._vault_secret_burst,
+            },
+            "cloud": {"/action/s3-upload": self._cloud_upload},
+            "dlp": {"/action/dlp-health": self._dlp_health},
+            "wiki": {"/action/wiki-bulk-download": self._wiki_bulk},
+            "activity": {
+                "/action/activity-burst": self._activity_burst,
+                "/action/peer-deviation": self._peer_deviation,
+            },
+            "cups": {"/action/print-job": self._print_job},
+            "mattermost": {
+                "/action/channel-export": self._mattermost_export,
+                "/action/composite-bundle": self._composite_bundle,
+            },
+            "suitecrm": {"/action/record-chain": self._record_chain},
         }
+        handlers = {**common, **role_handlers.get(ROLE, {})}
         fn = handlers.get(path)
         if not fn:
             self._json(404, {"error": "unknown action"})
