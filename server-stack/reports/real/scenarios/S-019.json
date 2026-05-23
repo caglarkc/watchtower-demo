@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-019",
   "title": "Hizmet Hesabının Kötüye Kullanımı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2019,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-010",
-            "count": 6960,
+            "count": 7120,
             "result": "PASS"
           },
           "result": "PASS",
@@ -100,7 +100,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-010",
-        "count": 6960,
+        "count": 7120,
         "result": "PASS"
       },
       "result": "PASS",
@@ -122,12 +122,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:47.595370+00:00",
+  "generated_at": "2026-05-23T10:26:14.023938+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-019:2019:positive:real"
+  "replay_key": "S-019:2019:negative:real"
 }

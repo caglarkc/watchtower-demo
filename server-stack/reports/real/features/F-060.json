@@ -2,7 +2,7 @@
   "id": "F-060",
   "feature_id": "F-060",
   "title": "Ekran Görüntüsü Alma Frekansı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 72,
+        "indexed": 73,
         "index": "corp-logs-f-060",
         "pipeline": {
           "feature_id": "F-060",
           "index": "corp-logs-f-060",
-          "indexed": 72
+          "indexed": 73
         }
       }
     }
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "screenshot frequency spike",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:57.497898+00:00",
+  "generated_at": "2026-05-23T10:26:12.543752+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

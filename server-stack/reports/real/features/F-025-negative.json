@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-025",
-        "count": 3440,
+        "count": 3600,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": false,
   "evidence_expected": "address-book export event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:25:28.149956+00:00",
+  "generated_at": "2026-05-23T10:26:11.862372+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
