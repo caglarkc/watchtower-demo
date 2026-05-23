@@ -7,7 +7,8 @@ import uuid
 from dataclasses import dataclass
 from typing import Any
 
-from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint.base import BaseCheckpointSaver
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 
 from watchtower.domain.normalized_event import CandidateEvent
@@ -28,10 +29,17 @@ class GraphRunResult:
 class GraphRunner:
     """Execute decision graph with SQLite checkpoint + audit."""
 
-    def __init__(self, deps: GraphDeps, conn: sqlite3.Connection) -> None:
+    def __init__(
+        self,
+        deps: GraphDeps,
+        conn: sqlite3.Connection,
+        *,
+        checkpointer: BaseCheckpointSaver | None = None,
+    ) -> None:
         self._deps = deps
         self._conn = conn
-        self._checkpointer = SqliteSaver(conn)
+        # MemorySaver avoids nested-transaction conflicts with app session commits.
+        self._checkpointer = checkpointer or MemorySaver()
         graph = build_decision_graph(deps)
         self._compiled = graph.compile(checkpointer=self._checkpointer)
 
