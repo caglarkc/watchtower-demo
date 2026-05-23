@@ -16,3 +16,5 @@
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T02:36:59.689235+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T02:44:10.561961+00:00"}
 {"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T02:44:13.305080+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "ceo@corp.local", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T02:51:47.984085+00:00"}
+{"event_type": "imap_mailbox_access", "log_channel": "dovecot", "foreign_mailbox": "self", "source_feature": "F-018", "scenario_id": "S-045", "timestamp": "2026-05-23T02:51:50.774562+00:00"}

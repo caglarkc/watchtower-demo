@@ -17,3 +17,4 @@
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 3, "source_feature": "F-012", "scenario_id": "S-022", "timestamp": "2026-05-23T02:44:09.808073+00:00"}
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 1, "source_feature": "F-012", "scenario_id": "S-022", "timestamp": "2026-05-23T02:44:12.555439+00:00"}
 {"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 3, "source_feature": "F-012", "scenario_id": "S-022", "timestamp": "2026-05-23T02:51:47.218349+00:00"}
+{"event_type": "api_key_usage", "log_channel": "app", "key_id": "svc-deploy", "source_ips": 1, "source_feature": "F-012", "scenario_id": "S-022", "timestamp": "2026-05-23T02:51:50.004678+00:00"}

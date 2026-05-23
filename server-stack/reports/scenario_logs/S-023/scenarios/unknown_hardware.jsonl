@@ -17,3 +17,4 @@
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "source_feature": "F-063", "scenario_id": "S-023", "timestamp": "2026-05-23T02:44:09.839286+00:00"}
 {"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-023", "timestamp": "2026-05-23T02:44:12.587346+00:00"}
 {"event_type": "unknown_hardware", "device_id": "NEW-MAC-9912", "success": true, "source_feature": "F-063", "scenario_id": "S-023", "timestamp": "2026-05-23T02:51:47.256438+00:00"}
+{"event_type": "unknown_hardware", "device_id": "KNOWN-MAC-001", "success": true, "source_feature": "F-063", "scenario_id": "S-023", "timestamp": "2026-05-23T02:51:50.035853+00:00"}

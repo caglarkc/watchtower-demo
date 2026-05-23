@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-071",
   "title": "Geliştirici Bilgisayarından SSH Kaba Kuvvet Saldırısı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "dış saldırı desteği",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 7071,
@@ -15,7 +15,7 @@
     "nginx"
   ],
   "expected_evidence": "Multi-signal workflow for Geliştirici Bilgisayarından SSH Kaba Kuvvet Saldırısı",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -25,12 +25,12 @@
       "user_role": "Yazılım Geliştirici",
       "category": "dış saldırı desteği",
       "seed": 7071,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "ad_auth",
       "event_id": 4625,
-      "count": 1,
+      "count": 18,
       "source_feature": "F-006",
       "scenario_id": "S-071"
     },
@@ -44,7 +44,7 @@
     {
       "event_type": "http_4xx_spike",
       "log_channel": "nginx",
-      "status_4xx": 12,
+      "status_4xx": 5200,
       "window_minutes": 5,
       "source_feature": "F-048",
       "scenario_id": "S-071"
@@ -56,12 +56,9 @@
     "reports/scenario_logs/S-071/scenarios/ad_auth.jsonl",
     "reports/scenario_logs/S-071/nginx/http_4xx_spike.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:44:14.174995+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:51:48.862165+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-071:7071:negative"
+  "replay_key": "S-071:7071:positive"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-009",
   "title": "BI Ham PII Export",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "Veri Analisti",
   "deterministic_seed": 1009,
@@ -16,7 +16,7 @@
     "postgres"
   ],
   "expected_evidence": "Multi-signal workflow for BI Ham PII Export",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -26,20 +26,20 @@
       "user_role": "Veri Analisti",
       "category": "veri sızdırma",
       "seed": 1009,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "postgres_bulk_select",
       "log_channel": "postgres",
-      "tables": 12,
-      "rows_scanned": 4500000,
+      "tables": 1,
+      "rows_scanned": 1200,
       "source_feature": "F-045",
       "scenario_id": "S-009"
     },
     {
       "event_type": "peer_group_deviation",
       "log_channel": "app",
-      "z_score": 4.2,
+      "z_score": 0.3,
       "metric": "file_reads",
       "source_feature": "F-066",
       "scenario_id": "S-009"
@@ -50,9 +50,12 @@
     "reports/scenario_logs/S-009/postgres/postgres_bulk_select.jsonl",
     "reports/scenario_logs/S-009/app/peer_group_deviation.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:51:46.801801+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:51:49.590086+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-009:1009:positive"
+  "replay_key": "S-009:1009:negative"
 }

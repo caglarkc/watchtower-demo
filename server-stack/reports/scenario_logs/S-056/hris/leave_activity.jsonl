@@ -16,3 +16,5 @@
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "source_feature": "F-077", "scenario_id": "S-056", "timestamp": "2026-05-23T02:37:00.058397+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "source_feature": "F-077", "scenario_id": "S-056", "timestamp": "2026-05-23T02:44:10.924095+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "source_feature": "F-077", "scenario_id": "S-056", "timestamp": "2026-05-23T02:44:13.675786+00:00"}
+{"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "source_feature": "F-077", "scenario_id": "S-056", "timestamp": "2026-05-23T02:51:48.341016+00:00"}
+{"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "source_feature": "F-077", "scenario_id": "S-056", "timestamp": "2026-05-23T02:51:51.162176+00:00"}

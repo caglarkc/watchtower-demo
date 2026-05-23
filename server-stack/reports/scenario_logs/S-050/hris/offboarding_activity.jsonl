@@ -16,3 +16,5 @@
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "active", "logins_after": 0, "source_feature": "F-072", "scenario_id": "S-050", "timestamp": "2026-05-23T02:36:59.855832+00:00"}
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "terminated", "logins_after": 6, "source_feature": "F-072", "scenario_id": "S-050", "timestamp": "2026-05-23T02:44:10.725648+00:00"}
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "active", "logins_after": 0, "source_feature": "F-072", "scenario_id": "S-050", "timestamp": "2026-05-23T02:44:13.468387+00:00"}
+{"event_type": "offboarding_activity", "log_channel": "hris", "status": "terminated", "logins_after": 6, "source_feature": "F-072", "scenario_id": "S-050", "timestamp": "2026-05-23T02:51:48.140177+00:00"}
+{"event_type": "offboarding_activity", "log_channel": "hris", "status": "active", "logins_after": 0, "source_feature": "F-072", "scenario_id": "S-050", "timestamp": "2026-05-23T02:51:50.947250+00:00"}

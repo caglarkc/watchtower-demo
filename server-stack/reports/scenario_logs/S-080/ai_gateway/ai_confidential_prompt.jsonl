@@ -16,3 +16,4 @@
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "source_feature": "F-030", "scenario_id": "S-080", "timestamp": "2026-05-23T02:37:00.905095+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "source_feature": "F-030", "scenario_id": "S-080", "timestamp": "2026-05-23T02:44:11.710511+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "source_feature": "F-030", "scenario_id": "S-080", "timestamp": "2026-05-23T02:44:14.480714+00:00"}
+{"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "source_feature": "F-030", "scenario_id": "S-080", "timestamp": "2026-05-23T02:51:49.164691+00:00"}

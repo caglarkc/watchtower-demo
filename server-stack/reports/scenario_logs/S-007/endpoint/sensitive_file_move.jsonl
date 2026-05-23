@@ -17,3 +17,4 @@
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "source_feature": "F-043", "scenario_id": "S-007", "timestamp": "2026-05-23T02:44:09.302599+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "source_feature": "F-043", "scenario_id": "S-007", "timestamp": "2026-05-23T02:44:12.061069+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "source_feature": "F-043", "scenario_id": "S-007", "timestamp": "2026-05-23T02:51:46.727240+00:00"}
+{"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "source_feature": "F-043", "scenario_id": "S-007", "timestamp": "2026-05-23T02:51:49.516597+00:00"}

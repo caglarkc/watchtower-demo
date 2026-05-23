@@ -16,3 +16,4 @@
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["dashboard"], "source_feature": "F-062", "scenario_id": "S-081", "timestamp": "2026-05-23T02:37:00.945793+00:00"}
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["password", "token", "suppress"], "source_feature": "F-062", "scenario_id": "S-081", "timestamp": "2026-05-23T02:44:11.748170+00:00"}
 {"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["dashboard"], "source_feature": "F-062", "scenario_id": "S-081", "timestamp": "2026-05-23T02:44:14.514870+00:00"}
+{"event_type": "risky_log_search", "log_channel": "siem", "keywords": ["password", "token", "suppress"], "source_feature": "F-062", "scenario_id": "S-081", "timestamp": "2026-05-23T02:51:49.198272+00:00"}

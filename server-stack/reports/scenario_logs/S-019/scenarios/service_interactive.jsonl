@@ -17,3 +17,4 @@
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "source_feature": "F-010", "scenario_id": "S-019", "timestamp": "2026-05-23T02:44:09.703553+00:00"}
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 5, "source_feature": "F-010", "scenario_id": "S-019", "timestamp": "2026-05-23T02:44:12.457586+00:00"}
 {"event_type": "service_interactive", "account": "svc_sql", "logon_type": 2, "source_feature": "F-010", "scenario_id": "S-019", "timestamp": "2026-05-23T02:51:47.118992+00:00"}
+{"event_type": "service_interactive", "account": "svc_sql", "logon_type": 5, "source_feature": "F-010", "scenario_id": "S-019", "timestamp": "2026-05-23T02:51:49.908334+00:00"}

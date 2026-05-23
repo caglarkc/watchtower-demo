@@ -55,7 +55,7 @@
     "type": "baseline_replay",
     "description": "Same scenario with sub-threshold feature signals"
   },
-  "generated_at": "2026-05-23T02:44:12.489825+00:00",
+  "generated_at": "2026-05-23T02:51:49.942128+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-020:2020:negative"
