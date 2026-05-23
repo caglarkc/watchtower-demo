@@ -8,3 +8,4 @@
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:37:00.945570+00:00"}
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:44:14.514641+00:00"}
 {"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:51:52.023005+00:00"}
+{"event_type": "composite_signal", "log_channel": "endpoint", "signal": "baseline", "weight": 0.1, "source_feature": "F-071", "scenario_id": "S-081", "timestamp": "2026-05-23T02:57:32.112538+00:00"}

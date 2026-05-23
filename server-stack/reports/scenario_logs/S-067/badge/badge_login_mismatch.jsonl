@@ -18,3 +18,5 @@
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-067", "timestamp": "2026-05-23T02:44:14.039726+00:00"}
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-067", "timestamp": "2026-05-23T02:51:48.718584+00:00"}
 {"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-067", "timestamp": "2026-05-23T02:51:51.564229+00:00"}
+{"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": false, "login_success": true, "source_feature": "F-070", "scenario_id": "S-067", "timestamp": "2026-05-23T02:57:28.758638+00:00"}
+{"event_type": "badge_login_mismatch", "log_channel": "badge", "badge_present": true, "login_success": true, "source_feature": "F-070", "scenario_id": "S-067", "timestamp": "2026-05-23T02:57:31.646462+00:00"}

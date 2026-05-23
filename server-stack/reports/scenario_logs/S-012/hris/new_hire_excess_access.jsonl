@@ -19,3 +19,4 @@
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "source_feature": "F-075", "scenario_id": "S-012", "timestamp": "2026-05-23T02:51:46.900642+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "source_feature": "F-075", "scenario_id": "S-012", "timestamp": "2026-05-23T02:51:49.679408+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "source_feature": "F-075", "scenario_id": "S-012", "timestamp": "2026-05-23T02:57:26.948337+00:00"}
+{"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "source_feature": "F-075", "scenario_id": "S-012", "timestamp": "2026-05-23T02:57:29.781824+00:00"}

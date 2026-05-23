@@ -18,3 +18,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-083", "user_role": "Satış", "category": "çapraz/multi-user", "seed": 9083, "anomaly": false, "timestamp": "2026-05-23T02:44:14.580978+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-083", "user_role": "Satış", "category": "çapraz/multi-user", "seed": 9083, "anomaly": true, "timestamp": "2026-05-23T02:51:49.266850+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-083", "user_role": "Satış", "category": "çapraz/multi-user", "seed": 9083, "anomaly": false, "timestamp": "2026-05-23T02:51:52.087049+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-083", "user_role": "Satış", "category": "çapraz/multi-user", "seed": 9083, "anomaly": true, "timestamp": "2026-05-23T02:57:29.297274+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-083", "user_role": "Satış", "category": "çapraz/multi-user", "seed": 9083, "anomaly": false, "timestamp": "2026-05-23T02:57:32.175468+00:00"}

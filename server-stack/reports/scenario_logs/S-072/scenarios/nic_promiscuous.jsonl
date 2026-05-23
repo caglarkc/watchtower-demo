@@ -18,3 +18,5 @@
 {"event_type": "nic_promiscuous", "enabled": false, "source_feature": "F-057", "scenario_id": "S-072", "timestamp": "2026-05-23T02:44:14.211560+00:00"}
 {"event_type": "nic_promiscuous", "enabled": true, "source_feature": "F-057", "scenario_id": "S-072", "timestamp": "2026-05-23T02:51:48.893742+00:00"}
 {"event_type": "nic_promiscuous", "enabled": false, "source_feature": "F-057", "scenario_id": "S-072", "timestamp": "2026-05-23T02:51:51.733612+00:00"}
+{"event_type": "nic_promiscuous", "enabled": true, "source_feature": "F-057", "scenario_id": "S-072", "timestamp": "2026-05-23T02:57:28.918929+00:00"}
+{"event_type": "nic_promiscuous", "enabled": false, "source_feature": "F-057", "scenario_id": "S-072", "timestamp": "2026-05-23T02:57:31.808046+00:00"}

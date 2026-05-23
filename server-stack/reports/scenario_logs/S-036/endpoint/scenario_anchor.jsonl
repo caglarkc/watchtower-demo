@@ -19,3 +19,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": true, "timestamp": "2026-05-23T02:51:47.667025+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T02:51:50.481897+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": true, "timestamp": "2026-05-23T02:57:27.761371+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-036", "user_role": "Veri Analisti", "category": "yetkisiz erişim", "seed": 3036, "anomaly": false, "timestamp": "2026-05-23T02:57:30.609194+00:00"}

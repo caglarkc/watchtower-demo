@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-011",
   "title": "CEO Mail Kutusundan Toplu Arşiv Export",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "CEO",
   "deterministic_seed": 1011,
@@ -18,7 +18,7 @@
     "roundcube"
   ],
   "expected_evidence": "Multi-signal workflow for CEO Mail Kutusundan Toplu Arşiv Export",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -28,29 +28,29 @@
       "user_role": "CEO",
       "category": "veri sızdırma",
       "seed": 1011,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "imap_archive_bulk_read",
       "log_channel": "dovecot",
-      "messages_read": 14000,
-      "years_span": 14,
+      "messages_read": 40,
+      "years_span": 1,
       "source_feature": "F-024",
       "scenario_id": "S-011"
     },
     {
       "event_type": "address_book_export",
       "log_channel": "roundcube",
-      "contacts_exported": 4800,
+      "contacts_exported": 5,
       "source_feature": "F-025",
       "scenario_id": "S-011"
     },
     {
       "event_type": "mail_attachment_entropy",
       "log_channel": "postfix",
-      "entropy": 7.8,
+      "entropy": 4.1,
       "declared_type": "pdf",
-      "actual_type": "zip",
+      "actual_type": "pdf",
       "source_feature": "F-019",
       "scenario_id": "S-011"
     }
@@ -61,9 +61,12 @@
     "reports/scenario_logs/S-011/roundcube/address_book_export.jsonl",
     "reports/scenario_logs/S-011/postfix/mail_attachment_entropy.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:57:26.917928+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:57:29.749092+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-011:1011:positive"
+  "replay_key": "S-011:1011:negative"
 }

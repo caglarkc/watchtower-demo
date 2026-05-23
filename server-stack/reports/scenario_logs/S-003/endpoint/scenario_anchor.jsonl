@@ -19,3 +19,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-003", "user_role": "Satış", "category": "veri sızdırma", "seed": 1003, "anomaly": true, "timestamp": "2026-05-23T02:51:46.593654+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-003", "user_role": "Satış", "category": "veri sızdırma", "seed": 1003, "anomaly": false, "timestamp": "2026-05-23T02:51:49.368427+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-003", "user_role": "Satış", "category": "veri sızdırma", "seed": 1003, "anomaly": true, "timestamp": "2026-05-23T02:57:26.648877+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-003", "user_role": "Satış", "category": "veri sızdırma", "seed": 1003, "anomaly": false, "timestamp": "2026-05-23T02:57:29.397619+00:00"}

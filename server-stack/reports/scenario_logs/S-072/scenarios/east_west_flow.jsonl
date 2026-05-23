@@ -18,3 +18,5 @@
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T02:44:14.211475+00:00"}
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 42, "bytes": 8000000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T02:51:48.893658+00:00"}
 {"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T02:51:51.733524+00:00"}
+{"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 42, "bytes": 8000000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T02:57:28.918843+00:00"}
+{"event_type": "east_west_flow", "src": "172.28.0.100", "dst_hosts": 2, "bytes": 5000000, "source_feature": "F-002", "scenario_id": "S-072", "timestamp": "2026-05-23T02:57:31.807953+00:00"}

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-043",
   "title": "Admin Tarafından Eski Yedeklerin Silinmesi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4043,
@@ -13,7 +13,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Admin Tarafından Eski Yedeklerin Silinmesi",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -23,12 +23,12 @@
       "user_role": "IT Admin",
       "category": "insider threat",
       "seed": 4043,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "backup_shadow_delete",
       "log_channel": "endpoint",
-      "shadow_copies_deleted": 48,
+      "shadow_copies_deleted": 0,
       "source_feature": "F-053",
       "scenario_id": "S-043"
     }
@@ -37,9 +37,12 @@
     "reports/scenario_logs/S-043/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-043/endpoint/backup_shadow_delete.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:57:27.992037+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:57:30.848755+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-043:4043:positive"
+  "replay_key": "S-043:4043:negative"
 }

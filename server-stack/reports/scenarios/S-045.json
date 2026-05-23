@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-045",
   "title": "İK Hesabından Gece Mail Arşiv Taraması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "İK",
   "deterministic_seed": 4045,
@@ -15,7 +15,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for İK Hesabından Gece Mail Arşiv Taraması",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,20 +25,20 @@
       "user_role": "İK",
       "category": "insider threat",
       "seed": 4045,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "imap_archive_bulk_read",
       "log_channel": "dovecot",
-      "messages_read": 14000,
-      "years_span": 14,
+      "messages_read": 40,
+      "years_span": 1,
       "source_feature": "F-024",
       "scenario_id": "S-045"
     },
     {
       "event_type": "imap_mailbox_access",
       "log_channel": "dovecot",
-      "foreign_mailbox": "ceo@corp.local",
+      "foreign_mailbox": "self",
       "source_feature": "F-018",
       "scenario_id": "S-045"
     }
@@ -48,9 +48,12 @@
     "reports/scenario_logs/S-045/dovecot/imap_archive_bulk_read.jsonl",
     "reports/scenario_logs/S-045/dovecot/imap_mailbox_access.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:57:28.052365+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:57:30.915588+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-045:4045:positive"
+  "replay_key": "S-045:4045:negative"
 }

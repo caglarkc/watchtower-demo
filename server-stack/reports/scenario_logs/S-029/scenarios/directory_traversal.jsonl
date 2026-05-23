@@ -19,3 +19,4 @@
 {"event_type": "directory_traversal", "sensitive_paths": 15, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:51:47.441610+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 0, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:51:50.249604+00:00"}
 {"event_type": "directory_traversal", "sensitive_paths": 15, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:57:27.515507+00:00"}
+{"event_type": "directory_traversal", "sensitive_paths": 0, "source_feature": "F-040", "scenario_id": "S-029", "timestamp": "2026-05-23T02:57:30.364404+00:00"}
