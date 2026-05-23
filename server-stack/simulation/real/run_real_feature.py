@@ -69,7 +69,14 @@ def run(feature_id: str, mode: str) -> Path:
         parity = "L2"
 
     seed_refs = ["seeds/real/baseline/normal_day.yml"]
-    if feature_id in RI2_FEATURES:
+    if feature_id in RI3_FEATURES:
+        seed_refs = [
+            "seeds/real/vault/secrets.yml",
+            "seeds/real/ai/prompts.yml",
+            "seeds/real/baseline/peer_groups.yml",
+            "seeds/real/ai/uploads/sample.bin",
+        ]
+    elif feature_id in RI2_FEATURES:
         seed_refs = [
             "seeds/real/mail/mailboxes.yml",
             "seeds/real/postgres/schema.sql",
@@ -110,7 +117,7 @@ def run(feature_id: str, mode: str) -> Path:
     primary = REPORTS / f"{feature_id}.json"
     mode_path.write_text(payload, encoding="utf-8")
     primary.write_text(payload, encoding="utf-8")
-    if feature_id in ALL_REAL_FEATURES and not ok:
+    if feature_id in (RI1_FEATURES | RI2_FEATURES | RI3_FEATURES) and not ok:
         raise RuntimeError(f"{feature_id} real assertions failed")
     return primary
 
