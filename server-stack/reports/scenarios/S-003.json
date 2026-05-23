@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-003",
   "title": "Satış Ekibinden Sessiz CRM Dökümü",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "Satış",
   "deterministic_seed": 1003,
@@ -20,7 +20,7 @@
     "proxy-sink"
   ],
   "expected_evidence": "Multi-signal workflow for Satış Ekibinden Sessiz CRM Dökümü",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 6,
   "events": [
     {
@@ -30,42 +30,42 @@
       "user_role": "Satış",
       "category": "veri sızdırma",
       "seed": 1003,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "smb_bulk_io",
-      "read_bytes": 18400000000,
+      "read_bytes": 320000000,
       "write_bytes": 0,
       "source_feature": "F-038",
       "scenario_id": "S-003"
     },
     {
       "event_type": "smb_rename_storm",
-      "renames_per_minute": 120,
+      "renames_per_minute": 2,
       "source_feature": "F-039",
       "scenario_id": "S-003"
     },
     {
       "event_type": "offboarding_activity",
       "log_channel": "hris",
-      "status": "terminated",
-      "logins_after": 6,
+      "status": "active",
+      "logins_after": 0,
       "source_feature": "F-072",
       "scenario_id": "S-003"
     },
     {
       "event_type": "mail_external_competitor",
       "log_channel": "postfix",
-      "recipient_domain": "rival-corp.com",
+      "recipient_domain": "partner-approved.com",
       "source_feature": "F-022",
       "scenario_id": "S-003"
     },
     {
       "event_type": "first_external_transfer",
       "log_channel": "proxy",
-      "destination": "203.0.113.50",
-      "mb": 3200,
-      "first_seen": true,
+      "destination": "partner.corp.local",
+      "mb": 50,
+      "first_seen": false,
       "source_feature": "F-068",
       "scenario_id": "S-003"
     }
@@ -78,9 +78,12 @@
     "reports/scenario_logs/S-003/postfix/mail_external_competitor.jsonl",
     "reports/scenario_logs/S-003/proxy/first_external_transfer.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T08:41:22.466034+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T08:41:25.367000+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-003:1003:positive"
+  "replay_key": "S-003:1003:negative"
 }

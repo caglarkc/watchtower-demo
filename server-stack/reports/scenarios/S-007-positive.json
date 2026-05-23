@@ -71,7 +71,7 @@
     "reports/scenario_logs/S-007/ai_gateway/ai_file_upload.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T05:36:01.205824+00:00",
+  "generated_at": "2026-05-23T08:41:22.618473+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-007:1007:positive"

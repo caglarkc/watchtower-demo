@@ -28,3 +28,4 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "source_feature": "F-009", "scenario_id": "S-026", "timestamp": "2026-05-23T05:09:59.838735+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "source_feature": "F-009", "scenario_id": "S-026", "timestamp": "2026-05-23T05:36:01.888370+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "source_feature": "F-009", "scenario_id": "S-026", "timestamp": "2026-05-23T05:36:04.716547+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "source_feature": "F-009", "scenario_id": "S-026", "timestamp": "2026-05-23T08:41:23.287073+00:00"}

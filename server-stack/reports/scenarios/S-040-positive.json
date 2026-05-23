@@ -47,7 +47,7 @@
     "reports/scenario_logs/S-040/endpoint/scheduled_task_created.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T05:36:02.353796+00:00",
+  "generated_at": "2026-05-23T08:41:23.746302+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-040:4040:positive"

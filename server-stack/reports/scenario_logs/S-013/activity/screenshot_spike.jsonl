@@ -28,3 +28,5 @@
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "source_feature": "F-060", "scenario_id": "S-013", "timestamp": "2026-05-23T05:09:59.387263+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "source_feature": "F-060", "scenario_id": "S-013", "timestamp": "2026-05-23T05:36:01.437087+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "source_feature": "F-060", "scenario_id": "S-013", "timestamp": "2026-05-23T05:36:04.265663+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "source_feature": "F-060", "scenario_id": "S-013", "timestamp": "2026-05-23T08:41:22.839741+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "source_feature": "F-060", "scenario_id": "S-013", "timestamp": "2026-05-23T08:41:25.706690+00:00"}

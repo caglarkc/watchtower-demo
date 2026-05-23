@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-081",
   "title": "Çoklu Departman Zincirli Fiziksel-Dijital Saldırı",
-  "mode": "negative",
+  "mode": "positive",
   "category": "çapraz/multi-user",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 9081,
@@ -13,13 +13,16 @@
     "F-062"
   ],
   "services": [
+    "ai-gateway-mock",
     "badge-api",
     "endpoint-synthetic",
-    "siem-admin"
+    "proxy-sink",
+    "siem-admin",
+    "vault-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Çoklu Departman Zincirli Fiziksel-Dijital Saldırı",
-  "anomaly_detected": false,
-  "event_count": 5,
+  "anomaly_detected": true,
+  "event_count": 7,
   "events": [
     {
       "event_type": "scenario_anchor",
@@ -28,21 +31,37 @@
       "user_role": "Güvenlik Görevlisi",
       "category": "çapraz/multi-user",
       "seed": 9081,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "composite_signal",
-      "log_channel": "endpoint",
-      "signal": "baseline",
-      "weight": 0.1,
+      "log_channel": "ai_gateway",
+      "signal": "ai_leak",
+      "weight": 0.4,
+      "source_feature": "F-071",
+      "scenario_id": "S-081"
+    },
+    {
+      "event_type": "composite_signal",
+      "log_channel": "proxy",
+      "signal": "exfil",
+      "weight": 0.35,
+      "source_feature": "F-071",
+      "scenario_id": "S-081"
+    },
+    {
+      "event_type": "composite_signal",
+      "log_channel": "vault",
+      "signal": "secret_burst",
+      "weight": 0.25,
       "source_feature": "F-071",
       "scenario_id": "S-081"
     },
     {
       "event_type": "off_shift_access",
       "log_channel": "badge",
-      "shift": "day",
-      "login_hour": 10,
+      "shift": "off",
+      "login_hour": 2,
       "badge_swipe": true,
       "source_feature": "F-074",
       "scenario_id": "S-081"
@@ -51,7 +70,9 @@
       "event_type": "rdp_hop",
       "hops": [
         "ws1",
-        "files1"
+        "dc1",
+        "files1",
+        "db1"
       ],
       "source_feature": "F-015",
       "scenario_id": "S-081"
@@ -60,7 +81,9 @@
       "event_type": "risky_log_search",
       "log_channel": "siem",
       "keywords": [
-        "dashboard"
+        "password",
+        "token",
+        "suppress"
       ],
       "source_feature": "F-062",
       "scenario_id": "S-081"
@@ -68,17 +91,16 @@
   ],
   "log_paths": [
     "reports/scenario_logs/S-081/endpoint/scenario_anchor.jsonl",
-    "reports/scenario_logs/S-081/endpoint/composite_signal.jsonl",
+    "reports/scenario_logs/S-081/ai_gateway/composite_signal.jsonl",
+    "reports/scenario_logs/S-081/proxy/composite_signal.jsonl",
+    "reports/scenario_logs/S-081/vault/composite_signal.jsonl",
     "reports/scenario_logs/S-081/badge/off_shift_access.jsonl",
     "reports/scenario_logs/S-081/scenarios/rdp_hop.jsonl",
     "reports/scenario_logs/S-081/siem/risky_log_search.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T05:36:06.573893+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T08:41:25.193306+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-081:9081:negative"
+  "replay_key": "S-081:9081:positive"
 }

@@ -28,3 +28,5 @@
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-007", "timestamp": "2026-05-23T05:09:59.166672+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "source_feature": "F-045", "scenario_id": "S-007", "timestamp": "2026-05-23T05:36:01.204243+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-007", "timestamp": "2026-05-23T05:36:04.037285+00:00"}
+{"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "source_feature": "F-045", "scenario_id": "S-007", "timestamp": "2026-05-23T08:41:22.616472+00:00"}
+{"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-007", "timestamp": "2026-05-23T08:41:25.495561+00:00"}

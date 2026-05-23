@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-026",
   "title": "Stajyer Çift Oturum",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 2026,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Stajyer Çift Oturum",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -24,15 +24,16 @@
       "user_role": "Stajyer",
       "category": "credential ihlali",
       "seed": 2026,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "concurrent_session",
       "log_channel": "badge",
       "locations": [
-        "floor-3"
+        "floor-3",
+        "floor-b1"
       ],
-      "minutes_apart": 0,
+      "minutes_apart": 12,
       "source_feature": "F-009",
       "scenario_id": "S-026"
     }
@@ -41,12 +42,9 @@
     "reports/scenario_logs/S-026/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-026/badge/concurrent_session.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T05:36:04.717495+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T08:41:23.288057+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-026:2026:negative"
+  "replay_key": "S-026:2026:positive"
 }
