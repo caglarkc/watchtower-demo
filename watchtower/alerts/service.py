@@ -162,8 +162,10 @@ class AlertService:
             actor=actor,
             comment=comment,
         )
+        case = self._repo.get_case_by_alert(tenant_id, alert_id)
+        pending_meta: dict[str, Any] = {}
         if outcome == "false_positive" and self._feedback is not None:
-            self._feedback.submit_feedback(
+            _rule, pending = self._feedback.submit_feedback(
                 tenant_id,
                 kind="false_positive",
                 actor_id=actor,
@@ -178,6 +180,26 @@ class AlertService:
                 ),
                 comment=comment or "closed as false positive",
             )
+            if pending is not None:
+                pending_meta["pending_rule_id"] = pending.id
+                self._timeline.record(
+                    tenant_id,
+                    alert_id,
+                    case.id if case else None,
+                    "feedback_submitted",
+                    actor=actor,
+                    comment=comment,
+                    metadata=pending_meta,
+                )
+        self._timeline.record(
+            tenant_id,
+            alert_id,
+            case.id if case else None,
+            "closed",
+            actor=actor,
+            comment=comment or outcome,
+            metadata={"outcome": outcome, **pending_meta},
+        )
         return alert
 
     def suppress(
