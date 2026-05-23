@@ -63,7 +63,7 @@
   "anomaly_detected": false,
   "evidence_expected": "physical badge/login mismatch",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:23.038275+00:00",
+  "generated_at": "2026-05-23T03:18:33.471370+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
