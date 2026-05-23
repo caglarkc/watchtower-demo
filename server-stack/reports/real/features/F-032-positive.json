@@ -58,7 +58,7 @@
   "anomaly_detected": true,
   "evidence_expected": "internal host/user/network prompt event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:12:09.914243+00:00",
+  "generated_at": "2026-05-23T05:36:27.421012+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
