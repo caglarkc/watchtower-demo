@@ -39,3 +39,4 @@
 {"event_type": "acl_change", "permission": "Everyone:FullControl", "feature_id": "F-041", "timestamp": "2026-05-23T02:51:20.623681+00:00"}
 {"event_type": "acl_change", "permission": "Finance-RW", "feature_id": "F-041", "timestamp": "2026-05-23T02:51:27.902946+00:00"}
 {"event_type": "acl_change", "permission": "Everyone:FullControl", "feature_id": "F-041", "timestamp": "2026-05-23T02:51:32.903350+00:00"}
+{"event_type": "acl_change", "permission": "Finance-RW", "feature_id": "F-041", "timestamp": "2026-05-23T02:51:34.873604+00:00"}
