@@ -14,58 +14,65 @@ from log_assertions import (
     wait_for_log,
 )
 
-ASSERTORS: dict[str, callable] = {
-    "F-001": lambda s, p: [assert_samba_audit(s, op="read"), assert_zeek_conn(s)],
-    "F-002": lambda s, p: [assert_zeek_conn(s, min_records=3 if p else 1)],
-    "F-003": lambda s, p: [assert_bind_query(s, min_bytes=20 if p else 1)],
-    "F-005": lambda s, p: [assert_dhcp_log(s) if p else {"result": "PASS", "note": "negative"}],
-    "F-006": lambda s, p: [assert_ad_event(s, event_id=4625 if p else 4624)],
-    "F-007": lambda s, p: [assert_zeek_conn(s, min_records=10 if p else 1)],
-    "F-008": lambda s, p: [assert_ad_event(s, event_id=4768)],
-    "F-010": lambda s, p: [assert_ad_event(s, user="svc_sql")],
-    "F-011": lambda s, p: [assert_ad_event(s, event_id=4728)],
-    "F-015": lambda s, p: [assert_zeek_conn(s), assert_endpoint_event(s, "rdp_hop")],
-    "F-037": lambda s, p: [assert_samba_audit(s, op="read")],
-    "F-038": lambda s, p: [assert_samba_audit(s, op="read")],
-    "F-039": lambda s, p: [assert_samba_audit(s, op="rename")],
-    "F-040": lambda s, p: [assert_samba_audit(s, op="list")],
-    "F-041": lambda s, p: [assert_samba_audit(s, op="acl_set")],
-    "F-055": lambda s, p: [assert_endpoint_event(s, "usb_write")],
-    "F-057": lambda s, p: [assert_endpoint_event(s, "nic_promiscuous")],
-    "F-063": lambda s, p: [assert_endpoint_event(s, "unknown_hardware")],
-    "F-079": lambda s, p: [assert_endpoint_event(s, "after_hours_session"), assert_ad_event(s)],
-    "F-080": lambda s, p: [assert_endpoint_event(s, "idle_session_abuse")],
-    "F-081": lambda s, p: [assert_endpoint_event(s, "role_work_window")],
-}
+
+def _checks(feature_id: str, positive: bool) -> list:
+    if feature_id == "F-001":
+        return [
+            lambda s: assert_samba_audit(s, op="read"),
+            lambda s: assert_zeek_conn(s),
+        ]
+    if feature_id == "F-002":
+        return [lambda s: assert_zeek_conn(s, min_records=3 if positive else 1)]
+    if feature_id == "F-003":
+        return [lambda s: assert_bind_query(s, min_bytes=20 if positive else 1)]
+    if feature_id == "F-005":
+        return [lambda s: assert_dhcp_log(s) if positive else {"result": "PASS", "note": "negative skip"}]
+    if feature_id == "F-006":
+        return [lambda s: assert_ad_event(s, event_id=4625 if positive else 4624)]
+    if feature_id == "F-007":
+        return [lambda s: assert_zeek_conn(s, min_records=10 if positive else 1)]
+    if feature_id == "F-008":
+        return [lambda s: assert_ad_event(s, event_id=4768)]
+    if feature_id == "F-010":
+        return [lambda s: assert_ad_event(s, user="svc_sql")]
+    if feature_id == "F-011":
+        return [lambda s: assert_ad_event(s, event_id=4728)]
+    if feature_id == "F-015":
+        return [lambda s: assert_zeek_conn(s), lambda s: assert_endpoint_event(s, "rdp_hop")]
+    if feature_id in ("F-037", "F-038"):
+        return [lambda s: assert_samba_audit(s, op="read")]
+    if feature_id == "F-039":
+        return [lambda s: assert_samba_audit(s, op="rename")]
+    if feature_id == "F-040":
+        return [lambda s: assert_samba_audit(s, op="list")]
+    if feature_id == "F-041":
+        return [lambda s: assert_samba_audit(s, op="acl_set")]
+    if feature_id == "F-055":
+        return [lambda s: assert_endpoint_event(s, "usb_write")]
+    if feature_id == "F-057":
+        return [lambda s: assert_endpoint_event(s, "nic_promiscuous")]
+    if feature_id == "F-063":
+        return [lambda s: assert_endpoint_event(s, "unknown_hardware")]
+    if feature_id == "F-079":
+        return [lambda s: assert_endpoint_event(s, "after_hours_session"), lambda s: assert_ad_event(s)]
+    if feature_id == "F-080":
+        return [lambda s: assert_endpoint_event(s, "idle_session_abuse")]
+    if feature_id == "F-081":
+        return [lambda s: assert_endpoint_event(s, "role_work_window")]
+    return []
 
 
 def run_assertions(feature_id: str, mode: str, since: float) -> tuple[list[dict], list[dict], bool]:
+    if feature_id not in RI1_FEATURES:
+        return [], [], False
+
     positive = mode == "positive"
     raw: list[dict] = []
+    for check in _checks(feature_id, positive):
+        result = wait_for_log(check, since)
+        raw.append(result)
+
     ingest: list[dict] = []
-
-    if feature_id not in RI1_FEATURES:
-        return raw, ingest, False
-
-    fn = ASSERTORS.get(feature_id)
-    if fn:
-        for check in fn(since, positive):
-            raw.append(wait_for_log(lambda s=since, c=check: c, since) if False else check)  # noqa: B023
-        # fix: call checks directly with wait
-        raw = []
-        for partial in fn(since, positive):
-            key = partial.get("path", "")
-            waited = wait_for_log(lambda k=key, p=partial: p, since) if "path" in partial else partial
-            raw.append(waited if isinstance(waited, dict) else partial)
-
-    # Simpler rewrite - call assertors directly
-    raw = []
-    for partial in fn(since, positive):
-        raw.append(wait_for_log(lambda p=partial: p, since) if partial.get("result") != "PASS" else partial)
-        if partial.get("result") != "PASS":
-            fixed = wait_for_log(lambda sp=partial: sp, since)
-            raw[-1] = fixed
-
     if feature_id in INGEST_FEATURES:
         ingest.append(assert_ingest_for_feature(feature_id))
 
