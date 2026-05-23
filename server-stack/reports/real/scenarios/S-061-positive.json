@@ -139,7 +139,7 @@
   "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:48.270979+00:00",
+  "generated_at": "2026-05-23T10:25:59.041743+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
