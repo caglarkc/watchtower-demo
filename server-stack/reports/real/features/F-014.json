@@ -2,7 +2,7 @@
   "id": "F-014",
   "feature_id": "F-014",
   "title": "Credential Reset ve Unlock Yoğunluğu",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-ad",
@@ -10,14 +10,14 @@
     {
       "service": "hris",
       "response": {
-        "resets": 1,
-        "unlocks": 0
+        "resets": 12,
+        "unlocks": 8
       }
     },
     {
       "service": "samba-ad",
       "response": {
-        "events": 1
+        "events": 12
       }
     }
   ],
@@ -65,10 +65,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "reset/unlock burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:51.009307+00:00",
+  "generated_at": "2026-05-23T05:38:09.700968+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

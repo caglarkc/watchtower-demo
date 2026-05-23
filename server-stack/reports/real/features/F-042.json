@@ -58,7 +58,7 @@
   "anomaly_detected": true,
   "evidence_expected": "local sensitive-data accumulation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:01.767565+00:00",
+  "generated_at": "2026-05-23T05:38:09.140556+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

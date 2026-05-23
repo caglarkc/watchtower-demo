@@ -36,7 +36,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 5215,
+        "count": 5375,
         "result": "PASS"
       },
       "result": "PASS",
@@ -61,7 +61,7 @@
   "anomaly_detected": true,
   "evidence_expected": "USB attach/write correlation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:58.120170+00:00",
+  "generated_at": "2026-05-23T05:38:08.766592+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
