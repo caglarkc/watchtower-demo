@@ -2,7 +2,7 @@
   "id": "F-075",
   "feature_id": "F-075",
   "title": "Yeni Çalışanın İlk Günlerde Aşırı Sistem Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "hris-app",
@@ -10,7 +10,7 @@
     {
       "service": "hris",
       "response": {
-        "systems_accessed": 28
+        "systems_accessed": 6
       }
     }
   ],
@@ -38,12 +38,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 75,
+        "indexed": 80,
         "index": "corp-logs-f-075",
         "pipeline": {
           "feature_id": "F-075",
           "index": "corp-logs-f-075",
-          "indexed": 75
+          "indexed": 80
         }
       }
     }
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "new employee excessive access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:38.079659+00:00",
+  "generated_at": "2026-05-23T03:12:10.735045+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

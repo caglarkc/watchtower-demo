@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-020",
   "title": "Çoklu Lokasyon Çakışması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "CEO",
   "deterministic_seed": 2020,
@@ -22,8 +22,7 @@
           "service": "badge",
           "response": {
             "locations": [
-              "floor-3",
-              "floor-b1"
+              "floor-3"
             ]
           }
         },
@@ -58,12 +57,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 43,
+            "indexed": 51,
             "index": "corp-logs-f-009",
             "pipeline": {
               "feature_id": "F-009",
               "index": "corp-logs-f-009",
-              "indexed": 43
+              "indexed": 51
             }
           }
         }
@@ -83,7 +82,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": true
+            "mismatch": false
           }
         },
         {
@@ -117,12 +116,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 44,
+            "indexed": 52,
             "index": "corp-logs-f-070",
             "pipeline": {
               "feature_id": "F-070",
               "index": "corp-logs-f-070",
-              "indexed": 44
+              "indexed": 52
             }
           }
         }
@@ -140,8 +139,7 @@
       "service": "badge",
       "response": {
         "locations": [
-          "floor-3",
-          "floor-b1"
+          "floor-3"
         ]
       }
     },
@@ -154,7 +152,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": true
+        "mismatch": false
       }
     },
     {
@@ -192,12 +190,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 43,
+        "indexed": 51,
         "index": "corp-logs-f-009",
         "pipeline": {
           "feature_id": "F-009",
           "index": "corp-logs-f-009",
-          "indexed": 43
+          "indexed": 51
         }
       }
     },
@@ -218,12 +216,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 44,
+        "indexed": 52,
         "index": "corp-logs-f-070",
         "pipeline": {
           "feature_id": "F-070",
           "index": "corp-logs-f-070",
-          "indexed": 44
+          "indexed": 52
         }
       }
     }
@@ -234,12 +232,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:32.498698+00:00",
+  "generated_at": "2026-05-23T03:12:12.718359+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-020:2020:positive:real"
+  "replay_key": "S-020:2020:negative:real"
 }
