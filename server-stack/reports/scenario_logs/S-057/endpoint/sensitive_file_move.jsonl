@@ -5,3 +5,4 @@
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "source_feature": "F-043", "scenario_id": "S-057", "timestamp": "2026-05-23T01:27:13.424386+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "source_feature": "F-043", "scenario_id": "S-057", "timestamp": "2026-05-23T01:27:16.268605+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "source_feature": "F-043", "scenario_id": "S-057", "timestamp": "2026-05-23T02:09:25.609757+00:00"}
+{"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "source_feature": "F-043", "scenario_id": "S-057", "timestamp": "2026-05-23T02:09:28.674609+00:00"}

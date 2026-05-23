@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-072",
   "title": "CTO Hesabından Ağ Trafik Kopyalama Kuralı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "CTO",
   "deterministic_seed": 7072,
@@ -16,7 +16,7 @@
     "proxy-sink"
   ],
   "expected_evidence": "Multi-signal workflow for CTO Hesabından Ağ Trafik Kopyalama Kuralı",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -26,27 +26,27 @@
       "user_role": "CTO",
       "category": "dış saldırı desteği",
       "seed": 7072,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "east_west_flow",
       "src": "172.28.0.100",
-      "dst_hosts": 42,
-      "bytes": 8000000000,
+      "dst_hosts": 2,
+      "bytes": 5000000,
       "source_feature": "F-002",
       "scenario_id": "S-072"
     },
     {
       "event_type": "nic_promiscuous",
-      "enabled": true,
+      "enabled": false,
       "source_feature": "F-057",
       "scenario_id": "S-072"
     },
     {
       "event_type": "proxy_tunnel",
       "log_channel": "proxy",
-      "protocol": "unknown-tls-tunnel",
-      "duration_minutes": 45,
+      "protocol": "https",
+      "duration_minutes": 2,
       "source_feature": "F-069",
       "scenario_id": "S-072"
     }
@@ -57,9 +57,12 @@
     "reports/scenario_logs/S-072/scenarios/nic_promiscuous.jsonl",
     "reports/scenario_logs/S-072/proxy/proxy_tunnel.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:09:26.238319+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:09:29.242425+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-072:7072:positive"
+  "replay_key": "S-072:7072:negative"
 }

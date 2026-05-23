@@ -5,3 +5,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-068", "user_role": "IT Admin", "category": "dış saldırı desteği", "seed": 7068, "anomaly": true, "timestamp": "2026-05-23T01:27:13.798939+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-068", "user_role": "IT Admin", "category": "dış saldırı desteği", "seed": 7068, "anomaly": false, "timestamp": "2026-05-23T01:27:16.642818+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-068", "user_role": "IT Admin", "category": "dış saldırı desteği", "seed": 7068, "anomaly": true, "timestamp": "2026-05-23T02:09:26.088123+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-068", "user_role": "IT Admin", "category": "dış saldırı desteği", "seed": 7068, "anomaly": false, "timestamp": "2026-05-23T02:09:29.068068+00:00"}

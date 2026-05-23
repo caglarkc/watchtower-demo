@@ -8,3 +8,4 @@
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "active", "logins_after": 0, "feature_id": "F-072", "timestamp": "2026-05-23T01:26:59.182337+00:00"}
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "terminated", "logins_after": 6, "feature_id": "F-072", "timestamp": "2026-05-23T01:27:08.238898+00:00"}
 {"event_type": "offboarding_activity", "log_channel": "hris", "status": "active", "logins_after": 0, "feature_id": "F-072", "timestamp": "2026-05-23T01:27:10.690448+00:00"}
+{"event_type": "offboarding_activity", "log_channel": "hris", "status": "terminated", "logins_after": 6, "feature_id": "F-072", "timestamp": "2026-05-23T02:09:29.099940+00:00"}
