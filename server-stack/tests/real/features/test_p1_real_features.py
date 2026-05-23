@@ -30,7 +30,7 @@ def _run(feature_id: str, mode: str) -> dict:
 @pytest.mark.parametrize("feature_id", P1_FEATURES)
 def test_p1_real_positive(feature_id: str, require_real_stack: None) -> None:
     evidence = _run(feature_id, "positive")
-    assert evidence["parity_level"] == "L2"
+    assert evidence["parity_level"] == "L3"
     assert evidence["result"] == "PASS"
     assert evidence["anomaly_detected"] is True
     assert len(evidence["actions_executed"]) >= 1
