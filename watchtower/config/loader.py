@@ -8,12 +8,13 @@ from typing import Any
 import yaml
 from pydantic import ValidationError
 
-from watchtower.config import PROJECT_ROOT
 from watchtower.config.settings import WatchtowerSettings
 
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+
 _CONFIG_SEARCH_PATHS = (
-    PROJECT_ROOT / "watchtower.yml",
-    PROJECT_ROOT / "config" / "watchtower.yml",
+    _PROJECT_ROOT / "watchtower.yml",
+    _PROJECT_ROOT / "config" / "watchtower.yml",
     Path.home() / ".config" / "watchtower" / "config.yml",
 )
 
