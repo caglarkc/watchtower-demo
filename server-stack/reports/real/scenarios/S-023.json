@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-023",
   "title": "Muhasebe Terminalinden Gece Loginleri",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Muhasebe",
   "deterministic_seed": 2023,
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 12509,
+            "count": 13629,
             "result": "PASS"
           },
           "result": "PASS",
@@ -115,19 +115,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-063",
-            "count": 2268,
+            "count": 2550,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 69,
+            "indexed": 73,
             "index": "corp-logs-f-063",
             "pipeline": {
               "feature_id": "F-063",
               "index": "corp-logs-f-063",
-              "indexed": 69
+              "indexed": 73
             }
           }
         }
@@ -146,7 +146,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": true
+            "mismatch": false
           }
         },
         {
@@ -222,7 +222,7 @@
     {
       "service": "badge",
       "response": {
-        "mismatch": true
+        "mismatch": false
       }
     },
     {
@@ -265,7 +265,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 12509,
+        "count": 13629,
         "result": "PASS"
       },
       "result": "PASS",
@@ -295,19 +295,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-063",
-        "count": 2268,
+        "count": 2550,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 69,
+        "indexed": 73,
         "index": "corp-logs-f-063",
         "pipeline": {
           "feature_id": "F-063",
           "index": "corp-logs-f-063",
-          "indexed": 69
+          "indexed": 73
         }
       }
     },
@@ -347,12 +347,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:11:52.998897+00:00",
+  "generated_at": "2026-05-23T05:12:18.973993+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-023:2023:positive:real"
+  "replay_key": "S-023:2023:negative:real"
 }
