@@ -12,3 +12,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-038", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3038, "anomaly": false, "timestamp": "2026-05-23T02:19:57.943659+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-038", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3038, "anomaly": true, "timestamp": "2026-05-23T02:29:18.587475+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-038", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3038, "anomaly": false, "timestamp": "2026-05-23T02:29:21.428068+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-038", "user_role": "IT Admin", "category": "yetkisiz erişim", "seed": 3038, "anomaly": true, "timestamp": "2026-05-23T02:36:56.619304+00:00"}

@@ -12,3 +12,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-032", "user_role": "Yazılım Geliştirici", "category": "yetkisiz erişim", "seed": 3032, "anomaly": false, "timestamp": "2026-05-23T02:19:57.755872+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-032", "user_role": "Yazılım Geliştirici", "category": "yetkisiz erişim", "seed": 3032, "anomaly": true, "timestamp": "2026-05-23T02:29:18.384146+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-032", "user_role": "Yazılım Geliştirici", "category": "yetkisiz erişim", "seed": 3032, "anomaly": false, "timestamp": "2026-05-23T02:29:21.234041+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-032", "user_role": "Yazılım Geliştirici", "category": "yetkisiz erişim", "seed": 3032, "anomaly": true, "timestamp": "2026-05-23T02:36:56.416962+00:00"}

@@ -12,3 +12,5 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-009", "user_role": "Veri Analisti", "category": "veri sızdırma", "seed": 1009, "anomaly": false, "timestamp": "2026-05-23T02:19:56.992729+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-009", "user_role": "Veri Analisti", "category": "veri sızdırma", "seed": 1009, "anomaly": true, "timestamp": "2026-05-23T02:29:17.623626+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-009", "user_role": "Veri Analisti", "category": "veri sızdırma", "seed": 1009, "anomaly": false, "timestamp": "2026-05-23T02:29:20.393409+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-009", "user_role": "Veri Analisti", "category": "veri sızdırma", "seed": 1009, "anomaly": true, "timestamp": "2026-05-23T02:36:55.682402+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-009", "user_role": "Veri Analisti", "category": "veri sızdırma", "seed": 1009, "anomaly": false, "timestamp": "2026-05-23T02:36:58.481549+00:00"}

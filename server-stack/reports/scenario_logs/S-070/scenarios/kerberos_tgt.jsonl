@@ -12,3 +12,4 @@
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "source_feature": "F-008", "scenario_id": "S-070", "timestamp": "2026-05-23T02:19:59.010498+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "source_feature": "F-008", "scenario_id": "S-070", "timestamp": "2026-05-23T02:29:19.636750+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "source_feature": "F-008", "scenario_id": "S-070", "timestamp": "2026-05-23T02:29:22.525934+00:00"}
+{"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "source_feature": "F-008", "scenario_id": "S-070", "timestamp": "2026-05-23T02:36:57.706224+00:00"}

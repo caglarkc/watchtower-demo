@@ -12,3 +12,4 @@
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "source_feature": "F-060", "scenario_id": "S-056", "timestamp": "2026-05-23T02:19:58.533856+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "source_feature": "F-060", "scenario_id": "S-056", "timestamp": "2026-05-23T02:29:19.172765+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "source_feature": "F-060", "scenario_id": "S-056", "timestamp": "2026-05-23T02:29:22.054032+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "source_feature": "F-060", "scenario_id": "S-056", "timestamp": "2026-05-23T02:36:57.228201+00:00"}

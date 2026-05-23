@@ -12,3 +12,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-051", "user_role": "Muhasebe", "category": "kazara ihlal", "seed": 5051, "anomaly": false, "timestamp": "2026-05-23T02:19:58.375592+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-051", "user_role": "Muhasebe", "category": "kazara ihlal", "seed": 5051, "anomaly": true, "timestamp": "2026-05-23T02:29:18.994862+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-051", "user_role": "Muhasebe", "category": "kazara ihlal", "seed": 5051, "anomaly": false, "timestamp": "2026-05-23T02:29:21.876072+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-051", "user_role": "Muhasebe", "category": "kazara ihlal", "seed": 5051, "anomaly": true, "timestamp": "2026-05-23T02:36:57.064328+00:00"}

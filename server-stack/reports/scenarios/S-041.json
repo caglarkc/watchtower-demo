@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-041",
   "title": "Sahte Tedarikçi IBAN Değişikliği",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "Muhasebe",
   "deterministic_seed": 4041,
@@ -14,7 +14,7 @@
     "internal-app"
   ],
   "expected_evidence": "Multi-signal workflow for Sahte Tedarikçi IBAN Değişikliği",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -24,12 +24,12 @@
       "user_role": "Muhasebe",
       "category": "insider threat",
       "seed": 4041,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "api_pattern_deviation",
       "log_channel": "app",
-      "calls_per_hour": 38,
+      "calls_per_hour": 430,
       "baseline": 40,
       "source_feature": "F-047",
       "scenario_id": "S-041"
@@ -39,12 +39,9 @@
     "reports/scenario_logs/S-041/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-041/app/api_pattern_deviation.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:29:21.536232+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:36:56.720038+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-041:4041:negative"
+  "replay_key": "S-041:4041:positive"
 }

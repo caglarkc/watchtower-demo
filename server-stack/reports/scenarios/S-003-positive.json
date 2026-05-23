@@ -79,7 +79,7 @@
     "reports/scenario_logs/S-003/proxy/first_external_transfer.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:29:17.412089+00:00",
+  "generated_at": "2026-05-23T02:36:55.479301+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-003:1003:positive"
