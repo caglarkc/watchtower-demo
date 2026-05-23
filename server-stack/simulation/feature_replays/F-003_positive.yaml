@@ -1,0 +1,7 @@
+feature_id: F-003
+mode: positive
+phase: 1
+events:
+- event_type: dns_entropy
+  txt_queries: 5000
+  nxdomain_ratio: 0.4

@@ -1,0 +1,7 @@
+feature_id: F-063
+mode: positive
+phase: 1
+events:
+- event_type: unknown_hardware
+  device_id: NEW-MAC-9912
+  success: true

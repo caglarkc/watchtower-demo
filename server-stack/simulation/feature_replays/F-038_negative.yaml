@@ -1,0 +1,7 @@
+feature_id: F-038
+mode: negative
+phase: 1
+events:
+- event_type: smb_bulk_io
+  read_bytes: 320000000
+  write_bytes: 0

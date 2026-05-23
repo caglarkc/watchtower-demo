@@ -1,0 +1,7 @@
+feature_id: F-080
+mode: negative
+phase: 1
+events:
+- event_type: idle_session_abuse
+  session_hours: 2
+  keyboard_events: 900

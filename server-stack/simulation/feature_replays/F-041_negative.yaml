@@ -1,0 +1,6 @@
+feature_id: F-041
+mode: negative
+phase: 1
+events:
+- event_type: acl_change
+  permission: Finance-RW

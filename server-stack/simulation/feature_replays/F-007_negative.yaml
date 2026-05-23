@@ -1,0 +1,8 @@
+feature_id: F-007
+mode: negative
+phase: 1
+events:
+- event_type: port_scan
+  targets: 5
+  ports: 3
+  window_minutes: 12

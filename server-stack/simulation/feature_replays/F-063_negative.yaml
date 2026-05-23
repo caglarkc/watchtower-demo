@@ -1,0 +1,7 @@
+feature_id: F-063
+mode: negative
+phase: 1
+events:
+- event_type: unknown_hardware
+  device_id: KNOWN-MAC-001
+  success: true

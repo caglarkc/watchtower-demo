@@ -1,0 +1,8 @@
+feature_id: F-002
+mode: negative
+phase: 1
+events:
+- event_type: east_west_flow
+  src: 172.28.0.100
+  dst_hosts: 2
+  bytes: 5000000

@@ -1,0 +1,8 @@
+feature_id: F-037
+mode: negative
+phase: 1
+events:
+- event_type: smb_access
+  share: dev
+  user_dept: dev
+  files: 3

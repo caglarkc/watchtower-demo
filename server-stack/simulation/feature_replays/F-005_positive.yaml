@@ -1,0 +1,7 @@
+feature_id: F-005
+mode: positive
+phase: 1
+events:
+- event_type: dhcp_anomaly
+  rogue_scope: true
+  duplicate_lease: true

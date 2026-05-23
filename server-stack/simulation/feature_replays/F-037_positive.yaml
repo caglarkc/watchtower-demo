@@ -1,0 +1,8 @@
+feature_id: F-037
+mode: positive
+phase: 1
+events:
+- event_type: smb_access
+  share: legal
+  user_dept: dev
+  files: 41

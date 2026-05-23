@@ -1,0 +1,7 @@
+feature_id: F-004
+mode: positive
+phase: 1
+events:
+- event_type: smb_downgrade
+  smb_version: SMB1
+  ntlm: NTLMv1

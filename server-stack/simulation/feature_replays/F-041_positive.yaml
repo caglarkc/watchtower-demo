@@ -1,0 +1,6 @@
+feature_id: F-041
+mode: positive
+phase: 1
+events:
+- event_type: acl_change
+  permission: Everyone:FullControl

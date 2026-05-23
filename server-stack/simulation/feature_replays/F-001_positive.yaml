@@ -1,0 +1,8 @@
+feature_id: F-001
+mode: positive
+phase: 1
+events:
+- event_type: smb_read_volume
+  user: cfo
+  bytes_read: 14000000000
+  anomaly: true

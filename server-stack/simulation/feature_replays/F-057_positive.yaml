@@ -1,0 +1,6 @@
+feature_id: F-057
+mode: positive
+phase: 1
+events:
+- event_type: nic_promiscuous
+  enabled: true

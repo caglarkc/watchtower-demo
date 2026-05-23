@@ -1,0 +1,10 @@
+feature_id: F-006
+mode: negative
+phase: 1
+events:
+- event_type: ad_auth
+  event_id: 4625
+  count: 1
+- event_type: ad_auth
+  event_id: 4624
+  count: 1

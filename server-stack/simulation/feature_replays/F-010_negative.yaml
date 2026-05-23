@@ -1,0 +1,7 @@
+feature_id: F-010
+mode: negative
+phase: 1
+events:
+- event_type: service_interactive
+  account: svc_sql
+  logon_type: 5

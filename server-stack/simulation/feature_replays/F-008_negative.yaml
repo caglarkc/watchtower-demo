@@ -1,0 +1,8 @@
+feature_id: F-008
+mode: negative
+phase: 1
+events:
+- event_type: kerberos_tgt
+  user: admin
+  targets: 0
+  hour: 2

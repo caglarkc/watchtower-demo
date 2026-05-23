@@ -1,0 +1,8 @@
+feature_id: F-008
+mode: positive
+phase: 1
+events:
+- event_type: kerberos_tgt
+  user: admin
+  targets: 8
+  hour: 2

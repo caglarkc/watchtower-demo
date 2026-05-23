@@ -1,0 +1,7 @@
+feature_id: F-055
+mode: negative
+phase: 1
+events:
+- event_type: usb_write
+  device_id: null
+  bytes_written: 0

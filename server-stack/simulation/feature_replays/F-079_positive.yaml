@@ -1,0 +1,7 @@
+feature_id: F-079
+mode: positive
+phase: 1
+events:
+- event_type: after_hours_session
+  hour: 2
+  interactive: true

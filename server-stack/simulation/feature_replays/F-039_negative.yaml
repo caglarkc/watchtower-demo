@@ -1,0 +1,6 @@
+feature_id: F-039
+mode: negative
+phase: 1
+events:
+- event_type: smb_rename_storm
+  renames_per_minute: 2

@@ -1,0 +1,6 @@
+feature_id: F-040
+mode: negative
+phase: 1
+events:
+- event_type: directory_traversal
+  sensitive_paths: 0

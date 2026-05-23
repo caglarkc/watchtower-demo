@@ -1,0 +1,7 @@
+feature_id: F-011
+mode: negative
+phase: 1
+events:
+- event_type: ad_group_change
+  event_id: 4728
+  group: Helpdesk

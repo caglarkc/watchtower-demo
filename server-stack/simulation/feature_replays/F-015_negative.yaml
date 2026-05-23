@@ -1,0 +1,8 @@
+feature_id: F-015
+mode: negative
+phase: 1
+events:
+- event_type: rdp_hop
+  hops:
+  - ws1
+  - files1
