@@ -7,3 +7,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-082", "user_role": "İK", "category": "çapraz/multi-user", "seed": 9082, "anomaly": true, "timestamp": "2026-05-23T02:09:26.634665+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-082", "user_role": "İK", "category": "çapraz/multi-user", "seed": 9082, "anomaly": false, "timestamp": "2026-05-23T02:09:29.592618+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-082", "user_role": "İK", "category": "çapraz/multi-user", "seed": 9082, "anomaly": true, "timestamp": "2026-05-23T02:10:20.024096+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-082", "user_role": "İK", "category": "çapraz/multi-user", "seed": 9082, "anomaly": false, "timestamp": "2026-05-23T02:10:23.151832+00:00"}

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-052",
   "title": "İK'dan Yanlış Odaya Giden Hassas Mail",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "İK",
   "deterministic_seed": 5052,
@@ -18,7 +18,7 @@
     "postfix"
   ],
   "expected_evidence": "Multi-signal workflow for İK'dan Yanlış Odaya Giden Hassas Mail",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 6,
   "events": [
     {
@@ -28,49 +28,45 @@
       "user_role": "İK",
       "category": "kazara ihlal",
       "seed": 5052,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "mail_bcc_anomaly",
       "log_channel": "postfix",
-      "bcc_count": 11,
-      "distribution_list": true,
+      "bcc_count": 0,
+      "distribution_list": false,
       "source_feature": "F-020",
       "scenario_id": "S-052"
     },
     {
       "event_type": "mail_sensitive_keyword",
       "log_channel": "postfix",
-      "keywords": [
-        "bordro",
-        "maaş",
-        "confidential"
-      ],
+      "keywords": [],
       "source_feature": "F-023",
       "scenario_id": "S-052"
     },
     {
       "event_type": "mail_personal_domain",
       "log_channel": "postfix",
-      "recipient_domain": "gmail.com",
-      "has_attachment": true,
+      "recipient_domain": "corp.local",
+      "has_attachment": false,
       "source_feature": "F-021",
       "scenario_id": "S-052"
     },
     {
       "event_type": "mail_first_external_sensitive",
       "log_channel": "postfix",
-      "first_time_recipient": true,
-      "subject_sensitive": true,
+      "first_time_recipient": false,
+      "subject_sensitive": false,
       "source_feature": "F-028",
       "scenario_id": "S-052"
     },
     {
       "event_type": "mail_attachment_entropy",
       "log_channel": "postfix",
-      "entropy": 7.8,
+      "entropy": 4.1,
       "declared_type": "pdf",
-      "actual_type": "zip",
+      "actual_type": "pdf",
       "source_feature": "F-019",
       "scenario_id": "S-052"
     }
@@ -83,9 +79,12 @@
     "reports/scenario_logs/S-052/postfix/mail_first_external_sensitive.jsonl",
     "reports/scenario_logs/S-052/postfix/mail_attachment_entropy.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:10:18.976900+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:10:22.053595+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-052:5052:positive"
+  "replay_key": "S-052:5052:negative"
 }
