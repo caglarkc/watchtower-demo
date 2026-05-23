@@ -45,19 +45,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 61,
+        "count": 283,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 141,
+        "indexed": 150,
         "index": "corp-logs-f-049",
         "pipeline": {
           "feature_id": "F-049",
           "index": "corp-logs-f-049",
-          "indexed": 141
+          "indexed": 150
         }
       }
     }
@@ -71,7 +71,7 @@
   "anomaly_detected": true,
   "evidence_expected": "repo clone/artifact download volume",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:05:44.323563+00:00",
+  "generated_at": "2026-05-23T03:11:11.630870+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

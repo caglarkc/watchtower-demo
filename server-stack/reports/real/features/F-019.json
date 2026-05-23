@@ -2,7 +2,7 @@
   "id": "F-019",
   "feature_id": "F-019",
   "title": "Mail Ek Entropi ve Dosya Tipi Uyuşmazlığı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-019",
-        "count": 160,
+        "count": 240,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "entropy/type mismatch event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:09.128120+00:00",
+  "generated_at": "2026-05-23T03:11:12.909961+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
