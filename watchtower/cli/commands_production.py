@@ -33,6 +33,7 @@ providers_app = typer.Typer(help="LLM provider onboarding")
 
 def register_production_commands(app: typer.Typer) -> None:
     app.add_typer(health_app, name="health")
+    app.add_typer(metrics_app, name="metrics")
     app.add_typer(backup_app, name="backup")
     app.add_typer(retention_app, name="retention")
     app.add_typer(migrate_app, name="migrate")
