@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-043",
   "title": "Admin Tarafından Eski Yedeklerin Silinmesi",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4043,
@@ -46,19 +46,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-053",
-            "count": 2124,
+            "count": 2257,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 66,
+            "indexed": 68,
             "index": "corp-logs-f-053",
             "pipeline": {
               "feature_id": "F-053",
               "index": "corp-logs-f-053",
-              "indexed": 66
+              "indexed": 68
             }
           }
         }
@@ -101,19 +101,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-053",
-        "count": 2124,
+        "count": 2257,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 66,
+        "indexed": 68,
         "index": "corp-logs-f-053",
         "pipeline": {
           "feature_id": "F-053",
           "index": "corp-logs-f-053",
-          "indexed": 66
+          "indexed": 68
         }
       }
     }
@@ -124,12 +124,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:42.719541+00:00",
+  "generated_at": "2026-05-23T08:43:07.789011+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-043:4043:positive:real"
+  "replay_key": "S-043:4043:negative:real"
 }

@@ -11,35 +11,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-79945.corp.local",
+          "query": "entropy-64898.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-48940.corp.local",
+          "query": "entropy-79286.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-43895.corp.local",
+          "query": "entropy-31147.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-37147.corp.local",
+          "query": "entropy-67683.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-11368.corp.local",
+          "query": "entropy-88846.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-58755.corp.local",
+          "query": "entropy-65277.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-10158.corp.local",
+          "query": "entropy-83501.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-68801.corp.local",
+          "query": "entropy-41332.corp.local",
           "returncode": 0
         }
       ]
@@ -66,7 +66,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 3342,
+        "count": 3502,
         "result": "PASS"
       },
       "result": "PASS",
@@ -91,7 +91,7 @@
   "anomaly_detected": true,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:06.299058+00:00",
+  "generated_at": "2026-05-23T08:42:50.451739+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-040",
   "title": "Shadow Admin Hesabı Oluşturma",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4040,
@@ -46,7 +46,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-011",
-            "count": 7840,
+            "count": 8160,
             "result": "PASS"
           },
           "result": "PASS",
@@ -103,19 +103,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-052",
-            "count": 980,
+            "count": 1025,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 45,
+            "indexed": 46,
             "index": "corp-logs-f-052",
             "pipeline": {
               "feature_id": "F-052",
               "index": "corp-logs-f-052",
-              "indexed": 45
+              "indexed": 46
             }
           }
         }
@@ -168,7 +168,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-011",
-        "count": 7840,
+        "count": 8160,
         "result": "PASS"
       },
       "result": "PASS",
@@ -198,19 +198,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-052",
-        "count": 980,
+        "count": 1025,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 45,
+        "indexed": 46,
         "index": "corp-logs-f-052",
         "pipeline": {
           "feature_id": "F-052",
           "index": "corp-logs-f-052",
-          "indexed": 45
+          "indexed": 46
         }
       }
     }
@@ -224,12 +224,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:42.212635+00:00",
+  "generated_at": "2026-05-23T08:43:07.309645+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-040:4040:positive:real"
+  "replay_key": "S-040:4040:negative:real"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-024",
   "title": "Deploy Key 3 Farklı IP",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 2024,
@@ -26,7 +26,7 @@
         {
           "service": "vault",
           "response": {
-            "reads": 5
+            "reads": 1
           }
         }
       ],
@@ -86,7 +86,7 @@
     {
       "service": "vault",
       "response": {
-        "reads": 5
+        "reads": 1
       }
     }
   ],
@@ -134,12 +134,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:38.425592+00:00",
+  "generated_at": "2026-05-23T08:43:03.982905+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-024:2024:positive:real"
+  "replay_key": "S-024:2024:negative:real"
 }

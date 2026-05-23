@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-014",
   "title": "Admin Prod-HR VM Snapshot",
-  "mode": "positive",
+  "mode": "negative",
   "category": "veri sızdırma",
   "user_role": "IT Admin",
   "deterministic_seed": 1014,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-051",
-            "count": 4640,
+            "count": 4800,
             "result": "PASS"
           },
           "result": "PASS",
@@ -79,7 +79,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "events": 5,
+            "events": 1,
             "smb_attempted": true
           }
         },
@@ -117,7 +117,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-001",
-            "count": 23520,
+            "count": 24480,
             "result": "PASS"
           },
           "result": "PASS",
@@ -174,7 +174,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-055",
-            "count": 7135,
+            "count": 7535,
             "result": "PASS"
           },
           "result": "PASS",
@@ -208,7 +208,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 5,
+        "events": 1,
         "smb_attempted": true
       }
     },
@@ -261,7 +261,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-051",
-        "count": 4640,
+        "count": 4800,
         "result": "PASS"
       },
       "result": "PASS",
@@ -291,7 +291,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 23520,
+        "count": 24480,
         "result": "PASS"
       },
       "result": "PASS",
@@ -321,7 +321,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 7135,
+        "count": 7535,
         "result": "PASS"
       },
       "result": "PASS",
@@ -347,12 +347,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:36.035535+00:00",
+  "generated_at": "2026-05-23T08:43:01.646649+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-014:1014:positive:real"
+  "replay_key": "S-014:1014:negative:real"
 }
