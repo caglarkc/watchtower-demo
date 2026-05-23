@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-016",
   "title": "Gece Admin Kerberos TGT Zinciri",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 2016,
@@ -22,7 +22,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 5
+            "events": 1
           }
         }
       ],
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-008",
-            "count": 3360,
+            "count": 3520,
             "result": "PASS"
           },
           "result": "PASS",
@@ -78,7 +78,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 2,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -116,7 +116,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 12384,
+            "count": 13344,
             "result": "PASS"
           },
           "result": "PASS",
@@ -183,7 +183,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 14749,
+            "count": 15869,
             "result": "PASS"
           },
           "result": "PASS",
@@ -211,13 +211,13 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 5
+        "events": 1
       }
     },
     {
       "service": "zeek",
       "response": {
-        "written": 2,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -280,7 +280,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-008",
-        "count": 3360,
+        "count": 3520,
         "result": "PASS"
       },
       "result": "PASS",
@@ -310,7 +310,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 12384,
+        "count": 13344,
         "result": "PASS"
       },
       "result": "PASS",
@@ -340,7 +340,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 14749,
+        "count": 15869,
         "result": "PASS"
       },
       "result": "PASS",
@@ -362,12 +362,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:36:42.603800+00:00",
+  "generated_at": "2026-05-23T05:37:07.247741+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-016:2016:positive:real"
+  "replay_key": "S-016:2016:negative:real"
 }
