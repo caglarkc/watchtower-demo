@@ -42,7 +42,7 @@ services:
       - ./logs/identity:/var/log/corp/identity
       - ./configs/samba/ad:/etc/samba/external:ro
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
