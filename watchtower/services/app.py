@@ -133,6 +133,9 @@ def _build_session(
         min_user_samples=settings.baseline_min_user_samples,
         run_transition_confidence_threshold=settings.baseline_run_transition_confidence_threshold,
     )
+    feedback_rules_repo = FeedbackRulesRepository(conn)
+    feedback = FeedbackService(feedback_rules_repo)
+    rules = RuleEngine(feedback_rules_repo)
     return SessionContext(
         conn=conn,
         settings=settings,
@@ -154,6 +157,8 @@ def _build_session(
         normalizer=normalizer,
         pipeline=pipeline,
         baseline=baseline,
+        feedback=feedback,
+        rules=rules,
     )
 
 
