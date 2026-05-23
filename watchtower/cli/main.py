@@ -19,6 +19,10 @@ from watchtower.cli.commands_misc import (
     register_query_command,
     rules_app,
 )
+from watchtower.cli.commands_production import (
+    register_production_commands,
+    register_sources_onboard,
+)
 
 app = typer.Typer(
     name="wt",
@@ -37,6 +41,8 @@ app.add_typer(findings_app, name="findings")
 app.add_typer(baseline_app, name="baseline")
 app.add_typer(rules_app, name="rules")
 register_query_command(app)
+register_production_commands(app)
+register_sources_onboard(sources_app)
 
 
 def _open_app(

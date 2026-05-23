@@ -11,10 +11,8 @@ from typing import Any, Literal
 
 from watchtower import __version__
 from watchtower.config.settings import WatchtowerSettings
-from watchtower.llm.providers.factory import build_provider_chain
 from watchtower.llm.providers.onboarding import resolve_provider_chain
 from watchtower.storage.migrations.runner import MigrationRunner
-from watchtower.storage.repositories.system_metadata import SystemMetadataRepository
 
 HealthStatus = Literal["healthy", "degraded", "unhealthy"]
 
