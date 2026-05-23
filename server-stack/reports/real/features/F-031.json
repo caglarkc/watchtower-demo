@@ -2,7 +2,7 @@
   "id": "F-031",
   "feature_id": "F-031",
   "title": "Kaynak Kod veya Sistem Mimarisi İçeriğinin AI Sohbetine Yapıştırılması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     }
   ],
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "source-code/architecture paste event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:36.243625+00:00",
+  "generated_at": "2026-05-23T03:13:39.629925+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

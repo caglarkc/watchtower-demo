@@ -2,7 +2,7 @@
   "id": "F-064",
   "feature_id": "F-064",
   "title": "Normal Aktivite Örüntüsünün Saatler İçinde Yoğunlaşması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "compressed activity burst event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:38.246760+00:00",
+  "generated_at": "2026-05-23T03:13:41.597483+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
