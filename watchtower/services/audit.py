@@ -26,4 +26,5 @@ class AuditService:
         if not self._settings.audit_log_enabled:
             return
         resolved_tenant = tenant_id or TenantContext.require_current()
-        self._repo.append(resolved_tenant, action, actor=actor, details=details)
+        safe_details = mask_mapping(details) if details else None
+        self._repo.append(resolved_tenant, action, actor=actor, details=safe_details)

@@ -24,7 +24,7 @@ from watchtower.baseline.query import BaselineQueryAPI
 from watchtower.decision.service import DecisionService
 from watchtower.graph.runner import GraphRunner, build_graph_runner
 from watchtower.llm.gateway import LLMGateway
-from watchtower.llm.providers.factory import build_provider_chain
+from watchtower.llm.providers.onboarding import resolve_provider_chain
 from watchtower.storage.repositories.llm_audit import LLMCallAuditRepository
 from watchtower.storage.repositories.graph import GraphRepository
 from watchtower.feedback.engine import FeedbackEngine
@@ -161,7 +161,7 @@ def _build_session(
     )
     graph_repo = GraphRepository(conn)
     llm_audit = LLMCallAuditRepository(conn)
-    provider_chain = build_provider_chain(settings)
+    provider_chain = resolve_provider_chain(settings, conn)
     llm_gateway = LLMGateway(
         provider_chain,
         audit_repo=llm_audit,
