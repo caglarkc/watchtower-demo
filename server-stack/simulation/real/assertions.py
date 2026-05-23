@@ -106,14 +106,6 @@ def run_assertions(feature_id: str, mode: str, since: float) -> tuple[list[dict]
     checks = _checks_ri1(feature_id, positive) if feature_id in RI1_FEATURES else _checks_ri2(feature_id, positive)
     raw: list[dict] = []
     for check in checks:
-        if check.__code__.co_argcount == 0:
-            raw.append(check(since) if callable(check) else check)
-        else:
-            raw.append(wait_for_log(check, since))
-
-    # fix lambda checks - all take since
-    raw = []
-    for check in checks:
         result = check(since)
         if result.get("result") != "PASS":
             result = wait_for_log(check, since)
