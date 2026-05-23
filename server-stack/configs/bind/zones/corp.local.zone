@@ -23,3 +23,15 @@ app1    IN  A   172.28.0.26
 artifacts1 IN A 172.28.0.27
 siem1   IN  A   172.28.0.28
 hv1     IN  A   172.28.0.29
+aigw1   IN  A   172.28.0.30
+proxy1  IN  A   172.28.0.31
+cloud1  IN  A   172.28.0.32
+vault1  IN  A   172.28.0.33
+chat1   IN  A   172.28.0.34
+print1  IN  A   172.28.0.35
+badge1  IN  A   172.28.0.36
+hris1   IN  A   172.28.0.37
+crm1    IN  A   172.28.0.38
+wiki1   IN  A   172.28.0.39
+dlp1    IN  A   172.28.0.40
+activity1 IN A 172.28.0.41
