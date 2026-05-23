@@ -24,3 +24,4 @@
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "source_feature": "F-067", "scenario_id": "S-004", "timestamp": "2026-05-23T03:08:41.133410+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "source_feature": "F-067", "scenario_id": "S-004", "timestamp": "2026-05-23T03:17:56.837480+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "source_feature": "F-067", "scenario_id": "S-004", "timestamp": "2026-05-23T03:17:59.696975+00:00"}
+{"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "source_feature": "F-067", "scenario_id": "S-004", "timestamp": "2026-05-23T05:09:56.196793+00:00"}

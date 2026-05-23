@@ -40,7 +40,7 @@
     "reports/scenario_logs/S-038/nginx/http_4xx_spike.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:17:57.981639+00:00",
+  "generated_at": "2026-05-23T05:09:57.392210+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-038:3038:positive"

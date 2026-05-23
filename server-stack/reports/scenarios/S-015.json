@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-015",
   "title": "Payroll SQL Dump",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "İK",
   "deterministic_seed": 1015,
@@ -14,7 +14,7 @@
     "postgres"
   ],
   "expected_evidence": "Multi-signal workflow for Payroll SQL Dump",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "events": [
     {
@@ -24,13 +24,13 @@
       "user_role": "İK",
       "category": "veri sızdırma",
       "seed": 1015,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "postgres_bulk_select",
       "log_channel": "postgres",
-      "tables": 1,
-      "rows_scanned": 1200,
+      "tables": 12,
+      "rows_scanned": 4500000,
       "source_feature": "F-045",
       "scenario_id": "S-015"
     }
@@ -39,12 +39,9 @@
     "reports/scenario_logs/S-015/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-015/postgres/postgres_bulk_select.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T03:18:00.076355+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T05:09:56.590021+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-015:1015:negative"
+  "replay_key": "S-015:1015:positive"
 }

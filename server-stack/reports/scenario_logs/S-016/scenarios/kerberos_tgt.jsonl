@@ -24,3 +24,4 @@
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "source_feature": "F-008", "scenario_id": "S-016", "timestamp": "2026-05-23T03:08:41.539052+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "source_feature": "F-008", "scenario_id": "S-016", "timestamp": "2026-05-23T03:17:57.234322+00:00"}
 {"event_type": "kerberos_tgt", "user": "admin", "targets": 0, "hour": 2, "source_feature": "F-008", "scenario_id": "S-016", "timestamp": "2026-05-23T03:18:00.110467+00:00"}
+{"event_type": "kerberos_tgt", "user": "admin", "targets": 8, "hour": 2, "source_feature": "F-008", "scenario_id": "S-016", "timestamp": "2026-05-23T05:09:56.617691+00:00"}

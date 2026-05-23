@@ -24,3 +24,4 @@
 {"event_type": "usb_write", "device_id": null, "bytes_written": 0, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T03:08:41.472407+00:00"}
 {"event_type": "usb_write", "device_id": "USB-9F2A", "bytes_written": 2400000000, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T03:17:57.166908+00:00"}
 {"event_type": "usb_write", "device_id": null, "bytes_written": 0, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T03:18:00.042871+00:00"}
+{"event_type": "usb_write", "device_id": "USB-9F2A", "bytes_written": 2400000000, "source_feature": "F-055", "scenario_id": "S-014", "timestamp": "2026-05-23T05:09:56.560847+00:00"}

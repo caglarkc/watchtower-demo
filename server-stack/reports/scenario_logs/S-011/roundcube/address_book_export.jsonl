@@ -24,3 +24,4 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T03:08:41.369155+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T03:17:57.068975+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T03:17:59.944787+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "source_feature": "F-025", "scenario_id": "S-011", "timestamp": "2026-05-23T05:09:56.466031+00:00"}
