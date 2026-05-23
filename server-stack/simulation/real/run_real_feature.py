@@ -20,7 +20,7 @@ sys.path.insert(0, str(REAL_DIR))
 FEATURES = ROOT / "simulation" / "feature_catalog" / "features.yml"
 REPORTS = ROOT / "reports" / "real" / "features"
 
-from config import ALL_REAL_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES  # noqa: E402
+from config import ALL_REAL_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES, RI4_FEATURES  # noqa: E402
 from assertions import run_assertions  # noqa: E402
 
 

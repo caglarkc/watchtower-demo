@@ -150,6 +150,34 @@ def _checks_ri3(feature_id: str, positive: bool) -> list:
     return []
 
 
+def _checks_ri4(feature_id: str, positive: bool) -> list:
+    if feature_id == "F-009":
+        return [lambda s: assert_badge(s, "concurrent_session")]
+    if feature_id == "F-014":
+        return [lambda s: assert_hris(s, "credential_reset_burst"), lambda s: assert_ad_event(s)]
+    if feature_id == "F-056":
+        return [lambda s: assert_cups(s, "print_sensitive_correlation")]
+    if feature_id == "F-070":
+        return [lambda s: assert_badge(s, "badge_login_mismatch")]
+    if feature_id == "F-071":
+        return [lambda s: assert_mattermost(s, "composite_signal")]
+    if feature_id == "F-072":
+        return [lambda s: assert_hris(s, "offboarding_activity")]
+    if feature_id == "F-073":
+        return [lambda s: assert_suitecrm(s, "multi_user_record_chain")]
+    if feature_id == "F-074":
+        return [lambda s: assert_badge(s, "off_shift_access")]
+    if feature_id == "F-075":
+        return [lambda s: assert_hris(s, "new_hire_excess_access")]
+    if feature_id == "F-076":
+        return [lambda s: assert_hris(s, "old_entitlement_use")]
+    if feature_id == "F-077":
+        return [lambda s: assert_hris(s, "leave_activity")]
+    if feature_id == "F-078":
+        return [lambda s: assert_hris(s, "contractor_out_of_scope")]
+    return []
+
+
 def _resolve_checks(feature_id: str, positive: bool) -> list:
     if feature_id in RI1_FEATURES:
         return _checks_ri1(feature_id, positive)
@@ -157,6 +185,8 @@ def _resolve_checks(feature_id: str, positive: bool) -> list:
         return _checks_ri2(feature_id, positive)
     if feature_id in RI3_FEATURES:
         return _checks_ri3(feature_id, positive)
+    if feature_id in RI4_FEATURES:
+        return _checks_ri4(feature_id, positive)
     return []
 
 
