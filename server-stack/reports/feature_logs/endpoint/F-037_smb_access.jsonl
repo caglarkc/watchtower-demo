@@ -53,3 +53,4 @@
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "feature_id": "F-037", "timestamp": "2026-05-23T03:17:42.181456+00:00"}
 {"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "feature_id": "F-037", "timestamp": "2026-05-23T03:17:44.249085+00:00"}
 {"event_type": "smb_access", "share": "legal", "user_dept": "dev", "files": 41, "feature_id": "F-037", "timestamp": "2026-05-23T05:09:29.426289+00:00"}
+{"event_type": "smb_access", "share": "dev", "user_dept": "dev", "files": 3, "feature_id": "F-037", "timestamp": "2026-05-23T05:09:36.751231+00:00"}
