@@ -54,23 +54,30 @@ def _get_ctx_app(ctx: typer.Context):
 @app.command("bootstrap")
 def bootstrap(
     ctx: typer.Context,
-    username: Annotated[str, typer.Option(prompt=True)] = "admin",
-    email: Annotated[str, typer.Option(prompt=True)] = "admin@localhost",
+    username: Annotated[str, typer.Option("--username", "-u")] = "admin",
+    email: Annotated[str, typer.Option("--email", "-e")] = "admin@localhost",
     password: Annotated[
-        str,
-        typer.Option(prompt=True, hide_input=True, confirmation_prompt=True),
-    ] = "",
+        Optional[str],
+        typer.Option("--password", hide_input=True),
+    ] = None,
 ) -> None:
     """Create the bootstrap system administrator account."""
     wt_app = _get_ctx_app(ctx)
-    if not password:
+    resolved_password = password
+    if resolved_password is None:
+        resolved_password = typer.prompt("Password", hide_input=True)
+        confirm = typer.prompt("Confirm password", hide_input=True)
+        if resolved_password != confirm:
+            typer.echo("Passwords do not match", err=True)
+            raise typer.Exit(code=1)
+    if not resolved_password:
         typer.echo("Password cannot be empty", err=True)
         raise typer.Exit(code=1)
 
     with wt_app.session() as session:
         try:
             tenant, admin = session.bootstrap_service.bootstrap(
-                username, email, password
+                username, email, resolved_password
             )
         except ValueError as exc:
             typer.echo(str(exc), err=True)

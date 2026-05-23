@@ -1,6 +1,6 @@
 """Application services."""
 
-from watchtower.services.app import AppContext, get_app_context, init_app
+from watchtower.services.app import AppContext, SessionContext, create_app, init_app
 from watchtower.services.audit import AuditService
 from watchtower.services.bootstrap import BootstrapService, BootstrapRequiredError
 from watchtower.services.mode_controller import ModeController
