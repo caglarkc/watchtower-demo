@@ -34,7 +34,7 @@ def run_graph_to_completion(
 ) -> GraphRunResult:
     with app.session() as session:
         if llm_gateway is not None:
-            _attach_llm_gateway(session, llm_gateway)
+            _attach_llm_gateway(session, llm_gateway, checkpoint_store=app.checkpoint_store)
         result = session.graph_runner.run(candidate)
         if result.interrupted:
             payload = resume_payload or {"decision": "none"}

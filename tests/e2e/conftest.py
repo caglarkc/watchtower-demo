@@ -31,8 +31,8 @@ def extractor() -> CandidateExtractor:
     return CandidateExtractor()
 
 
-def attach_mock_llm(session, mock_gateway: LLMGateway) -> None:
-    _attach_llm_gateway(session, mock_gateway)
+def attach_mock_llm(session, mock_gateway: LLMGateway, *, checkpoint_store) -> None:
+    _attach_llm_gateway(session, mock_gateway, checkpoint_store=checkpoint_store)
 
 
 @pytest.fixture
