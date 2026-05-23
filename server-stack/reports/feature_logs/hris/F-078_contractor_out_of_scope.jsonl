@@ -24,3 +24,4 @@
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["dev-git"], "feature_id": "F-078", "timestamp": "2026-05-23T02:29:02.000469+00:00"}
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["payroll-db", "dc-admin"], "feature_id": "F-078", "timestamp": "2026-05-23T02:29:13.814632+00:00"}
 {"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["dev-git"], "feature_id": "F-078", "timestamp": "2026-05-23T02:29:16.989130+00:00"}
+{"event_type": "contractor_out_of_scope", "log_channel": "hris", "identity": "contractor", "systems": ["payroll-db", "dc-admin"], "feature_id": "F-078", "timestamp": "2026-05-23T02:36:32.662706+00:00"}

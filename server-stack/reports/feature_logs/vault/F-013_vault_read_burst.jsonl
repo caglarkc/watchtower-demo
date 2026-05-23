@@ -25,3 +25,4 @@
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T02:29:10.929343+00:00"}
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 5, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T02:29:14.076099+00:00"}
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T02:36:26.731033+00:00"}
+{"event_type": "vault_read_burst", "log_channel": "vault", "reads": 5, "window_minutes": 60, "feature_id": "F-013", "timestamp": "2026-05-23T02:36:34.113262+00:00"}
