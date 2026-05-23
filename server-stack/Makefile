@@ -97,6 +97,7 @@ real-up:
 	$(COMPOSE) up -d
 	$(COMPOSE) --profile real-identity up -d
 	@mkdir -p reports/real/{features,scenarios,coverage,logs} logs/samba logs/dns seeds/real
+	@chmod -R a+rwX logs/dns logs/samba 2>/dev/null || true
 
 real-down:
 	$(COMPOSE) --profile real-identity down

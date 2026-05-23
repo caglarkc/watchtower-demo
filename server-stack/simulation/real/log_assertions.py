@@ -59,9 +59,16 @@ def assert_zeek_conn(since: float, min_records: int = 1) -> dict:
 
 
 def assert_bind_query(since: float, min_bytes: int = 10) -> dict:
-    path = LOG_PATHS["bind-query"]
-    ok = path.exists() and path.stat().st_size >= min_bytes
-    return {"path": str(path), "result": "PASS" if ok else "FAIL"}
+    from config import ROOT
+
+    candidates = [
+        LOG_PATHS["bind-query"],
+        ROOT / "reports" / "real" / "logs" / "dns" / "query.log",
+    ]
+    for path in candidates:
+        if path.exists() and path.stat().st_size >= min_bytes:
+            return {"path": str(path), "result": "PASS"}
+    return {"path": str(candidates[0]), "result": "FAIL"}
 
 
 def assert_dhcp_log(since: float, event: str = "DHCPDISCOVER") -> dict:
