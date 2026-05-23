@@ -11,35 +11,35 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-73729.corp.local",
+          "query": "entropy-99489.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-74968.corp.local",
+          "query": "entropy-22715.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-53150.corp.local",
+          "query": "entropy-77704.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-47714.corp.local",
+          "query": "entropy-41760.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-49260.corp.local",
+          "query": "entropy-10890.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-57954.corp.local",
+          "query": "entropy-85210.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-30786.corp.local",
+          "query": "entropy-53369.corp.local",
           "returncode": 0
         },
         {
-          "query": "entropy-21355.corp.local",
+          "query": "entropy-19618.corp.local",
           "returncode": 0
         }
       ]
@@ -66,19 +66,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 1120,
+        "count": 1128,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 8,
+        "indexed": 16,
         "index": "corp-logs-f-003",
         "pipeline": {
           "feature_id": "F-003",
           "index": "corp-logs-f-003",
-          "indexed": 8
+          "indexed": 16
         }
       }
     }
@@ -91,7 +91,7 @@
   "anomaly_detected": true,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:05.332354+00:00",
+  "generated_at": "2026-05-23T03:17:25.780656+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

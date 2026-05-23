@@ -44,3 +44,4 @@
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T03:08:15.529505+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T03:08:31.341705+00:00"}
 {"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3"], "minutes_apart": 0, "feature_id": "F-009", "timestamp": "2026-05-23T03:08:34.603017+00:00"}
+{"event_type": "concurrent_session", "log_channel": "badge", "locations": ["floor-3", "floor-b1"], "minutes_apart": 12, "feature_id": "F-009", "timestamp": "2026-05-23T03:17:26.727529+00:00"}
