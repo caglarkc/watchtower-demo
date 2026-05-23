@@ -1,0 +1,3 @@
+endpoints:
+  - path: /api/reports
+  - path: /api/admin

@@ -1,0 +1,4 @@
+mailboxes:
+  - user: cfo@corp.local
+    quota_mb: 5120
+  - user: finance@corp.local
