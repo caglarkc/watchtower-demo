@@ -110,6 +110,9 @@ def _infer_real_tool(simulation_source: str) -> str:
         ("mail", "postfix"),
         ("helpdesk", "samba-ad"),
         ("hr/", "hris-app"),
+        ("multi-signal", "mattermost"),
+        ("record access", "suitecrm"),
+        ("helpdesk", "hris-app"),
     ]
     for needle, tool in rules:
         if needle in src:

@@ -220,7 +220,7 @@ features:
   evidence_path: reports/features/F-009.json
   replay_positive: simulation/feature_replays/F-009_positive.yaml
   replay_negative: simulation/feature_replays/F-009_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: badge-api
@@ -348,7 +348,7 @@ features:
   evidence_path: reports/features/F-014.json
   replay_positive: simulation/feature_replays/F-014_positive.yaml
   replay_negative: simulation/feature_replays/F-014_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: samba-ad
@@ -1421,7 +1421,7 @@ features:
   evidence_path: reports/features/F-056.json
   replay_positive: simulation/feature_replays/F-056_positive.yaml
   replay_negative: simulation/feature_replays/F-056_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: cups
@@ -1782,7 +1782,7 @@ features:
   evidence_path: reports/features/F-070.json
   replay_positive: simulation/feature_replays/F-070_positive.yaml
   replay_negative: simulation/feature_replays/F-070_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: badge-api
@@ -1807,14 +1807,14 @@ features:
   evidence_path: reports/features/F-071.json
   replay_positive: simulation/feature_replays/F-071_positive.yaml
   replay_negative: simulation/feature_replays/F-071_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
-  real_tool: endpoint-synthetic
+  real_tool: mattermost
   real_action_command: make real-feature FEATURE=F-071
   real_negative_command: make real-feature-negative FEATURE=F-071
-  raw_log_assertion: endpoint-synthetic:/var/log/endpoint/events.jsonl:composite risk
-    score input set
+  raw_log_assertion: mattermost:/var/log/mattermost/chat.jsonl:composite risk score
+    input set
   ingest_assertion: none:L0:synthetic-authoritative
   real_evidence_positive: reports/real/features/F-071-positive.json
   real_evidence_negative: reports/real/features/F-071-negative.json
@@ -1833,7 +1833,7 @@ features:
   evidence_path: reports/features/F-072.json
   replay_positive: simulation/feature_replays/F-072_positive.yaml
   replay_negative: simulation/feature_replays/F-072_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: hris-app
@@ -1858,7 +1858,7 @@ features:
   evidence_path: reports/features/F-073.json
   replay_positive: simulation/feature_replays/F-073_positive.yaml
   replay_negative: simulation/feature_replays/F-073_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: samba-files
@@ -1884,7 +1884,7 @@ features:
   evidence_path: reports/features/F-074.json
   replay_positive: simulation/feature_replays/F-074_positive.yaml
   replay_negative: simulation/feature_replays/F-074_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: badge-api
@@ -1910,7 +1910,7 @@ features:
   evidence_path: reports/features/F-075.json
   replay_positive: simulation/feature_replays/F-075_positive.yaml
   replay_negative: simulation/feature_replays/F-075_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: hris-app
@@ -1935,7 +1935,7 @@ features:
   evidence_path: reports/features/F-076.json
   replay_positive: simulation/feature_replays/F-076_positive.yaml
   replay_negative: simulation/feature_replays/F-076_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: hris-app
@@ -1961,7 +1961,7 @@ features:
   evidence_path: reports/features/F-077.json
   replay_positive: simulation/feature_replays/F-077_positive.yaml
   replay_negative: simulation/feature_replays/F-077_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: hris-app
@@ -1987,7 +1987,7 @@ features:
   evidence_path: reports/features/F-078.json
   replay_positive: simulation/feature_replays/F-078_positive.yaml
   replay_negative: simulation/feature_replays/F-078_negative.yaml
-  real_parity_level: L0
+  real_parity_level: L2
   real_parity_target: L2
   real_priority: P3
   real_tool: endpoint-synthetic
