@@ -44,3 +44,4 @@
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "feature_id": "F-030", "timestamp": "2026-05-23T03:08:17.445316+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "feature_id": "F-030", "timestamp": "2026-05-23T03:08:31.699598+00:00"}
 {"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": false, "bytes": 200, "feature_id": "F-030", "timestamp": "2026-05-23T03:08:34.957542+00:00"}
+{"event_type": "ai_confidential_prompt", "log_channel": "ai_gateway", "contains_pii": true, "bytes": 42000, "feature_id": "F-030", "timestamp": "2026-05-23T03:17:28.672361+00:00"}

@@ -48,3 +48,4 @@
 {"event_type": "smb_bulk_io", "read_bytes": 320000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T03:08:18.212903+00:00"}
 {"event_type": "smb_bulk_io", "read_bytes": 18400000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T03:08:23.571262+00:00"}
 {"event_type": "smb_bulk_io", "read_bytes": 320000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T03:08:25.659124+00:00"}
+{"event_type": "smb_bulk_io", "read_bytes": 18400000000, "write_bytes": 0, "feature_id": "F-038", "timestamp": "2026-05-23T03:17:29.396239+00:00"}

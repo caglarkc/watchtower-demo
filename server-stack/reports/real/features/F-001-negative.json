@@ -48,7 +48,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 5440,
+        "count": 5920,
         "result": "PASS"
       },
       "result": "PASS",
@@ -73,7 +73,7 @@
   "anomaly_detected": false,
   "evidence_expected": "SMB read volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:40.403674+00:00",
+  "generated_at": "2026-05-23T03:17:28.930840+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

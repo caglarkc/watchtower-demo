@@ -12,18 +12,18 @@
       "dig": [
         {
           "query": "www.corp.local",
-          "returncode": 9
+          "returncode": 0
         },
         {
           "query": "dc1.corp.local",
-          "returncode": 9
+          "returncode": 0
         }
       ]
     }
   ],
   "raw_logs_asserted": [
     {
-      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/reports/real/logs/dns/query.log",
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/dns/query.log",
       "result": "PASS"
     }
   ],
@@ -42,19 +42,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-003",
-        "count": 960,
+        "count": 1144,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 80,
+        "indexed": 18,
         "index": "corp-logs-f-003",
         "pipeline": {
           "feature_id": "F-003",
           "index": "corp-logs-f-003",
-          "indexed": 80
+          "indexed": 18
         }
       }
     }
@@ -67,7 +67,7 @@
   "anomaly_detected": false,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:50.348194+00:00",
+  "generated_at": "2026-05-23T03:17:29.237872+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
