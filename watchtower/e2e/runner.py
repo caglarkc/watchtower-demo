@@ -9,7 +9,7 @@ from watchtower.graph.runner import GraphRunResult, build_graph_runner
 from watchtower.services.app import AppContext
 
 
-def _attach_llm_gateway(session, llm_gateway: Any) -> None:
+def _attach_llm_gateway(session, llm_gateway: Any, *, checkpoint_store: Any) -> None:
     session.graph_runner = build_graph_runner(
         mode_controller=session.mode_controller,
         decision=session.decision,
@@ -18,6 +18,7 @@ def _attach_llm_gateway(session, llm_gateway: Any) -> None:
         rules=session.rules,
         graph_repo=session.graph,
         conn=session.conn,
+        checkpoint_store=checkpoint_store,
         llm_gateway=llm_gateway,
         alerts=session.alerts,
     )
