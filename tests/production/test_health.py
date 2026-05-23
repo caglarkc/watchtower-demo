@@ -18,3 +18,4 @@ def test_health_report_after_bootstrap(prod_app, bootstrapped_tenant):
     assert "database" in names
     assert "migrations" in names
     assert "bootstrap" in names
+    assert "metrics" in names
