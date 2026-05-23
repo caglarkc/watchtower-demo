@@ -57,9 +57,9 @@ def test_learn_mode_zero_alert_silent_and_learning_queue(
 
 
 def test_run_mode_expected_alert_no_learning(app, tenant_id, normalizer, extractor):
-    seed_anomaly_baseline(app, tenant_id)
-    set_tenant_mode(app, tenant_id, "run")
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
+    _seed_for_candidate(app, tenant_id, candidate)
+    set_tenant_mode(app, tenant_id, "run")
     candidate.attributes["volume"] = 500.0
 
     with app.session() as session:
@@ -84,9 +84,9 @@ def test_run_mode_expected_alert_no_learning(app, tenant_id, normalizer, extract
 def test_hybrid_mode_alert_and_controlled_learning(
     app, tenant_id, normalizer, extractor
 ):
-    seed_anomaly_baseline(app, tenant_id)
-    set_tenant_mode(app, tenant_id, "hybrid")
     candidate = _candidate_from_f001(tenant_id, normalizer, extractor)
+    _seed_for_candidate(app, tenant_id, candidate)
+    set_tenant_mode(app, tenant_id, "hybrid")
     candidate.attributes["volume"] = 500.0
 
     result = run_graph_to_completion(app, candidate)
