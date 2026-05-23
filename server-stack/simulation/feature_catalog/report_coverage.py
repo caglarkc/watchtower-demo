@@ -27,26 +27,35 @@ def report_phase(phase: int | None) -> dict:
         features = [f for f in features if f.get("phase") == phase]
 
     rows = []
+    pos_pass = neg_pass = 0
     for feat in features:
         fid = feat["feature_id"]
-        evidence = REPORTS / f"{fid}.json"
+        pos_file = REPORTS / f"{fid}-positive.json"
+        neg_file = REPORTS / f"{fid}-negative.json"
+        has_pos = pos_file.exists()
+        has_neg = neg_file.exists()
+        if has_pos:
+            pos_pass += 1
+        if has_neg:
+            neg_pass += 1
         rows.append(
             {
                 "feature_id": fid,
                 "phase": feat.get("phase"),
-                "evidence_exists": evidence.exists(),
-                "status": "PASS" if evidence.exists() else "PENDING",
+                "positive_evidence": has_pos,
+                "negative_evidence": has_neg,
+                "status": "PASS" if has_pos and has_neg else "PENDING",
             }
         )
 
-    passed = sum(1 for r in rows if r["status"] == "PASS")
+    implemented = sum(1 for r in rows if r["status"] == "PASS")
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "phase_filter": phase,
         "total_features": len(rows),
-        "implemented": passed,
-        "positive_tests_passed": passed,
-        "negative_tests_passed": passed,
+        "implemented": implemented,
+        "positive_tests_passed": pos_pass,
+        "negative_tests_passed": neg_pass,
         "waivers": [],
         "features": rows,
     }
@@ -67,8 +76,17 @@ def main() -> int:
         out = OUT_DIR / f"feature_coverage_phase{args.phase or 'all'}.json"
 
     out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"wrote {out} ({report['implemented']}/{report['total_features']} PASS)")
-    return 0
+    print(
+        f"wrote {out} ({report['implemented']}/{report['total_features']} PASS, "
+        f"pos={report['positive_tests_passed']} neg={report['negative_tests_passed']})"
+    )
+    gate_ok = (
+        report["total_features"] == 81
+        and report["positive_tests_passed"] == 81
+        and report["negative_tests_passed"] == 81
+        and report["implemented"] == 81
+    )
+    return 0 if (args.all and gate_ok) or not args.all else 1
 
 
 if __name__ == "__main__":
