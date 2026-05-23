@@ -65,3 +65,4 @@
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "feature_id": "F-054", "timestamp": "2026-05-23T10:20:43.528955+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "feature_id": "F-054", "timestamp": "2026-05-23T10:20:51.035904+00:00"}
 {"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": true, "bypass_policy": true, "feature_id": "F-054", "timestamp": "2026-05-23T10:20:59.651839+00:00"}
+{"event_type": "encoded_powershell", "log_channel": "endpoint", "encoded_command": false, "bypass_policy": false, "feature_id": "F-054", "timestamp": "2026-05-23T10:21:01.861906+00:00"}
