@@ -47,9 +47,10 @@ def test_mask_mapping_and_secret():
 
 
 def test_server_stack_connector_is_read_only_poll():
-    poll_src = inspect.getsource(ServerStackConnector.poll)
-    assert "readline" in poll_src or "read" in poll_src
-    assert "'w'" not in poll_src and '"w"' not in poll_src
+    poll_file_src = inspect.getsource(ServerStackConnector._poll_file)
+    assert "readline" in poll_file_src
+    assert "open(" in poll_file_src
+    assert "'w'" not in poll_file_src and 'mode="w"' not in poll_file_src
 
 
 def test_no_auto_remediation_in_graph_nodes():

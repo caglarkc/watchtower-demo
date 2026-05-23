@@ -24,7 +24,7 @@ def prod_settings(prod_db: Path, tmp_path: Path) -> WatchtowerSettings:
         retention_normalized_events_days=7,
         retention_audit_days=7,
         retention_llm_audit_days=7,
-        llm_provider_chain="mock",
+        llm_provider_chain="ollama",
         openai_api_key=None,
         gemini_api_key=None,
     )
