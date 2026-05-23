@@ -110,9 +110,12 @@ def run(feature_id: str, mode: str) -> Path:
     log_paths = write_logs(feature_id, events)
     evidence = build_evidence(feature, mode, events, log_paths)
     REPORTS_ROOT.mkdir(parents=True, exist_ok=True)
-    out = REPORTS_ROOT / f"{feature_id}.json"
-    out.write_text(json.dumps(evidence, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    return out
+    payload = json.dumps(evidence, indent=2, ensure_ascii=False) + "\n"
+    mode_path = REPORTS_ROOT / f"{feature_id}-{mode}.json"
+    primary = REPORTS_ROOT / f"{feature_id}.json"
+    mode_path.write_text(payload, encoding="utf-8")
+    primary.write_text(payload, encoding="utf-8")
+    return primary
 
 
 def main() -> int:
