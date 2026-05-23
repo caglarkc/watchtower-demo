@@ -37,7 +37,7 @@ def test_e2e_daemon_server_stack_jsonl_when_logs_present(app, tenant_id):
         return
 
     with app.session() as session:
-        source = session.sources.create(
+        session.sources.create(
             tenant_id,
             "server_stack",
             "e2e-daemon-stack",
@@ -45,17 +45,22 @@ def test_e2e_daemon_server_stack_jsonl_when_logs_present(app, tenant_id):
                 "logs_root": str(logs_root),
                 "include_globs": ["identity/ad_events.jsonl"],
                 "max_files": 1,
+                "poll_limit": 5,
             },
         )
         session.conn.commit()
-        source_id = source.id
 
-    _seed_f001_baseline(app, tenant_id)
     set_tenant_mode(app, tenant_id, "learn")
 
     with app.session() as session:
         daemon = DaemonService(session)
-        summary = daemon.run_once(tenant_id)
+        summary = daemon.run_once(
+            tenant_id, ingest_limit=5, pipeline_limit=10, graph_limit=3
+        )
         session.conn.commit()
 
-    assert summary.sources_polled >= 1 or summary.raw_stored >= 0
+    counts = db_pipeline_counts(app, tenant_id)
+    assert summary.sources_polled >= 1
+    assert summary.raw_stored >= 1
+    assert counts["raw_events"] >= 1
+    assert counts["normalized_events"] >= 1
