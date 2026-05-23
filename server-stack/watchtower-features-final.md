@@ -11,7 +11,7 @@
 **Toplam:** 81 izleme fikri | Kaynak: ChatGPT + Gemini + Composer çıktıları birleştirildi, tekrar edenler tekilleştirildi.  
 **Amaç:** Bu liste senaryo değil; sistemin ölçmesi gereken davranışsal sinyal ve metrik önerilerini içerir.
 
-**Kaynak notu:** `VERİ KAYNAĞI` satırlarında mümkün olduğunda önce **gerçek kurumsal kaynak**, sonra Watchtower demo ortamındaki **simülasyon karşılığı** düşünülmüştür. Faz 1 başlangıç kapsamı `Wazuh + AD + file/network login telemetry` ile sınırlıdır; mail ve bazı uygulama kaynakları Faz 2 kapsamındadır.
+**Kaynak notu:** `VERİ KAYNAĞI` satırlarında mümkün olduğunda önce **gerçek kurumsal kaynak**, sonra Watchtower demo ortamındaki **simülasyon karşılığı** düşünülmüştür. Faz 1 başlangıç kapsamı `Wazuh + AD + file/network login telemetry` ile sınırlıdır; mail, CASB/AI, HRIS ve bazı uygulama kaynakları Faz 2+ kapsamındadır.
 
 **Kategoriler:**
 - [Ağ Trafiği](#ağ-trafiği) (7)
