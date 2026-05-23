@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-055",
   "title": "USB ile İçeri Veri Taşıyan Stajyer",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "Stajyer",
   "deterministic_seed": 5055,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-055",
-            "count": 6255,
+            "count": 6655,
             "result": "PASS"
           },
           "result": "PASS",
@@ -107,12 +107,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 78,
+            "indexed": 80,
             "index": "corp-logs-f-043",
             "pipeline": {
               "feature_id": "F-043",
               "index": "corp-logs-f-043",
-              "indexed": 78
+              "indexed": 80
             }
           }
         }
@@ -166,7 +166,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 6255,
+        "count": 6655,
         "result": "PASS"
       },
       "result": "PASS",
@@ -199,12 +199,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 78,
+        "indexed": 80,
         "index": "corp-logs-f-043",
         "pipeline": {
           "feature_id": "F-043",
           "index": "corp-logs-f-043",
-          "indexed": 78
+          "indexed": 80
         }
       }
     }
@@ -218,12 +218,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:30.285585+00:00",
+  "generated_at": "2026-05-23T08:41:53.829546+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-055:5055:positive:real"
+  "replay_key": "S-055:5055:negative:real"
 }

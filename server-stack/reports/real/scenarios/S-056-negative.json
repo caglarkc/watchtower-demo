@@ -49,19 +49,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-080",
-            "count": 840,
+            "count": 1014,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 42,
+            "indexed": 46,
             "index": "corp-logs-f-080",
             "pipeline": {
               "feature_id": "F-080",
               "index": "corp-logs-f-080",
-              "indexed": 42
+              "indexed": 46
             }
           }
         }
@@ -105,7 +105,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-037",
-            "count": 11520,
+            "count": 12960,
             "result": "PASS"
           },
           "result": "PASS",
@@ -165,12 +165,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 56,
+            "indexed": 62,
             "index": "corp-logs-f-060",
             "pipeline": {
               "feature_id": "F-060",
               "index": "corp-logs-f-060",
-              "indexed": 56
+              "indexed": 62
             }
           }
         }
@@ -297,19 +297,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-080",
-        "count": 840,
+        "count": 1014,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 42,
+        "indexed": 46,
         "index": "corp-logs-f-080",
         "pipeline": {
           "feature_id": "F-080",
           "index": "corp-logs-f-080",
-          "indexed": 42
+          "indexed": 46
         }
       }
     },
@@ -327,7 +327,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-037",
-        "count": 11520,
+        "count": 12960,
         "result": "PASS"
       },
       "result": "PASS",
@@ -360,12 +360,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 56,
+        "indexed": 62,
         "index": "corp-logs-f-060",
         "pipeline": {
           "feature_id": "F-060",
           "index": "corp-logs-f-060",
-          "indexed": 56
+          "indexed": 62
         }
       }
     },
@@ -412,7 +412,7 @@
   "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:31.846864+00:00",
+  "generated_at": "2026-05-23T08:41:54.208707+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
