@@ -8,6 +8,7 @@ from tests.baseline.conftest import seed_metric_series
 
 
 def test_45_day_replay_produces_baseline(app, tenant_id):
+    end = datetime(2026, 5, 23, 12, 0, 0, tzinfo=UTC)
     with app.session() as session:
         engine = session.baseline
         seed_metric_series(
@@ -18,8 +19,9 @@ def test_45_day_replay_produces_baseline(app, tenant_id):
             days=45,
             user_id="alice",
             department_id="backend",
+            end=end,
         )
-        lw = engine.rebuild_profiles(tenant_id, window_days=45)
+        lw = engine.rebuild_profiles(tenant_id, as_of=end, window_days=45)
         profile = session.baseline._repo.get_user_profile(tenant_id, "alice")
         snapshots = engine.compute_snapshots(tenant_id)
         snap_count = session.baseline._repo.count_snapshots(tenant_id)

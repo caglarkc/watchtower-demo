@@ -26,7 +26,7 @@ def seed_metric_series(
     anchor = end or datetime.now(UTC)
     start = anchor - timedelta(days=days - 1)
     for offset in range(days):
-        observed_at = start + timedelta(days=offset, hours=12)
+        observed_at = start + timedelta(days=offset, hours=1)
         jitter = (offset % 3 - 1) * daily_jitter
         engine.record_observation(
             BehaviorObservation(
