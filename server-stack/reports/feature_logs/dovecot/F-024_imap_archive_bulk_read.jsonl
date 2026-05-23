@@ -23,3 +23,4 @@
 {"event_type": "imap_archive_bulk_read", "log_channel": "dovecot", "messages_read": 14000, "years_span": 14, "feature_id": "F-024", "timestamp": "2026-05-23T02:19:43.645554+00:00"}
 {"event_type": "imap_archive_bulk_read", "log_channel": "dovecot", "messages_read": 40, "years_span": 1, "feature_id": "F-024", "timestamp": "2026-05-23T02:19:45.819483+00:00"}
 {"event_type": "imap_archive_bulk_read", "log_channel": "dovecot", "messages_read": 14000, "years_span": 14, "feature_id": "F-024", "timestamp": "2026-05-23T02:28:49.823159+00:00"}
+{"event_type": "imap_archive_bulk_read", "log_channel": "dovecot", "messages_read": 40, "years_span": 1, "feature_id": "F-024", "timestamp": "2026-05-23T02:28:57.157827+00:00"}
