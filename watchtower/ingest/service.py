@@ -118,16 +118,6 @@ class IngestService:
             http_retries=http_retries,
         )
 
-
-def _connector_latency_ms(connector: BaseConnector) -> float | None:
-    value = getattr(connector, "last_latency_ms", None)
-    return float(value) if value is not None else None
-
-
-def _connector_http_retries(connector: BaseConnector) -> int:
-    value = getattr(connector, "http_retries", 0)
-    return int(value) if value is not None else 0
-
     def check_health(self, source: SourceRecord) -> SourceHealth:
         connector = build_connector(source)
         return self._safe_health(connector)
@@ -141,3 +131,13 @@ def _connector_http_retries(connector: BaseConnector) -> int:
         except Exception as exc:  # noqa: BLE001 — graceful degradation
             logger.exception("unexpected connector health error")
             return SourceHealth(status="unhealthy", message=str(exc))
+
+
+def _connector_latency_ms(connector: BaseConnector) -> float | None:
+    value = getattr(connector, "last_latency_ms", None)
+    return float(value) if value is not None else None
+
+
+def _connector_http_retries(connector: BaseConnector) -> int:
+    value = getattr(connector, "http_retries", 0)
+    return int(value) if value is not None else 0
