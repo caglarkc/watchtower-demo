@@ -1,0 +1,13 @@
+pyproject.toml
+watchtower/__init__.py
+watchtower.egg-info/PKG-INFO
+watchtower.egg-info/SOURCES.txt
+watchtower.egg-info/dependency_links.txt
+watchtower.egg-info/requires.txt
+watchtower.egg-info/top_level.txt
+watchtower/config/__init__.py
+watchtower/taxonomy/__init__.py
+watchtower/taxonomy/loader.py
+watchtower/taxonomy/models.py
+watchtower/taxonomy/preflight.py
+watchtower/taxonomy/validator.py

@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: watchtower
+Version: 0.1.0
+Summary: Watchtower UEBA product
+Requires-Python: >=3.11
+Requires-Dist: pydantic>=2.0
+Requires-Dist: PyYAML>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
