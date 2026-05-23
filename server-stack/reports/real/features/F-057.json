@@ -2,7 +2,7 @@
   "id": "F-057",
   "feature_id": "F-057",
   "title": "Ağ Kartı Promiscuous Mod Değişimi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-057",
-        "count": 30,
+        "count": 42,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 12,
+        "indexed": 13,
         "index": "corp-logs-f-057",
         "pipeline": {
           "feature_id": "F-057",
           "index": "corp-logs-f-057",
-          "indexed": 12
+          "indexed": 13
         }
       }
     }
@@ -58,10 +58,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "promiscuous mode change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:05:07.265259+00:00",
+  "generated_at": "2026-05-23T03:11:00.732022+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
