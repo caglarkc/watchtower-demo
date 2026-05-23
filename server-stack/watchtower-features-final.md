@@ -39,7 +39,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 **KATEGORİ:** ağ trafiği  
 **VERİ KAYNAĞI:** NetFlow, Zeek, Windows File Server audit, Sysmon  
-**NE İZLENİYOR:** Her kullanıcının dosya sunucularından günlük/haftalık çektiği veri miktarı (MB/GB); dosya türü dağılımı  
+**NE İZLENİYOR:** Her kullanıcının dosya sunucularından günlük/haftalık çektiği veri miktarı (MB/GB), aktarım hızı ve dosya türü dağılımı  
 **NEDEN DEĞERLI:** Veri sızdırma, iç tehdit, yanlış toplu kopyalama ve görev dışı erişimi erken gösterir. UEBA'nın çekirdek sinyali  
 **ANOMALİ SİNYALİ:** Kullanıcının baseline'ına göre ani 5x–10x veri çekiş artışı; kısa sürede çok sayıda büyük dosya okunması; ilk kez erişilen sunucu  
 **UYGULAMA ZORLUĞU:** Orta — kullanıcı kimliği ile ağ akışını eşlemek gerekir (AD session map)  
@@ -47,7 +47,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 ---
 
-### F-002: East-West Lateral Protokol Pateni
+### F-002: East-West Lateral Trafik Patterni
 
 **KATEGORİ:** ağ trafiği  
 **VERİ KAYNAĞI:** NetFlow, Zeek, firewall east-west log  
@@ -127,7 +127,7 @@ Uygulama zorluğu: **Kolay / Orta / Zor**
 
 **KATEGORİ:** kimlik ve erişim  
 **VERİ KAYNAĞI:** Windows Security Log (4624, 4776), DC syslog  
-**NE İZLENİYOR:** Saatlik başarılı/başarısız logon, kaynak IP çeşitliliği, TGT istek pateni, gece saatlerinde yoğunlaşma  
+**NE İZLENİYOR:** Saatlik başarılı/başarısız logon, kaynak IP çeşitliliği, TGT istek patterni, gece saatlerinde yoğunlaşma  
 **NEDEN DEĞERLI:** Credential abuse, brute force, Pass-the-Hash (PtH) tespiti için birincil sinyal kaynağı  
 **ANOMALİ SİNYALİ:** Başarısız logon 50+/dk; 1 kullanıcı → 8 farklı host gece TGT; lateral movement zinciri  
 **UYGULAMA ZORLUĞU:** Orta — DC log hacmi yüksek; SIEM filtre ve korelasyon gerekir  
