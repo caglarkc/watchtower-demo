@@ -220,6 +220,7 @@ def _build_session(
         llm=llm_gateway,
         alerts=alert_service,
         query=query_service,
+        metrics=metrics_service,
     )
 
 

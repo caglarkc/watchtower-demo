@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any
 
 from watchtower.daemon.backoff import SourceBackoffTracker
 from watchtower.daemon.models import DaemonLoopSummary, SourcePollResult
 from watchtower.domain.normalized_event import CandidateEvent
 from watchtower.graph.runner import GraphRunResult
+from watchtower.observability.logging import emit_structured_log
 from watchtower.services.app import SessionContext
 
 logger = logging.getLogger(__name__)
