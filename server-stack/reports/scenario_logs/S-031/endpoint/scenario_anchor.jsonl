@@ -16,3 +16,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-031", "user_role": "CTO", "category": "yetkisiz erişim", "seed": 3031, "anomaly": false, "timestamp": "2026-05-23T02:36:59.231041+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-031", "user_role": "CTO", "category": "yetkisiz erişim", "seed": 3031, "anomaly": true, "timestamp": "2026-05-23T02:44:10.099638+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-031", "user_role": "CTO", "category": "yetkisiz erişim", "seed": 3031, "anomaly": false, "timestamp": "2026-05-23T02:44:12.848429+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-031", "user_role": "CTO", "category": "yetkisiz erişim", "seed": 3031, "anomaly": true, "timestamp": "2026-05-23T02:51:47.507680+00:00"}

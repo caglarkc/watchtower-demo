@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-040",
   "title": "Shadow Admin Hesabı Oluşturma",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4040,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Shadow Admin Hesabı Oluşturma",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,19 +24,19 @@
       "user_role": "IT Admin",
       "category": "insider threat",
       "seed": 4040,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "ad_group_change",
       "event_id": 4728,
-      "group": "Helpdesk",
+      "group": "Domain Admins",
       "source_feature": "F-011",
       "scenario_id": "S-040"
     },
     {
       "event_type": "scheduled_task_created",
       "log_channel": "endpoint",
-      "task_name": null,
+      "task_name": "svc_sync_shadow",
       "source_feature": "F-052",
       "scenario_id": "S-040"
     }
@@ -46,12 +46,9 @@
     "reports/scenario_logs/S-040/scenarios/ad_group_change.jsonl",
     "reports/scenario_logs/S-040/endpoint/scheduled_task_created.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:44:13.141862+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:51:47.813586+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-040:4040:negative"
+  "replay_key": "S-040:4040:positive"
 }

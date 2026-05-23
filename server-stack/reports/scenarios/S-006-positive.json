@@ -50,7 +50,7 @@
     "reports/scenario_logs/S-006/endpoint/local_sensitive_accumulation.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:44:09.271346+00:00",
+  "generated_at": "2026-05-23T02:51:46.698690+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-006:1006:positive"

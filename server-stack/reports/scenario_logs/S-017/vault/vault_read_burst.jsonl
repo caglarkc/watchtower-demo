@@ -16,3 +16,4 @@
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 5, "window_minutes": 60, "source_feature": "F-013", "scenario_id": "S-017", "timestamp": "2026-05-23T02:36:58.746681+00:00"}
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "source_feature": "F-013", "scenario_id": "S-017", "timestamp": "2026-05-23T02:44:09.634259+00:00"}
 {"event_type": "vault_read_burst", "log_channel": "vault", "reads": 5, "window_minutes": 60, "source_feature": "F-013", "scenario_id": "S-017", "timestamp": "2026-05-23T02:44:12.394629+00:00"}
+{"event_type": "vault_read_burst", "log_channel": "vault", "reads": 200, "window_minutes": 60, "source_feature": "F-013", "scenario_id": "S-017", "timestamp": "2026-05-23T02:51:47.055169+00:00"}

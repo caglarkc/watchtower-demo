@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-023",
   "title": "Muhasebe Terminalinden Gece Loginleri",
-  "mode": "negative",
+  "mode": "positive",
   "category": "credential ihlali",
   "user_role": "Muhasebe",
   "deterministic_seed": 2023,
@@ -16,7 +16,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Muhasebe Terminalinden Gece Loginleri",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "events": [
     {
@@ -26,18 +26,18 @@
       "user_role": "Muhasebe",
       "category": "credential ihlali",
       "seed": 2023,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "after_hours_session",
-      "hour": 14,
+      "hour": 2,
       "interactive": true,
       "source_feature": "F-079",
       "scenario_id": "S-023"
     },
     {
       "event_type": "unknown_hardware",
-      "device_id": "KNOWN-MAC-001",
+      "device_id": "NEW-MAC-9912",
       "success": true,
       "source_feature": "F-063",
       "scenario_id": "S-023"
@@ -45,7 +45,7 @@
     {
       "event_type": "badge_login_mismatch",
       "log_channel": "badge",
-      "badge_present": true,
+      "badge_present": false,
       "login_success": true,
       "source_feature": "F-070",
       "scenario_id": "S-023"
@@ -57,12 +57,9 @@
     "reports/scenario_logs/S-023/scenarios/unknown_hardware.jsonl",
     "reports/scenario_logs/S-023/badge/badge_login_mismatch.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:44:12.589771+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:51:47.257735+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-023:2023:negative"
+  "replay_key": "S-023:2023:positive"
 }
