@@ -3,7 +3,7 @@
   "feature_id": "F-005",
   "title": "DHCP/ARP Anomalisi (Rogue DHCP)",
   "mode": "negative",
-  "parity_level": "L2",
+  "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "dhcp-server",
   "actions_executed": [
@@ -18,7 +18,33 @@
       "note": "negative"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-005",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-005",
+        "count": 21,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": false,
+        "indexed": 0,
+        "note": "no log paths"
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
@@ -27,7 +53,7 @@
   "anomaly_detected": false,
   "evidence_expected": "duplicate lease/scope change event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:39.725243+00:00",
+  "generated_at": "2026-05-23T03:04:21.501068+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

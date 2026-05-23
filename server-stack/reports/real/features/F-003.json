@@ -2,7 +2,7 @@
   "id": "F-003",
   "feature_id": "F-003",
   "title": "İç DNS Sorgu Entropisi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "bind9",
@@ -11,35 +11,11 @@
       "service": "bind-dns",
       "dig": [
         {
-          "query": "entropy-26534.corp.local",
+          "query": "www.corp.local",
           "returncode": 9
         },
         {
-          "query": "entropy-83069.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-71030.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-17101.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-59873.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-72252.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-51859.corp.local",
-          "returncode": 9
-        },
-        {
-          "query": "entropy-41824.corp.local",
+          "query": "dc1.corp.local",
           "returncode": 9
         }
       ]
@@ -73,12 +49,12 @@
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 54,
+        "indexed": 56,
         "index": "corp-logs-f-003",
         "pipeline": {
           "feature_id": "F-003",
           "index": "corp-logs-f-003",
-          "indexed": 54
+          "indexed": 56
         }
       }
     }
@@ -88,10 +64,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "TXT/NXDOMAIN/high-entropy query event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:03:25.041952+00:00",
+  "generated_at": "2026-05-23T03:04:21.372473+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
