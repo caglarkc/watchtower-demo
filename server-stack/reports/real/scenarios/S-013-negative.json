@@ -48,7 +48,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 3040,
+            "count": 4640,
             "result": "PASS"
           },
           "result": "PASS",
@@ -104,7 +104,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-018",
-            "count": 1200,
+            "count": 1840,
             "result": "PASS"
           },
           "result": "PASS",
@@ -165,12 +165,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 19,
+            "indexed": 25,
             "index": "corp-logs-f-060",
             "pipeline": {
               "feature_id": "F-060",
               "index": "corp-logs-f-060",
-              "indexed": 19
+              "indexed": 25
             }
           }
         }
@@ -234,7 +234,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 3040,
+        "count": 4640,
         "result": "PASS"
       },
       "result": "PASS",
@@ -264,7 +264,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-018",
-        "count": 1200,
+        "count": 1840,
         "result": "PASS"
       },
       "result": "PASS",
@@ -297,12 +297,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 19,
+        "indexed": 25,
         "index": "corp-logs-f-060",
         "pipeline": {
           "feature_id": "F-060",
           "index": "corp-logs-f-060",
-          "indexed": 19
+          "indexed": 25
         }
       }
     }
@@ -323,7 +323,7 @@
   "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:33.103557+00:00",
+  "generated_at": "2026-05-23T03:18:20.506650+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
