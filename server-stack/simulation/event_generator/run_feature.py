@@ -20,6 +20,9 @@ REPORTS_ROOT = ROOT / "reports" / "features"
 
 sys.path.insert(0, str(ROOT / "simulation" / "event_generator"))
 from replay_templates import PHASE1_TEMPLATES  # noqa: E402
+from replay_templates_phase2 import LOG_CHANNEL_DIRS, PHASE2_TEMPLATES  # noqa: E402
+
+ALL_TEMPLATES = {**PHASE1_TEMPLATES, **PHASE2_TEMPLATES}
 
 
 def load_feature(feature_id: str) -> dict:
@@ -42,8 +45,8 @@ def resolve_events(feature_id: str, mode: str) -> list[dict]:
     replay = load_replay_yaml(feature_id, mode)
     if replay and replay.get("events"):
         return replay["events"]
-    if feature_id in PHASE1_TEMPLATES:
-        pos, neg = PHASE1_TEMPLATES[feature_id]
+    if feature_id in ALL_TEMPLATES:
+        pos, neg = ALL_TEMPLATES[feature_id]
         return pos if mode == "positive" else neg
     return [{"event_type": "generic", "mode": mode, "feature_id": feature_id}]
 
