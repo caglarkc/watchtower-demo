@@ -19,8 +19,13 @@ from watchtower.storage.migrations.runner import apply_migrations
 from watchtower.storage.repositories.audit import AuditRepository
 from watchtower.storage.repositories.bootstrap import BootstrapRepository
 from watchtower.storage.repositories.mode import ModeRepository
+from watchtower.candidates.service import CandidatePipelineService
 from watchtower.ingest.service import IngestService
+from watchtower.normalization.service import NormalizationService
+from watchtower.storage.repositories.candidate_event import CandidateEventRepository
+from watchtower.storage.repositories.normalized_event import NormalizedEventRepository
 from watchtower.storage.repositories.raw_event import RawEventRepository
+from watchtower.storage.repositories.unknown_schema import UnknownSchemaRepository
 from watchtower.storage.repositories.source import SourceRepository
 from watchtower.storage.repositories.source_cursor import SourceCursorRepository
 from watchtower.storage.repositories.tenant import TenantRepository
@@ -44,6 +49,11 @@ class SessionContext:
     source_cursors: SourceCursorRepository
     raw_events: RawEventRepository
     ingest: IngestService
+    normalized_events: NormalizedEventRepository
+    unknown_schema: UnknownSchemaRepository
+    candidate_events: CandidateEventRepository
+    normalizer: NormalizationService
+    pipeline: CandidatePipelineService
 
     def set_default_tenant_context(self) -> str | None:
         tenant = self.bootstrap_service.get_default_tenant()
