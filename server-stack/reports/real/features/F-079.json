@@ -2,7 +2,7 @@
   "id": "F-079",
   "feature_id": "F-079",
   "title": "Mesai Dışı İnteraktif Oturum",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -46,19 +46,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 199,
+        "count": 300,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 101,
+        "indexed": 102,
         "index": "corp-logs-f-079",
         "pipeline": {
           "feature_id": "F-079",
           "index": "corp-logs-f-079",
-          "indexed": 101
+          "indexed": 102
         }
       }
     }
@@ -68,10 +68,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "after-hours interactive session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:05:00.462786+00:00",
+  "generated_at": "2026-05-23T03:05:07.558500+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
