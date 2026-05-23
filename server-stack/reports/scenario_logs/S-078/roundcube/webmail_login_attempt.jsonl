@@ -17,3 +17,4 @@
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "personal@gmail.com", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T02:44:11.642086+00:00"}
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "user@corp.local", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T02:44:14.409809+00:00"}
 {"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "personal@gmail.com", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T02:51:49.099327+00:00"}
+{"event_type": "webmail_login_attempt", "log_channel": "roundcube", "account": "user@corp.local", "source_feature": "F-029", "scenario_id": "S-078", "timestamp": "2026-05-23T02:51:51.925337+00:00"}

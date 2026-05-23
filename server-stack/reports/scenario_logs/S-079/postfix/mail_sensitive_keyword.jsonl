@@ -17,3 +17,4 @@
 {"event_type": "mail_sensitive_keyword", "log_channel": "postfix", "keywords": ["bordro", "maaş", "confidential"], "source_feature": "F-023", "scenario_id": "S-079", "timestamp": "2026-05-23T02:44:11.674112+00:00"}
 {"event_type": "mail_sensitive_keyword", "log_channel": "postfix", "keywords": [], "source_feature": "F-023", "scenario_id": "S-079", "timestamp": "2026-05-23T02:44:14.442875+00:00"}
 {"event_type": "mail_sensitive_keyword", "log_channel": "postfix", "keywords": ["bordro", "maaş", "confidential"], "source_feature": "F-023", "scenario_id": "S-079", "timestamp": "2026-05-23T02:51:49.132063+00:00"}
+{"event_type": "mail_sensitive_keyword", "log_channel": "postfix", "keywords": [], "source_feature": "F-023", "scenario_id": "S-079", "timestamp": "2026-05-23T02:51:51.958877+00:00"}
