@@ -1,2 +1,3 @@
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "feature_id": "F-076", "timestamp": "2026-05-23T01:16:18.989223+00:00"}
 {"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": false, "feature_id": "F-076", "timestamp": "2026-05-23T01:16:21.372930+00:00"}
+{"event_type": "old_entitlement_use", "log_channel": "hris", "role_changed": true, "old_group_used": true, "feature_id": "F-076", "timestamp": "2026-05-23T01:25:49.457273+00:00"}

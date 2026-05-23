@@ -1,2 +1,3 @@
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "feature_id": "F-033", "timestamp": "2026-05-23T01:16:17.278870+00:00"}
 {"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "ai-approved.corp.local", "allowed": true, "feature_id": "F-033", "timestamp": "2026-05-23T01:16:19.655692+00:00"}
+{"event_type": "unapproved_ai_domain", "log_channel": "proxy", "domain": "chatgpt-unapproved.example", "allowed": false, "feature_id": "F-033", "timestamp": "2026-05-23T01:25:46.512119+00:00"}
