@@ -63,3 +63,4 @@
 {"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 5200, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T08:41:12.478183+00:00"}
 {"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 12, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T08:41:14.789980+00:00"}
 {"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 5200, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T10:20:42.973544+00:00"}
+{"event_type": "http_4xx_spike", "log_channel": "nginx", "status_4xx": 12, "window_minutes": 5, "feature_id": "F-048", "timestamp": "2026-05-23T10:20:50.500499+00:00"}

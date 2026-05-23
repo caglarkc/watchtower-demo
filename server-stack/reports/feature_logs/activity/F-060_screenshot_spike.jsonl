@@ -61,3 +61,4 @@
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "feature_id": "F-060", "timestamp": "2026-05-23T08:41:17.046768+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "feature_id": "F-060", "timestamp": "2026-05-23T08:41:20.351856+00:00"}
 {"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 85, "feature_id": "F-060", "timestamp": "2026-05-23T10:20:44.133777+00:00"}
+{"event_type": "screenshot_spike", "log_channel": "activity", "count_per_hour": 3, "feature_id": "F-060", "timestamp": "2026-05-23T10:20:51.565940+00:00"}

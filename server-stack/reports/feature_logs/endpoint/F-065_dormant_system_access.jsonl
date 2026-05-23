@@ -61,3 +61,4 @@
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "feature_id": "F-065", "timestamp": "2026-05-23T08:41:17.412627+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "feature_id": "F-065", "timestamp": "2026-05-23T08:41:20.733544+00:00"}
 {"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 120, "access_count": 15, "feature_id": "F-065", "timestamp": "2026-05-23T10:20:44.656889+00:00"}
+{"event_type": "dormant_system_access", "log_channel": "endpoint", "idle_days": 2, "access_count": 1, "feature_id": "F-065", "timestamp": "2026-05-23T10:20:52.013715+00:00"}
