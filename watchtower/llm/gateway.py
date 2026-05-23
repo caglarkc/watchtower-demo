@@ -24,6 +24,9 @@ from watchtower.llm.schemas import (
 from watchtower.llm.validation import parse_and_validate
 from watchtower.storage.repositories.llm_audit import LLMCallAuditRepository
 
+if False:  # TYPE_CHECKING
+    from watchtower.observability.service import MetricsService
+
 FAIL_OPEN_NOTE = "LLM unavailable - manual review required"
 
 

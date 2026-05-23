@@ -62,29 +62,11 @@ class MetricsService:
     def record_daemon_loop(
         self,
         tenant_id: str,
-        summary: DaemonLoopSummary,
+        _summary: DaemonLoopSummary,
         *,
         duration_ms: float,
     ) -> None:
-        for poll in summary.source_results:
-            if poll.skipped_backoff:
-                continue
-            if poll.polled:
-                self.increment(tenant_id, METRIC_EVENTS_POLLED, poll.polled)
-            if poll.stored:
-                self.increment(tenant_id, METRIC_RAW_STORED, poll.stored)
-            if poll.error:
-                self.increment(tenant_id, METRIC_SOURCE_ERRORS)
-        pl = summary.pipeline
-        self.record_pipeline(
-            tenant_id,
-            normalized=int(pl.get("normalized", 0)),
-            candidates=int(pl.get("candidates", 0)),
-        )
-        if summary.graph_runs:
-            self.increment(tenant_id, METRIC_GRAPH_RUNS, summary.graph_runs)
-        if summary.alerts_created:
-            self.increment(tenant_id, METRIC_ALERTS, summary.alerts_created)
+        """Persist loop duration histogram aggregates (counters recorded per stage)."""
         self._repo.record_loop_duration(tenant_id, duration_ms)
 
     def snapshot(self, tenant_id: str) -> MetricsSnapshot:
