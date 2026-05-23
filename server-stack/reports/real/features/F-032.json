@@ -2,7 +2,7 @@
   "id": "F-032",
   "feature_id": "F-032",
   "title": "AI Prompt İçinde İç Sistem, Kullanıcı veya Ağ Bilgisi Geçmesi",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 16
+        "tokens": 25
       }
     }
   ],
@@ -28,10 +28,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "internal host/user/network prompt event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:27.098587+00:00",
+  "generated_at": "2026-05-23T02:56:19.582857+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

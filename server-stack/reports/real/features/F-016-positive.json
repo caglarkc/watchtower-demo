@@ -45,7 +45,7 @@
   "anomaly_detected": true,
   "evidence_expected": "mail volume and attachment-size event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:14.705099+00:00",
+  "generated_at": "2026-05-23T02:56:18.879341+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

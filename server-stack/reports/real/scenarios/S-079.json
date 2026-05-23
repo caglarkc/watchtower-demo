@@ -1,0 +1,241 @@
+{
+  "scenario_id": "S-079",
+  "title": "Tüm Şirkete Sahte CEO İstifa Maili",
+  "mode": "positive",
+  "category": "sosyal mühendislik",
+  "user_role": "İK",
+  "deterministic_seed": 8079,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-016",
+    "F-020",
+    "F-023",
+    "F-027"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-016",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "postfix",
+          "response": {
+            "written": "/var/log/corp/postfix/postfix.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-016",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-020",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "postfix",
+          "response": {
+            "written": "/var/log/corp/postfix/postfix.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-023",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "postfix",
+          "response": {
+            "written": "/var/log/corp/postfix/postfix.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-023",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    },
+    {
+      "feature_id": "F-027",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "postfix",
+          "response": {
+            "written": "/var/log/corp/postfix/postfix.jsonl"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "postfix",
+      "response": {
+        "written": "/var/log/corp/postfix/postfix.jsonl"
+      }
+    },
+    {
+      "service": "postfix",
+      "response": {
+        "written": "/var/log/corp/postfix/postfix.jsonl"
+      }
+    },
+    {
+      "service": "postfix",
+      "response": {
+        "written": "/var/log/corp/postfix/postfix.jsonl"
+      }
+    },
+    {
+      "service": "postfix",
+      "response": {
+        "written": "/var/log/corp/postfix/postfix.jsonl"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/postfix/postfix.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-016",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    },
+    {
+      "assertion": "elasticsearch:corp-logs:F-023",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 4,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:56:19.058730+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-079:8079:positive:real"
+}

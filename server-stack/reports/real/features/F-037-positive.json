@@ -44,7 +44,7 @@
   "anomaly_detected": true,
   "evidence_expected": "out-of-department file access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:17.774375+00:00",
+  "generated_at": "2026-05-23T02:56:20.624523+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

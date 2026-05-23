@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "BCC/distribution-list anomaly",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:55.283848+00:00",
+  "generated_at": "2026-05-23T02:56:18.937857+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

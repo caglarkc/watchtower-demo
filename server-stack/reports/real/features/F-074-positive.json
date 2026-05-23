@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "off-shift physical/logical access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:59.564018+00:00",
+  "generated_at": "2026-05-23T02:56:19.894687+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

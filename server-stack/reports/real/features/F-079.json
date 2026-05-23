@@ -2,7 +2,7 @@
   "id": "F-079",
   "feature_id": "F-079",
   "title": "Mesai Dışı İnteraktif Oturum",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -52,10 +52,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "after-hours interactive session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:17.896370+00:00",
+  "generated_at": "2026-05-23T02:56:20.853197+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

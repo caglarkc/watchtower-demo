@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "banned phrase policy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:58.567750+00:00",
+  "generated_at": "2026-05-23T02:56:19.058482+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

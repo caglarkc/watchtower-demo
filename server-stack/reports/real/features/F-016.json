@@ -2,7 +2,7 @@
   "id": "F-016",
   "feature_id": "F-016",
   "title": "Dahili Mail Gönderim Hacmi ve Ek Boyutu",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -42,10 +42,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "mail volume and attachment-size event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:18.000682+00:00",
+  "generated_at": "2026-05-23T02:56:18.879341+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

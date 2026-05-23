@@ -2,7 +2,7 @@
   "id": "F-026",
   "feature_id": "F-026",
   "title": "Yazışma Üslubu ve Dil Tonu Sapması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "postfix",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "writing-style deviation fixture",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:19.231875+00:00",
+  "generated_at": "2026-05-23T02:56:18.289347+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

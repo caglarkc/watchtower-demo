@@ -1,0 +1,162 @@
+{
+  "scenario_id": "S-076",
+  "title": "CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
+  "mode": "positive",
+  "category": "sosyal mühendislik",
+  "user_role": "IT Admin",
+  "deterministic_seed": 8076,
+  "expected_severity": "CRITICAL",
+  "feature_ids": [
+    "F-011",
+    "F-014"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-011",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-011",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    },
+    {
+      "feature_id": "F-014",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "resets": 12,
+            "unlocks": 8
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 12
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        },
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "resets": 12,
+        "unlocks": 8
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 12
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/identity/ad_events.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-011",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml",
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 3,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:56:18.100666+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-076:8076:positive:real"
+}
