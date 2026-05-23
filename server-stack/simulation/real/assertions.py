@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from config import ALL_REAL_FEATURES, INGEST_FEATURES, INGEST_L3_FEATURES, RI1_FEATURES, RI2_FEATURES, RI3_FEATURES, RI4_FEATURES
 from ingest_assertions import assert_ingest_for_feature
+from ingest_shipper import ship_feature_logs
 from log_assertions import (
     assert_activity,
     assert_badge,

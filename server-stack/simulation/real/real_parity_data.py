@@ -161,7 +161,9 @@ def real_metadata_for(feature_id: str, simulation_source: str, evidence_expected
     priority = _priority(feature_id)
     tool = _infer_real_tool(simulation_source)
     target = TARGET_LEVEL_BY_PRIORITY.get(priority, "L2")
-    if feature_id in RI4_FEATURES:
+    if feature_id in INGEST_L3_FEATURES:
+        current = "L3"
+    elif feature_id in RI4_FEATURES:
         current = RI4_CURRENT_LEVEL
     elif feature_id in RI3_FEATURES:
         current = RI3_CURRENT_LEVEL
