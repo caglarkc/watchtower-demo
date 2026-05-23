@@ -2,7 +2,7 @@
   "id": "F-066",
   "feature_id": "F-066",
   "title": "Akran Grup Davranışından İstatistiksel Sapma",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -54,10 +54,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "peer group statistical deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:20.727962+00:00",
+  "generated_at": "2026-05-23T10:26:52.224027+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
