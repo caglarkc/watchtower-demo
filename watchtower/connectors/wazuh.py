@@ -83,22 +83,23 @@ class WazuhConnector(BaseConnector):
     def _ensure_token(self) -> str | None:
         if self._session_token:
             return self._session_token
+        preset = self._config.get("token")
+        if isinstance(preset, str) and preset:
+            self._session_token = preset
+            return self._session_token
         user = self._config.get("username")
         password = self._config.get("password")
         if not user or not password:
             return None
-        url = f"{self.api_url}/security/user/authenticate"
-        try:
-            import base64
+        import base64
 
-            basic = base64.b64encode(f"{user}:{password}".encode()).decode("ascii")
-            payload = self._http.post(
-                url,
-                {},
-                headers={"Authorization": f"Basic {basic}"},
-            )
-        except ConnectorError:
-            payload = self._http.get(url, headers={"Authorization": f"Basic {basic}"})
+        basic = base64.b64encode(f"{user}:{password}".encode()).decode("ascii")
+        url = f"{self.api_url}/security/user/authenticate"
+        payload = self._http.post(
+            url,
+            {},
+            headers={"Authorization": f"Basic {basic}"},
+        )
         token = payload.get("data", {}).get("token") or payload.get("token")
         if isinstance(token, str) and token:
             self._session_token = token

@@ -240,6 +240,9 @@ def register_sources_onboard(sources_app: typer.Typer) -> None:
                         "config": mask_mapping(config),
                     },
                 )
+            except ValueError as exc:
+                typer.echo(str(exc), err=True)
+                raise typer.Exit(code=1) from exc
             except BootstrapRequiredError as exc:
                 typer.echo(str(exc), err=True)
                 raise typer.Exit(code=1) from exc
