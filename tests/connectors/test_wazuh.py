@@ -9,7 +9,8 @@ from watchtower.domain.events import ConnectorCursor
 def test_wazuh_health_and_poll_mocked():
     def fake_get(url: str, headers: dict | None = None) -> dict:
         if url.endswith("/"):
-            return {"title": "Wazuh API"}
+            return {"title": "Wazuh API", "api_version": "4.0"}
+        assert headers and headers.get("Authorization", "").startswith("Bearer ")
         return {
             "data": {
                 "affected_items": [
@@ -21,7 +22,7 @@ def test_wazuh_health_and_poll_mocked():
     connector = WazuhConnector(
         "wazuh-1",
         api_url="https://wazuh.local:55000",
-        token="token",
+        config={"token": "token"},
         http_get=fake_get,
     )
     assert connector.health().status == "healthy"
