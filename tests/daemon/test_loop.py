@@ -5,10 +5,7 @@ from __future__ import annotations
 from tests.daemon.helpers import db_pipeline_counts, register_f001_jsonl_source, replay_events_to_jsonl
 from tests.e2e.conftest import seed_baseline_for_candidate
 from tests.graph.conftest import set_tenant_mode
-from watchtower.candidates.extractor import CandidateExtractor
 from watchtower.daemon.service import DaemonService
-from watchtower.e2e.replay import first_candidate_from_feature
-from watchtower.normalization.service import NormalizationService
 
 
 def _run_daemon_once(app, tenant_id):
