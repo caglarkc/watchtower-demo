@@ -71,6 +71,13 @@ def run(feature_id: str, mode: str) -> Path:
     parity = feature.get("real_parity_level", "L0")
     if feature_id in ALL_REAL_FEATURES:
         parity = "L2"
+        if any(i.get("parity_level") == "L3" and i.get("result") == "PASS" for i in ingest):
+            parity = "L3"
+        elif feature_id in ingest and feature_id in __import__("config", fromlist=["INGEST_L3_FEATURES"]).INGEST_L3_FEATURES:
+            from config import INGEST_L3_FEATURES  # noqa: WPS433
+
+            if feature_id in INGEST_L3_FEATURES and ingest and ingest[0].get("result") == "PASS":
+                parity = ingest[0].get("parity_level", "L3")
 
     seed_refs = ["seeds/real/baseline/normal_day.yml"]
     if feature_id in RI4_FEATURES:
