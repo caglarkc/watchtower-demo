@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 import time
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -46,13 +47,15 @@ class Handler(BaseHTTPRequestHandler):
         return
 
 
-def main() -> None:
-    write_baseline_conn()
-    server = HTTPServer(("0.0.0.0", 8080), Handler)
+def _writer_loop() -> None:
     while True:
         write_baseline_conn()
-        server.handle_request()
         time.sleep(30)
+
+
+def main() -> None:
+    threading.Thread(target=_writer_loop, daemon=True).start()
+    HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 
 
 if __name__ == "__main__":
