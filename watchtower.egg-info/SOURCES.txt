@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 watchtower/__init__.py
 watchtower.egg-info/PKG-INFO
@@ -9,6 +10,8 @@ watchtower.egg-info/top_level.txt
 watchtower/alerts/__init__.py
 watchtower/alerts/duration.py
 watchtower/alerts/service.py
+watchtower/backup/__init__.py
+watchtower/backup/service.py
 watchtower/baseline/__init__.py
 watchtower/baseline/engine.py
 watchtower/baseline/query.py
@@ -18,7 +21,9 @@ watchtower/candidates/extractor.py
 watchtower/candidates/service.py
 watchtower/cli/__init__.py
 watchtower/cli/commands_alerts.py
+watchtower/cli/commands_daemon.py
 watchtower/cli/commands_misc.py
+watchtower/cli/commands_production.py
 watchtower/cli/deps.py
 watchtower/cli/main.py
 watchtower/config/__init__.py
@@ -36,6 +41,10 @@ watchtower/connectors/server_stack.py
 watchtower/connectors/wazuh.py
 watchtower/correlation/__init__.py
 watchtower/correlation/engine.py
+watchtower/daemon/__init__.py
+watchtower/daemon/backoff.py
+watchtower/daemon/models.py
+watchtower/daemon/service.py
 watchtower/decision/__init__.py
 watchtower/decision/service.py
 watchtower/domain/__init__.py
@@ -66,6 +75,8 @@ watchtower/graph/validation.py
 watchtower/graph/nodes/__init__.py
 watchtower/graph/nodes/pipeline.py
 watchtower/graph/nodes/schemas.py
+watchtower/health/__init__.py
+watchtower/health/service.py
 watchtower/ingest/__init__.py
 watchtower/ingest/dedupe.py
 watchtower/ingest/service.py
@@ -82,6 +93,7 @@ watchtower/llm/providers/factory.py
 watchtower/llm/providers/gemini.py
 watchtower/llm/providers/mock.py
 watchtower/llm/providers/ollama.py
+watchtower/llm/providers/onboarding.py
 watchtower/llm/providers/openai.py
 watchtower/llm/providers/openai_compatible.py
 watchtower/normalization/__init__.py
@@ -92,9 +104,13 @@ watchtower/policy/__init__.py
 watchtower/policy/engine.py
 watchtower/query/__init__.py
 watchtower/query/service.py
+watchtower/retention/__init__.py
+watchtower/retention/service.py
 watchtower/rules/__init__.py
 watchtower/rules/engine.py
 watchtower/rules/scope.py
+watchtower/security/__init__.py
+watchtower/security/masking.py
 watchtower/services/__init__.py
 watchtower/services/app.py
 watchtower/services/audit.py
@@ -103,6 +119,8 @@ watchtower/services/mode_controller.py
 watchtower/services/tenant_context.py
 watchtower/severity/__init__.py
 watchtower/severity/engine.py
+watchtower/sources/__init__.py
+watchtower/sources/onboarding.py
 watchtower/storage/__init__.py
 watchtower/storage/database.py
 watchtower/storage/security.py
@@ -115,6 +133,7 @@ watchtower/storage/migrations/versions/005_feedback_rules.sql
 watchtower/storage/migrations/versions/006_graph.sql
 watchtower/storage/migrations/versions/007_llm.sql
 watchtower/storage/migrations/versions/008_alerts.sql
+watchtower/storage/migrations/versions/009_production.sql
 watchtower/storage/repositories/__init__.py
 watchtower/storage/repositories/alerts.py
 watchtower/storage/repositories/audit.py
@@ -129,6 +148,7 @@ watchtower/storage/repositories/normalized_event.py
 watchtower/storage/repositories/raw_event.py
 watchtower/storage/repositories/source.py
 watchtower/storage/repositories/source_cursor.py
+watchtower/storage/repositories/system_metadata.py
 watchtower/storage/repositories/tenant.py
 watchtower/storage/repositories/unknown_schema.py
 watchtower/taxonomy/__init__.py
