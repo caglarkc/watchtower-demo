@@ -73,6 +73,9 @@ test-integration-phase3:
 	$(PYTEST) tests/integration -m phase3 -v
 
 coverage:
+	$(PYTHON) simulation/feature_catalog/report_coverage.py --all
+
+coverage-phase1:
 	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 1
 
 coverage-phase2:
@@ -81,12 +84,9 @@ coverage-phase2:
 coverage-phase3:
 	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 3
 
-coverage-all: coverage coverage-scenarios
-
 coverage-scenarios:
 	$(PYTHON) simulation/scenarios/report_scenario_coverage.py --all
 
-coverage:
-	$(PYTHON) simulation/feature_catalog/report_coverage.py --all
+coverage-all: coverage coverage-scenarios
 
 test-all: seed-baseline test-smoke test-features test-scenarios coverage-all
