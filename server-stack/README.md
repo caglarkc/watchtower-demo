@@ -56,6 +56,23 @@ make real-coverage
 
 Servisler: Postfix/Dovecot/Roundcube action API, `postgres-actions` + `pg_audit.log`, `gitea-actions`, Nginx HTTP replay, internal-app/SIEM/hypervisor audit.
 
+### RI-3 — Real security, secrets, proxy, AI, cloud, endpoint behavior (23 P2 features @ L2)
+
+```bash
+make real-up
+make seed-real-security seed-real-endpoint
+make real-feature FEATURE=F-013
+pytest tests/real/test_security_proxy_ai_endpoint.py
+pytest tests/real/features -m p2
+make real-coverage
+```
+
+Servisler: `vault-mock` (Vault OSS audit), `ai-gateway-mock` (audited prompt/upload), `proxy-sink` (Squid-style access log), `cloud-storage-mock` (MinIO/S3 upload), `wiki-mock`, `dlp-mock`, `activity-generator`, endpoint `/emit`, internal-app/SIEM audit.
+
+Seed corpus: `seeds/real/vault`, `seeds/real/ai`, `seeds/real/baseline`, `seeds/real/ai/uploads/sample.bin`.
+
+L2: HTTP action → host `logs/` raw assertion zorunlu. Vault/proxy/cloud için ek L3 ingest hedefi: F-012, F-013, F-030, F-033, F-067–F-069.
+
 ## Hızlı başlangıç
 
 ```bash
