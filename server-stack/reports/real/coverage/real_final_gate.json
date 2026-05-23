@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T03:08:05.965696+00:00",
+  "generated_at": "2026-05-23T03:09:02.932661+00:00",
   "phase": "RI-6",
   "result": "PASS",
   "gates": {
@@ -17,7 +17,7 @@
     "positive_pass": 81,
     "negative_pass": 81,
     "l2_or_higher": 81,
-    "l3_count": 45,
+    "l3_count": 46,
     "l3_target": 46,
     "features": [
       {
@@ -40,7 +40,7 @@
       },
       {
         "feature_id": "F-004",
-        "parity_level": "L2",
+        "parity_level": "L3",
         "positive_pass": true,
         "negative_pass": true
       },

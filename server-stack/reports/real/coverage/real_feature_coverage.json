@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T03:08:05.882861+00:00",
+  "generated_at": "2026-05-23T03:09:02.853514+00:00",
   "phase": "RI-6",
   "total_features": 81,
   "metadata_complete": 81,
@@ -19,7 +19,7 @@
   "ri4_l2_metadata": 12,
   "ri4_pass": 12,
   "l2_or_higher": 81,
-  "l3_count": 45,
+  "l3_count": 46,
   "l3_minimum": 40,
   "waivers": [],
   "features": [
@@ -52,7 +52,7 @@
     },
     {
       "feature_id": "F-004",
-      "real_parity_level": "L2",
+      "real_parity_level": "L3",
       "catalog_parity_level": "L3",
       "metadata_complete": true,
       "positive_evidence": true,
