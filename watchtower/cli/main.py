@@ -20,6 +20,7 @@ from watchtower.cli.commands_misc import (
     rules_app,
 )
 from watchtower.cli.commands_daemon import register_daemon_commands
+from watchtower.cli.commands_graph import register_graph_commands
 from watchtower.cli.commands_production import (
     register_production_commands,
     register_sources_onboard,
@@ -44,6 +45,7 @@ app.add_typer(rules_app, name="rules")
 register_query_command(app)
 register_production_commands(app)
 register_daemon_commands(app)
+register_graph_commands(app)
 register_sources_onboard(sources_app)
 
 
