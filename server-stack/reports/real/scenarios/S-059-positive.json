@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 3783,
+            "count": 5223,
             "result": "PASS"
           },
           "result": "PASS",
@@ -119,12 +119,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 38,
+            "indexed": 48,
             "index": "corp-logs-f-042",
             "pipeline": {
               "feature_id": "F-042",
               "index": "corp-logs-f-042",
-              "indexed": 38
+              "indexed": 48
             }
           }
         }
@@ -170,19 +170,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 825,
+            "count": 1407,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 43,
+            "indexed": 55,
             "index": "corp-logs-f-054",
             "pipeline": {
               "feature_id": "F-054",
               "index": "corp-logs-f-054",
-              "indexed": 43
+              "indexed": 55
             }
           }
         }
@@ -321,7 +321,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 3783,
+        "count": 5223,
         "result": "PASS"
       },
       "result": "PASS",
@@ -354,12 +354,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 38,
+        "indexed": 48,
         "index": "corp-logs-f-042",
         "pipeline": {
           "feature_id": "F-042",
           "index": "corp-logs-f-042",
-          "indexed": 38
+          "indexed": 48
         }
       }
     },
@@ -377,19 +377,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 825,
+        "count": 1407,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 43,
+        "indexed": 55,
         "index": "corp-logs-f-054",
         "pipeline": {
           "feature_id": "F-054",
           "index": "corp-logs-f-054",
-          "indexed": 43
+          "indexed": 55
         }
       }
     },
@@ -433,7 +433,7 @@
   "anomaly_detected": true,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:06.939954+00:00",
+  "generated_at": "2026-05-23T03:19:25.141383+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",

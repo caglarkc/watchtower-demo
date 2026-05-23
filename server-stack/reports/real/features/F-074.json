@@ -2,7 +2,7 @@
   "id": "F-074",
   "feature_id": "F-074",
   "title": "Vardiya Dışı Fiziksel + Mantıksal Erişim Korelasyonu",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "badge-api",
@@ -10,7 +10,7 @@
     {
       "service": "badge",
       "response": {
-        "shift": "day"
+        "shift": "off"
       }
     }
   ],
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "off-shift physical/logical access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:06.970663+00:00",
+  "generated_at": "2026-05-23T03:19:27.205701+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
