@@ -52,7 +52,24 @@ LOG_PATHS = {
     "siem-audit": ROOT / "logs" / "siem" / "audit.jsonl",
     "hypervisor-audit": ROOT / "logs" / "hypervisor" / "audit.jsonl",
     "artifact-audit": ROOT / "logs" / "artifact" / "audit.jsonl",
+    "vault-audit": ROOT / "logs" / "vault" / "audit.jsonl",
+    "ai-gateway": ROOT / "logs" / "ai_gateway" / "ai_gateway.jsonl",
+    "proxy-audit": ROOT / "logs" / "proxy" / "proxy_sink.jsonl",
+    "proxy-squid": ROOT / "logs" / "proxy" / "access.log",
+    "cloud-upload": ROOT / "logs" / "cloud" / "upload.jsonl",
+    "wiki-access": ROOT / "logs" / "wiki" / "access.jsonl",
+    "dlp-health": ROOT / "logs" / "dlp" / "health.jsonl",
+    "activity": ROOT / "logs" / "activity" / "input.jsonl",
 }
+
+RI3_FEATURES = frozenset(
+    {"F-012", "F-013"}
+    | {f"F-{i:03d}" for i in range(30, 37)}
+    | {"F-042", "F-043", "F-044"}
+    | {f"F-{i:03d}" for i in range(58, 63)}
+    | {f"F-{i:03d}" for i in range(64, 67)}
+    | {f"F-{i:03d}" for i in range(67, 70)}
+)
 
 RI2_FEATURES = frozenset(
     {f"F-{i:03d}" for i in range(16, 30)}
