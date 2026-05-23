@@ -518,7 +518,7 @@ services:
     volumes:
       - ./logs/ai_gateway:/var/log/corp/ai_gateway
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
@@ -533,7 +533,7 @@ services:
     volumes:
       - ./logs/proxy:/var/log/corp/proxy
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "python /app/healthcheck.py && curl -sf http://127.0.0.1:8080/health"]
       <<: *health-http
     restart: unless-stopped
 
