@@ -125,7 +125,7 @@ def _validate_entry(entry: FeatureTaxonomyEntry) -> list[str]:
     if not entry.server_stack_replay_refs:
         errors.append(f"{fid}: server_stack_replay_refs must not be empty")
 
-  if not entry.required_context:
+    if not entry.required_context:
         errors.append(f"{fid}: required_context must not be empty")
 
     return errors
