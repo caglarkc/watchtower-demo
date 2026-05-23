@@ -103,7 +103,7 @@ services:
       - bind-cache:/var/cache/bind
       - ./logs/dns:/var/log/corp/dns
     healthcheck:
-      test: ["CMD-SHELL", "named-checkconf /etc/bind/named.conf && pgrep named"]
+      test: ["CMD-SHELL", "named-checkconf /etc/bind/named.conf && pgrep named && test -d /var/log/corp/dns"]
       <<: *health-http
     restart: unless-stopped
 
