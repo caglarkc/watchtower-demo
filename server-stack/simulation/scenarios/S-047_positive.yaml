@@ -1,0 +1,42 @@
+scenario_id: S-047
+title: Ayrılış Öncesi Veri Rampa-Up
+mode: positive
+category: insider threat
+user_role: Yazılım Geliştirici
+deterministic_seed: 4047
+expected_severity: ALERT
+feature_ids:
+- F-001
+- F-072
+- F-064
+services:
+- activity-generator
+- endpoint-synthetic
+- hris-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-047
+  user_role: Yazılım Geliştirici
+  category: insider threat
+  seed: 4047
+  anomaly: true
+- event_type: smb_read_volume
+  user: cfo
+  bytes_read: 14000000000
+  anomaly: true
+  source_feature: F-001
+  scenario_id: S-047
+- event_type: offboarding_activity
+  log_channel: hris
+  status: terminated
+  logins_after: 6
+  source_feature: F-072
+  scenario_id: S-047
+- event_type: activity_burst
+  log_channel: activity
+  events_per_hour: 4200
+  baseline: 400
+  source_feature: F-064
+  scenario_id: S-047
+expected_evidence: Multi-signal workflow for Ayrılış Öncesi Veri Rampa-Up

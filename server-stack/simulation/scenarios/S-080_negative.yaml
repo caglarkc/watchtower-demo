@@ -1,0 +1,88 @@
+scenario_id: S-080
+title: Çok Kaynaklı Kademeli İhlal Simülasyonu
+mode: negative
+category: çapraz/multi-user
+user_role: IT Admin
+deterministic_seed: 9080
+expected_severity: CRITICAL
+feature_ids:
+- F-071
+- F-044
+- F-012
+- F-050
+- F-038
+- F-030
+- F-032
+- F-033
+- F-035
+services:
+- ai-gateway-mock
+- endpoint-synthetic
+- internal-app
+- proxy-sink
+- siem-admin
+- wiki-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-080
+  user_role: IT Admin
+  category: çapraz/multi-user
+  seed: 9080
+  anomaly: false
+- event_type: composite_signal
+  log_channel: endpoint
+  signal: baseline
+  weight: 0.1
+  source_feature: F-071
+  scenario_id: S-080
+- event_type: wiki_bulk_download
+  log_channel: wiki
+  pages: 12
+  mb: 8
+  source_feature: F-044
+  scenario_id: S-080
+- event_type: api_key_usage
+  log_channel: app
+  key_id: svc-deploy
+  source_ips: 1
+  source_feature: F-012
+  scenario_id: S-080
+- event_type: siem_suppress_rule
+  log_channel: siem
+  self_ip_suppress: false
+  source_feature: F-050
+  scenario_id: S-080
+- event_type: smb_bulk_io
+  read_bytes: 320000000
+  write_bytes: 0
+  source_feature: F-038
+  scenario_id: S-080
+- event_type: ai_confidential_prompt
+  log_channel: ai_gateway
+  contains_pii: false
+  bytes: 200
+  source_feature: F-030
+  scenario_id: S-080
+- event_type: ai_internal_info_prompt
+  log_channel: ai_gateway
+  hosts_disclosed: 0
+  users_disclosed: 0
+  source_feature: F-032
+  scenario_id: S-080
+- event_type: unapproved_ai_domain
+  log_channel: proxy
+  domain: ai-approved.corp.local
+  allowed: true
+  source_feature: F-033
+  scenario_id: S-080
+- event_type: ai_procedure_discovery
+  log_channel: ai_gateway
+  topics:
+  - general_help
+  source_feature: F-035
+  scenario_id: S-080
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Çok Kaynaklı Kademeli İhlal Simülasyonu

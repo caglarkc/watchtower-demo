@@ -1,0 +1,51 @@
+scenario_id: S-002
+title: Gece Yedek Çekimi
+mode: negative
+category: veri sızdırma
+user_role: Muhasebe
+deterministic_seed: 1002
+expected_severity: CRITICAL
+feature_ids:
+- F-001
+- F-079
+- F-038
+- F-081
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-002
+  user_role: Muhasebe
+  category: veri sızdırma
+  seed: 1002
+  anomaly: false
+- event_type: smb_read_volume
+  user: cfo
+  bytes_read: 800000000
+  anomaly: false
+  source_feature: F-001
+  scenario_id: S-002
+- event_type: after_hours_session
+  hour: 14
+  interactive: true
+  source_feature: F-079
+  scenario_id: S-002
+- event_type: smb_bulk_io
+  read_bytes: 320000000
+  write_bytes: 0
+  source_feature: F-038
+  scenario_id: S-002
+- event_type: role_work_window
+  role: support
+  active_hours:
+  - 9
+  - 10
+  - 11
+  - 14
+  source_feature: F-081
+  scenario_id: S-002
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Gece Yedek Çekimi

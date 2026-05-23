@@ -1,0 +1,25 @@
+scenario_id: S-043
+title: Admin Tarafından Eski Yedeklerin Silinmesi
+mode: positive
+category: insider threat
+user_role: IT Admin
+deterministic_seed: 4043
+expected_severity: CRITICAL
+feature_ids:
+- F-053
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-043
+  user_role: IT Admin
+  category: insider threat
+  seed: 4043
+  anomaly: true
+- event_type: backup_shadow_delete
+  log_channel: endpoint
+  shadow_copies_deleted: 48
+  source_feature: F-053
+  scenario_id: S-043
+expected_evidence: Multi-signal workflow for Admin Tarafından Eski Yedeklerin Silinmesi

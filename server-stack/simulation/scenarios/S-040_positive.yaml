@@ -1,0 +1,31 @@
+scenario_id: S-040
+title: Shadow Admin Hesabı Oluşturma
+mode: positive
+category: insider threat
+user_role: IT Admin
+deterministic_seed: 4040
+expected_severity: CRITICAL
+feature_ids:
+- F-011
+- F-052
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-040
+  user_role: IT Admin
+  category: insider threat
+  seed: 4040
+  anomaly: true
+- event_type: ad_group_change
+  event_id: 4728
+  group: Domain Admins
+  source_feature: F-011
+  scenario_id: S-040
+- event_type: scheduled_task_created
+  log_channel: endpoint
+  task_name: svc_sync_shadow
+  source_feature: F-052
+  scenario_id: S-040
+expected_evidence: Multi-signal workflow for Shadow Admin Hesabı Oluşturma

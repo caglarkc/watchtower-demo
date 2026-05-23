@@ -1,0 +1,57 @@
+scenario_id: S-005
+title: CTO'nun Gizli Yedek Klasörü
+mode: negative
+category: veri sızdırma
+user_role: CTO
+deterministic_seed: 1005
+expected_severity: CRITICAL
+feature_ids:
+- F-037
+- F-039
+- F-062
+- F-030
+- F-036
+services:
+- ai-gateway-mock
+- endpoint-synthetic
+- siem-admin
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-005
+  user_role: CTO
+  category: veri sızdırma
+  seed: 1005
+  anomaly: false
+- event_type: smb_access
+  share: dev
+  user_dept: dev
+  files: 3
+  source_feature: F-037
+  scenario_id: S-005
+- event_type: smb_rename_storm
+  renames_per_minute: 2
+  source_feature: F-039
+  scenario_id: S-005
+- event_type: risky_log_search
+  log_channel: siem
+  keywords:
+  - dashboard
+  source_feature: F-062
+  scenario_id: S-005
+- event_type: ai_confidential_prompt
+  log_channel: ai_gateway
+  contains_pii: false
+  bytes: 200
+  source_feature: F-030
+  scenario_id: S-005
+- event_type: ai_strategy_content
+  log_channel: ai_gateway
+  legal_terms: 0
+  strategy_terms: 0
+  source_feature: F-036
+  scenario_id: S-005
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for CTO'nun Gizli Yedek Klasörü

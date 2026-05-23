@@ -1,0 +1,46 @@
+scenario_id: S-011
+title: CEO Mail Kutusundan Toplu Arşiv Export
+mode: negative
+category: veri sızdırma
+user_role: CEO
+deterministic_seed: 1011
+expected_severity: CRITICAL
+feature_ids:
+- F-024
+- F-025
+- F-019
+services:
+- dovecot
+- endpoint-synthetic
+- postfix
+- roundcube
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-011
+  user_role: CEO
+  category: veri sızdırma
+  seed: 1011
+  anomaly: false
+- event_type: imap_archive_bulk_read
+  log_channel: dovecot
+  messages_read: 40
+  years_span: 1
+  source_feature: F-024
+  scenario_id: S-011
+- event_type: address_book_export
+  log_channel: roundcube
+  contacts_exported: 5
+  source_feature: F-025
+  scenario_id: S-011
+- event_type: mail_attachment_entropy
+  log_channel: postfix
+  entropy: 4.1
+  declared_type: pdf
+  actual_type: pdf
+  source_feature: F-019
+  scenario_id: S-011
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for CEO Mail Kutusundan Toplu Arşiv Export

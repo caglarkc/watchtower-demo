@@ -1,0 +1,43 @@
+scenario_id: S-065
+title: Geçici Erişim Süresinin Aşılması
+mode: positive
+category: politika ihlali
+user_role: IT Admin
+deterministic_seed: 6065
+expected_severity: WARNING
+feature_ids:
+- F-078
+- F-072
+- F-077
+services:
+- endpoint-synthetic
+- hris-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-065
+  user_role: IT Admin
+  category: politika ihlali
+  seed: 6065
+  anomaly: true
+- event_type: contractor_out_of_scope
+  log_channel: hris
+  identity: contractor
+  systems:
+  - payroll-db
+  - dc-admin
+  source_feature: F-078
+  scenario_id: S-065
+- event_type: offboarding_activity
+  log_channel: hris
+  status: terminated
+  logins_after: 6
+  source_feature: F-072
+  scenario_id: S-065
+- event_type: leave_activity
+  log_channel: hris
+  on_leave: true
+  keyboard_events: 900
+  source_feature: F-077
+  scenario_id: S-065
+expected_evidence: Multi-signal workflow for Geçici Erişim Süresinin Aşılması

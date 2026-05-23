@@ -1,0 +1,34 @@
+scenario_id: S-029
+title: Hukuk Belgelerine Meraklı Geliştirici
+mode: negative
+category: yetkisiz erişim
+user_role: Yazılım Geliştirici
+deterministic_seed: 3029
+expected_severity: CRITICAL
+feature_ids:
+- F-037
+- F-040
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-029
+  user_role: Yazılım Geliştirici
+  category: yetkisiz erişim
+  seed: 3029
+  anomaly: false
+- event_type: smb_access
+  share: dev
+  user_dept: dev
+  files: 3
+  source_feature: F-037
+  scenario_id: S-029
+- event_type: directory_traversal
+  sensitive_paths: 0
+  source_feature: F-040
+  scenario_id: S-029
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Hukuk Belgelerine Meraklı Geliştirici

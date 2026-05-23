@@ -1,0 +1,47 @@
+scenario_id: S-067
+title: Güvenlik Görevlisinin Sunucu Odası Erişim Olayı
+mode: positive
+category: dış saldırı desteği
+user_role: Güvenlik Görevlisi
+deterministic_seed: 7067
+expected_severity: CRITICAL
+feature_ids:
+- F-006
+- F-070
+- F-074
+services:
+- badge-api
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-067
+  user_role: Güvenlik Görevlisi
+  category: dış saldırı desteği
+  seed: 7067
+  anomaly: true
+- event_type: ad_auth
+  event_id: 4625
+  count: 18
+  source_feature: F-006
+  scenario_id: S-067
+- event_type: ad_auth
+  event_id: 4624
+  count: 1
+  source_feature: F-006
+  scenario_id: S-067
+- event_type: badge_login_mismatch
+  log_channel: badge
+  badge_present: false
+  login_success: true
+  source_feature: F-070
+  scenario_id: S-067
+- event_type: off_shift_access
+  log_channel: badge
+  shift: 'off'
+  login_hour: 2
+  badge_swipe: true
+  source_feature: F-074
+  scenario_id: S-067
+expected_evidence: Multi-signal workflow for Güvenlik Görevlisinin Sunucu Odası Erişim
+  Olayı

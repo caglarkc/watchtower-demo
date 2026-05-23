@@ -1,0 +1,37 @@
+scenario_id: S-033
+title: Destek Personeli DC RDP
+mode: negative
+category: yetkisiz erişim
+user_role: Destek Personeli
+deterministic_seed: 3033
+expected_severity: CRITICAL
+feature_ids:
+- F-015
+- F-048
+services:
+- endpoint-synthetic
+- nginx
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-033
+  user_role: Destek Personeli
+  category: yetkisiz erişim
+  seed: 3033
+  anomaly: false
+- event_type: rdp_hop
+  hops:
+  - ws1
+  - files1
+  source_feature: F-015
+  scenario_id: S-033
+- event_type: http_4xx_spike
+  log_channel: nginx
+  status_4xx: 12
+  window_minutes: 5
+  source_feature: F-048
+  scenario_id: S-033
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Destek Personeli DC RDP

@@ -1,0 +1,50 @@
+scenario_id: S-004
+title: IT Admin Fazladan USB Yedekleme
+mode: negative
+category: veri sızdırma
+user_role: IT Admin
+deterministic_seed: 1004
+expected_severity: CRITICAL
+feature_ids:
+- F-055
+- F-001
+- F-042
+- F-067
+services:
+- cloud-storage-mock
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-004
+  user_role: IT Admin
+  category: veri sızdırma
+  seed: 1004
+  anomaly: false
+- event_type: usb_write
+  device_id: null
+  bytes_written: 0
+  source_feature: F-055
+  scenario_id: S-004
+- event_type: smb_read_volume
+  user: cfo
+  bytes_read: 800000000
+  anomaly: false
+  source_feature: F-001
+  scenario_id: S-004
+- event_type: local_sensitive_accumulation
+  log_channel: endpoint
+  labeled_files: 5
+  gb: 0.4
+  source_feature: F-042
+  scenario_id: S-004
+- event_type: personal_cloud_upload
+  log_channel: cloud
+  provider: corp-onedrive
+  mb: 12
+  source_feature: F-067
+  scenario_id: S-004
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for IT Admin Fazladan USB Yedekleme

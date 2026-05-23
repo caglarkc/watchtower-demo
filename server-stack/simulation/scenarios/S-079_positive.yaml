@@ -1,0 +1,49 @@
+scenario_id: S-079
+title: Tüm Şirkete Sahte CEO İstifa Maili
+mode: positive
+category: sosyal mühendislik
+user_role: İK
+deterministic_seed: 8079
+expected_severity: CRITICAL
+feature_ids:
+- F-016
+- F-020
+- F-023
+- F-027
+services:
+- endpoint-synthetic
+- postfix
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-079
+  user_role: İK
+  category: sosyal mühendislik
+  seed: 8079
+  anomaly: true
+- event_type: mail_send_volume
+  log_channel: postfix
+  messages: 450
+  attachment_mb: 120
+  source_feature: F-016
+  scenario_id: S-079
+- event_type: mail_bcc_anomaly
+  log_channel: postfix
+  bcc_count: 11
+  distribution_list: true
+  source_feature: F-020
+  scenario_id: S-079
+- event_type: mail_sensitive_keyword
+  log_channel: postfix
+  keywords:
+  - bordro
+  - maaş
+  - confidential
+  source_feature: F-023
+  scenario_id: S-079
+- event_type: mail_banned_phrase
+  log_channel: postfix
+  phrase: gizli iç bilgi
+  source_feature: F-027
+  scenario_id: S-079
+expected_evidence: Multi-signal workflow for Tüm Şirkete Sahte CEO İstifa Maili

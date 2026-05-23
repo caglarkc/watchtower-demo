@@ -1,0 +1,38 @@
+scenario_id: S-009
+title: BI Ham PII Export
+mode: negative
+category: veri sızdırma
+user_role: Veri Analisti
+deterministic_seed: 1009
+expected_severity: ALERT
+feature_ids:
+- F-045
+- F-066
+services:
+- endpoint-synthetic
+- internal-app
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-009
+  user_role: Veri Analisti
+  category: veri sızdırma
+  seed: 1009
+  anomaly: false
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 1
+  rows_scanned: 1200
+  source_feature: F-045
+  scenario_id: S-009
+- event_type: peer_group_deviation
+  log_channel: app
+  z_score: 0.3
+  metric: file_reads
+  source_feature: F-066
+  scenario_id: S-009
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for BI Ham PII Export

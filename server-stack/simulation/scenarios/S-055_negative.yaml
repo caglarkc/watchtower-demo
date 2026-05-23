@@ -1,0 +1,35 @@
+scenario_id: S-055
+title: USB ile İçeri Veri Taşıyan Stajyer
+mode: negative
+category: kazara ihlal
+user_role: Stajyer
+deterministic_seed: 5055
+expected_severity: ALERT
+feature_ids:
+- F-055
+- F-043
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-055
+  user_role: Stajyer
+  category: kazara ihlal
+  seed: 5055
+  anomaly: false
+- event_type: usb_write
+  device_id: null
+  bytes_written: 0
+  source_feature: F-055
+  scenario_id: S-055
+- event_type: sensitive_file_move
+  log_channel: endpoint
+  from_zone: restricted
+  to_zone: restricted
+  source_feature: F-043
+  scenario_id: S-055
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for USB ile İçeri Veri Taşıyan Stajyer

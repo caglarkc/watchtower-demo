@@ -1,0 +1,58 @@
+scenario_id: S-052
+title: İK'dan Yanlış Odaya Giden Hassas Mail
+mode: positive
+category: kazara ihlal
+user_role: İK
+deterministic_seed: 5052
+expected_severity: WARNING
+feature_ids:
+- F-020
+- F-023
+- F-021
+- F-028
+- F-019
+services:
+- endpoint-synthetic
+- postfix
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-052
+  user_role: İK
+  category: kazara ihlal
+  seed: 5052
+  anomaly: true
+- event_type: mail_bcc_anomaly
+  log_channel: postfix
+  bcc_count: 11
+  distribution_list: true
+  source_feature: F-020
+  scenario_id: S-052
+- event_type: mail_sensitive_keyword
+  log_channel: postfix
+  keywords:
+  - bordro
+  - maaş
+  - confidential
+  source_feature: F-023
+  scenario_id: S-052
+- event_type: mail_personal_domain
+  log_channel: postfix
+  recipient_domain: gmail.com
+  has_attachment: true
+  source_feature: F-021
+  scenario_id: S-052
+- event_type: mail_first_external_sensitive
+  log_channel: postfix
+  first_time_recipient: true
+  subject_sensitive: true
+  source_feature: F-028
+  scenario_id: S-052
+- event_type: mail_attachment_entropy
+  log_channel: postfix
+  entropy: 7.8
+  declared_type: pdf
+  actual_type: zip
+  source_feature: F-019
+  scenario_id: S-052
+expected_evidence: Multi-signal workflow for İK'dan Yanlış Odaya Giden Hassas Mail

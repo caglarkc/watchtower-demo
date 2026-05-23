@@ -1,0 +1,59 @@
+scenario_id: S-008
+title: Yedekleme Sunucusundan Olağan Dışı Veri Çekme
+mode: negative
+category: veri sızdırma
+user_role: IT Admin
+deterministic_seed: 1008
+expected_severity: CRITICAL
+feature_ids:
+- F-001
+- F-055
+- F-053
+- F-067
+- F-068
+services:
+- cloud-storage-mock
+- endpoint-synthetic
+- proxy-sink
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-008
+  user_role: IT Admin
+  category: veri sızdırma
+  seed: 1008
+  anomaly: false
+- event_type: smb_read_volume
+  user: cfo
+  bytes_read: 800000000
+  anomaly: false
+  source_feature: F-001
+  scenario_id: S-008
+- event_type: usb_write
+  device_id: null
+  bytes_written: 0
+  source_feature: F-055
+  scenario_id: S-008
+- event_type: backup_shadow_delete
+  log_channel: endpoint
+  shadow_copies_deleted: 0
+  source_feature: F-053
+  scenario_id: S-008
+- event_type: personal_cloud_upload
+  log_channel: cloud
+  provider: corp-onedrive
+  mb: 12
+  source_feature: F-067
+  scenario_id: S-008
+- event_type: first_external_transfer
+  log_channel: proxy
+  destination: partner.corp.local
+  mb: 50
+  first_seen: false
+  source_feature: F-068
+  scenario_id: S-008
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Yedekleme Sunucusundan Olağan Dışı Veri
+  Çekme

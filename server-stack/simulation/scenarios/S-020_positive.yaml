@@ -1,0 +1,36 @@
+scenario_id: S-020
+title: Çoklu Lokasyon Çakışması
+mode: positive
+category: credential ihlali
+user_role: CEO
+deterministic_seed: 2020
+expected_severity: CRITICAL
+feature_ids:
+- F-009
+- F-070
+services:
+- badge-api
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-020
+  user_role: CEO
+  category: credential ihlali
+  seed: 2020
+  anomaly: true
+- event_type: concurrent_session
+  log_channel: badge
+  locations:
+  - floor-3
+  - floor-b1
+  minutes_apart: 12
+  source_feature: F-009
+  scenario_id: S-020
+- event_type: badge_login_mismatch
+  log_channel: badge
+  badge_present: false
+  login_success: true
+  source_feature: F-070
+  scenario_id: S-020
+expected_evidence: Multi-signal workflow for Çoklu Lokasyon Çakışması

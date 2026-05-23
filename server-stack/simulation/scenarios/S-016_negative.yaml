@@ -1,0 +1,42 @@
+scenario_id: S-016
+title: Gece Admin Kerberos TGT Zinciri
+mode: negative
+category: credential ihlali
+user_role: IT Admin
+deterministic_seed: 2016
+expected_severity: CRITICAL
+feature_ids:
+- F-008
+- F-015
+- F-079
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-016
+  user_role: IT Admin
+  category: credential ihlali
+  seed: 2016
+  anomaly: false
+- event_type: kerberos_tgt
+  user: admin
+  targets: 0
+  hour: 2
+  source_feature: F-008
+  scenario_id: S-016
+- event_type: rdp_hop
+  hops:
+  - ws1
+  - files1
+  source_feature: F-015
+  scenario_id: S-016
+- event_type: after_hours_session
+  hour: 14
+  interactive: true
+  source_feature: F-079
+  scenario_id: S-016
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Gece Admin Kerberos TGT Zinciri

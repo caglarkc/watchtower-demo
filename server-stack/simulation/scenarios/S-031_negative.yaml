@@ -1,0 +1,36 @@
+scenario_id: S-031
+title: CTO Bilgisayarından SSH Anahtarı Hasadı
+mode: negative
+category: yetkisiz erişim
+user_role: CTO
+deterministic_seed: 3031
+expected_severity: CRITICAL
+feature_ids:
+- F-042
+- F-054
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-031
+  user_role: CTO
+  category: yetkisiz erişim
+  seed: 3031
+  anomaly: false
+- event_type: local_sensitive_accumulation
+  log_channel: endpoint
+  labeled_files: 5
+  gb: 0.4
+  source_feature: F-042
+  scenario_id: S-031
+- event_type: encoded_powershell
+  log_channel: endpoint
+  encoded_command: false
+  bypass_policy: false
+  source_feature: F-054
+  scenario_id: S-031
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for CTO Bilgisayarından SSH Anahtarı Hasadı

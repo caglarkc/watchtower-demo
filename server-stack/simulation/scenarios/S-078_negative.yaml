@@ -1,0 +1,49 @@
+scenario_id: S-078
+title: Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan
+mode: negative
+category: sosyal mühendislik
+user_role: Destek Personeli
+deterministic_seed: 8078
+expected_severity: ALERT
+feature_ids:
+- F-048
+- F-006
+- F-029
+services:
+- endpoint-synthetic
+- nginx
+- roundcube
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-078
+  user_role: Destek Personeli
+  category: sosyal mühendislik
+  seed: 8078
+  anomaly: false
+- event_type: http_4xx_spike
+  log_channel: nginx
+  status_4xx: 12
+  window_minutes: 5
+  source_feature: F-048
+  scenario_id: S-078
+- event_type: ad_auth
+  event_id: 4625
+  count: 1
+  source_feature: F-006
+  scenario_id: S-078
+- event_type: ad_auth
+  event_id: 4624
+  count: 1
+  source_feature: F-006
+  scenario_id: S-078
+- event_type: webmail_login_attempt
+  log_channel: roundcube
+  account: user@corp.local
+  source_feature: F-029
+  scenario_id: S-078
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Sosyal Mühendislik Tuzağına Düşen Yeni
+  Başlayan

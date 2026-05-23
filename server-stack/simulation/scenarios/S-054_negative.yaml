@@ -1,0 +1,45 @@
+scenario_id: S-054
+title: Canlı Ortam Yerine Test Aracı Yanlışlığı
+mode: negative
+category: kazara ihlal
+user_role: Yazılım Geliştirici
+deterministic_seed: 5054
+expected_severity: ALERT
+feature_ids:
+- F-045
+- F-048
+- F-007
+services:
+- endpoint-synthetic
+- nginx
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-054
+  user_role: Yazılım Geliştirici
+  category: kazara ihlal
+  seed: 5054
+  anomaly: false
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 1
+  rows_scanned: 1200
+  source_feature: F-045
+  scenario_id: S-054
+- event_type: http_4xx_spike
+  log_channel: nginx
+  status_4xx: 12
+  window_minutes: 5
+  source_feature: F-048
+  scenario_id: S-054
+- event_type: port_scan
+  targets: 5
+  ports: 3
+  window_minutes: 12
+  source_feature: F-007
+  scenario_id: S-054
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Canlı Ortam Yerine Test Aracı Yanlışlığı

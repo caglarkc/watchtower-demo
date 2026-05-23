@@ -1,0 +1,36 @@
+scenario_id: S-045
+title: İK Hesabından Gece Mail Arşiv Taraması
+mode: negative
+category: insider threat
+user_role: İK
+deterministic_seed: 4045
+expected_severity: CRITICAL
+feature_ids:
+- F-024
+- F-018
+services:
+- dovecot
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-045
+  user_role: İK
+  category: insider threat
+  seed: 4045
+  anomaly: false
+- event_type: imap_archive_bulk_read
+  log_channel: dovecot
+  messages_read: 40
+  years_span: 1
+  source_feature: F-024
+  scenario_id: S-045
+- event_type: imap_mailbox_access
+  log_channel: dovecot
+  foreign_mailbox: self
+  source_feature: F-018
+  scenario_id: S-045
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for İK Hesabından Gece Mail Arşiv Taraması

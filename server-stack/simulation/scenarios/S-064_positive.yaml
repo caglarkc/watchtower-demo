@@ -1,0 +1,24 @@
+scenario_id: S-064
+title: Stajyerin Wi-Fi Ağı Sniffing Denemesi
+mode: positive
+category: politika ihlali
+user_role: Stajyer
+deterministic_seed: 6064
+expected_severity: CRITICAL
+feature_ids:
+- F-057
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-064
+  user_role: Stajyer
+  category: politika ihlali
+  seed: 6064
+  anomaly: true
+- event_type: nic_promiscuous
+  enabled: true
+  source_feature: F-057
+  scenario_id: S-064
+expected_evidence: Multi-signal workflow for Stajyerin Wi-Fi Ağı Sniffing Denemesi

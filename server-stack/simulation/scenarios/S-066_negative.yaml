@@ -1,0 +1,32 @@
+scenario_id: S-066
+title: Hukuk Toplu PDF OCR Geçici Klasörü
+mode: negative
+category: politika ihlali
+user_role: Hukuk
+deterministic_seed: 6066
+expected_severity: ALERT
+feature_ids:
+- F-041
+- F-039
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-066
+  user_role: Hukuk
+  category: politika ihlali
+  seed: 6066
+  anomaly: false
+- event_type: acl_change
+  permission: Finance-RW
+  source_feature: F-041
+  scenario_id: S-066
+- event_type: smb_rename_storm
+  renames_per_minute: 2
+  source_feature: F-039
+  scenario_id: S-066
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Hukuk Toplu PDF OCR Geçici Klasörü

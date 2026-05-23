@@ -1,0 +1,34 @@
+scenario_id: S-032
+title: Junior Dev Prod Veritabanı Erişimi
+mode: positive
+category: yetkisiz erişim
+user_role: Yazılım Geliştirici
+deterministic_seed: 3032
+expected_severity: CRITICAL
+feature_ids:
+- F-045
+- F-065
+services:
+- endpoint-synthetic
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-032
+  user_role: Yazılım Geliştirici
+  category: yetkisiz erişim
+  seed: 3032
+  anomaly: true
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 12
+  rows_scanned: 4500000
+  source_feature: F-045
+  scenario_id: S-032
+- event_type: dormant_system_access
+  log_channel: endpoint
+  idle_days: 120
+  access_count: 15
+  source_feature: F-065
+  scenario_id: S-032
+expected_evidence: Multi-signal workflow for Junior Dev Prod Veritabanı Erişimi

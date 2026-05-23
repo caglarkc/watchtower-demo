@@ -1,0 +1,30 @@
+scenario_id: S-041
+title: Sahte Tedarikçi IBAN Değişikliği
+mode: negative
+category: insider threat
+user_role: Muhasebe
+deterministic_seed: 4041
+expected_severity: CRITICAL
+feature_ids:
+- F-047
+services:
+- endpoint-synthetic
+- internal-app
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-041
+  user_role: Muhasebe
+  category: insider threat
+  seed: 4041
+  anomaly: false
+- event_type: api_pattern_deviation
+  log_channel: app
+  calls_per_hour: 38
+  baseline: 40
+  source_feature: F-047
+  scenario_id: S-041
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Sahte Tedarikçi IBAN Değişikliği

@@ -1,0 +1,39 @@
+scenario_id: S-075
+title: CEO Asistanı Gibi Davranan Arama Sonrası Erişim
+mode: positive
+category: sosyal mühendislik
+user_role: CEO
+deterministic_seed: 8075
+expected_severity: ALERT
+feature_ids:
+- F-037
+- F-063
+- F-079
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-075
+  user_role: CEO
+  category: sosyal mühendislik
+  seed: 8075
+  anomaly: true
+- event_type: smb_access
+  share: legal
+  user_dept: dev
+  files: 41
+  source_feature: F-037
+  scenario_id: S-075
+- event_type: unknown_hardware
+  device_id: NEW-MAC-9912
+  success: true
+  source_feature: F-063
+  scenario_id: S-075
+- event_type: after_hours_session
+  hour: 2
+  interactive: true
+  source_feature: F-079
+  scenario_id: S-075
+expected_evidence: Multi-signal workflow for CEO Asistanı Gibi Davranan Arama Sonrası
+  Erişim

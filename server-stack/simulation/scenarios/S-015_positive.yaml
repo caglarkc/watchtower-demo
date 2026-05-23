@@ -1,0 +1,27 @@
+scenario_id: S-015
+title: Payroll SQL Dump
+mode: positive
+category: veri sızdırma
+user_role: İK
+deterministic_seed: 1015
+expected_severity: CRITICAL
+feature_ids:
+- F-045
+services:
+- endpoint-synthetic
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-015
+  user_role: İK
+  category: veri sızdırma
+  seed: 1015
+  anomaly: true
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 12
+  rows_scanned: 4500000
+  source_feature: F-045
+  scenario_id: S-015
+expected_evidence: Multi-signal workflow for Payroll SQL Dump

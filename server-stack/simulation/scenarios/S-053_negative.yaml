@@ -1,0 +1,41 @@
+scenario_id: S-053
+title: Yeni Yazılımcının Hatalı Script Döngüsü
+mode: negative
+category: kazara ihlal
+user_role: Yazılım Geliştirici
+deterministic_seed: 5053
+expected_severity: ALERT
+feature_ids:
+- F-006
+- F-048
+services:
+- endpoint-synthetic
+- nginx
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-053
+  user_role: Yazılım Geliştirici
+  category: kazara ihlal
+  seed: 5053
+  anomaly: false
+- event_type: ad_auth
+  event_id: 4625
+  count: 1
+  source_feature: F-006
+  scenario_id: S-053
+- event_type: ad_auth
+  event_id: 4624
+  count: 1
+  source_feature: F-006
+  scenario_id: S-053
+- event_type: http_4xx_spike
+  log_channel: nginx
+  status_4xx: 12
+  window_minutes: 5
+  source_feature: F-048
+  scenario_id: S-053
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Yeni Yazılımcının Hatalı Script Döngüsü

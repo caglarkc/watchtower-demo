@@ -1,0 +1,28 @@
+scenario_id: S-034
+title: Muhasebe Domain Admin Grubu Denemesi
+mode: negative
+category: yetkisiz erişim
+user_role: Muhasebe
+deterministic_seed: 3034
+expected_severity: CRITICAL
+feature_ids:
+- F-011
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-034
+  user_role: Muhasebe
+  category: yetkisiz erişim
+  seed: 3034
+  anomaly: false
+- event_type: ad_group_change
+  event_id: 4728
+  group: Helpdesk
+  source_feature: F-011
+  scenario_id: S-034
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Muhasebe Domain Admin Grubu Denemesi

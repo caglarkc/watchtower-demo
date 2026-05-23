@@ -1,0 +1,40 @@
+scenario_id: S-018
+title: Domain Admin Hesabıyla Sıra Dışı Giriş
+mode: positive
+category: credential ihlali
+user_role: IT Admin
+deterministic_seed: 2018
+expected_severity: CRITICAL
+feature_ids:
+- F-079
+- F-010
+- F-015
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-018
+  user_role: IT Admin
+  category: credential ihlali
+  seed: 2018
+  anomaly: true
+- event_type: after_hours_session
+  hour: 2
+  interactive: true
+  source_feature: F-079
+  scenario_id: S-018
+- event_type: service_interactive
+  account: svc_sql
+  logon_type: 2
+  source_feature: F-010
+  scenario_id: S-018
+- event_type: rdp_hop
+  hops:
+  - ws1
+  - dc1
+  - files1
+  - db1
+  source_feature: F-015
+  scenario_id: S-018
+expected_evidence: Multi-signal workflow for Domain Admin Hesabıyla Sıra Dışı Giriş

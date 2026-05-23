@@ -1,0 +1,27 @@
+scenario_id: S-046
+title: İK Sisteminde Hayalet Çalışan Oluşturma
+mode: positive
+category: insider threat
+user_role: İK
+deterministic_seed: 4046
+expected_severity: CRITICAL
+feature_ids:
+- F-075
+services:
+- endpoint-synthetic
+- hris-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-046
+  user_role: İK
+  category: insider threat
+  seed: 4046
+  anomaly: true
+- event_type: new_hire_excess_access
+  log_channel: hris
+  day: 1
+  systems_accessed: 28
+  source_feature: F-075
+  scenario_id: S-046
+expected_evidence: Multi-signal workflow for İK Sisteminde Hayalet Çalışan Oluşturma

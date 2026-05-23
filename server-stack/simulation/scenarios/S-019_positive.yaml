@@ -1,0 +1,25 @@
+scenario_id: S-019
+title: Hizmet Hesabının Kötüye Kullanımı
+mode: positive
+category: credential ihlali
+user_role: IT Admin
+deterministic_seed: 2019
+expected_severity: CRITICAL
+feature_ids:
+- F-010
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-019
+  user_role: IT Admin
+  category: credential ihlali
+  seed: 2019
+  anomaly: true
+- event_type: service_interactive
+  account: svc_sql
+  logon_type: 2
+  source_feature: F-010
+  scenario_id: S-019
+expected_evidence: Multi-signal workflow for Hizmet Hesabının Kötüye Kullanımı

@@ -1,0 +1,24 @@
+scenario_id: S-051
+title: Yanlış Paylaşılan Bordro Klasörü
+mode: positive
+category: kazara ihlal
+user_role: Muhasebe
+deterministic_seed: 5051
+expected_severity: ALERT
+feature_ids:
+- F-041
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-051
+  user_role: Muhasebe
+  category: kazara ihlal
+  seed: 5051
+  anomaly: true
+- event_type: acl_change
+  permission: Everyone:FullControl
+  source_feature: F-041
+  scenario_id: S-051
+expected_evidence: Multi-signal workflow for Yanlış Paylaşılan Bordro Klasörü

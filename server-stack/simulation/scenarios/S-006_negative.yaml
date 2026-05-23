@@ -1,0 +1,37 @@
+scenario_id: S-006
+title: Kaynak Kod Deposunun Kitlesel Klonlanması
+mode: negative
+category: veri sızdırma
+user_role: Yazılım Geliştirici
+deterministic_seed: 1006
+expected_severity: CRITICAL
+feature_ids:
+- F-049
+- F-042
+services:
+- endpoint-synthetic
+- gitea
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-006
+  user_role: Yazılım Geliştirici
+  category: veri sızdırma
+  seed: 1006
+  anomaly: false
+- event_type: git_clone_volume
+  log_channel: gitea
+  repos_cloned: 1
+  bytes: 150000000
+  source_feature: F-049
+  scenario_id: S-006
+- event_type: local_sensitive_accumulation
+  log_channel: endpoint
+  labeled_files: 5
+  gb: 0.4
+  source_feature: F-042
+  scenario_id: S-006
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Kaynak Kod Deposunun Kitlesel Klonlanması

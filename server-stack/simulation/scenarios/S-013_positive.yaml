@@ -1,0 +1,39 @@
+scenario_id: S-013
+title: Destek Ticket PII Toplu Arşivi
+mode: positive
+category: veri sızdırma
+user_role: Destek Personeli
+deterministic_seed: 1013
+expected_severity: ALERT
+feature_ids:
+- F-038
+- F-018
+- F-060
+services:
+- activity-generator
+- dovecot
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-013
+  user_role: Destek Personeli
+  category: veri sızdırma
+  seed: 1013
+  anomaly: true
+- event_type: smb_bulk_io
+  read_bytes: 18400000000
+  write_bytes: 0
+  source_feature: F-038
+  scenario_id: S-013
+- event_type: imap_mailbox_access
+  log_channel: dovecot
+  foreign_mailbox: ceo@corp.local
+  source_feature: F-018
+  scenario_id: S-013
+- event_type: screenshot_spike
+  log_channel: activity
+  count_per_hour: 85
+  source_feature: F-060
+  scenario_id: S-013
+expected_evidence: Multi-signal workflow for Destek Ticket PII Toplu Arşivi

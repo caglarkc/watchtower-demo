@@ -1,0 +1,29 @@
+scenario_id: S-035
+title: Stajyer Ağ Keşfi
+mode: negative
+category: yetkisiz erişim
+user_role: Stajyer
+deterministic_seed: 3035
+expected_severity: ALERT
+feature_ids:
+- F-007
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-035
+  user_role: Stajyer
+  category: yetkisiz erişim
+  seed: 3035
+  anomaly: false
+- event_type: port_scan
+  targets: 5
+  ports: 3
+  window_minutes: 12
+  source_feature: F-007
+  scenario_id: S-035
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Stajyer Ağ Keşfi

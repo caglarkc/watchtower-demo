@@ -1,0 +1,53 @@
+scenario_id: S-007
+title: Geçici Toplantı Dosyasında Gizlenen Veritabanı Dökümü
+mode: negative
+category: veri sızdırma
+user_role: Yazılım Geliştirici
+deterministic_seed: 1007
+expected_severity: CRITICAL
+feature_ids:
+- F-045
+- F-043
+- F-031
+- F-034
+services:
+- ai-gateway-mock
+- endpoint-synthetic
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-007
+  user_role: Yazılım Geliştirici
+  category: veri sızdırma
+  seed: 1007
+  anomaly: false
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 1
+  rows_scanned: 1200
+  source_feature: F-045
+  scenario_id: S-007
+- event_type: sensitive_file_move
+  log_channel: endpoint
+  from_zone: restricted
+  to_zone: restricted
+  source_feature: F-043
+  scenario_id: S-007
+- event_type: ai_source_code_paste
+  log_channel: ai_gateway
+  lines: 40
+  language: python
+  source_feature: F-031
+  scenario_id: S-007
+- event_type: ai_file_upload
+  log_channel: ai_gateway
+  files: 1
+  total_mb: 2
+  source_feature: F-034
+  scenario_id: S-007
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Geçici Toplantı Dosyasında Gizlenen Veritabanı
+  Dökümü

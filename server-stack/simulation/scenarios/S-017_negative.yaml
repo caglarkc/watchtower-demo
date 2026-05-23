@@ -1,0 +1,30 @@
+scenario_id: S-017
+title: Token Vault Dump
+mode: negative
+category: credential ihlali
+user_role: IT Admin
+deterministic_seed: 2017
+expected_severity: CRITICAL
+feature_ids:
+- F-013
+services:
+- endpoint-synthetic
+- vault-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-017
+  user_role: IT Admin
+  category: credential ihlali
+  seed: 2017
+  anomaly: false
+- event_type: vault_read_burst
+  log_channel: vault
+  reads: 5
+  window_minutes: 60
+  source_feature: F-013
+  scenario_id: S-017
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Token Vault Dump

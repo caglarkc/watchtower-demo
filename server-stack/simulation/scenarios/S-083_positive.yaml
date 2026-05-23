@@ -1,0 +1,41 @@
+scenario_id: S-083
+title: Aynı Dosyaya Zincirleme Çapraz Departman Erişimi
+mode: positive
+category: çapraz/multi-user
+user_role: Satış
+deterministic_seed: 9083
+expected_severity: ALERT
+feature_ids:
+- F-073
+- F-039
+- F-037
+services:
+- endpoint-synthetic
+- wiki-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-083
+  user_role: Satış
+  category: çapraz/multi-user
+  seed: 9083
+  anomaly: true
+- event_type: multi_user_file_chain
+  log_channel: wiki
+  file_id: contract-991
+  users: 3
+  window_minutes: 30
+  source_feature: F-073
+  scenario_id: S-083
+- event_type: smb_rename_storm
+  renames_per_minute: 120
+  source_feature: F-039
+  scenario_id: S-083
+- event_type: smb_access
+  share: legal
+  user_dept: dev
+  files: 41
+  source_feature: F-037
+  scenario_id: S-083
+expected_evidence: Multi-signal workflow for Aynı Dosyaya Zincirleme Çapraz Departman
+  Erişimi

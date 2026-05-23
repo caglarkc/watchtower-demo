@@ -1,0 +1,25 @@
+scenario_id: S-030
+title: Yetki Yükseltme (Privilege Escalation)
+mode: positive
+category: yetkisiz erişim
+user_role: IT Admin
+deterministic_seed: 3030
+expected_severity: CRITICAL
+feature_ids:
+- F-011
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-030
+  user_role: IT Admin
+  category: yetkisiz erişim
+  seed: 3030
+  anomaly: true
+- event_type: ad_group_change
+  event_id: 4728
+  group: Domain Admins
+  source_feature: F-011
+  scenario_id: S-030
+expected_evidence: Multi-signal workflow for Yetki Yükseltme (Privilege Escalation)

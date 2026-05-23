@@ -1,0 +1,36 @@
+scenario_id: S-077
+title: Hukuk Ekibine CFO Adına Gelen Sahte İç Mail
+mode: positive
+category: sosyal mühendislik
+user_role: Hukuk
+deterministic_seed: 8077
+expected_severity: ALERT
+feature_ids:
+- F-023
+- F-026
+services:
+- endpoint-synthetic
+- postfix
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-077
+  user_role: Hukuk
+  category: sosyal mühendislik
+  seed: 8077
+  anomaly: true
+- event_type: mail_sensitive_keyword
+  log_channel: postfix
+  keywords:
+  - bordro
+  - maaş
+  - confidential
+  source_feature: F-023
+  scenario_id: S-077
+- event_type: mail_style_deviation
+  log_channel: postfix
+  tone_score: 0.92
+  source_feature: F-026
+  scenario_id: S-077
+expected_evidence: Multi-signal workflow for Hukuk Ekibine CFO Adına Gelen Sahte İç
+  Mail

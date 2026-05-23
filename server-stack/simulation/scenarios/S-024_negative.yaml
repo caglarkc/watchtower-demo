@@ -1,0 +1,30 @@
+scenario_id: S-024
+title: Deploy Key 3 Farklı IP
+mode: negative
+category: credential ihlali
+user_role: Yazılım Geliştirici
+deterministic_seed: 2024
+expected_severity: ALERT
+feature_ids:
+- F-012
+services:
+- endpoint-synthetic
+- internal-app
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-024
+  user_role: Yazılım Geliştirici
+  category: credential ihlali
+  seed: 2024
+  anomaly: false
+- event_type: api_key_usage
+  log_channel: app
+  key_id: svc-deploy
+  source_ips: 1
+  source_feature: F-012
+  scenario_id: S-024
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Deploy Key 3 Farklı IP

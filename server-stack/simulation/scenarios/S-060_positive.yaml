@@ -1,0 +1,32 @@
+scenario_id: S-060
+title: Hukuk Klasörünü Yedekleyen PM
+mode: positive
+category: politika ihlali
+user_role: Proje Yöneticisi
+deterministic_seed: 6060
+expected_severity: ALERT
+feature_ids:
+- F-037
+- F-038
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-060
+  user_role: Proje Yöneticisi
+  category: politika ihlali
+  seed: 6060
+  anomaly: true
+- event_type: smb_access
+  share: legal
+  user_dept: dev
+  files: 41
+  source_feature: F-037
+  scenario_id: S-060
+- event_type: smb_bulk_io
+  read_bytes: 18400000000
+  write_bytes: 0
+  source_feature: F-038
+  scenario_id: S-060
+expected_evidence: Multi-signal workflow for Hukuk Klasörünü Yedekleyen PM

@@ -1,0 +1,45 @@
+scenario_id: S-069
+title: DNS Sunucu Yönlendirme Manipülasyonu
+mode: positive
+category: dış saldırı desteği
+user_role: IT Admin
+deterministic_seed: 7069
+expected_severity: CRITICAL
+feature_ids:
+- F-003
+- F-005
+- F-004
+- F-069
+services:
+- endpoint-synthetic
+- proxy-sink
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-069
+  user_role: IT Admin
+  category: dış saldırı desteği
+  seed: 7069
+  anomaly: true
+- event_type: dns_entropy
+  txt_queries: 5000
+  nxdomain_ratio: 0.4
+  source_feature: F-003
+  scenario_id: S-069
+- event_type: dhcp_anomaly
+  rogue_scope: true
+  duplicate_lease: true
+  source_feature: F-005
+  scenario_id: S-069
+- event_type: smb_downgrade
+  smb_version: SMB1
+  ntlm: NTLMv1
+  source_feature: F-004
+  scenario_id: S-069
+- event_type: proxy_tunnel
+  log_channel: proxy
+  protocol: unknown-tls-tunnel
+  duration_minutes: 45
+  source_feature: F-069
+  scenario_id: S-069
+expected_evidence: Multi-signal workflow for DNS Sunucu Yönlendirme Manipülasyonu

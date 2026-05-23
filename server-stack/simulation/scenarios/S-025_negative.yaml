@@ -1,0 +1,35 @@
+scenario_id: S-025
+title: Admin Hesaplarının Çapraz Kullanımı
+mode: negative
+category: credential ihlali
+user_role: IT Admin
+deterministic_seed: 2025
+expected_severity: ALERT
+feature_ids:
+- F-015
+- F-063
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-025
+  user_role: IT Admin
+  category: credential ihlali
+  seed: 2025
+  anomaly: false
+- event_type: rdp_hop
+  hops:
+  - ws1
+  - files1
+  source_feature: F-015
+  scenario_id: S-025
+- event_type: unknown_hardware
+  device_id: KNOWN-MAC-001
+  success: true
+  source_feature: F-063
+  scenario_id: S-025
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Admin Hesaplarının Çapraz Kullanımı

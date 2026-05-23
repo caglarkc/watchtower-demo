@@ -1,0 +1,51 @@
+scenario_id: S-056
+title: Destek Personelinin Aşırı Geniş Oturum Süresi
+mode: negative
+category: kazara ihlal
+user_role: Destek Personeli
+deterministic_seed: 5056
+expected_severity: WARNING
+feature_ids:
+- F-080
+- F-037
+- F-060
+- F-077
+services:
+- activity-generator
+- endpoint-synthetic
+- hris-mock
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-056
+  user_role: Destek Personeli
+  category: kazara ihlal
+  seed: 5056
+  anomaly: false
+- event_type: idle_session_abuse
+  session_hours: 2
+  keyboard_events: 900
+  source_feature: F-080
+  scenario_id: S-056
+- event_type: smb_access
+  share: dev
+  user_dept: dev
+  files: 3
+  source_feature: F-037
+  scenario_id: S-056
+- event_type: screenshot_spike
+  log_channel: activity
+  count_per_hour: 3
+  source_feature: F-060
+  scenario_id: S-056
+- event_type: leave_activity
+  log_channel: hris
+  on_leave: true
+  keyboard_events: 0
+  source_feature: F-077
+  scenario_id: S-056
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Destek Personelinin Aşırı Geniş Oturum
+  Süresi

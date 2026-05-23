@@ -1,0 +1,31 @@
+scenario_id: S-058
+title: Hukuk Bilgisayarına Bilinmeyen USB Takılması
+mode: positive
+category: kazara ihlal
+user_role: Hukuk
+deterministic_seed: 5058
+expected_severity: ALERT
+feature_ids:
+- F-055
+- F-063
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-058
+  user_role: Hukuk
+  category: kazara ihlal
+  seed: 5058
+  anomaly: true
+- event_type: usb_write
+  device_id: USB-9F2A
+  bytes_written: 2400000000
+  source_feature: F-055
+  scenario_id: S-058
+- event_type: unknown_hardware
+  device_id: NEW-MAC-9912
+  success: true
+  source_feature: F-063
+  scenario_id: S-058
+expected_evidence: Multi-signal workflow for Hukuk Bilgisayarına Bilinmeyen USB Takılması

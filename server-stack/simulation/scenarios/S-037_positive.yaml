@@ -1,0 +1,26 @@
+scenario_id: S-037
+title: Satıştan Muhasebeye Kesişen Erişim
+mode: positive
+category: yetkisiz erişim
+user_role: Satış
+deterministic_seed: 3037
+expected_severity: ALERT
+feature_ids:
+- F-037
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-037
+  user_role: Satış
+  category: yetkisiz erişim
+  seed: 3037
+  anomaly: true
+- event_type: smb_access
+  share: legal
+  user_dept: dev
+  files: 41
+  source_feature: F-037
+  scenario_id: S-037
+expected_evidence: Multi-signal workflow for Satıştan Muhasebeye Kesişen Erişim

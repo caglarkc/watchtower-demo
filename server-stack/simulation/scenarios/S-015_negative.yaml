@@ -1,0 +1,30 @@
+scenario_id: S-015
+title: Payroll SQL Dump
+mode: negative
+category: veri sızdırma
+user_role: İK
+deterministic_seed: 1015
+expected_severity: CRITICAL
+feature_ids:
+- F-045
+services:
+- endpoint-synthetic
+- postgres
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-015
+  user_role: İK
+  category: veri sızdırma
+  seed: 1015
+  anomaly: false
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 1
+  rows_scanned: 1200
+  source_feature: F-045
+  scenario_id: S-015
+negative_control:
+  type: baseline_replay
+  description: Same scenario with sub-threshold feature signals
+expected_evidence: Multi-signal workflow for Payroll SQL Dump

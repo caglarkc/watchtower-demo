@@ -1,0 +1,26 @@
+scenario_id: S-068
+title: Admin Bilgisayarından Agresif Port Taraması
+mode: positive
+category: dış saldırı desteği
+user_role: IT Admin
+deterministic_seed: 7068
+expected_severity: CRITICAL
+feature_ids:
+- F-007
+services:
+- endpoint-synthetic
+events:
+- event_type: scenario_anchor
+  log_channel: endpoint
+  scenario_id: S-068
+  user_role: IT Admin
+  category: dış saldırı desteği
+  seed: 7068
+  anomaly: true
+- event_type: port_scan
+  targets: 200
+  ports: 25
+  window_minutes: 12
+  source_feature: F-007
+  scenario_id: S-068
+expected_evidence: Multi-signal workflow for Admin Bilgisayarından Agresif Port Taraması
