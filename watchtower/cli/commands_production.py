@@ -11,6 +11,7 @@ import typer
 from watchtower.backup.service import BackupService, RestoreError
 from watchtower.cli.deps import require_bootstrap
 from watchtower.health.service import HealthService
+from watchtower.observability.readiness import build_production_readiness_report
 from watchtower.llm.providers.onboarding import (
     clear_provider_chain,
     resolve_provider_chain,
@@ -23,6 +24,7 @@ from watchtower.sources.onboarding import SUPPORTED_CONNECTORS, SourceOnboarding
 from watchtower.storage.migrations.runner import MigrationRunner
 
 health_app = typer.Typer(help="Health check commands")
+metrics_app = typer.Typer(help="Runtime metrics")
 backup_app = typer.Typer(help="Backup and restore")
 retention_app = typer.Typer(help="Data retention")
 migrate_app = typer.Typer(help="Database migrations")

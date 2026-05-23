@@ -154,12 +154,22 @@ class HealthService:
                 src_status = "unhealthy"
             elif unhealthy:
                 src_status = "degraded"
+            src_details: dict[str, Any] = {
+                "registered": len(sources),
+                "unhealthy": unhealthy,
+            }
+            if hasattr(session, "metrics"):
+                snap = session.metrics.snapshot(tenant.id)
+                src_errors = int(snap.get(METRIC_SOURCE_ERRORS))
+                src_details["source_errors_total"] = src_errors
+                if src_errors and src_status == "healthy":
+                    src_status = "degraded"
             checks.append(
                 HealthCheck(
                     "sources",
                     src_status,
                     f"{len(sources)} source(s), {unhealthy} unhealthy",
-                    {"registered": len(sources), "unhealthy": unhealthy},
+                    src_details,
                 )
             )
 
