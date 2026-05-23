@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-028",
   "title": "IT Admin Yetki Zinciri",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "IT Admin",
   "deterministic_seed": 3028,
@@ -22,7 +22,7 @@
         {
           "service": "zeek",
           "response": {
-            "written": 2,
+            "written": 1,
             "log": "/var/log/corp/zeek/conn.log"
           }
         },
@@ -60,7 +60,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-015",
-            "count": 24064,
+            "count": 25024,
             "result": "PASS"
           },
           "result": "PASS",
@@ -120,12 +120,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 53,
+            "indexed": 54,
             "index": "corp-logs-f-061",
             "pipeline": {
               "feature_id": "F-061",
               "index": "corp-logs-f-061",
-              "indexed": 53
+              "indexed": 54
             }
           }
         }
@@ -181,7 +181,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-079",
-            "count": 28029,
+            "count": 29149,
             "result": "PASS"
           },
           "result": "PASS",
@@ -209,7 +209,7 @@
     {
       "service": "zeek",
       "response": {
-        "written": 2,
+        "written": 1,
         "log": "/var/log/corp/zeek/conn.log"
       }
     },
@@ -279,7 +279,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-015",
-        "count": 24064,
+        "count": 25024,
         "result": "PASS"
       },
       "result": "PASS",
@@ -312,12 +312,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 53,
+        "indexed": 54,
         "index": "corp-logs-f-061",
         "pipeline": {
           "feature_id": "F-061",
           "index": "corp-logs-f-061",
-          "indexed": 53
+          "indexed": 54
         }
       }
     },
@@ -335,7 +335,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-079",
-        "count": 28029,
+        "count": 29149,
         "result": "PASS"
       },
       "result": "PASS",
@@ -361,12 +361,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:27:09.035604+00:00",
+  "generated_at": "2026-05-23T10:27:34.170775+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-028:3028:positive:real"
+  "replay_key": "S-028:3028:negative:real"
 }
