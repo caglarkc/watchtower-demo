@@ -49,3 +49,4 @@
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "feature_id": "F-067", "timestamp": "2026-05-23T03:17:51.935465+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "feature_id": "F-067", "timestamp": "2026-05-23T03:17:55.247695+00:00"}
 {"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "dropbox-personal", "mb": 2100, "feature_id": "F-067", "timestamp": "2026-05-23T05:09:32.088538+00:00"}
+{"event_type": "personal_cloud_upload", "log_channel": "cloud", "provider": "corp-onedrive", "mb": 12, "feature_id": "F-067", "timestamp": "2026-05-23T05:09:39.488867+00:00"}

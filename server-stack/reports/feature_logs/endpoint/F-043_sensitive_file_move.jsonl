@@ -49,3 +49,4 @@
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "feature_id": "F-043", "timestamp": "2026-05-23T03:17:50.914287+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "feature_id": "F-043", "timestamp": "2026-05-23T03:17:54.187174+00:00"}
 {"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "public", "feature_id": "F-043", "timestamp": "2026-05-23T05:09:29.960309+00:00"}
+{"event_type": "sensitive_file_move", "log_channel": "endpoint", "from_zone": "restricted", "to_zone": "restricted", "feature_id": "F-043", "timestamp": "2026-05-23T05:09:37.297799+00:00"}
