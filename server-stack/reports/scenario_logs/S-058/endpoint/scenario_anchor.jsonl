@@ -29,3 +29,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-058", "user_role": "Hukuk", "category": "kazara ihlal", "seed": 5058, "anomaly": true, "timestamp": "2026-05-23T05:36:02.953808+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-058", "user_role": "Hukuk", "category": "kazara ihlal", "seed": 5058, "anomaly": false, "timestamp": "2026-05-23T05:36:05.795879+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-058", "user_role": "Hukuk", "category": "kazara ihlal", "seed": 5058, "anomaly": true, "timestamp": "2026-05-23T08:41:24.331950+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-058", "user_role": "Hukuk", "category": "kazara ihlal", "seed": 5058, "anomaly": false, "timestamp": "2026-05-23T08:41:27.234749+00:00"}

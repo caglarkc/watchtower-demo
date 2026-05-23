@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-024",
   "title": "Deploy Key 3 Farklı IP",
-  "mode": "positive",
+  "mode": "negative",
   "category": "credential ihlali",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 2024,
@@ -14,7 +14,7 @@
     "internal-app"
   ],
   "expected_evidence": "Multi-signal workflow for Deploy Key 3 Farklı IP",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,13 +24,13 @@
       "user_role": "Yazılım Geliştirici",
       "category": "credential ihlali",
       "seed": 2024,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "api_key_usage",
       "log_channel": "app",
       "key_id": "svc-deploy",
-      "source_ips": 3,
+      "source_ips": 1,
       "source_feature": "F-012",
       "scenario_id": "S-024"
     }
@@ -39,9 +39,12 @@
     "reports/scenario_logs/S-024/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-024/app/api_key_usage.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T08:41:23.214865+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T08:41:26.076714+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-024:2024:positive"
+  "replay_key": "S-024:2024:negative"
 }

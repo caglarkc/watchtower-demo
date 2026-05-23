@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-067",
   "title": "Güvenlik Görevlisinin Sunucu Odası Erişim Olayı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 7067,
@@ -16,7 +16,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Güvenlik Görevlisinin Sunucu Odası Erişim Olayı",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "events": [
     {
@@ -26,12 +26,12 @@
       "user_role": "Güvenlik Görevlisi",
       "category": "dış saldırı desteği",
       "seed": 7067,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "ad_auth",
       "event_id": 4625,
-      "count": 18,
+      "count": 1,
       "source_feature": "F-006",
       "scenario_id": "S-067"
     },
@@ -45,7 +45,7 @@
     {
       "event_type": "badge_login_mismatch",
       "log_channel": "badge",
-      "badge_present": false,
+      "badge_present": true,
       "login_success": true,
       "source_feature": "F-070",
       "scenario_id": "S-067"
@@ -53,8 +53,8 @@
     {
       "event_type": "off_shift_access",
       "log_channel": "badge",
-      "shift": "off",
-      "login_hour": 2,
+      "shift": "day",
+      "login_hour": 10,
       "badge_swipe": true,
       "source_feature": "F-074",
       "scenario_id": "S-067"
@@ -67,9 +67,12 @@
     "reports/scenario_logs/S-067/badge/badge_login_mismatch.jsonl",
     "reports/scenario_logs/S-067/badge/off_shift_access.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T08:41:24.635859+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T08:41:27.536811+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-067:7067:positive"
+  "replay_key": "S-067:7067:negative"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-049",
   "title": "Muhasebe Login Saatleri Toplu İnceleme",
-  "mode": "negative",
+  "mode": "positive",
   "category": "insider threat",
   "user_role": "Muhasebe",
   "deterministic_seed": 4049,
@@ -114,12 +114,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:38:29.741739+00:00",
+  "generated_at": "2026-05-23T08:41:27.992528+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-049:4049:negative:real"
+  "replay_key": "S-049:4049:positive:real"
 }

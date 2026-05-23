@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "old entitlement use after role change",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:12.792587+00:00",
+  "generated_at": "2026-05-23T08:41:28.313097+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
