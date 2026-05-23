@@ -56,7 +56,7 @@
   "anomaly_detected": false,
   "evidence_expected": "personal cloud large upload",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:43:29.064358+00:00",
+  "generated_at": "2026-05-23T02:56:23.528132+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

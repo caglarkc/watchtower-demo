@@ -30,7 +30,7 @@
   "anomaly_detected": false,
   "evidence_expected": "old archive bulk-read event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:18.988183+00:00",
+  "generated_at": "2026-05-23T02:56:24.148374+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

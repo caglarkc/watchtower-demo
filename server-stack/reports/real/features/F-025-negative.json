@@ -30,7 +30,7 @@
   "anomaly_detected": false,
   "evidence_expected": "address-book export event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:19.106830+00:00",
+  "generated_at": "2026-05-23T02:56:24.207076+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -2,7 +2,7 @@
   "id": "F-037",
   "feature_id": "F-037",
   "title": "Departman Dışı Dosya Paylaşım Erişimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -41,10 +41,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "out-of-department file access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:20.624523+00:00",
+  "generated_at": "2026-05-23T02:56:24.023388+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

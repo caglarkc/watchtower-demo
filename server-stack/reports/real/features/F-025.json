@@ -2,7 +2,7 @@
   "id": "F-025",
   "feature_id": "F-025",
   "title": "Kişi Listesi veya Adres Defteri Dışa Aktarımı",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "roundcube",
@@ -27,10 +27,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "address-book export event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:47.179475+00:00",
+  "generated_at": "2026-05-23T02:56:24.207076+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
