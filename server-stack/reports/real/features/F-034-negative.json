@@ -58,7 +58,7 @@
   "anomaly_detected": false,
   "evidence_expected": "AI file upload volume/type event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:04.660820+00:00",
+  "generated_at": "2026-05-23T05:37:46.447993+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

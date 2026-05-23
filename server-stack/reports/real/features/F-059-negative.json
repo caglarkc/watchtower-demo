@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 34,
+        "indexed": 36,
         "index": "corp-logs-f-059",
         "pipeline": {
           "feature_id": "F-059",
           "index": "corp-logs-f-059",
-          "indexed": 34
+          "indexed": 36
         }
       }
     }
@@ -58,7 +58,7 @@
   "anomaly_detected": false,
   "evidence_expected": "large clipboard copy event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:20.763874+00:00",
+  "generated_at": "2026-05-23T05:37:47.452340+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
