@@ -2,7 +2,7 @@
   "id": "F-067",
   "feature_id": "F-067",
   "title": "Kişisel Bulut Depolama Hizmetlerine Büyük Dosya Yükleme",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "squid-proxy",
@@ -59,10 +59,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "personal cloud large upload",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:19:03.409421+00:00",
+  "generated_at": "2026-05-23T03:19:09.964960+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
