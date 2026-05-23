@@ -43,7 +43,16 @@ test-features:
 test-phase1:
 	$(PYTEST) tests/feature -m phase1 -v
 
+test-phase2:
+	$(PYTEST) tests/feature -m phase2 -v
+
+test-integration:
+	$(PYTEST) tests/integration -m phase2 -v
+
 coverage:
 	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 1
 
-test-all: test-smoke test-phase1 coverage
+coverage-phase2:
+	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 2
+
+test-all: test-smoke test-phase1 test-phase2 test-integration coverage coverage-phase2

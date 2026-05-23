@@ -1,0 +1,7 @@
+feature_id: F-022
+mode: negative
+phase: 2
+events:
+- event_type: mail_external_competitor
+  log_channel: postfix
+  recipient_domain: partner-approved.com

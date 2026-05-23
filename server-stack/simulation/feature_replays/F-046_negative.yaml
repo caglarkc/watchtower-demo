@@ -1,0 +1,8 @@
+feature_id: F-046
+mode: negative
+phase: 2
+events:
+- event_type: process_tree_anomaly
+  log_channel: endpoint
+  duration_hours: 1
+  child_processes: 3

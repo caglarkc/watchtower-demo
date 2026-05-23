@@ -1,0 +1,8 @@
+feature_id: F-045
+mode: positive
+phase: 2
+events:
+- event_type: postgres_bulk_select
+  log_channel: postgres
+  tables: 12
+  rows_scanned: 4500000

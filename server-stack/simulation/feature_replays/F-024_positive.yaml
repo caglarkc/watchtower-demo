@@ -1,0 +1,8 @@
+feature_id: F-024
+mode: positive
+phase: 2
+events:
+- event_type: imap_archive_bulk_read
+  log_channel: dovecot
+  messages_read: 14000
+  years_span: 14

@@ -1,0 +1,7 @@
+feature_id: F-027
+mode: negative
+phase: 2
+events:
+- event_type: mail_banned_phrase
+  log_channel: postfix
+  phrase: null

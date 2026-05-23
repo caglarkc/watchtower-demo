@@ -1,0 +1,8 @@
+feature_id: F-051
+mode: positive
+phase: 2
+events:
+- event_type: hypervisor_console_access
+  log_channel: hypervisor
+  user: pm
+  console: proxmox

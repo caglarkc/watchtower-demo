@@ -1,0 +1,8 @@
+feature_id: F-048
+mode: negative
+phase: 2
+events:
+- event_type: http_4xx_spike
+  log_channel: nginx
+  status_4xx: 12
+  window_minutes: 5

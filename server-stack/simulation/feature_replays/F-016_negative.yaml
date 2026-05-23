@@ -1,0 +1,8 @@
+feature_id: F-016
+mode: negative
+phase: 2
+events:
+- event_type: mail_send_volume
+  log_channel: postfix
+  messages: 12
+  attachment_mb: 5

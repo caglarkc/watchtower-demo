@@ -1,0 +1,8 @@
+feature_id: F-049
+mode: positive
+phase: 2
+events:
+- event_type: git_clone_volume
+  log_channel: gitea
+  repos_cloned: 40
+  bytes: 4700000000

@@ -1,0 +1,7 @@
+feature_id: F-025
+mode: negative
+phase: 2
+events:
+- event_type: address_book_export
+  log_channel: roundcube
+  contacts_exported: 5

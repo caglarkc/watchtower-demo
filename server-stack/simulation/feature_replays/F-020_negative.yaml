@@ -1,0 +1,8 @@
+feature_id: F-020
+mode: negative
+phase: 2
+events:
+- event_type: mail_bcc_anomaly
+  log_channel: postfix
+  bcc_count: 0
+  distribution_list: false

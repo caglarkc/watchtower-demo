@@ -1,0 +1,7 @@
+feature_id: F-053
+mode: negative
+phase: 2
+events:
+- event_type: backup_shadow_delete
+  log_channel: endpoint
+  shadow_copies_deleted: 0

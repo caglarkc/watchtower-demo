@@ -1,0 +1,8 @@
+feature_id: F-028
+mode: positive
+phase: 2
+events:
+- event_type: mail_first_external_sensitive
+  log_channel: postfix
+  first_time_recipient: true
+  subject_sensitive: true

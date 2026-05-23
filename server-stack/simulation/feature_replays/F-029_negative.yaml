@@ -1,0 +1,7 @@
+feature_id: F-029
+mode: negative
+phase: 2
+events:
+- event_type: webmail_login_attempt
+  log_channel: roundcube
+  account: user@corp.local

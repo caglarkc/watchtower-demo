@@ -1,0 +1,8 @@
+feature_id: F-021
+mode: negative
+phase: 2
+events:
+- event_type: mail_personal_domain
+  log_channel: postfix
+  recipient_domain: corp.local
+  has_attachment: false

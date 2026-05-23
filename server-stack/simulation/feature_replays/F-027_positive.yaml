@@ -1,0 +1,7 @@
+feature_id: F-027
+mode: positive
+phase: 2
+events:
+- event_type: mail_banned_phrase
+  log_channel: postfix
+  phrase: gizli iç bilgi

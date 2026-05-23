@@ -1,0 +1,8 @@
+feature_id: F-054
+mode: negative
+phase: 2
+events:
+- event_type: encoded_powershell
+  log_channel: endpoint
+  encoded_command: false
+  bypass_policy: false

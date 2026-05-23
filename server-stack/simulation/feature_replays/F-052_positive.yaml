@@ -1,0 +1,7 @@
+feature_id: F-052
+mode: positive
+phase: 2
+events:
+- event_type: scheduled_task_created
+  log_channel: endpoint
+  task_name: svc_sync_shadow

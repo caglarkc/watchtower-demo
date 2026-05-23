@@ -1,0 +1,7 @@
+feature_id: F-018
+mode: positive
+phase: 2
+events:
+- event_type: imap_mailbox_access
+  log_channel: dovecot
+  foreign_mailbox: ceo@corp.local

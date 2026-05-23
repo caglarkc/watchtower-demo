@@ -1,0 +1,9 @@
+feature_id: F-019
+mode: negative
+phase: 2
+events:
+- event_type: mail_attachment_entropy
+  log_channel: postfix
+  entropy: 4.1
+  declared_type: pdf
+  actual_type: pdf
