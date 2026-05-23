@@ -2,6 +2,18 @@
 
 Kapalı `corp-lan` simülasyon ortamı (Phase 1: kimlik, dosya, DNS, DHCP, endpoint, ağ akışı).
 
+## Gerçek araç entegrasyon planı
+
+Mevcut stack 81 feature ve 83 scenario için deterministic simülasyon coverage sağlar.
+Gerçek kurumsal araç paritesine geçiş planı:
+
+- [real-company-tool-integration-plan.md](real-company-tool-integration-plan.md)
+
+Bu ek plan mock/synthetic kaynakları kademeli olarak Samba4 AD, Samba audit,
+BIND query log, DHCP/Kea, Zeek, Wazuh/auditd, Postfix/Dovecot/Roundcube,
+PostgreSQL pg_audit, Gitea, Nginx, Vault, Squid/MinIO, CUPS, HRIS/Badge
+real-like servisleri ve gerçek protokol replay testleriyle değiştirmeyi hedefler.
+
 ## Hızlı başlangıç
 
 ```bash
