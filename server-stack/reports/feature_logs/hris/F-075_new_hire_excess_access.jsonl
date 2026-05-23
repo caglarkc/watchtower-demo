@@ -58,3 +58,4 @@
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "feature_id": "F-075", "timestamp": "2026-05-23T05:36:00.384072+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "feature_id": "F-075", "timestamp": "2026-05-23T08:40:58.354062+00:00"}
 {"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 6, "feature_id": "F-075", "timestamp": "2026-05-23T08:41:06.005726+00:00"}
+{"event_type": "new_hire_excess_access", "log_channel": "hris", "day": 1, "systems_accessed": 28, "feature_id": "F-075", "timestamp": "2026-05-23T08:41:18.385167+00:00"}

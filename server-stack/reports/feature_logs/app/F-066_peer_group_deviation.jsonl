@@ -58,3 +58,4 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T05:35:59.561172+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T08:40:57.470186+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T08:41:05.162024+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T08:41:17.499758+00:00"}
