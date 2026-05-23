@@ -64,9 +64,15 @@ def test_each_feature_has_replay_and_evidence(features_doc: dict) -> None:
 
 
 def test_each_scenario_maps_to_features(scenarios_doc: dict) -> None:
+    root = CATALOG_DIR.parents[1]
     for scen in scenarios_doc["scenarios"]:
-        assert scen.get("feature_ids"), f"{scen['scenario_id']}: feature_ids required"
+        sid = scen["scenario_id"]
+        assert scen.get("feature_ids"), f"{sid}: feature_ids required"
         assert len(scen["feature_ids"]) >= 1
+        pos = root / scen["replay_script"]
+        neg = root / scen["negative_replay_script"]
+        assert pos.exists(), f"{sid}: missing {pos}"
+        assert neg.exists(), f"{sid}: missing {neg}"
 
 
 def test_coverage_matrix_links_valid_features(

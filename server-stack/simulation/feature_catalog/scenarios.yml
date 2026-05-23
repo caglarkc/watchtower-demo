@@ -17,7 +17,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-001
   negative_command: make scenario-negative SCENARIO=S-001
   evidence_path: reports/scenarios/S-001.json
-  replay_script: simulation/scenarios/S-001_replay.yaml
+  replay_script: simulation/scenarios/S-001_positive.yaml
+  negative_replay_script: simulation/scenarios/S-001_negative.yaml
   status: manifest
 - scenario_id: S-002
   title: Gece Yedek Çekimi
@@ -33,7 +34,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-002
   negative_command: make scenario-negative SCENARIO=S-002
   evidence_path: reports/scenarios/S-002.json
-  replay_script: simulation/scenarios/S-002_replay.yaml
+  replay_script: simulation/scenarios/S-002_positive.yaml
+  negative_replay_script: simulation/scenarios/S-002_negative.yaml
   status: manifest
 - scenario_id: S-003
   title: Satış Ekibinden Sessiz CRM Dökümü
@@ -50,7 +52,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-003
   negative_command: make scenario-negative SCENARIO=S-003
   evidence_path: reports/scenarios/S-003.json
-  replay_script: simulation/scenarios/S-003_replay.yaml
+  replay_script: simulation/scenarios/S-003_positive.yaml
+  negative_replay_script: simulation/scenarios/S-003_negative.yaml
   status: manifest
 - scenario_id: S-004
   title: IT Admin Fazladan USB Yedekleme
@@ -66,7 +69,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-004
   negative_command: make scenario-negative SCENARIO=S-004
   evidence_path: reports/scenarios/S-004.json
-  replay_script: simulation/scenarios/S-004_replay.yaml
+  replay_script: simulation/scenarios/S-004_positive.yaml
+  negative_replay_script: simulation/scenarios/S-004_negative.yaml
   status: manifest
 - scenario_id: S-005
   title: CTO'nun Gizli Yedek Klasörü
@@ -83,7 +87,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-005
   negative_command: make scenario-negative SCENARIO=S-005
   evidence_path: reports/scenarios/S-005.json
-  replay_script: simulation/scenarios/S-005_replay.yaml
+  replay_script: simulation/scenarios/S-005_positive.yaml
+  negative_replay_script: simulation/scenarios/S-005_negative.yaml
   status: manifest
 - scenario_id: S-006
   title: Kaynak Kod Deposunun Kitlesel Klonlanması
@@ -97,7 +102,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-006
   negative_command: make scenario-negative SCENARIO=S-006
   evidence_path: reports/scenarios/S-006.json
-  replay_script: simulation/scenarios/S-006_replay.yaml
+  replay_script: simulation/scenarios/S-006_positive.yaml
+  negative_replay_script: simulation/scenarios/S-006_negative.yaml
   status: manifest
 - scenario_id: S-007
   title: Geçici Toplantı Dosyasında Gizlenen Veritabanı Dökümü
@@ -113,7 +119,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-007
   negative_command: make scenario-negative SCENARIO=S-007
   evidence_path: reports/scenarios/S-007.json
-  replay_script: simulation/scenarios/S-007_replay.yaml
+  replay_script: simulation/scenarios/S-007_positive.yaml
+  negative_replay_script: simulation/scenarios/S-007_negative.yaml
   status: manifest
 - scenario_id: S-008
   title: Yedekleme Sunucusundan Olağan Dışı Veri Çekme
@@ -130,7 +137,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-008
   negative_command: make scenario-negative SCENARIO=S-008
   evidence_path: reports/scenarios/S-008.json
-  replay_script: simulation/scenarios/S-008_replay.yaml
+  replay_script: simulation/scenarios/S-008_positive.yaml
+  negative_replay_script: simulation/scenarios/S-008_negative.yaml
   status: manifest
 - scenario_id: S-009
   title: BI Ham PII Export
@@ -144,7 +152,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-009
   negative_command: make scenario-negative SCENARIO=S-009
   evidence_path: reports/scenarios/S-009.json
-  replay_script: simulation/scenarios/S-009_replay.yaml
+  replay_script: simulation/scenarios/S-009_positive.yaml
+  negative_replay_script: simulation/scenarios/S-009_negative.yaml
   status: manifest
 - scenario_id: S-010
   title: İK'dan Toplu CV Arşivi Kopyası
@@ -158,7 +167,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-010
   negative_command: make scenario-negative SCENARIO=S-010
   evidence_path: reports/scenarios/S-010.json
-  replay_script: simulation/scenarios/S-010_replay.yaml
+  replay_script: simulation/scenarios/S-010_positive.yaml
+  negative_replay_script: simulation/scenarios/S-010_negative.yaml
   status: manifest
 - scenario_id: S-011
   title: CEO Mail Kutusundan Toplu Arşiv Export
@@ -173,7 +183,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-011
   negative_command: make scenario-negative SCENARIO=S-011
   evidence_path: reports/scenarios/S-011.json
-  replay_script: simulation/scenarios/S-011_replay.yaml
+  replay_script: simulation/scenarios/S-011_positive.yaml
+  negative_replay_script: simulation/scenarios/S-011_negative.yaml
   status: manifest
 - scenario_id: S-012
   title: Stajyer CRM Export
@@ -187,7 +198,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-012
   negative_command: make scenario-negative SCENARIO=S-012
   evidence_path: reports/scenarios/S-012.json
-  replay_script: simulation/scenarios/S-012_replay.yaml
+  replay_script: simulation/scenarios/S-012_positive.yaml
+  negative_replay_script: simulation/scenarios/S-012_negative.yaml
   status: manifest
 - scenario_id: S-013
   title: Destek Ticket PII Toplu Arşivi
@@ -202,7 +214,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-013
   negative_command: make scenario-negative SCENARIO=S-013
   evidence_path: reports/scenarios/S-013.json
-  replay_script: simulation/scenarios/S-013_replay.yaml
+  replay_script: simulation/scenarios/S-013_positive.yaml
+  negative_replay_script: simulation/scenarios/S-013_negative.yaml
   status: manifest
 - scenario_id: S-014
   title: Admin Prod-HR VM Snapshot
@@ -217,7 +230,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-014
   negative_command: make scenario-negative SCENARIO=S-014
   evidence_path: reports/scenarios/S-014.json
-  replay_script: simulation/scenarios/S-014_replay.yaml
+  replay_script: simulation/scenarios/S-014_positive.yaml
+  negative_replay_script: simulation/scenarios/S-014_negative.yaml
   status: manifest
 - scenario_id: S-015
   title: Payroll SQL Dump
@@ -230,7 +244,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-015
   negative_command: make scenario-negative SCENARIO=S-015
   evidence_path: reports/scenarios/S-015.json
-  replay_script: simulation/scenarios/S-015_replay.yaml
+  replay_script: simulation/scenarios/S-015_positive.yaml
+  negative_replay_script: simulation/scenarios/S-015_negative.yaml
   status: manifest
 - scenario_id: S-016
   title: Gece Admin Kerberos TGT Zinciri
@@ -245,7 +260,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-016
   negative_command: make scenario-negative SCENARIO=S-016
   evidence_path: reports/scenarios/S-016.json
-  replay_script: simulation/scenarios/S-016_replay.yaml
+  replay_script: simulation/scenarios/S-016_positive.yaml
+  negative_replay_script: simulation/scenarios/S-016_negative.yaml
   status: manifest
 - scenario_id: S-017
   title: Token Vault Dump
@@ -258,7 +274,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-017
   negative_command: make scenario-negative SCENARIO=S-017
   evidence_path: reports/scenarios/S-017.json
-  replay_script: simulation/scenarios/S-017_replay.yaml
+  replay_script: simulation/scenarios/S-017_positive.yaml
+  negative_replay_script: simulation/scenarios/S-017_negative.yaml
   status: manifest
 - scenario_id: S-018
   title: Domain Admin Hesabıyla Sıra Dışı Giriş
@@ -273,7 +290,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-018
   negative_command: make scenario-negative SCENARIO=S-018
   evidence_path: reports/scenarios/S-018.json
-  replay_script: simulation/scenarios/S-018_replay.yaml
+  replay_script: simulation/scenarios/S-018_positive.yaml
+  negative_replay_script: simulation/scenarios/S-018_negative.yaml
   status: manifest
 - scenario_id: S-019
   title: Hizmet Hesabının Kötüye Kullanımı
@@ -286,7 +304,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-019
   negative_command: make scenario-negative SCENARIO=S-019
   evidence_path: reports/scenarios/S-019.json
-  replay_script: simulation/scenarios/S-019_replay.yaml
+  replay_script: simulation/scenarios/S-019_positive.yaml
+  negative_replay_script: simulation/scenarios/S-019_negative.yaml
   status: manifest
 - scenario_id: S-020
   title: Çoklu Lokasyon Çakışması
@@ -300,7 +319,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-020
   negative_command: make scenario-negative SCENARIO=S-020
   evidence_path: reports/scenarios/S-020.json
-  replay_script: simulation/scenarios/S-020_replay.yaml
+  replay_script: simulation/scenarios/S-020_positive.yaml
+  negative_replay_script: simulation/scenarios/S-020_negative.yaml
   status: manifest
 - scenario_id: S-021
   title: Eski Credential ile API Kullanımı
@@ -314,7 +334,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-021
   negative_command: make scenario-negative SCENARIO=S-021
   evidence_path: reports/scenarios/S-021.json
-  replay_script: simulation/scenarios/S-021_replay.yaml
+  replay_script: simulation/scenarios/S-021_positive.yaml
+  negative_replay_script: simulation/scenarios/S-021_negative.yaml
   status: manifest
 - scenario_id: S-022
   title: API Servis Hesabını İnsan Gibi Kullanan Analist
@@ -329,7 +350,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-022
   negative_command: make scenario-negative SCENARIO=S-022
   evidence_path: reports/scenarios/S-022.json
-  replay_script: simulation/scenarios/S-022_replay.yaml
+  replay_script: simulation/scenarios/S-022_positive.yaml
+  negative_replay_script: simulation/scenarios/S-022_negative.yaml
   status: manifest
 - scenario_id: S-023
   title: Muhasebe Terminalinden Gece Loginleri
@@ -344,7 +366,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-023
   negative_command: make scenario-negative SCENARIO=S-023
   evidence_path: reports/scenarios/S-023.json
-  replay_script: simulation/scenarios/S-023_replay.yaml
+  replay_script: simulation/scenarios/S-023_positive.yaml
+  negative_replay_script: simulation/scenarios/S-023_negative.yaml
   status: manifest
 - scenario_id: S-024
   title: Deploy Key 3 Farklı IP
@@ -357,7 +380,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-024
   negative_command: make scenario-negative SCENARIO=S-024
   evidence_path: reports/scenarios/S-024.json
-  replay_script: simulation/scenarios/S-024_replay.yaml
+  replay_script: simulation/scenarios/S-024_positive.yaml
+  negative_replay_script: simulation/scenarios/S-024_negative.yaml
   status: manifest
 - scenario_id: S-025
   title: Admin Hesaplarının Çapraz Kullanımı
@@ -371,7 +395,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-025
   negative_command: make scenario-negative SCENARIO=S-025
   evidence_path: reports/scenarios/S-025.json
-  replay_script: simulation/scenarios/S-025_replay.yaml
+  replay_script: simulation/scenarios/S-025_positive.yaml
+  negative_replay_script: simulation/scenarios/S-025_negative.yaml
   status: manifest
 - scenario_id: S-026
   title: Stajyer Çift Oturum
@@ -384,7 +409,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-026
   negative_command: make scenario-negative SCENARIO=S-026
   evidence_path: reports/scenarios/S-026.json
-  replay_script: simulation/scenarios/S-026_replay.yaml
+  replay_script: simulation/scenarios/S-026_positive.yaml
+  negative_replay_script: simulation/scenarios/S-026_negative.yaml
   status: manifest
 - scenario_id: S-027
   title: İç Ağda Gizli Posta Kuralı Oluşturma
@@ -397,7 +423,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-027
   negative_command: make scenario-negative SCENARIO=S-027
   evidence_path: reports/scenarios/S-027.json
-  replay_script: simulation/scenarios/S-027_replay.yaml
+  replay_script: simulation/scenarios/S-027_positive.yaml
+  negative_replay_script: simulation/scenarios/S-027_negative.yaml
   status: manifest
 - scenario_id: S-028
   title: IT Admin Yetki Zinciri
@@ -412,7 +439,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-028
   negative_command: make scenario-negative SCENARIO=S-028
   evidence_path: reports/scenarios/S-028.json
-  replay_script: simulation/scenarios/S-028_replay.yaml
+  replay_script: simulation/scenarios/S-028_positive.yaml
+  negative_replay_script: simulation/scenarios/S-028_negative.yaml
   status: manifest
 - scenario_id: S-029
   title: Hukuk Belgelerine Meraklı Geliştirici
@@ -426,7 +454,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-029
   negative_command: make scenario-negative SCENARIO=S-029
   evidence_path: reports/scenarios/S-029.json
-  replay_script: simulation/scenarios/S-029_replay.yaml
+  replay_script: simulation/scenarios/S-029_positive.yaml
+  negative_replay_script: simulation/scenarios/S-029_negative.yaml
   status: manifest
 - scenario_id: S-030
   title: Yetki Yükseltme (Privilege Escalation)
@@ -439,7 +468,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-030
   negative_command: make scenario-negative SCENARIO=S-030
   evidence_path: reports/scenarios/S-030.json
-  replay_script: simulation/scenarios/S-030_replay.yaml
+  replay_script: simulation/scenarios/S-030_positive.yaml
+  negative_replay_script: simulation/scenarios/S-030_negative.yaml
   status: manifest
 - scenario_id: S-031
   title: CTO Bilgisayarından SSH Anahtarı Hasadı
@@ -453,7 +483,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-031
   negative_command: make scenario-negative SCENARIO=S-031
   evidence_path: reports/scenarios/S-031.json
-  replay_script: simulation/scenarios/S-031_replay.yaml
+  replay_script: simulation/scenarios/S-031_positive.yaml
+  negative_replay_script: simulation/scenarios/S-031_negative.yaml
   status: manifest
 - scenario_id: S-032
   title: Junior Dev Prod Veritabanı Erişimi
@@ -467,7 +498,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-032
   negative_command: make scenario-negative SCENARIO=S-032
   evidence_path: reports/scenarios/S-032.json
-  replay_script: simulation/scenarios/S-032_replay.yaml
+  replay_script: simulation/scenarios/S-032_positive.yaml
+  negative_replay_script: simulation/scenarios/S-032_negative.yaml
   status: manifest
 - scenario_id: S-033
   title: Destek Personeli DC RDP
@@ -481,7 +513,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-033
   negative_command: make scenario-negative SCENARIO=S-033
   evidence_path: reports/scenarios/S-033.json
-  replay_script: simulation/scenarios/S-033_replay.yaml
+  replay_script: simulation/scenarios/S-033_positive.yaml
+  negative_replay_script: simulation/scenarios/S-033_negative.yaml
   status: manifest
 - scenario_id: S-034
   title: Muhasebe Domain Admin Grubu Denemesi
@@ -494,7 +527,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-034
   negative_command: make scenario-negative SCENARIO=S-034
   evidence_path: reports/scenarios/S-034.json
-  replay_script: simulation/scenarios/S-034_replay.yaml
+  replay_script: simulation/scenarios/S-034_positive.yaml
+  negative_replay_script: simulation/scenarios/S-034_negative.yaml
   status: manifest
 - scenario_id: S-035
   title: Stajyer Ağ Keşfi
@@ -507,7 +541,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-035
   negative_command: make scenario-negative SCENARIO=S-035
   evidence_path: reports/scenarios/S-035.json
-  replay_script: simulation/scenarios/S-035_replay.yaml
+  replay_script: simulation/scenarios/S-035_positive.yaml
+  negative_replay_script: simulation/scenarios/S-035_negative.yaml
   status: manifest
 - scenario_id: S-036
   title: Veri Analistinin Tüm Posta Kutusu Taraması
@@ -521,7 +556,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-036
   negative_command: make scenario-negative SCENARIO=S-036
   evidence_path: reports/scenarios/S-036.json
-  replay_script: simulation/scenarios/S-036_replay.yaml
+  replay_script: simulation/scenarios/S-036_positive.yaml
+  negative_replay_script: simulation/scenarios/S-036_negative.yaml
   status: manifest
 - scenario_id: S-037
   title: Satıştan Muhasebeye Kesişen Erişim
@@ -534,7 +570,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-037
   negative_command: make scenario-negative SCENARIO=S-037
   evidence_path: reports/scenarios/S-037.json
-  replay_script: simulation/scenarios/S-037_replay.yaml
+  replay_script: simulation/scenarios/S-037_positive.yaml
+  negative_replay_script: simulation/scenarios/S-037_negative.yaml
   status: manifest
 - scenario_id: S-038
   title: Güvenlik Duvarı Kurallarının Esnetilmesi
@@ -547,7 +584,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-038
   negative_command: make scenario-negative SCENARIO=S-038
   evidence_path: reports/scenarios/S-038.json
-  replay_script: simulation/scenarios/S-038_replay.yaml
+  replay_script: simulation/scenarios/S-038_positive.yaml
+  negative_replay_script: simulation/scenarios/S-038_negative.yaml
   status: manifest
 - scenario_id: S-039
   title: PM SIEM Konsol Erişimi
@@ -561,7 +599,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-039
   negative_command: make scenario-negative SCENARIO=S-039
   evidence_path: reports/scenarios/S-039.json
-  replay_script: simulation/scenarios/S-039_replay.yaml
+  replay_script: simulation/scenarios/S-039_positive.yaml
+  negative_replay_script: simulation/scenarios/S-039_negative.yaml
   status: manifest
 - scenario_id: S-040
   title: Shadow Admin Hesabı Oluşturma
@@ -575,7 +614,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-040
   negative_command: make scenario-negative SCENARIO=S-040
   evidence_path: reports/scenarios/S-040.json
-  replay_script: simulation/scenarios/S-040_replay.yaml
+  replay_script: simulation/scenarios/S-040_positive.yaml
+  negative_replay_script: simulation/scenarios/S-040_negative.yaml
   status: manifest
 - scenario_id: S-041
   title: Sahte Tedarikçi IBAN Değişikliği
@@ -588,7 +628,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-041
   negative_command: make scenario-negative SCENARIO=S-041
   evidence_path: reports/scenarios/S-041.json
-  replay_script: simulation/scenarios/S-041_replay.yaml
+  replay_script: simulation/scenarios/S-041_positive.yaml
+  negative_replay_script: simulation/scenarios/S-041_negative.yaml
   status: manifest
 - scenario_id: S-042
   title: SOC Log Suppress Kuralı
@@ -602,7 +643,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-042
   negative_command: make scenario-negative SCENARIO=S-042
   evidence_path: reports/scenarios/S-042.json
-  replay_script: simulation/scenarios/S-042_replay.yaml
+  replay_script: simulation/scenarios/S-042_positive.yaml
+  negative_replay_script: simulation/scenarios/S-042_negative.yaml
   status: manifest
 - scenario_id: S-043
   title: Admin Tarafından Eski Yedeklerin Silinmesi
@@ -615,7 +657,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-043
   negative_command: make scenario-negative SCENARIO=S-043
   evidence_path: reports/scenarios/S-043.json
-  replay_script: simulation/scenarios/S-043_replay.yaml
+  replay_script: simulation/scenarios/S-043_positive.yaml
+  negative_replay_script: simulation/scenarios/S-043_negative.yaml
   status: manifest
 - scenario_id: S-044
   title: Yönetici Yetkisiyle Kitlesel Log Silme
@@ -630,7 +673,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-044
   negative_command: make scenario-negative SCENARIO=S-044
   evidence_path: reports/scenarios/S-044.json
-  replay_script: simulation/scenarios/S-044_replay.yaml
+  replay_script: simulation/scenarios/S-044_positive.yaml
+  negative_replay_script: simulation/scenarios/S-044_negative.yaml
   status: manifest
 - scenario_id: S-045
   title: İK Hesabından Gece Mail Arşiv Taraması
@@ -644,7 +688,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-045
   negative_command: make scenario-negative SCENARIO=S-045
   evidence_path: reports/scenarios/S-045.json
-  replay_script: simulation/scenarios/S-045_replay.yaml
+  replay_script: simulation/scenarios/S-045_positive.yaml
+  negative_replay_script: simulation/scenarios/S-045_negative.yaml
   status: manifest
 - scenario_id: S-046
   title: İK Sisteminde Hayalet Çalışan Oluşturma
@@ -657,7 +702,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-046
   negative_command: make scenario-negative SCENARIO=S-046
   evidence_path: reports/scenarios/S-046.json
-  replay_script: simulation/scenarios/S-046_replay.yaml
+  replay_script: simulation/scenarios/S-046_positive.yaml
+  negative_replay_script: simulation/scenarios/S-046_negative.yaml
   status: manifest
 - scenario_id: S-047
   title: Ayrılış Öncesi Veri Rampa-Up
@@ -672,7 +718,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-047
   negative_command: make scenario-negative SCENARIO=S-047
   evidence_path: reports/scenarios/S-047.json
-  replay_script: simulation/scenarios/S-047_replay.yaml
+  replay_script: simulation/scenarios/S-047_positive.yaml
+  negative_replay_script: simulation/scenarios/S-047_negative.yaml
   status: manifest
 - scenario_id: S-048
   title: PM Proje Maliyet Tablosu Toplu Güncelleme
@@ -685,7 +732,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-048
   negative_command: make scenario-negative SCENARIO=S-048
   evidence_path: reports/scenarios/S-048.json
-  replay_script: simulation/scenarios/S-048_replay.yaml
+  replay_script: simulation/scenarios/S-048_positive.yaml
+  negative_replay_script: simulation/scenarios/S-048_negative.yaml
   status: manifest
 - scenario_id: S-049
   title: Muhasebe Login Saatleri Toplu İnceleme
@@ -698,7 +746,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-049
   negative_command: make scenario-negative SCENARIO=S-049
   evidence_path: reports/scenarios/S-049.json
-  replay_script: simulation/scenarios/S-049_replay.yaml
+  replay_script: simulation/scenarios/S-049_positive.yaml
+  negative_replay_script: simulation/scenarios/S-049_negative.yaml
   status: manifest
 - scenario_id: S-050
   title: Satış Müşteri Segmentasyon Modeline Erişim
@@ -713,7 +762,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-050
   negative_command: make scenario-negative SCENARIO=S-050
   evidence_path: reports/scenarios/S-050.json
-  replay_script: simulation/scenarios/S-050_replay.yaml
+  replay_script: simulation/scenarios/S-050_positive.yaml
+  negative_replay_script: simulation/scenarios/S-050_negative.yaml
   status: manifest
 - scenario_id: S-051
   title: Yanlış Paylaşılan Bordro Klasörü
@@ -726,7 +776,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-051
   negative_command: make scenario-negative SCENARIO=S-051
   evidence_path: reports/scenarios/S-051.json
-  replay_script: simulation/scenarios/S-051_replay.yaml
+  replay_script: simulation/scenarios/S-051_positive.yaml
+  negative_replay_script: simulation/scenarios/S-051_negative.yaml
   status: manifest
 - scenario_id: S-052
   title: İK'dan Yanlış Odaya Giden Hassas Mail
@@ -743,7 +794,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-052
   negative_command: make scenario-negative SCENARIO=S-052
   evidence_path: reports/scenarios/S-052.json
-  replay_script: simulation/scenarios/S-052_replay.yaml
+  replay_script: simulation/scenarios/S-052_positive.yaml
+  negative_replay_script: simulation/scenarios/S-052_negative.yaml
   status: manifest
 - scenario_id: S-053
   title: Yeni Yazılımcının Hatalı Script Döngüsü
@@ -757,7 +809,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-053
   negative_command: make scenario-negative SCENARIO=S-053
   evidence_path: reports/scenarios/S-053.json
-  replay_script: simulation/scenarios/S-053_replay.yaml
+  replay_script: simulation/scenarios/S-053_positive.yaml
+  negative_replay_script: simulation/scenarios/S-053_negative.yaml
   status: manifest
 - scenario_id: S-054
   title: Canlı Ortam Yerine Test Aracı Yanlışlığı
@@ -772,7 +825,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-054
   negative_command: make scenario-negative SCENARIO=S-054
   evidence_path: reports/scenarios/S-054.json
-  replay_script: simulation/scenarios/S-054_replay.yaml
+  replay_script: simulation/scenarios/S-054_positive.yaml
+  negative_replay_script: simulation/scenarios/S-054_negative.yaml
   status: manifest
 - scenario_id: S-055
   title: USB ile İçeri Veri Taşıyan Stajyer
@@ -786,7 +840,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-055
   negative_command: make scenario-negative SCENARIO=S-055
   evidence_path: reports/scenarios/S-055.json
-  replay_script: simulation/scenarios/S-055_replay.yaml
+  replay_script: simulation/scenarios/S-055_positive.yaml
+  negative_replay_script: simulation/scenarios/S-055_negative.yaml
   status: manifest
 - scenario_id: S-056
   title: Destek Personelinin Aşırı Geniş Oturum Süresi
@@ -802,7 +857,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-056
   negative_command: make scenario-negative SCENARIO=S-056
   evidence_path: reports/scenarios/S-056.json
-  replay_script: simulation/scenarios/S-056_replay.yaml
+  replay_script: simulation/scenarios/S-056_positive.yaml
+  negative_replay_script: simulation/scenarios/S-056_negative.yaml
   status: manifest
 - scenario_id: S-057
   title: Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi
@@ -816,7 +872,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-057
   negative_command: make scenario-negative SCENARIO=S-057
   evidence_path: reports/scenarios/S-057.json
-  replay_script: simulation/scenarios/S-057_replay.yaml
+  replay_script: simulation/scenarios/S-057_positive.yaml
+  negative_replay_script: simulation/scenarios/S-057_negative.yaml
   status: manifest
 - scenario_id: S-058
   title: Hukuk Bilgisayarına Bilinmeyen USB Takılması
@@ -830,7 +887,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-058
   negative_command: make scenario-negative SCENARIO=S-058
   evidence_path: reports/scenarios/S-058.json
-  replay_script: simulation/scenarios/S-058_replay.yaml
+  replay_script: simulation/scenarios/S-058_positive.yaml
+  negative_replay_script: simulation/scenarios/S-058_negative.yaml
   status: manifest
 - scenario_id: S-059
   title: Stajyerin Kaynak Kod Aynası
@@ -846,7 +904,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-059
   negative_command: make scenario-negative SCENARIO=S-059
   evidence_path: reports/scenarios/S-059.json
-  replay_script: simulation/scenarios/S-059_replay.yaml
+  replay_script: simulation/scenarios/S-059_positive.yaml
+  negative_replay_script: simulation/scenarios/S-059_negative.yaml
   status: manifest
 - scenario_id: S-060
   title: Hukuk Klasörünü Yedekleyen PM
@@ -860,7 +919,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-060
   negative_command: make scenario-negative SCENARIO=S-060
   evidence_path: reports/scenarios/S-060.json
-  replay_script: simulation/scenarios/S-060_replay.yaml
+  replay_script: simulation/scenarios/S-060_positive.yaml
+  negative_replay_script: simulation/scenarios/S-060_negative.yaml
   status: manifest
 - scenario_id: S-061
   title: PM'den Gereksiz Credential İstemi
@@ -873,7 +933,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-061
   negative_command: make scenario-negative SCENARIO=S-061
   evidence_path: reports/scenarios/S-061.json
-  replay_script: simulation/scenarios/S-061_replay.yaml
+  replay_script: simulation/scenarios/S-061_positive.yaml
+  negative_replay_script: simulation/scenarios/S-061_negative.yaml
   status: manifest
 - scenario_id: S-062
   title: Sabit Şifre Koda Gömme
@@ -889,7 +950,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-062
   negative_command: make scenario-negative SCENARIO=S-062
   evidence_path: reports/scenarios/S-062.json
-  replay_script: simulation/scenarios/S-062_replay.yaml
+  replay_script: simulation/scenarios/S-062_positive.yaml
+  negative_replay_script: simulation/scenarios/S-062_negative.yaml
   status: manifest
 - scenario_id: S-063
   title: Süresi Dolan Şifrelerin Toplu Uzatılması
@@ -902,7 +964,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-063
   negative_command: make scenario-negative SCENARIO=S-063
   evidence_path: reports/scenarios/S-063.json
-  replay_script: simulation/scenarios/S-063_replay.yaml
+  replay_script: simulation/scenarios/S-063_positive.yaml
+  negative_replay_script: simulation/scenarios/S-063_negative.yaml
   status: manifest
 - scenario_id: S-064
   title: Stajyerin Wi-Fi Ağı Sniffing Denemesi
@@ -915,7 +978,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-064
   negative_command: make scenario-negative SCENARIO=S-064
   evidence_path: reports/scenarios/S-064.json
-  replay_script: simulation/scenarios/S-064_replay.yaml
+  replay_script: simulation/scenarios/S-064_positive.yaml
+  negative_replay_script: simulation/scenarios/S-064_negative.yaml
   status: manifest
 - scenario_id: S-065
   title: Geçici Erişim Süresinin Aşılması
@@ -930,7 +994,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-065
   negative_command: make scenario-negative SCENARIO=S-065
   evidence_path: reports/scenarios/S-065.json
-  replay_script: simulation/scenarios/S-065_replay.yaml
+  replay_script: simulation/scenarios/S-065_positive.yaml
+  negative_replay_script: simulation/scenarios/S-065_negative.yaml
   status: manifest
 - scenario_id: S-066
   title: Hukuk Toplu PDF OCR Geçici Klasörü
@@ -944,7 +1009,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-066
   negative_command: make scenario-negative SCENARIO=S-066
   evidence_path: reports/scenarios/S-066.json
-  replay_script: simulation/scenarios/S-066_replay.yaml
+  replay_script: simulation/scenarios/S-066_positive.yaml
+  negative_replay_script: simulation/scenarios/S-066_negative.yaml
   status: manifest
 - scenario_id: S-067
   title: Güvenlik Görevlisinin Sunucu Odası Erişim Olayı
@@ -959,7 +1025,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-067
   negative_command: make scenario-negative SCENARIO=S-067
   evidence_path: reports/scenarios/S-067.json
-  replay_script: simulation/scenarios/S-067_replay.yaml
+  replay_script: simulation/scenarios/S-067_positive.yaml
+  negative_replay_script: simulation/scenarios/S-067_negative.yaml
   status: manifest
 - scenario_id: S-068
   title: Admin Bilgisayarından Agresif Port Taraması
@@ -972,7 +1039,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-068
   negative_command: make scenario-negative SCENARIO=S-068
   evidence_path: reports/scenarios/S-068.json
-  replay_script: simulation/scenarios/S-068_replay.yaml
+  replay_script: simulation/scenarios/S-068_positive.yaml
+  negative_replay_script: simulation/scenarios/S-068_negative.yaml
   status: manifest
 - scenario_id: S-069
   title: DNS Sunucu Yönlendirme Manipülasyonu
@@ -988,7 +1056,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-069
   negative_command: make scenario-negative SCENARIO=S-069
   evidence_path: reports/scenarios/S-069.json
-  replay_script: simulation/scenarios/S-069_replay.yaml
+  replay_script: simulation/scenarios/S-069_positive.yaml
+  negative_replay_script: simulation/scenarios/S-069_negative.yaml
   status: manifest
 - scenario_id: S-070
   title: Domain Controller Üzerinde Credential Dumping Script
@@ -1002,7 +1071,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-070
   negative_command: make scenario-negative SCENARIO=S-070
   evidence_path: reports/scenarios/S-070.json
-  replay_script: simulation/scenarios/S-070_replay.yaml
+  replay_script: simulation/scenarios/S-070_positive.yaml
+  negative_replay_script: simulation/scenarios/S-070_negative.yaml
   status: manifest
 - scenario_id: S-071
   title: Geliştirici Bilgisayarından SSH Kaba Kuvvet Saldırısı
@@ -1016,7 +1086,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-071
   negative_command: make scenario-negative SCENARIO=S-071
   evidence_path: reports/scenarios/S-071.json
-  replay_script: simulation/scenarios/S-071_replay.yaml
+  replay_script: simulation/scenarios/S-071_positive.yaml
+  negative_replay_script: simulation/scenarios/S-071_negative.yaml
   status: manifest
 - scenario_id: S-072
   title: CTO Hesabından Ağ Trafik Kopyalama Kuralı
@@ -1031,7 +1102,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-072
   negative_command: make scenario-negative SCENARIO=S-072
   evidence_path: reports/scenarios/S-072.json
-  replay_script: simulation/scenarios/S-072_replay.yaml
+  replay_script: simulation/scenarios/S-072_positive.yaml
+  negative_replay_script: simulation/scenarios/S-072_negative.yaml
   status: manifest
 - scenario_id: S-073
   title: İK Bilgisayarında Keylogger Çalışması
@@ -1045,7 +1117,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-073
   negative_command: make scenario-negative SCENARIO=S-073
   evidence_path: reports/scenarios/S-073.json
-  replay_script: simulation/scenarios/S-073_replay.yaml
+  replay_script: simulation/scenarios/S-073_positive.yaml
+  negative_replay_script: simulation/scenarios/S-073_negative.yaml
   status: manifest
 - scenario_id: S-074
   title: Docker Container Escape Denemesi
@@ -1060,7 +1133,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-074
   negative_command: make scenario-negative SCENARIO=S-074
   evidence_path: reports/scenarios/S-074.json
-  replay_script: simulation/scenarios/S-074_replay.yaml
+  replay_script: simulation/scenarios/S-074_positive.yaml
+  negative_replay_script: simulation/scenarios/S-074_negative.yaml
   status: manifest
 - scenario_id: S-075
   title: CEO Asistanı Gibi Davranan Arama Sonrası Erişim
@@ -1075,7 +1149,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-075
   negative_command: make scenario-negative SCENARIO=S-075
   evidence_path: reports/scenarios/S-075.json
-  replay_script: simulation/scenarios/S-075_replay.yaml
+  replay_script: simulation/scenarios/S-075_positive.yaml
+  negative_replay_script: simulation/scenarios/S-075_negative.yaml
   status: manifest
 - scenario_id: S-076
   title: CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme
@@ -1089,7 +1164,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-076
   negative_command: make scenario-negative SCENARIO=S-076
   evidence_path: reports/scenarios/S-076.json
-  replay_script: simulation/scenarios/S-076_replay.yaml
+  replay_script: simulation/scenarios/S-076_positive.yaml
+  negative_replay_script: simulation/scenarios/S-076_negative.yaml
   status: manifest
 - scenario_id: S-077
   title: Hukuk Ekibine CFO Adına Gelen Sahte İç Mail
@@ -1103,7 +1179,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-077
   negative_command: make scenario-negative SCENARIO=S-077
   evidence_path: reports/scenarios/S-077.json
-  replay_script: simulation/scenarios/S-077_replay.yaml
+  replay_script: simulation/scenarios/S-077_positive.yaml
+  negative_replay_script: simulation/scenarios/S-077_negative.yaml
   status: manifest
 - scenario_id: S-078
   title: Sosyal Mühendislik Tuzağına Düşen Yeni Başlayan
@@ -1118,7 +1195,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-078
   negative_command: make scenario-negative SCENARIO=S-078
   evidence_path: reports/scenarios/S-078.json
-  replay_script: simulation/scenarios/S-078_replay.yaml
+  replay_script: simulation/scenarios/S-078_positive.yaml
+  negative_replay_script: simulation/scenarios/S-078_negative.yaml
   status: manifest
 - scenario_id: S-079
   title: Tüm Şirkete Sahte CEO İstifa Maili
@@ -1134,7 +1212,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-079
   negative_command: make scenario-negative SCENARIO=S-079
   evidence_path: reports/scenarios/S-079.json
-  replay_script: simulation/scenarios/S-079_replay.yaml
+  replay_script: simulation/scenarios/S-079_positive.yaml
+  negative_replay_script: simulation/scenarios/S-079_negative.yaml
   status: manifest
 - scenario_id: S-080
   title: Çok Kaynaklı Kademeli İhlal Simülasyonu
@@ -1155,7 +1234,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-080
   negative_command: make scenario-negative SCENARIO=S-080
   evidence_path: reports/scenarios/S-080.json
-  replay_script: simulation/scenarios/S-080_replay.yaml
+  replay_script: simulation/scenarios/S-080_positive.yaml
+  negative_replay_script: simulation/scenarios/S-080_negative.yaml
   status: manifest
 - scenario_id: S-081
   title: Çoklu Departman Zincirli Fiziksel-Dijital Saldırı
@@ -1171,7 +1251,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-081
   negative_command: make scenario-negative SCENARIO=S-081
   evidence_path: reports/scenarios/S-081.json
-  replay_script: simulation/scenarios/S-081_replay.yaml
+  replay_script: simulation/scenarios/S-081_positive.yaml
+  negative_replay_script: simulation/scenarios/S-081_negative.yaml
   status: manifest
 - scenario_id: S-082
   title: İK ve Bilgi İşlem Çapraz Hesap Manipülasyonu
@@ -1187,7 +1268,8 @@ scenarios:
   replay_command: make scenario SCENARIO=S-082
   negative_command: make scenario-negative SCENARIO=S-082
   evidence_path: reports/scenarios/S-082.json
-  replay_script: simulation/scenarios/S-082_replay.yaml
+  replay_script: simulation/scenarios/S-082_positive.yaml
+  negative_replay_script: simulation/scenarios/S-082_negative.yaml
   status: manifest
 - scenario_id: S-083
   title: Aynı Dosyaya Zincirleme Çapraz Departman Erişimi
@@ -1202,5 +1284,6 @@ scenarios:
   replay_command: make scenario SCENARIO=S-083
   negative_command: make scenario-negative SCENARIO=S-083
   evidence_path: reports/scenarios/S-083.json
-  replay_script: simulation/scenarios/S-083_replay.yaml
+  replay_script: simulation/scenarios/S-083_positive.yaml
+  negative_replay_script: simulation/scenarios/S-083_negative.yaml
   status: manifest
