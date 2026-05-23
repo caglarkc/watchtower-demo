@@ -20,7 +20,7 @@ Kural:
 [GOREV]
 GOREV: Watchtower product implementation fazlarini sirasiyla yonet, alt gorevlere bol, test kaniti olmadan faz kapatma.
 FAZ: Tum Fazlar
-ROL: watchtower-pm-mode
+ROL: test
 SKILL: /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-pm-mode/SKILL.md
 
 BAGLAM:
@@ -39,7 +39,7 @@ BAGLAM:
 YAPILACAK:
 1. Faz 0'dan Faz 11'e kadar sirayla ilerle.
 2. Her faz icin tek sahipli alt gorevler uret.
-3. Her alt gorevde ilgili skill'i belirt: core, langgraph, llm, test.
+3. Her alt gorevde tekil rol belirt: taxonomy, connector, storage, baseline, decision, langgraph, llm, cli, test veya docs.
 4. Her fazda test dosyasi yazilmasini ve testlerin calistirilmasini zorunlu kil.
 5. Test fail olursa fazi kapatma; implementor'a revizyon ver.
 6. Faz kapanisinda degisen dosyalar, testler, komutlar ve riskleri ozetle.
@@ -64,7 +64,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: 81 feature icin Watchtower feature taxonomy dosyasini ve validator testlerini olustur.
 FAZ: Faz 0 — Taxonomy & Architecture Freeze
-ROL: taxonomy + test
+ROL: taxonomy
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -133,7 +133,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Watchtower urun package, CLI skeleton, config, migration, tenant/bootstrap ve mode controller altyapisini kur.
 FAZ: Faz 1 — Product Skeleton
-ROL: core
+ROL: cli
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -189,7 +189,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Read-only connector protocolunu, server-stack/file/elasticsearch/wazuh connectorlarini ve raw event ingest store'unu uygula.
 FAZ: Faz 2 — Connector & Ingest
-ROL: connector + storage
+ROL: connector
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -247,7 +247,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Unified event schema, known adapters, unknown schema queue ve candidate extractor katmanini kur.
 FAZ: Faz 3 — Normalization & Candidate Extraction
-ROL: core + normalization
+ROL: storage
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -350,7 +350,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Manager/operator feedback, pending_rule, approval workflow, scoped feedback_rule ve expiry/audit mekanizmasini uygula.
 FAZ: Faz 5 — Feedback & Rule Approval
-ROL: feedback + approval
+ROL: decision
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -623,7 +623,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Alert store, alert_case lifecycle, suppression window ve CLI operator workflow komutlarini uygula.
 FAZ: Faz 9 — Alert Lifecycle & CLI
-ROL: cli + alert
+ROL: cli
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -691,7 +691,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Watchtower urununu server-stack kapali sunucu lab uzerinde 81 feature ve 83 scenario icin E2E dogrula.
 FAZ: Faz 10 — Server-Stack End-to-End Validation
-ROL: e2e-test
+ROL: test
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
@@ -759,7 +759,7 @@ TESLIM KRITERLERI:
 - calistirilan testler
 - server-stack test-all/test-real-all sonuc kaniti
 - watchtower e2e sonuc kaniti
-- 81/83 coverage ozeti
+- 81 feature / 83 scenario coverage ozeti
 - kalan riskler
 ```
 
@@ -771,7 +771,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Watchtower'i gercek sirket kapali aglarina kurulabilir hale getirecek production readiness paketini tamamla.
 FAZ: Faz 11 — Production Readiness
-ROL: production + test
+ROL: docs
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-core-code-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -841,7 +841,7 @@ TESLIM KRITERLERI:
 [GOREV]
 GOREV: Tum Watchtower fazlarini ve test kanitlarini incele, final kabul raporu uret; eksik gate varsa kabul etme.
 FAZ: Final Acceptance
-ROL: watchtower-pm-mode + watchtower-test-mode
+ROL: test
 SKILL:
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-pm-mode/SKILL.md
 - /home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/skills/watchtower-test-mode/SKILL.md
@@ -882,4 +882,3 @@ TESLIM KRITERLERI:
 - kalan riskler
 - kabul veya red karari
 ```
-
