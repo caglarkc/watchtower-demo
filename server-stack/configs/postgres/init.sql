@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS customers (
     email TEXT
 );
 
-INSERT INTO payroll (employee, salary) VALUES ('alice', 50000), ('bob', 52000)
-ON CONFLICT DO NOTHING;
+INSERT INTO payroll (employee, salary)
+SELECT 'alice', 50000 WHERE NOT EXISTS (SELECT 1 FROM payroll WHERE employee = 'alice');
 
-INSERT INTO customers (name, email) VALUES ('acme', 'a@acme.corp')
-ON CONFLICT DO NOTHING;
+INSERT INTO customers (name, email)
+SELECT 'acme', 'a@acme.corp' WHERE NOT EXISTS (SELECT 1 FROM customers WHERE name = 'acme');
