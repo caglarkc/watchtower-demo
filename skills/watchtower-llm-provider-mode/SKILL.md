@@ -51,10 +51,28 @@ Her provider için tutulacak alanlar:
 - Mock Anthropic provider.
 - Mock Gemini provider.
 - Mock Ollama/OpenAI-compatible provider.
+- Live Gemini contract/integration testi, `.env` icindeki test provider bilgileri varsa calistirilabilir.
 - Invalid JSON retry.
 - Provider fallback.
 - LLM unavailable fail-open.
 - Schema dışı output kullanılmaz.
+
+# Live Gemini Test Konfigürasyonu
+
+LLM testleri mock provider'a bagimli kalmalidir; live provider testi mock testlerin yerine gecmez, sadece ek kanit olarak calisir.
+
+`.env` icinde su degiskenler varsa live Gemini testleri bunlari kullanir:
+
+- `WATCHTOWER_LLM_TEST_PROVIDER=gemini`
+- `WATCHTOWER_GEMINI_API_KEY`
+- `WATCHTOWER_GEMINI_MODEL=gemini-3.1-flash-lite`
+
+Kurallar:
+
+- API key asla repoya commit edilmez; `.env` ignored kalmalidir.
+- Live Gemini testi yoksa veya provider unavailable ise mock provider testleri yine pass olmalidir.
+- Live Gemini testleri LLM'in final alert karari verdigini degil, provider adapter, structured output ve fallback davranisini dogrular.
+- Lokal AI/Ollama zorunlu degildir; Gemini test provider olarak yeterlidir.
 
 # Teslim Formatı
 
@@ -67,4 +85,3 @@ TESTLER:
 ÇALIŞTIRILAN KOMUTLAR:
 RİSKLER:
 ```
-

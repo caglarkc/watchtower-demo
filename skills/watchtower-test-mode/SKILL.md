@@ -39,9 +39,26 @@ Bu skill Watchtower ürününün test kanıtından sorumludur.
 
 - Her positive testin negative/control karşılığı olmalı.
 - LLM testleri gerçek provider'a bağımlı olmamalı; mock provider zorunlu.
+- `.env` icinde Gemini test provider bilgileri varsa live Gemini contract/integration testi ek kanit olarak calistirilir.
 - Server-stack E2E testlerinde ürün kodu server-stack içine gömülmez.
 - Karar testleri explainable score breakdown assert eder.
 - Feedback testleri scope dışı event'in tekrar alert ürettiğini kanıtlar.
+
+# Live LLM Test Kuralları
+
+Live LLM testleri icin `.env` degiskenleri:
+
+- `WATCHTOWER_LLM_TEST_PROVIDER=gemini`
+- `WATCHTOWER_GEMINI_API_KEY`
+- `WATCHTOWER_GEMINI_MODEL=gemini-3.1-flash-lite`
+
+Kurallar:
+
+- API key commit edilmez; `.env` ignored kalmalidir.
+- Live Gemini testi mock provider testlerinin yerine gecmez.
+- Live Gemini testi sadece adapter, provider auth, structured output contract ve fallback davranisini dogrular.
+- Live provider unavailable ise sistem fail-open davranisini ve mock testleri korumalidir.
+- Lokal AI/Ollama zorunlu degildir.
 
 # Teslim Formatı
 
@@ -54,4 +71,3 @@ FAIL VARSA:
 EKSİK KALAN YÜZEYLER:
 RİSKLER:
 ```
-
