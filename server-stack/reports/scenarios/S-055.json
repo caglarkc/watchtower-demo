@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-055",
   "title": "USB ile İçeri Veri Taşıyan Stajyer",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Stajyer",
   "deterministic_seed": 5055,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for USB ile İçeri Veri Taşıyan Stajyer",
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "events": [
     {
@@ -24,12 +24,12 @@
       "user_role": "Stajyer",
       "category": "kazara ihlal",
       "seed": 5055,
-      "anomaly": false
+      "anomaly": true
     },
     {
       "event_type": "usb_write",
-      "device_id": null,
-      "bytes_written": 0,
+      "device_id": "USB-9F2A",
+      "bytes_written": 2400000000,
       "source_feature": "F-055",
       "scenario_id": "S-055"
     },
@@ -37,7 +37,7 @@
       "event_type": "sensitive_file_move",
       "log_channel": "endpoint",
       "from_zone": "restricted",
-      "to_zone": "restricted",
+      "to_zone": "public",
       "source_feature": "F-043",
       "scenario_id": "S-055"
     }
@@ -47,12 +47,9 @@
     "reports/scenario_logs/S-055/scenarios/usb_write.jsonl",
     "reports/scenario_logs/S-055/endpoint/sensitive_file_move.jsonl"
   ],
-  "negative_control": {
-    "type": "baseline_replay",
-    "description": "Same scenario with sub-threshold feature signals"
-  },
-  "generated_at": "2026-05-23T02:51:51.124497+00:00",
+  "negative_control": null,
+  "generated_at": "2026-05-23T02:57:28.379684+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-055:5055:negative"
+  "replay_key": "S-055:5055:positive"
 }

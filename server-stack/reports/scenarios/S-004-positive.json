@@ -69,7 +69,7 @@
     "reports/scenario_logs/S-004/cloud/personal_cloud_upload.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:51:46.628033+00:00",
+  "generated_at": "2026-05-23T02:57:26.695422+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-004:1004:positive"

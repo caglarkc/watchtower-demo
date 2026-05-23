@@ -18,3 +18,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-024", "user_role": "Yazılım Geliştirici", "category": "credential ihlali", "seed": 2024, "anomaly": false, "timestamp": "2026-05-23T02:44:12.624407+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-024", "user_role": "Yazılım Geliştirici", "category": "credential ihlali", "seed": 2024, "anomaly": true, "timestamp": "2026-05-23T02:51:47.286024+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-024", "user_role": "Yazılım Geliştirici", "category": "credential ihlali", "seed": 2024, "anomaly": false, "timestamp": "2026-05-23T02:51:50.072619+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-024", "user_role": "Yazılım Geliştirici", "category": "credential ihlali", "seed": 2024, "anomaly": true, "timestamp": "2026-05-23T02:57:27.354393+00:00"}

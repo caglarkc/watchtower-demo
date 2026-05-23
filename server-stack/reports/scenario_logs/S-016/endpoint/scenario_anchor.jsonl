@@ -18,3 +18,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-016", "user_role": "IT Admin", "category": "credential ihlali", "seed": 2016, "anomaly": false, "timestamp": "2026-05-23T02:44:12.360355+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-016", "user_role": "IT Admin", "category": "credential ihlali", "seed": 2016, "anomaly": true, "timestamp": "2026-05-23T02:51:47.023480+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-016", "user_role": "IT Admin", "category": "credential ihlali", "seed": 2016, "anomaly": false, "timestamp": "2026-05-23T02:51:49.802237+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-016", "user_role": "IT Admin", "category": "credential ihlali", "seed": 2016, "anomaly": true, "timestamp": "2026-05-23T02:57:27.086541+00:00"}

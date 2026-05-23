@@ -18,3 +18,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-056", "user_role": "Destek Personeli", "category": "kazara ihlal", "seed": 5056, "anomaly": false, "timestamp": "2026-05-23T02:44:13.675419+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-056", "user_role": "Destek Personeli", "category": "kazara ihlal", "seed": 5056, "anomaly": true, "timestamp": "2026-05-23T02:51:48.340673+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-056", "user_role": "Destek Personeli", "category": "kazara ihlal", "seed": 5056, "anomaly": false, "timestamp": "2026-05-23T02:51:51.161844+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-056", "user_role": "Destek Personeli", "category": "kazara ihlal", "seed": 5056, "anomaly": true, "timestamp": "2026-05-23T02:57:28.410061+00:00"}

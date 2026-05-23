@@ -18,3 +18,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-023", "user_role": "Muhasebe", "category": "credential ihlali", "seed": 2023, "anomaly": false, "timestamp": "2026-05-23T02:44:12.586941+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-023", "user_role": "Muhasebe", "category": "credential ihlali", "seed": 2023, "anomaly": true, "timestamp": "2026-05-23T02:51:47.256211+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-023", "user_role": "Muhasebe", "category": "credential ihlali", "seed": 2023, "anomaly": false, "timestamp": "2026-05-23T02:51:50.035628+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-023", "user_role": "Muhasebe", "category": "credential ihlali", "seed": 2023, "anomaly": true, "timestamp": "2026-05-23T02:57:27.323033+00:00"}

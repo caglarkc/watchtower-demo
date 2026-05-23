@@ -51,7 +51,7 @@
     "reports/scenario_logs/S-025/scenarios/unknown_hardware.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T02:51:47.318773+00:00",
+  "generated_at": "2026-05-23T02:57:27.384837+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-025:2025:positive"
