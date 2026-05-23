@@ -2,7 +2,7 @@
   "id": "F-073",
   "feature_id": "F-073",
   "title": "Aynı Dosya/Kayıt Çoklu Kullanıcı Erişim Zinciri",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -10,14 +10,14 @@
     {
       "service": "suitecrm",
       "response": {
-        "users": 1,
+        "users": 3,
         "record_id": "contract-991"
       }
     },
     {
       "service": "wiki",
       "response": {
-        "pages": 1
+        "pages": 3
       }
     }
   ],
@@ -61,10 +61,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "same file/record multi-user chain",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:38.909863+00:00",
+  "generated_at": "2026-05-23T03:18:41.204436+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
