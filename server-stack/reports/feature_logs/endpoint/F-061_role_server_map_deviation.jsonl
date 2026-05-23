@@ -17,3 +17,4 @@
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "feature_id": "F-061", "timestamp": "2026-05-23T02:10:13.165783+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "feature_id": "F-061", "timestamp": "2026-05-23T02:10:15.750991+00:00"}
 {"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 14, "feature_id": "F-061", "timestamp": "2026-05-23T02:19:29.599168+00:00"}
+{"event_type": "role_server_map_deviation", "log_channel": "endpoint", "unexpected_hosts": 1, "feature_id": "F-061", "timestamp": "2026-05-23T02:19:36.997460+00:00"}
