@@ -57,5 +57,4 @@ def test_configurable_learning_duration(app, tenant_id):
     assert lw.window_days == 7
     assert profile is not None
     assert profile.window_days == 7
-  # only last 7 days in window
     assert profile.metrics["event_volume"].sample_count == 7

@@ -135,11 +135,12 @@ class BaselineRepository:
             "SELECT user_id FROM user_profiles WHERE tenant_id = ?",
             (tenant_id,),
         ).fetchall()
-        return [
+        profiles = [
             self.get_user_profile(tenant_id, row["user_id"])
             for row in rows
             if row["user_id"]
         ]
+        return [p for p in profiles if p is not None]
 
     def upsert_department_profile(self, profile: DepartmentProfile) -> None:
         self._conn.execute(
