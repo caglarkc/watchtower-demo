@@ -28,3 +28,5 @@
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "feature_id": "F-052", "timestamp": "2026-05-23T02:29:10.485544+00:00"}
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "feature_id": "F-052", "timestamp": "2026-05-23T02:36:30.295176+00:00"}
 {"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "feature_id": "F-052", "timestamp": "2026-05-23T02:36:37.606549+00:00"}
+{"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": "svc_sync_shadow", "feature_id": "F-052", "timestamp": "2026-05-23T02:36:46.330543+00:00"}
+{"event_type": "scheduled_task_created", "log_channel": "endpoint", "task_name": null, "feature_id": "F-052", "timestamp": "2026-05-23T02:36:48.499819+00:00"}
