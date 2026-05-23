@@ -43,6 +43,19 @@ make real-coverage
 
 Servisler: Samba AD API, Samba files actions + `audit.log`, BIND query log, DHCP logger, Zeek `/emit`, endpoint `/emit`. Kritik feature’larda Elasticsearch health ingest assertion.
 
+### RI-2 — Real mail, DB, Git, web/API (24 P1 features @ L2)
+
+```bash
+make real-up
+make seed-real-mail seed-real-apps
+make real-feature FEATURE=F-016
+pytest tests/real/test_mail_db_git_web.py
+pytest tests/real/features -m p1
+make real-coverage
+```
+
+Servisler: Postfix/Dovecot/Roundcube action API, `postgres-actions` + `pg_audit.log`, `gitea-actions`, Nginx HTTP replay, internal-app/SIEM/hypervisor audit.
+
 ## Hızlı başlangıç
 
 ```bash
