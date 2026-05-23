@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-067",
   "title": "Güvenlik Görevlisinin Sunucu Odası Erişim Olayı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 7067,
@@ -22,8 +22,7 @@
         {
           "service": "samba-ad",
           "response": {
-            "events": 11,
-            "pattern": "4625_burst_then_4624"
+            "events": 1
           }
         }
       ],
@@ -48,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-006",
-            "count": 560,
+            "count": 880,
             "result": "PASS"
           },
           "result": "PASS",
@@ -79,7 +78,7 @@
         {
           "service": "badge",
           "response": {
-            "mismatch": true
+            "mismatch": false
           }
         },
         {
@@ -113,12 +112,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 48,
+            "indexed": 55,
             "index": "corp-logs-f-070",
             "pipeline": {
               "feature_id": "F-070",
               "index": "corp-logs-f-070",
-              "indexed": 48
+              "indexed": 55
             }
           }
         }
@@ -138,7 +137,7 @@
         {
           "service": "badge",
           "response": {
-            "shift": "off"
+            "shift": "day"
           }
         }
       ],
@@ -166,12 +165,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 49,
+            "indexed": 56,
             "index": "corp-logs-f-074",
             "pipeline": {
               "feature_id": "F-074",
               "index": "corp-logs-f-074",
-              "indexed": 49
+              "indexed": 56
             }
           }
         }
@@ -188,14 +187,13 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 11,
-        "pattern": "4625_burst_then_4624"
+        "events": 1
       }
     },
     {
       "service": "badge",
       "response": {
-        "mismatch": true
+        "mismatch": false
       }
     },
     {
@@ -207,7 +205,7 @@
     {
       "service": "badge",
       "response": {
-        "shift": "off"
+        "shift": "day"
       }
     }
   ],
@@ -240,7 +238,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-006",
-        "count": 560,
+        "count": 880,
         "result": "PASS"
       },
       "result": "PASS",
@@ -273,12 +271,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 48,
+        "indexed": 55,
         "index": "corp-logs-f-070",
         "pipeline": {
           "feature_id": "F-070",
           "index": "corp-logs-f-070",
-          "indexed": 48
+          "indexed": 55
         }
       }
     },
@@ -299,12 +297,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 49,
+        "indexed": 56,
         "index": "corp-logs-f-074",
         "pipeline": {
           "feature_id": "F-074",
           "index": "corp-logs-f-074",
-          "indexed": 49
+          "indexed": 56
         }
       }
     }
@@ -318,12 +316,12 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:44.238348+00:00",
+  "generated_at": "2026-05-23T03:12:23.360339+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-067:7067:positive:real"
+  "replay_key": "S-067:7067:negative:real"
 }

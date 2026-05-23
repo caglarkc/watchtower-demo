@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-059",
   "title": "Stajyerin Kaynak Kod Aynası",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "Stajyer",
   "deterministic_seed": 6059,
@@ -23,7 +23,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 8
+            "clones": 1
           }
         },
         {
@@ -58,7 +58,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 743,
+            "count": 1223,
             "result": "PASS"
           },
           "result": "PASS",
@@ -119,12 +119,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 18,
+            "indexed": 22,
             "index": "corp-logs-f-042",
             "pipeline": {
               "feature_id": "F-042",
               "index": "corp-logs-f-042",
-              "indexed": 18
+              "indexed": 22
             }
           }
         }
@@ -170,19 +170,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 93,
+            "count": 198,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 19,
+            "indexed": 24,
             "index": "corp-logs-f-054",
             "pipeline": {
               "feature_id": "F-054",
               "index": "corp-logs-f-054",
-              "indexed": 19
+              "indexed": 24
             }
           }
         }
@@ -203,7 +203,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 42
+            "tokens": 13
           }
         }
       ],
@@ -231,12 +231,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 69,
+            "indexed": 80,
             "index": "corp-logs-f-031",
             "pipeline": {
               "feature_id": "F-031",
               "index": "corp-logs-f-031",
-              "indexed": 69
+              "indexed": 80
             }
           }
         }
@@ -253,7 +253,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 8
+        "clones": 1
       }
     },
     {
@@ -280,7 +280,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 42
+        "tokens": 13
       }
     }
   ],
@@ -321,7 +321,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 743,
+        "count": 1223,
         "result": "PASS"
       },
       "result": "PASS",
@@ -354,12 +354,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 18,
+        "indexed": 22,
         "index": "corp-logs-f-042",
         "pipeline": {
           "feature_id": "F-042",
           "index": "corp-logs-f-042",
-          "indexed": 18
+          "indexed": 22
         }
       }
     },
@@ -377,19 +377,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 93,
+        "count": 198,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 19,
+        "indexed": 24,
         "index": "corp-logs-f-054",
         "pipeline": {
           "feature_id": "F-054",
           "index": "corp-logs-f-054",
-          "indexed": 19
+          "indexed": 24
         }
       }
     },
@@ -410,12 +410,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 69,
+        "indexed": 80,
         "index": "corp-logs-f-031",
         "pipeline": {
           "feature_id": "F-031",
           "index": "corp-logs-f-031",
-          "indexed": 69
+          "indexed": 80
         }
       }
     }
@@ -430,12 +430,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:42.233439+00:00",
+  "generated_at": "2026-05-23T03:12:21.438105+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-059:6059:positive:real"
+  "replay_key": "S-059:6059:negative:real"
 }

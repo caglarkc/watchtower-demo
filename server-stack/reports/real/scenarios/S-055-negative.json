@@ -16,7 +16,7 @@
     {
       "feature_id": "F-055",
       "result": "PASS",
-      "parity_level": "L2",
+      "parity_level": "L3",
       "actions_executed": [
         {
           "service": "endpoint",
@@ -32,7 +32,38 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L3:elasticsearch:corp-logs-f-055",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "index_query": {
+            "index": "corp-logs-f-055",
+            "count": 301,
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L3",
+          "ship": {
+            "shipped": true,
+            "indexed": 29,
+            "index": "corp-logs-f-055",
+            "pipeline": {
+              "feature_id": "F-055",
+              "index": "corp-logs-f-055",
+              "indexed": 29
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/identity/users.csv",
         "seeds/real/files/classification.yml",
@@ -58,7 +89,34 @@
           "result": "PASS"
         }
       ],
-      "ingest_assertions": [],
+      "ingest_assertions": [
+        {
+          "assertion": "L2:log-pipeline:corp-events:F-043",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "elasticsearch": "green",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "parity_level": "L2",
+          "note": "RI-6: cluster healthy; L2 ingest gate",
+          "ship": {
+            "shipped": true,
+            "indexed": 17,
+            "index": "corp-logs-f-043",
+            "pipeline": {
+              "feature_id": "F-043",
+              "index": "corp-logs-f-043",
+              "indexed": 17
+            }
+          }
+        }
+      ],
       "seed_refs": [
         "seeds/real/vault/secrets.yml",
         "seeds/real/ai/prompts.yml",
@@ -93,7 +151,64 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L3:elasticsearch:corp-logs-f-055",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "index_query": {
+        "index": "corp-logs-f-055",
+        "count": 301,
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L3",
+      "ship": {
+        "shipped": true,
+        "indexed": 29,
+        "index": "corp-logs-f-055",
+        "pipeline": {
+          "feature_id": "F-055",
+          "index": "corp-logs-f-055",
+          "indexed": 29
+        }
+      }
+    },
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-043",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 17,
+        "index": "corp-logs-f-043",
+        "pipeline": {
+          "feature_id": "F-043",
+          "index": "corp-logs-f-043",
+          "indexed": 17
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/identity/users.csv",
     "seeds/real/files/classification.yml",
@@ -106,7 +221,7 @@
   "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:32.663848+00:00",
+  "generated_at": "2026-05-23T03:12:20.222601+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
