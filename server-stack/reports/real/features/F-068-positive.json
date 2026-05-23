@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "first external high-volume transfer",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:18.527136+00:00",
+  "generated_at": "2026-05-23T08:42:23.204859+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
