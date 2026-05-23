@@ -3,10 +3,12 @@
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from scenario_lib import SCENARIOS, events_for_scenario, feature_ids_for, services_for_events
 
 ROOT = Path(__file__).resolve().parents[2]
