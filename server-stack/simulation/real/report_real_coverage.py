@@ -80,11 +80,19 @@ def report() -> dict:
             pos_ok += 1
         if has_neg:
             neg_ok += 1
+        evidence_level = feat.get("real_parity_level", "L0")
+        if has_pos:
+            try:
+                pdata = json.loads((REPORTS / f"{fid}-positive.json").read_text(encoding="utf-8"))
+                evidence_level = pdata.get("parity_level", evidence_level)
+            except json.JSONDecodeError:
+                pass
         status = "PASS" if has_meta and _evidence_pass(fid) else ("PENDING" if fid in ALL_REAL else "N/A")
         rows.append(
             {
                 "feature_id": fid,
-                "real_parity_level": feat.get("real_parity_level", "L0"),
+                "real_parity_level": evidence_level,
+                "catalog_parity_level": feat.get("real_parity_level", "L0"),
                 "metadata_complete": has_meta,
                 "positive_evidence": has_pos,
                 "negative_evidence": has_neg,
