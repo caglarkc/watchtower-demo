@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-006",
   "title": "Kaynak Kod Deposunun Kitlesel Klonlanması",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 1006,
@@ -21,7 +21,7 @@
         {
           "service": "gitea-actions",
           "response": {
-            "clones": 1
+            "clones": 8
           }
         },
         {
@@ -56,7 +56,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-049",
-            "count": 6983,
+            "count": 7943,
             "result": "PASS"
           },
           "result": "PASS",
@@ -117,12 +117,12 @@
           "note": "RI-6: cluster healthy; L2 ingest gate",
           "ship": {
             "shipped": true,
-            "indexed": 60,
+            "indexed": 66,
             "index": "corp-logs-f-042",
             "pipeline": {
               "feature_id": "F-042",
               "index": "corp-logs-f-042",
-              "indexed": 60
+              "indexed": 66
             }
           }
         }
@@ -139,7 +139,7 @@
     {
       "service": "gitea-actions",
       "response": {
-        "clones": 1
+        "clones": 8
       }
     },
     {
@@ -185,7 +185,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-049",
-        "count": 6983,
+        "count": 7943,
         "result": "PASS"
       },
       "result": "PASS",
@@ -218,12 +218,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 60,
+        "indexed": 66,
         "index": "corp-logs-f-042",
         "pipeline": {
           "feature_id": "F-042",
           "index": "corp-logs-f-042",
-          "indexed": 60
+          "indexed": 66
         }
       }
     }
@@ -238,12 +238,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:55.707676+00:00",
+  "generated_at": "2026-05-23T05:11:47.841919+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-006:1006:negative:real"
+  "replay_key": "S-006:1006:positive:real"
 }
