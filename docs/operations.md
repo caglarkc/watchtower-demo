@@ -1,11 +1,26 @@
 # Watchtower — Operations
 
-## Health
+## Health & metrics
 
 ```bash
 wt health
 wt health --json   # container HEALTHCHECK
+wt metrics
+wt metrics --json
+wt health readiness -o reports/soak/short_soak_readiness.json
 ```
+
+Degraded health links `sources` checks to `source_errors_total` runtime metrics.
+Loop duration aggregates: `loop_duration_ms_last`, `loop_duration_ms_avg` (via `wt metrics --json`).
+
+## Short / 24h soak
+
+```bash
+./scripts/soak_short.sh          # CI: F-001 replay → daemon loops → metrics report
+SOAK_HOURS=24 ./scripts/soak_24h.sh   # resumable state in reports/soak/soak_24h_state.json
+```
+
+Reports: `reports/soak/short_soak_*.json`, `reports/soak/soak_24h_*`.
 
 ## Backup / restore
 
