@@ -2,7 +2,7 @@
   "id": "F-008",
   "feature_id": "F-008",
   "title": "Kerberos / NTLM Auth Hacmi ve Hedef Çeşitliliği",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-ad",
@@ -10,7 +10,7 @@
     {
       "service": "samba-ad",
       "response": {
-        "events": 5
+        "events": 1
       }
     }
   ],
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-008",
-        "count": 320,
+        "count": 400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -57,10 +57,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "TGT/NTLM target diversity event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:10:59.137025+00:00",
+  "generated_at": "2026-05-23T03:11:06.533514+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
