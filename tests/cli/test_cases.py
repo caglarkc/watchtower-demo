@@ -20,7 +20,7 @@ def test_cli_cases_timeline_and_export(tenant_id, app):
     assert "created" in tl.stdout
 
     exported = runner.invoke(
-        cli_app, ["--db", str(db_path), "cases", "export", case_id, "--format", "md"]
+        cli_app, ["--db", db, "cases", "export", case_id, "--format", "md"]
     )
     assert exported.exit_code == 0
     assert alert_id[:8] in exported.stdout or case_id[:8] in exported.stdout
