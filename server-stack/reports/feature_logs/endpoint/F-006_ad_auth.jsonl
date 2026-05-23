@@ -10,3 +10,7 @@
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:09:45.006898+00:00"}
 {"event_type": "ad_auth", "event_id": 4625, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:09:46.524900+00:00"}
 {"event_type": "ad_auth", "event_id": 4624, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:09:46.525050+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 18, "feature_id": "F-006", "timestamp": "2026-05-23T01:16:22.060900+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:16:22.061043+00:00"}
+{"event_type": "ad_auth", "event_id": 4625, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:16:23.602573+00:00"}
+{"event_type": "ad_auth", "event_id": 4624, "count": 1, "feature_id": "F-006", "timestamp": "2026-05-23T01:16:23.602724+00:00"}
