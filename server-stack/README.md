@@ -14,6 +14,22 @@ BIND query log, DHCP/Kea, Zeek, Wazuh/auditd, Postfix/Dovecot/Roundcube,
 PostgreSQL pg_audit, Gitea, Nginx, Vault, Squid/MinIO, CUPS, HRIS/Badge
 real-like servisleri ve gerçek protokol replay testleriyle değiştirmeyi hedefler.
 
+### RI-0 — Real parity foundation
+
+Synthetic `make test-all` davranışı değişmez. Real katman ayrı komutlardadır:
+
+```bash
+make real-up
+make seed-real-all
+make real-feature FEATURE=F-001
+make real-feature-negative FEATURE=F-001
+pytest tests/real/test_real_catalog.py
+make real-coverage
+make test-real-all
+```
+
+Kanıt: `reports/real/features/F-xxx-{positive,negative}.json`, coverage: `reports/real/coverage/real_feature_coverage.json`
+
 ## Hızlı başlangıç
 
 ```bash
