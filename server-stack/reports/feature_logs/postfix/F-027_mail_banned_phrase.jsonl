@@ -30,3 +30,4 @@
 {"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": null, "feature_id": "F-027", "timestamp": "2026-05-23T02:36:35.359956+00:00"}
 {"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": "gizli iç bilgi", "feature_id": "F-027", "timestamp": "2026-05-23T02:36:45.436461+00:00"}
 {"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": null, "feature_id": "F-027", "timestamp": "2026-05-23T02:36:47.610522+00:00"}
+{"event_type": "mail_banned_phrase", "log_channel": "postfix", "phrase": "gizli iç bilgi", "feature_id": "F-027", "timestamp": "2026-05-23T02:43:41.359236+00:00"}

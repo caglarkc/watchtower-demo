@@ -30,3 +30,4 @@
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": false, "subject_sensitive": false, "feature_id": "F-028", "timestamp": "2026-05-23T02:36:35.446759+00:00"}
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "feature_id": "F-028", "timestamp": "2026-05-23T02:36:45.527299+00:00"}
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": false, "subject_sensitive": false, "feature_id": "F-028", "timestamp": "2026-05-23T02:36:47.700757+00:00"}
+{"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "feature_id": "F-028", "timestamp": "2026-05-23T02:43:41.448473+00:00"}
