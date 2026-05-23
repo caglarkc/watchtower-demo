@@ -50,7 +50,7 @@ sync_changes() {
   fi
 
   local commit_msg
-  commit_msg="$COMMIT_PREFIX $(date '+%Y-%m-%d %H:%M:%S')  "GERÇEK YAPI ENTEGRE EDİLMEYE BAŞLANDI"
+  commit_msg="$COMMIT_PREFIX $(date '+%Y-%m-%d %H:%M:%S')  "GERÇEK YAPI ENTEGRE EDİLMEYE BAŞLANDI""
   git commit -m "$commit_msg"
   git push origin "$BRANCH"
   echo "Pushed: $commit_msg"
