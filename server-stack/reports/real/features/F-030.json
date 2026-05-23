@@ -2,7 +2,7 @@
   "id": "F-030",
   "feature_id": "F-030",
   "title": "Harici Yapay Zeka Platformlarına Gizli Veri Gönderimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "ai-gateway",
@@ -11,7 +11,7 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 25
+        "tokens": 5
       }
     }
   ],
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "confidential prompt/upload event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:13.768068+00:00",
+  "generated_at": "2026-05-23T03:18:17.802785+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

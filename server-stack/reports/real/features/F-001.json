@@ -2,7 +2,7 @@
   "id": "F-001",
   "feature_id": "F-001",
   "title": "Kullanıcı Başına SMB/Dosya Sunucu Veri Çekim Profili",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "samba-files",
@@ -10,7 +10,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "events": 5,
+        "events": 1,
         "smb_attempted": true
       }
     },
@@ -48,7 +48,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-001",
-        "count": 6880,
+        "count": 7360,
         "result": "PASS"
       },
       "result": "PASS",
@@ -70,10 +70,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "SMB read volume event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:18:02.849633+00:00",
+  "generated_at": "2026-05-23T03:18:17.212866+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
