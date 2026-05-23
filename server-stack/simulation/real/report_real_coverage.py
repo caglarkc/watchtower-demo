@@ -97,6 +97,9 @@ def report() -> dict:
         "ri1_features": len(RI1_FEATURES),
         "ri1_l2_metadata": ri1_l2,
         "ri1_pass": ri1_pass,
+        "ri2_features": len(RI2_FEATURES),
+        "ri2_l2_metadata": ri2_l2,
+        "ri2_pass": ri2_pass,
         "l2_or_higher": sum(1 for r in rows if r.get("real_parity_level") in ("L2", "L3")),
         "waivers": [],
         "features": rows,
@@ -114,9 +117,14 @@ def main() -> int:
     out.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(
         f"wrote {out} metadata={data['metadata_complete']}/{data['total_features']} "
-        f"ri1={data['ri1_pass']}/{data['ri1_features']}"
+        f"ri1={data['ri1_pass']}/{data['ri1_features']} "
+        f"ri2={data['ri2_pass']}/{data['ri2_features']}"
     )
-    gate = data["metadata_complete"] == 81 and data["ri1_l2_metadata"] == len(RI1_FEATURES)
+    gate = (
+        data["metadata_complete"] == 81
+        and data["ri1_l2_metadata"] == len(RI1_FEATURES)
+        and data["ri2_l2_metadata"] == len(RI2_FEATURES)
+    )
     return 0 if gate else 1
 
 
