@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-031",
   "title": "CTO Bilgisayarından SSH Anahtarı Hasadı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "yetkisiz erişim",
   "user_role": "CTO",
   "deterministic_seed": 3031,
@@ -101,7 +101,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 5722,
+            "count": 6122,
             "result": "PASS"
           },
           "result": "PASS",
@@ -193,7 +193,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 5722,
+        "count": 6122,
         "result": "PASS"
       },
       "result": "PASS",
@@ -220,12 +220,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:41:23.967428+00:00",
+  "generated_at": "2026-05-23T08:41:48.481639+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-031:3031:positive:real"
+  "replay_key": "S-031:3031:negative:real"
 }
