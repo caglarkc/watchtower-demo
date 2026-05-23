@@ -1,0 +1,69 @@
+{
+  "scenario_id": "S-051",
+  "title": "Yanlış Paylaşılan Bordro Klasörü",
+  "mode": "positive",
+  "category": "kazara ihlal",
+  "user_role": "Muhasebe",
+  "deterministic_seed": 5051,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-041"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-041",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "acl": "Everyone:FULL"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "acl": "Everyone:FULL"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 1,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:55.155549+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-051:5051:positive:real"
+}

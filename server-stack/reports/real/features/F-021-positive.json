@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "personal email attachment event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:15.308558+00:00",
+  "generated_at": "2026-05-23T02:55:55.407485+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

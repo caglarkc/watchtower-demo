@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "USB attach/write correlation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:55:48.023781+00:00",
+  "generated_at": "2026-05-23T02:55:56.703363+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

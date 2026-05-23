@@ -1,0 +1,71 @@
+{
+  "scenario_id": "S-048",
+  "title": "PM Proje Maliyet Tablosu Toplu Güncelleme",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "Proje Yöneticisi",
+  "deterministic_seed": 4048,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-047"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-047",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "internal-app",
+          "response": {
+            "role": "internal-app"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/app/audit.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/mail/mailboxes.yml",
+        "seeds/real/postgres/schema.sql",
+        "seeds/real/git/repos.yml",
+        "seeds/real/web/endpoints.yml"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "internal-app",
+      "response": {
+        "role": "internal-app"
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/app/audit.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [],
+  "seed_refs": [
+    "seeds/real/mail/mailboxes.yml",
+    "seeds/real/postgres/schema.sql",
+    "seeds/real/git/repos.yml",
+    "seeds/real/web/endpoints.yml"
+  ],
+  "anomaly_detected": true,
+  "event_count": 1,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:54.638753+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-048:4048:positive:real"
+}

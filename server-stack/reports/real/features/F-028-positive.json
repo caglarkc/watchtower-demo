@@ -30,7 +30,7 @@
   "anomaly_detected": true,
   "evidence_expected": "first-time external sensitive mail",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:36:16.148700+00:00",
+  "generated_at": "2026-05-23T02:55:55.465565+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

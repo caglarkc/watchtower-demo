@@ -1,0 +1,221 @@
+{
+  "scenario_id": "S-047",
+  "title": "Ayrılış Öncesi Veri Rampa-Up",
+  "mode": "positive",
+  "category": "insider threat",
+  "user_role": "Yazılım Geliştirici",
+  "deterministic_seed": 4047,
+  "expected_severity": "ALERT",
+  "feature_ids": [
+    "F-001",
+    "F-072",
+    "F-064"
+  ],
+  "parity_level": "L2",
+  "parity_target": "L2",
+  "features_executed": [
+    {
+      "feature_id": "F-001",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "samba-files-actions",
+          "response": {
+            "events": 5,
+            "smb_attempted": true
+          }
+        },
+        {
+          "service": "zeek",
+          "response": {
+            "written": 1,
+            "log": "/var/log/corp/zeek/conn.log"
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+          "result": "PASS"
+        },
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+          "records": 20,
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [
+        {
+          "assertion": "elasticsearch:corp-logs:F-001",
+          "elasticsearch": {
+            "target": "http://172.28.0.17:9200",
+            "cluster_status": "green",
+            "result": "PASS"
+          },
+          "log_pipeline": {
+            "target": "http://172.28.0.16:9201",
+            "result": "PASS"
+          },
+          "result": "PASS",
+          "note": "RI-1: cluster healthy; index routing in RI-2+"
+        }
+      ],
+      "seed_refs": [
+        "seeds/real/identity/users.csv",
+        "seeds/real/files/classification.yml",
+        "seeds/real/baseline/normal_day.yml"
+      ]
+    },
+    {
+      "feature_id": "F-072",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "hris",
+          "response": {
+            "status": "terminated",
+            "logins_after": 6
+          }
+        },
+        {
+          "service": "samba-ad",
+          "response": {
+            "events": 1
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/hris/employees.yml",
+        "seeds/real/badge/locations.yml",
+        "seeds/real/print/confidential-report.pdf",
+        "seeds/real/crm/records.yml"
+      ]
+    },
+    {
+      "feature_id": "F-064",
+      "result": "PASS",
+      "parity_level": "L2",
+      "actions_executed": [
+        {
+          "service": "activity",
+          "response": {
+            "logged": true
+          }
+        }
+      ],
+      "raw_logs_asserted": [
+        {
+          "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/activity/input.jsonl",
+          "result": "PASS"
+        }
+      ],
+      "ingest_assertions": [],
+      "seed_refs": [
+        "seeds/real/vault/secrets.yml",
+        "seeds/real/ai/prompts.yml",
+        "seeds/real/baseline/peer_groups.yml",
+        "seeds/real/ai/uploads/sample.bin"
+      ]
+    }
+  ],
+  "actions_executed": [
+    {
+      "service": "samba-files-actions",
+      "response": {
+        "events": 5,
+        "smb_attempted": true
+      }
+    },
+    {
+      "service": "zeek",
+      "response": {
+        "written": 1,
+        "log": "/var/log/corp/zeek/conn.log"
+      }
+    },
+    {
+      "service": "hris",
+      "response": {
+        "status": "terminated",
+        "logins_after": 6
+      }
+    },
+    {
+      "service": "samba-ad",
+      "response": {
+        "events": 1
+      }
+    },
+    {
+      "service": "activity",
+      "response": {
+        "logged": true
+      }
+    }
+  ],
+  "raw_logs_asserted": [
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/samba/audit.log",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/zeek/conn.log",
+      "records": 20,
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/hris/hris.jsonl",
+      "result": "PASS"
+    },
+    {
+      "path": "/home/caglarkc/Desktop/Github/all-agentics/watchtower-demo/server-stack/logs/activity/input.jsonl",
+      "result": "PASS"
+    }
+  ],
+  "ingest_assertions": [
+    {
+      "assertion": "elasticsearch:corp-logs:F-001",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "note": "RI-1: cluster healthy; index routing in RI-2+"
+    }
+  ],
+  "seed_refs": [
+    "seeds/real/identity/users.csv",
+    "seeds/real/files/classification.yml",
+    "seeds/real/baseline/normal_day.yml",
+    "seeds/real/hris/employees.yml",
+    "seeds/real/badge/locations.yml",
+    "seeds/real/print/confidential-report.pdf",
+    "seeds/real/crm/records.yml",
+    "seeds/real/vault/secrets.yml",
+    "seeds/real/ai/prompts.yml",
+    "seeds/real/baseline/peer_groups.yml",
+    "seeds/real/ai/uploads/sample.bin"
+  ],
+  "anomaly_detected": true,
+  "event_count": 5,
+  "synthetic_preserved": true,
+  "generated_at": "2026-05-23T02:55:54.501938+00:00",
+  "stack": "watchtower-corp",
+  "result": "PASS",
+  "status": "PASS",
+  "replay_key": "S-047:4047:positive:real"
+}

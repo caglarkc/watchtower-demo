@@ -2,7 +2,7 @@
   "id": "F-080",
   "feature_id": "F-080",
   "title": "Oturum Süresi vs Klavye/Fare Aktivitesi (Boş Oturum Suistimali)",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -27,10 +27,10 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "idle session abuse event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:29:56.978673+00:00",
+  "generated_at": "2026-05-23T02:55:56.890178+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
