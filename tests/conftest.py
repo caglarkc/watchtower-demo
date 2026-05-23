@@ -17,7 +17,12 @@ def db_path(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def settings(db_path: Path) -> WatchtowerSettings:
-    return WatchtowerSettings(database_path=db_path)
+    return WatchtowerSettings(
+        database_path=db_path,
+        graph_checkpoint_path=db_path.parent / "graph_checkpoints.db",
+        graph_checkpoint_enabled=True,
+        graph_checkpoint_use_memory=False,
+    )
 
 
 @pytest.fixture

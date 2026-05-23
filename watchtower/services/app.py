@@ -265,7 +265,12 @@ def create_app(
         resolved_settings = resolved_settings.model_copy(
             update={"database_path": database_path}
         )
-    app = AppContext(settings=resolved_settings, database=Database(resolved_settings.database_path))
+    checkpoint_store = GraphCheckpointStore.from_settings(resolved_settings)
+    app = AppContext(
+        settings=resolved_settings,
+        database=Database(resolved_settings.database_path),
+        checkpoint_store=checkpoint_store,
+    )
     if run_migrations:
         app.run_migrations()
     return app
