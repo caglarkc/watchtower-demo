@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import json
 import subprocess
 from pathlib import Path
 
@@ -23,12 +24,26 @@ def _compose_ps() -> str:
     return result.stdout
 
 
+def _compose_rows() -> list[dict]:
+    rows = []
+    for line in _compose_ps().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+    return rows
+
+
 @pytest.mark.smoke
 @pytest.mark.skipif(SKIP_STACK, reason="SKIP_DOCKER_STACK set")
 def test_core_services_running() -> None:
-    out = _compose_ps()
-    if not out.strip():
+    rows = _compose_rows()
+    if not rows:
         pytest.skip("Stack not running — run: make up")
+    by_name = {row.get("Name") or row.get("Names"): row for row in rows}
 
     expected = [
         "corp-samba-ad",
@@ -41,7 +56,12 @@ def test_core_services_running() -> None:
         "corp-elasticsearch",
     ]
     for name in expected:
-        assert name in out, f"Missing container {name}"
+        assert name in by_name, f"Missing container {name}"
+        row = by_name[name]
+        assert row.get("State") == "running", f"{name} is not running: {row}"
+        health = row.get("Health")
+        if health:
+            assert health == "healthy", f"{name} is not healthy: {row}"
 
 
 @pytest.mark.smoke
