@@ -2,7 +2,7 @@
   "id": "F-074",
   "feature_id": "F-074",
   "title": "Vardiya Dışı Fiziksel + Mantıksal Erişim Korelasyonu",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "badge-api",
@@ -10,7 +10,7 @@
     {
       "service": "badge",
       "response": {
-        "shift": "off"
+        "shift": "day"
       }
     }
   ],
@@ -38,12 +38,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 31,
+        "indexed": 34,
         "index": "corp-logs-f-074",
         "pipeline": {
           "feature_id": "F-074",
           "index": "corp-logs-f-074",
-          "indexed": 31
+          "indexed": 34
         }
       }
     }
@@ -54,10 +54,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "off-shift physical/logical access",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:07:35.544924+00:00",
+  "generated_at": "2026-05-23T03:07:58.352373+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

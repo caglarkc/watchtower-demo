@@ -20,7 +20,34 @@
       "result": "PASS"
     }
   ],
-  "ingest_assertions": [],
+  "ingest_assertions": [
+    {
+      "assertion": "L2:log-pipeline:corp-events:F-077",
+      "elasticsearch": {
+        "target": "http://172.28.0.17:9200",
+        "cluster_status": "green",
+        "result": "PASS"
+      },
+      "log_pipeline": {
+        "target": "http://172.28.0.16:9201",
+        "elasticsearch": "green",
+        "result": "PASS"
+      },
+      "result": "PASS",
+      "parity_level": "L2",
+      "note": "RI-6: cluster healthy; L2 ingest gate",
+      "ship": {
+        "shipped": true,
+        "indexed": 59,
+        "index": "corp-logs-f-077",
+        "pipeline": {
+          "feature_id": "F-077",
+          "index": "corp-logs-f-077",
+          "indexed": 59
+        }
+      }
+    }
+  ],
   "seed_refs": [
     "seeds/real/hris/employees.yml",
     "seeds/real/badge/locations.yml",
@@ -30,7 +57,7 @@
   "anomaly_detected": false,
   "evidence_expected": "activity while officially on leave",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T02:56:34.898586+00:00",
+  "generated_at": "2026-05-23T03:07:58.805579+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

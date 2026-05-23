@@ -2,7 +2,7 @@
   "id": "F-009",
   "feature_id": "F-009",
   "title": "Eşzamanlı Oturum ve Bina İçi Lokasyon Çakışması",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "badge-api",
@@ -11,8 +11,7 @@
       "service": "badge",
       "response": {
         "locations": [
-          "floor-3",
-          "floor-b1"
+          "floor-3"
         ]
       }
     },
@@ -47,12 +46,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 29,
+        "indexed": 32,
         "index": "corp-logs-f-009",
         "pipeline": {
           "feature_id": "F-009",
           "index": "corp-logs-f-009",
-          "indexed": 29
+          "indexed": 32
         }
       }
     }
@@ -63,10 +62,10 @@
     "seeds/real/print/confidential-report.pdf",
     "seeds/real/crm/records.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "same user multi-location session",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:07:08.227703+00:00",
+  "generated_at": "2026-05-23T03:07:57.236503+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
