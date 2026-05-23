@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "unapproved AI tool access event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:54.719862+00:00",
+  "generated_at": "2026-05-23T10:25:31.077321+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
