@@ -42,3 +42,4 @@
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 0, "feature_id": "F-053", "timestamp": "2026-05-23T02:57:08.882470+00:00"}
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "feature_id": "F-053", "timestamp": "2026-05-23T02:57:17.626202+00:00"}
 {"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 0, "feature_id": "F-053", "timestamp": "2026-05-23T02:57:19.785118+00:00"}
+{"event_type": "backup_shadow_delete", "log_channel": "endpoint", "shadow_copies_deleted": 48, "feature_id": "F-053", "timestamp": "2026-05-23T03:08:11.983178+00:00"}
