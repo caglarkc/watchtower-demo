@@ -7,6 +7,7 @@ from typing import Any
 
 from watchtower.domain.source import SourceRecord
 from watchtower.security.masking import mask_mapping
+from watchtower.sources.validation import validate_connector_config
 from watchtower.storage.repositories.source import SourceRepository
 
 SUPPORTED_CONNECTORS = (
@@ -35,6 +36,7 @@ class SourceOnboardingService:
         if connector_type not in SUPPORTED_CONNECTORS:
             msg = f"unsupported connector: {connector_type}"
             raise ValueError(msg)
+        validate_connector_config(connector_type, config or {})
         return self._sources.create(
             tenant_id,
             connector_type,

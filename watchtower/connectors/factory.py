@@ -14,11 +14,13 @@ from watchtower.connectors.server_stack import ServerStackConnector
 from watchtower.connectors.wazuh import WazuhConnector
 from watchtower.domain.events import RawEventRecord
 from watchtower.domain.source import SourceRecord
+from watchtower.sources.validation import validate_connector_config
 
 
 def build_connector(source: SourceRecord) -> BaseConnector:
     config = source.config
     connector_type = source.connector_type
+    validate_connector_config(connector_type, config)
 
     if connector_type == "server_stack":
         logs_root = Path(config.get("logs_root", PROJECT_ROOT / "server-stack" / "logs"))
@@ -34,11 +36,30 @@ def build_connector(source: SourceRecord) -> BaseConnector:
         return FileJsonlConnector(source.id, file_path)
 
     if connector_type == "elasticsearch":
+        http_config = {
+            k: config[k]
+            for k in (
+                "timeout_seconds",
+                "max_retries",
+                "backoff_base_seconds",
+                "verify_tls",
+                "ca_cert_path",
+                "auth_type",
+                "username",
+                "password",
+                "token",
+                "api_key",
+                "api_key_header",
+                "api_key_prefix",
+            )
+            if k in config
+        }
         return ElasticsearchConnector(
             source.id,
             base_url=str(config["base_url"]),
             index=str(config.get("index", "corp-logs-*")),
             query=config.get("query"),
+            http_config=http_config,
             http_get=config.get("http_get"),
             http_post=config.get("http_post"),
         )
@@ -47,10 +68,13 @@ def build_connector(source: SourceRecord) -> BaseConnector:
         return WazuhConnector(
             source.id,
             api_url=str(config["api_url"]),
+            config=config,
             username=config.get("username"),
             password=config.get("password"),
             token=config.get("token"),
+            time_window_minutes=int(config.get("time_window_minutes", 60)),
             http_get=config.get("http_get"),
+            http_post=config.get("http_post"),
         )
 
     if connector_type == "mock":
