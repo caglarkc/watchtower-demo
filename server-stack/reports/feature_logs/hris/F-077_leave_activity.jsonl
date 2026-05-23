@@ -7,3 +7,4 @@
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "feature_id": "F-077", "timestamp": "2026-05-23T01:26:53.749159+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "feature_id": "F-077", "timestamp": "2026-05-23T01:26:59.532076+00:00"}
 {"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 900, "feature_id": "F-077", "timestamp": "2026-05-23T01:27:08.578223+00:00"}
+{"event_type": "leave_activity", "log_channel": "hris", "on_leave": true, "keyboard_events": 0, "feature_id": "F-077", "timestamp": "2026-05-23T01:27:11.040766+00:00"}

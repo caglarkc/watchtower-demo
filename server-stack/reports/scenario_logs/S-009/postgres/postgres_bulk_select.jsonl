@@ -2,3 +2,4 @@
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-009", "timestamp": "2026-05-23T01:26:24.636686+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "source_feature": "F-045", "scenario_id": "S-009", "timestamp": "2026-05-23T01:26:38.561286+00:00"}
 {"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 1, "rows_scanned": 1200, "source_feature": "F-045", "scenario_id": "S-009", "timestamp": "2026-05-23T01:26:41.498081+00:00"}
+{"event_type": "postgres_bulk_select", "log_channel": "postgres", "tables": 12, "rows_scanned": 4500000, "source_feature": "F-045", "scenario_id": "S-009", "timestamp": "2026-05-23T01:27:11.739568+00:00"}
