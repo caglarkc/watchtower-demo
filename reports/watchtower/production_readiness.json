@@ -1,6 +1,8 @@
 {
   "phase": "Faz 11 — Production Readiness",
   "generated_at": "2026-05-23",
+  "final_acceptance": "ACCEPTED",
+  "full_suite_passed": 454,
   "gates": {
     "pytest_production_load": "16/16 passed",
     "pytest_full_suite": "454 passed",
