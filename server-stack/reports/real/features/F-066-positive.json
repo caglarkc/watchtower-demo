@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "peer group statistical deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:36:50.086542+00:00",
+  "generated_at": "2026-05-23T05:37:45.044307+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

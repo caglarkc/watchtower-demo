@@ -2,7 +2,7 @@
   "id": "F-061",
   "feature_id": "F-061",
   "title": "Rol Bazlı Sunucu Temas Haritası",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L2",
   "parity_target": "L2",
   "real_tool": "endpoint-synthetic",
@@ -39,12 +39,12 @@
       "note": "RI-6: cluster healthy; L2 ingest gate",
       "ship": {
         "shipped": true,
-        "indexed": 34,
+        "indexed": 35,
         "index": "corp-logs-f-061",
         "pipeline": {
           "feature_id": "F-061",
           "index": "corp-logs-f-061",
-          "indexed": 34
+          "indexed": 35
         }
       }
     }
@@ -55,10 +55,10 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "role-to-server contact map deviation",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:37:09.804907+00:00",
+  "generated_at": "2026-05-23T05:37:44.491439+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
