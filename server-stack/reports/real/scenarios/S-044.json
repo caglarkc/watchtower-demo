@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-044",
   "title": "Yönetici Yetkisiyle Kitlesel Log Silme",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "IT Admin",
   "deterministic_seed": 4044,
@@ -101,19 +101,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-054",
-            "count": 75,
+            "count": 175,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 18,
+            "indexed": 23,
             "index": "corp-logs-f-054",
             "pipeline": {
               "feature_id": "F-054",
               "index": "corp-logs-f-054",
-              "indexed": 18
+              "indexed": 23
             }
           }
         }
@@ -255,19 +255,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 75,
+        "count": 175,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 18,
+        "indexed": 23,
         "index": "corp-logs-f-054",
         "pipeline": {
           "feature_id": "F-054",
           "index": "corp-logs-f-054",
-          "indexed": 18
+          "indexed": 23
         }
       }
     },
@@ -308,12 +308,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:37.720207+00:00",
+  "generated_at": "2026-05-23T03:12:17.566266+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-044:4044:positive:real"
+  "replay_key": "S-044:4044:negative:real"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-052",
   "title": "İK'dan Yanlış Odaya Giden Hassas Mail",
-  "mode": "positive",
+  "mode": "negative",
   "category": "kazara ihlal",
   "user_role": "İK",
   "deterministic_seed": 5052,
@@ -49,7 +49,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-020",
-            "count": 320,
+            "count": 480,
             "result": "PASS"
           },
           "result": "PASS",
@@ -106,7 +106,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-023",
-            "count": 320,
+            "count": 560,
             "result": "PASS"
           },
           "result": "PASS",
@@ -163,7 +163,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-021",
-            "count": 320,
+            "count": 400,
             "result": "PASS"
           },
           "result": "PASS",
@@ -220,7 +220,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-028",
-            "count": 320,
+            "count": 400,
             "result": "PASS"
           },
           "result": "PASS",
@@ -277,7 +277,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-019",
-            "count": 400,
+            "count": 560,
             "result": "PASS"
           },
           "result": "PASS",
@@ -371,7 +371,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-020",
-        "count": 320,
+        "count": 480,
         "result": "PASS"
       },
       "result": "PASS",
@@ -401,7 +401,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-023",
-        "count": 320,
+        "count": 560,
         "result": "PASS"
       },
       "result": "PASS",
@@ -431,7 +431,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-021",
-        "count": 320,
+        "count": 400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -461,7 +461,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-028",
-        "count": 320,
+        "count": 400,
         "result": "PASS"
       },
       "result": "PASS",
@@ -491,7 +491,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-019",
-        "count": 400,
+        "count": 560,
         "result": "PASS"
       },
       "result": "PASS",
@@ -514,12 +514,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 5,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:11:39.658970+00:00",
+  "generated_at": "2026-05-23T03:12:19.456324+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-052:5052:positive:real"
+  "replay_key": "S-052:5052:negative:real"
 }
