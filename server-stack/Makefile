@@ -52,6 +52,12 @@ test-phase2:
 test-integration:
 	$(PYTEST) tests/integration -m phase2 -v
 
+test-phase3:
+	$(PYTEST) tests/feature -m phase3 -v
+
+test-integration-phase3:
+	$(PYTEST) tests/integration -m phase3 -v
+
 coverage:
 	$(PYTHON) simulation/feature_catalog/report_coverage.py --phase 1
 
