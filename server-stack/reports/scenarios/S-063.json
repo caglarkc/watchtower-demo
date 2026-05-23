@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-063",
   "title": "Süresi Dolan Şifrelerin Toplu Uzatılması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 6063,
@@ -14,7 +14,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Süresi Dolan Şifrelerin Toplu Uzatılması",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 2,
   "events": [
     {
@@ -24,13 +24,13 @@
       "user_role": "IT Admin",
       "category": "politika ihlali",
       "seed": 6063,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "credential_reset_burst",
       "log_channel": "hris",
-      "resets": 12,
-      "unlocks": 8,
+      "resets": 1,
+      "unlocks": 0,
       "source_feature": "F-014",
       "scenario_id": "S-063"
     }
@@ -39,9 +39,12 @@
     "reports/scenario_logs/S-063/endpoint/scenario_anchor.jsonl",
     "reports/scenario_logs/S-063/hris/credential_reset_burst.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:44:11.159035+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:44:13.911849+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-063:6063:positive"
+  "replay_key": "S-063:6063:negative"
 }

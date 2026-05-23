@@ -15,3 +15,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-078", "user_role": "Destek Personeli", "category": "sosyal mühendislik", "seed": 8078, "anomaly": true, "timestamp": "2026-05-23T02:36:57.992582+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-078", "user_role": "Destek Personeli", "category": "sosyal mühendislik", "seed": 8078, "anomaly": false, "timestamp": "2026-05-23T02:37:00.818393+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-078", "user_role": "Destek Personeli", "category": "sosyal mühendislik", "seed": 8078, "anomaly": true, "timestamp": "2026-05-23T02:44:11.641739+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-078", "user_role": "Destek Personeli", "category": "sosyal mühendislik", "seed": 8078, "anomaly": false, "timestamp": "2026-05-23T02:44:14.409435+00:00"}

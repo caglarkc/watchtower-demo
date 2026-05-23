@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-042",
   "title": "SOC Log Suppress Kuralı",
-  "mode": "positive",
+  "mode": "negative",
   "category": "insider threat",
   "user_role": "Güvenlik Görevlisi",
   "deterministic_seed": 4042,
@@ -16,7 +16,7 @@
     "siem-admin"
   ],
   "expected_evidence": "Multi-signal workflow for SOC Log Suppress Kuralı",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -26,20 +26,20 @@
       "user_role": "Güvenlik Görevlisi",
       "category": "insider threat",
       "seed": 4042,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "siem_suppress_rule",
       "log_channel": "siem",
-      "self_ip_suppress": true,
+      "self_ip_suppress": false,
       "source_feature": "F-050",
       "scenario_id": "S-042"
     },
     {
       "event_type": "dlp_bypass",
       "log_channel": "dlp",
-      "agent_healthy": false,
-      "bypass_attempt": true,
+      "agent_healthy": true,
+      "bypass_attempt": false,
       "source_feature": "F-058",
       "scenario_id": "S-042"
     }
@@ -49,9 +49,12 @@
     "reports/scenario_logs/S-042/siem/siem_suppress_rule.jsonl",
     "reports/scenario_logs/S-042/dlp/dlp_bypass.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:44:10.465399+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:44:13.208617+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-042:4042:positive"
+  "replay_key": "S-042:4042:negative"
 }

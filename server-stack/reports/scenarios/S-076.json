@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-076",
   "title": "CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
-  "mode": "positive",
+  "mode": "negative",
   "category": "sosyal mühendislik",
   "user_role": "IT Admin",
   "deterministic_seed": 8076,
@@ -15,7 +15,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for CFO'dan Gelen Acil Onay Talebi Sonrası Yetki Verme",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,20 +25,20 @@
       "user_role": "IT Admin",
       "category": "sosyal mühendislik",
       "seed": 8076,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "ad_group_change",
       "event_id": 4728,
-      "group": "Domain Admins",
+      "group": "Helpdesk",
       "source_feature": "F-011",
       "scenario_id": "S-076"
     },
     {
       "event_type": "credential_reset_burst",
       "log_channel": "hris",
-      "resets": 12,
-      "unlocks": 8,
+      "resets": 1,
+      "unlocks": 0,
       "source_feature": "F-014",
       "scenario_id": "S-076"
     }
@@ -48,9 +48,12 @@
     "reports/scenario_logs/S-076/scenarios/ad_group_change.jsonl",
     "reports/scenario_logs/S-076/hris/credential_reset_burst.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:44:11.582395+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:44:14.342667+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-076:8076:positive"
+  "replay_key": "S-076:8076:negative"
 }

@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-080",
   "title": "Çok Kaynaklı Kademeli İhlal Simülasyonu",
-  "mode": "positive",
+  "mode": "negative",
   "category": "çapraz/multi-user",
   "user_role": "IT Admin",
   "deterministic_seed": 9080,
@@ -23,12 +23,11 @@
     "internal-app",
     "proxy-sink",
     "siem-admin",
-    "vault-mock",
     "wiki-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Çok Kaynaklı Kademeli İhlal Simülasyonu",
-  "anomaly_detected": true,
-  "event_count": 12,
+  "anomaly_detected": false,
+  "event_count": 10,
   "events": [
     {
       "event_type": "scenario_anchor",
@@ -37,37 +36,21 @@
       "user_role": "IT Admin",
       "category": "çapraz/multi-user",
       "seed": 9080,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "composite_signal",
-      "log_channel": "ai_gateway",
-      "signal": "ai_leak",
-      "weight": 0.4,
-      "source_feature": "F-071",
-      "scenario_id": "S-080"
-    },
-    {
-      "event_type": "composite_signal",
-      "log_channel": "proxy",
-      "signal": "exfil",
-      "weight": 0.35,
-      "source_feature": "F-071",
-      "scenario_id": "S-080"
-    },
-    {
-      "event_type": "composite_signal",
-      "log_channel": "vault",
-      "signal": "secret_burst",
-      "weight": 0.25,
+      "log_channel": "endpoint",
+      "signal": "baseline",
+      "weight": 0.1,
       "source_feature": "F-071",
       "scenario_id": "S-080"
     },
     {
       "event_type": "wiki_bulk_download",
       "log_channel": "wiki",
-      "pages": 3200,
-      "mb": 2400,
+      "pages": 12,
+      "mb": 8,
       "source_feature": "F-044",
       "scenario_id": "S-080"
     },
@@ -75,20 +58,20 @@
       "event_type": "api_key_usage",
       "log_channel": "app",
       "key_id": "svc-deploy",
-      "source_ips": 3,
+      "source_ips": 1,
       "source_feature": "F-012",
       "scenario_id": "S-080"
     },
     {
       "event_type": "siem_suppress_rule",
       "log_channel": "siem",
-      "self_ip_suppress": true,
+      "self_ip_suppress": false,
       "source_feature": "F-050",
       "scenario_id": "S-080"
     },
     {
       "event_type": "smb_bulk_io",
-      "read_bytes": 18400000000,
+      "read_bytes": 320000000,
       "write_bytes": 0,
       "source_feature": "F-038",
       "scenario_id": "S-080"
@@ -96,24 +79,24 @@
     {
       "event_type": "ai_confidential_prompt",
       "log_channel": "ai_gateway",
-      "contains_pii": true,
-      "bytes": 42000,
+      "contains_pii": false,
+      "bytes": 200,
       "source_feature": "F-030",
       "scenario_id": "S-080"
     },
     {
       "event_type": "ai_internal_info_prompt",
       "log_channel": "ai_gateway",
-      "hosts_disclosed": 8,
-      "users_disclosed": 5,
+      "hosts_disclosed": 0,
+      "users_disclosed": 0,
       "source_feature": "F-032",
       "scenario_id": "S-080"
     },
     {
       "event_type": "unapproved_ai_domain",
       "log_channel": "proxy",
-      "domain": "chatgpt-unapproved.example",
-      "allowed": false,
+      "domain": "ai-approved.corp.local",
+      "allowed": true,
       "source_feature": "F-033",
       "scenario_id": "S-080"
     },
@@ -121,8 +104,7 @@
       "event_type": "ai_procedure_discovery",
       "log_channel": "ai_gateway",
       "topics": [
-        "incident_response",
-        "password_policy"
+        "general_help"
       ],
       "source_feature": "F-035",
       "scenario_id": "S-080"
@@ -130,9 +112,7 @@
   ],
   "log_paths": [
     "reports/scenario_logs/S-080/endpoint/scenario_anchor.jsonl",
-    "reports/scenario_logs/S-080/ai_gateway/composite_signal.jsonl",
-    "reports/scenario_logs/S-080/proxy/composite_signal.jsonl",
-    "reports/scenario_logs/S-080/vault/composite_signal.jsonl",
+    "reports/scenario_logs/S-080/endpoint/composite_signal.jsonl",
     "reports/scenario_logs/S-080/wiki/wiki_bulk_download.jsonl",
     "reports/scenario_logs/S-080/app/api_key_usage.jsonl",
     "reports/scenario_logs/S-080/siem/siem_suppress_rule.jsonl",
@@ -142,9 +122,12 @@
     "reports/scenario_logs/S-080/proxy/unapproved_ai_domain.jsonl",
     "reports/scenario_logs/S-080/ai_gateway/ai_procedure_discovery.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:44:11.713206+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:44:14.483202+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-080:9080:positive"
+  "replay_key": "S-080:9080:negative"
 }

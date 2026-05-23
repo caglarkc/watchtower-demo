@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-073",
   "title": "İK Bilgisayarında Keylogger Çalışması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "İK",
   "deterministic_seed": 7073,
@@ -15,7 +15,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for İK Bilgisayarında Keylogger Çalışması",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -25,20 +25,20 @@
       "user_role": "İK",
       "category": "dış saldırı desteği",
       "seed": 7073,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "process_tree_anomaly",
       "log_channel": "endpoint",
-      "duration_hours": 18,
-      "child_processes": 42,
+      "duration_hours": 1,
+      "child_processes": 3,
       "source_feature": "F-046",
       "scenario_id": "S-073"
     },
     {
       "event_type": "clipboard_large_copy",
       "log_channel": "activity",
-      "bytes": 48000000,
+      "bytes": 1200,
       "source_feature": "F-059",
       "scenario_id": "S-073"
     }
@@ -48,9 +48,12 @@
     "reports/scenario_logs/S-073/endpoint/process_tree_anomaly.jsonl",
     "reports/scenario_logs/S-073/activity/clipboard_large_copy.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T02:44:11.486877+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T02:44:14.244322+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-073:7073:positive"
+  "replay_key": "S-073:7073:negative"
 }

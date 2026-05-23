@@ -15,3 +15,4 @@
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["incident_response", "password_policy"], "source_feature": "F-035", "scenario_id": "S-080", "timestamp": "2026-05-23T02:36:58.062984+00:00"}
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["general_help"], "source_feature": "F-035", "scenario_id": "S-080", "timestamp": "2026-05-23T02:37:00.905302+00:00"}
 {"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["incident_response", "password_policy"], "source_feature": "F-035", "scenario_id": "S-080", "timestamp": "2026-05-23T02:44:11.710692+00:00"}
+{"event_type": "ai_procedure_discovery", "log_channel": "ai_gateway", "topics": ["general_help"], "source_feature": "F-035", "scenario_id": "S-080", "timestamp": "2026-05-23T02:44:14.480894+00:00"}

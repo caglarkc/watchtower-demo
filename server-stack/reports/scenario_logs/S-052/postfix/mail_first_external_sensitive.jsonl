@@ -15,3 +15,4 @@
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T02:36:57.095670+00:00"}
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": false, "subject_sensitive": false, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T02:36:59.920858+00:00"}
 {"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": true, "subject_sensitive": true, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T02:44:10.794288+00:00"}
+{"event_type": "mail_first_external_sensitive", "log_channel": "postfix", "first_time_recipient": false, "subject_sensitive": false, "source_feature": "F-028", "scenario_id": "S-052", "timestamp": "2026-05-23T02:44:13.537306+00:00"}
