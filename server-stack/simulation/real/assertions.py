@@ -206,15 +206,18 @@ def run_assertions(feature_id: str, mode: str, since: float) -> tuple[list[dict]
             result = wait_for_log(check, since)
         raw.append(result)
 
+    ship = ship_feature_logs(feature_id, raw)
     ingest: list[dict] = []
-    if feature_id in INGEST_FEATURES:
-        ing = assert_ingest_for_feature(feature_id)
-        if feature_id in INGEST_L3_FEATURES and ing.get("result") == "PASS":
-            ing["assertion"] = f"L3:elasticsearch:corp-logs:{feature_id}"
-            ing["parity_level"] = "L3"
+    if feature_id in INGEST_L3_FEATURES:
+        ing = assert_ingest_for_feature(feature_id, l3=True)
+        ing["ship"] = ship
+        ingest.append(ing)
+    elif feature_id in INGEST_FEATURES:
+        ing = assert_ingest_for_feature(feature_id, l3=False)
+        ing["ship"] = ship
         ingest.append(ing)
 
-    ok = all(r.get("result") == "PASS" for r in raw) and all(
-        i.get("result") in ("PASS", "SKIP") for i in ingest
-    )
+    ok = all(r.get("result") == "PASS" for r in raw)
+    if feature_id in INGEST_L3_FEATURES:
+        ok = ok and bool(ingest) and all(i.get("result") == "PASS" for i in ingest)
     return raw, ingest, ok
