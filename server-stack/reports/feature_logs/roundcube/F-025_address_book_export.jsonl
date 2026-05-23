@@ -8,3 +8,5 @@
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T01:26:00.841366+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T01:26:50.133430+00:00"}
 {"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T01:26:55.783971+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 4800, "feature_id": "F-025", "timestamp": "2026-05-23T01:27:03.588021+00:00"}
+{"event_type": "address_book_export", "log_channel": "roundcube", "contacts_exported": 5, "feature_id": "F-025", "timestamp": "2026-05-23T01:27:05.241255+00:00"}

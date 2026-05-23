@@ -8,3 +8,5 @@
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.12, "feature_id": "F-026", "timestamp": "2026-05-23T01:26:00.909728+00:00"}
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.92, "feature_id": "F-026", "timestamp": "2026-05-23T01:26:50.198918+00:00"}
 {"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.12, "feature_id": "F-026", "timestamp": "2026-05-23T01:26:55.854702+00:00"}
+{"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.92, "feature_id": "F-026", "timestamp": "2026-05-23T01:27:03.661559+00:00"}
+{"event_type": "mail_style_deviation", "log_channel": "postfix", "tone_score": 0.12, "feature_id": "F-026", "timestamp": "2026-05-23T01:27:05.310856+00:00"}
