@@ -17,3 +17,5 @@
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "feature_id": "F-016", "timestamp": "2026-05-23T02:09:40.308199+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "feature_id": "F-016", "timestamp": "2026-05-23T02:09:55.240865+00:00"}
 {"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "feature_id": "F-016", "timestamp": "2026-05-23T02:10:00.884273+00:00"}
+{"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 450, "attachment_mb": 120, "feature_id": "F-016", "timestamp": "2026-05-23T02:10:08.617030+00:00"}
+{"event_type": "mail_send_volume", "log_channel": "postfix", "messages": 12, "attachment_mb": 5, "feature_id": "F-016", "timestamp": "2026-05-23T02:10:10.271414+00:00"}
