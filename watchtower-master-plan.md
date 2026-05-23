@@ -159,6 +159,7 @@ Bu plan özellikle geri bildirimde işaretlenen belirsizliği kapatır:
 
 - 81 feature sınıflandırmasını **Faz 0 görevi olarak kod yazacak AI tamamlayacak**.
 - AI, `watchtower-features-final.md`, `server-stack/simulation/feature_catalog/features.yml` ve `server-stack/reports/real/coverage/real_final_gate.json` dosyalarını okuyacak.
+- Faz 0 başlamadan önce bu üç referans dosyasının varlığı preflight test ile doğrulanacak; dosya eksikse taxonomy yazılmayacak, önce server-stack artifact üretimi veya yol düzeltmesi yapılacak.
 - Çıktı dosyası ürün tarafında olacak: `watchtower/config/feature_taxonomy.yml`.
 - Her feature için alanlar zorunlu olacak:
   - `feature_id`
@@ -573,14 +574,16 @@ Amaç: Kod başlamadan feature classification ve policy-rule belirsizliğini kap
 
 Yapılacaklar:
 
-1. `watchtower/config/feature_taxonomy.yml` oluştur.
-2. 81 feature için detection class belirle.
-3. `policy-rule` listesi açık yazılsın.
-4. `feature_taxonomy` schema validator yaz.
-5. `server-stack` feature/scenario referansları bağlansın.
+1. Preflight referans kontrolü yaz: `watchtower-features-final.md`, `server-stack/simulation/feature_catalog/features.yml`, `server-stack/reports/real/coverage/real_final_gate.json`.
+2. `watchtower/config/feature_taxonomy.yml` oluştur.
+3. 81 feature için detection class belirle.
+4. `policy-rule` listesi açık yazılsın.
+5. `feature_taxonomy` schema validator yaz.
+6. `server-stack` feature/scenario referansları bağlansın.
 
 Testler:
 
+- Preflight referans dosyaları mevcut.
 - 81/81 taxonomy entry.
 - Her entry primary class içerir.
 - `policy-rule` entry'lerinde `requires_approval_for_suppression=true`.
@@ -905,4 +908,3 @@ Plan tamamlandığında sistem şunları sağlamalıdır:
 - LLM kapalıyken çalışır
 - 81 feature ve 83 scenario server-stack üzerinde E2E test edilir
 - test kanıtı olmadan hiçbir faz kapanmaz
-

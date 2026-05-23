@@ -11,7 +11,7 @@ Watchtower, şirket iç ağında çalışan bir **insan davranışı izleme sist
 
 - **Ne izler:** Çalışanların dijital hareketlerini — hangi dosyaya ne zaman dokundu, hangi sunucuya bağlandı, ne kadar veri çekti, hangi saatte giriş yaptı, hangi grupta değişiklik oldu.
 - **Ne arar:** Policy violation (zaten yanlış olan şeyler) ve davranış sapması (o kişi için normalden kopma).
-- **Ne yapar:** Anomali tespit edince ilgili kişilere Telegram/CLI ile alert gönderir, LLM destekli açıklama ve öneri üretir.
+- **Ne yapar:** Anomali tespit edince CLI'da alert/case üretir, LLM destekli açıklama ve öneri hazırlar; opsiyonel kanallar açıldıysa ilgili kişilere bildirim gönderir.
 - **Ne yapmaz:** Müdahale etmez, engellemez, kesmez. Sadece izler ve uyarır.
 
 ---
@@ -167,39 +167,39 @@ Watchtower şirketin tüm çalışanlarını izler. Her çalışan şu bilgilerl
 **Özel kural — Yönetici anomalisi:**
 Alert üretilen kişi bir Departman Yöneticisiyse, bildirim o kişinin yöneticisine değil doğrudan Sistem Yöneticisi + Güvenlik Operatörüne gider.
 
-**Bildirim kanalları:** Telegram (varsayılan) + CLI + e-posta (opsiyonel)
+**Bildirim kanalları:** CLI varsayılandır. Telegram, e-posta ve webhook opsiyoneldir; MVP için Telegram zorunlu değildir.
 
 ---
 
 ## 8. Anomali Karar Motoru
 
-### 8.1 Kural Motoru — Eşik Tespiti
+### 8.1 Kural Motoru — Bağlamlı Eşik ve Karar Tespiti
 
 Anomali kararı **kural motoru** tarafından verilir, LLM karar vermez.
 
-**Eşik yapısı — departman bazlı:**
+**Eşik yapısı — çok katmanlı:**
 
-- Sistem öğrenme modunda her departmanın davranış ortalamasını çıkarır.
-- Her metrik (veri çekimi, login saati, erişilen sunucu sayısı vb.) için departman bazlı ortalama ve varyans hesaplanır.
-- Bu ortalamaya göre her departman için eşik belirlenir.
-- Bir kullanıcı departman eşiğinin **%70'ine ulaştığında** → WARNING tetiklenir.
-- Eşiği **aştığında** → ALERT veya CRITICAL tetiklenir.
+- Sistem öğrenme modunda kullanıcı, departman, rol, asset ve zaman penceresi bazlı normal davranış profilleri çıkarır.
+- Her metrik (veri çekimi, login saati, erişilen sunucu sayısı, SQL sorgu sayısı vb.) için global default, departman, rol-in-department ve kullanıcı özel eşikleri hesaplanır.
+- Kullanıcının kendi geçmişi, departman normundan daha açıklayıcıysa kullanıcı baseline'ı öncelik kazanır.
+- Manager/operator feedback'i doğrudan sistemi değiştirmez; scoped `pending_rule` üretir ve onaydan sonra uygulanır.
+- `policy-rule` ve `hard-rule` sınıfındaki davranışlar baseline ile otomatik normalleşmez; explicit approved exception gerekir.
 
 **Örnek:**
 ```
-Muhasebe departmanı günlük SMB veri çekimi ortalaması: 400 MB
-Departman eşiği: 2 GB
-%70 uyarı noktası: 1.4 GB
+Backend departmanı SQL sorgu ortalaması: 100 sorgu/gün
+Mehmet'in kişisel normal aralığı: 1000-2000 sorgu/gün
+Yiğit'in kişisel normal aralığı: 10-20 sorgu/gün
 
-Ali Koc (Muhasebe) → 1.5 GB çekti → WARNING tetiklendi
-Ali Koc (Muhasebe) → 8 GB çekti  → CRITICAL tetiklendi
+Mehmet → 1000 sorgu attı → kişisel baseline'a göre normal, alert düşebilir
+Yiğit → 100 sorgu attı ve artıyor → kişisel baseline'dan sapma, alert üretilebilir
 ```
 
-### 8.2 Bekleyen Karar — Seniority Bazlı Eşik Ayrımı
+### 8.2 Rol, Seniority ve Feedback Ayrımı
 
-> **Not:** Aynı departmanda Senior ve Junior çalışanların, ya da Manager ve analistin veri çekme miktarları doğal olarak farklıdır. Departman ortalaması bu farkı yutabilir ve false positive/negative üretebilir.
+> **Karar:** Aynı departmanda worker, senior, manager ve executive davranışları ayrı profillenmelidir. Departman ortalaması tek başına yeterli değildir.
 >
-> **Karar:** Seniority bazlı alt-eşik ayrımı (Junior/Mid/Senior/Manager/Executive) ileride değerlendirilecek. Şu an departman bazlı eşikle başlanıyor; yeterli veri birikmesi durumunda seniority katmanı eklenir.
+> Manager feedback'i tekrar eden benign pattern'leri azaltmak için kullanılır; ancak feedback `pending_rule → approve → stable` akışından geçmeden otomatik karar kuralı olmaz.
 
 ---
 
