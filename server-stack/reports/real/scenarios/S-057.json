@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-057",
   "title": "Veri Analistinin Legal Hold Dosyalarını Dahil Etmesi",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Veri Analisti",
   "deterministic_seed": 5057,
@@ -75,7 +75,7 @@
         {
           "service": "samba-files-actions",
           "response": {
-            "read_bytes": 100000,
+            "read_bytes": 18400000000,
             "write_bytes": 0
           }
         }
@@ -101,7 +101,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-038",
-            "count": 16640,
+            "count": 17520,
             "result": "PASS"
           },
           "result": "PASS",
@@ -136,7 +136,7 @@
     {
       "service": "samba-files-actions",
       "response": {
-        "read_bytes": 100000,
+        "read_bytes": 18400000000,
         "write_bytes": 0
       }
     }
@@ -192,7 +192,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-038",
-        "count": 16640,
+        "count": 17520,
         "result": "PASS"
       },
       "result": "PASS",
@@ -218,12 +218,12 @@
     "seeds/real/files/classification.yml",
     "seeds/real/baseline/normal_day.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:23.062129+00:00",
+  "generated_at": "2026-05-23T10:27:16.796879+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-057:5057:negative:real"
+  "replay_key": "S-057:5057:positive:real"
 }

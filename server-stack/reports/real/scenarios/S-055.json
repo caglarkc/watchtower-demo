@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-055",
   "title": "USB ile İçeri Veri Taşıyan Stajyer",
-  "mode": "negative",
+  "mode": "positive",
   "category": "kazara ihlal",
   "user_role": "Stajyer",
   "deterministic_seed": 5055,
@@ -47,7 +47,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-055",
-            "count": 8575,
+            "count": 9135,
             "result": "PASS"
           },
           "result": "PASS",
@@ -166,7 +166,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-055",
-        "count": 8575,
+        "count": 9135,
         "result": "PASS"
       },
       "result": "PASS",
@@ -218,12 +218,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 2,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T10:26:22.424429+00:00",
+  "generated_at": "2026-05-23T10:27:16.135910+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-055:5055:negative:real"
+  "replay_key": "S-055:5055:positive:real"
 }
