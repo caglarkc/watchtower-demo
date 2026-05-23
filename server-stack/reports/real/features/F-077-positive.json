@@ -57,7 +57,7 @@
   "anomaly_detected": true,
   "evidence_expected": "activity while officially on leave",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:13:44.136703+00:00",
+  "generated_at": "2026-05-23T03:14:02.374833+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
