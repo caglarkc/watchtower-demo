@@ -17,6 +17,12 @@ from catalog_data import (
     SCENARIOS,
 )
 
+sys_path_real = CATALOG_DIR.parent / "real"
+import sys
+
+sys.path.insert(0, str(sys_path_real))
+from real_parity_data import real_metadata_for  # noqa: E402
+
 CATALOG_DIR = Path(__file__).resolve().parent
 REPORTS_DIR = CATALOG_DIR.parents[1] / "reports" / "coverage"
 
