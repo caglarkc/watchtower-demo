@@ -183,6 +183,31 @@ class HealthService:
             )
         return checks
 
+    @staticmethod
+    def _check_metrics(session: Any, tenant_id: str) -> HealthCheck:
+        snap = session.metrics.snapshot(tenant_id)
+        source_errors = int(snap.get(METRIC_SOURCE_ERRORS))
+        loop_last = snap.get(METRIC_LOOP_DURATION_LAST)
+        details = snap.to_dict()
+        if source_errors >= 10:
+            return HealthCheck(
+                "metrics",
+                "degraded",
+                f"elevated source_errors_total={source_errors}",
+                details,
+            )
+        if source_errors >= 1:
+            return HealthCheck(
+                "metrics",
+                "degraded",
+                f"recent source_errors_total={source_errors}",
+                details,
+            )
+        msg = "runtime metrics nominal"
+        if loop_last:
+            msg = f"{msg}; last loop {loop_last:.0f}ms"
+        return HealthCheck("metrics", "healthy", msg, details)
+
 
 def _aggregate_status(checks: list[HealthCheck]) -> HealthStatus:
     if any(c.status == "unhealthy" for c in checks):
