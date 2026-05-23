@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-007",
   "title": "Geçici Toplantı Dosyasında Gizlenen Veritabanı Dökümü",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "Yazılım Geliştirici",
   "deterministic_seed": 1007,
@@ -24,7 +24,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 2"
+            "sql": "SELECT * FROM customers LIMIT 500"
           }
         }
       ],
@@ -49,7 +49,7 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 7855,
+            "count": 8415,
             "result": "PASS"
           },
           "result": "PASS",
@@ -136,7 +136,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "tokens": 13
+            "tokens": 42
           }
         }
       ],
@@ -190,7 +190,7 @@
           "service": "ai-gateway",
           "response": {
             "accepted": true,
-            "bytes": 1000
+            "bytes": 80000000
           }
         }
       ],
@@ -241,7 +241,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     },
     {
@@ -255,14 +255,14 @@
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "tokens": 13
+        "tokens": 42
       }
     },
     {
       "service": "ai-gateway",
       "response": {
         "accepted": true,
-        "bytes": 1000
+        "bytes": 80000000
       }
     }
   ],
@@ -299,7 +299,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 7855,
+        "count": 8415,
         "result": "PASS"
       },
       "result": "PASS",
@@ -404,12 +404,12 @@
     "seeds/real/baseline/peer_groups.yml",
     "seeds/real/ai/uploads/sample.bin"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 4,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T08:42:59.262276+00:00",
+  "generated_at": "2026-05-23T10:25:44.106784+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-007:1007:negative:real"
+  "replay_key": "S-007:1007:positive:real"
 }
