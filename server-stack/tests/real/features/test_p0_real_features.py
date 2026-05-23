@@ -36,7 +36,7 @@ def _run(feature_id: str, mode: str) -> dict:
 def test_p0_real_positive(feature_id: str, require_real_stack: None) -> None:
     evidence = _run(feature_id, "positive")
     assert evidence["feature_id"] == feature_id
-    assert evidence["parity_level"] == "L2"
+    assert evidence["parity_level"] == "L3"
     assert evidence["result"] == "PASS"
     assert evidence["anomaly_detected"] is True
     assert len(evidence["actions_executed"]) >= 1
