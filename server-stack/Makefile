@@ -1,4 +1,4 @@
-.PHONY: up down config clean feature feature-negative test-smoke test-features test-phase1 coverage seed-baseline
+.PHONY: up down config clean feature feature-negative test-smoke test-features test-phase1 test-phase2 test-integration coverage coverage-phase2 seed-baseline seed-phase2 test-all
 
 PYTHON ?= .venv/bin/python
 PYTEST ?= .venv/bin/pytest
