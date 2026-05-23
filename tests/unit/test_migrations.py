@@ -32,5 +32,20 @@ def test_fresh_db_migration_applies_initial_schema(settings):
 
         pending_after = runner.list_pending(conn)
         assert pending_after == []
+
+        # apply Faz 2 ingest migration when present
+        ingest_pending = [p for p in runner.list_pending(conn) if "002" in p.stem]
+        if ingest_pending:
+            runner.apply_all(conn)
+            conn.commit()
+            tables = {
+                row[0]
+                for row in conn.execute(
+                    "SELECT name FROM sqlite_master WHERE type='table'"
+                ).fetchall()
+            }
+            assert "sources" in tables
+            assert "source_cursors" in tables
+            assert "raw_events" in tables
     finally:
         conn.close()
