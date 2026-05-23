@@ -1,0 +1,1489 @@
+version: '1.0'
+total_features: 81
+policy_rule_features:
+- F-010
+- F-011
+- F-017
+- F-018
+- F-021
+- F-022
+- F-023
+- F-025
+- F-027
+- F-028
+- F-029
+- F-030
+- F-031
+- F-032
+- F-033
+- F-035
+- F-036
+- F-037
+- F-043
+- F-051
+- F-062
+- F-067
+- F-078
+features:
+- feature_id: F-001
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-001_positive.yaml
+  - simulation/feature_replays/F-001_negative.yaml
+- feature_id: F-002
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-002_positive.yaml
+  - simulation/feature_replays/F-002_negative.yaml
+- feature_id: F-003
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-003_positive.yaml
+  - simulation/feature_replays/F-003_negative.yaml
+- feature_id: F-004
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-004_positive.yaml
+  - simulation/feature_replays/F-004_negative.yaml
+- feature_id: F-005
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-005_positive.yaml
+  - simulation/feature_replays/F-005_negative.yaml
+- feature_id: F-006
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-006_positive.yaml
+  - simulation/feature_replays/F-006_negative.yaml
+- feature_id: F-007
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-007_positive.yaml
+  - simulation/feature_replays/F-007_negative.yaml
+- feature_id: F-008
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-008_positive.yaml
+  - simulation/feature_replays/F-008_negative.yaml
+- feature_id: F-009
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-009_positive.yaml
+  - simulation/feature_replays/F-009_negative.yaml
+- feature_id: F-010
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-010_positive.yaml
+  - simulation/feature_replays/F-010_negative.yaml
+- feature_id: F-011
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-011_positive.yaml
+  - simulation/feature_replays/F-011_negative.yaml
+- feature_id: F-012
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-012_positive.yaml
+  - simulation/feature_replays/F-012_negative.yaml
+- feature_id: F-013
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-013_positive.yaml
+  - simulation/feature_replays/F-013_negative.yaml
+- feature_id: F-014
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-014_positive.yaml
+  - simulation/feature_replays/F-014_negative.yaml
+- feature_id: F-015
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-015_positive.yaml
+  - simulation/feature_replays/F-015_negative.yaml
+- feature_id: F-016
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-016_positive.yaml
+  - simulation/feature_replays/F-016_negative.yaml
+- feature_id: F-017
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-017_positive.yaml
+  - simulation/feature_replays/F-017_negative.yaml
+- feature_id: F-018
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-018_positive.yaml
+  - simulation/feature_replays/F-018_negative.yaml
+- feature_id: F-019
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-019_positive.yaml
+  - simulation/feature_replays/F-019_negative.yaml
+- feature_id: F-020
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-020_positive.yaml
+  - simulation/feature_replays/F-020_negative.yaml
+- feature_id: F-021
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-021_positive.yaml
+  - simulation/feature_replays/F-021_negative.yaml
+- feature_id: F-022
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-022_positive.yaml
+  - simulation/feature_replays/F-022_negative.yaml
+- feature_id: F-023
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-023_positive.yaml
+  - simulation/feature_replays/F-023_negative.yaml
+- feature_id: F-024
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-024_positive.yaml
+  - simulation/feature_replays/F-024_negative.yaml
+- feature_id: F-025
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-025_positive.yaml
+  - simulation/feature_replays/F-025_negative.yaml
+- feature_id: F-026
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: LOG
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-026_positive.yaml
+  - simulation/feature_replays/F-026_negative.yaml
+- feature_id: F-027
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-027_positive.yaml
+  - simulation/feature_replays/F-027_negative.yaml
+- feature_id: F-028
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-028_positive.yaml
+  - simulation/feature_replays/F-028_negative.yaml
+- feature_id: F-029
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-029_positive.yaml
+  - simulation/feature_replays/F-029_negative.yaml
+- feature_id: F-030
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-030_positive.yaml
+  - simulation/feature_replays/F-030_negative.yaml
+- feature_id: F-031
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-031_positive.yaml
+  - simulation/feature_replays/F-031_negative.yaml
+- feature_id: F-032
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-032_positive.yaml
+  - simulation/feature_replays/F-032_negative.yaml
+- feature_id: F-033
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-033_positive.yaml
+  - simulation/feature_replays/F-033_negative.yaml
+- feature_id: F-034
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-034_positive.yaml
+  - simulation/feature_replays/F-034_negative.yaml
+- feature_id: F-035
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-035_positive.yaml
+  - simulation/feature_replays/F-035_negative.yaml
+- feature_id: F-036
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-036_positive.yaml
+  - simulation/feature_replays/F-036_negative.yaml
+- feature_id: F-037
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-037_positive.yaml
+  - simulation/feature_replays/F-037_negative.yaml
+- feature_id: F-038
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-038_positive.yaml
+  - simulation/feature_replays/F-038_negative.yaml
+- feature_id: F-039
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes:
+  - hard-rule
+  default_severity_floor: ALERT
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-039_positive.yaml
+  - simulation/feature_replays/F-039_negative.yaml
+- feature_id: F-040
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-040_positive.yaml
+  - simulation/feature_replays/F-040_negative.yaml
+- feature_id: F-041
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-041_positive.yaml
+  - simulation/feature_replays/F-041_negative.yaml
+- feature_id: F-042
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-042_positive.yaml
+  - simulation/feature_replays/F-042_negative.yaml
+- feature_id: F-043
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-043_positive.yaml
+  - simulation/feature_replays/F-043_negative.yaml
+- feature_id: F-044
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-044_positive.yaml
+  - simulation/feature_replays/F-044_negative.yaml
+- feature_id: F-045
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-045_positive.yaml
+  - simulation/feature_replays/F-045_negative.yaml
+- feature_id: F-046
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-046_positive.yaml
+  - simulation/feature_replays/F-046_negative.yaml
+- feature_id: F-047
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-047_positive.yaml
+  - simulation/feature_replays/F-047_negative.yaml
+- feature_id: F-048
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-048_positive.yaml
+  - simulation/feature_replays/F-048_negative.yaml
+- feature_id: F-049
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-049_positive.yaml
+  - simulation/feature_replays/F-049_negative.yaml
+- feature_id: F-050
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-050_positive.yaml
+  - simulation/feature_replays/F-050_negative.yaml
+- feature_id: F-051
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-051_positive.yaml
+  - simulation/feature_replays/F-051_negative.yaml
+- feature_id: F-052
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-052_positive.yaml
+  - simulation/feature_replays/F-052_negative.yaml
+- feature_id: F-053
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-053_positive.yaml
+  - simulation/feature_replays/F-053_negative.yaml
+- feature_id: F-054
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-054_positive.yaml
+  - simulation/feature_replays/F-054_negative.yaml
+- feature_id: F-055
+  primary_detection_class: cross-signal
+  secondary_detection_classes:
+  - hard-rule
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-055_positive.yaml
+  - simulation/feature_replays/F-055_negative.yaml
+- feature_id: F-056
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-056_positive.yaml
+  - simulation/feature_replays/F-056_negative.yaml
+- feature_id: F-057
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-057_positive.yaml
+  - simulation/feature_replays/F-057_negative.yaml
+- feature_id: F-058
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-058_positive.yaml
+  - simulation/feature_replays/F-058_negative.yaml
+- feature_id: F-059
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-059_positive.yaml
+  - simulation/feature_replays/F-059_negative.yaml
+- feature_id: F-060
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-060_positive.yaml
+  - simulation/feature_replays/F-060_negative.yaml
+- feature_id: F-061
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-061_positive.yaml
+  - simulation/feature_replays/F-061_negative.yaml
+- feature_id: F-062
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-062_positive.yaml
+  - simulation/feature_replays/F-062_negative.yaml
+- feature_id: F-063
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-063_positive.yaml
+  - simulation/feature_replays/F-063_negative.yaml
+- feature_id: F-064
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-064_positive.yaml
+  - simulation/feature_replays/F-064_negative.yaml
+- feature_id: F-065
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-065_positive.yaml
+  - simulation/feature_replays/F-065_negative.yaml
+- feature_id: F-066
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-066_positive.yaml
+  - simulation/feature_replays/F-066_negative.yaml
+- feature_id: F-067
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-067_positive.yaml
+  - simulation/feature_replays/F-067_negative.yaml
+- feature_id: F-068
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-068_positive.yaml
+  - simulation/feature_replays/F-068_negative.yaml
+- feature_id: F-069
+  primary_detection_class: hard-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - source_ip
+  - asset
+  - action
+  - technical_indicator
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-069_positive.yaml
+  - simulation/feature_replays/F-069_negative.yaml
+- feature_id: F-070
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-070_positive.yaml
+  - simulation/feature_replays/F-070_negative.yaml
+- feature_id: F-071
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-071_positive.yaml
+  - simulation/feature_replays/F-071_negative.yaml
+- feature_id: F-072
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: CRITICAL
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-072_positive.yaml
+  - simulation/feature_replays/F-072_negative.yaml
+- feature_id: F-073
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-073_positive.yaml
+  - simulation/feature_replays/F-073_negative.yaml
+- feature_id: F-074
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-074_positive.yaml
+  - simulation/feature_replays/F-074_negative.yaml
+- feature_id: F-075
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-075_positive.yaml
+  - simulation/feature_replays/F-075_negative.yaml
+- feature_id: F-076
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-076_positive.yaml
+  - simulation/feature_replays/F-076_negative.yaml
+- feature_id: F-077
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-077_positive.yaml
+  - simulation/feature_replays/F-077_negative.yaml
+- feature_id: F-078
+  primary_detection_class: policy-rule
+  secondary_detection_classes: []
+  default_severity_floor: ALERT
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - action
+  - entitlement
+  - approval_ticket
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-078_positive.yaml
+  - simulation/feature_replays/F-078_negative.yaml
+- feature_id: F-079
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-079_positive.yaml
+  - simulation/feature_replays/F-079_negative.yaml
+- feature_id: F-080
+  primary_detection_class: cross-signal
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: false
+  can_be_feedback_learned: false
+  requires_approval_for_suppression: true
+  required_context:
+  - user
+  - role
+  - department
+  - time_window
+  - correlated_signals
+  - signal_sources
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-080_positive.yaml
+  - simulation/feature_replays/F-080_negative.yaml
+- feature_id: F-081
+  primary_detection_class: baseline-anomaly
+  secondary_detection_classes: []
+  default_severity_floor: WARNING
+  requires_baseline: true
+  can_be_feedback_learned: true
+  requires_approval_for_suppression: false
+  required_context:
+  - user
+  - role
+  - department
+  - asset
+  - time_window
+  - user_baseline
+  - department_baseline
+  - role_in_department_baseline
+  server_stack_replay_refs:
+  - simulation/feature_replays/F-081_positive.yaml
+  - simulation/feature_replays/F-081_negative.yaml
