@@ -20,7 +20,11 @@ app = typer.Typer(
 )
 
 modes_app = typer.Typer(help="Operating mode commands")
+sources_app = typer.Typer(help="Ingest source commands")
+ingest_app = typer.Typer(help="Ingest commands")
 app.add_typer(modes_app, name="modes")
+app.add_typer(sources_app, name="sources")
+app.add_typer(ingest_app, name="ingest")
 
 
 def _open_app(
@@ -152,6 +156,91 @@ def modes_set(
             raise typer.Exit(code=1) from exc
 
     typer.echo(f"mode set to {updated}")
+
+
+@sources_app.command("list")
+def sources_list(ctx: typer.Context) -> None:
+    """List configured ingest sources."""
+    wt_app = _get_ctx_app(ctx)
+    with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+            rows = session.sources.list_for_tenant(tenant_id)
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+
+    if not rows:
+        typer.echo("(no sources registered)")
+        return
+    for source in rows:
+        flag = "enabled" if source.enabled else "disabled"
+        typer.echo(f"{source.id}\t{source.connector_type}\t{source.name}\t{flag}")
+
+
+@sources_app.command("health")
+def sources_health(
+    ctx: typer.Context,
+    source_id: Annotated[
+        Optional[str], typer.Option("--source", help="Source id (all if omitted)")
+    ] = None,
+) -> None:
+    """Check connector health for one or all sources."""
+    wt_app = _get_ctx_app(ctx)
+    with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+            targets = (
+                [session.sources.get(source_id, tenant_id=tenant_id)]
+                if source_id
+                else session.sources.list_for_tenant(tenant_id)
+            )
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+
+        for source in targets:
+            if source is None:
+                typer.echo(f"unknown source: {source_id}", err=True)
+                raise typer.Exit(code=1)
+            health = session.ingest.check_health(source)
+            typer.echo(f"{source.id}\t{health.status}\t{health.message}")
+
+
+@ingest_app.command("once")
+def ingest_once(
+    ctx: typer.Context,
+    source_id: Annotated[str, typer.Option("--source", help="Source id")],
+    limit: Annotated[
+        Optional[int], typer.Option("--limit", help="Max events per poll")
+    ] = None,
+) -> None:
+    """Poll a source once and store raw events."""
+    wt_app = _get_ctx_app(ctx)
+    batch_limit = limit or wt_app.settings.ingest_default_limit
+    with wt_app.session() as session:
+        try:
+            tenant_id = require_bootstrap(session)
+            result = session.ingest.ingest_once(tenant_id, source_id, limit=batch_limit)
+            session.audit.log(
+                "cli.ingest.once",
+                tenant_id=tenant_id,
+                details=result.model_dump(),
+            )
+        except BootstrapRequiredError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+
+    if result.error and result.stored == 0:
+        typer.echo(f"ingest failed: {result.error}", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(
+        f"polled={result.polled} stored={result.stored} "
+        f"duplicates={result.duplicates} has_more={result.has_more}"
+    )
+    if result.error:
+        typer.echo(f"warning: {result.error}")
 
 
 def run() -> None:
