@@ -65,7 +65,7 @@ class Handler(BaseHTTPRequestHandler):
             "/action/siem-suppress": self._siem_suppress,
             "/action/hypervisor-access": self._hypervisor_access,
             "/action/artifact-download": self._artifact_download,
-            "/emit": lambda b: (_write(b), {"ok": True})[1],
+            "/emit": self._emit,
         }
         fn = handlers.get(path)
         if not fn:
