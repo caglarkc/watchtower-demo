@@ -1,0 +1,5 @@
+roles:
+  CFO:
+    servers: [files1, db1, app1]
+  dev:
+    servers: [git1]
