@@ -90,6 +90,11 @@ class DaemonService:
         pipeline = self._session.pipeline.process_raw_batch(
             tenant_id, limit=pipeline_limit
         )
+        self._session.metrics.record_pipeline(
+            tenant_id,
+            normalized=pipeline.normalized,
+            candidates=pipeline.candidates,
+        )
         summary.pipeline = {
             "processed": pipeline.processed,
             "normalized": pipeline.normalized,
@@ -110,7 +115,38 @@ class DaemonService:
             if graph_result.interrupted:
                 summary.graph_interrupted += 1
             self._accumulate_graph_outcomes(summary, tenant_id, graph_result)
+            alerts_n = self._session.graph.count_alerts(
+                tenant_id, graph_result.run_id
+            )
+            if alerts_n == 0 and graph_result.state.get("alert_id"):
+                alerts_n = 1
+            self._session.metrics.record_graph_run(
+                tenant_id, alerts=alerts_n
+            )
 
+        duration_ms = (time.perf_counter() - started) * 1000.0
+        self._session.metrics.record_daemon_loop(
+            tenant_id, summary, duration_ms=duration_ms
+        )
+        emit_structured_log(
+            logger,
+            logging.INFO,
+            "daemon loop complete",
+            tenant_id=tenant_id,
+            event_counts={
+                "raw_stored": summary.raw_stored,
+                "normalized": int(summary.pipeline.get("normalized", 0)),
+                "candidates": int(summary.pipeline.get("candidates", 0)),
+                "graph_runs": summary.graph_runs,
+                "alerts": summary.alerts_created,
+            },
+            extra={
+                "iteration": iteration,
+                "mode": mode,
+                "loop_duration_ms": round(duration_ms, 2),
+                "sources_failed": summary.sources_failed,
+            },
+        )
         return summary
 
     def _run_graph(self, candidate: CandidateEvent) -> GraphRunResult:
