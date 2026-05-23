@@ -5,3 +5,4 @@
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T01:27:08.173472+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:09:29.011871+00:00"}
 {"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:09:43.800724+00:00"}
+{"event_type": "composite_signal", "log_channel": "ai_gateway", "signal": "ai_leak", "weight": 0.4, "feature_id": "F-071", "timestamp": "2026-05-23T02:09:59.132643+00:00"}
