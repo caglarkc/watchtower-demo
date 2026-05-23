@@ -72,12 +72,14 @@ class AlertService:
             created_at=now,
             updated_at=now,
         )
+        resolved_run_id = run_id or graph_run_id or self._repo.new_id()
+        self._repo.ensure_graph_run(tenant_id, resolved_run_id)
         case = AlertCase(
             id=case_id,
             tenant_id=tenant_id,
             alert_id=alert_id,
             status="open",
-            run_id=run_id,
+            run_id=resolved_run_id,
             candidate_id=candidate_id,
             payload={
                 "feature_id": feature_id,

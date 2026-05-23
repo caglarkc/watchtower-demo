@@ -24,6 +24,19 @@ class AlertRepository:
     def new_id() -> str:
         return str(uuid.uuid4())
 
+    def ensure_graph_run(self, tenant_id: str, run_id: str, *, mode: str = "run") -> str:
+        """Ensure a graph_runs row exists for alert_cases FK."""
+        now = datetime.now(UTC).isoformat()
+        self._conn.execute(
+            """
+            INSERT OR IGNORE INTO graph_runs (
+                id, tenant_id, mode, status, started_at, finished_at
+            ) VALUES (?, ?, ?, 'completed', ?, ?)
+            """,
+            (run_id, tenant_id, mode, now, now),
+        )
+        return run_id
+
     def insert_alert(self, alert: Alert) -> str:
         self._conn.execute(
             """
