@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-070",
   "title": "Domain Controller Üzerinde Credential Dumping Script",
-  "mode": "positive",
+  "mode": "negative",
   "category": "dış saldırı desteği",
   "user_role": "IT Admin",
   "deterministic_seed": 7070,
@@ -14,7 +14,7 @@
     "endpoint-synthetic"
   ],
   "expected_evidence": "Multi-signal workflow for Domain Controller Üzerinde Credential Dumping Script",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 3,
   "events": [
     {
@@ -24,20 +24,20 @@
       "user_role": "IT Admin",
       "category": "dış saldırı desteği",
       "seed": 7070,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "encoded_powershell",
       "log_channel": "endpoint",
-      "encoded_command": true,
-      "bypass_policy": true,
+      "encoded_command": false,
+      "bypass_policy": false,
       "source_feature": "F-054",
       "scenario_id": "S-070"
     },
     {
       "event_type": "kerberos_tgt",
       "user": "admin",
-      "targets": 8,
+      "targets": 0,
       "hour": 2,
       "source_feature": "F-008",
       "scenario_id": "S-070"
@@ -48,9 +48,12 @@
     "reports/scenario_logs/S-070/endpoint/encoded_powershell.jsonl",
     "reports/scenario_logs/S-070/scenarios/kerberos_tgt.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:09:58.462571+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:10:01.350111+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-070:7070:positive"
+  "replay_key": "S-070:7070:negative"
 }

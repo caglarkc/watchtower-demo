@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-065",
   "title": "Geçici Erişim Süresinin Aşılması",
-  "mode": "positive",
+  "mode": "negative",
   "category": "politika ihlali",
   "user_role": "IT Admin",
   "deterministic_seed": 6065,
@@ -16,7 +16,7 @@
     "hris-mock"
   ],
   "expected_evidence": "Multi-signal workflow for Geçici Erişim Süresinin Aşılması",
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "event_count": 4,
   "events": [
     {
@@ -26,15 +26,14 @@
       "user_role": "IT Admin",
       "category": "politika ihlali",
       "seed": 6065,
-      "anomaly": true
+      "anomaly": false
     },
     {
       "event_type": "contractor_out_of_scope",
       "log_channel": "hris",
       "identity": "contractor",
       "systems": [
-        "payroll-db",
-        "dc-admin"
+        "dev-git"
       ],
       "source_feature": "F-078",
       "scenario_id": "S-065"
@@ -42,8 +41,8 @@
     {
       "event_type": "offboarding_activity",
       "log_channel": "hris",
-      "status": "terminated",
-      "logins_after": 6,
+      "status": "active",
+      "logins_after": 0,
       "source_feature": "F-072",
       "scenario_id": "S-065"
     },
@@ -51,7 +50,7 @@
       "event_type": "leave_activity",
       "log_channel": "hris",
       "on_leave": true,
-      "keyboard_events": 900,
+      "keyboard_events": 0,
       "source_feature": "F-077",
       "scenario_id": "S-065"
     }
@@ -62,9 +61,12 @@
     "reports/scenario_logs/S-065/hris/offboarding_activity.jsonl",
     "reports/scenario_logs/S-065/hris/leave_activity.jsonl"
   ],
-  "negative_control": null,
-  "generated_at": "2026-05-23T05:09:58.295324+00:00",
+  "negative_control": {
+    "type": "baseline_replay",
+    "description": "Same scenario with sub-threshold feature signals"
+  },
+  "generated_at": "2026-05-23T05:10:01.182841+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
-  "replay_key": "S-065:6065:positive"
+  "replay_key": "S-065:6065:negative"
 }

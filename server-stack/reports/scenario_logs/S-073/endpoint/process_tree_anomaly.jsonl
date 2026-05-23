@@ -25,3 +25,4 @@
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "source_feature": "F-046", "scenario_id": "S-073", "timestamp": "2026-05-23T03:17:59.201647+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "source_feature": "F-046", "scenario_id": "S-073", "timestamp": "2026-05-23T03:18:02.101036+00:00"}
 {"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 18, "child_processes": 42, "source_feature": "F-046", "scenario_id": "S-073", "timestamp": "2026-05-23T05:09:58.568330+00:00"}
+{"event_type": "process_tree_anomaly", "log_channel": "endpoint", "duration_hours": 1, "child_processes": 3, "source_feature": "F-046", "scenario_id": "S-073", "timestamp": "2026-05-23T05:10:01.450426+00:00"}

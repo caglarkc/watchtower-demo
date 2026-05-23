@@ -25,3 +25,4 @@
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-079", "user_role": "İK", "category": "sosyal mühendislik", "seed": 8079, "anomaly": true, "timestamp": "2026-05-23T03:17:59.408766+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-079", "user_role": "İK", "category": "sosyal mühendislik", "seed": 8079, "anomaly": false, "timestamp": "2026-05-23T03:18:02.313453+00:00"}
 {"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-079", "user_role": "İK", "category": "sosyal mühendislik", "seed": 8079, "anomaly": true, "timestamp": "2026-05-23T05:09:58.766817+00:00"}
+{"event_type": "scenario_anchor", "log_channel": "endpoint", "scenario_id": "S-079", "user_role": "İK", "category": "sosyal mühendislik", "seed": 8079, "anomaly": false, "timestamp": "2026-05-23T05:10:01.646508+00:00"}

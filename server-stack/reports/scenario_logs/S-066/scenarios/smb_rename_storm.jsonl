@@ -25,3 +25,4 @@
 {"event_type": "smb_rename_storm", "renames_per_minute": 120, "source_feature": "F-039", "scenario_id": "S-066", "timestamp": "2026-05-23T03:17:58.961260+00:00"}
 {"event_type": "smb_rename_storm", "renames_per_minute": 2, "source_feature": "F-039", "scenario_id": "S-066", "timestamp": "2026-05-23T03:18:01.867185+00:00"}
 {"event_type": "smb_rename_storm", "renames_per_minute": 120, "source_feature": "F-039", "scenario_id": "S-066", "timestamp": "2026-05-23T05:09:58.328467+00:00"}
+{"event_type": "smb_rename_storm", "renames_per_minute": 2, "source_feature": "F-039", "scenario_id": "S-066", "timestamp": "2026-05-23T05:10:01.218362+00:00"}
