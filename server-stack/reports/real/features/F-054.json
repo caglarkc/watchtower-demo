@@ -2,7 +2,7 @@
   "id": "F-054",
   "feature_id": "F-054",
   "title": "Kodlanmış veya Politika Atlatan Betik Komutları",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "wazuh-agent",
@@ -36,19 +36,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-054",
-        "count": 2268,
+        "count": 2407,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 69,
+        "indexed": 71,
         "index": "corp-logs-f-054",
         "pipeline": {
           "feature_id": "F-054",
           "index": "corp-logs-f-054",
-          "indexed": 69
+          "indexed": 71
         }
       }
     }
@@ -59,10 +59,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "encoded/policy-bypass script event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T05:10:48.028468+00:00",
+  "generated_at": "2026-05-23T05:11:04.596828+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
