@@ -2,7 +2,7 @@
   "id": "F-017",
   "feature_id": "F-017",
   "title": "Mail Forward/Delegate Kural Değişimi",
-  "mode": "positive",
+  "mode": "negative",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "dovecot",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": true,
+  "anomaly_detected": false,
   "evidence_expected": "forward/delegate rule change",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:05:11.266697+00:00",
+  "generated_at": "2026-05-23T03:05:54.468311+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"
