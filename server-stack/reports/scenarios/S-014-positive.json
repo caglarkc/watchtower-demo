@@ -59,7 +59,7 @@
     "reports/scenario_logs/S-014/scenarios/usb_write.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:38.596231+00:00",
+  "generated_at": "2026-05-23T03:17:57.168060+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-014:1014:positive"

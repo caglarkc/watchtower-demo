@@ -47,3 +47,4 @@
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T03:17:32.048415+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T03:17:39.613443+00:00"}
 {"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 4.2, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T03:17:51.844718+00:00"}
+{"event_type": "peer_group_deviation", "log_channel": "app", "z_score": 0.3, "metric": "file_reads", "feature_id": "F-066", "timestamp": "2026-05-23T03:17:55.150738+00:00"}

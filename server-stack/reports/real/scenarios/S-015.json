@@ -1,7 +1,7 @@
 {
   "scenario_id": "S-015",
   "title": "Payroll SQL Dump",
-  "mode": "negative",
+  "mode": "positive",
   "category": "veri sızdırma",
   "user_role": "İK",
   "deterministic_seed": 1015,
@@ -21,7 +21,7 @@
           "service": "postgres-actions",
           "response": {
             "rows": 1,
-            "sql": "SELECT * FROM customers LIMIT 2"
+            "sql": "SELECT * FROM customers LIMIT 500"
           }
         }
       ],
@@ -46,19 +46,19 @@
           },
           "index_query": {
             "index": "corp-logs-f-045",
-            "count": 636,
+            "count": 1023,
             "result": "PASS"
           },
           "result": "PASS",
           "parity_level": "L3",
           "ship": {
             "shipped": true,
-            "indexed": 39,
+            "indexed": 48,
             "index": "corp-logs-f-045",
             "pipeline": {
               "feature_id": "F-045",
               "index": "corp-logs-f-045",
-              "indexed": 39
+              "indexed": 48
             }
           }
         }
@@ -76,7 +76,7 @@
       "service": "postgres-actions",
       "response": {
         "rows": 1,
-        "sql": "SELECT * FROM customers LIMIT 2"
+        "sql": "SELECT * FROM customers LIMIT 500"
       }
     }
   ],
@@ -101,19 +101,19 @@
       },
       "index_query": {
         "index": "corp-logs-f-045",
-        "count": 636,
+        "count": 1023,
         "result": "PASS"
       },
       "result": "PASS",
       "parity_level": "L3",
       "ship": {
         "shipped": true,
-        "indexed": 39,
+        "indexed": 48,
         "index": "corp-logs-f-045",
         "pipeline": {
           "feature_id": "F-045",
           "index": "corp-logs-f-045",
-          "indexed": 39
+          "indexed": 48
         }
       }
     }
@@ -124,12 +124,12 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "event_count": 1,
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:14:33.619643+00:00",
+  "generated_at": "2026-05-23T03:17:55.614065+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS",
-  "replay_key": "S-015:1015:negative:real"
+  "replay_key": "S-015:1015:positive:real"
 }

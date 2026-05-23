@@ -51,7 +51,7 @@
     "reports/scenario_logs/S-012/hris/new_hire_excess_access.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:38.526209+00:00",
+  "generated_at": "2026-05-23T03:17:57.103197+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-012:1012:positive"

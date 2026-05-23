@@ -2,7 +2,7 @@
   "id": "F-024",
   "feature_id": "F-024",
   "title": "Eski Mail Arşivinin Toplu Okunması",
-  "mode": "negative",
+  "mode": "positive",
   "parity_level": "L3",
   "parity_target": "L2",
   "real_tool": "dovecot",
@@ -35,7 +35,7 @@
       },
       "index_query": {
         "index": "corp-logs-f-024",
-        "count": 1840,
+        "count": 1920,
         "result": "PASS"
       },
       "result": "PASS",
@@ -58,10 +58,10 @@
     "seeds/real/git/repos.yml",
     "seeds/real/web/endpoints.yml"
   ],
-  "anomaly_detected": false,
+  "anomaly_detected": true,
   "evidence_expected": "old archive bulk-read event",
   "synthetic_preserved": true,
-  "generated_at": "2026-05-23T03:17:37.224317+00:00",
+  "generated_at": "2026-05-23T03:17:54.356687+00:00",
   "stack": "watchtower-corp",
   "result": "PASS",
   "status": "PASS"

@@ -51,7 +51,7 @@
     "reports/scenario_logs/S-009/app/peer_group_deviation.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:38.418675+00:00",
+  "generated_at": "2026-05-23T03:17:57.003531+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-009:1009:positive"

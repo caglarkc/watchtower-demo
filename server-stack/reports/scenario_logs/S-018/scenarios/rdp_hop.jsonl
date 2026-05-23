@@ -22,3 +22,4 @@
 {"event_type": "rdp_hop", "hops": ["ws1", "files1"], "source_feature": "F-015", "scenario_id": "S-018", "timestamp": "2026-05-23T02:57:30.000258+00:00"}
 {"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "source_feature": "F-015", "scenario_id": "S-018", "timestamp": "2026-05-23T03:08:38.742930+00:00"}
 {"event_type": "rdp_hop", "hops": ["ws1", "files1"], "source_feature": "F-015", "scenario_id": "S-018", "timestamp": "2026-05-23T03:08:41.602652+00:00"}
+{"event_type": "rdp_hop", "hops": ["ws1", "dc1", "files1", "db1"], "source_feature": "F-015", "scenario_id": "S-018", "timestamp": "2026-05-23T03:17:57.295265+00:00"}

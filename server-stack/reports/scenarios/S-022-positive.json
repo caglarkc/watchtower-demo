@@ -59,7 +59,7 @@
     "reports/scenario_logs/S-022/app/api_pattern_deviation.jsonl"
   ],
   "negative_control": null,
-  "generated_at": "2026-05-23T03:08:38.886189+00:00",
+  "generated_at": "2026-05-23T03:17:57.426429+00:00",
   "stack": "watchtower-corp",
   "status": "PASS",
   "replay_key": "S-022:2022:positive"
