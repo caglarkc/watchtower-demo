@@ -1,5 +1,5 @@
 # Watchtower
-
+ 
 **CLI-first UEBA platform for closed-network enterprise environments.**
 
 Watchtower watches internal user and entity behavior, learns baselines, scores
