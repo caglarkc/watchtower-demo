@@ -2,7 +2,7 @@
 
 > Bu belge Watchtower'ın ne yaptığını, nasıl çalıştığını ve neden böyle tasarlandığını tanımlar.
 > Teknik implementasyon değil, ürün kararlarının kaydıdır.
-
+ 
 ---
 
 ## 1. Sistemin Amacı
